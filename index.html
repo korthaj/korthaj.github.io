@@ -1,1 +1,38 @@
-Hello world
+---
+layout: default
+---
+
+<div class="home">
+
+  <figure> <!-- http://www.flickr.com/photos/stianeikeland/3696386615/ -->
+    <a href="about/">
+      <img src="/assets/mask-computer.jpg" width="480" height="320"
+      alt="A masked magician" title="About Stefan">
+    </a>
+  </figure>
+
+  <h2>Magic</h2>
+  
+  <p class="post-link"><a href="magic/en/">The professor who cheats at poker</a></p>
+
+  <h2>Posts</h2>
+
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <figure>
+  <blockquote>I think a person should be able to dial a number, make a purchase, send an SMS, write an e-mail, or visit a Web site without having to think about what it's going to look like on their permanent record.</blockquote>
+  <figcaption>–Edward Snowden</figcaption>
+  </figure>
+
+<!--
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+-->
+
+</div>
