@@ -1642,7 +1642,7 @@ Warning: Unexported identifiers is not a security measure and it does not hide o
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/algorithms/random-number-generator-seed/</guid>
-      <description>In reality a pseudo&amp;shy;random number generator isn&#39;t random at all. It&#39;s computed using a fixed determi&amp;shy;nistic algorithm.
+      <description>In reality pseudo&amp;shy;random numbers aren&#39;t random at all. They are computed using a fixed determi&amp;shy;nistic algorithm.
 The seed is a starting point for a sequence of pseudorandom numbers. If you start from the same seed, you get the very same sequence. This can be quite useful for&amp;nbsp;debugging.
 If you want a different sequence of numbers each time, you can use the current time as a&amp;nbsp;seed.
 Example This generator produces a sequence of 97 different numbers, then it starts over again.</description>
