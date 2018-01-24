@@ -54,17 +54,6 @@ package main import ( &#34;container/list&#34; &#34;fmt&#34; &#34;reflect&#34; )
     </item>
     
     <item>
-      <title>Ace not found</title>
-      <link>https://yourbasic.org/404/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/404/</guid>
-      <description>Error code: 404
-Hey! Step this way.
-Come here and play.</description>
-    </item>
-    
-    <item>
       <title>Adding one character at a time</title>
       <link>https://yourbasic.org/golang/gotcha-concatenate-rune-string/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
