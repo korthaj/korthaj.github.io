@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="A select statement allows you to wait for multiple send or receive operations simultaneously.">
+  <meta name="keywords" content="go, golang, select, default case, channel, send, receive, nil channel">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Select</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+
+<p class="lead">The select statement waits for multiple send or receive opera&shy;tions simul&shy;taneously.</p>
+
+<pre><code><span class="comment">// blocks until there's data available on ch1 or ch2</span>
+select {
+case <-ch1:
+    fmt.Println("Received from ch1")
+case <-ch2:
+    fmt.Println("Received from ch2")
+}</code></pre>
+
+<ul>
+<li>The statement blocks as a whole until one of the operations becomes unblocked.</li>
+<li>If several cases can proceed, a single one of them will be chosen at random.</li>
+</ul>
+
+<p>Send and receive operations on a <code>nil</code> channel block forever.
+This can be used to disable a channel in a select statement:</p>
+
+<pre><code>ch1 = nil <span class="comment">// disables this channel</span>
+select {
+case <-ch1:
+    fmt.Println("Received from ch1") <span class="comment">// will not happen</span>
+case <-ch2:
+    fmt.Println("Received from ch2")
+}</code></pre>
+
+<h2 id="default-case">Default case</h2>
+
+<p>The <code>default</code> case is always able to proceed and runs if all other cases are blocked.</p>
+
+<pre><code><span class="comment">// never blocks</span>
+select {
+case x := <-ch:
+    fmt.Println("Received", x)
+default:
+    fmt.Println("Nothing available")
+}</code></pre>
+
+<h2 id="examples">Examples</h2>
+
+<h3 id="an-infinite-random-binary-sequence">An infinite random binary sequence</h3>
+
+<pre><code>rand := make(chan int)
+for {
+    select {
+    case rand <- 0: <span class="comment">// no statement</span>
+    case rand <- 1:
+    }
+}</code></pre>
+
+<h3 id="a-blocking-operation-with-a-timeout">A blocking operation with a timeout</h3>
+
+<pre><code>select {
+case news := <-AFP:
+    fmt.Println(news)
+case <-time.After(time.Minute):
+    fmt.Println("Time out: No news in one minute")
+}</code></pre>
+
+<p>The function <a href="https://golang.org/pkg/time#After"><code>time.After</code></a> is part of the standard library;
+it waits for a specified time to elapse and then sends the current time on the returned channel.</p>
+
+<h3 id="a-statement-that-blocks-forever">A statement that blocks forever</h3>
+
+<pre><code>select {}</code></pre>
+
+<p>A select statement blocks until <em>at least one</em> of it&rsquo;s cases can proceed.
+With zero cases this will never happen.</p>
+
+<ul class="pagina">
+  
+        <li><a href="/golang/channels-explained/">« Prev</a></li>
+      
+        <li><a href="/golang/concurrent-programming/">Index</a></li>
+      
+        <li><a href="/golang/data-races-explained/">Next »</a></li>
+      
+</ul>
+
+</article>
+
+<aside>
+
+  <h2>Concurrent programming</h2>
+  <ul class="none">
+  
+      <li><a href="/golang/goroutines-explained/">Goroutines</a></li>
+
+      <li><a href="/golang/channels-explained/">Channels</a></li>
+
+      <li><b>🢒&nbsp;</b>Select</li>
+
+      <li><a href="/golang/data-races-explained/">Data races</a></li>
+
+      <li><a href="/golang/detect-data-races/">Detect data races</a></li>
+
+      <li><a href="/golang/detect-deadlock/">Deadlock</a></li>
+
+      <li><a href="/golang/wait-for-goroutines-waitgroup/">Waiting for goroutines</a></li>
+
+      <li><a href="/golang/broadcast-channel/">Broadcast a signal on a channel</a></li>
+
+      <li><a href="/golang/stop-goroutine/">Stop a goroutine</a></li>
+
+      <li><a href="/golang/time-reset-wait-stop-timeout-cancel-interval/">Timer and Ticker</a></li>
+
+      <li><a href="/golang/mutex-explained/">Mutual exclusion lock (mutex)</a></li>
+
+      <li><a href="/golang/efficient-parallel-computation/">Efficient parallel computation</a></li>
+
+  </ul>
+
+
+  <p><a href="/golang/"><b>See all 198 Go articles</b></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

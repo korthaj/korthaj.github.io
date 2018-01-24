@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>String handling cheat sheet | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="Top Go string functions in a nutshell.">
+  <meta name="keywords" content="go, golang, strings, functions, operatations, reference, concatenation, length, contain, index, join, replace, split, trim, strip, delete, remove, lowercase, uppercase">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>String handling cheat sheet</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<ul class="toc">
+  <li><a href="#string-literals">String literals</a></li>
+  <li><a href="#basic-string-handling">Basic string handling</a></li>
+  <li><a href="#find">Find</a></li>
+  <li><a href="#replace">Replace</a></li>
+  <li><a href="#split-and-join">Split and join</a></li>
+  <li><a href="#convert">Convert</a></li>
+</ul>
+
+<h2 id="string-literals">String literals</h2>
+
+<table class="white">
+  <thead>
+    <tr>
+      <th>Expression</th>
+      <th>Result</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border-bottom: 0;"><code>""</code></td>
+      <td style="border-bottom: 0;"> </td>
+      <td style="border-bottom: 0;">Empty string, zero value for <code>string</code></td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>"Japan 日本"</code></td>
+      <td style="padding-top: 0;">Japan 日本</td>
+      <td style="padding-top: 0;">Go code is Unicode text encoded in UTF‑8</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>"\xe6\x97\xa5"</code></td>
+      <td style="border-bottom: 0;">日</td>
+      <td style="border-bottom: 0;"><code>\xNN</code> specifies a byte</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>"\u65E5"</code></td>
+      <td style="padding-top: 0;">日</td>
+      <td style="padding-top: 0;"><code>\uNNNN</code> specifies a Unicode value</td>
+    </tr>
+    <tr>
+      <td><code>`\xe6`</code></td>
+      <td>\xe6</td>
+      <td>Raw string literal*</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>&#42; In <code>``</code> string literals, characters are interpreted literally:
+backslashes have no special meaning and the string may contain newlines.</p>
+
+<h2 id="basic-string-handling">Basic string handling</h2>
+
+<table class="white">
+  <thead>
+    <tr>
+      <th>Expression</th>
+      <th>Result</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>"Ja" + "pan"</code></td>
+      <td>Japan</td>
+      <td>Concatenation</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>"Japan" == "Japan"</code></td>
+      <td style="border-bottom: 0;">true</td>
+      <td style="border-bottom: 0;">Equality</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>strings.EqualFold("Japan", "JAPAN")</code></td>
+      <td style="padding-top: 0;">true</td>
+      <td style="padding-top: 0;">Unicode case-folding</td>
+    </tr>
+    <tr>
+      <td><code>"japan" &lt; "Japan"</code></td>
+      <td>true</td>
+      <td>Lexical order</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>len("日")</code></td>
+      <td style="border-bottom: 0;">3</td>
+      <td style="border-bottom: 0;">Length in bytes</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>utf8.RuneCountInString("日")</code></td>
+      <td style="padding-top: 0;">1</td>
+     <td style="padding-top: 0;">in runes <span class="tag">unicode/utf8</span></td>
+    </tr>
+    <tr>
+      <td><code>utf8.ValidString("日")</code></td>
+      <td>true</td>
+      <td>UTF-8? <span class="tag">unicode/utf8</span></td>
+    </tr>
+    <tr>
+      <td><code>"Japan"[2]</code></td>
+      <td>'p'</td>
+      <td>Byte at postion 2</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>"Japan"[1:3]</code></td>
+      <td style="border-bottom: 0;">ap</td>
+      <td style="border-bottom: 0;">Byte indexing</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;"><code>"Japan"[:2]</code></td>
+      <td style="border-bottom: 0; padding-top: 0;">Ja</td>
+      <td style="border-bottom: 0; padding-top: 0;"> </td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>"Japan"[2:]</code></td>
+      <td style="padding-top: 0;">pan</td>
+      <td style="padding-top: 0;"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>A Go <a href="/golang/for-loop-range-array-slice-map-channel/">range loop</a> iterates over UTF-8 encoded characters (<a href="/golang/rune/">runes</a>):</p>
+
+<pre><code>for i, ch := range "Japan 日本" {
+    fmt.Printf("%d:%q ", i, ch)
+}
+<span class="comment">// Output: 0:'J' 1:'a' 2:'p' 3:'a' 4:'n' 5:' ' 6:'日' 9:'本'</span></code></pre>
+
+<p>Iterating over bytes produces nonsense characters for non-ASCII text:</p>
+
+<pre><code>s := "Japan 日本"
+for i := 0; i < len(s); i++ {
+    fmt.Printf("%q ", s[i])
+}
+<span class="comment">// Output: 'J' 'a' 'p' 'a' 'n' ' ' 'æ' '\u0097' '¥' 'æ' '\u009c' '¬'</span></code></pre>
+
+<h2 id="find">Find</h2>
+
+<table class="white">
+  <thead>
+    <tr>
+      <th>Expression</th>
+      <th>Result</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border-bottom: 0;"><code>strings.Contains("Japan", "abc")</code></td>
+      <td style="border-bottom: 0;">false</td>
+     <td style="border-bottom: 0;">Is abc in Japan?</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>strings.ContainsAny("Japan", "abc")</code></td>
+      <td style="padding-top: 0;">true</td>
+      <td style="padding-top: 0;">Is a, b or c in Japan?</td>
+    </tr>
+    <tr>
+      <td><code>strings.Count("Banana", "ana")</code></td>
+      <td>1</td>
+      <td>Non-overlapping instances of ana</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>strings.HasPrefix("Japan", "Ja")</code></td>
+      <td style="border-bottom: 0;">true</td>
+      <td style="border-bottom: 0;">Does Japan start with Ja?</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>strings.HasSuffix("Japan", "pan")</code></td>
+      <td style="padding-top: 0;">true</td>
+      <td style="padding-top: 0;">Does Japan end with pan?</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>strings.Index("Japan", "abc")</code></td>
+      <td style="border-bottom: 0;">-1</td>
+      <td style="border-bottom: 0;">Index of first abc</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;"><code>strings.IndexAny("Japan", "abc")</code></td>
+      <td style="border-bottom: 0; padding-top: 0;">1</td>
+      <td style="border-bottom: 0; padding-top: 0;">a, b or c</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;"><code>strings.LastIndex("Japan", "abc")</code></td>
+      <td style="border-bottom: 0; padding-top: 0;">-1</td>
+      <td style="border-bottom: 0; padding-top: 0;">Index of last abc</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>strings.LastIndexAny("Japan", "abc")</code></td>
+      <td style="padding-top: 0;">3</td>
+      <td style="padding-top: 0;">a, b or c</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="replace">Replace</h2>
+
+<table class="white">
+  <thead>
+    <tr>
+      <th>Expression</th>
+      <th>Result</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>strings.Replace("foo", "o", ".")</code></td>
+      <td>f..</td>
+      <td>Replace “o” with “.”</td>
+    </tr>
+    <tr>
+      <td><code>f := func(r rune) rune {<br />&nbsp;&nbsp;&nbsp;&nbsp;return r + 1<br />}<br />strings.Map(f, "ab")</code></td>
+      <td>bc</td>
+      <td>Apply function to each character</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>strings.ToUpper("Japan")</code></td>
+      <td style="border-bottom: 0;">JAPAN</td>
+      <td style="border-bottom: 0;">Uppercase</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;"><code>strings.ToLower("Japan")</code></td>
+      <td style="border-bottom: 0; padding-top: 0;">japan</td>
+      <td style="border-bottom: 0; padding-top: 0;">Lowercase</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>strings.Title("ja&nbsp;pan")</code></td>
+      <td style="padding-top: 0;">Ja Pan</td>
+      <td style="padding-top: 0;">Initial letters to uppercase</td>
+    </tr>
+    <tr>
+      <td><code>strings.TrimSpace("&nbsp;foo\n")</code></td>
+      <td>foo</td>
+      <td>Strip leading and trailing white space</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>strings.Trim("foo", "fo")</code></td>
+      <td style="border-bottom: 0;"></td>
+      <td style="border-bottom: 0;">Strip <em>leading and trailing</em> f:s and o:s</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;"><code>strings.TrimLeft("foo", "fo")</code></td>
+      <td style="border-bottom: 0; padding-top: 0;">oo</td>
+      <td style="border-bottom: 0; padding-top: 0;"><em>only leading</em></td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>strings.TrimRight("foo", "fo")</code></td>
+      <td style="padding-top: 0;">f</td>
+      <td style="padding-top: 0;"><em>only trailing</em></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>strings.TrimPrefix("foo", "fo")</code></td>
+      <td style="border-bottom: 0;">o</td>
+      <td style="border-bottom: 0;"></td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>strings.TrimSuffix("foo", "o")</code></td>
+      <td style="padding-top: 0;">fo</td>
+      <td style="padding-top: 0;"></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="split-and-join">Split and join</h2>
+
+<table class="white">
+  <thead>
+    <tr>
+      <th>Expression</th>
+      <th>Result</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border-bottom: 0;"><code>strings.Fields("&nbsp;a\t&nbsp;b\n")</code></td>
+      <td style="border-bottom: 0;"><code>["a"&nbsp;"b"]</code></td>
+      <td style="border-bottom: 0;">Into substrings, remove white space</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;"><code>strings.Split("a:b",&nbsp;":")</code></td>
+      <td style="border-bottom: 0; padding-top: 0;"><code>["a"&nbsp;"b"]</code></td>
+      <td style="border-bottom: 0; padding-top: 0;">remove separator</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>strings.SplitAfter("a:b",&nbsp;":")</code></td>
+      <td style="padding-top: 0;"><code>["a:"&nbsp;"b"]</code></td>
+      <td style="padding-top: 0;">keep separator</td>
+    </tr>
+    <tr>
+      <td><code>arr := []string{"a",&nbsp;"b"}</code><br /><code>strings.Join(arr, ":")</code></td>
+      <td>a:b</td>
+      <td>Join strings, add separator</td>
+    </tr>
+    <tr>
+      <td><code>strings.Repeat("da", 2)</code></td>
+      <td>dada</td>
+      <td>2 copies of “da”</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="convert">Convert</h2>
+
+<table class="white">
+  <thead>
+    <tr>
+      <th>Expression</th>
+      <th>Result</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border-bottom: 0;"><code>strconv.Itoa(-42)</code></td>
+      <td style="border-bottom: 0;"><code>"-42"</code></td>
+      <td style="border-bottom: 0;">Int to string</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>strconv.FormatInt(255,&nbsp;16)</code></td>
+      <td style="padding-top: 0;"><code>"ff"</code></td>
+      <td style="padding-top: 0;">Base 16</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="sprintf">Sprintf</h3>
+
+<p>The <a href="https://golang.org/pkg/fmt/#Sprintf"><code>fmt.Sprintf</code></a> function is often your best friend when converting data to string:</p>
+
+<pre><code>s := fmt.Sprintf("%.4f", math.Pi) <span class="comment">// s == "3.1416"</span></code></pre>
+
+<p>The <a href="/golang/fmt-printf-reference-cheat-sheet/">fmt cheat sheet</a>
+explains the most common formatting flags.</p>
+
+</article>
+
+<aside>
+
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/fmt-printf-reference-cheat-sheet/">fmt cheat sheet</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/rune/">Type rune</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="https://blog.golang.org/strings">Strings, bytes, runes and characters in Go</a><br />
+    <span class="source">The Go Blog</span>
+    <span class="author"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/regexp-cheat-sheet/">Regular expressions</a><br />
+    <span class="source"></span>
+  </div>
+
+
+  <h2>New in Go 1.10</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/build-append-concatenate-strings-efficiently/">Build and concatenate strings efficiently</a></li>
+
+    <li><a href="/golang/round-float-to-int/">Round float to integer value</a></li>
+
+    <li><a href="/golang/shuffle-slice-array/">Shuffle slice or array</a></li>
+
+  </ul>
+
+  <h2>Top Go articles</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/gotcha/">Go gotcha</a></li>
+
+    <li><a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a></li>
+
+    <li><a href="/golang/slices-explained/">Slices in a nutshell</a></li>
+
+    <li><a href="/golang/maps-explained/">Maps in a nutshell</a></li>
+
+    <li><a href="/golang/concurrent-programming/">Concurrent programming</a></li>
+
+  </ul>
+  <p><a href="/golang/"><strong>See all 198 Go articles</strong></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

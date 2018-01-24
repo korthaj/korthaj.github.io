@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amortized time complexity | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="Amortized analysis considers both the cheap and expensive operations performed by an algorithm.">
+  <meta name="keywords" content="amortized time complexity, analysis, worst-case, dynamic array, example">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Amortized time complexity</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<p class="lead">Amortized analysis is used for algo&shy;rithms that have <b>expensive opera&shy;tions</b> that happen only&nbsp;<b>rarely</b>.</p>
+
+<p>Amortized complexity analysis is most commonly used with data structures,
+which have state that persists between operations.
+The basic idea is that an expensive operation can alter the state so that
+the worst case cannot occur again for a long time, thus amortizing its cost.</p>
+
+<blockquote class="math">
+Let T<sub>1</sub>, T<sub>2</sub>,&nbsp;…, T<sub>k</sub> be the complexities
+of a sequence of operations on a data structuture. The <b>amortized complexity</b>
+of a single operation in this sequence is
+(T<sub>1</sub>&nbsp;+&nbsp;T<sub>2</sub>&nbsp;+&nbsp;…+&nbsp;T<sub>k</sub>)&nbsp;/&nbsp;k.
+</blockquote>
+
+<h2 id="example">Example</h2>
+
+<pre><code><span class="comment">// Append x to the end of array a.</span>
+<b>algorithm</b> append(x, a):
+    <b>if</b> a.len == a.cap
+        b ← new array with twice the capacity of a
+        copy a into b
+        a ← b
+    a[a.len] ← x
+    a.len++
+</code></pre>
+
+<h3 id="worst-case-time">Worst-case time</h3>
+
+<p>The worst-case time complexity for appending an element
+to an array of length&nbsp;<i>n</i>, using this algorithm, is&nbsp;&Theta;(<i>n</i>).
+If the array is full, the algorithm allocates a new array of length&nbsp;2<i>n</i>,
+and then copies the elements from the old array into the new one.</p>
+
+<p>Cleary this result is overly pessimistic.
+The following <i>n</i>&nbsp;append operations will be much cheaper &ndash;
+each of them will run in constant time since the newly allocated array
+has room for all the new elements.</p>
+
+<h3 id="amortized-time">Amortized time</h3>
+
+<p>An amortized time analysis gives a much better understanding of the algorithm.</p>
+
+<p>Consider a sequence of <i>n</i>&nbsp;append operations,
+where we start with an array of length&nbsp;1. A careful analysis shows
+that the total time of these operations is only&nbsp;&Theta;(<i>n</i>).</p>
+
+<ul>
+<li> There will be a total of <i>n</i> constant-time assignment and increment operations.
+</li>
+<li> The resizing will happen only at operation 1, 2, 4, …, 2<sup>k</sup>,
+  for a total of 1&nbsp;+&nbsp;2&nbsp;+&nbsp;4&nbsp;+&nbsp;…+&nbsp;2<sup>k</sup>&nbsp;=
+  2·2<sup>k</sup>&nbsp;-&nbsp;1 constant-time element copy operations.
+  Since&nbsp;2<sup>k</sup>&nbsp;&le;&nbsp;<i>n</i>, this is at most&nbsp;2<i>n</i>&nbsp;-&nbsp;1.
+</li>
+</ul>
+
+<p>Hence, the amortized time complexity for a single append operation is&nbsp;&Theta;(1).</p>
+
+</article>
+
+<aside>
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/algorithms/time-complexity-explained/">Time complexity</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/algorithms/big-o-notation-explained/">Big O notation</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/append-explained/">Append function</a><br />
+    <span class="source"></span>
+  </div>
+
+  <h2>Top algorithm articles</h2>
+  <ul class="none">
+  
+    <li><a href="/algorithms/your-basic-api/">Your basic API</a></li>
+
+    <li><a href="/algorithms/hash-tables-explained/">Hash tables</a></li>
+
+    <li><a href="/algorithms/big-o-notation-explained/">Big O notation</a></li>
+
+    <li><a href="/algorithms/loop-invariants-explained/">Loop invariants</a></li>
+
+    <li><a href="/golang/quicksort-optimizations/">Top 3 Quicksort optimizations</a></li>
+
+  </ul>
+
+  <p><a href="/algorithms/"><b>See all algorithm articles</b></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

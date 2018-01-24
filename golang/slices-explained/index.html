@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slices in a nutshell | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="How to use Go slices.">
+  <meta name="keywords" content="go, golang, slice, array, make, append, len, cap">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Slices in a nutshell</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<p class="lead">A slice does not store any data,
+it just describes a section of an underlying&nbsp;array.</p>
+
+<ul class="toc">
+  <li><a href="#fundamentals">Fundamentals</a></li>
+  <li><a href="#create-slices">Create slices</a></li>
+  <li><a href="#length-and-capacity">Length and capacity</a></li>
+  <li><a href="#reslice-and-extend">Reslice and extend</a></li>
+  <li><a href="#append">Append</a></li>
+</ul>
+
+<h2 id="fundamentals">Fundamentals</h2>
+
+<p>A slice describes a section of an underlying array.
+When you change an element of a slice, you modify the corresponding element of its underlying array, and other slices that share the same underlying array will see the change.</p>
+
+<p>In particular, passing a slice as argument to a method does not cause
+the data to be copied (as&nbsp;with&nbsp;arrays).</p>
+
+<p>A slice can grow and shrink within the bounds of the underlying array.</p>
+
+<h2 id="create-slices">Create slices</h2>
+
+<p>The type of a slice is <code>[]T</code>. You can create a new slice either by a slice literal</p>
+
+<pre><code>s := []string{&quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot;, &quot;qux&quot;}
+</code></pre>
+
+<p>of by a call the built-in <a href="/golang/make-slice-map-channel/"><code>make</code></a> function</p>
+
+<pre><code>s := make([]int, 3) <span class="comment">// s == []int{0, 0, 0}</span></code></pre>
+    
+
+<p>The <a href="https://golang.org/pkg/builtin/#make"><code>make</code></a> function optionally takes a capacity as a third argument. <code>make([]int, 10, 100)</code> for example, is the same as <code>new([100]int)[:10]</code>.</p>
+
+<p>You can also create a slice backed by an existing array.</p>
+
+<pre><code>a := [...]int{0, 1, 2, 3}
+s := a[1:3] <span class="comment">// s == []int{1, 2}</span>
+s = a[:2]   <span class="comment">// s == []int{0, 1}</span>
+s = a[2:]   <span class="comment">// s == []int{2, 3}</span>
+s = a[:]    <span class="comment">// s == []int{0, 1, 2, 3}</span></code></pre>
+
+<p>The default value of a slice is <code>nil</code>.
+The functions <code>len</code>, <code>cap</code> and <code>append</code>
+all regard <code>nil</code> as an empty slice with 0&nbsp;capacity.</p>
+
+<h2 id="length-and-capacity">Length and capacity</h2>
+
+<p>The <strong>length</strong> and <strong>capacity</strong> can be retrieved using the built-in functions <a href="https://golang.org/pkg/builtin/#len"><code>len</code></a> and <a href="https://golang.org/pkg/builtin/#cap"><code>cap</code></a>.</p>
+
+<h2 id="reslice-and-extend">Reslice and extend</h2>
+
+<p>The indices in the last line are relative to the slice itself, not to the backing array. The end index is not bound by the slice&rsquo;s length, but by it&rsquo;s the <strong>capacity</strong>, which means we can <strong>extend the slices length</strong>.</p>
+
+<p>Trying to extend beyond the capacity will cause a panic. You can not use a negative start index.</p>
+
+<h2 id="append">Append</h2>
+
+<p>There&rsquo;s a built-in <code>append</code>](/golang/append-explained/) function appends elements to a slice.
+It will automatically allocate a larger backing array if the capacity is exceeded.</p>
+
+</article>
+
+<aside>
+
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/append-explained/">Append function</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/copy-explained/">Copy function</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/find-search-contains-slice/">Find an element in a slice</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/delete-element-slice/">Delete an element from a slice</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/clear-slice/">Clear a slice</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="https://blog.golang.org/go-slices-usage-and-internals">Go Slices: usage and internals</a><br />
+    <span class="source">The Go Blog</span>
+    <span class="author"></span>
+  </div>
+
+
+  <h2>New in Go 1.10</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/build-append-concatenate-strings-efficiently/">Build and concatenate strings efficiently</a></li>
+
+    <li><a href="/golang/round-float-to-int/">Round float to integer value</a></li>
+
+    <li><a href="/golang/shuffle-slice-array/">Shuffle slice or array</a></li>
+
+  </ul>
+
+  <h2>Top Go articles</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/gotcha/">Go gotcha</a></li>
+
+    <li><a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a></li>
+
+    <li><a href="/golang/slices-explained/">Slices in a nutshell</a></li>
+
+    <li><a href="/golang/maps-explained/">Maps in a nutshell</a></li>
+
+    <li><a href="/golang/concurrent-programming/">Concurrent programming</a></li>
+
+  </ul>
+  <p><a href="/golang/"><strong>See all 198 Go articles</strong></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

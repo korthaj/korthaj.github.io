@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loop invariants | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="Loop invariants are a simple yet powerful tool for designing, testing, modifying, documenting and proving code correct.">
+  <meta name="keywords" content="loop invariant, correctness, documentation, program verification, induction proof, Floyd-Hoare logic">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Loop invariants</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<p class="lead">An invariant is a state&shy;ment about the vari&shy;ables in a program,
+which is true every time the execu&shy;tion of the program reaches the&nbsp;invariant.</p>
+
+<!-- CC BY 2.0: https://www.flickr.com/photos/hulagway/5315234736 -->
+
+<p><img src="/algorithms/vanishing-point.jpg" /></p>
+
+<p>In this text we&rsquo;ll look at <strong>loop invariants</strong>, invariants placed at the beginning of a loop.
+They are a simple yet powerful tool to help understand iterative code.</p>
+
+<p>A well-chosen loop invariant is useful both when <em>designing</em>, <em>testing</em>,
+and <em>modifying</em> code. It also serves as <em>documentation</em> and can be
+the foundation of a <em>correctness proof</em>.</p>
+
+<h2 id="basic-example">Basic example</h2>
+
+<p>Let&rsquo;s start with a simple piece of code.</p>
+
+<pre>
+<b>Algorithm</b> sum(n)
+    <b>Input:</b> a non-negative integer n
+    <b>Output:</b> the sum 1 + 2 + … + n
+    sum ← 0
+    i ← 1
+    <b>while</b> i ≤ n
+        <span style="color:green;">// Invariant: sum = 1 + 2 + … + (i - 1)</span>
+        sum ← sum + i
+    <b>return</b> sum
+</pre>
+
+<p>A proper loop invariant should satisfy three properties:</p>
+
+<ol>
+<li><strong>Initiation:</strong> The loop invariant must be true before the first execution of the&nbsp;loop.</li>
+<li><strong>Iteration:</strong> If the invariant is true before an iteration of the loop, it should be true
+also after the iteration.</li>
+<li><strong>Termination</strong>: When the loop is terminated the invariant should tell us something useful,
+something that helps us understand the algorithm.</li>
+</ol>
+
+<p>In this example:</p>
+
+<ol>
+<li>The loop invariant holds initially since <code>sum&nbsp;=&nbsp;0</code> and <code>i&nbsp;=&nbsp;1</code> at this point.
+(The empty sum is&nbsp;zero.)</li>
+<li>Assuming the invariant holds before the <code>i</code>th iteration,
+it will be true also after this iteration since the loop adds <code>i</code> to the sum,
+and increments <code>i</code> by&nbsp;one.</li>
+<li>When the loop is just about to terminate,
+the invariant states that <code>sum&nbsp;= 1&nbsp;+ 2 +&nbsp;… +&nbsp;n</code>,
+just what&rsquo;s needed for the algorithm to be correct.</li>
+</ol>
+
+<p>In fact, the three steps above constitute an <em>induction proof</em>,
+which shows that <code>sum&nbsp;= 1&nbsp;+ 2 +&nbsp;… +&nbsp;n</code>
+when the program leaves the&nbsp;loop.</p>
+
+<h2 id="designing-with-invariants">Designing with invariants</h2>
+
+<p>We can also use a loop invariant during the design of an algorithm.
+Let&rsquo;s start with this code skeleton.</p>
+
+<pre>
+<b>Algorithm</b> max(A)
+    <b>Input:</b> an array A storing n integers
+    <b>Output:</b> the largest element in A
+    max ← …
+    <b>for</b> i = 0 <b>to</b> n-1
+        <span style="color:green;">//  Invariant: max = max(A[0], A[1], …, A[i-1])</span>
+        …
+    <b>return</b> max
+</pre>
+
+<p>The invariant seems to be well chosen: it satisfies the <strong>termination</strong> property
+since the variable <code>max = max(A[0], A[1], …, A[n-1])</code> when the loop terminates.</p>
+
+<p>We can try to satisfy the <strong>initiation</strong> property by assigning a suitable start value to <code>max</code>.
+However, it&rsquo;s not clear how to define the maximum value of an empty slice.
+We&rsquo;ve found a potential bug even before writing any code!
+One solution is to change the contract of the&nbsp;function.</p>
+
+<pre>
+<b>Algorithm</b> max(A)
+    <b>Input:</b> an array A storing n integers, where n ≥ 1
+    <b>Output:</b> the largest element in A
+    max ← …
+    <b>for</b> i = 0 <b>to</b> n-1
+        <span style="color:green;">// Invariant: max = max(A[0], A[1], …, A[i-1])</span>
+        …
+    <b>return</b> max
+</pre>
+
+<p>Now it&rsquo;s easy to solve the problem.
+If we let <code>max&nbsp;=&nbsp;A[0]</code> and start the loop with <code>i&nbsp;=&nbsp;1</code>,
+the invariant holds when we first enter the&nbsp;loop.</p>
+
+<p>Let&rsquo;s fill in the code. When doing so we can assume that
+the invariant holds at the beginning of the loop.
+The <strong>iteration</strong> property states: <em>if the invariant is true</em> before an iteration of the loop,
+it should be true also after the iteration.
+Here is the finished&nbsp;code.</p>
+
+<pre>
+<b>Algorithm</b> max(A)
+    <b>Input:</b> an array A storing n integers, where n ≥ 1
+    <b>Output:</b> the largest element in A
+    max ← A[0]
+    <b>for</b> i = 1 <b>to</b> n-1
+        <span style="color:green;">//  Invariant: max = max(A[0], A[1], …, A[i-1])</span>
+        <b>if</b> A[i] &gt; max
+             max ← A[i]
+    <b>return</b> max
+</pre>
+
+<h2 id="trickier-example">Trickier example</h2>
+
+<pre>
+<b>Algorithm</b> sort(A)
+    <b>Input:</b> an array A storing n integers
+    <b>Output:</b> the same array with the elements sorted in ascending order
+    <b>for</b> j = 1 <b>to</b> n-1
+        <span style="color:green;">// Invariant: A[0..j-1] contains the same elements as
+        // the original subarray A[0..j-1], but in sorted order.</span>
+        key ← A[j]
+        i ← j - 1
+        <b>while</b> i ≥ 0 <b>and</b> A[i] &gt; key
+            A[i+1] ← A[i]
+            i ← i - 1
+        A[i+1] ← key
+</pre>
+
+<p>To achieve the <strong>termination</strong> property, the invariant should state that
+the array is sorted when the for loop terminates. Check.</p>
+
+<p>Let&rsquo;s look at the <strong>initiation</strong> property. We can assume that the slice contains at
+least two elements since the loop wouldn&rsquo;t execute otherwise.
+(Nor is this needed since a slice with at most one element is sorted already.)
+Before executing the loop, the invariant states
+&ldquo;<code>A[0..0]</code> contains the same elements as the original subarray <code>A[0..0]</code>,
+but in sorted order&rdquo;. This is clearly&nbsp;true.</p>
+
+<p>To verify the <strong>iteration</strong> property, we need to take a closer look at the code.
+We can assume that the invariant holds before the loop, i.e. <code>A[0..j-1]</code> is sorted,
+and only need to check that the code inserts the element <code>A[j]</code> in the correct position.
+This is achieved by moving all elements <code>A[j-1], A[j-2],…</code> larger than <code>A[j]</code>
+one step to the right and then inserting <code>A[j]</code> in its proper position.</p>
+
+</article>
+
+<aside>
+
+
+  <h2>Top algorithm articles</h2>
+  <ul class="none">
+  
+    <li><a href="/algorithms/your-basic-api/">Your basic API</a></li>
+
+    <li><a href="/algorithms/hash-tables-explained/">Hash tables</a></li>
+
+    <li><a href="/algorithms/big-o-notation-explained/">Big O notation</a></li>
+
+    <li><a href="/algorithms/loop-invariants-explained/">Loop invariants</a></li>
+
+    <li><a href="/golang/quicksort-optimizations/">Top 3 Quicksort optimizations</a></li>
+
+  </ul>
+
+  <p><a href="/algorithms/"><b>See all algorithm articles</b></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Same name | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="An identifier declared in a block may be redeclared in an inner block.">
+  <meta name="keywords" content="go, golang, variable, shadowing, block">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Same name</h1>
+<div class="tagline">yourbasic.org</div>
+
+<p>Why doesn&rsquo;t <code>n</code> change?</p>
+
+<pre><code>func main() {
+    n := 0
+    if true {
+        n := 1
+        n++
+    }
+    fmt.Println(n) <span class="comment">// 0</span>
+}</code></pre>
+
+<p><details class="answer">
+<summary class="answer">Answer</summary></p>
+
+<p>The statement <code>n := 1</code> declares a new variable which <strong>shadows</strong> the original <code>n</code> throughout the scope of the if&nbsp;statement.</p>
+
+<p>To reuse <code>n</code> from the outer block, write <code>n = 1</code> instead.</p>
+
+<pre><code>func main() {
+    n := 0
+    if true {
+        <b>n = 1</b>
+        n++
+    }
+    fmt.Println(n) <span class="comment">// <b>2</b></span>
+}</code></pre>
+
+<p><h2 id="detecting-shadowed-variables">Detecting shadowed variables</h2>
+<p>To help detect shadowed variables, you may use the experimental <code>-shadow</code> feature provided by the <a href="https://golang.org/cmd/vet/">vet</a> tool. It flags variables that <strong>may have been</strong> unintentionally shadowed. Passing the original version of the code to <code>vet</code> gives a warning message.</p></p>
+
+<pre><code>$ go vet -shadow main.go
+main.go:4: declaration of "n" shadows declaration at main.go:2
+</code></pre>
+
+<p>Additionally, the Go compiler detects and disallows some cases of shadowing.</p>
+
+<pre><code class="language-go">func Foo() (n int, err error) {
+    if true {
+        err := fmt.Errorf("Invalid")
+        return
+    }
+    return
+}
+</code></pre>
+
+<pre><code>../main.go:4:3: err is shadowed during return
+</code></pre>
+
+<p></details></p>
+
+<ul class="pagina">
+  
+        <li><a href="/golang/gotcha-function-doesnt-change-array/">« Prev</a></li>
+      
+        <li><a href="/golang/gotcha/">Index</a></li>
+      
+        <li><a href="/golang/gotcha-missing-comma-slice-array-map-literal/">Next »</a></li>
+      
+</ul>
+
+</article>
+
+<aside>
+
+  <h2>Go gotcha</h2>
+  <ul class="none">
+  
+      <li><a href="/golang/gotcha-assignment-entry-nil-map/">Assignment to entry in nil map</a></li>
+
+      <li><a href="/golang/gotcha-nil-pointer-dereference/">Nil pointer dereference</a></li>
+
+      <li><a href="/golang/gotcha-multiple-value-sinlge-value-context/">Multiple values in single value context</a></li>
+
+      <li><a href="/golang/gotcha-function-doesnt-change-array/">Array won’t change</a></li>
+
+      <li><b>🢒&nbsp;</b>Same name</li>
+
+      <li><a href="/golang/gotcha-missing-comma-slice-array-map-literal/">Unexpected newline</a></li>
+
+      <li><a href="/golang/gotcha-strings-are-immutable/">String won’t change</a></li>
+
+      <li><a href="/golang/gotcha-concatenate-rune-string/">Adding one character at a time</a></li>
+
+      <li><a href="/golang/gotcha-trim-string/">What happened to ABBA?</a></li>
+
+      <li><a href="/golang/gotcha-copy-missing/">Where is my copy?</a></li>
+
+      <li><a href="/golang/gotcha-append/">Why doesn’t append work every time?</a></li>
+
+      <li><a href="/golang/gotcha-constant-overflows-int/">Constant overflows int</a></li>
+
+      <li><a href="/golang/gotcha-increment-decrement-statement/">Increment, decrement</a></li>
+
+      <li><a href="/golang/gotcha-operator-precedence/">Does not compute</a></li>
+
+      <li><a href="/golang/gotcha-bitwise-operators/">Go and Pythagoras</a></li>
+
+      <li><a href="/golang/gotcha-integer-overflow-wrap-around/">No end in sight</a></li>
+
+      <li><a href="/golang/gotcha-octal-decimal-hexadecimal-literal/">Numbers that start with zero</a></li>
+
+      <li><a href="/golang/gotcha-remainder-modulo-operator/">Whatever remains</a></li>
+
+      <li><a href="/golang/gotcha-multiply-duration-integer/">Time is not a number</a></li>
+
+      <li><a href="/golang/gotcha-index-out-of-range/">Index out of range</a></li>
+
+      <li><a href="/golang/gotcha-unexpected-values-range/">Unexpected values in range loop</a></li>
+
+      <li><a href="/golang/gotcha-change-value-range/">Can’t change entries in range loop</a></li>
+
+      <li><a href="/golang/gotcha-range-copy-array/">Iteration variable doesn’t see change in range loop</a></li>
+
+      <li><a href="/golang/gotcha-data-race-closure/">Iteration variables and closures</a></li>
+
+      <li><a href="/golang/gotcha-json-marshal-empty/">No JSON in sight</a></li>
+
+      <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a></li>
+
+  </ul>
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="https://golang.org/cmd/vet/">Command vet</a><br />
+    <span class="source">The Go Programming Language&#34;</span>
+    <span class="author"></span>
+  </div>
+  <p><a href="/golang/"><strong>See all 198 Go articles</strong></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

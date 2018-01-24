@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Efficient parallel computation | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="To efficiently schedule parallel computation on separate CPUs is more of an art than a science. This article gives some rules of thumb.">
+  <meta name="keywords" content="go, golang, parallel, computation, scheduling, cpu">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Efficient parallel computation</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+
+<!-- CC0: http://maxpixel.freegreatpicture.com/Hardware-Microprocessor-Chip-Pc-Amd-Cpu-Processor-1310766 -->
+
+<div><img src="/golang/cpu.jpg" alt="cpu" style="float: right; margin:10px 0 0 10px;"></div>
+
+<p class="lead">Dividing&nbsp;a&nbsp;large compu&shy;tation into work units for parallel pro&shy;cessing is more of an art than a&nbsp;science.</p>
+
+<p>Here are some rules of&nbsp;thumb.</p>
+
+<ul>
+<li>Each work unit should take about 100μs to 1ms to compute.
+If&nbsp;the units are too small, the adminis&shy;trative over&shy;head of divi&shy;ding
+the problem and sched&shy;uling sub-problems might be too large.
+If the units are too big, the whole computation may have to wait
+for a single slow work item to finish. This slowdown can happen
+for many reasons, such as scheduling, interrupts from other processes,
+and unfortunate memory layout. (Note that the number of work units
+is independent of the number of&nbsp;CPUs.)</li>
+<li>Try to minimize the amount of data sharing.
+Concurrent writes can be very costly, particularly so if goroutines
+execute on separate CPUs. Sharing data for reading is often much less
+of a problem.</li>
+<li>Strive for good locality when accessing data.
+If data can be kept in cache memory, data loading and storing
+will be dramatically faster.
+Once again, this is particularly important for writing.</li>
+</ul>
+
+<h2 id="example">Example</h2>
+
+<p>The following example shows how to divide a costly computation and
+distribute it on all available CPUs.
+This is the code we want to optimize.</p>
+
+<pre><code>type Vector []float64
+
+// Convolve computes w = u * v, where w[k] = Σ u[i]*v[j], i + j = k.
+// Precondition: len(u) &gt; 0, len(v) &gt; 0.
+func Convolve(u, v Vector) Vector {
+    n := len(u) + len(v) - 1
+    w := make(Vector, n)
+    for k := 0; k &lt; n; k++ {
+        w[k] = mul(u, v, k)
+    }
+    return w
+}
+
+// mul returns Σ u[i]*v[j], i + j = k.
+func mul(u, v Vector, k int) float64 {
+    var res float64
+    n := min(k+1, len(u))
+    j := min(k, len(v)-1)
+    for i := k - j; i &lt; n; i, j = i+1, j-1 {
+        res += u[i] * v[j]
+    }
+    return res
+}
+</code></pre>
+
+<p>The idea is simple:
+identify work units of suitable size and then run each work unit
+in a separate goroutine. Here is a parallel version of <code>Convolve</code>.</p>
+
+<pre><code>func Convolve(u, v Vector) Vector {
+    n := len(u) + len(v) - 1
+    w := make(Vector, n)
+
+    <span class="comment">// Divide w into work units that take ~100μs-1ms to compute.</span>
+    size := max(1, 1000000/n)
+
+    var wg sync.WaitGroup
+    for i, j := 0, size; i < n; i, j = j, j+size {
+        if j > n {
+            j = n
+        }
+        <span class="comment">// The goroutines share memory, but only for reading.</span>
+        wg.Add(1)
+        go func(i, j int) {
+            for k := i; k < j; k++ {
+                w[k] = mul(u, v, k)
+            }
+            wg.Done()
+        }(i, j)
+    }
+    wg.Wait()
+    return w
+}</code></pre>
+
+<h2 id="limiting-the-number-of-goroutines">Limiting the number of goroutines</h2>
+
+<p>When the work units have been defined, it’s often best to
+leave the scheduling to the runtime and the operating system.
+However, if needed, you can tell the runtime how many goroutines
+you want executing code simultaneously:</p>
+
+<pre><code>func init() {
+    numcpu := runtime.NumCPU()
+    runtime.GOMAXPROCS(numcpu) <span class="comment">// Try to use all available CPUs.</span>
+}</code></pre>
+
+<ul class="pagina">
+  
+        <li><a href="/golang/mutex-explained/">« Prev</a></li>
+      
+        <li><a href="/golang/concurrent-programming/">Index</a></li>
+      
+</ul>
+
+</article>
+
+<aside>
+
+  <h2>Concurrent programming</h2>
+  <ul class="none">
+  
+      <li><a href="/golang/goroutines-explained/">Goroutines</a></li>
+
+      <li><a href="/golang/channels-explained/">Channels</a></li>
+
+      <li><a href="/golang/select-explained/">Select</a></li>
+
+      <li><a href="/golang/data-races-explained/">Data races</a></li>
+
+      <li><a href="/golang/detect-data-races/">Detect data races</a></li>
+
+      <li><a href="/golang/detect-deadlock/">Deadlock</a></li>
+
+      <li><a href="/golang/wait-for-goroutines-waitgroup/">Waiting for goroutines</a></li>
+
+      <li><a href="/golang/broadcast-channel/">Broadcast a signal on a channel</a></li>
+
+      <li><a href="/golang/stop-goroutine/">Stop a goroutine</a></li>
+
+      <li><a href="/golang/time-reset-wait-stop-timeout-cancel-interval/">Timer and Ticker</a></li>
+
+      <li><a href="/golang/mutex-explained/">Mutual exclusion lock (mutex)</a></li>
+
+      <li><b>🢒&nbsp;</b>Efficient parallel computation</li>
+
+  </ul>
+
+
+  <p><a href="/golang/"><b>See all 198 Go articles</b></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Go gotcha | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="Tutorial covering common mistakes and corner cases in Go.">
+  <meta name="keywords" content="go, golang, tutorial, code, examples, gotchas">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Go gotcha</h1>
+<div class="tagline">yourbasic.org</div>
+<!-- CC BY 3.0: https://golang.org/doc/gopher/ -->
+
+<div><img src="/golang/gotcha.png" style="float: right; margin: 0 0 30px 20px;"></div>
+
+<p>This collection of common mistakes in Go is intended to help you spot
+similar traps in your own code and save you time when debugging.</p>
+
+<p><a href="/golang/gotcha-assignment-entry-nil-map" class="button">Take quiz</a></p>
+
+<h2 id="toc" style="font-size: 150%;">Table of contents</h2>
+
+  <ul class="none">
+  <li>
+  <a href="/golang/gotcha-assignment-entry-nil-map/"><b>Assignment to entry in nil map</b></a>
+  <div style="padding: 0.5em 0 1em 0">You have to initialize the map before you can add any elements.</div>
+</li>
+<li>
+  <a href="/golang/gotcha-nil-pointer-dereference/"><b>Nil pointer dereference</b></a>
+  <div style="padding: 0.5em 0 1em 0">An uninitialized pointer is nil, and you can&#39;t follow the nil pointer.</div>
+</li>
+<li>
+  <a href="/golang/gotcha-multiple-value-sinlge-value-context/"><b>Multiple values in single value context</b></a>
+  <div style="padding: 0.5em 0 1em 0">If a function returns multiple values, you must use all of them.</div>
+</li>
+<li>
+  <a href="/golang/gotcha-function-doesnt-change-array/"><b>Array won’t change</b></a>
+  <div style="padding: 0.5em 0 1em 0">Arrays in Go are values: when you pass an array to a function it gets a copy of the original array data.</div>
+</li>
+<li>
+  <a href="/golang/gotcha-shadowing-variables/"><b>Same name</b></a>
+  <div style="padding: 0.5em 0 1em 0">An identifier declared in a block may be redeclared in an inner block.</div>
+</li>
+<li>
+  <a href="/golang/gotcha-missing-comma-slice-array-map-literal/"><b>Unexpected newline</b></a>
+  <div style="padding: 0.5em 0 1em 0">In a multi-line slice, array or map literal, every line must end with a comma.</div>
+</li>
+<li>
+  <a href="/golang/gotcha-strings-are-immutable/"><b>String won’t change</b></a>
+  <div style="padding: 0.5em 0 1em 0">Go strings are read-only byte slices (with a few extra properties).</div>
+</li>
+<li>
+  <a href="/golang/gotcha-concatenate-rune-string/"><b>Adding one character at a time</b></a>
+  <div style="padding: 0.5em 0 1em 0">Characters (rune literals) are numbers in Go.</div>
+</li>
+<li>
+  <a href="/golang/gotcha-trim-string/"><b>What happened to ABBA?</b></a>
+  <div style="padding: 0.5em 0 1em 0">The Trim functions strip all Unicode code points contained in a cutset.</div>
+</li>
+<li>
+  <a href="/golang/gotcha-copy-missing/"><b>Where is my copy?</b></a>
+  <div style="padding: 0.5em 0 1em 0">Copy copies the minimum number of elements in the destination and source slices.</div>
+</li>
+<li>
+  <a href="/golang/gotcha-append/"><b>Why doesn’t append work every time?</b></a>
+  <div style="padding: 0.5em 0 1em 0">If there is enough capacity, append reuses the underlying array.</div>
+</li>
+<li>
+  <a href="/golang/gotcha-constant-overflows-int/"><b>Constant overflows int</b></a>
+  <div style="padding: 0.5em 0 1em 0">An untyped integer constant is converted to an int when the type can&#39;t be inferred from the context.</div>
+</li>
+<li>
+  <a href="/golang/gotcha-increment-decrement-statement/"><b>Increment, decrement</b></a>
+  <div style="padding: 0.5em 0 1em 0">In Go increment and decrement are statements written with postfix notation.</div>
+</li>
+<li>
+  <a href="/golang/gotcha-operator-precedence/"><b>Does not compute</b></a>
+  <div style="padding: 0.5em 0 1em 0">The multiplication, division, and remainder operators have the same precedence.</div>
+</li>
+<li>
+  <a href="/golang/gotcha-bitwise-operators/"><b>Go and Pythagoras</b></a>
+  <div style="padding: 0.5em 0 1em 0">The circumflex (^) denotes bitwise XOR in Go.</div>
+</li>
+<li>
+  <a href="/golang/gotcha-integer-overflow-wrap-around/"><b>No end in sight</b></a>
+  <div style="padding: 0.5em 0 1em 0">An integer overflow occurs when an arithmetic operation tries to create a value that is outside the range that can be represented.</div>
+</li>
+<li>
+  <a href="/golang/gotcha-octal-decimal-hexadecimal-literal/"><b>Numbers that start with zero</b></a>
+  <div style="padding: 0.5em 0 1em 0">Octal literals start with 0, hexadecimal with 0x, an decimal literals never start with zero.</div>
+</li>
+<li>
+  <a href="/golang/gotcha-remainder-modulo-operator/"><b>Whatever remains</b></a>
+  <div style="padding: 0.5em 0 1em 0">The remainder operator can give negative answers if the dividend is negative.</div>
+</li>
+<li>
+  <a href="/golang/gotcha-multiply-duration-integer/"><b>Time is not a number</b></a>
+  <div style="padding: 0.5em 0 1em 0">There is no mixing of numeric types in Go.</div>
+</li>
+<li>
+  <a href="/golang/gotcha-index-out-of-range/"><b>Index out of range</b></a>
+  <div style="padding: 0.5em 0 1em 0">Arrays, slices and strings are indexed starting from zero.</div>
+</li>
+<li>
+  <a href="/golang/gotcha-unexpected-values-range/"><b>Unexpected values in range loop</b></a>
+  <div style="padding: 0.5em 0 1em 0">The range loop generates two values: first the index, then the data.</div>
+</li>
+<li>
+  <a href="/golang/gotcha-change-value-range/"><b>Can’t change entries in range loop</b></a>
+  <div style="padding: 0.5em 0 1em 0">The range loop uses a local variable to store iteration values.</div>
+</li>
+<li>
+  <a href="/golang/gotcha-range-copy-array/"><b>Iteration variable doesn’t see change in range loop</b></a>
+  <div style="padding: 0.5em 0 1em 0">The range expression is evaluated once before beginning the loop.</div>
+</li>
+<li>
+  <a href="/golang/gotcha-data-race-closure/"><b>Iteration variables and closures</b></a>
+  <div style="padding: 0.5em 0 1em 0">A data race occurs when two goroutines access the same variable concurrently and at least one of the accesses is a write.</div>
+</li>
+<li>
+  <a href="/golang/gotcha-json-marshal-empty/"><b>No JSON in sight</b></a>
+  <div style="padding: 0.5em 0 1em 0">Only the the exported fields of a Go struct will be present in the JSON output.</div>
+</li>
+<li>
+  <a href="/golang/gotcha-why-nil-error-not-equal-nil/"><b>Nil is not nil</b></a>
+  <div style="padding: 0.5em 0 1em 0">An interface value is nil only if the concrete value and dynamic type are both nil.</div>
+</li>
+
+  </ul>
+</article>
+
+<aside>
+
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

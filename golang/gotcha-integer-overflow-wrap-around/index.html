@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>No end in sight | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="An integer overflow occurs when an arithmetic operation tries to create a value that is outside the range that can be represented.">
+  <meta name="keywords" content="go, golang, integer, overflow, wrap around">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>No end in sight</h1>
+<div class="tagline">yourbasic.org</div>
+
+<p>Why does this loop run forever?</p>
+
+<pre><code>var b byte
+for b = 250; b <= 255; b++ {
+    fmt.Printf("%d %c\n", b, b)
+}</code></pre>
+
+<p><details class="answer">
+<summary class="answer">Answer</summary></p>
+
+<p>After the <code>b == 255</code> iteration, <code>b++</code> is executed. This overflows (since the maximum value for a byte is 255) and results in <code>b == 0</code>. Therefore <code>b &lt;= 255</code> still holds and the loop restarts from&nbsp;0.</p>
+
+<blockquote>
+<p>
+For unsigned integer values, the operations +, -, *, and &lt;&lt; are computed modulo 2<sup>n</sup>,
+where n is the bit width of the unsigned integer's type.
+</p>
+<p>
+For signed integers, the operations +, -, *, and &lt;&lt; may legally overflow
+and the resulting value exists and is deterministically defined
+by the signed integer representation, the operation, and its operands.
+No exception is raised as a result of overflow.
+<a class="quote-source" href="https://golang.org/ref/spec#Arithmetic_operators">The Go Programming Language Specification: Arithmetic operators</a>
+</p>
+</blockquote>
+
+<p>If we use the standard loop idiom with a strict inequality,
+the compiler will catch the&nbsp;bug.</p>
+
+<pre><code class="language-go">var b byte
+for b = 250; b &lt; 256; b++ {
+    fmt.Printf("%d %c\n", b, b)
+}
+</code></pre>
+
+<pre><code>../main.go:2:17: constant 256 overflows byte
+</code></pre>
+
+<p>One solution is to use a wider data type, such as an&nbsp;<code>int</code>.</p>
+
+<pre><code class="language-go">for i := 250; i &lt; 256; i++ {
+    fmt.Printf("%d %c\n", i, i)
+}
+</code></pre>
+
+<pre><code>250 ú
+251 û
+252 ü
+253 ý
+254 þ
+255 ÿ
+</code></pre>
+
+<p>Another option is to put the termination test at the end of the&nbsp;loop.</p>
+
+<pre><code class="language-go">for b := byte(250); ; b++ {
+    fmt.Printf("%d %c\n", b, b)
+    if b == 255 {
+        break
+    }
+}
+</code></pre>
+
+<pre><code>250 ú
+251 û
+252 ü
+253 ý
+254 þ
+255 ÿ
+</code></pre>
+
+<p></details></p>
+
+<ul class="pagina">
+  
+        <li><a href="/golang/gotcha-bitwise-operators/">« Prev</a></li>
+      
+        <li><a href="/golang/gotcha/">Index</a></li>
+      
+        <li><a href="/golang/gotcha-octal-decimal-hexadecimal-literal/">Next »</a></li>
+      
+</ul>
+
+</article>
+
+<aside>
+
+  <h2>Go gotcha</h2>
+  <ul class="none">
+  
+      <li><a href="/golang/gotcha-assignment-entry-nil-map/">Assignment to entry in nil map</a></li>
+
+      <li><a href="/golang/gotcha-nil-pointer-dereference/">Nil pointer dereference</a></li>
+
+      <li><a href="/golang/gotcha-multiple-value-sinlge-value-context/">Multiple values in single value context</a></li>
+
+      <li><a href="/golang/gotcha-function-doesnt-change-array/">Array won’t change</a></li>
+
+      <li><a href="/golang/gotcha-shadowing-variables/">Same name</a></li>
+
+      <li><a href="/golang/gotcha-missing-comma-slice-array-map-literal/">Unexpected newline</a></li>
+
+      <li><a href="/golang/gotcha-strings-are-immutable/">String won’t change</a></li>
+
+      <li><a href="/golang/gotcha-concatenate-rune-string/">Adding one character at a time</a></li>
+
+      <li><a href="/golang/gotcha-trim-string/">What happened to ABBA?</a></li>
+
+      <li><a href="/golang/gotcha-copy-missing/">Where is my copy?</a></li>
+
+      <li><a href="/golang/gotcha-append/">Why doesn’t append work every time?</a></li>
+
+      <li><a href="/golang/gotcha-constant-overflows-int/">Constant overflows int</a></li>
+
+      <li><a href="/golang/gotcha-increment-decrement-statement/">Increment, decrement</a></li>
+
+      <li><a href="/golang/gotcha-operator-precedence/">Does not compute</a></li>
+
+      <li><a href="/golang/gotcha-bitwise-operators/">Go and Pythagoras</a></li>
+
+      <li><b>🢒&nbsp;</b>No end in sight</li>
+
+      <li><a href="/golang/gotcha-octal-decimal-hexadecimal-literal/">Numbers that start with zero</a></li>
+
+      <li><a href="/golang/gotcha-remainder-modulo-operator/">Whatever remains</a></li>
+
+      <li><a href="/golang/gotcha-multiply-duration-integer/">Time is not a number</a></li>
+
+      <li><a href="/golang/gotcha-index-out-of-range/">Index out of range</a></li>
+
+      <li><a href="/golang/gotcha-unexpected-values-range/">Unexpected values in range loop</a></li>
+
+      <li><a href="/golang/gotcha-change-value-range/">Can’t change entries in range loop</a></li>
+
+      <li><a href="/golang/gotcha-range-copy-array/">Iteration variable doesn’t see change in range loop</a></li>
+
+      <li><a href="/golang/gotcha-data-race-closure/">Iteration variables and closures</a></li>
+
+      <li><a href="/golang/gotcha-json-marshal-empty/">No JSON in sight</a></li>
+
+      <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a></li>
+
+  </ul>
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/for-loop/">For loops in a nutshell</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/max-min-int-uint/">Maximum value of an int</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="https://golang.org/ref/spec#Numeric_types">Numeric types</a><br />
+    <span class="source">The Go Programming Language Specification</span>
+    <span class="author"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/fmt-printf-reference-cheat-sheet/">fmt cheat sheet</a><br />
+    <span class="source"></span>
+  </div>
+  <p><a href="/golang/"><strong>See all 198 Go articles</strong></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

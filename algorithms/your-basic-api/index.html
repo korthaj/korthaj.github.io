@@ -1,0 +1,767 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your basic API | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="Thoughts on effective API design.">
+  <meta name="keywords" content="programming, software engineering, documentation, software license, compatability policy, semantic versioning, simplicity, dogfooding, tutorials, naming, interfaces">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Your basic API</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<p class="lead">Thoughts on effective API design</p>
+
+<p><img src="/algorithms/go.jpg"></p>
+
+<!-- Kitsch from [Pixabay][pixabaygo], [CC0 1.0][CC0]. -->
+
+<ul class="toc" style="font-weight: bold;">
+  <li><a href="#introduction">Introduction</a></li>
+
+  <li><a href="#the-5-commandments">The 5 Commandments</a>
+    <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
+      <li><a href="#1-tell-me-what-this-thing-is">1. Tell me what this thing is</a></li>
+      <li><a href="#2-tell-me-what-it-does">2. Tell me what it does</a></li>
+      <li><a href="#3-don-t-tell-me-how-it-works">3. Don't tell me how it works</a></li>
+      <li><a href="#4-grant-me-the-right-to-use-it">4. Grant me the right to use it</a></li>
+      <li><a href="#5-don-t-change-it">5.  Don't change it</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#keep-it-simple">Keep it simple</a>
+    <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
+      <li><a href="#don-t-use-complicated-constructs-where-simple-ones-will-do">Don't use complicated constructs where simple ones will do</a></li>
+      <li><a href="#don-t-use-a-lot-where-a-little-will-do">Don't use a lot where a little will do</a></li>
+      <li><a href="#one-package-one-idea">One package, one idea</a></li>
+      <li><a href="#just-say-no">Just say no</a></li>
+      <li><a href="#math-is-simple">Math is simple</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#give-it-time">Give it time</a>
+    <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
+      <li><a href="#eat-your-own-dog-food">Eat your own dog food</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#show-don-t-tell">Show, don't tell</a>
+    <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
+      <li><a href="#create-tutorials">Create tutorials</a></li>
+      <li><a href="#use-examples">Use examples</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#tools-of-the-trade">Tools of the trade</a>
+    <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
+      <li><a href="#keep-it-consistent">Keep it consistent</a></li>
+      <li><a href="#write-functions-that-need-little-and-give-much">Write functions that need little and give much</a></li>
+      <li><a href="#discover-a-well-fitting-interface">Discover a well-fitting interface</a></li>
+      <li><a href="#make-it-generic">Make it generic</a></li>
+      <li><a href="#names-keep-them-short-and-sweet">Names, keep them short and sweet</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>The aim of this text is to explore API design and try to find
+strategies and rules that can help us create code libraries
+that are safe, effective and easy to use.</p>
+
+<p>The text comes with three example libraries:</p>
+
+<ul>
+<li><a href="https://github.com/yourbasic/fenwick">fenwick</a> is a tiny example intended to illustrate
+the points in the first chapter.</li>
+<li><a href="https://github.com/yourbasic/bloom">bloom</a> is a more intricate example with tricky semantics,
+performance and compatibility issues.</li>
+<li><a href="https://github.com/yourbasic/graph">graph</a> is a full-scale library with challenging
+design decisions leading to new interfaces, complementary and
+auxiliary data structures and subpackages.</li>
+</ul>
+
+<p>Most examples are in <a href="https://en.wikipedia.org/wiki/Go_(programming_language)">Go</a>, the language itself being
+a case study of good API design, with clean and simple
+interfaces on top of a huge complex implementation.
+There are also a few examples in <a href="https://en.wikipedia.org/wiki/Java_(programming_language)">Java</a>, a language
+that has had more time to accumulate crud in the form of
+superfluous and dysfunctional elements.</p>
+
+<p>The <code>go</code> keyword is particularly striking: the syntax couldn&rsquo;t
+be simpler and the semantics are defined in
+<a href="https://golang.org/ref/spec#Go_statements">eight lines of text</a>
+in the language specification. Still, you rarely hear complaints
+about thread support being limited in Go.</p>
+
+<p>Garbage collection in Go is another impeccable example.
+The implementation is hideously complicated, while the API
+is minimal: there is no syntax and the language specification
+doesn&rsquo;t even mention the concept explicitly. The runtime library
+offers a single GC tuning parameter and plenty of memory statistics
+for those who need it, but mostly it just works.</p>
+
+<p>Even though API design is as much an art as a science, there still
+are some fundamental rules that you should be aware of. Rules that
+will cost you dearly if you break them. That&rsquo;s why the first chapter
+is called <strong>The 5 Commandments</strong>.</p>
+
+<h2 id="the-5-commandments">The 5 Commandments</h2>
+
+<p>Let&rsquo;s start with the basics. The rules never to be broken.
+The rules that we don&rsquo;t need to argue about,
+but that we still need to be reminded of.</p>
+
+<p><img src="/algorithms/law.jpg" alt="law" /></p>
+
+<!-- More kitsch from [Pixabay][pixabaylaw], [CC0 1.0][CC0]. -->
+
+<h3 id="1-tell-me-what-this-thing-is">1. Tell me what this thing is</h3>
+
+<blockquote class="math">
+A software repository should have a <code>README</code> file,
+and this file should say what the project <b>is about</b>.
+Preferably in the very first sentence.
+</blockquote>
+
+<p>If people don&rsquo;t know what it is, they can&rsquo;t use it, duh.
+Still, it&rsquo;s not uncommon to see a <code>README</code> file that starts with
+&ldquo;Candide now supports the Pangloss 3.2 file format&rdquo;,
+but never tells what Candide is and what it has to offer.</p>
+
+<p>In the <a href="https://github.com/yourbasic/fenwick">fenwick repo</a> I stick my neck out and try to
+implement a small library that follows the rules in this chapter.
+Its <code>README</code> file starts like this.</p>
+
+<pre><code># Your basic Fenwick tree
+
+### Golang list data structure supporting prefix sums
+
+A Fenwick tree, or binary indexed tree, is a space-efficient
+list data structure that can efficiently update elements and
+calculate prefix sums in a list of numbers.
+</code></pre>
+
+<h3 id="2-tell-me-what-it-does">2. Tell me what it does</h3>
+
+<blockquote class="math">
+An API should say what the code <b>does</b>.
+</blockquote>
+
+<p>If a potential user gets past the <code>README</code> file, and dives into
+the <a href="https://godoc.org/github.com/yourbasic/fenwick">Fenwick documentation</a>, she probably wants
+the full story. Telling it three times is often a good approach.</p>
+
+<p>First a short sentence stating the purpose of the package.</p>
+
+<pre><code>Package fenwick provides a list data structure supporting prefix sums.
+</code></pre>
+
+<p>Then a slightly longer explanation.</p>
+
+<pre><code>A Fenwick tree, or binary indexed tree, is a space-efficient
+list data structure that can efficiently update elements and
+calculate prefix sums in a list of numbers.
+</code></pre>
+
+<p>And finally, the nitty-gritty for those who want to know it all.</p>
+
+<pre><code>Compared to a common array, a Fenwick tree achieves better
+balance between element update and prefix sum calculation –
+both operations run in O(log n) time – while using the same
+amount of memory. This is achieved by representing the list
+as an implicit tree, where the value of each node is the sum
+of the numbers in that subtree.
+</code></pre>
+
+<h4 id="corollary">Corollary</h4>
+
+<p>The 2nd Commandment comes with an obvious corollary.</p>
+
+<blockquote class="math">
+An API should say what <b>every exported function</b> does.
+</blockquote>
+
+<p>Once again, if you don&rsquo;t know what it does you can&rsquo;t use it, duh.
+Undocumented functions are close to worthless. The only way to
+use them safely is to perform a complete code review, including
+necessary testing. That tends to be more work than writing
+the &amp;$#! code yourself.</p>
+
+<p>A descriptive function name is a good start, but only rarely does
+the name tell the full story. And the full story is what we need.
+In programming, there is no room for guesswork.</p>
+
+<h3 id="3-don-t-tell-me-how-it-works">3. Don&rsquo;t tell me how it works</h3>
+
+<blockquote class="math">
+If at all possible, an API <b>shouldn't</b> reveal any implementation details.
+</blockquote>
+
+<p>Threading and garbage collection in Go are two examples of interfaces
+that get this right. In general, a Go programmer doesn&rsquo;t have to,
+and doesn&rsquo;t want to, worry about the intricacies of garbage collection
+and threading. It just works.</p>
+
+<p>In the <a href="https://github.com/yourbasic/fenwick">fenwick repo</a> I didn&rsquo;t manage to fully hide the implementation:</p>
+
+<ul>
+<li><p>The data type is called <code>List</code>, not <code>Tree</code>. That&rsquo;s because it <strong>does</strong>
+the job of a list, even though it&rsquo;s implemented as a tree.
+I surely got that one right.</p></li>
+
+<li><p>The cheesy stock photo in the <code>README</code> file depicts a list, not a tree.
+Perhaps I got that right.</p></li>
+
+<li><p>The data structure is known as a Fenwick tree, or binary indexed tree.
+That wasn&rsquo;t my choice, but I&rsquo;m the one who included some implementation
+details at the end of the package documentation. Sorry about that.</p></li>
+</ul>
+
+<p>However, the <a href="https://godoc.org/github.com/yourbasic/fenwick">documentation</a> of the <code>fenwick.List</code>data type and its methods
+describes what the code does without telling anything about how it works.
+This has two major benefits:</p>
+
+<ul>
+<li>The library should be fairly easy to use. If you know what a list is,
+you&rsquo;re ready to go.</li>
+<li>There is plenty of room for improving and modifying the implementation
+without breaking backwards compatibility.
+<br /></li>
+</ul>
+
+<p>That&rsquo;s a nice place to be in.</p>
+
+<h3 id="4-grant-me-the-right-to-use-it">4. Grant me the right to use it</h3>
+
+<blockquote class="math">
+Every public software project needs a license.
+</blockquote>
+
+<p>I&rsquo;m not a lawyer and this is not legal advice, but it&rsquo;s my understanding
+that code without a license can only be legally used by its own author.</p>
+
+<p>If you&rsquo;re looking for paying customers, you may want to seek
+actual legal advice on licensing. However, to turn your project into
+free and open-source software is easy: just put the proper
+license text in the right places.</p>
+
+<p>I like the <a href="https://opensource.org/licenses/BSD-2-Clause">BSD 2-Clause License</a>. Not only does it offer
+the permissions, conditions and limitations that I want:</p>
+
+<ul>
+<li>Permissions: private and commercial use, modification, distribution.</li>
+<li>Conditions: license and copyright notice.</li>
+<li>Limitations: liability and warranty.</li>
+</ul>
+
+<p>It&rsquo;s also easy to apply: you add a single file to the top
+directory of your repo.</p>
+
+<h3 id="5-don-t-change-it">5. Don&rsquo;t change it</h3>
+
+<blockquote class="math">
+A software library needs to be backwards compatible.
+It's fine to improve the documentation, change the implementation,
+and even introduce new features.
+But if at all possible, <b>don't change the API</b>.
+</blockquote>
+
+<p>This is the tough one. There are two major challenges here:</p>
+
+<ul>
+<li>If you break this rule, you will break other people&rsquo;s code.</li>
+<li>You need to get your API right at the very first attempt &ndash;
+you may not be able to fix it later on.</li>
+</ul>
+
+<p>It&rsquo;s not enough to just follow this rule, you also need to say that
+you are doing so. As a library provider you&rsquo;re in the business of trust.
+This is why your library needs to explain its <strong>compatibility policy</strong>,
+and why you should consider using <strong>semantic versioning</strong>.</p>
+
+<h4 id="compatibility-policies">Compatibility policies</h4>
+
+<p>Fenwick&rsquo;s compatibility policy is very simple, but still explicitly stated:</p>
+
+<pre><code>### Roadmap
+
+* The API of this library is frozen.
+* Version numbers adhere to semantic versioning.
+
+The only accepted reason to modify the API of this package
+is to handle issues that can't be resolved in any other
+reasonable way.
+</code></pre>
+
+<p><a href="https://golang.org/doc/go1compat">Go 1 and the Future of Go Programs</a> is a full, detailed
+compatibility document. It&rsquo;s required study for anyone working with
+large-scale library design and maintenance.</p>
+
+<p>For comparison, <a href="http://www.oracle.com/technetwork/java/javase/8-compatibility-guide-2156366.html">Compatibility Guide for JDK 8</a> is
+an entry point to the complex world of Java compatibility.</p>
+
+<h4 id="semantic-versioning">Semantic versioning</h4>
+
+<p><a href="http://semver.org/">Semantic versioning</a> is a convention for specifying compatibility
+using a three-part version number: <code>major.minor.patch</code>. You increment</p>
+
+<ul>
+<li><code>major</code> when you make incompatible API changes,</li>
+<li><code>minor</code> when you add functionality in a backwards-compatible manner, and</li>
+<li><code>patch</code> when you make backwards-compatible bug fixes.</li>
+</ul>
+
+<p>The semantic versioning specification itself currently sits at version
+number <code>2.0.0</code>. This means that it broke  The 5th Commandment,
+and that no new features or patches have been introduced since then.
+Even so, it&rsquo;s a good convention to follow. And, once again,
+the Go project gets it right.</p>
+
+<h2 id="keep-it-simple">Keep it simple</h2>
+
+<p>Even though API design often requires us to make difficult trade-offs,
+a simpler API is almost always a better API.</p>
+
+<p><img src="/algorithms/scissors.png" alt="scissors" /></p>
+
+<!-- Scissors by [ZooFari][ZF]* [CC BY 3.0][CCBY3]. -->
+
+<h3 id="don-t-use-complicated-constructs-where-simple-ones-will-do">Don&rsquo;t use complicated constructs where simple ones will do</h3>
+
+<h4 id="functions">Functions</h4>
+
+<p>A function is a simple and beautiful thing. It&rsquo;s easy to use,
+easy to understand, easy to test, and it doesn&rsquo;t come with any
+hidden side effects. And, perhaps most importantly, functions
+can be freely composed. The better part of mathematics
+is built from functions. If you can find a nice design using
+functions only, good for you.</p>
+
+<p>(I&rsquo;m talking about pure functions here, the ones that always produce
+the same output given the same input; not the ones that output
+the time of day or some other nasty surprise.)</p>
+
+<h4 id="java-detour">Java detour</h4>
+
+<p>The <code>static</code> keyword in Java has got a bad reputation. Probably because
+it has so many different meanings. A static field is essentially a
+global variable, and you typically want to avoid those.
+A static method, however, is Java&rsquo;s way to declare a function,
+as opposed to a method. This is a case where Java makes you jump
+through hoops to do the right thing.</p>
+
+<p>Functions are great also for Java programmers. Don&rsquo;t be afraid to use them.</p>
+
+<h4 id="objects">Objects</h4>
+
+<p>An object, or <code>struct</code> if you like, isn&rsquo;t quite as simple and
+beautiful as a function, but it has memory. Many elegant and
+powerful abstractions consist of a single object with a few
+attached methods. The very best ones tend to be immutable.
+At the core this is what object orientation is all about.
+The rest is mostly bells and whistles.</p>
+
+<h4 id="inheritance">Inheritance</h4>
+
+<p>Inheritance and method overriding is pretty complicated.
+Fortunately, <strong>interfaces</strong> and plain old <strong>composition</strong>
+can typically get the job done in a simpler and safer way.</p>
+
+<h4 id="frameworks">Frameworks</h4>
+
+<p>Frameworks have steep learning curves and different frameworks
+rarely play nice together. They are like dictators who can&rsquo;t
+cooperate with others and who force you to do everything
+according to their rules.</p>
+
+<p>Unless you&rsquo;re building a new programming language, try to design
+your API as a library rather than a framework. Don&rsquo;t ask the user
+to subscribe to your philosophy and to follow your orders.
+A good API should demand little and offer much.</p>
+
+<h3 id="don-t-use-a-lot-where-a-little-will-do">Don&rsquo;t use a lot where a little will do</h3>
+
+<blockquote>
+<p>To paint a little thing like that you smeared<br />
+Carelessly passing with your robes afloat, —<br />
+Yet do much less, so much less, Someone says,<br />
+(I know his name, no matter) — so much less!<br />
+Well, less is more, Lucrezia: I am judged.</p>
+</blockquote>
+
+<p><em>From Andrea del Sarto by Robert Browning, 1855.</em></p>
+
+<p>Adding to Browning&rsquo;s advice would be a mistake. Instead, a war story:</p>
+
+<p>The <code>java.io</code>, <code>java.nio</code>, <code>java.nio.channels</code>, <code>java.nio.channels.spi</code>,
+<code>java.nio.file</code>, <code>java.nio.file.attribute</code>, <code>java.nio.file.spi</code>,
+<code>java.nio.charset</code>,  and <code>java.nio.charset.spi</code> packages have many classes
+and even more methods. In fact, the API is so overwhelming that many of us
+end up at <a href="https://stackoverflow.com/">Stack Overflow</a> trying to move streams of bytes in and out
+of our Java programs. Unfortunately, many of the friendly people who share
+code snippets on Stack Overflow didn&rsquo;t read the full spec either,
+and got it wrong.</p>
+
+<p>For many years I didn&rsquo;t know that my Java programs used the platform
+default character encoding. That&rsquo;s an ugly bug, and I&rsquo;m not the only one
+to fall into this trap.</p>
+
+<p>There probably is no way to design a really good general-purpose
+IO library at this point. After all, such a library must support
+low-level operations on many diverse platforms. But please, don&rsquo;t
+add more fuel to the fire.</p>
+
+<p>The Go <code>io</code> package is a fresh new start. The library takes some
+getting used to, but it&rsquo;s small and manageable and handles common
+use cases well. Unfortunately, no amount of API design can fully protect
+us from the thorny history of file systems and fleeting memory technologies.</p>
+
+<h3 id="one-package-one-idea">One package, one idea</h3>
+
+<p>Chances are that you have never used the Java <code>Vector</code> class.
+It was superseded by <code>ArrayList</code> already in Java 1.2.
+The problem with <code>Vector</code> is that it does <strong>two things</strong>:</p>
+
+<ol>
+<li>it&rsquo;s a synchronized data structure, and</li>
+<li>it&rsquo;s a list.</li>
+</ol>
+
+<p>Both of these things are very useful, but most of the time
+you only want one of them.</p>
+
+<p>There is nothing wrong with putting a lot of good stuff in you library.
+The trick is to come up with suitable units
+(classes or packages):</p>
+
+<ul>
+<li>units that do one well-specified thing,</li>
+<li>are independent of each other, and</li>
+<li>can be easily composed.</li>
+</ul>
+
+<h3 id="just-say-no">Just say no</h3>
+
+<blockquote class="math">
+An API shouldn't encourage bad design decisions.
+</blockquote>
+
+<p>The <code>add</code> method in Java&rsquo;s <code>ArrayList</code> is a case in point:</p>
+
+<pre><code>public void add(int index, E element)
+
+Inserts the specified element at the specified position
+in this list. Shifts the element currently at that
+position (if any) and any subsequent elements to the
+right (adds one to their indices).
+</code></pre>
+
+<p>This method makes it easy to do the wrong thing. Adding a new element
+to the middle of an array is really inefficient; something you should
+typically avoid.</p>
+
+<h3 id="math-is-simple">Math is simple</h3>
+
+<blockquote>
+If people do not believe that mathematics is simple, it is only
+because they do not realize how complicated life is.
+<div class="quote-source"><em>John von Neumann</em></div>
+</blockquote>
+
+<p>If you can model your API on a mathematical abstraction,
+such as a set or an interval, you&rsquo;re home free.
+Mathematical abstractions tend to be atomic, well-specified,
+independent, composable entities with a long story of use,
+abuse and improvements along the way.</p>
+
+<p>Take a look at <a href="https://godoc.org/github.com/yourbasic/graph/build#VertexSet">VertexSet</a>, a data structure for
+specifying a group of vertices in a graph. There are three
+mathematical abstractions here:</p>
+
+<ul>
+<li>the vertices themselves are identified by <strong>integers</strong>,</li>
+<li>a group of vertices is a <strong>set</strong> with <strong>union</strong>, <strong>intersection</strong>,
+<strong>set difference</strong> and <strong>membership</strong> operations, and</li>
+<li>the constructor takes an <strong>interval</strong> as input.</li>
+</ul>
+
+<p>There are two main reasons why I ended up with this API.
+First, I believe that the included operations are useful,
+necessary and sufficient. Secondly, they favor designs that
+can be efficiently implemented in this particular package.</p>
+
+<h2 id="give-it-time">Give it time</h2>
+
+<p>The only certain way to know if an API works as intended
+is to use it over an extended period of time on different
+types of tasks and projects.</p>
+
+<p>Don&rsquo;t rush it.</p>
+
+<p><img src="/algorithms/rest.jpg" alt="rest" /></p>
+
+<p><strong>Rest at harvest</strong>
+<em>Painting by <a href="https://en.wikipedia.org/wiki/William-Adolphe_Bouguereau">William-Adolphe Bouguereau</a>, 1865.</em></p>
+
+<h3 id="eat-your-own-dog-food">Eat your own dog food</h3>
+
+<p>Eat your own dog food. Lorne Greene said it. Don Knuth did it.</p>
+
+<p><img src="/algorithms/greene.jpg" alt="Lorne Greene" /></p>
+
+<p><em>Alpo dog food commercial featuring Lorne Greene, 1970s.</em></p>
+
+<p><img src="/algorithms/knuth.jpg" alt="Don Knuth" /></p>
+
+<blockquote>
+<p>Thus, I came to the conclusion that the <strong>designer</strong> of a new system
+must not only be the <strong>implementor</strong> and the first <strong>large-scale user</strong>;
+the designer should also <strong>write the first user manual</strong>. The separation
+of any of these four components would have hurt TeX significantly.
+If I had not participated fully in all these activities, literally
+hundreds of improvements would never have been made, because I would
+never have thought of them or perceived why they were important.</p>
+</blockquote>
+
+<p><strong><a href="http://dl.acm.org/citation.cfm?id=66416">The Errors Of TeX</a></strong> <em>Don Knuth, 1989.</em>
+<!-- *Image from [Wikipedia][wikiknuth], [CC BY-SA 2.5][CCBYSA2.5].* --></p>
+
+<h2 id="show-don-t-tell">Show, don&rsquo;t tell</h2>
+
+<p>Tutorials, examples and quick start guides are great tools for
+improving an API.
+The goal is to make it effortless to get started
+and easy to perform common tasks.</p>
+
+<p><img src="/algorithms/chekhov.jpg" alt="Anton Chekhov" /></p>
+
+<blockquote>
+<p>Don&rsquo;t tell me the moon is shining;
+show me the glint of light on broken glass.</p>
+</blockquote>
+
+<p><em>Anton Chekhov with Maxim Gorky, Yalta 1900.</em></p>
+
+<h3 id="create-tutorials">Create tutorials</h3>
+
+<p><a href="https:tour.golang.org">A Tour of Go</a> is a nice example of both a quick start and
+a tutorial. It&rsquo;s an interactive online tutorial that let&rsquo;s you try
+Go programming inside your browser without installing any software.</p>
+
+<h3 id="use-examples">Use examples</h3>
+
+<p>An example can demonstrate how an API is best used and
+help clarify subtle points. This <a href="https://godoc.org/github.com/yourbasic/bloom#example-package--Basics">Bloom filter example</a>
+illustrates a typical Bloom filter use case, and it also helps clarify
+the tricky semantics of a Bloom filter probabilistic membership test.</p>
+
+<p>Once in a while, an example can fully replace a more standard API element.
+Take a look this <a href="https://godoc.org/github.com/yourbasic/graph#ex-package--DFS">DFS implementation example</a>, which shows how to implement
+a depth-first search. Implementing DFS as a function with callbacks is
+really messy. There are at least four different points in the code where
+you may want to insert actions. Let&rsquo;s face it, occasionally cut and paste
+is the better approach.</p>
+
+<h2 id="tools-of-the-trade">Tools of the trade</h2>
+
+<p>Grand ideas and theories aside, human artefacts
+are built by combining the right bits and pieces.
+This is a list of tried and trusted API building blocks.</p>
+
+<p><img src="/algorithms/tool.jpg" alt="tool" /></p>
+
+<p><strong>Hobel mit Spänen und Zimmermannsbleistift</strong>
+<em>Photo by <a href="https://commons.wikimedia.org/wiki/User:Cccefalon/Profile">Uwe Aranas</a>, 2014.</em> <!-- [CC BY-SA 3.0][CCBYSA3]. --></p>
+
+<h3 id="keep-it-consistent">Keep it consistent</h3>
+
+<blockquote>
+<p>si fueris Romae, Romano vivito more</p>
+</blockquote>
+
+<p>When in Rome, do as the Romans do.
+In Java it&rsquo;s <code>toString</code>, <code>equals</code>, and <code>size</code>;
+in Go it&rsquo;s <code>String</code>, <code>Equal</code>, and <code>Len</code>.
+Suck it up, and get it right.</p>
+
+<h3 id="write-functions-that-need-little-and-give-much">Write functions that need little and give much</h3>
+
+<p>Java&rsquo;s <code>System.out.println</code> and Go&rsquo;s <code>fmt.Println</code> are real workhorses.
+They&rsquo;ll take any input and offer lots of important information in return.
+This is something we should strive for in our own API design.</p>
+
+<h3 id="discover-a-well-fitting-interface">Discover a well-fitting interface</h3>
+
+<p>The reason the print methods in Java and Go are so powerful
+is not only that they take any input, they are also able
+to handle that input in a sensible way.</p>
+
+<p>In general, you want to find an interface that accepts everything
+your code can handle; and little or nothing else.
+This is typically very hard to do before you&rsquo;ve had a good helping
+of your own dog food. That&rsquo;s why I like the Go approach.</p>
+
+<blockquote>
+<p>You start by writing concrete code, and in the process
+you discover interfaces that are increasingly accurate.</p>
+</blockquote>
+
+<p>The <a href="https://godoc.org/github.com/yourbasic/graph#Iterator">graph.Iterator</a> interface is the result of my longest search
+for a well-fitting interface so far. I tried numerous graph data structures
+and implemented even more graph algorithms before finding a proper fit.
+There is no way I could have designed this up-front.</p>
+
+<h3 id="make-it-generic">Make it generic</h3>
+
+<p>A library based on a perfectly fitting interface is
+a perfectly generic library.
+Think about that.</p>
+
+<h3 id="names-keep-them-short-and-sweet">Names, keep them short and sweet</h3>
+
+<p>Short active verbs or verb phrases make for good function names,
+even though I prefer to use <code>Name</code> rather than <code>GetName</code>.
+The corresponding setter function, if needed, would still
+be called <code>SetName</code>. Likewise, <code>Running</code> is a viable alternative
+to <code>IsRunning</code>.</p>
+
+<p>A pithy noun or noun phrase is often a fitting name for a constant,
+a type, or a field of an object or a struct, considering that such names
+often need to be recognized over longer stretches of code.</p>
+
+<p>Here is a first-rate example from Go&rsquo;s aptly named <code>net/http</code> package.</p>
+
+<pre><code class="language-go">// A Client is an HTTP client.
+type Client struct {
+	// Transport specifies the mechanism by which individual
+	// HTTP requests are made.
+	Transport RoundTripper
+
+	// CheckRedirect specifies the policy for handling redirects.
+	CheckRedirect func(req *Request, via []*Request) error
+
+	// Jar specifies the cookie jar.
+	Jar CookieJar
+
+	// Timeout specifies a time limit for requests made
+	// by this Client.
+	Timeout time.Duration
+}
+</code></pre>
+
+<p>When naming interfaces, we&rsquo;re obliged to do what the Roman&rsquo;s do.
+In Java it&rsquo;s <code>Comparable</code> and <code>Serializable</code>; in Go it&rsquo;s <code>Reader</code>,
+<code>Writer</code>, and even a <code>RoundTripper</code> home run.</p>
+
+<p>For completeness, let&rsquo;s also discuss local variables and function arguments.
+A short descriptive noun, such as <code>name</code>, <code>path</code> or <code>proc</code>, is often
+a good choice here.</p>
+
+<ul>
+<li>For indices, <code>i</code>, <code>j</code>, and <code>k</code> are universally used,</li>
+<li>local integers are often known as <code>m</code> or <code>n</code>,</li>
+<li>local floats might be <code>x</code>, <code>y</code>, or <code>z</code>,</li>
+<li>and local anonymous strings listen to the names <code>s</code> and <code>t</code>.</li>
+</ul>
+
+<p>Here&rsquo;s a code snippet that follows these naming conventions.</p>
+
+<pre><code class="language-go">if proc.Running() &amp;&amp; proc.Name() != path {
+	proc.SetName(path)
+}
+</code></pre>
+
+<p>For comparison, here&rsquo;s a more verbose version of the same code.</p>
+
+<pre><code class="language-go">if process.IsRunning() &amp;&amp; process.GetProcessName() != pathName {
+	process.SetProcessName(pathName)
+}
+</code></pre>
+
+<p>Yikes.</p>
+
+</article>
+
+<aside>
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="https://github.com/yourbasic/fenwick">Package fenwick</a><br />
+    <span class="source">github.com/yourbasic</span>
+    <span class="author"></span>
+  </div>
+
+  <div class="reference">
+    <a href="https://github.com/yourbasic/bloom">Package bloom</a><br />
+    <span class="source">github.com/yourbasic</span>
+    <span class="author"></span>
+  </div>
+
+  <div class="reference">
+    <a href="https://github.com/yourbasic/graph">Package graph</a><br />
+    <span class="source">github.com/yourbasic</span>
+    <span class="author"></span>
+  </div>
+
+  <h2>Top algorithm articles</h2>
+  <ul class="none">
+  
+    <li><a href="/algorithms/your-basic-api/">Your basic API</a></li>
+
+    <li><a href="/algorithms/hash-tables-explained/">Hash tables</a></li>
+
+    <li><a href="/algorithms/big-o-notation-explained/">Big O notation</a></li>
+
+    <li><a href="/algorithms/loop-invariants-explained/">Loop invariants</a></li>
+
+    <li><a href="/golang/quicksort-optimizations/">Top 3 Quicksort optimizations</a></li>
+
+  </ul>
+
+  <p><a href="/algorithms/"><b>See all algorithm articles</b></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

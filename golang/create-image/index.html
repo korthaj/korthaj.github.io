@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create a new image | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="How to generate an image programmatically in Go.">
+  <meta name="keywords" content="go, golang, image, example, draw, create, generate, encode, png, alpha, transparent, rectangle">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Create a new image</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<p>Use the <a href="https://golang.org/pkg/image/"><code>image</code></a>, <a href="https://golang.org/pkg/image/color/"><code>image/color</code></a>, and <a href="https://golang.org/pkg/image/png/"><code>image/png</code></a> packages
+to create a PNG&nbsp;image.</p>
+
+<pre><code>width := 200
+height := 100
+
+upLeft := image.Point{0, 0}
+lowRight := image.Point{width, height}
+
+img := image.NewRGBA(image.Rectangle{upLeft, lowRight})
+
+<span class="comment">// Colors are defined by Red, Green, Blue, Alpha uint8 values.</span>
+red := color.RGBA{0xff, 0, 0, 0xff}
+
+<span class="comment">// Set color for each pixel.</span>
+for x := 0; x < width; x++ {
+    for y := 0; y < height; y++ {
+        switch {
+        case x < width/2 && y < height/2: <span class="comment">// upper left quadrant</span>
+            img.Set(x, y, red)
+        case x >= width/2 && y >= height/2: <span class="comment">// lower right quadrant</span>
+            img.Set(x, y, color.White)
+        default:
+            <span class="comment">// Use zero value.</span>
+        }
+    }
+}
+
+<span class="comment">// Encode as PNG.</span>
+f, _ := os.Create("image.png")
+png.Encode(f, img)</code></pre>
+
+<p>Output (<a href="/golang/image.png">image.png</a>):</p>
+
+<pre style="background-color:white; background-image:
+  linear-gradient(45deg, #eee 25%, transparent 25%), 
+  linear-gradient(135deg, #eee 25%, transparent 25%),
+  linear-gradient(45deg, transparent 75%, #eee 75%),
+  linear-gradient(135deg, transparent 75%, #eee 75%);
+  background-size:20px 20px;
+  background-position:0 0, 10px 0, 10px -10px, 0px 10px;">
+<img style="border: 1px solid #aaa;" src="/golang/image.png">
+</pre>
+
+<p><b>Note:</b> The upper right and lower left quadrants of the image are transparent (the alpha value is&nbsp;0) and will be the same color as the background.</p>
+
+<h2 id="go-image-support">Go image support</h2>
+
+<p>The <a href="https://golang.org/pkg/image/"><code>image</code></a> package implements a basic 2-D image library without painting or drawing functionality.
+The article <a href="https://blog.golang.org/go-image-package">The Go image package</a> has a nice introduction to images, color models, and image formats in&nbsp;Go.</p>
+
+<p>Additionally, the <a href="https://golang.org/pkg/image/draw"><code>image/draw</code></a> package provides image composition functions that can be used to perform a number of common image manipulation tasks.
+The article <a href="https://blog.golang.org/go-imagedraw-package">The Go image/draw package</a> has
+plenty of examples.</p>
+
+</article>
+
+<aside>
+
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="https://blog.golang.org/go-image-package">The Go image package</a><br />
+    <span class="source">The Go Blog</span>
+    <span class="author"></span>
+  </div>
+
+  <div class="reference">
+    <a href="https://blog.golang.org/go-imagedraw-package">The Go image/draw package</a><br />
+    <span class="source">The Go Blog</span>
+    <span class="author"></span>
+  </div>
+
+  <div class="reference">
+    <a href="https://en.wikipedia.org/wiki/RGBA_color_space">RGBA color space</a><br />
+    <span class="source">Wikipedia</span>
+    <span class="author"></span>
+  </div>
+
+
+  <h2>New in Go 1.10</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/build-append-concatenate-strings-efficiently/">Build and concatenate strings efficiently</a></li>
+
+    <li><a href="/golang/round-float-to-int/">Round float to integer value</a></li>
+
+    <li><a href="/golang/shuffle-slice-array/">Shuffle slice or array</a></li>
+
+  </ul>
+
+  <h2>Top Go articles</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/gotcha/">Go gotcha</a></li>
+
+    <li><a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a></li>
+
+    <li><a href="/golang/slices-explained/">Slices in a nutshell</a></li>
+
+    <li><a href="/golang/maps-explained/">Maps in a nutshell</a></li>
+
+    <li><a href="/golang/concurrent-programming/">Concurrent programming</a></li>
+
+  </ul>
+  <p><a href="/golang/"><strong>See all 198 Go articles</strong></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

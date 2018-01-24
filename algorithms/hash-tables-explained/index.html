@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hash tables | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="A hash table is an unordered collection of key-value pairs with efficient lookup and update operations.">
+  <meta name="keywords" content="hash table, array, linked list, hash function, constant time">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Hash tables</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<!-- Creative commons: http://www.flickr.com/photos/60in3/3059088647/ (missing) -->
+
+<p class="lead">A hash table is an <b>unordered</b> collection of <b>key-value</b> pairs, where each key is&nbsp;<b>unique</b>.</p>
+
+<p><img src="/algorithms/file-cabinet.jpg" alt="file cabinet"></p>
+
+<p>A hash table offers a combination of efficient lookup, insert and delete operations.</p>
+
+<p>Neither arrays nor linked lists can achieve this:</p>
+
+<ul>
+<li>a lookup in an unsorted array takes linear worst-case time;</li>
+<li>in a sorted array, a lookup using binary search is very fast,
+but insertions become inefficient;</li>
+<li>in a linked list an insertion can be efficient, but lookups take linear time.</li>
+</ul>
+
+<h2 id="basic-idea">Basic idea</h2>
+
+<p>Hash tables combine the best properties of arrays and linked lists.</p>
+
+<p>Let&rsquo;s start with a somewhat simplistic example:
+a data structure that can store 1000 elements with random integer keys.</p>
+
+<p>To distribute the data evenly, we use several short lists.
+All elements with keys that end with 000 belong to one list,
+those with keys that end with 001 belong to another one, and so on.
+There is a total of 1000 such lists. This structure can be represented as an array of lists:</p>
+
+<pre>
+<b>var</b> table = <b>new</b> LinkedList[1000]
+</pre>
+
+<p>where <code>LinkedList</code> denotes a linked list of key-value pairs.</p>
+
+<p>Inserting a new element <code>(key, value)</code> is a two-step procedure:</p>
+
+<ul>
+<li>we extract the three last digits of the key, <code>hash = key % 1000</code>,</li>
+<li>and then insert the key and its value into the list located at <code>table[hash]</code>.</li>
+</ul>
+
+<pre><code>hash = key % 1000
+table[hash].AddFirst(key, value)
+</code></pre>
+
+<p>This is a constant time operation.</p>
+
+<p>A lookup is implemented by</p>
+
+<pre><code>value = table[key%1000].Find(key)
+</code></pre>
+
+<p>Since the numbers are random, there will be roughly the same number of elements in each list.
+Since there are 1000 lists and at most 1000 elements, there will likely be very few elements
+in the list <code>table[key%1000]</code> and therefore the <code>Find</code> operation will be fast.
+The expected time complexity is&nbsp;<i>O</i>(1).</p>
+
+<h2 id="complete-data-structure">Complete data structure</h2>
+
+<p>We want to generalize this basic idea to more complicated keys that aren&rsquo;t evenly distributed.
+The number of elements in each list must remain small,
+and the elements must be evenly distributed over the lists.
+To achieve this we just need to change the <strong>hash function</strong>,
+the function which selects the list where a key belongs.</p>
+
+<p>The hash function in the example above is <code>hash&nbsp;=&nbsp;key&nbsp;%&nbsp;1000</code>.
+It takes a key (a positive integer) as input and produces a number in the interval <code>0..999</code>.</p>
+
+<p>In general, a hash function is a function from <code>E</code> to <code>0..size-1</code>,
+where <code>E</code> is the set of all possible keys, and <code>size</code> is the number of entry points in the hash table.
+We want this function to be uniform: it should map the expected inputs as evenly as possible over its output range.</p>
+
+<h2 id="typical-hash-function">Typical hash function</h2>
+
+<p>Java&rsquo;s implementation of hash functions for strings is a good example.
+The <code>hashCode</code> method in the <code>String</code> class computes the value
+s[0]·31<sup>n-1</sup>&nbsp;+ s[1]·31<sup>n-2</sup>&nbsp;+&nbsp;… +&nbsp;s[n-1]
+using int arithmetic, where <code>s[i]</code> is the i:th character of the string, and n is the length of the string.</p>
+
+<p>This method can be used as a hash function like this:</p>
+
+<pre><code>hash = Math.abs(s.hashCode() % size)
+</code></pre>
+
+<p>where <code>size</code> is the number of entry points in the hash table.</p>
+
+<p>Note that this function depends on all characters in the string,
+and that the value changes when we change the order of the characters.
+Two properties that should hold for a good hash function.</p>
+
+<h2 id="resizing">Resizing</h2>
+
+<p>The efficiency of a hash table depends on the fact that the table size is proportional to the number of elements.
+If the number of elements is not known in advance, the table must be resized when the lists become too long:</p>
+
+<ul>
+<li>a new larger table is allocated,</li>
+<li>each element is removed from the old table,</li>
+<li>and inserted into the new table.</li>
+</ul>
+
+<p>If the table size is increased by a constant factor for each resizing, i.e. by doubling its size,
+this strategy gives <strong>amortized constant time</strong> performance for lookups, insertions and deletions.</p>
+
+<p>For more on the performance of this strategy, see the <a href="/algorithms/amortized-time-complexity-analysis/">Amortized time complexity</a> article.</p>
+
+</article>
+
+<aside>
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/algorithms/amortized-time-complexity-analysis/">Amortized time complexity</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/algorithms/big-o-notation-explained/">Big O notation</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/maps-explained/">Maps in a nutshell</a><br />
+    <span class="source"></span>
+  </div>
+
+  <h2>Top algorithm articles</h2>
+  <ul class="none">
+  
+    <li><a href="/algorithms/your-basic-api/">Your basic API</a></li>
+
+    <li><a href="/algorithms/hash-tables-explained/">Hash tables</a></li>
+
+    <li><a href="/algorithms/big-o-notation-explained/">Big O notation</a></li>
+
+    <li><a href="/algorithms/loop-invariants-explained/">Loop invariants</a></li>
+
+    <li><a href="/golang/quicksort-optimizations/">Top 3 Quicksort optimizations</a></li>
+
+  </ul>
+
+  <p><a href="/algorithms/"><b>See all algorithm articles</b></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

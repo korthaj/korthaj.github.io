@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to sort in Go | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="Custom sorting in Go.">
+  <meta name="keywords" content="go, golang, sort, algorithm, function, stable, slice, custom type">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>How to sort in Go</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<p>All algorithms in the Go sort package make <em>O</em>(<em>n</em>&nbsp;log&nbsp;<em>n</em>) comparisons in the worst case, where <em>n</em> is the number of elements to be sorted.</p>
+
+<h2 id="sort-a-slice-of-ints-float64s-or-strings">Sort a slice of ints, float64s or strings</h2>
+
+<p>Use one of the functions</p>
+
+<ul>
+<li><a href="https://golang.org/pkg/sort/#Ints"><code>sort.Ints</code></a></li>
+<li><a href="https://golang.org/pkg/sort/#Float64s"><code>sort.Float64s</code></a></li>
+<li><a href="https://golang.org/pkg/sort/#Strings"><code>sort.Strings</code></a></li>
+</ul>
+
+<pre><code>s := []int{4, 2, 3, 1}
+sort.Ints(s)
+fmt.Println(s) // <span class="comment">[1 2 3 4]</span></code></pre>
+
+<h2 id="sort-with-custom-compare-function">Sort with custom compare function</h2>
+
+<ul>
+<li>Use the function <a href="https://golang.org/pkg/sort/#Slice"><code>sort.Slice</code></a>.
+It sorts a slice using a provided <code>less(i, j int) bool</code> function.</li>
+<li>To sort the slice while keeping the original order of equal elements,
+use <a href="https://golang.org/pkg/sort/#SliceStable"><code>sort.SliceStable</code></a> instead.</li>
+</ul>
+
+<pre><code>family := []struct {
+    Name string
+    Age  int
+}{
+    {"Alice", 23},
+    {"David", 2},
+    {"Eve", 2},
+    {"Bob", 25},
+}
+
+<span class="comment">// Sort by age, keeping original order or equal elements.</span>
+sort.SliceStable(family, func(i, j int) bool {
+    return family[i].Age < family[j].Age
+})
+fmt.Println(family) <span class="comment">// [{David 2} {Eve 2} {Alice 23} {Bob 25}]</span></code></pre>
+
+<h2 id="sort-custom-data-structures">Sort custom data structures</h2>
+
+<ul>
+<li>Use the generic <a href="https://golang.org/pkg/sort/#Sort"><code>sort.Sort</code></a> and
+<a href="https://golang.org/pkg/sort/#Stable"><code>sort.Stable</code></a> functions.</li>
+<li>They sort any collection that implements
+<a href="https://golang.org/pkg/sort/#Interface"><code>sort.Interface</code></a>.</li>
+</ul>
+
+<pre><code>type Interface interface {
+        <span class="comment">// Len is the number of elements in the collection.</span>
+        Len() int
+        <span class="comment">// Less reports whether the element with</span>
+        <span class="comment">// index i should sort before the element with index j.</span>
+        Less(i, j int) bool
+        <span class="comment">// Swap swaps the elements with indexes i and j.</span>
+        Swap(i, j int)
+}</code></pre>
+
+<p>Here is an example.</p>
+
+<pre><code>type Person struct {
+    Name string
+    Age  int
+}
+
+<span class="comment">// ByAge implements sort.Interface based on the Age field.</span>
+type ByAge []Person
+
+func (a ByAge) Len() int           { return len(a) }
+func (a ByAge) Less(i, j int) bool { return a[i].Age < a[j].Age }
+func (a ByAge) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+
+func main() {
+    family := []Person{
+        {"Alice", 23},
+        {"Eve", 2},
+        {"Bob", 25},
+    }
+    sort.Sort(ByAge(family))
+    fmt.Println(family) <span class="comment">// [{Eve 2} {Alice 23} {Bob 25}]</span>
+}</code></pre>
+
+</article>
+
+<aside>
+
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/algorithms/time-complexity-explained/">Time complexity</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/algorithms/big-o-notation-explained/">Big O notation</a><br />
+    <span class="source"></span>
+  </div>
+
+
+  <h2>New in Go 1.10</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/build-append-concatenate-strings-efficiently/">Build and concatenate strings efficiently</a></li>
+
+    <li><a href="/golang/round-float-to-int/">Round float to integer value</a></li>
+
+    <li><a href="/golang/shuffle-slice-array/">Shuffle slice or array</a></li>
+
+  </ul>
+
+  <h2>Top Go articles</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/gotcha/">Go gotcha</a></li>
+
+    <li><a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a></li>
+
+    <li><a href="/golang/slices-explained/">Slices in a nutshell</a></li>
+
+    <li><a href="/golang/maps-explained/">Maps in a nutshell</a></li>
+
+    <li><a href="/golang/concurrent-programming/">Concurrent programming</a></li>
+
+  </ul>
+  <p><a href="/golang/"><strong>See all 198 Go articles</strong></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

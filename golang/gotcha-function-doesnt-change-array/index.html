@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array won’t change | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="Arrays in Go are values: when you pass an array to a function it gets a copy of the original array data.">
+  <meta name="keywords" content="go, golang, array, slice, argument">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Array won’t change</h1>
+<div class="tagline">yourbasic.org</div>
+
+<pre><code>func Foo(a [2]int) {
+    a[0] = 8
+}
+
+func main() {
+    a := [2]int{1, 2}
+    Foo(a)         <span class="comment">// Try to change a[0].</span>
+    fmt.Println(a) <span class="comment">// Output: [1 2]</span>
+}</code></pre>
+
+<p><details class="answer">
+<summary class="answer">Answer</summary></p>
+
+<ul>
+<li>Arrays in Go are <b>values</b>.</li>
+<li>When you pass an array to a function, the array is copied.</li>
+</ul>
+
+<p>If you want <code>Foo</code> to update the elements of&nbsp;<code>a</code>, <em>use a slice instead</em>.</p>
+
+<pre><code>func Foo(a []int) {
+    if len(a) > 0 {
+        a[0] = 8
+    }
+}
+
+func main() {
+    a := []int{1, 2}
+    Foo(a)         <span class="comment">// Change a[0].</span>
+    fmt.Println(a) <span class="comment">// Output: [8 2]</span>
+}</code></pre>
+
+<p>A slice does not store any data, it just describes a section of an underlying array.</p>
+
+<p>When you change an element of a slice, you modify the corresponding element of its underlying array, and other slices that share the same underlying array will see the change.</p>
+
+<p>See <a href="/golang/slices-explained/">Slices in a nutshell</a> for all about slices in&nbsp;Go.</p>
+
+<p></details></p>
+
+<ul class="pagina">
+  
+        <li><a href="/golang/gotcha-multiple-value-sinlge-value-context/">« Prev</a></li>
+      
+        <li><a href="/golang/gotcha/">Index</a></li>
+      
+        <li><a href="/golang/gotcha-shadowing-variables/">Next »</a></li>
+      
+</ul>
+
+</article>
+
+<aside>
+
+  <h2>Go gotcha</h2>
+  <ul class="none">
+  
+      <li><a href="/golang/gotcha-assignment-entry-nil-map/">Assignment to entry in nil map</a></li>
+
+      <li><a href="/golang/gotcha-nil-pointer-dereference/">Nil pointer dereference</a></li>
+
+      <li><a href="/golang/gotcha-multiple-value-sinlge-value-context/">Multiple values in single value context</a></li>
+
+      <li><b>🢒&nbsp;</b>Array won’t change</li>
+
+      <li><a href="/golang/gotcha-shadowing-variables/">Same name</a></li>
+
+      <li><a href="/golang/gotcha-missing-comma-slice-array-map-literal/">Unexpected newline</a></li>
+
+      <li><a href="/golang/gotcha-strings-are-immutable/">String won’t change</a></li>
+
+      <li><a href="/golang/gotcha-concatenate-rune-string/">Adding one character at a time</a></li>
+
+      <li><a href="/golang/gotcha-trim-string/">What happened to ABBA?</a></li>
+
+      <li><a href="/golang/gotcha-copy-missing/">Where is my copy?</a></li>
+
+      <li><a href="/golang/gotcha-append/">Why doesn’t append work every time?</a></li>
+
+      <li><a href="/golang/gotcha-constant-overflows-int/">Constant overflows int</a></li>
+
+      <li><a href="/golang/gotcha-increment-decrement-statement/">Increment, decrement</a></li>
+
+      <li><a href="/golang/gotcha-operator-precedence/">Does not compute</a></li>
+
+      <li><a href="/golang/gotcha-bitwise-operators/">Go and Pythagoras</a></li>
+
+      <li><a href="/golang/gotcha-integer-overflow-wrap-around/">No end in sight</a></li>
+
+      <li><a href="/golang/gotcha-octal-decimal-hexadecimal-literal/">Numbers that start with zero</a></li>
+
+      <li><a href="/golang/gotcha-remainder-modulo-operator/">Whatever remains</a></li>
+
+      <li><a href="/golang/gotcha-multiply-duration-integer/">Time is not a number</a></li>
+
+      <li><a href="/golang/gotcha-index-out-of-range/">Index out of range</a></li>
+
+      <li><a href="/golang/gotcha-unexpected-values-range/">Unexpected values in range loop</a></li>
+
+      <li><a href="/golang/gotcha-change-value-range/">Can’t change entries in range loop</a></li>
+
+      <li><a href="/golang/gotcha-range-copy-array/">Iteration variable doesn’t see change in range loop</a></li>
+
+      <li><a href="/golang/gotcha-data-race-closure/">Iteration variables and closures</a></li>
+
+      <li><a href="/golang/gotcha-json-marshal-empty/">No JSON in sight</a></li>
+
+      <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a></li>
+
+  </ul>
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/slices-explained/">Slices in a nutshell</a><br />
+    <span class="source"></span>
+  </div>
+  <p><a href="/golang/"><strong>See all 198 Go articles</strong></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

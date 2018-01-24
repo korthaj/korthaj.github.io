@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Packages | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="How import, declare and download Go packages.">
+  <meta name="keywords" content="go, golang, package, import, import path, package name conflict, package download, package documentation">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Packages</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<!-- CC BY-SA 3.0: https://commons.wikimedia.org/wiki/File:Paket_med_hagel_fr%C3%A5n_Sala_silvergruva_-_Livrustkammaren_-_31089.jpg -->
+
+<div><img src="/golang/paket.jpg" class="extra-content" style="float: right; margin: 0 0 25px 0;"></div>
+
+<p>Every Go program is made up of packages and each package has an&nbsp;<strong>import&nbsp;path</strong>:</p>
+
+<ul>
+<li><code>&quot;fmt&quot;</code></li>
+<li><code>&quot;math/rand&quot;</code></li>
+<li><code>&quot;github.com/yourbasic/graph&quot;</code></li>
+</ul>
+
+<p>Packages in the standard library have short import paths,
+such&nbsp;as <code>&quot;fmt&quot;</code> and <code>&quot;math/rand&quot;</code>.
+Third-party packages, such as <code>&quot;github.com/yourbasic/graph&quot;</code>, typically have an import path
+that includes a hosting service (<code>github.com</code>) and an organization name (<code>yourbasic</code>).</p>
+
+<p>By convention, the <strong>package name</strong> is the same as the last element of the import path:</p>
+
+<ul>
+<li><code>fmt</code></li>
+<li><code>rand</code></li>
+<li><code>graph</code></li>
+</ul>
+
+<p>References to other packages&rsquo; definitions must always be prefixed
+with their package names,
+and only the capitalized names from other packages are accessible.</p>
+
+<pre><code>package main
+
+<b>import</b> (
+    "<b>fmt</b>"
+    "math/<b>rand</b>"
+
+    "github.com/yourbasic/<b>graph</b>"
+)
+
+func main() {
+    n := <b>rand.Intn</b>(100)
+    g := <b>graph.New</b>(n)
+    <b>fmt.Println</b>(g)
+}</code></pre>
+
+<h2 id="declaring-a-package">Declaring a package</h2>
+
+<p>Every Go source file starts with a package declaration, which contains only the package name.</p>
+
+<p>For example, the file <a href="https://golang.org/src/math/rand/exp.go"><code>src/math/rand/exp.go</code></a>,
+which is part of the implementation of the <a href="https://golang.org/pkg/math/rand/"><code>math/rand</code></a> package,
+contains the following&nbsp;code.</p>
+
+<pre><code><b>package rand</b>
+  
+import "math"
+  
+const re = 7.69711747013104972
+…</code></pre>
+
+<p>You don&rsquo;t need to worry about package name collisions,
+only the import path of a package must be unique.
+<a href="https://golang.org/doc/code.html">How to Write Go Code</a> shows how to organize
+your code and its packages in a file&nbsp;structure.</p>
+
+<h2 id="package-name-conflicts">Package name conflicts</h2>
+
+<p>You can customize the name under which you refer to an imported package.</p>
+
+<pre><code>package main
+
+import (
+    <b>csprng "crypto/rand"</b>
+    <b>prng "math/rand"</b>
+
+    "fmt"
+)
+
+func main() {
+    n := <b>prng.Int</b>() <span class="comment">// pseudorandom number</span>
+    b := make([]byte, 8)
+    <b>csprng.Read</b>(b) <span class="comment">// cryptographically secure pseudorandom number</span>
+    fmt.Println(n, b)
+}</code></pre>
+
+<h2 id="dot-imports">Dot imports</h2>
+
+<p>If a period <code>.</code> appears instead of a name in an import statement,
+all the package&rsquo;s exported identifiers can be accessed without a qualifier.</p>
+
+<pre><code>package main
+
+import (
+    "fmt"
+    <b>. "math"</b>
+)
+
+func main() {
+    fmt.Println(<b>Sin</b>(<b>Pi</b>/2)*<b>Sin</b>(<b>Pi</b>/2) + <b>Cos</b>(<b>Pi</b>)/2)
+}</code></pre>
+
+<p>Dot imports can make programs hard to read and <strong>generally should be avoided</strong>.</p>
+
+<h2 id="package-download">Package download</h2>
+
+<p>The <a href="https://golang.org/cmd/go/#hdr-Download_and_install_packages_and_dependencies"><code>go get</code></a>
+command downloads packages named by import paths, along with their dependencies,
+and then installs the packages.</p>
+
+<pre><code>$ go get github.com/yourbasic/graph
+</code></pre>
+
+<p>The import path corresponds to the repository hosting the code.
+This reduces the likelihood of future name collisions.</p>
+
+<p>The <a href="https://github.com/golang/go/wiki/Projects">Go Wiki</a> and
+<a href="https://github.com/avelino/awesome-go">Awesome Go</a>
+provide lists of high-quality Go packages and resources.</p>
+
+<p>For more information on using remote repositories with the go tool,
+see <a href="https://golang.org/cmd/go/#hdr-Remote_import_paths">Command go: Remote import paths</a>.</p>
+
+<h2 id="package-documentation">Package documentation</h2>
+
+<p>The <a href="https://godoc.org/">GoDoc</a> web site hosts documentation for all public Go packages
+on Bitbucket, GitHub, Google Project Hosting and Launchpad:</p>
+
+<ul>
+<li><a href="https://godoc.org/fmt"><code>https://godoc.org/fmt</code></a></li>
+<li><a href="https://godoc.org/math/rand"><code>https://godoc.org/math/rand</code></a></li>
+<li><a href="https://godoc.org/github.com/yourbasic/graph"><code>https://godoc.org/github.com/yourbasic/graph</code></a></li>
+</ul>
+
+<p>The <a href="https://godoc.org/golang.org/x/tools/cmd/godoc">godoc</a> command
+extracts and generates documentation for all locally installed Go programs.</p>
+
+<pre><code>$ godoc -http=:6060 &amp;
+</code></pre>
+
+<p>starts a web server that presents the documentation at <code>http://localhost:6060/</code>.</p>
+
+<p>For more on how to access and create documentation, see the <a href="/golang/package-documentation/">Package documentation</a> article.</p>
+
+</article>
+
+<aside>
+
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="https://golang.org/doc/code.html">How to Write Go Code</a><br />
+    <span class="source">golang.org</span>
+    <span class="author"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/package-documentation/">Package documentation</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/library-package-example-template/">Library package template</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="https://golang.org/doc/faq#get_version">How should I manage package versions using &#34;go get&#34;?</a><br />
+    <span class="source">The Go FAQ</span>
+    <span class="author"></span>
+  </div>
+
+
+  <h2>New in Go 1.10</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/build-append-concatenate-strings-efficiently/">Build and concatenate strings efficiently</a></li>
+
+    <li><a href="/golang/round-float-to-int/">Round float to integer value</a></li>
+
+    <li><a href="/golang/shuffle-slice-array/">Shuffle slice or array</a></li>
+
+  </ul>
+
+  <h2>Top Go articles</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/gotcha/">Go gotcha</a></li>
+
+    <li><a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a></li>
+
+    <li><a href="/golang/slices-explained/">Slices in a nutshell</a></li>
+
+    <li><a href="/golang/maps-explained/">Maps in a nutshell</a></li>
+
+    <li><a href="/golang/concurrent-programming/">Concurrent programming</a></li>
+
+  </ul>
+  <p><a href="/golang/"><strong>See all 198 Go articles</strong></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

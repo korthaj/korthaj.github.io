@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top 3 Quicksort optimizations | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="A fast and simple implementation of Quicksort.">
+  <meta name="keywords" content="go, golang, quicksort, implementation, loop invariant">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Top 3 Quicksort optimizations</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<!-- CC BY 2.0:https://www.flickr.com/photos/nicola_s/20141007433 -->
+
+<div><img src="/golang/divide-conquer.jpg" class="extra-content" style="float: right; margin: 20px 0 0 20px;"></div>
+
+<p class="lead">Most Quicksort optimi&shy;zations give only small improve&shy;ments.
+Here&nbsp;are the ones that make a&nbsp;real differ&shy;ence.</p>
+
+<ul>
+<li>Choose a good pivot.</li>
+<li>Use 3-way partitioning.</li>
+<li>Switch to a simpler algorithm for short sublists.</li>
+</ul>
+
+<h2 id="algorithm-overview">Algorithm overview</h2>
+
+<ul>
+<li>Pick an element <code>p</code>, called a pivot, from the list.</li>
+<li>Partition the list so that
+
+<ul>
+<li>all elements less than <code>p</code> come first,</li>
+<li>all elements greater than <code>p</code> come last,</li>
+<li>elements equal to <code>p</code> go into the middle.</li>
+</ul></li>
+<li>Recursively apply the above steps to the sublists of small and large elements.</li>
+<li>For short sublists, use a simpler sorting algorithm.</li>
+</ul>
+
+<pre><code>//  Quicksort sorts the elements of v in ascending order.
+func Quicksort(v []int) {
+    if len(v) < 20 {
+        InsertionSort(v)
+        return
+    }
+    p := Pivot(v)
+    low, high := Partition(v, p)
+    Quicksort(v[:low])
+    Quicksort(v[high:])
+}</code></pre>
+
+<p>With some ingenuity this algorithm can be implemented to run very fast.</p>
+
+<p>If we assume that the partition is done in linear time (which is possible to achieve)
+and that the list is divided exactly in the middle (which is unlikely),
+the expected time to sort a list of <code>n</code>&nbsp;elements is&nbsp;<code>O(nlog(n))</code>.</p>
+
+<p>Unfortunately the worst case is <code>θ(n²)</code>,
+but this case is rare if the pivot is chosen carefully.</p>
+
+<h2 id="pivot">Pivot</h2>
+
+<p>Choosing a suitable pivot <code>p</code> is a balancing act:</p>
+
+<ul>
+<li>if we are sloppy, the partition can be lopsided;</li>
+<li>if we compute <code>p</code> as the median of all elements,
+this step may dominate the running time.</li>
+</ul>
+
+<p>A simple solution is to choose <code>p</code> as a random list element.
+The expected number of comparisons for sorting a list of elements, all different,
+then becomes <code>1.4nlog(n)</code>. Also, with a good random source, this choice virtually
+eliminates the risk of quadratic performance.</p>
+
+<p>Another common choice is <code>p := Median(v[0], v[len(v)/2], v[len(v)-1])</code>,
+but this can be risky. In fact, combining this pivot with the partion algorithm
+in the next section gives very poor performance when sorting an already sorted list.</p>
+
+<p>A more robust solution is to combine the two ideas and use
+the median of three random elements.
+With this strategy, the expected number of comparisons becomes <code>1.2nlog(n)</code>.</p>
+
+<pre><code>func Pivot(v []int) int {
+	n := len(v)
+	return Median(v[rand.Intn(n)],
+		v[rand.Intn(n)],
+		v[rand.Intn(n)])
+}
+
+func Median(a, b, c int) int {
+	if a &lt; b {
+		switch {
+		case b &lt; c:
+			return b
+		case a &lt; c:
+			return c
+		default:
+			return a
+		}
+	}
+	switch {
+	case a &lt; c:
+		return a
+	case b &lt; c:
+		return c
+	default:
+		return b
+	}
+}
+</code></pre>
+
+<h2 id="3-way-partition">3-way partition</h2>
+
+<p>This 3-way partition algorithm handles input with many replicated elements gracefully,
+a case where the standard 2-way partition can run into troubles.
+A well-chosen <a href="/algorithms/loop-invariants-explained/">loop invariant</a>
+is vital if we want to untangle this intricate piece of code.</p>
+
+<pre><code>// Partition reorders the elements of v so that:
+// - all elements in v[:low] are less than p,
+// - all elements in v[low:high] are equal to p,
+// - all elements in v[high:] are greater than p.
+func Partition(v []int, p int) (low, high int) {
+	low, high = 0, len(v)
+	for mid := 0; mid &lt; high; {
+		// Invariant:
+		//  - v[:low] &lt; p
+		//  - v[low:mid] = p
+		//  - v[mid:high] are unknown
+		//  - v[high:] &gt; p
+		//
+		//         &lt; p       = p        unknown       &gt; p
+		//     -----------------------------------------------
+		// v: |          |          |a            |           |
+		//     -----------------------------------------------
+		//                ^          ^             ^
+		//               low        mid           high
+		switch a := v[mid]; {
+		case a &lt; p:
+			v[mid] = v[low]
+			v[low] = a
+			low++
+			mid++
+		case a == p:
+			mid++
+		default: // a &gt; p
+			v[mid] = v[high-1]
+			v[high-1] = a
+			high--
+		}
+	}
+	return
+}
+</code></pre>
+
+<p>It&rsquo;s easy to see that the algorithm runs in linear time:
+the distance between <code>mid</code> and <code>high</code> decreases in every loop,
+either because <code>mid</code> increases or because <code>high</code> decreases.</p>
+
+<h2 id="combining-algorithms">Combining algorithms</h2>
+
+<p>Experience shows that Quicksort is the fastest comparison-based sorting algorithm
+for many types of data. However, in some cases there are better options.
+Insertion sort, which has quadratic worst-case time, tends to be
+faster for small lists.</p>
+
+<p>By combining the two algorithms we get the best of two worlds:</p>
+
+<ul>
+<li>use Quicksort to sort long sublists,</li>
+<li>and Insertion sort otherwise.</li>
+</ul>
+
+<p>The optimal break point depends on many factors (how the code is written,
+the nature of the data, hardware characteristics)
+and has to be found experimentally. Luckily the choice is seldom critical:
+break points between 10 and 100 tend to work well.</p>
+
+<pre><code>func InsertionSort(v []int) {
+	for j := 1; j &lt; len(v); j++ {
+		// Invariant: v[:j] contains the same elements as
+		// the original slice v[:j], but in sorted order.
+		key := v[j]
+		i := j - 1
+		for i &gt;= 0 &amp;&amp; v[i] &gt; key {
+			v[i+1] = v[i]
+			i--
+		}
+		v[i+1] = key
+	}
+}
+</code></pre>
+
+</article>
+
+<aside>
+
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/how-to-sort-in-go/">How to sort in Go</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/algorithms/loop-invariants-explained/">Loop invariants</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/algorithms/fastest-sorting-algorithm/">The fastest sorting algorithm?</a><br />
+    <span class="source"></span>
+  </div>
+
+
+  <h2>New in Go 1.10</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/build-append-concatenate-strings-efficiently/">Build and concatenate strings efficiently</a></li>
+
+    <li><a href="/golang/round-float-to-int/">Round float to integer value</a></li>
+
+    <li><a href="/golang/shuffle-slice-array/">Shuffle slice or array</a></li>
+
+  </ul>
+
+  <h2>Top Go articles</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/gotcha/">Go gotcha</a></li>
+
+    <li><a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a></li>
+
+    <li><a href="/golang/slices-explained/">Slices in a nutshell</a></li>
+
+    <li><a href="/golang/maps-explained/">Maps in a nutshell</a></li>
+
+    <li><a href="/golang/concurrent-programming/">Concurrent programming</a></li>
+
+  </ul>
+  <p><a href="/golang/"><strong>See all 198 Go articles</strong></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

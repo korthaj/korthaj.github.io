@@ -1,0 +1,2367 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Algorithms to Go</title>
+    <link>https://yourbasic.org/</link>
+    <description>Recent content on Algorithms to Go</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://yourbasic.org/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About</title>
+      <link>https://yourbasic.org/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/about/</guid>
+      <description>I&amp;rsquo;m Stefan and I teach computer science at KTH in Stock&amp;shy;holm. Here I&amp;nbsp;write about algorithms and&amp;nbsp;Go. If some the articles and code examples can help you become a better programmer, mission accomplished.
+Disclaimer I&amp;rsquo;ve worked as a profes&amp;shy;sional magician, but I&amp;nbsp;only cheated a little&amp;nbsp;bit.
+Acknowledgement Some of this stuff was origi&amp;shy;nally published on Program&amp;shy;ming.Guide with Andreas Lundblad. Thank you Andreas!</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://yourbasic.org/escape/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/escape/</guid>
+      <description>body{background-color:black;} .tagline{color:#393f43;} footer{color:black;} a, a:visited{color:#292f33;} aside{border:0;}</description>
+    </item>
+    
+    <item>
+      <title>Access environment variables</title>
+      <link>https://yourbasic.org/golang/environment-variables/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/environment-variables/</guid>
+      <description>Use the os.Setenv, os.Getenv and os.Unsetenv functions to access environment variables.
+fmt.Printf(&#34;%q\n&#34;, os.Getenv(&#34;SHELL&#34;)) // &#34;/bin/bash&#34; os.Unsetenv(&#34;SHELL&#34;) fmt.Printf(&#34;%q\n&#34;, os.Getenv(&#34;SHELL&#34;)) // &#34;&#34; os.Setenv(&#34;SHELL&#34;, &#34;/bin/dash&#34;) fmt.Printf(&#34;%q\n&#34;, os.Getenv(&#34;SHELL&#34;)) // &#34;/bin/dash&#34; The os.Environ function returns a slice of &amp;quot;key=value&amp;quot; strings listing all environment variables.
+for _, s := range os.Environ() { kv := strings.SplitN(s, &#34;=&#34;, 2) // unpacks &#34;key=value&#34; fmt.Printf(&#34;key:%q value:%q\n&#34;, kv[0], kv[1]) } key:&amp;quot;SHELL&amp;quot; value:&amp;quot;/bin/bash&amp;quot; key:&amp;quot;SESSION&amp;quot; value:&amp;quot;ubuntu&amp;quot; key:&amp;quot;TERM&amp;quot; value:&amp;quot;xterm-256color&amp;quot; key:&amp;quot;LANG&amp;quot; value:&amp;quot;en_US.UTF-8&amp;quot; key:&amp;quot;XMODIFIERS&amp;quot; value:&amp;quot;@im=ibus&amp;quot; …  </description>
+    </item>
+    
+    <item>
+      <title>Access private fields with reflection</title>
+      <link>https://yourbasic.org/golang/access-private-field-reflection/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/access-private-field-reflection/</guid>
+      <description>With reflection it&#39;s possible to read, but not write, unexported fields of a struct defined in another package.
+In this example, we access the unexported field len in the List struct in package container/list:
+package list type List struct { root Element len int } This code reads the value of len with reflection.
+package main import ( &#34;container/list&#34; &#34;fmt&#34; &#34;reflect&#34; ) func main() { l := list.New() l.PushFront(&#34;foo&#34;) l.PushFront(&#34;bar&#34;) // Get a reflect.</description>
+    </item>
+    
+    <item>
+      <title>Ace not found</title>
+      <link>https://yourbasic.org/404/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/404/</guid>
+      <description>Error code: 404
+Hey! Step this way.
+Come here and play.</description>
+    </item>
+    
+    <item>
+      <title>Adding one character at a time</title>
+      <link>https://yourbasic.org/golang/gotcha-concatenate-rune-string/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-concatenate-rune-string/</guid>
+      <description>Why doesn&amp;rsquo;t these print statements give the same result?
+fmt.Println(&amp;quot;H&amp;quot; + &amp;quot;i&amp;quot;) fmt.Println(&#39;H&#39; + &#39;i&#39;)  Hi 177  Answer
+The rune literals &#39;H&#39; and &#39;i&#39; are integer values identifying Unicode code points: &#39;H&#39; is 72 and &#39;i&#39; is&amp;nbsp;105.
+You can turn a code point into a string with a&amp;nbsp;conversion.
+fmt.Println(string(72) + string(&#39;i&#39;))// &#34;Hi&#34; You can also use the fmt.Sprintf function.
+s := fmt.Sprintf(&#34;%c%c, world!&#34;, 72, &#39;i&#39;) fmt.Println(s)// &#34;Hi, world!&#34; The fmt cheat sheet lists the most common formatting verbs and flags.</description>
+    </item>
+    
+    <item>
+      <title>Amortized time complexity</title>
+      <link>https://yourbasic.org/algorithms/amortized-time-complexity-analysis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/algorithms/amortized-time-complexity-analysis/</guid>
+      <description>Amortized analysis is used for algo&amp;shy;rithms that have expensive opera&amp;shy;tions that happen only&amp;nbsp;rarely.
+Amortized complexity analysis is most commonly used with data structures, which have state that persists between operations. The basic idea is that an expensive operation can alter the state so that the worst case cannot occur again for a long time, thus amortizing its cost.
+Let T1, T2,&amp;nbsp;…, Tk be the complexities of a sequence of operations on a data structuture.</description>
+    </item>
+    
+    <item>
+      <title>Anonymous functions and closures</title>
+      <link>https://yourbasic.org/golang/anonymous-function-literal-lambda-closure/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/anonymous-function-literal-lambda-closure/</guid>
+      <description>A function literal, or lambda, represents a function without a name.
+In this example a function literal is passed as the less argument to the sort.Slice function.
+people := []string{&#34;Alice&#34;, &#34;Bob&#34;, &#34;Dave&#34;} sort.Slice(people, func(i, j int) bool { return len(people[i]) ) fmt.Println(people) // Output: [Bob Dave Alice] You can also use an intermediate variable.
+people := []string{&#34;Alice&#34;, &#34;Bob&#34;, &#34;Dave&#34;} less := func(i, j int) bool { return len(people[i]) sort.Slice(people, less) Note that the less function is a closure: it references the people variable, which is declared outside the function.</description>
+    </item>
+    
+    <item>
+      <title>Append function</title>
+      <link>https://yourbasic.org/golang/append-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/append-explained/</guid>
+      <description>The built-in append function appends elements to the end of a slice:
+ if there is enough capacity, the underlying array is reused; if not, a new underlying array is allocated and the data is copied over.  Append returns the updated slice. Therefore you need to store the result of an append, often in the variable holding the slice itself.
+slice = append(slice, elem1, elem2) slice = append(slice, anotherSlice.</description>
+    </item>
+    
+    <item>
+      <title>Append string to byte slice</title>
+      <link>https://yourbasic.org/golang/append-string-byte-slice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/append-string-byte-slice/</guid>
+      <description>You can append a string s to a byte slice using the s... notation.
+var buf []byte buf = append(buf, &#39;a&#39;, &#39;b&#39;) buf = append(buf, &#34;cd&#34;...) fmt.Println(buf) // [97 98 99 100] </description>
+    </item>
+    
+    <item>
+      <title>Append text to a file</title>
+      <link>https://yourbasic.org/golang/append-to-file/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/append-to-file/</guid>
+      <description>This code appends a line of text to the file text.log. It creates the file if it doesn&amp;rsquo;t already&amp;nbsp;exist.
+f, err := os.OpenFile(&amp;quot;text.log&amp;quot;, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644) if err != nil { log.Println(err) } defer f.Close() if _, err := f.WriteString(&amp;quot;text to append\n&amp;quot;); err != nil { log.Println(err) }  If you&amp;rsquo;re appending text to a file for logging purposes, see Write log to file.</description>
+    </item>
+    
+    <item>
+      <title>Array won’t change</title>
+      <link>https://yourbasic.org/golang/gotcha-function-doesnt-change-array/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-function-doesnt-change-array/</guid>
+      <description>func Foo(a [2]int) { a[0] = 8 } func main() { a := [2]int{1, 2} Foo(a) // Try to change a[0]. fmt.Println(a) // Output: [1 2] } Answer
+ Arrays in Go are values. When you pass an array to a function, the array is copied.  If you want Foo to update the elements of&amp;nbsp;a, use a slice instead.
+func Foo(a []int) { if len(a)  0 { a[0] = 8 } } func main() { a := []int{1, 2} Foo(a) // Change a[0].</description>
+    </item>
+    
+    <item>
+      <title>Assignment to entry in nil map</title>
+      <link>https://yourbasic.org/golang/gotcha-assignment-entry-nil-map/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-assignment-entry-nil-map/</guid>
+      <description>Why does this program panic?
+var m map[string]float64 m[&#34;pi&#34;] = 3.1416 panic: assignment to entry in nil map  Answer
+You have to initialize the map using the make function before you can add any elements:
+m := make(map[string]float64) m[&#34;pi&#34;] = 3.1416  A new, empty map value is made using the built-in function make, which takes the map type and an optional capacity hint as arguments: make(map[string]int) make(map[string]int, 100) The initial capacity does not bound its size: maps grow to accommodate the number of items stored in them, with the exception of nil maps.</description>
+    </item>
+    
+    <item>
+      <title>Big O notation</title>
+      <link>https://yourbasic.org/algorithms/big-o-notation-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/algorithms/big-o-notation-explained/</guid>
+      <description>Big O notation is a convenient way to describe how fast a func&amp;shy;tion is&amp;nbsp;growing.
+When we compute the time complexity&amp;nbsp;T(n) of an algorithm we rarely get an exact result. That&amp;rsquo;s fine &amp;ndash; typically we are only interested in how fast T(n) is growing as a function of the input size&amp;nbsp;n.
+For example, if an algorithm increments each number in a list of length&amp;nbsp;n, we might say: &amp;ldquo;This algorithm runs in O(n) time and performs O(1) work for each element&amp;rdquo;.</description>
+    </item>
+    
+    <item>
+      <title>Binary search</title>
+      <link>https://yourbasic.org/golang/binary-search/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/binary-search/</guid>
+      <description>Use one of the binary search functions: sort.SearchInts, sort.SearchFloat64s or sort.SearchStrings.
+They all have the signature
+func SearchType(a []Type, x Type) int and return
+ the smallest index i at which x &amp;lt;= a[i], or len(a) if there is no such index.  The slice must be sorted in ascending order.
+a := []string{&#34;A&#34;, &#34;C&#34;, &#34;C&#34;} fmt.Println(sort.SearchStrings(a, &#34;A&#34;)) // 0 fmt.Println(sort.SearchStrings(a, &#34;B&#34;)) // 1 fmt.Println(sort.SearchStrings(a, &#34;C&#34;)) // 1 fmt.Println(sort.SearchStrings(a, &#34;</description>
+    </item>
+    
+    <item>
+      <title>Bitmasks and flags</title>
+      <link>https://yourbasic.org/golang/bitmask-flag-set-clear/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/bitmask-flag-set-clear/</guid>
+      <description>A bitmask is a small set of booleans, often called flags, represented by the bits in a single number.
+type Bits uint8 const ( F0 Bits = 1  0 true 1 false 2 true  Larger bit sets To represent larger sets of bits, you may want to use a custom data structure. The external package bit provides a bit array implementation and some utility bit functions.
+Because a bit array uses bit-level parallelism, limits memory access, and efficiently uses the data cache, it often outperforms other data structures.</description>
+    </item>
+    
+    <item>
+      <title>Bitwise operators cheat sheet</title>
+      <link>https://yourbasic.org/golang/bitwise-operator-cheat-sheet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/bitwise-operator-cheat-sheet/</guid>
+      <description>The binary number 00010000 can be written as 020, 16 or 0x10.
+  Literal Base Note     020 8 Starts with&amp;nbsp;0   16 10 Never starts with&amp;nbsp;0*   0x10 16 Starts with&amp;nbsp;0x    *&amp;nbsp;0 is an octal literal in&amp;nbsp;Go.
+Built-in operators   Operation Result Description     0011 &amp;amp; 0101 0001 Bitwise AND   0011 | 0101 0111 Bitwise OR   0011 ^ 0101 0110 Bitwise XOR   ^0101 1010 Short for 1111&amp;nbsp;^&amp;nbsp;0101 (NOT)   0011 &amp;amp;^ 0101 0010 Bitclear (AND&amp;nbsp;NOT)   00110101&amp;lt;&amp;lt;2 11010100 Left shift   00110101&amp;lt;&amp;lt;100 00000000 No upper limit on shift count   00110101&amp;gt;&amp;gt;2 00001101 Right shift     The binary numbers in the examples are for explanation only.</description>
+    </item>
+    
+    <item>
+      <title>Blackjack</title>
+      <link>https://yourbasic.org/blackjack/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/blackjack/</guid>
+      <description>It&#39;s possible to win at blackjack by counting cards, but most&amp;nbsp;fail.
+Always optimal strategy  Always use an optimal strategy adapted to the rules of your casino. Here is an example blackjack strategy. Every time you deviate from the optimal strategy – because of hunches or fear – it depletes your funds. Count cards  If you find a casino with good rules, and if you play with an optimal strategy, the odds are still against you – but the house edge can sometimes be as low as&amp;nbsp;0.</description>
+    </item>
+    
+    <item>
+      <title>Blank identifier (underscore)</title>
+      <link>https://yourbasic.org/golang/underscore/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/underscore/</guid>
+      <description>The blank identifier _ is an anonymous placeholder. It may be used like any other identifier in a declaration, but it does not introduce a binding.
+Ignore values The blank identifier provides a way to ignore left-hand side values in an assignment.
+_, present := timeZone[&amp;quot;CET&amp;quot;] sum := 0 for _, n := range a { sum += n }  Import for side effects It can also be used to import a package solely for its side effects.</description>
+    </item>
+    
+    <item>
+      <title>Bloom filters</title>
+      <link>https://yourbasic.org/algorithms/bloom-filter/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/algorithms/bloom-filter/</guid>
+      <description>A Bloom filter is a prob&amp;shy;abi&amp;shy;listic data struc&amp;shy;ture used to test set&amp;nbsp;member&amp;shy;ship.
+This data structure tells whether an element may be in a set, or definitely isn&amp;rsquo;t. The only possible errors are false positives: a search for a nonexistent element can give an incorrect answer. With more elements in the filter, the error rate increases.
+Bloom filters are both fast and space-efficient. However, elements can only be added, not removed.</description>
+    </item>
+    
+    <item>
+      <title>Broadcast a signal on a channel</title>
+      <link>https://yourbasic.org/golang/broadcast-channel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/broadcast-channel/</guid>
+      <description>When you close a channel, all readers receive a zero&amp;nbsp;value.
+In this example the Publish function returns a channel, which is used to broadcast a signal when a message has been published.
+// Print text after the given time has expired. // When done, the wait channel is closed. func Publish(text string, delay time.Duration) (wait close(ch) // Broadcast to all receivers. }() return ch } Notice that we use a channel of empty structs: struct{}.</description>
+    </item>
+    
+    <item>
+      <title>Build and concatenate strings efficiently</title>
+      <link>https://yourbasic.org/golang/build-append-concatenate-strings-efficiently/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/build-append-concatenate-strings-efficiently/</guid>
+      <description>Clean and simple For simple cases where performance is a non-issue, fmt.Sprintf is your friend.
+s := fmt.Sprintf(&#34;Size: %d MB.&#34;, 85) // s == &#34;Size: 85 MB.&#34; The fmt cheat sheet lists the most common formatting verbs and flags.
+With a string builderGo 1.10 The strings.Builder type is used to efficiently build a&amp;nbsp;string using write&amp;nbsp;methods.
+ It offers a subset of the bytes.Buffer methods that allows it to safely avoid redundant copying.</description>
+    </item>
+    
+    <item>
+      <title>Can’t change entries in range loop</title>
+      <link>https://yourbasic.org/golang/gotcha-change-value-range/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-change-value-range/</guid>
+      <description>Why isn&amp;rsquo;t the slice updated in this example?
+s := []int{1, 1, 1} for _, n := range s { n += 1 } fmt.Println(s) // Output: [1 1 1] Answer
+The range loop copies the values from the slice to a local variable n; updating n will not affect the slice.
+Update the slice entries like this:
+s := []int{1, 1, 1} for i := range s { s[i] += 1 } fmt.</description>
+    </item>
+    
+    <item>
+      <title>Channels</title>
+      <link>https://yourbasic.org/golang/channels-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/channels-explained/</guid>
+      <description>A&amp;nbsp;channel is a mechanism for goroutines to synchronize execution and communicate by passing values.
+A new channel value can be made using the built-in function make.
+// unbuffered channel of ints ic := make(chan int) // buffered channel with room for 10 strings sc := make(chan string, 10) To send a value on a channel, use &amp;lt;- as a binary operator. To receive a value on a channel, use it as a unary operator.</description>
+    </item>
+    
+    <item>
+      <title>Check if a file or directory exists</title>
+      <link>https://yourbasic.org/golang/check-file-exists/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/check-file-exists/</guid>
+      <description>Use the os.Stat and os.IsNotExist functions.
+filepath := &#34;/dev/null&#34; if _, err := os.Stat(filepath); !os.IsNotExist(err) { fmt.Println(filepath, &#34;exists&#34;) // If there was an error, it wasn&#39;t a missing file // but something else, such as a permission error. } /dev/null exists  Warning: A file that is hidden from the current process will, of course, not be found.  </description>
+    </item>
+    
+    <item>
+      <title>Check if a map contains a key</title>
+      <link>https://yourbasic.org/golang/check-map-contains-key/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/check-map-contains-key/</guid>
+      <description>m := map[string]float64{&#34;pi&#34;: 3.1416} v1 := m[&#34;pi&#34;] // v1 == 3.1416 v2 := m[&#34;foo&#34;] // v2 == 0.0 (zero value) _, exists := m[&#34;pi&#34;] // exists == true if x, ok := m[&#34;pi&#34;]; ok { fmt.Println(x) // 3.1416 } </description>
+    </item>
+    
+    <item>
+      <title>Check if a map is empty</title>
+      <link>https://yourbasic.org/golang/check-empty-map/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/check-empty-map/</guid>
+      <description>The call len(m) returns the number of key-value pairs in&amp;nbsp;m.
+if len(m) == 0 { // m is empty } </description>
+    </item>
+    
+    <item>
+      <title>Check if a number is prime</title>
+      <link>https://yourbasic.org/golang/check-prime/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/check-prime/</guid>
+      <description>Ints For integer types, use ProbablyPrime(0) from package math/big. This primality test is 100%&amp;nbsp;accurate for inputs less than&amp;nbsp;264.
+const i = 1212121 if big.NewInt(i).ProbablyPrime(0) { fmt.Println(i, &#34;is prime&#34;) } else { fmt.Println(i, &#34;is not prime&#34;) } 1212121 is prime  Larger numbers  For larger numbers, you need to provide the desired number of tests&amp;nbsp;`n` to ProbablyPrime(n). For n&amp;nbsp;tests, the&amp;nbsp;probability of returning true for a randomly chosen non-prime is at most (1/4)n.</description>
+    </item>
+    
+    <item>
+      <title>Clear a slice</title>
+      <link>https://yourbasic.org/golang/clear-slice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/clear-slice/</guid>
+      <description>To remove all elements, set the slice to nil.
+a := []string{&#34;A&#34;, &#34;B&#34;, &#34;C&#34;, &#34;D&#34;, &#34;E&#34;} a = nil fmt.Println(a, len(a), cap(a)) // [] 0 0 This will release the underlying array to the garbage collector (assuming there are no other references).
+Note that nil slices and empty slices are very similar:
+ they look the same when printed, they have zero length and capacity, they can be used with the same effect in for loops and append functions.</description>
+    </item>
+    
+    <item>
+      <title>Close a channel</title>
+      <link>https://yourbasic.org/golang/close-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/close-explained/</guid>
+      <description>The close function records that no more values will be sent on a channel. (Sending to or closing a closed channel causes a run-time panic.)
+After calling close, and after any previously sent values have been received, receive operations will return a zero value without blocking. A multi-valued receive operation additionally returns a boolean indicating whether the value was delivered by a send operation.
+ch := make(chan string) go func { ch // prints &#34;</description>
+    </item>
+    
+    <item>
+      <title>Command-line arguments</title>
+      <link>https://yourbasic.org/golang/command-line-arguments/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/command-line-arguments/</guid>
+      <description>The os.Args variable holds the command-line arguments, starting with the program name.
+func main() { if len(os.Args) != 3 { fmt.Println(&#34;Usage:&#34;, os.Args[0], &#34;PATTERN&#34;, &#34;FILE&#34;) return } pattern := os.Args[1] file := os.Args[2] // ... } $ go build grep.go $ ./grep Usage: ./grep PATTERN FILE  </description>
+    </item>
+    
+    <item>
+      <title>Compare slices (arrays)</title>
+      <link>https://yourbasic.org/golang/compare-slices/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/compare-slices/</guid>
+      <description>In general, the preferred approach is to write your own code for comparing slices.
+// Equal tells whether a and b contain the same elements. // A nil argument is equivalent to an empty slice. func Equal(a, b []int) bool { if len(a) != len(b) { return false } for i, v := range a { if v != b[i] { return false } } return true } Byte slices For comparing bytes slices, use the optimized bytes.</description>
+    </item>
+    
+    <item>
+      <title>Compute absolute values</title>
+      <link>https://yourbasic.org/golang/absolute-value-int-float/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/absolute-value-int-float/</guid>
+      <description>Integers Go has no built-in library function for computing the absolute value of an integer. It&amp;rsquo;s simple to write your&amp;nbsp;own.
+func Abs(x int32) int32 { if x &amp;lt; 0 { return -x } return x }  Warning: The smallest value of a signed integer type doesn&#39;t have a corresponding positive value. For&amp;nbsp;example  math.MinInt32 equals -2147483648, while math.MaxInt32 equals 2147483647.  There&#39;s no good way to deal with this.</description>
+    </item>
+    
+    <item>
+      <title>Compute min and max</title>
+      <link>https://yourbasic.org/golang/max-min-function/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/max-min-function/</guid>
+      <description>Integers Go has no built-in min or max library functions for integers. It is simple to write your own.
+// Min returns the smaller of x or y. func Min(x, y int) int { if x  y { return y } return x } // Max returns the larger of x or y. func Max(x, y int) int { if x  Floats For floats, use math.Min and math.</description>
+    </item>
+    
+    <item>
+      <title>Concatenate slices</title>
+      <link>https://yourbasic.org/golang/concatenate-slices/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/concatenate-slices/</guid>
+      <description>Use the append functions with three dots after the second slice.
+a := []int{1, 2} b := []int{11, 22} a = append(a, b...) // a == [1 2 11 22] The ... unpacks b. Without the dots, the code would attempt to append the slice as a whole, which is&amp;nbsp;invalid.</description>
+    </item>
+    
+    <item>
+      <title>Concurrent programming</title>
+      <link>https://yourbasic.org/golang/concurrent-programming/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/concurrent-programming/</guid>
+      <description> This tutorial covers the funda&amp;shy;mentals of concur&amp;shy;rent program&amp;shy;ming with examples in&amp;nbsp;Go.
+Before you start, you need to know how to write basic Go programs. If you need a refresher, the&amp;nbsp;resources in Get started with Go will help you come up to speed quickly with&amp;nbsp;Go.
+Start here
+Table of contents </description>
+    </item>
+    
+    <item>
+      <title>Constant overflows int</title>
+      <link>https://yourbasic.org/golang/gotcha-constant-overflows-int/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-constant-overflows-int/</guid>
+      <description>Why doesn&amp;rsquo;t this code compile?
+const n = 9876543210 * 9876543210 fmt.Println(n) ../main.go:2:13: constant 97546105778997104100 overflows int  Answer
+The untyped constant n must be converted to a type before it can be assigned to the interface{} parameter in the call to fmt.Println.
+fmt.Println(a ...interface{}) When the type can’t be inferred from the context, an untyped constant is converted to a bool, int, float64, complex128, string or rune depending of the format of the&amp;nbsp;constant.</description>
+    </item>
+    
+    <item>
+      <title>Constructors</title>
+      <link>https://yourbasic.org/golang/constructor-best-practice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/constructor-best-practice/</guid>
+      <description>Go doesn&#39;t have explicit constructors. The idiomatic way to set up new data structures is to use proper zero values coupled with factory functions.
+Zero value Try to make the default zero value useful and document its behavior. Sometimes this is all that&amp;rsquo;s needed.
+// A StopWatch is a simple clock utility. // Its zero value is an idle clock with 0 total time. type StopWatch struct { start time.</description>
+    </item>
+    
+    <item>
+      <title>Conversions</title>
+      <link>https://yourbasic.org/golang/conversions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/conversions/</guid>
+      <description>Basics Integers Floats Integer to string Strings and byte slices Strings and rune slices Underlying type Implicit conversions Pointers   Basics The expression T(x) converts the value x to the type&amp;nbsp;T.
+x := 5.1 n := int(x) // convert float to int The conversion rules are extensive but predictable: - all conversions between typed expressions must be explicitly stated, - and illegal conversions are caught by the compiler.</description>
+    </item>
+    
+    <item>
+      <title>Convert byte size to human readable format</title>
+      <link>https://yourbasic.org/golang/formatting-byte-size-to-human-readable-format/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/formatting-byte-size-to-human-readable-format/</guid>
+      <description>These utility functions convert 1000 to &amp;quot;1 kB&amp;quot;, 1000000 to &amp;quot;1 MB&amp;quot;, etc.
+func ByteCountDecimal(b int64) string { const unit = 1000 if b = unit; n /= unit { div *= unit exp++ } return fmt.Sprintf(&#34;%.1f %cB&#34;, float64(b)/float64(div), &#34;kMGTPE&#34;[exp]) } func ByteCountBinary(b int64) string { const unit = 1024 if b = unit; n /= unit { div *= unit exp++ } return fmt.Sprintf(&#34;%.1f %ciB&#34;, float64(b)/float64(div), &#34;KMGTPE&#34;[exp]) } Example input/output:</description>
+    </item>
+    
+    <item>
+      <title>Convert byte slice (array) to string</title>
+      <link>https://yourbasic.org/golang/convert-byte-slice-to-string/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/convert-byte-slice-to-string/</guid>
+      <description>Converting a slice of bytes to a string yields a string whose bytes are the elements of the&amp;nbsp;slice.
+b := []byte{&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;\xe6&#39;, &#39;\x97&#39;, &#39;\xa5&#39;} s := string(b) fmt.Println(s) // Output: abc日 </description>
+    </item>
+    
+    <item>
+      <title>Convert float to int</title>
+      <link>https://yourbasic.org/golang/convert-float-to-int/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/convert-float-to-int/</guid>
+      <description>When converting a floating-point number to an int type, the fraction is discarded (truncation towards zero).
+var f float64 = 1.9 n := int64(f) // 1 n = int64(-f) // -1 Warning: If the result type cannot represent the value the conversion succeeds but the result value is implementation-dependent.  </description>
+    </item>
+    
+    <item>
+      <title>Convert float to string</title>
+      <link>https://yourbasic.org/golang/convert-float-to-string/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/convert-float-to-string/</guid>
+      <description>Use the fmt.Sprintf method to convert a floating-point number to a string.
+s := fmt.Sprintf(&#34;%f&#34;, 123.456) // s == &#34;123.456000&#34;   Formatting Description Verb     1.234560e+02 Scientific notation %e   123.456000 Decimal point, no exponent %f   123.46 Default width, precision 2 %.2f   ␣␣123.46 Width 8, precision 2 %8.2f   123.456 Exponent as needed, necessary digits only %g    </description>
+    </item>
+    
+    <item>
+      <title>Convert int to string</title>
+      <link>https://yourbasic.org/golang/convert-int-to-string/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/convert-int-to-string/</guid>
+      <description>Use the strconv.Itoa function.
+str := strconv.Itoa(123) // str == &#34;123&#34; </description>
+    </item>
+    
+    <item>
+      <title>Convert int64 to string</title>
+      <link>https://yourbasic.org/golang/convert-int64-to-string/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/convert-int64-to-string/</guid>
+      <description>Use strconv.FormatInt to format an integer in a given base.
+var n int64 = 32 str := strconv.FormatInt(n, 10) // decimal fmt.Println(str) // 32  var n int64 = 32 str := strconv.FormatInt(n, 16) // hexadecimal fmt.Println(str) // 20  </description>
+    </item>
+    
+    <item>
+      <title>Convert interface to string</title>
+      <link>https://yourbasic.org/golang/interface-to-string/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/interface-to-string/</guid>
+      <description>Use fmt.Sprintf to convert an interface value to a string.
+var x interface{} = &amp;quot;abc&amp;quot; str := fmt.Sprintf(&amp;quot;%v&amp;quot;, x)  In fact, the same technique can be used to get a string representation of any data structure.
+var x interface{} = []int{1, 2, 3} str := fmt.Sprintf(&#34;%v&#34;, x) fmt.Println(str) // &#34;[1 2 3]&#34; </description>
+    </item>
+    
+    <item>
+      <title>Convert rune slice (array) to string</title>
+      <link>https://yourbasic.org/golang/convert-rune-slice-to-string/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/convert-rune-slice-to-string/</guid>
+      <description>Converting a slice of runes to a string yields a string that is the concatenation of the runes converted to UTF-8 encoded strings.
+Values outside the range of valid Unicode code points are converted to \uFFFD, the Unicode replacement character&amp;nbsp;�.
+r := []rune{&#39;\u0061&#39;, &#39;\u0062&#39;, &#39;\u0063&#39;, &#39;\u65E5&#39;, -1} s := string(r) fmt.Println(s) // abc日� </description>
+    </item>
+    
+    <item>
+      <title>Convert string to byte slice (array)</title>
+      <link>https://yourbasic.org/golang/convert-string-to-byte-slice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/convert-string-to-byte-slice/</guid>
+      <description>When you convert a string to a byte slice, you get a slice that contains the bytes of the string.
+fmt.Println([]byte(&#34;abc日&#34;)) // [97 98 99 230 151 165] </description>
+    </item>
+    
+    <item>
+      <title>Convert string to int</title>
+      <link>https://yourbasic.org/golang/convert-string-to-int/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/convert-string-to-int/</guid>
+      <description>Use strconv.Atoi to convert a string to an int.
+str := &#34;123&#34; if n, err := strconv.Atoi(str); err == nil { fmt.Println(n+1) } else { fmt.Println(str, &#34;is not an integer.&#34;) } // Output: 124 </description>
+    </item>
+    
+    <item>
+      <title>Convert string to int64</title>
+      <link>https://yourbasic.org/golang/convert-string-to-int64/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/convert-string-to-int64/</guid>
+      <description>Use strconv.ParseInt to convert a decimal string (base&amp;nbsp;10) and check that it fits into a 64-bit signed integer.
+str := &#34;123&#34; n, err := strconv.ParseInt(str, 10, 64) if err == nil { fmt.Printf(&#34;%d of type %T&#34;, n, n) } // Output: 123 of type int64 </description>
+    </item>
+    
+    <item>
+      <title>Convert string to rune slice (array)</title>
+      <link>https://yourbasic.org/golang/convert-string-to-rune-slice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/convert-string-to-rune-slice/</guid>
+      <description>Converting a string to a slice of runes yields a slice whose elements are the Unicode code points of the&amp;nbsp;string.
+s := &#34;abc日&#34; r := []rune(s) fmt.Printf(&#34;%v\n&#34;, r) // [97 98 99 26085] fmt.Printf(&#34;%U\n&#34;, r) // [U+0061 U+0062 U+0063 U+65E5] </description>
+    </item>
+    
+    <item>
+      <title>Copy function</title>
+      <link>https://yourbasic.org/golang/copy-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/copy-explained/</guid>
+      <description>The built-in copy function copies elements into a destination slice dst from a source slice&amp;nbsp;src.
+func copy(dst, src []Type) int  It returns the number of elements copied, which will be the minimum of len(dst) and len(src). The result does not depend on whether the arguments overlap.
+Special case It is legal to copy bytes from a string to a slice of&amp;nbsp;bytes.
+copy(dst []byte, src string) int  Examples Copy from one slice to another:</description>
+    </item>
+    
+    <item>
+      <title>Count elements in a map</title>
+      <link>https://yourbasic.org/golang/count-items-map/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/count-items-map/</guid>
+      <description>The call len(m) returns the number of key-value pairs in m.
+m := map[string]int{ &#34;key1&#34;: 1, &#34;key2&#34;: 10, &#34;key3&#34;: 100, } fmt.Println(len(m)) // 3 </description>
+    </item>
+    
+    <item>
+      <title>Create a custom error</title>
+      <link>https://yourbasic.org/golang/create-error/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/create-error/</guid>
+      <description>Simple errors The standard library offers two out-of-the-box options.
+// simple string-based error err1 := errors.New(&#34;math: square root of negative number&#34;) // with formatting err2 := fmt.Errorf(&#34;math: square root of negative number %g&#34;, x) Custom errors with data To define a custom error type, you must satisfy the predeclared error interface.
+type error interface { Error() string } Here are two examples.
+type SyntaxError struct { Line int Col int } func (e *SyntaxError) Error() string { return fmt.</description>
+    </item>
+    
+    <item>
+      <title>Create a new image</title>
+      <link>https://yourbasic.org/golang/create-image/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/create-image/</guid>
+      <description>Use the image, image/color, and image/png packages to create a PNG&amp;nbsp;image.
+width := 200 height := 100 upLeft := image.Point{0, 0} lowRight := image.Point{width, height} img := image.NewRGBA(image.Rectangle{upLeft, lowRight}) // Colors are defined by Red, Green, Blue, Alpha uint8 values. red := color.RGBA{0xff, 0, 0, 0xff} // Set color for each pixel. for x := 0; x // upper left quadrant img.Set(x, y, red) case x = width/2 &amp;&amp; y = height/2: // lower right quadrant img.</description>
+    </item>
+    
+    <item>
+      <title>Create a temporary file or directory</title>
+      <link>https://yourbasic.org/golang/temporary-file-directory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/temporary-file-directory/</guid>
+      <description>File Use ioutil.TempFile in package io/ioutil to create a temporary file.
+file, err := ioutil.TempFile(&#34;dir&#34;, &#34;prefix&#34;) if err != nil { log.Fatal(err) } defer os.Remove(file.Name()) fmt.Println(file.Name()) // For example &#34;dir/prefix054003078&#34; The call to ioutil.TempFile
+ creates a new file with a name starting with &amp;quot;prefix&amp;quot; in the directory &amp;quot;dir&amp;quot;, opens the file for reading and writing, and returns the new *os.File.  To put the new file in os.TempDir(), the default directory for temporary files, call ioutil.</description>
+    </item>
+    
+    <item>
+      <title>Cryptographically secure random numbers</title>
+      <link>https://yourbasic.org/golang/crypto-rand-int/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/crypto-rand-int/</guid>
+      <description>Go has two packages for random numbers:
+ math/rand implements a large selection of pseudo-random number generators. crypto/rand implements a cryptographically secure pseudo-random number generator with a limited interface.  The two packages can be combined by calling rand.New in package math/rand with a source that gets its data from crypto/rand.
+import ( crand &#34;crypto/rand&#34; rand &#34;math/rand&#34; &#34;encoding/binary&#34; &#34;fmt&#34; &#34;log&#34; ) func main() { var src cryptoSource rnd := rand.New(src) fmt.</description>
+    </item>
+    
+    <item>
+      <title>Current time</title>
+      <link>https://yourbasic.org/golang/current-time/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/current-time/</guid>
+      <description>Use the time.Now function and the time.Unix and time.UnixNano methods to get a timestamp.
+now := time.Now() // current local time sec := now.Unix() // number of seconds since January 1, 1970 UTC nsec := now.UnixNano() // number of nanoseconds since January 1, 1970 UTC fmt.Println(now) fmt.Println(sec) fmt.Println(nsec) 2009-11-10 23:00:00 +0000 UTC m=+0.000000000 1257894000 1257894000000000000  </description>
+    </item>
+    
+    <item>
+      <title>Current working directory</title>
+      <link>https://yourbasic.org/golang/current-directory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/current-directory/</guid>
+      <description>Use os.Executable to find the path name for the executable that started the current process. Use filepath.Dir in package path/filepath to extract the path&amp;rsquo;s directory.  path, err := os.Executable() if err != nil { log.Printf(err) } dir := filepath.Dir(path) fmt.Println(path) // for example /home/user/main fmt.Println(dir) // for example /home/user Warning: There is no guarantee that the path is still pointing to the correct executable. If a symlink was used to start the process, depending on the operating system, the result might be the symlink or the path it pointed to.</description>
+    </item>
+    
+    <item>
+      <title>Data races</title>
+      <link>https://yourbasic.org/golang/data-races-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/data-races-explained/</guid>
+      <description>A&amp;nbsp;data&amp;nbsp;race happens when two goroutines access the same variable concur&amp;shy;rently, and at least one of the accesses is a&amp;nbsp;write.
+Data races are quite common and can be very hard to debug.
+This function has a data race and it’s behavior is undefined. It may, for example, print the number&amp;nbsp;1. Try to figure out how that can happen – one possible explanation comes after the&amp;nbsp;code.
+func race() { wait := make(chan struct{}) n := 0 go func() { n++ // read, increment, write close(wait) }() n++ // conflicting access // Output: &amp;lt;unspecified&amp;gt; } The two goroutines, g1 and g2, participate in a race and there is no way to know in which order the operations will take place.</description>
+    </item>
+    
+    <item>
+      <title>Day of week</title>
+      <link>https://yourbasic.org/golang/day-of-week-int/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/day-of-week-int/</guid>
+      <description> The Weekday function returns returns the day of the week of a time.Time.
+func (t Time) Weekday() Weekday  In use:
+weekday := time.Now().Weekday() fmt.Println(weekday) // &#34;Tuesday&#34; fmt.Println(int(weekday)) // &#34;2&#34; Type Weekday The time.Weekday type specifies a day of the week (Sunday = 0, …).
+type Weekday int const ( Sunday Weekday = iota Monday Tuesday Wednesday Thursday Friday Saturday )  </description>
+    </item>
+    
+    <item>
+      <title>Days between two dates</title>
+      <link>https://yourbasic.org/golang/days-between-dates/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/days-between-dates/</guid>
+      <description>func main() { // The leap year 2000 had 366 days. t1 := Date(2000, 1, 1) t2 := Date(2001, 1, 1) days := t2.Sub(t1).Hours() / 24 fmt.Println(days) // 366 } func Date(year, month, day int) time.Time { return time.Date(year, time.Month(month), day, 0, 0, 0, 0, time.UTC) } </description>
+    </item>
+    
+    <item>
+      <title>Days in a month</title>
+      <link>https://yourbasic.org/golang/last-day-month-date/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/last-day-month-date/</guid>
+      <description>To compute the last day of a month, you can use the fact that time.Date accepts values outside their usual ranges &amp;ndash; the values are normalized during the conversion.
+To compute the number of days in February, look at the day before March&amp;nbsp;1.
+func main() { t := Date(2000, 3, 0) // the day before 2000-03-01 fmt.Println(t) // 2000-02-29 00:00:00 +0000 UTC fmt.Println(t.Day()) // 29 } func Date(year, month, day int) time.</description>
+    </item>
+    
+    <item>
+      <title>Deadlock</title>
+      <link>https://yourbasic.org/golang/detect-deadlock/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/detect-deadlock/</guid>
+      <description>A deadlock happens when a group of goroutines are waiting for each other and none of them is able to&amp;nbsp;proceed.
+Take a look at this simple example.
+func main() { ch := make(chan int) ch &amp;lt;- 1 fmt.Println(&amp;lt;-ch) }  The program will get stuck on the channel send operation waiting forever for someone to read the value. Go is able to detect situations like this at runtime. Here is the output from our program:</description>
+    </item>
+    
+    <item>
+      <title>Default value of struct, string, slice, map</title>
+      <link>https://yourbasic.org/golang/default-zero-value/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/default-zero-value/</guid>
+      <description>Variables declared without an explicit initial value are set to their zero&amp;nbsp;values:
+ false for booleans, 0 for integers, 0.0 for floats, &amp;quot;&amp;quot; for strings, and nil for pointers, functions, interfaces, slices, channels, and maps.  This initialization is done recursively; for example each element of an array of structs will have its fields zeroed if no value is specified.
+var n int // n == 0 type T struct { n int f float64 next *T } t := new(T) // t.</description>
+    </item>
+    
+    <item>
+      <title>Defer statement</title>
+      <link>https://yourbasic.org/golang/defer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/defer/</guid>
+      <description>A deferred method call is executed just before leaving the surrounding function.
+func main() { defer fmt.Println(&#34;World&#34;) fmt.Println(&#34;Hello&#34;) } Hello World Deferred calls are executed even when the function panics.
+func main() { defer fmt.Println(&#34;World&#34;) panic(&#34;Stop&#34;) fmt.Println(&#34;Hello&#34;) } World panic: Stop goroutine 1 [running]: main.main() ../main.go:3 +0xa0 Deferred function calls are executed in last-in-first-out order, and a deferred function&amp;rsquo;s arguments are evaluated when the defer statement executes.
+func main() { fmt.</description>
+    </item>
+    
+    <item>
+      <title>Delete a file or directory</title>
+      <link>https://yourbasic.org/golang/delete-file-directory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/delete-file-directory/</guid>
+      <description>Use the os.Remove function to remove a file or directory:
+if err := os.Remove(&amp;quot;/path/to/file&amp;quot;); err != nil {	fmt.Println(err) }  remove /path/to/file: No such file or directory  The error, if any, will be of type os.PathError.</description>
+    </item>
+    
+    <item>
+      <title>Delete an element from a slice</title>
+      <link>https://yourbasic.org/golang/delete-element-slice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/delete-element-slice/</guid>
+      <description>Fast version (changes order) a := []string{&#34;A&#34;, &#34;B&#34;, &#34;C&#34;, &#34;D&#34;, &#34;E&#34;} i := 2 // Remove the element at index i from a. a[i] = a[len(a)-1] // Copy last element to index i. a[len(a)-1] = &#34;&#34; // Erase last element (write zero value). a = a[:len(a)-1] // Truncate slice. fmt.Println(a) // [A B E D] The code copies a single element and runs in constant time.
+Slow version (maintains order) a := []string{&#34;</description>
+    </item>
+    
+    <item>
+      <title>Detect data races</title>
+      <link>https://yourbasic.org/golang/detect-data-races/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/detect-data-races/</guid>
+      <description>Data races can happen easily and are hard to debug. Luckily, the Go runtime is often able to&amp;nbsp;help.
+Use -race to enable the built-in data race detector.
+$ go test -race [packages] $ go run -race [packages]  Example Here&amp;rsquo;s a program with a data race:
+package main import &#34;fmt&#34; func main() { i := 0 go func() { i++ // write }() fmt.Println(i) // concurrent read } Running this program with the -race options tells us that there&amp;rsquo;s a race between the write at line&amp;nbsp;7 and the read at line&amp;nbsp;9:</description>
+    </item>
+    
+    <item>
+      <title>Disable logging</title>
+      <link>https://yourbasic.org/golang/disable-logging-output/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/disable-logging-output/</guid>
+      <description>To turn off all output from a log.Logger, set the output destination to ioutil.Discard, a writer on which all calls succeed without doing anything.
+log.SetOutput(ioutil.Discard)  </description>
+    </item>
+    
+    <item>
+      <title>Does not compute</title>
+      <link>https://yourbasic.org/golang/gotcha-operator-precedence/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-operator-precedence/</guid>
+      <description>Why doesn&amp;rsquo;t this code compute the number of hours and seconds?
+n := 43210 // time in seconds fmt.Println(n/60*60, &#34;hours and&#34;, n%60*60, &#34;seconds&#34;) 43200 hours and 600 seconds  Answer
+The *, /, and % operators have the same precedence and are evaluated left to right: n/60*60 is the same as (n/60)*60.
+Insert a pair of parantheses to force the correct evaluation order.
+fmt.Println(n/(60*60), &#34;hours and&#34;, n%(60*60), &#34;seconds&#34;)  12 hours and 10 seconds  Or better yet, use a constant.</description>
+    </item>
+    
+    <item>
+      <title>Efficient parallel computation</title>
+      <link>https://yourbasic.org/golang/efficient-parallel-computation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/efficient-parallel-computation/</guid>
+      <description>Dividing&amp;nbsp;a&amp;nbsp;large compu&amp;shy;tation into work units for parallel pro&amp;shy;cessing is more of an art than a&amp;nbsp;science.
+Here are some rules of&amp;nbsp;thumb.
+ Each work unit should take about 100μs to 1ms to compute. If&amp;nbsp;the units are too small, the adminis&amp;shy;trative over&amp;shy;head of divi&amp;shy;ding the problem and sched&amp;shy;uling sub-problems might be too large. If the units are too big, the whole computation may have to wait for a single slow work item to finish.</description>
+    </item>
+    
+    <item>
+      <title>Empty slice vs. nil slice</title>
+      <link>https://yourbasic.org/golang/nil-slice-vs-empty-slice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/nil-slice-vs-empty-slice/</guid>
+      <description>In practice, nil slices and empty slices can often be treated in the same way:
+ they have zero length and capacity, they can be used with the same effect in for loops and append functions, and they even look the same when printed.  var a []int = nil fmt.Println(len(a)) // 0 fmt.Println(cap(a)) // 0 fmt.Println(a) // [] However, if needed, you can tell the difference.
+var a []int = nil var a0 []int = make([]int, 0) fmt.</description>
+    </item>
+    
+    <item>
+      <title>Enumeration with string representation</title>
+      <link>https://yourbasic.org/golang/define-enumeration-string/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/define-enumeration-string/</guid>
+      <description>A group of constants enumerated with iota might do the job.
+const ( Sunday int = iota // Sunday == 0 Monday // Monday == 1 Tuesday // Tuesday == 2 Wednesday // … Thursday Friday Saturday )  The iota keyword represents successive integer constants 0, 1, 2,… It resets to 0 whenever the word const appears in the source code, and increments after each const specification.  In the example, we also rely on the fact that expressions are implicitly repeated in a paren&amp;shy;thesized const declaration &amp;ndash; this indicates a repetition of the preceding expression and its&amp;nbsp;type.</description>
+    </item>
+    
+    <item>
+      <title>Errors</title>
+      <link>https://yourbasic.org/golang/errors-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/errors-explained/</guid>
+      <description>Go has two different error-handling mechanisms:
+ most functions return errors; only truly unrecovorable conditions, such as an out-of-range index, produce run-time exceptions.  Go’s multivalued return makes it easy to return a detailed error message alongside the normal return value. By convention, such messages have type error, a simple built-in interface.
+type error interface { Error() string }  Example The os.Open function returns a non-nil error value when it fails to open a file.</description>
+    </item>
+    
+    <item>
+      <title>Find all substrings matching a regexp</title>
+      <link>https://yourbasic.org/golang/regexp-find-all-matches/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/regexp-find-all-matches/</guid>
+      <description>Use the FindAllString method to find the text of all matches. A return value of nil indicates no match.
+The method takes an integer argument n; if n &amp;gt;= 0, the function returns at most n matches.
+re := regexp.MustCompile(`a.`) fmt.Printf(&#34;%q\n&#34;, re.FindAllString(&#34;paranormal&#34;, -1)) // [&#34;ar&#34; &#34;an&#34; &#34;al&#34;] fmt.Printf(&#34;%q\n&#34;, re.FindAllString(&#34;paranormal&#34;, 2)) // [&#34;ar&#34; &#34;an&#34;] fmt.Printf(&#34;%q\n&#34;, re.FindAllString(&#34;graal&#34;, -1)) // [&#34;aa&#34;] fmt.Printf(&#34;%q\n&#34;, re.FindAllString(&#34;none&#34;, -1)) // [] (nil slice) There are several more search functions available in the regexp package.</description>
+    </item>
+    
+    <item>
+      <title>Find an element in a slice</title>
+      <link>https://yourbasic.org/golang/find-search-contains-slice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/find-search-contains-slice/</guid>
+      <description>Go has no generic search function for slices or arrays. It&amp;rsquo;s straightforward to write your own linear&amp;nbsp;search.
+// Contains tells whether a contains x. func Contains(a []string, x string) bool { for _, n := range a { if x == n { return true } } return false } // Find returns the smallest index i at which x == a[i], // or len(a) if there is no such index.</description>
+    </item>
+    
+    <item>
+      <title>Find build version</title>
+      <link>https://yourbasic.org/golang/find-go-build-version/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/find-go-build-version/</guid>
+      <description>fmt.Println(runtime.Version())  The function runtime.Version returns the Go tree&amp;rsquo;s version string, which is
+ either the commit hash and date at the time of the build, or, when possible, a release tag like go1.9.  $ go version  The command go version prints the version in the same format as runtime.Version.</description>
+    </item>
+    
+    <item>
+      <title>Find first substring matching a regexp</title>
+      <link>https://yourbasic.org/golang/regexp-find-first-match/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/regexp-find-first-match/</guid>
+      <description>Use the FindString method to find the text of the first match. If there is no match, the return value is an empty string.
+re := regexp.MustCompile(`foo.?`) fmt.Printf(&#34;%q\n&#34;, re.FindString(&#34;seafood fool&#34;)) // &#34;food&#34; fmt.Printf(&#34;%q\n&#34;, re.FindString(&#34;meat&#34;)) // &#34;&#34; There are several more search functions available in the regexp package. The strings All, String, Submatch, and Index can be combined to form the methods
+Find(All)?(String)?(Submatch)?(Index)?  </description>
+    </item>
+    
+    <item>
+      <title>Find the lady</title>
+      <link>https://yourbasic.org/monte/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/monte/</guid>
+      <description>3-card monte is not a&amp;nbsp;game, it’s&amp;nbsp;robbery.
+ You’ll find the game on the streets of most big cities – if you find the black lady, or a little paper ball under a&amp;nbsp;match-box, you win. There are many variations of the game, but the secret is always the same. If you manage to choose the right card they will still take your money, and run with&amp;nbsp;it.  Everyone you see on the street belongs to the mob, except the single victim.</description>
+    </item>
+    
+    <item>
+      <title>Find the location of a regexp substring match</title>
+      <link>https://yourbasic.org/golang/regexp-find-index-location/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/regexp-find-index-location/</guid>
+      <description>Use the FindStringIndex method to find loc, the location of the first match, in a string&amp;nbsp;s. The match is at s[loc[0]:loc[1]]. A return value of nil indicates no match.
+re := regexp.MustCompile(`ab?`) fmt.Println(re.FindStringIndex(&#34;tablett&#34;)) // [1 3] fmt.Println(re.FindStringIndex(&#34;foo&#34;) == nil) // true There are several more search functions available in the regexp package. The strings All, String, Submatch, and Index can be combined to form the methods:
+Find(All)?(String)?(Submatch)?(Index)?  </description>
+    </item>
+    
+    <item>
+      <title>Find the type of an object</title>
+      <link>https://yourbasic.org/golang/find-type-of-object/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/find-type-of-object/</guid>
+      <description>A simple string Use the %T flag in the fmt package to get a Go-syntax representation of the&amp;nbsp;type.
+var x interface{} = []int{1, 2, 3} xType := fmt.Sprintf(&#34;%T&#34;, x) fmt.Println(xType) // &#34;[]int&#34; A simple choice Use a type switch to do several type assertions in series.
+var x interface{} = 2.3 switch v := x.(type) { case int: fmt.Println(&#34;int:&#34;, v) case float64: fmt.Println(&#34;float64:&#34;, v) default: fmt.Println(&#34;unknown&#34;) } // Output: float64: 2.</description>
+    </item>
+    
+    <item>
+      <title>For loops in a nutshell</title>
+      <link>https://yourbasic.org/golang/for-loop/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/for-loop/</guid>
+      <description>Three-component loop While loop Infinite loop For-each loop Exit a loop  Three-component loop sum := 0 for i := 1; i { sum += i } fmt.Println(sum) // 10 (1+2+3+4) This version of the Go for loop works just as in C/Java/JavaScript.
+ The init statement, i := 0, runs. The condition, i &amp;lt; 5, is evaluated.  If it&amp;rsquo;s true, the loop body executes, otherwise the loop terminates.</description>
+    </item>
+    
+    <item>
+      <title>Format a string without printing it</title>
+      <link>https://yourbasic.org/golang/format-string-without-printing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/format-string-without-printing/</guid>
+      <description>The fmt.Sprintf function formats a string in the same way as fmt.Printf, but returns the string instead of printing&amp;nbsp;it.
+s := fmt.Sprintf(&#34;Size: %d MB.&#34;, 85) fmt.Println(s) // &#34;Size: 85 MB.&#34; </description>
+    </item>
+    
+    <item>
+      <title>Format/parse a time or date</title>
+      <link>https://yourbasic.org/golang/format-parse-string-time-date-example/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/format-parse-string-time-date-example/</guid>
+      <description>The Format method formats a&amp;nbsp;time.Time. The time.Parse function parses a date&amp;nbsp;string.  func (t Time) Format(layout string) string func Parse(layout, value string) (Time, error) The layout parameter describes the format. It should be the special reference&amp;nbsp;date
+Mon Jan 2 15:04:05 MST 2006 formatted the same way as the value should be formatted.
+Written as 01/02 03:04:05PM &amp;lsquo;06 -0700 the reference date is easy to rember.
+Example input := &#34;</description>
+    </item>
+    
+    <item>
+      <title>Function types and values</title>
+      <link>https://yourbasic.org/golang/function-pointer-type-declaration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/function-pointer-type-declaration/</guid>
+      <description>Functions in Go are first class citizens.
+Function types and function values can be used and passed around just like other values.
+type Operator func(x float64) float64 // Map applies op to each element of a. func Map(op Operator, a []float64) []float64 { res := make([]float64, len(a)) for i, x := range a { res[i] = op(x) } return res } func main() { op := math.Abs a := []float64{1, -2} b := Map(op, a) fmt.</description>
+    </item>
+    
+    <item>
+      <title>Generate a random UUID (GUID)</title>
+      <link>https://yourbasic.org/golang/generate-uuid-guid/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/generate-uuid-guid/</guid>
+      <description>Use the rand.Read function from package crypto/rand to generate a universally unique identifier.
+b := make([]byte, 16) _, err := rand.Read(b) if err != nil { log.Fatal(err) } uuid := fmt.Sprintf(&amp;quot;%x-%x-%x-%x-%x&amp;quot;, b[0:4], b[4:6], b[6:8], b[8:10], b[10:])  Limitations This UUID doesn&amp;rsquo;t conform to RFC 4122. In particular, it doesn&amp;rsquo;t contain any version or variant numbers.
+The rand.Read call returns an error if the underlying system call fails. For instance if the runtime can&amp;rsquo;t read /dev/urandom on a Unix system or if CryptAcquireContext fails on a Windows system.</description>
+    </item>
+    
+    <item>
+      <title>Generate a random character (rune)</title>
+      <link>https://yourbasic.org/golang/generate-random-character/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/generate-random-character/</guid>
+      <description> Between &amp;#39;a&amp;#39; and &amp;#39;z&amp;#39; Use the rand.Intn function in package math/rand.
+rand.Seed(time.Now().UnixNano()) c := &#39;a&#39; + rand.Intn(26)  Without the call to rand.Seed, a program will produce the same sequence of pseudo-random numbers for each execution.
+From arbitrary set chars := []rune(&amp;quot;ab⌘&amp;quot;) c := chars[rand.Intn(len(chars))]  </description>
+    </item>
+    
+    <item>
+      <title>Generate a random number in a given range</title>
+      <link>https://yourbasic.org/golang/generate-number-random-range/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/generate-number-random-range/</guid>
+      <description>Use the rand.Seed and rand.Intn functions in package math/rand to generate a random number between a and b.
+rand.Seed(time.Now().UnixNano()) n := a + rand.Intn(b-a+1)  Without the call to rand.Seed, a program will produce the same sequence of pseudo-random numbers for each execution.</description>
+    </item>
+    
+    <item>
+      <title>Generate a random string (password, reference)</title>
+      <link>https://yourbasic.org/golang/generate-random-string-password-booking-reference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/generate-random-string-password-booking-reference/</guid>
+      <description>Random Unicode string rand.Seed(time.Now().UnixNano()) chars := []rune(&#34;ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ&#34; + &#34;abcdefghijklmnopqrstuvwxyzåäö&#34; + &#34;0123456789&#34;) length := 8 buf := make([]rune, length) for i := range buf { buf[i] = chars[rand.Intn(len(chars))] } str := string(buf) Random ASCII string with at least 1 digit and 1 special character If all characters can be represented by a single byte, e.g. ASCII characters, you can use []byte instead of []rune.
+rand.Seed(time.Now().UnixNano()) digits := &#34;0123456789&#34; specials := &#34;</description>
+    </item>
+    
+    <item>
+      <title>Generate all permutations</title>
+      <link>https://yourbasic.org/golang/generate-permutation-slice-string/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/generate-permutation-slice-string/</guid>
+      <description>// Perm calls f with each permutation of a. func Perm(a []rune, f func([]rune)) { perm(a, f, 0) } // Permute the values at index i to len(a)-1. func perm(a []rune, f func([]rune), i int) { if i  len(a) { f(a) return } perm(a, f, i+1) for j := i + 1; j  Example usage:
+Perm([]rune(&amp;quot;abc&amp;quot;), func(a []rune) { fmt.Println(string(a)) })  Output:
+abc acb bac bca cba cab  </description>
+    </item>
+    
+    <item>
+      <title>Generics (alternatives and workarounds)</title>
+      <link>https://yourbasic.org/golang/generics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/generics/</guid>
+      <description>Go has some built-in generic data types, such as slices and maps, and some generic functions, such as append and copy. However, there is no mechanism for writing your&amp;nbsp;own.
+Here are some techniques that can be used in place of parametric polymorphism in&amp;nbsp;Go.
+Find a well-fitting interface Describe the generic behaviour of your data with an interface.
+The io.Reader interface, which represents the read end of a stream of data, is a good example:</description>
+    </item>
+    
+    <item>
+      <title>Get slices of keys and values from a map</title>
+      <link>https://yourbasic.org/golang/slice-of-keys-values-from-map/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/slice-of-keys-values-from-map/</guid>
+      <description>keys := make([]keyType, 0, len(myMap)) values := make([]valueType, 0, len(myMap)) for k, v := range myMap { keys = append(keys, k) values = append(values, v) }  </description>
+    </item>
+    
+    <item>
+      <title>Get started with Go</title>
+      <link>https://yourbasic.org/golang/getting-started-hello-world/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/getting-started-hello-world/</guid>
+      <description>&amp;ldquo;Go is an open source pro&amp;shy;gram&amp;shy;ming language that makes it easy to build simple, reliable, and efficient software.&amp;rdquo;
+&amp;ndash;&amp;nbsp;golang.org
+Try it out The Go Playground is an interactive web&amp;nbsp;service that lets you run small Go programs, such as this &amp;ldquo;Hello,&amp;nbsp;world!&amp;rdquo; program, inside a sandbox. Try&amp;nbsp;it&amp;nbsp;out!
+package main import ( &#34;fmt&#34; ) func main() { fmt.Println(&#34;Hello, world!&#34;) } Learn the basics A Tour of Go is an interactive tutorial with many example programs.</description>
+    </item>
+    
+    <item>
+      <title>Get year, month, day from time</title>
+      <link>https://yourbasic.org/golang/day-month-year-from-time/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/day-month-year-from-time/</guid>
+      <description>The Date function returns the year, month and day of a time.Time.
+func (t Time) Date() (year int, month Month, day int)  In use:
+year, month, day := time.Now().Date() fmt.Println(year, month, day) // For example 2009 November 10 fmt.Println(year, int(month), day) // For example 2009 11 10 You can also extract the information with seperate calls:
+t := time.Now() year := t.Year() // type int month := t.Month() // type time.</description>
+    </item>
+    
+    <item>
+      <title>Go and Pythagoras</title>
+      <link>https://yourbasic.org/golang/gotcha-bitwise-operators/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-bitwise-operators/</guid>
+      <description>Pythagorean triples are integer solutions to the Pythagorean Theorem, a2 + b2 = c2.
+A well-known example is (3,&amp;nbsp;4,&amp;nbsp;5):
+fmt.Println(3^2+4^2 == 5^2) // true The triple (6,&amp;nbsp;8,&amp;nbsp;10) is another example, but Go doesn&#39;t seem to agree.
+fmt.Println(6^2+8^2 == 10^2) // false Answer
+The circumflex&amp;nbsp;^ denotes bitwise&amp;nbsp;XOR in&amp;nbsp;Go. The computation written in base&amp;nbsp;2 looks like this:
+ 0011 ^ 0010 == 0001 (3^2 == 1) 0100 ^ 0010 == 0110 (4^2 == 6) 0101 ^ 0010 == 0111 (5^2 == 7)  Of course, 1 + 6 == 7; Go and Pythagoras agree on that.</description>
+    </item>
+    
+    <item>
+      <title>Go for Java programmers</title>
+      <link>https://yourbasic.org/golang/go-java-tutorial/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/go-java-tutorial/</guid>
+      <description>This tutorial is in&amp;shy;tended to help Java deve&amp;shy;lopers come up to speed quickly with&amp;nbsp;Go.
+ Hello stack (example) Main differences Syntax Constants Structs Pointers Slices   Making values Methods and interfaces Errors Panic and recover Goroutines and channels Hello server (example)    Hello stack (example) Let&amp;rsquo;s start with a small but complete example. It shows how to implement and use a simple abstract data type in Go.</description>
+    </item>
+    
+    <item>
+      <title>Go gotcha</title>
+      <link>https://yourbasic.org/golang/gotcha/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha/</guid>
+      <description> This collection of common mistakes in Go is intended to help you spot similar traps in your own code and save you time when debugging.
+Take quiz
+Table of contents </description>
+    </item>
+    
+    <item>
+      <title>Goroutines</title>
+      <link>https://yourbasic.org/golang/goroutines-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/goroutines-explained/</guid>
+      <description>The go statement runs a func&amp;shy;tion in a sepa&amp;shy;rate thread of execu&amp;shy;tion.
+Go permits starting a new thread of execution, a goroutine, using the go statement. It runs a function in a different, newly created, goroutine. All goroutines in a single program share the same address space.
+go list.Sort() // Run list.Sort in parallel; don’t wait for it. The following program will print &amp;ldquo;Hello from main goroutine&amp;rdquo;. It might also print &amp;ldquo;Hello from another goroutine&amp;rdquo;, depending on which of the two goroutines finish first.</description>
+    </item>
+    
+    <item>
+      <title>HTTP server example</title>
+      <link>https://yourbasic.org/golang/http-server-example/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/http-server-example/</guid>
+      <description>If you run the program below and access the URL http://localhost:8080/world, you&amp;nbsp;will&amp;nbsp;be&amp;nbsp;greated by&amp;nbsp;this&amp;nbsp;page.
+package main import ( &amp;quot;fmt&amp;quot; &amp;quot;net/http&amp;quot; ) func main() { http.HandleFunc(&amp;quot;/&amp;quot;, HelloServer) http.ListenAndServe(&amp;quot;:8080&amp;quot;, nil) } func HelloServer(w http.ResponseWriter, r *http.Request) { fmt.Fprintf(w, &amp;quot;Hello, %s!&amp;quot;, r.URL.Path[1:]) }   The call to http.HandleFunc tells the net.http package to handle all requests to the web root with HelloServer. The call to http.ListenAndServe tells the server to listen on the TCP network address :8080.</description>
+    </item>
+    
+    <item>
+      <title>Hash checksums</title>
+      <link>https://yourbasic.org/golang/hash-md5-sha256-string-file/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/hash-md5-sha256-string-file/</guid>
+      <description>String To compute the checksum of a string or byte slice, use the Sum function from a crypto package such as crypto/md5, crypto/sha1, or crypto/sha256.
+s := &#34;Foo&#34; md5 := md5.Sum([]byte(s)) sha1 := sha1.Sum([]byte(s)) sha256 := sha256.Sum256([]byte(s)) fmt.Printf(&#34;%x\n&#34;, md5) fmt.Printf(&#34;%x\n&#34;, sha1) fmt.Printf(&#34;%x\n&#34;, sha256) 1356c67d7ad1638d816bfb822dd2c25d 201a6b3053cc1422d2c3670b62616221d2290929 1cbec737f863e4922cee63cc2ebbfaafcd1cff8b790d8cfd2e6a5d550b648afa  File To compute the checksum of a file or other input stream:
+ create a new hash.Hash from a crypto package such as crypto/md5, crypto/sha1, or crypto/sha256, add data by writing to its io.</description>
+    </item>
+    
+    <item>
+      <title>Hash tables</title>
+      <link>https://yourbasic.org/algorithms/hash-tables-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/algorithms/hash-tables-explained/</guid>
+      <description>A hash table is an unordered collection of key-value pairs, where each key is&amp;nbsp;unique.
+A hash table offers a combination of efficient lookup, insert and delete operations.
+Neither arrays nor linked lists can achieve this:
+ a lookup in an unsorted array takes linear worst-case time; in a sorted array, a lookup using binary search is very fast, but insertions become inefficient; in a linked list an insertion can be efficient, but lookups take linear time.</description>
+    </item>
+    
+    <item>
+      <title>How to avoid initializing memory</title>
+      <link>https://yourbasic.org/algorithms/avoid-initializing-memory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/algorithms/avoid-initializing-memory/</guid>
+      <description>Consider an algorithm that uses a large memory area. If the running time of the algorithm is smaller than the size of the memory, initializing the memory will take longer than running the algorithm. However, using a shrewd trick, it’s possible to refrain from initializing the&amp;nbsp;memory.  The idea is to keep track of which memory positions have been used so far. Using this information, you may postpone the initialization until the first time a memory cell is encountered.</description>
+    </item>
+    
+    <item>
+      <title>How to sort a custom type in Go</title>
+      <link>https://yourbasic.org/golang/sort-custom-type/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/sort-custom-type/</guid>
+      <description> Use the function sort.Slice. It sorts a slice using a provided less(i, j int) bool function. To sort the slice while keeping the original order of equal elements, use sort.SliceStable instead.  family := []struct { Name string Age int }{ {&#34;Alice&#34;, 23}, {&#34;David&#34;, 2}, {&#34;Eve&#34;, 2}, {&#34;Bob&#34;, 25}, } // Sort by age, keeping original order or equal elements. sort.SliceStable(family, func(i, j int) bool { return family[i].Age // [{David 2} {Eve 2} {Alice 23} {Bob 25}] </description>
+    </item>
+    
+    <item>
+      <title>How to sort in Go</title>
+      <link>https://yourbasic.org/golang/how-to-sort-in-go/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/how-to-sort-in-go/</guid>
+      <description>All algorithms in the Go sort package make O(n&amp;nbsp;log&amp;nbsp;n) comparisons in the worst case, where n is the number of elements to be sorted.
+Sort a slice of ints, float64s or strings Use one of the functions
+ sort.Ints sort.Float64s sort.Strings  s := []int{4, 2, 3, 1} sort.Ints(s) fmt.Println(s) // [1 2 3 4] Sort with custom compare function  Use the function sort.Slice. It sorts a slice using a provided less(i, j int) bool function.</description>
+    </item>
+    
+    <item>
+      <title>How to split a string into a slice</title>
+      <link>https://yourbasic.org/golang/split-string-into-slice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/split-string-into-slice/</guid>
+      <description>Split Use the strings.Split function to split a string into its comma separated values.
+s := strings.Split(&amp;quot;a,b,c&amp;quot;, &amp;quot;,&amp;quot;) fmt.Println(s) // Output: [a b c]  To include the separators, use strings.SplitAfter. To split only the first n values, use strings.SplitN and strings.SplitAfterN.
+Fields Use the strings.Fields function to split a string into substrings removing white space.
+s := strings.Fields(&amp;quot; a \t b \n&amp;quot;) fmt.Println(s) // Output: [a b]  In more complicated situations, regular expressions might do the&amp;nbsp;trick.</description>
+    </item>
+    
+    <item>
+      <title>Implement a FIFO queue</title>
+      <link>https://yourbasic.org/golang/implement-fifo-queue/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/implement-fifo-queue/</guid>
+      <description>A simple way to implement a temporary queue in Go is to use a slice:
+ to enqueue you use the built-in append function, and to dequeue you slice off the first element.  var queue []string queue = append(queue, &#34;Hello &#34;) // Enqueue queue = append(queue, &#34;world!&#34;) for len(queue)  0 { fmt.Print(queue[0]) // First element queue = queue[1:] // Dequeue } Hello world! Watch out for memory leaks You may want to remove the first element before dequeuing.</description>
+    </item>
+    
+    <item>
+      <title>Implement a set</title>
+      <link>https://yourbasic.org/golang/implement-set/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/implement-set/</guid>
+      <description>The idiomatic way to implement a set in Go is to use a&amp;nbsp;map.
+set := make(map[string]bool) // New empty set set[&#34;Foo&#34;] = true // Add for k := range set { // Loop fmt.Println(k) } delete(set, &#34;Foo&#34;) // Delete size := len(set) // Size exists := set[&#34;Foo&#34;] // Membership Alternative If the memory used by the booleans is an issue, which seems unlikely, you could replace them with empty&amp;nbsp;structs. In Go, an empty struct typically doesn&amp;rsquo;t require any&amp;nbsp;memory.</description>
+    </item>
+    
+    <item>
+      <title>Implement a stack (LIFO)</title>
+      <link>https://yourbasic.org/golang/implement-stack/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/implement-stack/</guid>
+      <description>The idiomatic way to implement a stack in Go is to use a slice:
+ to push you use the built-in append function, and to pop you slice off the top element.  var stack []string stack = append(stack, &#34;world!&#34;) // Push stack = append(stack, &#34;Hello &#34;) for len(stack)  0 { n := len(stack) - 1 // Top element fmt.Print(stack[n]) stack = stack[:n] // Pop } Hello world! Watch out for memory leaks If the stack is permanent and the elements temporary, you may want to remove the top element before popping the stack.</description>
+    </item>
+    
+    <item>
+      <title>Increment, decrement</title>
+      <link>https://yourbasic.org/golang/gotcha-increment-decrement-statement/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-increment-decrement-statement/</guid>
+      <description>Why doesn&amp;rsquo;t these lines compile?
+i := 0 fmt.Println(++i) fmt.Println(i++) main.go:9:14: syntax error: unexpected ++, expecting expression main.go:10:15: syntax error: unexpected ++, expecting comma or )  Answer
+In Go increment and decrement operations can’t be used as expressions, only as statements. Also, only the postfix notation is&amp;nbsp;allowed.
+The above snippet needs to be written as:
+i := 0 i++ fmt.Println(i) fmt.Println(i) i++  Without pointer arithmetic, the convenience value of pre- and postfix increment operators drops.</description>
+    </item>
+    
+    <item>
+      <title>Index out of range</title>
+      <link>https://yourbasic.org/golang/gotcha-index-out-of-range/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-index-out-of-range/</guid>
+      <description>Why does this program crash?
+a := []int{1, 2, 3} for i := 1; i  panic: runtime error: index out of range goroutine 1 [running]: main.main() ../main.go:3 +0xe0  Answer
+In the last iteration, i equals len(a) which is outside the bounds of&amp;nbsp;a.
+Arrays, slices and strings are indexed starting from zero so the values of a are found at a[0], a[1], a[2], …, a[len(a)-1].
+Loop from 0 to len(a)-1 instead.</description>
+    </item>
+    
+    <item>
+      <title>Inheritance and object-oriented programming</title>
+      <link>https://yourbasic.org/golang/inheritance-object-oriented/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/inheritance-object-oriented/</guid>
+      <description>Go uses interfaces and embedding to support code reuse and polymorphism.
+Inheritance in traditional object-oriented programming offers three features in&amp;nbsp;one. When a&amp;nbsp;Dog inherits from an&amp;nbsp;Animal
+ the Dog class reuses code from the Animal&amp;nbsp;class, a variable x of type Animal can refer to either a Dog or an Animal, x.Eat() will choose an Eat method based on what type of object x refers&amp;nbsp;to.  In object-oriented lingo, these features are known as code reuse, poly&amp;shy;mor&amp;shy;phism and dynamic dispatch.</description>
+    </item>
+    
+    <item>
+      <title>Interfaces</title>
+      <link>https://yourbasic.org/golang/interfaces-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/interfaces-explained/</guid>
+      <description>An interface type is a set of method signatures.
+Basics Structural typing The empty interface Interface values Equality  Basics An interface type consists of a set of method signatures. A variable of interface type can hold any value that implements these methods.
+In this example both Temp and *Point implement the MyStringer interface.
+type MyStringer interface { String() string }  type Temp int func (t Temp) String() string { return strconv.</description>
+    </item>
+    
+    <item>
+      <title>Iteration variable doesn’t see change in range loop</title>
+      <link>https://yourbasic.org/golang/gotcha-range-copy-array/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-range-copy-array/</guid>
+      <description>Why doesn&amp;rsquo;t the iteration variable x notice that a[1] has been updated?
+var a [2]int for _, x := range a { fmt.Println(&#34;x =&#34;, x) a[1] = 8 } fmt.Println(&#34;a =&#34;, a) x = 0 x = 0 &amp;lt;- Why isn&#39;t this 8? a = [0 8] Answer
+The range expression a is evaluated once before beginning the loop and a copy of the array is used to generate the iteration values.</description>
+    </item>
+    
+    <item>
+      <title>Iteration variables and closures</title>
+      <link>https://yourbasic.org/golang/gotcha-data-race-closure/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-data-race-closure/</guid>
+      <description>Why does this program
+func main() { var wg sync.WaitGroup wg.Add(5) for i := 0; i  print
+55555  (A WaitGroup waits for a collection of goroutines to finish.)
+Answer
+There is a data race: the variable i is shared by six&amp;nbsp;(6) goroutines.
+ A data race occurs when two goroutines access the same variable concurrently and at least one of the accesses is a write.
+ To avoid this, use a local variable and pass the number as a parameter when starting the goroutine.</description>
+    </item>
+    
+    <item>
+      <title>Iterator pattern</title>
+      <link>https://yourbasic.org/golang/iterator-generator-pattern/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/iterator-generator-pattern/</guid>
+      <description>Go has built-in range loops for iterating over slices, arrays, strings, maps and channels. See Range loops explained.
+To iterate over other types of data, an iterator function with callbacks is a clean and fairly efficient abstraction.
+Basic iterator pattern // Iterate calls the f function with n = 1, 2, and 3. func Iterate(f func(n int)) { for i := 1; i  In use:
+Iterate(func(n int) { fmt.</description>
+    </item>
+    
+    <item>
+      <title>JSON by example</title>
+      <link>https://yourbasic.org/golang/json-example/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/json-example/</guid>
+      <description>Basic types Struct to JSON Pretty print JSON to struct Arbitrary objects and arrays Files  Basic types The default Go types for coding and encoding JSON are
+ bool for JSON booleans, float64 for JSON numbers, string for JSON strings, and nil for JSON null.  Additionally, time.Time and the numeric types in the math/big package can be automatically coded and encoded as JSON strings.
+Note that JSON doesn&amp;rsquo;t support basic integer types.</description>
+    </item>
+    
+    <item>
+      <title>Last item in slice</title>
+      <link>https://yourbasic.org/golang/last-item-in-slice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/last-item-in-slice/</guid>
+      <description> To read the last element:
+a := []string{&#34;A&#34;, &#34;B&#34;, &#34;C&#34;} s := a[len(a)-1] // C To remove it:
+a = a[:len(a)-1] // [A B] (Go doesn&amp;rsquo;t have negative indexing like Python does.)
+Watch out for memory leaks If the slice is permanent and the element temporary, you may want to remove the reference before removing the element from the slice.
+a[len(a)-1] = &#34;&#34; // Erase element (write zero value) a = a[:len(a)-1] // [A B] </description>
+    </item>
+    
+    <item>
+      <title>Library package template</title>
+      <link>https://yourbasic.org/golang/library-package-example-template/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/library-package-example-template/</guid>
+      <description>The repository at https://github.com/yourbasic/fenwick is a small but complete Go library package. It is intended to be used as a template for larger projects.
+In addition to source code and resources, it includes
+ a README file with section on  installation documentation and roadmap sections  unit tests benchmarks godoc links a testable doc example, and a licence  To install the package:
+go get github.com/yourbasic/fenwick  </description>
+    </item>
+    
+    <item>
+      <title>List files and folders in a directory</title>
+      <link>https://yourbasic.org/golang/list-files-in-directory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/list-files-in-directory/</guid>
+      <description>Use the ioutil.ReadDir function in package io/ioutil. It returns a sorted slice containing elements of type os.FileInfo.
+The code in this example prints a sorted list of all file names in the current directory.
+files, err := ioutil.ReadDir(&#34;.&#34;) if err != nil { log.Fatal(err) } for _, f := range files { fmt.Println(f.Name()) } Example output:
+dev etc tmp usr  </description>
+    </item>
+    
+    <item>
+      <title>Loop invariants</title>
+      <link>https://yourbasic.org/algorithms/loop-invariants-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/algorithms/loop-invariants-explained/</guid>
+      <description>An invariant is a state&amp;shy;ment about the vari&amp;shy;ables in a program, which is true every time the execu&amp;shy;tion of the program reaches the&amp;nbsp;invariant.
+In this text we&amp;rsquo;ll look at loop invariants, invariants placed at the beginning of a loop. They are a simple yet powerful tool to help understand iterative code.
+A well-chosen loop invariant is useful both when designing, testing, and modifying code. It also serves as documentation and can be the foundation of a correctness proof.</description>
+    </item>
+    
+    <item>
+      <title>Make a goroutine block or sleep forever</title>
+      <link>https://yourbasic.org/golang/goroutine-block-sleep-forever/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/goroutine-block-sleep-forever/</guid>
+      <description>An empty select statement blocks forever.
+select {} // block forever </description>
+    </item>
+    
+    <item>
+      <title>Make slices, maps and channels</title>
+      <link>https://yourbasic.org/golang/make-slice-map-channel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/make-slice-map-channel/</guid>
+      <description>Slices, maps and channels can be created with the built-in make function. The memory is initialized with zero&amp;nbsp;values.
+  Call Type Description     make(T, n) slice slice of type T with length&amp;nbsp;n   make(T, n, c)  capacity c   make(T) map map of type&amp;nbsp;T   make(T, n)  initial room for approximately n&amp;nbsp;elements   make(T) channel unbuffered channel of type&amp;nbsp;T   make(T, n)  buffered channel with buffer size&amp;nbsp;n    s := make([]int, 10, 100) // slice with len(s) == 10, cap(s) == 100 m := make(map[string]int, 100) // map with initial room for ~100 elements c := make(chan int, 10) // channel with a buffer size of 10 Slices, arrays and maps can also be created with composite literals.</description>
+    </item>
+    
+    <item>
+      <title>Maps in a nutshell</title>
+      <link>https://yourbasic.org/golang/maps-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/maps-explained/</guid>
+      <description>A map is an unordered collection of key-value pairs, where each key is&amp;nbsp;unique.
+Basics Map literals Size Iteration Implementation  Basics // Create an empty map for string-float64 key-value pairs. m := make(map[string]float64) m[&#34;pi&#34;] = 3.1416 // Add new key-value pair. fmt.Println(m) // &#34;map[pi:3.1416]&#34; v1 := m[&#34;pi&#34;] // v1 == 3.1416 v2 := m[&#34;foo&#34;] // v2 == 0 (zero value) _, exists := m[&#34;pi&#34;] // exists == true _, exists = m[&#34;</description>
+    </item>
+    
+    <item>
+      <title>Maximum value of an int</title>
+      <link>https://yourbasic.org/golang/max-min-int-uint/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/max-min-int-uint/</guid>
+      <description>Go has two predeclared integer types with implementation-specific sizes:
+ a uint has either 32 or 64 bits, an int has the same size as a uint.  This code computes the limit values as untyped constants.
+const BitsPerWord = 32  63) // either 32 or 64 const ( MaxInt = 1// either 1MinInt = -MaxInt - 1 // either -1 MaxUint = 1// either 1) </description>
+    </item>
+    
+    <item>
+      <title>Measure execution time</title>
+      <link>https://yourbasic.org/golang/measure-execution-time/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/measure-execution-time/</guid>
+      <description>Measure a piece of code start := time.Now() // Code to measure duration := time.Since(start) // Formatted string, such as &#34;2h3m0.5s&#34; or &#34;4.503μs&#34; fmt.Println(duration) // Nanoseconds as int64 fmt.Println(duration.Nanoseconds()) Measure a function call You can track the execution time of a complete function call with this one-liner, which logs the result to the standard error stream.
+func foo() { defer duration(track(&#34;foo&#34;)) // Code to measure } func track(msg string) (string, time.</description>
+    </item>
+    
+    <item>
+      <title>Methods</title>
+      <link>https://yourbasic.org/golang/methods-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/methods-explained/</guid>
+      <description>Any type declared in a type definition can have methods attached.
+ A method is a function with a receiver&amp;nbsp;argument. The receiver appears between the func keyword and the method&amp;nbsp;name. You can define methods on any type declared in a type definition.  In this example, the Value method is associated with&amp;nbsp;MyType. The method receiver is called&amp;nbsp;p.
+type MyType struct { n int } func (p *MyType) Value() int { return p.</description>
+    </item>
+    
+    <item>
+      <title>Multiline strings</title>
+      <link>https://yourbasic.org/golang/multiline-string/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/multiline-string/</guid>
+      <description> Raw string literals Raw string literals, delimited by back quotes, can contain line breaks.
+str := `First line Second line` fmt.Println(str) First line Second line Raw strings literals are interpreted literally and backslashes have no special meaning.
+Interpreted string literals To insert escape characters, use interpreted string literals delimited by double quotes.
+str := &#34;\tFirst line\n&#34; + &#34;Second line&#34; fmt.Println(str)  First line Second line </description>
+    </item>
+    
+    <item>
+      <title>Multiple values in single value context</title>
+      <link>https://yourbasic.org/golang/gotcha-multiple-value-sinlge-value-context/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-multiple-value-sinlge-value-context/</guid>
+      <description>Why doesn&amp;rsquo;t this code compile?
+t := time.Parse(time.RFC822, &#34;04 Nov 17 12:54 CET&#34;) fmt.Println(t) ../main.go:1: multiple-value time.Parse() in single-value context  Answer
+The time.Parse function returns two values, a time.Time and an error, and you must use&amp;nbsp;both.
+t, err := time.Parse(time.RFC822, &#34;04 Nov 17 12:54 CET&#34;) if err != nil { // TODO: Handle error. } fmt.Println(t) 2017-11-04 12:54:00 +0000 CET</description>
+    </item>
+    
+    <item>
+      <title>Mutual exclusion lock (mutex)</title>
+      <link>https://yourbasic.org/golang/mutex-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/mutex-explained/</guid>
+      <description>Mutexes let you synchronize data access by explicit locking, without channels.
+Sometimes it’s more convenient to synchronize data access by explicit locking instead of using channels. The Go standard library offers a mutual exclusion lock, sync.Mutex, for this purpose.
+Use with caution For this type of locking to be safe, it&amp;rsquo;s crucial that all accesses to the shared data, both reads and writes, are performed only when a goroutine holds the lock.</description>
+    </item>
+    
+    <item>
+      <title>Named return values</title>
+      <link>https://yourbasic.org/golang/named-return-values-parameters/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/named-return-values-parameters/</guid>
+      <description>In Go return parameters may be named and used as regular variables. When the function returns these variables are implicitly used as return&amp;nbsp;values.
+func f() (i int, s string) { i = 17 s = &#34;abc&#34; return // same as return i, s } Named return parameters are initialized to their zero&amp;nbsp;values.
+The names are not mandatory but can make for good documentation. Correctly used, named return parameters can also help to clarify and clean up the&amp;nbsp;code.</description>
+    </item>
+    
+    <item>
+      <title>Nil is not nil</title>
+      <link>https://yourbasic.org/golang/gotcha-why-nil-error-not-equal-nil/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-why-nil-error-not-equal-nil/</guid>
+      <description>Why is nil not equal to nil in this example?
+func Foo() error { var err *os.PathError = nil // … return err } func main() { err := Foo() fmt.Println(err) // &amp;lt;nil&amp;gt; fmt.Println(err == nil) // false } Answer
+An interface value is equal to nil only if both its value and dynamic type are nil. In the example above, Foo() returns [nil, *os.PathError] and we compare it with [nil, nil].</description>
+    </item>
+    
+    <item>
+      <title>Nil pointer dereference</title>
+      <link>https://yourbasic.org/golang/gotcha-nil-pointer-dereference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-nil-pointer-dereference/</guid>
+      <description>Why does this program panic?
+type Point struct { X, Y float64 } func (p *Point) Abs() float64 { return math.Sqrt(p.X*p.X + p.Y*p.Y) } func main() { var p *Point fmt.Println(p.Abs()) } panic: runtime error: invalid memory address or nil pointer dereference [signal SIGSEGV: segmentation violation code=0xffffffff addr=0x0 pc=0xd2c5a] goroutine 1 [running]: main.(*Point).Abs(...) ../main.go:6 main.main() ../main.go:11 +0x1a  Answer
+The uninitialized pointer p in the main function is nil, and you can&#39;t follow the nil pointer.</description>
+    </item>
+    
+    <item>
+      <title>No JSON in sight</title>
+      <link>https://yourbasic.org/golang/gotcha-json-marshal-empty/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-json-marshal-empty/</guid>
+      <description>Why does json.Marshal produce empty structs in the JSON text output?
+type Person struct { name string age int } p := Person{&#34;Alice&#34;, 22} jsonData, _ := json.Marshal(p) fmt.Println(string(jsonData)) {}  Answer
+Only exported fields of a Go struct will be present in the JSON output.
+type Person struct { Name string // Changed to capital N Age int // Changed to capital A } p := Person{&#34;Alice&#34;, 22} jsonData, _ := json.</description>
+    </item>
+    
+    <item>
+      <title>No end in sight</title>
+      <link>https://yourbasic.org/golang/gotcha-integer-overflow-wrap-around/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-integer-overflow-wrap-around/</guid>
+      <description>Why does this loop run forever?
+var b byte for b = 250; b  Answer
+After the b == 255 iteration, b++ is executed. This overflows (since the maximum value for a byte is 255) and results in b == 0. Therefore b &amp;lt;= 255 still holds and the loop restarts from&amp;nbsp;0.
+  For unsigned integer values, the operations +, -, *, and &amp;lt;&amp;lt; are computed modulo 2n, where n is the bit width of the unsigned integer&#39;s type.</description>
+    </item>
+    
+    <item>
+      <title>Numbers that start with zero</title>
+      <link>https://yourbasic.org/golang/gotcha-octal-decimal-hexadecimal-literal/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-octal-decimal-hexadecimal-literal/</guid>
+      <description>What&amp;rsquo;s going on with the counting in this example?
+const ( Century = 100 Decade = 010 Year = 001 ) // The world&#39;s oldest person, Emma Morano, lived for a century, // two decades and two years. fmt.Println(&#34;She was&#34;, Century+2*Decade+2*Year, &#34;years old.&#34;) She was 118 years old. Answer
+010 is a number in base&amp;nbsp;8, therefore it means&amp;nbsp;8, not&amp;nbsp;10.
+Integer literals in Go are specified in octal, decimal or hexadecimal. The number 16 can be written as 020, 16 or 0x10.</description>
+    </item>
+    
+    <item>
+      <title>Opening brace on separate line</title>
+      <link>https://yourbasic.org/golang/opening-brace-separate-line/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/opening-brace-separate-line/</guid>
+      <description>As you may have noticed, programs with an opening brace on separate line do not compile.
+func main() { fmt.Println(&amp;quot;Hello&amp;quot;) }  ../main.go:1:6: missing function body for &amp;quot;main&amp;quot; ../main.go:2:1: syntax error: unexpected semicolon or newline before {  You must write:
+func main() { fmt.Println(&amp;quot;Hello&amp;quot;) }  This is a trade-off in the design of the Go language.
+ Some have argued that the lexer should do lookahead to permit the brace to live on the next line.</description>
+    </item>
+    
+    <item>
+      <title>Operator precedence</title>
+      <link>https://yourbasic.org/golang/operator-priority/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/operator-priority/</guid>
+      <description>Unary operators Unary operators have the highest precedence and bind the strongest.
+Binary operators   Prio Operators     1 *&amp;nbsp; /&amp;nbsp; %&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;&amp;nbsp; &amp;^   2 +&amp;nbsp; -&amp;nbsp; |&amp;nbsp; ^   3 ==&amp;nbsp; !=&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; =   4 &amp;&amp;   5 ||    Binary operators of the same precedence associate from left to right.
+Statement operators The ++ and -&amp;#8202;- operators form statements and fall outside the operator hierarchy.</description>
+    </item>
+    
+    <item>
+      <title>Operators</title>
+      <link>https://yourbasic.org/golang/operators/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/operators/</guid>
+      <description>Arithmetic Comparison Logical Others  See Operator precedence for evaluation order.
+Arithmetic Operator Name Types -------- ---- ----- + sum integers, floats, complex values, strings - difference integers, floats, complex values * product integers, floats, complex values / quotient integers, floats, complex values % remainder integers &amp;amp; bitwise AND integers | bitwise OR integers ^ bitwise XOR integers &amp;amp;^ bit clear (AND NOT) integers &amp;lt;&amp;lt; left shift integer &amp;lt;&amp;lt; unsigned integer &amp;gt;&amp;gt; right shift integer &amp;gt;&amp;gt; unsigned integer  See Arithmetic operators in the Go language specification for complete definitions of the shift, quotient and remainder operators, integer overflow, and floating point behavior.</description>
+    </item>
+    
+    <item>
+      <title>Optional parameters and method overloading</title>
+      <link>https://yourbasic.org/golang/overload-overwrite-optional-parameter/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/overload-overwrite-optional-parameter/</guid>
+      <description>Go does not have optional parameters, nor does it support method overloading.
+ Method dispatch is simplified if it doesn&amp;rsquo;t need to do type matching as well. Experience with other languages told us that having a variety of methods with the same name but different signatures was occasionally useful but that it could also be confusing and fragile in practice. Matching only by name and requiring consistency in the types was a major simplifying decision in Go&amp;rsquo;s type system.</description>
+    </item>
+    
+    <item>
+      <title>Package documentation</title>
+      <link>https://yourbasic.org/golang/package-documentation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/package-documentation/</guid>
+      <description>The GoDoc website hosts docu&amp;shy;men&amp;shy;tation for all public Go packages on Bitbucket, GitHub, Google Project Hosting and&amp;nbsp;Launchpad.
+Godoc command The godoc command extracts and generates documentation for all locally installed Go programs, both your own code and the standard libraries.
+The following command starts a web server that presents the documentation at http://localhost:6060/.
+$ godoc -http=:6060 &amp;amp;  The documentation is tightly coupled with the code. For example, you can navigate from a function&amp;rsquo;s documentation to its implementation with a single click.</description>
+    </item>
+    
+    <item>
+      <title>Package initialization and program execution order</title>
+      <link>https://yourbasic.org/golang/package-init-function-main-execution-order/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/package-init-function-main-execution-order/</guid>
+      <description>In a nutshell  First the main package is initialized.  Imported packages are initialized before the package itself. Packages are initialized one at a time: first package-level variables are initialized in declaration order, then the init functions are run.  Finally the main function is called.  Program execution Program execution begins by initializing the main package and then calling the function main. When main returns, the program exits.</description>
+    </item>
+    
+    <item>
+      <title>Packages</title>
+      <link>https://yourbasic.org/golang/packages-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/packages-explained/</guid>
+      <description>Every Go program is made up of packages and each package has an&amp;nbsp;import&amp;nbsp;path:
+ &amp;quot;fmt&amp;quot; &amp;quot;math/rand&amp;quot; &amp;quot;github.com/yourbasic/graph&amp;quot;  Packages in the standard library have short import paths, such&amp;nbsp;as &amp;quot;fmt&amp;quot; and &amp;quot;math/rand&amp;quot;. Third-party packages, such as &amp;quot;github.com/yourbasic/graph&amp;quot;, typically have an import path that includes a hosting service (github.com) and an organization name (yourbasic).
+By convention, the package name is the same as the last element of the import path:</description>
+    </item>
+    
+    <item>
+      <title>Panic</title>
+      <link>https://yourbasic.org/golang/panic-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/panic-explained/</guid>
+      <description>Panics are similar to C++ and Java exceptions, but are only intended for run-time errors, such as following a nil pointer or attempting to index an array out of bounds. To signify events such as end-of-file, Go programs use the built-in error type. See Errors for more on&amp;nbsp;errors.
+A panic stops the normal execution of a goroutine. When a program panics, it immediately starts to unwind the call stack. This continues until the program crashes, or until the built-in recover function is&amp;nbsp;called.</description>
+    </item>
+    
+    <item>
+      <title>Pass a slice to a variadic function</title>
+      <link>https://yourbasic.org/golang/pass-slice-to-variadic-function/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/pass-slice-to-variadic-function/</guid>
+      <description>You can pass a slice s directly to a variadic funtion using the s... notation.
+func main() { primes := []int{2, 3, 5, 7} fmt.Println(Sum(primes...)) // 17 } func Sum(nums ...int) int { res := 0 for _, n := range nums { res += n } return res } </description>
+    </item>
+    
+    <item>
+      <title>Percent sign in fmt format</title>
+      <link>https://yourbasic.org/golang/fmt-printf-percent-sign/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/fmt-printf-percent-sign/</guid>
+      <description>Use the special verb %%, which consumes no argument, to write a literal percent sign.
+fmt.Printf(&#34;%d %%&#34;, 50) // &#34;50 %&#34; </description>
+    </item>
+    
+    <item>
+      <title>Pointer vs. value receiver</title>
+      <link>https://yourbasic.org/golang/pointer-vs-value-receiver/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/pointer-vs-value-receiver/</guid>
+      <description>Basics  For a given type, don&amp;rsquo;t mix value and pointer receivers. If in doubt, use pointer receivers (they are safe and extendable).  Pointer receivers You must use pointer receivers
+ if any method needs to mutate the receiver, for structs that contain a sync.Mutex or similar synchronizing field (they musn&amp;rsquo;t be copied).  You probably want to use pointer receivers
+ for large structs or arrays (it can be more efficient), in all other cases.</description>
+    </item>
+    
+    <item>
+      <title>Pointers</title>
+      <link>https://yourbasic.org/golang/pointers-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/pointers-explained/</guid>
+      <description>A pointer is a vari&amp;shy;able that con&amp;shy;tains the address of an&amp;nbsp;object.
+Basics Address operator Pointer indirection Pointers as parameters  Basics Structs and arrays are copied when used in assignments and passed as arguments to functions. With pointers this can be&amp;nbsp;avoided.
+Pointers store addresses of objects. The addresses can be passed around more efficiently than the actual&amp;nbsp;objects.
+A pointer has type *T. The keyword new allocates a new object and returns its&amp;nbsp;address.</description>
+    </item>
+    
+    <item>
+      <title>Public vs. private</title>
+      <link>https://yourbasic.org/golang/public-private/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/public-private/</guid>
+      <description>A package is the smallest unit of private encap&amp;shy;sulation in&amp;nbsp;Go.
+ All identifiers defined within a package are visible throughout that package. When importing a package you can access only its exported identifiers. An identifier is exported if it begins with a capital letter.  Exported and unexported identifiers are used to describe the public interface of a package and to guard against certain programming errors.
+Warning: Unexported identifiers is not a security measure and it does not hide or protect any information.</description>
+    </item>
+    
+    <item>
+      <title>Random number generator seed</title>
+      <link>https://yourbasic.org/algorithms/random-number-generator-seed/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/algorithms/random-number-generator-seed/</guid>
+      <description>In reality a pseudo&amp;shy;random number generator isn&#39;t random at all. It&#39;s computed using a fixed determi&amp;shy;nistic algorithm.
+The seed is a starting point for a sequence of pseudorandom numbers. If you start from the same seed, you get the very same sequence. This can be quite useful for&amp;nbsp;debugging.
+If you want a different sequence of numbers each time, you can use the current time as a&amp;nbsp;seed.
+Example This generator produces a sequence of 97 different numbers, then it starts over again.</description>
+    </item>
+    
+    <item>
+      <title>Range loops (for-each loops)</title>
+      <link>https://yourbasic.org/golang/for-loop-range-array-slice-map-channel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/for-loop-range-array-slice-map-channel/</guid>
+      <description>Range statements iterate over slices, arrays, strings, maps or&amp;nbsp;channels.
+Basics Strings Maps Channels  Basics a := []string{&#34;Foo&#34;, &#34;Bar&#34;} for i, s := range a { fmt.Println(i, s) } 0 Foo 1 Bar   The range expression, a, is evaluated once before beginning the loop. The iteration values are assigned to the respective iteration variables, i and s, as in an assignment statement. The second iteration variable is optional.</description>
+    </item>
+    
+    <item>
+      <title>Read a file line by line</title>
+      <link>https://yourbasic.org/golang/read-file-line-by-line/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/read-file-line-by-line/</guid>
+      <description>file, err := os.Open(&#34;file.txt&#34;) if err != nil { log.Fatal(err) } defer file.Close() scanner := bufio.NewScanner(file) for scanner.Scan() { fmt.Println(scanner.Text()) } if err := scanner.Err(); err != nil { log.Fatal(err) }  For more advanced scanning, see the examples in the bufio.Scanner documentation.</description>
+    </item>
+    
+    <item>
+      <title>Read a whole file into a string (byte slice)</title>
+      <link>https://yourbasic.org/golang/read-file-to-string/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/read-file-to-string/</guid>
+      <description>Use ioutil.ReadFile in package io/ioutil to read a whole file into a byte slice.
+b, err := ioutil.ReadFile(&#34;file.txt&#34;) // b has type []byte if err != nil { log.Fatal(err) } s := string(b) </description>
+    </item>
+    
+    <item>
+      <title>Read from stdin</title>
+      <link>https://yourbasic.org/golang/read-stdin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/read-stdin/</guid>
+      <description>Use a bufio.Scanner to read one line at a time from the standard input&amp;nbsp;stream.
+scanner := bufio.NewScanner(os.Stdin) for scanner.Scan() { fmt.Println(scanner.Text()) } if err := scanner.Err(); err != nil { log.Println(err) }  </description>
+    </item>
+    
+    <item>
+      <title>Recover from a panic</title>
+      <link>https://yourbasic.org/golang/recover-from-panic/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/recover-from-panic/</guid>
+      <description>The built-in recover function can be used to regain control of a panicking goroutine and resume normal execution.
+ A call to recover stops the unwinding and returns the argument passed to&amp;nbsp;panic. If the goroutine is not panicking, recover returns&amp;nbsp;nil.  Because the only code that runs while unwinding is inside deferred functions, recover is only useful inside deferred functions.
+Example func main() { n := foo() fmt.Println(&amp;quot;main received&amp;quot;, n) } func foo() int { defer func() { if err := recover(); err !</description>
+    </item>
+    
+    <item>
+      <title>Redeclaring variables</title>
+      <link>https://yourbasic.org/golang/redeclaring-variables/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/redeclaring-variables/</guid>
+      <description>You can&amp;rsquo;t redeclare a variable which has already been declared in the same block.
+func main() { m := 0 m := 1 fmt.Println(m) }  ../main.go:3:4: no new variables on left side of :=  However, variables can be redeclared in short multi-variable declarations where at least one new variable is introduced.
+func main() { m := 0 m, n := 1, 2 fmt.Println(m, n) }   Unlike regular variable declarations, a short variable declaration may redeclare variables provided they were originally declared earlier in the same block (or the parameter lists if the block is the function body) with the same type, and at least one of the non-blank variables is new.</description>
+    </item>
+    
+    <item>
+      <title>Regular expressions</title>
+      <link>https://yourbasic.org/golang/regexp-cheat-sheet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/regexp-cheat-sheet/</guid>
+      <description>Basics Compile Raw strings   Cheat sheet Choice and grouping Repetition Character classes Special characters Text boundary anchors     Code examples First match Location All matches Replace Split   Implementation     Basics The regular expression a.b matches any string that starts with an&amp;nbsp;a, ends with a&amp;nbsp;b, and has a single character in between (the period matches any character).
+To check if there is a substring matching a.</description>
+    </item>
+    
+    <item>
+      <title>Remove duplicate whitespace</title>
+      <link>https://yourbasic.org/golang/remove-duplicate-whitespace/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/remove-duplicate-whitespace/</guid>
+      <description>space := regexp.MustCompile(`\s+`) s := space.ReplaceAllString(&#34;Hello \t \n world!&#34;, &#34; &#34;) fmt.Printf(&#34;%q&#34;, s) // &#34;Hello world!&#34; \s+ is a regular expression:
+ the character class \s matches a space, tab, new line, carriage return or form feed, and + says “one or more of those”.  In other words, the code will replace all whitespace substrings with a single space&amp;nbsp;character.</description>
+    </item>
+    
+    <item>
+      <title>Repeat string</title>
+      <link>https://yourbasic.org/golang/repeat-multiply-string/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/repeat-multiply-string/</guid>
+      <description>s := strings.Repeat(&#34;da&#34;, 2) // &#34;dada&#34; This corresponds to the string multiplication &amp;quot;da&amp;quot;*2 in Python.</description>
+    </item>
+    
+    <item>
+      <title>Replace all substrings matching a regexp</title>
+      <link>https://yourbasic.org/golang/regexp-replace-string/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/regexp-replace-string/</guid>
+      <description>Use the ReplaceAllString method to replace the text of all matches. It returns a copy, replacing all matches of the regexp with a replacement string.
+re := regexp.MustCompile(`ab*`) fmt.Printf(&#34;%q\n&#34;, re.ReplaceAllString(&#34;-a-abb-&#34;, &#34;T&#34;)) // &#34;-T-T-&#34; </description>
+    </item>
+    
+    <item>
+      <title>Reverse a UTF-8 encoded string</title>
+      <link>https://yourbasic.org/golang/reverse-utf8-string/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/reverse-utf8-string/</guid>
+      <description>This function returns a string with the UTF-8 encoded characters of s in reverse order. Invalid UTF-8 sequences, if any, will be reversed byte by byte.
+func ReverseUTF8(s string) string { res := make([]byte, len(s)) prevPos, resPos := 0, len(s) for pos := range s { resPos -= pos - prevPos copy(res[resPos:], s[prevPos:pos]) prevPos = pos } copy(res[0:], s[prevPos:]) return string(res) } Example usage:
+for _, s := range []string{ &amp;quot;Ångström&amp;quot;, &amp;quot;Hello, 世界&amp;quot;, &amp;quot;\xff\xfe\xfd&amp;quot;, // invalid UTF-8 } { fmt.</description>
+    </item>
+    
+    <item>
+      <title>Round float to 2 decimal places</title>
+      <link>https://yourbasic.org/golang/round-float-2-decimal-places/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/round-float-2-decimal-places/</guid>
+      <description>String To display the value as a string, use the fmt.Sprintf method.
+s := fmt.Sprintf(&#34;%.2f&#34;, 12.3456) // s == &#34;12.35&#34;  The fmt cheat sheet lists the most common formatting verbs and flags.
+Float To round to a floating-point value, use one of these techniques.
+x := 12.3456 fmt.Println(math.Floor(x*100)/100) // 12.34 (round down) fmt.Println(math.Round(x*100)/100) // 12.35 (round to nearest) fmt.Println(math.Ceil(x*100)/100) // 12.35 (round up)  Due to the quirks of floating point representation, these rounded values may be slightly&amp;nbsp;off.</description>
+    </item>
+    
+    <item>
+      <title>Round float to integer value</title>
+      <link>https://yourbasic.org/golang/round-float-to-int/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/round-float-to-int/</guid>
+      <description>Round away from zero Round to even number Convert to an int type Before Go 1.10  Round away from zeroGo&amp;nbsp;1.10 Use math.Round to return the nearest integer, as a float64, rounding ties away from&amp;nbsp;zero.
+fmt.Println(math.Round(-0.6)) // -1 fmt.Println(math.Round(-0.4)) // -0 fmt.Println(math.Round(0.4)) // 0 fmt.Println(math.Round(0.6)) // 1  Note the special cases.
+Round(±0) = ±0 Round(±Inf) = ±Inf Round(NaN) = NaN  Round to even numberGo&amp;nbsp;1.10 Use math.RoundToEven to return the nearest integer, as a float64, rounding ties to an even&amp;nbsp;number.</description>
+    </item>
+    
+    <item>
+      <title>Same name</title>
+      <link>https://yourbasic.org/golang/gotcha-shadowing-variables/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-shadowing-variables/</guid>
+      <description>Why doesn&amp;rsquo;t n change?
+func main() { n := 0 if true { n := 1 n++ } fmt.Println(n) // 0 } Answer
+The statement n := 1 declares a new variable which shadows the original n throughout the scope of the if&amp;nbsp;statement.
+To reuse n from the outer block, write n = 1 instead.
+func main() { n := 0 if true { n = 1 n++ } fmt.Println(n) // 2 } Detecting shadowed variables To help detect shadowed variables, you may use the experimental -shadow feature provided by the vet tool.</description>
+    </item>
+    
+    <item>
+      <title>Select</title>
+      <link>https://yourbasic.org/golang/select-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/select-explained/</guid>
+      <description>The select statement waits for multiple send or receive opera&amp;shy;tions simul&amp;shy;taneously.
+// blocks until there&#39;s data available on ch1 or ch2 select { case   The statement blocks as a whole until one of the operations becomes unblocked. If several cases can proceed, a single one of them will be chosen at random.  Send and receive operations on a nil channel block forever. This can be used to disable a channel in a select statement:</description>
+    </item>
+    
+    <item>
+      <title>Shuffle slice or array</title>
+      <link>https://yourbasic.org/golang/shuffle-slice-array/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/shuffle-slice-array/</guid>
+      <description>The rand.Shuffle function in package math/rand shuffles an input sequence using a given swap function.
+a := []int{1, 2, 3, 4, 5, 6, 7, 8} rand.Seed(time.Now().UnixNano()) rand.Shuffle(len(a), func(i, j int) { a[i], a[j] = a[j], a[i] })  [5 8 6 4 3 7 2 1]  Without the call to rand.Seed, a program will produce the same sequence of pseudo-random numbers for each execution.
+Before Go 1.10 Use the rand.</description>
+    </item>
+    
+    <item>
+      <title>Slices in a nutshell</title>
+      <link>https://yourbasic.org/golang/slices-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/slices-explained/</guid>
+      <description>A slice does not store any data, it just describes a section of an underlying&amp;nbsp;array.
+Fundamentals Create slices Length and capacity Reslice and extend Append  Fundamentals A slice describes a section of an underlying array. When you change an element of a slice, you modify the corresponding element of its underlying array, and other slices that share the same underlying array will see the change.
+In particular, passing a slice as argument to a method does not cause the data to be copied (as&amp;nbsp;with&amp;nbsp;arrays).</description>
+    </item>
+    
+    <item>
+      <title>Sort a map by key or value</title>
+      <link>https://yourbasic.org/golang/sort-map-keys-values/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/sort-map-keys-values/</guid>
+      <description>A map is an unordered collection of key-value pairs. If you need a stable iteration order, you must maintain a separate data structure.  This example uses a sorted slice of keys to print a map[string]int in key order.
+m := map[string]int{&amp;quot;Alice&amp;quot;: 23, &amp;quot;Eve&amp;quot;: 2, &amp;quot;Bob&amp;quot;: 25} keys := make([]string, 0, len(m)) for k := range m { keys = append(keys, k) } sort.Strings(keys) for _, k := range keys { fmt.</description>
+    </item>
+    
+    <item>
+      <title>Split a string using regexp delimiter</title>
+      <link>https://yourbasic.org/golang/regexp-split-string/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/regexp-split-string/</guid>
+      <description>Use the Split method to slice a string into substrings separated by the regexp. It returns a slice of the substrings between those expression matches. A return value of nil indicates no match.
+The method takes an integer argument n; if n &amp;gt;= 0, the function returns at most n matches.
+a := regexp.MustCompile(`a`) fmt.Printf(&#34;%q\n&#34;, a.Split(&#34;banana&#34;, -1)) // [&#34;b&#34; &#34;n&#34; &#34;n&#34; &#34;&#34;] fmt.Printf(&#34;%q\n&#34;, a.Split(&#34;banana&#34;, 0)) // [] (nil slice) fmt.Printf(&#34;%q\n&#34;, a.</description>
+    </item>
+    
+    <item>
+      <title>Stack traces</title>
+      <link>https://yourbasic.org/golang/stack-trace/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/stack-trace/</guid>
+      <description>A stack trace is a list of active function calls at a certain point in time.
+Stack traces are typically printed to the console when unexpected error occurs. They can be very useful for&amp;nbsp;debugging: - not only do you see where the error happened, - but also how the program arrived in this place.
+Example goroutine 11 [running]: testing.tRunner.func1(0xc420092690) /usr/local/go/src/testing/testing.go:711 +0x2d2 panic(0x53f820, 0x594da0) /usr/local/go/src/runtime/panic.go:491 +0x283 github.com/yourbasic/bit.(*Set).Max(0xc42000a940, 0x0) ../src/github.com/bit/set_math_bits.go:137 +0x89 github.</description>
+    </item>
+    
+    <item>
+      <title>Stop a goroutine</title>
+      <link>https://yourbasic.org/golang/stop-goroutine/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/stop-goroutine/</guid>
+      <description>One&amp;nbsp;goroutine can&#39;t forcibly stop another &amp;ndash; a&amp;nbsp;gorou&amp;shy;tine can stop only by returning from it&#39;s top level function.
+To make a goroutine stoppable, let it listen to a stop signal on a channel.
+quit := make(chan struct{}) go func() { for { select { case // … } } }() // … close(quit) Sometimes it&amp;rsquo;s convenient to use a single channel for both data and signalling.
+// Generator returns a channel that produces the numbers 1, 2, 3,… // To stop the underlying goroutine, close the channel.</description>
+    </item>
+    
+    <item>
+      <title>String comparison</title>
+      <link>https://yourbasic.org/golang/compare-strings/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/compare-strings/</guid>
+      <description>Use == or != to check if two strings are equal.
+if &#34;Foo&#34; == &#34;Bar&#34; { fmt.Println(&#34;Foo and Bar are equal.&#34;) } else { fmt.Println(&#34;Foo and Bar are not equal.&#34;) } // Output: Foo and Bar are not equal. Use &amp;lt;, &amp;gt;, &amp;lt;= or &amp;gt;= to determine lexical order.
+if &#34;Foo&#34; &amp;lt; &#34;Bar&#34; { fmt.Println(&#34;Foo comes before Bar.&#34;) } else { fmt.Println(&#34;Foo does not come before Bar.&#34;) } // Output: Foo does not come before Bar.</description>
+    </item>
+    
+    <item>
+      <title>String handling cheat sheet</title>
+      <link>https://yourbasic.org/golang/string-functions-reference-cheat-sheet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/string-functions-reference-cheat-sheet/</guid>
+      <description>String literals Basic string handling Find Replace Split and join Convert  String literals   Expression Result Note     &#34;&#34;  Empty string, zero value for string   &#34;Japan 日本&#34; Japan 日本 Go code is Unicode text encoded in UTF‑8   &#34;\xe6\x97\xa5&#34; 日 \xNN specifies a byte   &#34;\u65E5&#34; 日 \uNNNN specifies a Unicode value   `\xe6` \xe6 Raw string literal*    &amp;#42; In `` string literals, characters are interpreted literally: backslashes have no special meaning and the string may contain newlines.</description>
+    </item>
+    
+    <item>
+      <title>String won’t change</title>
+      <link>https://yourbasic.org/golang/gotcha-strings-are-immutable/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-strings-are-immutable/</guid>
+      <description>Why doesn&amp;rsquo;t this code compile?
+s := &#34;hello&#34; s[0] = &#39;H&#39; fmt.Println(s) ../main.go:3:7: cannot assign to s[0]  Answer
+Go strings are immutable and behave like read-only byte slices (with a few extra properties).
+To update the data, use a rune slice instead.
+buf := []rune(&#34;hello&#34;) buf[0] = &#39;H&#39; s := string(buf) fmt.Println(s) // &#34;Hello&#34;  If the string only contains ASCII characters, you could also use a byte&amp;nbsp;slice.
+See String handling cheat sheet for an overview of strings in&amp;nbsp;Go.</description>
+    </item>
+    
+    <item>
+      <title>Structs</title>
+      <link>https://yourbasic.org/golang/structs-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/structs-explained/</guid>
+      <description>A struct is a typed collection of fields, useful for grouping data into records.
+type Student struct { Name string Age int } var a Student // a == Student{&#34;&#34;, 0} a.Name = &#34;Alice&#34; // a == Student{&#34;Alice&#34;, 0} var pa *Student // pa == nil pa = new(Student) // pa == &amp;Student{&#34;&#34;, 0} pa.Name = &#34;Alice&#34; // pa == &amp;Student{&#34;Alice&#34;, 0} b := Student{ // b == Student{&#34;Bob&#34;, 0} Name: &#34;</description>
+    </item>
+    
+    <item>
+      <title>Switch statement</title>
+      <link>https://yourbasic.org/golang/switch-statement/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/switch-statement/</guid>
+      <description>A switch statement is a shorter way to write a sequence of if-else statements.
+Basics No condition Case lists Fall through Exit a switch Execution order  Basics switch time.Now().Weekday() { case time.Saturday: fmt.Println(&#34;Today is Saturday.&#34;) case time.Sunday: fmt.Println(&#34;Today is Sunday.&#34;) default: fmt.Println(&#34;Today is a weekday.&#34;) }  A switch statement runs the first case equal to the condition expression. The cases are evaluated from top to bottom, stopping when a case succeeds.</description>
+    </item>
+    
+    <item>
+      <title>Table-driven unit tests</title>
+      <link>https://yourbasic.org/golang/table-driven-unit-test/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/table-driven-unit-test/</guid>
+      <description>Here is the code we want to&amp;nbsp;test.
+package search // Find returns the smallest index i at which x // binary search i, j := 0, len(a) for i // i ≤ m if x  a[m] { i = m + 1 } else { j = m } } return i }  Put the test code in a file whose name ends with _test.go. Write a function TestXXX with a single argument of type *testing.</description>
+    </item>
+    
+    <item>
+      <title>The empty interface</title>
+      <link>https://yourbasic.org/golang/empty-interface/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/empty-interface/</guid>
+      <description>The empty interface in Go corresponds to a void pointer in&amp;nbsp;C or an Object reference in&amp;nbsp;Java. It specifies zero&amp;nbsp;methods.
+interface{}  A variable of empty interface type can hold values of any type since every type implements at least&amp;nbsp;zero methods.
+var a interface{} a = 24 fmt.Printf(&amp;quot;[%v, %T]\n&amp;quot;, a, a) // &amp;quot;[24, int]&amp;quot; a = &amp;amp;Point{1, 2} fmt.Printf(&amp;quot;[%v, %T]\n&amp;quot;, a, a) // &amp;quot;[(1,2), *main.Point]&amp;quot;  The fmt.Println function is a chief example from the standard library.</description>
+    </item>
+    
+    <item>
+      <title>The fastest sorting algorithm?</title>
+      <link>https://yourbasic.org/algorithms/fastest-sorting-algorithm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/algorithms/fastest-sorting-algorithm/</guid>
+      <description>Which sorting algorithm is the fastest? Ask this question to any group of programmers and you’ll get an animated discussion. Of course, there is no one answer. It depends not only on the algorithm, but also on the computer, data, and implementation. However, if you count the number of operations needed to sort integer numbers on a standard von Neumann computer, there is a clear winner – the algorithm presented in the paper “Sorting In Linear Time?</description>
+    </item>
+    
+    <item>
+      <title>The io.Reader interface</title>
+      <link>https://yourbasic.org/golang/io-reader-interface-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/io-reader-interface-explained/</guid>
+      <description>The io.Reader interface represents an entity from which you can read a stream of bytes.
+type Reader interface { Read(buf []byte) (n int, err error) }  Read reads up to len(buf) bytes into buf and returns the number of bytes read &amp;ndash; it returns an io.EOF error when the stream ends.
+Example The standard library provides numerous Reader implementations (including in-memory byte buffers, files and network connections), and Readers are accepted as input by many utilities (including the HTTP client and server implementations).</description>
+    </item>
+    
+    <item>
+      <title>The io.Writer interface</title>
+      <link>https://yourbasic.org/golang/io-writer-interface-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/io-writer-interface-explained/</guid>
+      <description>The io.Writer interface represents an entity to which you can write a stream of&amp;nbsp;bytes.
+type Writer interface { Write(p []byte) (n int, err error) }  Write writes up to len(p) bytes from p to the underlying data stream &amp;ndash; it returns the number of bytes written and any error encountered that caused the write to stop&amp;nbsp;early.
+Example The standard library provides many Writer implementations, and Writers are accepted as input by many utilities.</description>
+    </item>
+    
+    <item>
+      <title>Three dots (ellipsis) notation</title>
+      <link>https://yourbasic.org/golang/three-dots-ellipsis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/three-dots-ellipsis/</guid>
+      <description>Three dots are used in four different places in&amp;nbsp;Go.
+Variadic function parameters If the last parameter of a function has type ...T, it can be called with any number of trailing arguments of type&amp;nbsp;T. The actual type of ...T inside the function is&amp;nbsp;[]T.
+This example function can be called with, for instance, Sum(1, 2, 3) or&amp;nbsp;Sum().
+func Sum(nums ...int) int { res := 0 for _, n := range nums { res += n } return res } Arguments to variadic functions You can pass a slice s directly to a variadic funtion if you unpack it with the s.</description>
+    </item>
+    
+    <item>
+      <title>Time complexity</title>
+      <link>https://yourbasic.org/algorithms/time-complexity-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/algorithms/time-complexity-explained/</guid>
+      <description>Time complexity esti&amp;shy;mates the time to run an algo&amp;shy;rithm. It&#39;s calcu&amp;shy;lated by counting elemen&amp;shy;tary opera&amp;shy;tions. Example Worst-case time Average-case time Linear vs. quadratic time  Example What&amp;rsquo;s the running time of the following algorithm?
+ // Compute the maximum element in the array a. Algorithm max(a): max ← a[0] for i = 1 to len(a)-1 if a[i] &amp;gt; max max ← a[i] return max  The answer depends on factors such as input, programming language and runtime, coding skill, compiler, operating system, and hardware.</description>
+    </item>
+    
+    <item>
+      <title>Time is not a number</title>
+      <link>https://yourbasic.org/golang/gotcha-multiply-duration-integer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-multiply-duration-integer/</guid>
+      <description>Why doesn&amp;rsquo;t this compile?
+n := 100 time.Sleep(n * time.Millisecond) invalid operation: n * time.Millisecond (mismatched types int and time.Duration)  Answer
+There is no mixing of numeric types in Go. You can only multiply a time.Duration with
+ another time.Duration, or an untyped integer constant.  Here are three correct examples.
+var n time.Duration = 100 time.Sleep(n * time.Millisecond)  const n = 100 time.Sleep(n * time.Millisecond)  time.Sleep(100 * time.</description>
+    </item>
+    
+    <item>
+      <title>Time zones</title>
+      <link>https://yourbasic.org/golang/time-change-convert-location-timezone/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/time-change-convert-location-timezone/</guid>
+      <description>Each Time has an associated Location, which is used for display purposes.
+The method In returns a time with a specific location. Changing the location in this way changes only the presentation; it does not change the instant in time.
+Here is a convenience function that changes the location associated with a&amp;nbsp;time.
+// TimeIn returns the time in UTC if the name is &#34;&#34; or &#34;UTC&#34;. // It returns the local time if the name is &#34;</description>
+    </item>
+    
+    <item>
+      <title>Timer and Ticker</title>
+      <link>https://yourbasic.org/golang/time-reset-wait-stop-timeout-cancel-interval/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/time-reset-wait-stop-timeout-cancel-interval/</guid>
+      <description>Timers and Tickers let you execute code in the future, once or repeatedly.
+Timeout (Timer) time.After waits for a specified duration and then sends the current time on the returned channel:
+select { case news := &amp;lt;-AFP: fmt.Println(news) case &amp;lt;-time.After(time.Hour): fmt.Println(&amp;quot;No news in an hour.&amp;quot;) }  The underlying time.Timer will not be recovered by the garbage collector until the timer fires. If this is a concern, use time.NewTimer instead and call its Stop method when the timer is no longer needed:</description>
+    </item>
+    
+    <item>
+      <title>Top 3 Quicksort optimizations</title>
+      <link>https://yourbasic.org/golang/quicksort-optimizations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/quicksort-optimizations/</guid>
+      <description>Most Quicksort optimi&amp;shy;zations give only small improve&amp;shy;ments. Here&amp;nbsp;are the ones that make a&amp;nbsp;real differ&amp;shy;ence.
+ Choose a good pivot. Use 3-way partitioning. Switch to a simpler algorithm for short sublists.  Algorithm overview  Pick an element p, called a pivot, from the list. Partition the list so that  all elements less than p come first, all elements greater than p come last, elements equal to p go into the middle.</description>
+    </item>
+    
+    <item>
+      <title>Trim leading and trailing whitespace</title>
+      <link>https://yourbasic.org/golang/trim-whitespace-from-string/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/trim-whitespace-from-string/</guid>
+      <description>Use the strings.TrimSpace function to remove leading and trailing whitespace as defined by&amp;nbsp;Unicode.
+s := strings.TrimSpace(&#34;\t Hello world!\n &#34;) fmt.Printf(&#34;%q&#34;, s) // &#34;Hello world!&#34; To remove other leading and trailing characters, use strings.Trim. To remove only the leading or the trailing characters, use strings.TrimLeft or strings.TrimRight.</description>
+    </item>
+    
+    <item>
+      <title>Type alias</title>
+      <link>https://yourbasic.org/golang/type-alias/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/type-alias/</guid>
+      <description>An alias declaration has the form
+type T1 = T2 as opposed to a standard type definition
+type T1 T2  An alias declaration doesn&amp;rsquo;t create a new distinct type different from the type it&amp;rsquo;s created from. It just introduces an alias name T1, an alternate spelling, for the type denoted by&amp;nbsp;T2.
+Type aliases are not meant for everyday use. They were introduced to support gradual code repair while movin a type between packages during large-scale refactoring.</description>
+    </item>
+    
+    <item>
+      <title>Type assertions and type switches</title>
+      <link>https://yourbasic.org/golang/type-assertion-switch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/type-assertion-switch/</guid>
+      <description>A type assertion provides access to an interface&amp;rsquo;s concrete value.
+The type assertion x.(T) asserts that the concrete value stored in&amp;nbsp;x is of type&amp;nbsp;T, and that x is&amp;nbsp;not&amp;nbsp;nil.
+ If T is not an interface, it asserts that the dynamic type of&amp;nbsp;x is identical to&amp;nbsp;T. If T is an interface, it asserts that the dynamic type of&amp;nbsp;x implements&amp;nbsp;T.  var x interface{} = &#34;foo&#34; var s string = x.(string) fmt.Println(s) // &#34;</description>
+    </item>
+    
+    <item>
+      <title>Type rune</title>
+      <link>https://yourbasic.org/golang/rune/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/rune/</guid>
+      <description>A rune is a type meant to represent a Unicode code point.
+The rune type is an alias for int32, and is used to emphasize than an integer represents a code&amp;nbsp;point.
+ ASCII defines 128 characters, identified by the code points 0–127. It covers English letters, Latin numbers, and a few other characters. Unicode, which is a superset of ASCII, defines a codespace of 1,114,112 code points. Unicode version 10.</description>
+    </item>
+    
+    <item>
+      <title>Unexpected newline</title>
+      <link>https://yourbasic.org/golang/gotcha-missing-comma-slice-array-map-literal/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-missing-comma-slice-array-map-literal/</guid>
+      <description>Why doesn&amp;rsquo;t this program compile?
+func main() { fruit := []string{ &#34;apple&#34;, &#34;banana&#34;, &#34;cherry&#34; } fmt.Println(fruit) } ../main.go:5:11: syntax error: unexpected newline, expecting comma or }  Answer
+In a multi-line slice, array or map literal, every line must end with a comma.
+func main() { fruit := []string{ &#34;apple&#34;, &#34;banana&#34;, &#34;cherry&#34;, // comma added } fmt.Println(fruit) // &#34;[apple banana cherry]&#34; } This behavior is a consequence of the Go semicolon insertion rules.</description>
+    </item>
+    
+    <item>
+      <title>Unexpected values in range loop</title>
+      <link>https://yourbasic.org/golang/gotcha-unexpected-values-range/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-unexpected-values-range/</guid>
+      <description>Why does this code
+primes := []int{2, 3, 5, 7} for p := range primes { fmt.Println(p) } print
+0 1 2 3  Answer
+For arrays and slices, the range loop generates two values:
+  first the index,  then the data at this position.  If you omit the second value, you get only the indices.
+To print the data, use the second value instead:
+primes := []int{2, 3, 5, 7} for _, p := range primes { fmt.</description>
+    </item>
+    
+    <item>
+      <title>Untyped numeric constants with no limits</title>
+      <link>https://yourbasic.org/golang/untyped-constants/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/untyped-constants/</guid>
+      <description>Constants may be typed or untyped.
+const a uint = 17 const b = 55  An untyped constant has no limits. When it&amp;rsquo;s used in a context that requires a type, a type will be inferred and a limit applied.
+const big = 10000000000 // Ok, even thought it&#39;s too big for an int. const bigger = big * 100 // Still ok. var i int = big / 100 // No problem: the new result fits in an int.</description>
+    </item>
+    
+    <item>
+      <title>Unused imports</title>
+      <link>https://yourbasic.org/golang/unused-imports/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/unused-imports/</guid>
+      <description>As you may have noticed, programs with unused imports do not compile.
+package main import ( &#34;fmt&#34; &#34;log&#34; // &#34;imported and not used: log&#34; ) func main() { fmt.Println(&#34;Hello&#34;) } ../main.go:5:2: imported and not used: &amp;quot;log&amp;quot;  This is a deliberate feature of the Go language.
+ The presence of an unused variable may indicate a bug [&amp;hellip;] Go refuses to compile programs with unused variables or imports, trading short-term convenience for long-term build speed and program clarity.</description>
+    </item>
+    
+    <item>
+      <title>Unused local variables</title>
+      <link>https://yourbasic.org/golang/unused-local-variables/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/unused-local-variables/</guid>
+      <description>As you may have noticed, programs with unused local variables do not compile. func main() { var n int // &amp;ldquo;n declared and not used&amp;rdquo; n = 5 // this doesn&amp;rsquo;t help }
+../main.go:2:6: n declared and not used  This is a deliberate feature of the Go language.
+ The presence of an unused variable may indicate a bug [&amp;hellip;] Go refuses to compile programs with unused variables or imports, trading short-term convenience for long-term build speed and program clarity.</description>
+    </item>
+    
+    <item>
+      <title>Variable declaration outside of function body</title>
+      <link>https://yourbasic.org/golang/short-variable-declaration-outside-function/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/short-variable-declaration-outside-function/</guid>
+      <description>As you may have noticed, a program with short variable declarations outside a function doesn&amp;rsquo;t&amp;nbsp;compile.
+package main n := 1 // illegal func main() {} ../main.go:3:1: syntax error: non-declaration statement outside function body  Short variable declarations can only be used inside functions. You have to write
+package main var n = 1 func main() {} This is a trade-off in the design of the Go language.
+ At the top level, every declaration begins with a keyword.</description>
+    </item>
+    
+    <item>
+      <title>Variadic functions (...T)</title>
+      <link>https://yourbasic.org/golang/variadic-function/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/variadic-function/</guid>
+      <description>If the last parameter of a function has type ...T it can be called with any number of trailing arguments of type&amp;nbsp;T.
+func Sum(nums ...int) int { res := 0 for _, n := range nums { res += n } return res } func main() fmt.Println(Sum()) // 0 fmt.Println(Sum(1, 2, 3)) // 6 } The actual type of ...T inside the function is []T.
+You can pass a slice s directly to a variadic funtion using the s.</description>
+    </item>
+    
+    <item>
+      <title>Visit files and folders in a directory tree</title>
+      <link>https://yourbasic.org/golang/list-directory-recursive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/list-directory-recursive/</guid>
+      <description>Use the filepath.Walk function in package path/filepath.
+ It walks a file tree calling a function of type filepath.WalkFunc for each file or directory in the tree, including the root. The files are walked in lexical order. Symbolic links are not followed.  The code in this example lists the paths and sizes of all files and directories in the file tree rooted at the current directory.
+err := filepath.Walk(&#34;.&#34;, func(path string, info os.</description>
+    </item>
+    
+    <item>
+      <title>Waiting for goroutines</title>
+      <link>https://yourbasic.org/golang/wait-for-goroutines-waitgroup/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/wait-for-goroutines-waitgroup/</guid>
+      <description>A sync.WaitGroup waits for a group of goroutines to finish.
+var wg sync.WaitGroup wg.Add(2) go func() { // Do work. wg.Done() }() go func() { // Do work. wg.Done() }() wg.Wait()  First the main goroutine calls Add to set the number of goroutines to wait for. Then two new goroutines run and call Done when finished.  At the same time, Wait is used to block until these two goroutines have finished.</description>
+    </item>
+    
+    <item>
+      <title>What happened to ABBA?</title>
+      <link>https://yourbasic.org/golang/gotcha-trim-string/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-trim-string/</guid>
+      <description>What&amp;rsquo;s up with strings.TrimRight?
+fmt.Println(strings.TrimRight(&#34;ABBA&#34;, &#34;BA&#34;)) // Output: &#34;&#34;  Answer
+The Trim, TrimLeft and TrimRight functions strip all Unicode code points contained in a cutset. In this case, all trailing A:s and B:s are stripped from the string, leaving the empty string.
+To strip a trailing string, use strings.TrimSuffix.
+fmt.Println(strings.TrimSuffix(&#34;ABBA&#34;, &#34;BA&#34;)) // Output: &#34;AB&#34;  See String handling cheat sheet for more about strings in&amp;nbsp;Go.</description>
+    </item>
+    
+    <item>
+      <title>Whatever remains</title>
+      <link>https://yourbasic.org/golang/gotcha-remainder-modulo-operator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-remainder-modulo-operator/</guid>
+      <description>Why isn&amp;rsquo;t -1 odd?
+func Odd(n int) bool { return n%2 == 1 } func main() { fmt.Println(Odd(-1)) // false } Answer
+The remainder operator can give negative answers if the dividend is negative: if n is an odd negative number, n % 2 equals&amp;nbsp;-1.
+The quotient q = x / y and remainder r = x % y satisfy the relationships
+x = q*y + r and |r| &amp;lt; |y|  where x / y is truncated towards zero.</description>
+    </item>
+    
+    <item>
+      <title>Where is my copy?</title>
+      <link>https://yourbasic.org/golang/gotcha-copy-missing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-copy-missing/</guid>
+      <description>Why does the copy disappear?
+var src, dst []int src = []int{1, 2, 3} copy(dst, src) // Copy elements to dst from src. fmt.Println(&#34;dst:&#34;, dst) dst: []  Answer
+The number of elements copied by the copy function is the minimum of len(dst) and len(src). To make a full copy, you must allocate a big enough destination slice. var src, dst []int dst = make([]int, len(src)) n := copy(dst, src) fmt.</description>
+    </item>
+    
+    <item>
+      <title>Where is the ternary conditional operator?</title>
+      <link>https://yourbasic.org/golang/ternary-if-else-statement/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/ternary-if-else-statement/</guid>
+      <description>Go has no ternary conditional operator. Instead of res = expr ? x : y you write
+if expr { res = x } else { res = y }  In some cases, you may want to create a dedicated function.
+func Min(x, y int) int { if x &amp;lt;= y { return x } return y }  </description>
+    </item>
+    
+    <item>
+      <title>Why doesn’t append work every time?</title>
+      <link>https://yourbasic.org/golang/gotcha-append/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-append/</guid>
+      <description>What&amp;rsquo;s up with the append function?
+a := []byte(&#34;ba&#34;) a1 := append(a, &#39;d&#39;) a2 := append(a, &#39;g&#39;) fmt.Println(string(a1)) // bag fmt.Println(string(a2)) // bag Answer
+If there is room for more elements, append reuses the underlying array. Let&#39;s take a&amp;nbsp;look:
+a := []byte(&#34;ba&#34;) fmt.Println(len(a), cap(a)) // 2 32 This means that the slices a, a1 and a2 will refer to the same underlying array in our example.
+To avoid this, we need to use two separate byte&amp;nbsp;arrays.</description>
+    </item>
+    
+    <item>
+      <title>Worst-case time complexity</title>
+      <link>https://yourbasic.org/algorithms/worst-case-time-complexity/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/algorithms/worst-case-time-complexity/</guid>
+      <description>Worst-case time complexity denotes the longest possible running time W(n) of an algorithm, given any input of size n. This measure gives an upper bound on time requirements and is often easy to compute. The drawback is that it can be overly pessimistic.
+Example  // Tell whether the array a contains x. Algorithm contains(a, x): for i = 0 to len(a)-1 if x == a[i] return true return false  The number of comparisons depends not only on the number of elements, n, in the array, but also on&amp;nbsp;x and the elements in&amp;nbsp;a.</description>
+    </item>
+    
+    <item>
+      <title>Write a command-line application</title>
+      <link>https://yourbasic.org/golang/write-command-line-application/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/write-command-line-application/</guid>
+      <description>This example is a simplified version of the Unix grep command. The program searches the input file for lines containing the given pattern and prints these lines.
+func main() { log.SetPrefix(&#34;grep: &#34;) log.SetFlags(0) // no extra info in log messages if len(os.Args) != 3 { fmt.Printf(&#34;Usage: %v PATTERN FILE\n&#34;, os.Args[0]) return } pattern, err := regexp.Compile(os.Args[1]) if err != nil { log.Fatalln(err) } file, err := os.Open(os.Args[2]) if err != nil { log.</description>
+    </item>
+    
+    <item>
+      <title>Write log to file</title>
+      <link>https://yourbasic.org/golang/log-to-file/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/log-to-file/</guid>
+      <description>This code appends a log message to the file text.log. It creates the file if it doesn&amp;rsquo;t already exist.
+f, err := os.OpenFile(&amp;quot;text.log&amp;quot;, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644) if err != nil { log.Println(err) } defer f.Close() logger := log.New(f, &amp;quot;prefix&amp;quot;, log.LstdFlags) logger.Println(&amp;quot;text to append&amp;quot;) logger.Println(&amp;quot;more text to append&amp;quot;)  Contents of text.log:
+prefix: 2017/10/20 07:52:58 text to append prefix: 2017/10/20 07:52:58 more text to append   log.New creates a new log.Logger that writes to f.</description>
+    </item>
+    
+    <item>
+      <title>Your basic API</title>
+      <link>https://yourbasic.org/algorithms/your-basic-api/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/algorithms/your-basic-api/</guid>
+      <description>Thoughts on effective API design
+Introduction The 5 Commandments 1. Tell me what this thing is 2. Tell me what it does 3. Don&#39;t tell me how it works 4. Grant me the right to use it 5. Don&#39;t change it   Keep it simple Don&#39;t use complicated constructs where simple ones will do Don&#39;t use a lot where a little will do One package, one idea Just say no Math is simple   Give it time Eat your own dog food   Show, don&#39;t tell Create tutorials Use examples   Tools of the trade Keep it consistent Write functions that need little and give much Discover a well-fitting interface Make it generic Names, keep them short and sweet    Introduction The aim of this text is to explore API design and try to find strategies and rules that can help us create code libraries that are safe, effective and easy to use.</description>
+    </item>
+    
+    <item>
+      <title>Your basic func</title>
+      <link>https://yourbasic.org/golang/your-basic-func/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/your-basic-func/</guid>
+      <description>Unexpected functional programming in&amp;nbsp;Go
+The Petersen graph and its complement Introduction This text is about the implementation of a Go tool based entirely on functions – the API contains only immutable data types, and the code is built on top of a struct with five func fields.
+It&amp;rsquo;s a tool for building virtual graphs. In a virtual graph no vertices or edges are stored in memory, they are instead computed as needed.</description>
+    </item>
+    
+    <item>
+      <title>Your basic int</title>
+      <link>https://yourbasic.org/algorithms/your-basic-int/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/algorithms/your-basic-int/</guid>
+      <description>The int datatype is generic, effective, simple and efficient.
+Introduction Generic graph data Effective searching and sorting Simple sets Efficient filtering  Introduction Every kid can spot an integer number, and every programmer is familiar with the int data type. Still we frequently forget how powerful an integer can be.
+ Generic
+An int or []int is a bit pattern that can represent any digital data. Furthermore, an int can point into any type of array.</description>
+    </item>
+    
+    <item>
+      <title>do-while loop</title>
+      <link>https://yourbasic.org/golang/do-while-loop/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/do-while-loop/</guid>
+      <description>There is no do-while loop in Go. To emulate the C/Java code…
+do { work(); } while (condition); …you may use one of these alternatives:
+for ok := true; ok; ok = condition { work() } for { work() if !condition { break } } </description>
+    </item>
+    
+    <item>
+      <title>fmt cheat sheet</title>
+      <link>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</guid>
+      <description>Basics Generic formatting Integer Boolean   Pointer Float String or byte slice Special values     Basics A format specifier is a string that contains the text you want to format plus some placeholders, called verbs, that tell the functions in the fmt package how to format your arguments.
+In this example
+fmt.Printf(&#34;Hex: %x.\n&#34;, 255) // &#34;Hex: ff.&#34;  the format specifier is &amp;quot;Hex: %x.\n&amp;quot;, the verb %x formats 255 in base 16 notation, and the special value \n is a line feed.</description>
+    </item>
+    
+    <item>
+      <title>int vs. int64</title>
+      <link>https://yourbasic.org/golang/int-vs-int64/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/int-vs-int64/</guid>
+      <description>An int is either 32 or 64 bits depending on the platform. The length of an array can always be represented by an&amp;nbsp;int.
+ An index, a length or a capacity should normally be an int. The types int8, int16, int32, and int64 are best suited for data.
+When memory isn&amp;rsquo;t an issue, int64 is often the natural choice.  In this example the data has type int64, while the index and the length of the slice has type&amp;nbsp;int.</description>
+    </item>
+    
+    <item>
+      <title>iota</title>
+      <link>https://yourbasic.org/golang/iota/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/iota/</guid>
+      <description>iota is a device for enumerating constants.
+Basics Start at one Skip value Enumeration  Basics The predeclared iota identifier resets to 0 whenever the word const appears in the source code and increments after each const specification.
+const ( C0 = iota C1 = iota C2 = iota ) fmt.Println(C0, C1, C2) // &#34;0 1 2&#34; This can be simplified to
+const ( C0 = iota C1 C2 )  In a parenthesized const declaration expressions can be implicitly repeated—this indicates a repetition of the preceding expression.</description>
+    </item>
+    
+  </channel>
+</rss>

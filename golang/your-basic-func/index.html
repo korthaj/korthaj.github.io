@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your basic func | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="An implementation of a Go tool based entirely on functions, the API contains only immutable data types, and the code is built on top of a struct with five func fields.">
+  <meta name="keywords" content="go, golang, functional, programming, testing, performance, graph theory">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Your basic func</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<p class="lead">Unexpected functional programming in&nbsp;Go</p>
+
+<p><img src="/golang/petersen2.png"></p>
+
+<p><strong>The Petersen graph and its complement</strong>
+<!-- *picture from [Wikipedia][wikipetersen2].* --></p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>This text is about the implementation of a Go tool based entirely on functions –
+the API contains only immutable data types, and the code
+is built on top of a <code>struct</code> with five <code>func</code> fields.</p>
+
+<p>It&rsquo;s a tool for building <strong>virtual graphs</strong>.
+In a virtual graph no vertices or edges are stored in memory,
+they are instead computed as needed.
+The tool is part of a larger library of generic graph algorithms:</p>
+
+<ul>
+<li>the package <a href="https://github.com/yourbasic/graph">graph</a> contains the basic graph library and</li>
+<li>the subpackage <a href="https://github.com/yourbasic/graph/tree/master/build">graph/build</a> is the tool for building virtual graphs.</li>
+</ul>
+
+<p>There is an online reference for the build tool at <a href="https://godoc.org/github.com/yourbasic/graph/build">godoc.org</a>.</p>
+
+<h3 id="the-petersen-graph">The Petersen graph</h3>
+
+<p>Let&rsquo;s start with an example, the Petersen graph.
+To describe this graph in a conventional graph library,
+you would typically need to enumerate the edges…</p>
+
+<pre>{0, 1}, {0, 4}, {0, 5}, {1, 2}, {1, 6}, {2, 3}, {2, 7}, {3, 4},
+{3, 8}, {4, 9}, {5, 7}, {5, 8}, {6, 8}, {6, 9}, and {7, 9}</pre>
+
+<p>…in one way or another.</p>
+
+<p>However, if you ask a mathematician to describe the Petersen graph,
+her answer would clearly be very different. Perhaps she would say:</p>
+
+<blockquote>
+<p>You get a Petersen graph if you draw a pentagon
+with a pentagram inside, with five spokes.</p>
+</blockquote>
+
+<p><img src="/golang/petersen.png" alt="Petersen graph" /></p>
+
+<!-- *Picture from [Wikipedia][wikipetersen].* -->
+
+<p>This <a href="https://godoc.org/github.com/yourbasic/graph/build#example-Virtual-Match-Petersen">example</a> from the <code>graph/build</code> documentation
+corresponds to the mathematical description.</p>
+
+<pre><code><span class="comment">// Build a Petersen graph.</span>
+pentagon := build.Cycle(5)
+pentagram := pentagon.Complement()
+petersen := pentagon.Match(pentagram, build.AllEdges())
+</code></pre>
+
+<p>As you can see, the <code>Cycle</code>, <code>Complement</code> and <code>Match</code> functions
+implement basic concepts in graph theory:
+we start with a <strong>cycle graph</strong> of order 5,
+compute its <strong>complement</strong>, and then combine these two graphs
+by <strong>matching</strong> their vertices.</p>
+
+<h3 id="a-generic-graph">A generic graph</h3>
+
+<p>It&rsquo;s also possible to define a new graph by writing
+a <strong>function</strong> that describes the <strong>edge set</strong> of the graph.
+This <a href="https://godoc.org/github.com/yourbasic/graph/build#example-Generic">code example</a>
+shows how to build a directed graph containing all edges (<em>v</em>, <em>w</em>)
+for which <em>v</em> is odd and <em>w</em> even.</p>
+
+<pre><code><span class="comment">// Define a graph by a function.</span>
+g := build.Generic(10, func(v, w int) bool {
+    // Include all edges with v odd and w even.
+    return v%2 == 1 && w%2 == 0
+})
+</code></pre>
+
+<p>The <code>build.Generic</code> function returns a virtual graph with 10 vertices;
+its edge set consists of all edges (v, w), v ≠ w, for
+which the anonymous function returns true.</p>
+
+<h2 id="implementation">Implementation</h2>
+
+<p>Let&rsquo;s start by looking at the main data type, a struct with five functions.</p>
+
+<pre><code>type Virtual struct {
+    <span class="comment">// The `order` field is, in fact, a constant function.</span>
+    <span class="comment">// It returns the number of vertices in the graph.</span>
+    order int
+
+    <span class="comment">// The `edge` and `cost` functions define a weighted graph</span>
+    <span class="comment">// without self-loops.</span>
+    <span class="comment">//</span>
+    <span class="comment">//  • edge(v, w) returns true whenever (v, w) belongs to</span>
+    <span class="comment">//    the graph; the value is disregarded when v == w.</span>
+    <span class="comment">//</span>
+    <span class="comment">//  • cost(v, w) returns the cost of (v, w);</span>
+    <span class="comment">//    the value is disregarded when edge(v, w) is false.</span>
+    <span class="comment">//</span>
+    edge func(v, w int) bool
+    cost func(v, w int) int64
+
+    <span class="comment">// The `degree` and `visit` functions can be used to improve</span>
+    <span class="comment">// performance. They MUST BE CONSISTENT with edge and cost.</span>
+    <span class="comment">// If not implemented, the `generic` or `generic0` implementation</span>
+    <span class="comment">// is used instead. The `Consistent` test function should be used</span>
+    <span class="comment">// to check compliance.</span>
+    <span class="comment">//</span>
+    <span class="comment">//  • degree(v) returns the outdegree of vertex v.</span>
+    <span class="comment">//</span>
+    <span class="comment">//  • visit(v) visits all neighbors w of v for which w ≥ a in</span>
+    <span class="comment">//    NUMERICAL ORDER calling do(w, c) for edge (v, w) of cost c.</span>
+    <span class="comment">//    If a call to do returns true, visit MUST ABORT the iteration</span>
+    <span class="comment">//    and return true; if successful it should return false.</span>
+    <span class="comment">//    Precondition: a ≥ 0.</span>
+    <span class="comment">//</span>
+    degree func(v int) int
+    visit  func(v int, a int,
+        do func(w int, c int64) (skip bool)) (aborted bool)
+}
+</code></pre>
+
+<h3 id="cycle-graphs">Cycle graphs</h3>
+
+<p>As a simple example, here&rsquo;s how to implement <strong>cycle graphs</strong>.
+A cycle graph of order <em>n</em> contains the edges
+{0,&nbsp;1}, {1,&nbsp;2}, {2,&nbsp;3},… ,{<em>n</em>-1,&nbsp;0}.</p>
+
+<p><img src="/golang/cycle.png" alt="Cycle graph" /></p>
+
+<p><strong>Cycle graph of order 6</strong> <!-- *picture from [Wikipedia][wikicycle].* --></p>
+
+<p>For a basic implementation of this class of graphs,
+we can write an <code>edge</code> function and use the generic implementation
+<code>generic0</code> to fill in standard implementations of the other functions
+in the <code>Virtual</code> struct.</p>
+
+<p>In the following code, <code>g</code> is a virtual circle graph of order <em>n</em>
+with edge costs equal to zero.</p>
+
+<pre><code>g := generic0(n, func(v, w int) (edge bool) {
+	switch v - w {
+	case 1 - n, -1, 1, n - 1:
+		edge = true
+	}
+	return
+})
+</code></pre>
+
+<p>The generic implementation of the <code>degree</code> function iterates
+over the <em>n</em> potential neighbors and calls the <code>edge</code> function
+for each one to check if it really is a neighbor.
+In this case, it&rsquo;s trivial to compute the degree more efficiently:</p>
+
+<pre><code><span class="comment">// Precondition : n ≥ 3.</span>
+g.degree = func(v int) int { return 2 }</code></pre>
+
+<p>The generic implementation of the <code>visit</code> function also visits
+all potential neighbors.
+This can of course be done much more efficiently:</p>
+
+<pre><code><span class="comment">// Precondition : n ≥ 3.</span>
+g.visit = func(v int, a int,
+    do func(w int, c int64) bool) (aborted bool) {
+    var w [2]int
+    switch v {
+    case 0:
+        w = [2]int{1, n - 1}
+    case n - 1:
+        w = [2]int{0, n - 2}
+    default:
+        w = [2]int{v - 1, v + 1}
+    }
+    for _, w := range w {
+        if w >= a && do(w, 0) {
+            return true
+        }
+    }
+    return
+}</code></pre>
+
+<h3 id="tensor-product">Tensor product</h3>
+
+<p>Operators on virtual graphs are typically more complicated to implement,
+but they can be defined using the very same pattern.
+Here is an example showing how to implement the <strong>tensor product</strong> of two graphs.</p>
+
+<p><img src="/golang/tensor.png" alt="Tensor product" /></p>
+
+<p><strong>Tensor product</strong> <!-- *picture from [Wikipedia][wikitensor].* --></p>
+
+<p>The tensor product of g1 and g2 is a graph whose vertices
+correspond to ordered pairs (v1, v2), where v1 and v2 are vertices
+in g1 and g2, respectively. The vertices (v1, v2) and (w1, w2)
+are connected by an edge whenever both of the edges {v1, w1} and {v2, w2}
+exist in the original graphs.</p>
+
+<p>In the new graph, vertex (v1, v2) gets index n⋅v1 + v2,
+where n = g2.Order(), and index i corresponds to the vertex (i/n, i%n).</p>
+
+<pre><code>func (g1 *Virtual) Tensor(g2 *Virtual) *Virtual {
+	m, n := g1.Order(), g2.Order()
+
+	g := generic0(m*n, func(v, w int) (edge bool) {
+		v1, v2 := v/n, v%n
+		w1, w2 := w/n, w%n
+		return g1.Edge(v1, w1) &amp;&amp; g2.Edge(v2, w2)
+	})
+
+	g.degree = func(v int) (deg int) {
+		v1, v2 := v/n, v%n
+		return g1.degree(v1) * g2.degree(v2)
+	}
+
+	g.visit = func(v int, a int,
+		do func(w int, c int64) bool) (aborted bool) {
+		v1, v2 := v/n, v%n
+		a1, a2 := a/n, a%n
+		return g1.visit(v1, a1,
+			func(w1 int, c int64) (skip bool) {
+			if w1 == a1 {
+				return g2.visit(v2, a2,
+					func(w2 int, c int64) (skip bool) {
+					return do(n*w1+w2, 0)
+				})
+			}
+			return g2.visit(v2, 0,
+				func(w2 int, c int64) (skip bool) {
+				return do(n*w1+w2, 0)
+			})
+		})
+	}
+	return g
+}
+</code></pre>
+
+<p><em>Code from</em> <a href="https://github.com/yourbasic/graph/blob/master/build/tensor.go">tensor.go</a></p>
+
+<h2 id="testing">Testing</h2>
+
+<p>Testing pure functions is typically straightforward –
+in this case it&rsquo;s also a pure pleasure.</p>
+
+<p>As always we need to check that the function calls
+produce the expected result, but the rest of the testing procedure
+can be fully automated. Given the <code>edge</code> and <code>cost</code> functions,
+the behavior of <code>degree</code> and <code>visit</code> are fully determined and
+can be automatically checked; it also works in reverse.</p>
+
+<p>This is a blessing since the implementations tend to be quite different
+and often either <code>edge</code> or <code>visit</code> is considerably easier to implement
+than the other.</p>
+
+<p>To test the <code>Cycle</code> function we simply need to check its output
+and call the automated consistency test:</p>
+
+<pre><code>for n := 0; n &lt; 5; n++ {
+	Consistent(&quot;Cycle&quot;, t, Cycle(n))
+}
+</code></pre>
+
+<h2 id="performance">Performance</h2>
+
+<h3 id="iteration">Iteration</h3>
+
+<p>The implementation of neigbor iteration is crucial for the performance
+of any graph library.
+Therefore all predefined building blocks and operations
+try to implement the <code>visit</code> function in time proportional to
+the actual number of neighbors.</p>
+
+<p>However, with filter functions this is not possible.
+In particular, graphs built by the <code>Generic</code> function
+must visit all potenential neighbors during iteration.</p>
+
+<h3 id="caching">Caching</h3>
+
+<p>Caching can give large performance improvements but may be hard to automate.
+When and what to cache depends on many factors, including the actual data,
+hardware, and implementation.</p>
+
+<p>Additionally, any graph, or part of a graph, which is described
+by a filter function function cannot be cached since we don&rsquo;t
+know if the user-defined functions are pure –
+they may return different results given the same argument.</p>
+
+<p>The solution is a function which activates caching
+for a specified component:</p>
+
+<pre><code><span class="comment">// Specific returns a cached copy of g with constant time</span>
+<span class="comment">// performance for all basic operations. It uses space</span>
+<span class="comment">// proportional to the size of the graph.</span>
+func Specific(g graph.Iterator) *Virtual
+</code></pre>
+
+<p>The implementation uses fixed precomputed lists to associate
+each vertex in the graph with its neigbors.</p>
+
+<p>Not only can <code>Specific</code> be used to cache selected components,
+it can also be employed to import graphs
+that are represented by more traditional data structures.</p>
+
+</article>
+
+<aside>
+
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="https://github.com/yourbasic/graph">Package graph</a><br />
+    <span class="source">github.com/yourbasic</span>
+    <span class="author"></span>
+  </div>
+
+  <div class="reference">
+    <a href="https://github.com/yourbasic/graph/tree/master/build">Package graph/build</a><br />
+    <span class="source">github.com/yourbasic</span>
+    <span class="author"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/function-pointer-type-declaration/">Function types and values</a><br />
+    <span class="source"></span>
+  </div>
+
+
+  <h2>New in Go 1.10</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/build-append-concatenate-strings-efficiently/">Build and concatenate strings efficiently</a></li>
+
+    <li><a href="/golang/round-float-to-int/">Round float to integer value</a></li>
+
+    <li><a href="/golang/shuffle-slice-array/">Shuffle slice or array</a></li>
+
+  </ul>
+
+  <h2>Top Go articles</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/gotcha/">Go gotcha</a></li>
+
+    <li><a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a></li>
+
+    <li><a href="/golang/slices-explained/">Slices in a nutshell</a></li>
+
+    <li><a href="/golang/maps-explained/">Maps in a nutshell</a></li>
+
+    <li><a href="/golang/concurrent-programming/">Concurrent programming</a></li>
+
+  </ul>
+  <p><a href="/golang/"><strong>See all 198 Go articles</strong></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

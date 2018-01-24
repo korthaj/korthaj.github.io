@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Access environment variables | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="Use the Setenv, Getenv, Unsetenv and Environ functions to read and write environment variables.">
+  <meta name="keywords" content="go, golang, environment, variable">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Access environment variables</h1>
+<div class="tagline">yourbasic.org</div>
+<p>Use the <a href="https://golang.org/pkg/os/#Setenv"><code>os.Setenv</code></a>,
+<a href="https://golang.org/pkg/os/#Getenv"><code>os.Getenv</code></a> and
+<a href="https://golang.org/pkg/os/#Unsetenv"><code>os.Unsetenv</code></a> functions
+to access environment variables.</p>
+
+<pre><code>fmt.Printf("%q\n", <b>os.Getenv</b>("SHELL")) <span class="comment">// "/bin/bash"</span>
+
+<b>os.Unsetenv</b>("SHELL")
+fmt.Printf("%q\n", <b>os.Getenv</b>("SHELL")) <span class="comment">// ""</span>
+
+<b>os.Setenv</b>("SHELL", "/bin/dash")
+fmt.Printf("%q\n", <b>os.Getenv</b>("SHELL")) <span class="comment">// "/bin/dash"</span></code></pre>
+
+<p>The <a href="https://golang.org/pkg/os/#Environ"><code>os.Environ</code></a> function
+returns a slice of <code>&quot;key=value&quot;</code> strings listing all environment variables.</p>
+
+<pre><code class="skiphl">for _, s := range <b>os.Environ</b>() {
+    kv := strings.SplitN(s, "=", 2) <span class="comment">// unpacks "key=value"</span>
+    fmt.Printf("key:%q value:%q\n", kv[0], kv[1])
+}</code></pre>
+
+<pre><code>key:&quot;SHELL&quot; value:&quot;/bin/bash&quot;
+key:&quot;SESSION&quot; value:&quot;ubuntu&quot;
+key:&quot;TERM&quot; value:&quot;xterm-256color&quot;
+key:&quot;LANG&quot; value:&quot;en_US.UTF-8&quot;
+key:&quot;XMODIFIERS&quot; value:&quot;@im=ibus&quot;
+…
+</code></pre>
+
+</article>
+
+<aside>
+
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/write-command-line-application/">Write a command-line application</a><br />
+    <span class="source"></span>
+  </div>
+
+
+  <h2>New in Go 1.10</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/build-append-concatenate-strings-efficiently/">Build and concatenate strings efficiently</a></li>
+
+    <li><a href="/golang/round-float-to-int/">Round float to integer value</a></li>
+
+    <li><a href="/golang/shuffle-slice-array/">Shuffle slice or array</a></li>
+
+  </ul>
+
+  <h2>Top Go articles</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/gotcha/">Go gotcha</a></li>
+
+    <li><a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a></li>
+
+    <li><a href="/golang/slices-explained/">Slices in a nutshell</a></li>
+
+    <li><a href="/golang/maps-explained/">Maps in a nutshell</a></li>
+
+    <li><a href="/golang/concurrent-programming/">Concurrent programming</a></li>
+
+  </ul>
+  <p><a href="/golang/"><strong>See all 198 Go articles</strong></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

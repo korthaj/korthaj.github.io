@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time complexity | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="How to estimate the running time of algorithms.">
+  <meta name="keywords" content="time complexity, elementary operations, worst-case, constant, linear, quadratic">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Time complexity</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<p class="lead">Time complexity esti&shy;mates the time to run an algo&shy;rithm.
+It's calcu&shy;lated by counting <b>elemen&shy;tary opera&shy;tions</b>.
+</p>
+
+<ul class="toc">
+  <li><a href="#example">Example</a></li>
+  <li><a href="#worst-case-time">Worst-case time</a></li>
+  <li><a href="#average-case-time">Average-case time</a></li>
+  <li><a href="#linear-vs-quadratic-time">Linear vs. quadratic time</a></li>
+</ul>
+
+<h2 id="example">Example</h2>
+
+<p>What&rsquo;s the running time of the following algorithm?</p>
+
+<pre>
+// Compute the maximum element in the array a.
+<b>Algorithm</b> max(a):
+    max ← a[0]
+    <b>for</b> i = 1 <b>to</b> len(a)-1
+        <b>if</b> a[i] &gt; max
+            max ← a[i]
+    <b>return</b> max
+</pre>
+
+<p>The answer depends on factors such as input, programming language and runtime,
+coding skill, compiler, operating system, and hardware.</p>
+
+<p>We often want to reason about <strong>execution time</strong> in a way that depends
+only on the <strong>algorithm</strong> and its <strong>input</strong>.
+This can be achieved by choosing an <strong>elementary operation</strong>,
+which the algorithm performs repeatedly, and define
+the <strong>time complexity</strong> T(<i>n</i>) as the number of such operations
+the algorithm performs given an array of length&nbsp;<em>n</em>.</p>
+
+<p>For the algorithm above we can choose the comparison
+<code>a[i] &gt; max</code> as an elementary operation.</p>
+
+<ol>
+<li>This captures the running time of the algorithm well,
+since comparisons dominate all other operations
+in this particular algorithm.</li>
+<li>Also, the time to perform a comparison is constant:
+it doesn&rsquo;t depend on the size of&nbsp;<code>a</code>.</li>
+</ol>
+
+<p>The time complexity, measured in the number of comparisons,
+then becomes T(<i>n</i>)&nbsp;=&nbsp;<i>n</i>&nbsp;-&nbsp;1.</p>
+
+<p>In general, an <strong>elementary operation</strong> must have two properties:</p>
+
+<ol>
+<li>There can&rsquo;t be any other operations that are performed more frequently
+as the size of the input grows.</li>
+<li>The time to execute an elementary operation must be constant:
+it mustn&rsquo;t increase as the size of the input grows.</li>
+</ol>
+
+<h2 id="worst-case-time">Worst-case time</h2>
+
+<p>Consider this algorithm.</p>
+
+<pre>
+// Tell whether the array a contains x.
+<b>Algorithm</b> contains(a, x):
+    <b>for</b> i = 0 <b>to</b> len(a)-1
+        <b>if</b> x == a[i]
+            <b>return</b> true
+    <b>return</b> false
+</pre>
+
+<p>The comparison <code>x == a[i]</code> can be used as an elementary operation in this case.
+However, for this algorithm the number of comparisons depends not only on the number of elements, <em>n</em>, in the array but also on the value of <code>x</code> and the values in&nbsp;<code>a</code>:</p>
+
+<ul>
+<li>If <code>x</code> isn&rsquo;t found in <code>a</code> the algorithm makes <em>n</em> comparisons,</li>
+<li>but if <code>x</code> equals <code>a[0]</code> there is only one comparison.</li>
+</ul>
+
+<p>Because of this, we often choose to study <strong>worst-case</strong> time complexity:</p>
+
+<ul>
+<li>Let T<sub>1</sub>(<i>n</i>), T<sub>2</sub>(<i>n</i>),&nbsp;… be the execution times
+for all possible inputs of size&nbsp;<i>n</i>.</li>
+<li>The worst-cast time complexity W(<i>n</i>) is then defined as
+W(<i>n</i>)&nbsp;=&nbsp;max(T<sub>1</sub>(<i>n</i>), T<sub>2</sub>(<i>n</i>),&nbsp;…).</li>
+</ul>
+
+<p>The worst-cast time complexity for the <code>contains</code> algorithm thus becomes
+W(<i>n</i>)&nbsp;=&nbsp;<i>n</i>.</p>
+
+<p>Worst-case time complexity gives an upper bound on time requirements
+and is often easy to compute.
+The drawback is that it&rsquo;s often overly pessimistic.</p>
+
+<h2 id="average-case-time">Average-case time</h2>
+
+<p><strong>Average-case</strong> time complexity is a less common measure:</p>
+
+<ul>
+<li>Let T<sub>1</sub>(<i>n</i>), T<sub>2</sub>(<i>n</i>),&nbsp;… be the execution times
+for all possible inputs of size&nbsp;<i>n</i>,<br />
+and let P<sub>1</sub>(<i>n</i>), P<sub>2</sub>(<i>n</i>),&nbsp;… be the probabilities
+of these inputs.</li>
+<li>The average-case time complexity is then defined as
+P<sub>1</sub>(<i>n</i>)T<sub>1</sub>(<i>n</i>) + P<sub>2</sub>(<i>n</i>)T<sub>2</sub>(<i>n</i>)&nbsp;+&nbsp;…</li>
+</ul>
+
+<p>Average-case time is often harder to compute,
+and it also requires knowledge of how the input is distributed.</p>
+
+<h2 id="linear-vs-quadratic-time">Linear vs. quadratic time</h2>
+
+<p>Finally, we&rsquo;ll look at an algorithm with poor time complexity.</p>
+
+<pre>
+// Reverse the order of the elements in the array a.
+<b>Algorithm</b> reverse(a):
+    <b>for</b> i = 1 <b>to</b> len(a)-1
+        x ← a[i]
+        <b>for</b> j = i <b>downto</b> 1
+            a[j] ← a[j-1]
+        a[0] ← x
+</pre>
+
+<p>We choose the assignment <code>a[j] ← a[j-1]</code> as elementary operation.
+Updating an element in an array is a constant-time operation,
+and the assignment dominates the cost of the algorithm.</p>
+
+<p>The number of elementary operations only depends on&nbsp;<em>n</em>
+in this case, and the time complexity becomes</p>
+
+<p>W(<i>n</i>)&nbsp;=
+1&nbsp;+&nbsp;2&nbsp;+&nbsp;&hellip;&nbsp;+&nbsp;<i>n</i>&nbsp;-&nbsp;1&nbsp;=
+<i>n</i>(<i>n</i>&nbsp;-&nbsp;1)/2&nbsp;=
+<i>n<sup>2</sup></i>/2&nbsp;-&nbsp;<i>n</i>/2.</p>
+
+<p>The quadratic term dominates for large <i>n</i>,
+and we therefore say that this algorithm has <strong>quadratic</strong> time complexity.
+This means that the algorithm <strong>scales poorly</strong> and can be used <strong>only for small input</strong>:
+to reverse the elements of an array with 10,000 elements,
+the algorithm will perform about 50,000,000 assignments.</p>
+
+<p>In this case it&rsquo;s easy to find an algorithm with <strong>linear</strong> time complexity.</p>
+
+<pre>
+<b>Algorithm</b> reverse(a):
+    <b>for</b> i = 0 <b>to</b> n/2
+        swap a[i] and a[n-i-1]
+</pre>
+
+<p>This is a <strong>huge improvement</strong> over the previous algorithm:
+an array with 10,000&nbsp;elements can now be reversed
+with only 5,000&nbsp;swaps, i.e. 10,000&nbsp;assignments.
+That&rsquo;s roughly a 5,000-fold speed improvement,
+and the improvement keeps growing as the the input gets larger.</p>
+
+<p>It&rsquo;s common to use <a href="/algorithms/big-o-notation-explained/">Big O notation</a>
+when talking about time complexity. We could then say that
+the time complexity of the first algorithm is &Theta;(<i>n</i><sup>2</sup>),
+and that the improved algorithm has &Theta;(<i>n</i>) time complexity.</p>
+
+</article>
+
+<aside>
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/algorithms/amortized-time-complexity-analysis/">Amortized time complexity</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/algorithms/big-o-notation-explained/">Big O notation</a><br />
+    <span class="source"></span>
+  </div>
+
+  <h2>Top algorithm articles</h2>
+  <ul class="none">
+  
+    <li><a href="/algorithms/your-basic-api/">Your basic API</a></li>
+
+    <li><a href="/algorithms/hash-tables-explained/">Hash tables</a></li>
+
+    <li><a href="/algorithms/big-o-notation-explained/">Big O notation</a></li>
+
+    <li><a href="/algorithms/loop-invariants-explained/">Loop invariants</a></li>
+
+    <li><a href="/golang/quicksort-optimizations/">Top 3 Quicksort optimizations</a></li>
+
+  </ul>
+
+  <p><a href="/algorithms/"><b>See all algorithm articles</b></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

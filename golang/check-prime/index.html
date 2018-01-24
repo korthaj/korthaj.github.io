@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check if a number is prime | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="How to test primality in Go.">
+  <meta name="keywords" content="go, golang, primality, test, check, algorithm">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Check if a number is prime</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<h2 id="ints">Ints</h2>
+
+<p>For integer types, use <a href="https://golang.org/pkg/math/big/#Int.ProbablyPrime"><code>ProbablyPrime(0)</code></a> from package <a href="https://golang.org/pkg/math/big/"><code>math/big</code></a>. This primality test is 100%&nbsp;accurate for inputs less than&nbsp;2<sup>64</sup>.</p>
+
+<pre><code>const i = 1212121
+if <b>big.NewInt(i).ProbablyPrime(0)</b> {
+    fmt.Println(i, "is prime")
+} else {
+    fmt.Println(i, "is not prime")
+}</code></pre>
+
+<pre><code>1212121 is prime
+</code></pre>
+
+<h2 id="larger-numbers">Larger numbers</h2>
+
+<p>
+For larger numbers, you need to provide the desired number of tests&nbsp;`n` to
+<a href="https://golang.org/pkg/math/big/#Int.ProbablyPrime"><code></code>ProbablyPrime(n)</a>.
+For <i>n</i>&nbsp;tests, the&nbsp;probability of returning true for
+a randomly chosen non-prime is at most (1/4)<sup><i>n</i></sup>.
+A&nbsp;common choice is to use <i>n</i>&nbsp;=&nbsp;20;
+this gives a false positive rate 0.000,000,000,001.
+</p>
+
+<pre><code>z := new(big.Int)
+fmt.Sscan("170141183460469231731687303715884105727", z)
+if <b>z.ProbablyPrime(20)</b> {
+    fmt.Println(z, "is probably prime")
+} else {
+    fmt.Println(z, "is not prime")
+}</code></pre>
+
+<pre><code>170141183460469231731687303715884105727 is probably prime
+</code></pre>
+
+</article>
+
+<aside>
+
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="https://golang.org/pkg/math/big/">Package big</a><br />
+    <span class="source">The Go Programming Language</span>
+    <span class="author"></span>
+  </div>
+
+
+  <h2>New in Go 1.10</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/build-append-concatenate-strings-efficiently/">Build and concatenate strings efficiently</a></li>
+
+    <li><a href="/golang/round-float-to-int/">Round float to integer value</a></li>
+
+    <li><a href="/golang/shuffle-slice-array/">Shuffle slice or array</a></li>
+
+  </ul>
+
+  <h2>Top Go articles</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/gotcha/">Go gotcha</a></li>
+
+    <li><a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a></li>
+
+    <li><a href="/golang/slices-explained/">Slices in a nutshell</a></li>
+
+    <li><a href="/golang/maps-explained/">Maps in a nutshell</a></li>
+
+    <li><a href="/golang/concurrent-programming/">Concurrent programming</a></li>
+
+  </ul>
+  <p><a href="/golang/"><strong>See all 198 Go articles</strong></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

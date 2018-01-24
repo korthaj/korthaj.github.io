@@ -1,0 +1,882 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Go | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="Go tutorials, cheat sheets, and articles with production-quality code examples.">
+  <meta name="keywords" content="go, golang, tutorials, code, examples, references, cheat sheets, gotchas">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li>Go</li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Go</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+
+<style>
+h3, h4{margin:1em 0 0.2em 0;}
+h3{font-size:100%;font-style:normal;font-weight:bold;}
+h4{font-size:100%;font-style:italic;font-weight:normal;}
+ul{margin:0;}
+</style>
+
+<div style="margin-top:1em;">
+<div style="float: left; min-width: 45%; margin-right: 2em; margin-top:0;">
+    <ul class="toc" style="margin: 0;">
+        <li><a href="#cheat-sheets"><b>Cheat sheets</b></a></li>
+        <li><a href="#nutshell-summaries">Nutshell summaries</a></li>
+        <li><a href="#tutorials">Tutorials</a><span class="quicklink"><a href="/golang/gotcha/" title="Go gotcha: Pitfalls and corner cases">Quiz</a></span></li>
+        <li><a href="#tricks-of-the-trade">Tricks of the trade</a></li>
+        <li style="margin-top: 0.2em;"></li>
+
+        <li><a href="#language-basics"><b>Language basics</b></a></li>
+        <li><a href="#standard-library">Standard library</a></li>
+        <li style="margin-top: 0.2em;"></li>
+
+        <li><a href="#concurrent-programming"><b>Concurrent programming</b></a><span class="quicklink"><a href="/golang/concurrent-programming/" title="Concurrent programming">Tutorial</a></span></li>
+        <li><a href="#object-oriented-programming">Object-oriented programming</a></li>
+        <li><a href="#functional-programming">Functional programming</a></li>
+        <li style="margin-top: 0.2em;"></li>
+    </ul>
+</div>
+<div style="float: left;">
+    <ul class="toc" style="margin-top: 0;">
+        <li><a href="#strings"><b>Strings</b></a><span class="quicklink"><a href="/golang/string-functions-reference-cheat-sheet/" title="String handling cheat sheet">Cheat&nbsp;sheet</a></span></li>
+        <li><a href="#slices">Slices</a><span class="quicklink"><a href="/golang/slices-explained/" title="Slices in a nutshell">Nutshell</a></span></li>
+        <li><a href="#maps">Maps</a><span class="quicklink"><a href="/golang/maps-explained/" title="Maps in a nutshell">Nutshell</a></span></li>
+        <li><a href="#files">Files</a></li>
+        <li><a href="#time-and-date">Time and date</a></li>
+        <li><a href="#random-numbers">Random numbers</a></li>
+        <li style="margin-top: 0.2em"></li>
+
+        <li><a href="#new-in-go-110"><b>New in Go 1.10</b></a></li>
+    </ul>
+</div>
+<!-- CC BY 3.0: https://golang.org/doc/gopher/ -->
+<div><img src="/golang/find.png" style="float: right; padding: 30px 0 0 10px;"></div>
+</div>
+<div style="clear: both"></div>
+
+<h3 id="cheat-sheets">Cheat sheets</h3>
+
+<ul class="index">
+
+
+<li><a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a></li>
+
+
+
+<li><a href="/golang/fmt-printf-reference-cheat-sheet/">fmt cheat sheet</a></li>
+
+
+
+<li><a href="/golang/format-parse-string-time-date-example/">Format/parse a time or date</a></li>
+
+
+
+<li><a href="/golang/conversions/">Conversions</a></li>
+
+
+
+<li><a href="/golang/regexp-cheat-sheet/">Regular expressions</a></li>
+
+
+
+<li><a href="/golang/operator-priority/">Operator precedence</a></li>
+
+
+
+<li><a href="/golang/bitwise-operator-cheat-sheet/">Bitwise operators cheat sheet</a></li>
+
+
+
+<li><a href="/golang/library-package-example-template/">Library package template</a></li>
+
+</ul>
+
+<h3 id="nutshell-summaries">Nutshell summaries</h3>
+
+<ul class="index">
+
+
+<li><a href="/golang/slices-explained/">Slices in a nutshell</a></li>
+
+
+
+<li><a href="/golang/maps-explained/">Maps in a nutshell</a></li>
+
+
+
+<li><a href="/golang/for-loop/">For loops in a nutshell</a></li>
+
+
+
+<li><a href="/golang/for-loop-range-array-slice-map-channel/">Range loops (for-each loops)</a></li>
+
+</ul>
+
+<h3 id="tutorials">Tutorials</h3>
+
+<ul class="index">
+
+
+<li><a href="/golang/json-example/">JSON by example</a></li>
+
+
+
+<li><a href="/golang/concurrent-programming/">Concurrent programming</a></li>
+
+
+
+<li><a href="/golang/go-java-tutorial/">Go for Java programmers</a></li>
+
+
+
+<li><a href="/golang/gotcha/">Go gotcha</a></li>
+
+
+
+<li><a href="/golang/your-basic-func/">Your basic func</a></li>
+
+</ul>
+
+<h3 id="tricks-of-the-trade">Tricks of the trade</h3>
+
+<ul class="index">
+
+
+<li><a href="/golang/environment-variables/">Access environment variables</a></li>
+
+
+
+<li><a href="/golang/access-private-field-reflection/">Access private fields with reflection</a></li>
+
+
+
+<li><a href="/golang/bitmask-flag-set-clear/">Bitmasks and flags</a></li>
+
+
+
+<li><a href="/golang/check-prime/">Check if a number is prime</a></li>
+
+
+
+<li><a href="/golang/command-line-arguments/">Command-line arguments</a></li>
+
+
+
+<li><a href="/golang/absolute-value-int-float/">Compute absolute values</a></li>
+
+
+
+<li><a href="/golang/max-min-function/">Compute min and max</a></li>
+
+
+
+<li><a href="/golang/define-enumeration-string/">Enumeration with string representation</a></li>
+
+
+
+<li><a href="/golang/find-go-build-version/">Find build version</a></li>
+
+
+
+<li><a href="/golang/formatting-byte-size-to-human-readable-format/">Convert byte size to human readable format</a></li>
+
+
+
+<li><a href="/golang/generate-permutation-slice-string/">Generate all permutations</a></li>
+
+
+
+<li><a href="/golang/hash-md5-sha256-string-file/">Hash checksums</a></li>
+
+
+
+<li><a href="/golang/how-to-sort-in-go/">How to sort in Go</a></li>
+
+
+
+<li><a href="/golang/implement-fifo-queue/">Implement a FIFO queue</a></li>
+
+
+
+<li><a href="/golang/implement-set/">Implement a set</a></li>
+
+
+
+<li><a href="/golang/implement-stack/">Implement a stack (LIFO)</a></li>
+
+
+
+<li><a href="/golang/iterator-generator-pattern/">Iterator pattern</a></li>
+
+
+
+<li><a href="/golang/round-float-2-decimal-places/">Round float to 2 decimal places</a></li>
+
+
+
+<li><a href="/golang/round-float-to-int/">Round float to integer value</a></li>
+
+
+
+<li><a href="/golang/table-driven-unit-test/">Table-driven unit tests</a></li>
+
+
+
+<li><a href="/golang/quicksort-optimizations/">Top 3 Quicksort optimizations</a></li>
+
+
+
+<li><a href="/golang/max-min-int-uint/">Maximum value of an int</a></li>
+
+
+
+<li><a href="/golang/write-command-line-application/">Write a command-line application</a></li>
+
+</ul>
+
+<h3 id="language-basics">Language basics</h3>
+
+<ul class="index">
+
+
+<li><a href="/golang/getting-started-hello-world/">Get started with Go</a></li>
+
+
+
+<li><a href="/golang/packages-explained/">Packages</a></li>
+
+
+
+<li><a href="/golang/package-documentation/">Package documentation</a></li>
+
+
+
+<li><a href="/golang/package-init-function-main-execution-order/">Package initialization and program execution order</a></li>
+
+</ul>
+
+<h4 id="statements">Statements</h4>
+
+<ul class="index">
+
+
+<li><a href="/golang/for-loop/">For loops in a nutshell</a></li>
+
+
+
+<li><a href="/golang/for-loop-range-array-slice-map-channel/">Range loops (for-each loops)</a></li>
+
+
+
+<li><a href="/golang/do-while-loop/">do-while loop</a></li>
+
+
+
+<li><a href="/golang/switch-statement/">Switch statement</a></li>
+
+
+
+<li><a href="/golang/defer/">Defer statement</a></li>
+
+
+
+<li><a href="/golang/type-assertion-switch/">Type assertions and type switches</a></li>
+
+
+
+<li><a href="/golang/type-alias/">Type alias</a></li>
+
+
+
+<li><a href="/golang/ternary-if-else-statement/">Where is the ternary conditional operator?</a></li>
+
+</ul>
+
+<h4 id="expressions">Expressions</h4>
+
+<ul class="index">
+
+
+<li><a href="/golang/pointers-explained/">Pointers</a></li>
+
+
+
+<li><a href="/golang/untyped-constants/">Untyped numeric constants with no limits</a></li>
+
+
+
+<li><a href="/golang/structs-explained/">Structs</a></li>
+
+
+
+<li><a href="/golang/make-slice-map-channel/">Make slices, maps and channels</a></li>
+
+
+
+<li><a href="/golang/append-explained/">Append function</a></li>
+
+
+
+<li><a href="/golang/copy-explained/">Copy function</a></li>
+
+
+
+<li><a href="/golang/default-zero-value/">Default value of struct, string, slice, map</a></li>
+
+
+
+<li><a href="/golang/operator-priority/">Operator precedence</a></li>
+
+
+
+<li><a href="/golang/conversions/">Conversions</a></li>
+
+</ul>
+
+<h4 id="methods-and-interfaces">Methods and interfaces</h4>
+
+<ul class="index">
+
+
+<li><a href="/golang/methods-explained/">Methods</a></li>
+
+
+
+<li><a href="/golang/interfaces-explained/">Interfaces</a></li>
+
+
+
+<li><a href="/golang/empty-interface/">The empty interface</a></li>
+
+
+
+<li><a href="/golang/named-return-values-parameters/">Named return values</a></li>
+
+
+
+<li><a href="/golang/overload-overwrite-optional-parameter/">Optional parameters and method overloading</a></li>
+
+
+
+<li><a href="/golang/variadic-function/">Variadic functions (...T)</a></li>
+
+</ul>
+
+<h4 id="error-handling">Error handling</h4>
+
+<ul class="index">
+
+
+<li><a href="/golang/errors-explained/">Errors</a></li>
+
+
+
+<li><a href="/golang/create-error/">Create a custom error</a></li>
+
+
+
+<li><a href="/golang/panic-explained/">Panic</a></li>
+
+
+
+<li><a href="/golang/recover-from-panic/">Recover from a panic</a></li>
+
+
+
+<li><a href="/golang/stack-trace/">Stack traces</a></li>
+
+</ul>
+
+<h4 id="bits-and-pieces">Bits and pieces</h4>
+
+<ul class="index">
+
+
+<li><a href="/golang/underscore/">Blank identifier (underscore)</a></li>
+
+
+
+<li><a href="/golang/find-type-of-object/">Find the type of an object</a></li>
+
+
+
+<li><a href="/golang/generics/">Generics (alternatives and workarounds)</a></li>
+
+
+
+<li><a href="/golang/iota/">iota</a></li>
+
+
+
+<li><a href="/golang/int-vs-int64/">int vs. int64</a></li>
+
+
+
+<li><a href="/golang/three-dots-ellipsis/">Three dots (ellipsis) notation</a></li>
+
+</ul>
+
+<h3 id="standard-library">Standard library</h3>
+
+<ul class="index">
+
+
+<li><a href="/golang/json-example/">JSON by example</a>&nbsp;
+    <span class="tag">encoding/json</span>
+</li>
+
+
+
+<li><a href="/golang/fmt-printf-reference-cheat-sheet/">fmt cheat sheet</a>&nbsp;
+    <span class="tag">fmt</span>
+</li>
+
+
+
+<li><a href="/golang/create-image/">Create a new image</a>&nbsp;
+    <span class="tag">image</span>
+</li>
+
+
+
+<li><a href="/golang/io-reader-interface-explained/">The io.Reader interface</a>&nbsp;
+    <span class="tag">io</span>
+</li>
+ 
+
+
+<li><a href="/golang/io-writer-interface-explained/">The io.Writer interface</a>&nbsp;
+    <span class="tag">io</span>
+</li>
+
+
+
+<li><a href="/golang/log-to-file/">Write log to file</a>&nbsp;
+    <span class="tag">log</span>
+</li>
+
+
+
+<li><a href="/golang/disable-logging-output/">Disable logging</a>&nbsp;
+    <span class="tag">log</span>
+</li>
+
+
+
+<li><a href="/golang/http-server-example/">HTTP server example</a>&nbsp;
+    <span class="tag">net/http</span>
+</li>
+
+
+
+<li><a href="/golang/regexp-cheat-sheet/">Regular expressions</a>&nbsp;
+    <span class="tag">regexp</span>
+</li>
+
+
+
+<li><a href="/golang/how-to-sort-in-go/">How to sort in Go</a>&nbsp;
+    <span class="tag">sort</span>
+</li>
+
+
+
+<li><a href="/golang/binary-search/">Binary search</a>&nbsp;
+    <span class="tag">sort</span>
+</li>
+
+</ul>
+
+<h3 id="concurrent-programming">Concurrent programming<span class="quicklink"><a href="/golang/concurrent-programming/" title="Concurrent programming">Tutorial</a></span></h3>
+
+<ul class="index">
+
+
+<li><a href="/golang/goroutines-explained/">Goroutines</a></li>
+
+
+
+<li><a href="/golang/channels-explained/">Channels</a></li>
+
+
+
+<li><a href="/golang/select-explained/">Select</a></li>
+
+
+
+<li><a href="/golang/data-races-explained/">Data races</a></li>
+
+
+
+<li><a href="/golang/detect-data-races/">Detect data races</a></li>
+
+
+
+<li><a href="/golang/detect-deadlock/">Deadlock</a></li>
+
+
+
+<li><a href="/golang/wait-for-goroutines-waitgroup/">Waiting for goroutines</a></li>
+
+
+
+<li><a href="/golang/broadcast-channel/">Broadcast a signal on a channel</a></li>
+
+
+
+<li><a href="/golang/stop-goroutine/">Stop a goroutine</a></li>
+
+
+
+<li><a href="/golang/goroutine-block-sleep-forever/">Make a goroutine block or sleep forever</a></li>
+
+
+
+<li><a href="/golang/time-reset-wait-stop-timeout-cancel-interval/">Timer and Ticker</a></li>
+
+
+
+<li><a href="/golang/mutex-explained/">Mutual exclusion lock (mutex)</a></li>
+
+
+
+<li><a href="/golang/efficient-parallel-computation/">Efficient parallel computation</a></li>
+
+</ul>
+
+<h3 id="object-oriented-programming">Object-oriented programming</h3>
+
+<ul class="index">
+
+
+<li><a href="/golang/inheritance-object-oriented/">Inheritance and object-oriented programming</a></li>
+
+
+
+<li><a href="/golang/methods-explained/">Methods</a></li>
+
+
+
+<li><a href="/golang/constructor-best-practice/">Constructors</a></li>
+
+
+
+<li><a href="/golang/public-private/">Public vs. private</a></li>
+
+
+
+<li><a href="/golang/pointer-vs-value-receiver/">Pointer vs. value receiver</a></li>
+
+</ul>
+
+<h3 id="functional-programming">Functional programming</h3>
+
+<ul class="index">
+
+
+<li><a href="/golang/function-pointer-type-declaration/">Function types and values</a></li>
+
+
+
+<li><a href="/golang/anonymous-function-literal-lambda-closure/">Anonymous functions and closures</a></li>
+
+
+
+<li><a href="/golang/your-basic-func/">Your basic func</a></li>
+
+
+
+<li><a href="/golang/iterator-generator-pattern/">Iterator pattern</a></li>
+
+</ul>
+
+<h3 id="strings"><span class="quicklink">Strings<a href="/golang/string-functions-reference-cheat-sheet/" title="String handling cheat sheet">Cheat&nbsp;sheet</a></span></h3>
+
+<ul class="index">
+
+
+<li><a href="/golang/fmt-printf-reference-cheat-sheet/">fmt cheat sheet</a></li>
+
+
+
+<li><a href="/golang/format-string-without-printing/">Format a string without printing it</a></li>
+
+
+
+<li><a href="/golang/rune/">Type rune</a></li>
+
+
+
+<li><a href="/golang/build-append-concatenate-strings-efficiently/">Build and concatenate strings efficiently</a></li>
+
+
+
+<li><a href="/golang/compare-strings/">String comparison</a></li>
+
+
+
+<li><a href="/golang/convert-string-to-int/">Convert string to int</a></li>
+
+
+
+<li><a href="/golang/convert-string-to-byte-slice/">Convert string to byte slice (array)</a></li>
+
+
+
+<li><a href="/golang/multiline-string/">Multiline strings</a></li>
+
+
+
+<li><a href="/golang/remove-duplicate-whitespace/">Remove duplicate whitespace</a></li>
+
+
+
+<li><a href="/golang/repeat-multiply-string/">Repeat string</a></li>
+
+
+
+<li><a href="/golang/reverse-utf8-string/">Reverse a UTF-8 encoded string</a></li>
+
+
+</ul>
+
+<h3 id="slices">Slices<span class="quicklink"><a href="/golang/slices-explained" title="Slices in a nutshell">Nutshell</a></span></h3>
+
+<ul class="index">
+
+
+<li><a href="/golang/clear-slice/">Clear a slice</a></li>
+
+
+
+<li><a href="/golang/compare-slices/">Compare slices (arrays)</a></li>
+
+
+
+<li><a href="/golang/concatenate-slices/">Concatenate slices</a></li>
+
+
+
+<li><a href="/golang/delete-element-slice/">Delete an element from a slice</a></li>
+
+
+
+<li><a href="/golang/find-search-contains-slice/">Find an element in a slice</a></li>
+
+
+
+<li><a href="/golang/last-item-in-slice/">Last item in slice</a></li>
+
+
+
+<li><a href="/golang/nil-slice-vs-empty-slice/">Empty slice vs. nil slice</a></li>
+
+
+
+<li><a href="/golang/pass-slice-to-variadic-function/">Pass a slice to a variadic function</a></li>
+
+</ul>
+
+<h3 id="maps">Maps<span class="quicklink"><a href="/golang/maps-explained/" title="Maps in a nutshell">Nutshell</a></span></h3>
+
+<ul class="index">
+
+
+<li><a href="/golang/check-map-contains-key/">Check if a map contains a key</a></li>
+
+
+
+<li><a href="/golang/check-empty-map/">Check if a map is empty</a></li>
+
+
+
+<li><a href="/golang/count-items-map/">Count elements in a map</a></li>
+
+
+
+<li><a href="/golang/slice-of-keys-values-from-map/">Get slices of keys and values from a map</a></li>
+
+
+
+<li><a href="/golang/sort-map-keys-values/">Sort a map by key or value</a></li>
+
+</ul>
+
+<h3 id="files">Files</h3>
+
+<ul class="index">
+
+
+<li><a href="/golang/read-file-line-by-line/">Read a file line by line</a></li>
+
+
+
+<li><a href="/golang/read-file-to-string/">Read a whole file into a string (byte slice)</a></li>
+
+
+
+<li><a href="/golang/read-stdin/">Read from stdin</a></li>
+
+
+
+<li><a href="/golang/append-to-file/">Append text to a file</a></li>
+
+
+
+<li><a href="/golang/delete-file-directory/">Delete a file or directory</a></li>
+
+
+
+<li><a href="/golang/check-file-exists/">Check if a file or directory exists</a></li>
+
+
+
+<li><a href="/golang/current-directory/">Current working directory</a></li>
+
+
+
+<li><a href="/golang/list-files-in-directory/">List files and folders in a directory</a></li>
+
+
+
+<li><a href="/golang/list-directory-recursive/">Visit files and folders in a directory tree</a></li>
+
+
+
+<li><a href="/golang/temporary-file-directory/">Create a temporary file or directory</a></li>
+
+</ul>
+
+<h3 id="time-and-date">Time and date</h3>
+
+<ul class="index">
+
+
+<li><a href="/golang/current-time/">Current time</a></li>
+
+
+
+<li><a href="/golang/format-parse-string-time-date-example/">Format/parse a time or date</a></li>
+
+
+
+<li><a href="/golang/time-change-convert-location-timezone/">Time zones</a></li>
+
+
+
+<li><a href="/golang/measure-execution-time/">Measure execution time</a></li>
+
+
+
+<li><a href="/golang/day-month-year-from-time/">Get year, month, day from time</a></li>
+
+
+
+<li><a href="/golang/day-of-week-int/">Day of week</a></li>
+
+
+
+<li><a href="/golang/days-between-dates/">Days between two dates</a></li>
+
+
+
+<li><a href="/golang/last-day-month-date/">Days in a month</a></li>
+
+</ul>
+
+<h3 id="random-numbers">Random numbers</h3>
+
+<ul class="index">
+
+
+<li><a href="/golang/generate-number-random-range/">Generate a random number in a given range</a></li>
+
+
+
+<li><a href="/golang/generate-random-character/">Generate a random character (rune)</a></li>
+
+
+
+<li><a href="/golang/generate-random-string-password-booking-reference/">Generate a random string (password, reference)</a></li>
+
+
+
+<li><a href="/golang/generate-uuid-guid/">Generate a random UUID (GUID)</a></li>
+
+
+
+<li><a href="/golang/crypto-rand-int/">Cryptographically secure random numbers</a></li>
+
+
+
+<li><a href="/golang/shuffle-slice-array/">Shuffle slice or array</a></li>
+
+</ul>
+
+<h3 id="new-in-go-110">New in Go 1.10</h3>
+
+<ul class="index">
+
+
+<li><a href="/golang/build-append-concatenate-strings-efficiently/">Build and concatenate strings efficiently</a></li>
+
+
+
+<li><a href="/golang/round-float-to-int/">Round float to integer value</a></li>
+
+
+
+<li><a href="/golang/shuffle-slice-array/">Shuffle slice or array</a></li>
+
+</ul>
+
+
+</article>
+
+<aside>
+
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

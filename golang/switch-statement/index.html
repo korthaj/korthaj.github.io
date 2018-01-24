@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Switch statement | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="How to use a switch statment in Go.">
+  <meta name="keywords" content="go, golang, switch, statement, case, fallthrough, break">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Switch statement</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<p class="lead">A switch statement is a shorter way to write a sequence of if-else statements.</p>
+
+<ul class="toc">
+  <li><a href="#basics">Basics</a></li>
+  <li><a href="#no-condition">No condition</a></li>
+  <li><a href="#case-lists">Case lists</a></li>
+  <li><a href="#fall-through">Fall through</a></li>
+  <li><a href="#exit-a-switch">Exit a switch</a></li>
+  <li><a href="#execution-order">Execution order</a></li>
+</ul>
+
+<h2 id="basics">Basics</h2>
+
+<pre><code><b>switch</b> time.Now().Weekday() {
+<b>case</b> time.Saturday:
+    fmt.Println("Today is Saturday.")
+<b>case</b> time.Sunday:
+    fmt.Println("Today is Sunday.")
+<b>default</b>:
+    fmt.Println("Today is a weekday.")
+}</code></pre>
+
+<ul>
+<li>A switch statement runs the first case equal to the condition expression.</li>
+<li>The cases are evaluated from top to bottom, stopping when a case succeeds.</li>
+</ul>
+
+<p>Unlike C and Java, the case expressions do not need to be constants.</p>
+
+<h2 id="no-condition">No condition</h2>
+
+<pre><code>hour := time.Now().Hour()
+switch { <span class="comment">// Same as: switch true</span>
+case hour < 12:
+    fmt.Println("Good morning!")
+case hour < 17:
+    fmt.Println("Good afternoon!")
+default:
+    fmt.Println("Good evening!")
+}</code></pre>
+
+<h2 id="case-lists">Case lists</h2>
+
+<pre><code>func whiteSpace(c rune) bool {
+    switch c {
+    <b>case ' ', '\t', '\n', '\f', '\r':</b>
+        return true
+    }
+    return false
+}</code></pre>
+
+<h2 id="fall-through">Fall through</h2>
+
+<pre><code>switch 2 {
+case 1:
+    fmt.Println("1")
+    <b>fallthrough</b>
+case 2:
+    fmt.Println("2")
+    <b>fallthrough</b>
+case 3:
+    fmt.Println("3")
+}</code></pre>
+
+<pre><code>2
+3
+</code></pre>
+
+<ul>
+<li>A <code>fallthrough</code> statement transfers control to the next case.</li>
+<li>It may be used only as the final statement in a clause.</li>
+</ul>
+
+<h2 id="exit-a-switch">Exit a switch</h2>
+
+<p>A <code>break</code> statement terminates execution of the innermost <code>for</code>, <code>switch</code>, or <code>select</code> statement.</p>
+
+<h2 id="execution-order">Execution order</h2>
+
+<pre><code>func Foo(n int) int {
+    fmt.Println(n)
+    return n
+}
+
+func main() {
+    switch Foo(1) {
+    case Foo(0), Foo(1), Foo(2):
+        fmt.Println("First case")
+        fallthrough
+    case Foo(3):
+        fmt.Println("Second case")
+    }
+}</code></pre>
+
+<pre><code>1
+0
+1
+First case
+Second case
+</code></pre>
+
+<ul>
+<li>First the switch expression is evaluated once.</li>
+<li>Then case expressions are evaluated left-to-right and top-to-bottom:
+
+<ul>
+<li>the first one that equals the switch expression triggers execution
+of the statements of the associated&nbsp;case,</li>
+<li>the other cases are skipped.</li>
+</ul></li>
+</ul>
+
+</article>
+
+<aside>
+
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/for-loop/">For loops in a nutshell</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/select-explained/">Select</a><br />
+    <span class="source"></span>
+  </div>
+
+
+  <h2>New in Go 1.10</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/build-append-concatenate-strings-efficiently/">Build and concatenate strings efficiently</a></li>
+
+    <li><a href="/golang/round-float-to-int/">Round float to integer value</a></li>
+
+    <li><a href="/golang/shuffle-slice-array/">Shuffle slice or array</a></li>
+
+  </ul>
+
+  <h2>Top Go articles</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/gotcha/">Go gotcha</a></li>
+
+    <li><a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a></li>
+
+    <li><a href="/golang/slices-explained/">Slices in a nutshell</a></li>
+
+    <li><a href="/golang/maps-explained/">Maps in a nutshell</a></li>
+
+    <li><a href="/golang/concurrent-programming/">Concurrent programming</a></li>
+
+  </ul>
+  <p><a href="/golang/"><strong>See all 198 Go articles</strong></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

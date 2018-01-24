@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inheritance and object-oriented programming | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="How to get the benefits of inheritance in Go.">
+  <meta name="keywords" content="go, golang, inheritance, object-oriented, composition, delegation, polymorphism, dynamic dispatch, code reuse">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Inheritance and object-oriented programming</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<p class="lead">Go uses interfaces and embedding
+to support code reuse and polymorphism.</p>
+
+<p>Inheritance in traditional object-oriented programming offers three features in&nbsp;one.
+When a&nbsp;<code>Dog</code> inherits from an&nbsp;<code>Animal</code></p>
+
+<ol>
+<li>the <code>Dog</code> class reuses code from the <code>Animal</code>&nbsp;class,</li>
+<li>a variable <code>x</code>  of type <code>Animal</code> can refer to either a <code>Dog</code> or an <code>Animal</code>,</li>
+<li><code>x.Eat()</code> will choose an <code>Eat</code> method based on what type of object <code>x</code> refers&nbsp;to.</li>
+</ol>
+
+<p>In object-oriented lingo, these features are known as <b>code reuse</b>, <b>poly&shy;mor&shy;phism</b> and <b>dynamic dispatch</b>.</p>
+
+<p>All of these are available in Go, using separate constructs:</p>
+
+<ul>
+<li><b>composition</b> and <b>embedding</b> provide code reuse,</li>
+<li><b>interfaces</b> take care of polymorphism and dynamic dispatch.</li>
+</ul>
+
+<h2 id="code-reuse-composition">Code reuse: composition</h2>
+
+<blockquote class="math">
+Don't worry about type hierarchies when starting a new Go&nbsp;project &ndash; <br>
+it's easy to introduce polymorphism and dynamic dispatch later on.
+</blockquote>
+
+<p>If a <code>Dog</code> needs some or all of the functionality of an <code>Animal</code>,
+simply use <strong>composition</strong>.</p>
+
+<pre><code>type Animal struct {
+	// …
+}
+
+
+type Dog struct {
+	beast Animal
+	// …
+}
+</code></pre>
+
+<p>This gives you full freedom to use the <code>Animal</code> part of your <code>Dog</code> as needed.
+Yes, it&rsquo;s that simple.</p>
+
+<h2 id="code-reuse-embedding">Code reuse: embedding</h2>
+
+<p>If the <code>Dog</code> class inherits <strong>the exact behavior</strong> of an <code>Animal</code>,
+this approach can result in some tedious coding.</p>
+
+<pre><code>type Animal struct {
+	// …
+}
+
+func (a *Animal) Eat()   { … }
+func (a *Animal) Sleep() { … }
+func (a *Animal) Breed() { … }
+
+type Dog struct {
+	beast Animal
+	// …
+}
+
+func (a *Dog) Eat()   { a.beast.Eat() }
+func (a *Dog) Sleep() { a.beast.Sleep() }
+func (a *Dog) Breed() { a.beast.Breed() }
+</code></pre>
+
+<p>This code pattern is known as <strong>delegation</strong>.</p>
+
+<p>Go uses <strong>embedding</strong> for situations like this.
+The declaration of the <code>Dog</code> struct and it&rsquo;s three methods can be reduced to:</p>
+
+<pre><code>type Dog struct {
+	Animal
+	// …
+}
+</code></pre>
+
+<h2 id="polymorphism-and-dynamic-dispatch-interfaces">Polymorphism and dynamic dispatch: interfaces</h2>
+
+<blockquote class="math">
+Keep your interfaces short, and introduce them only when needed.
+</blockquote>
+
+<p>Further down the road your project might have grown to include more animals.
+At this point you can introduce polymorphism and dynamic dispatch using <strong>interfaces</strong>.</p>
+
+<p>If you need to put all your pets to sleep, you can define a <code>Sleeper</code> interface.</p>
+
+<pre><code>type Sleeper interface {
+	Sleep()
+}
+
+func main() {
+	pets := []Sleeper{new(Cat), new(Dog)}
+	for _, x := range pets {
+		x.Sleep()
+	}
+}
+</code></pre>
+
+<p>No explicit declaration is required by the <code>Cat</code> and <code>Dog</code> types.
+Any type that provides the methods named in an inter&shy;face
+may be treated as an imple&shy;mentation.</p>
+
+<p><em>When I see a bird that walks like a&nbsp;duck and swims like a&nbsp;duck and quacks like a&nbsp;duck, I&nbsp;call that&nbsp;bird a&nbsp;duck.</em><br>
+&ndash;James Whitcomb Riley</p>
+
+</article>
+
+<aside>
+
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/constructor-best-practice/">Constructors</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/methods-explained/">Methods</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/interfaces-explained/">Interfaces</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/public-private/">Public vs. private</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="https://golang.org/doc/effective_go.html#embedding">Embedding</a><br />
+    <span class="source">Effective Go</span>
+    <span class="author"></span>
+  </div>
+
+
+  <h2>New in Go 1.10</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/build-append-concatenate-strings-efficiently/">Build and concatenate strings efficiently</a></li>
+
+    <li><a href="/golang/round-float-to-int/">Round float to integer value</a></li>
+
+    <li><a href="/golang/shuffle-slice-array/">Shuffle slice or array</a></li>
+
+  </ul>
+
+  <h2>Top Go articles</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/gotcha/">Go gotcha</a></li>
+
+    <li><a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a></li>
+
+    <li><a href="/golang/slices-explained/">Slices in a nutshell</a></li>
+
+    <li><a href="/golang/maps-explained/">Maps in a nutshell</a></li>
+
+    <li><a href="/golang/concurrent-programming/">Concurrent programming</a></li>
+
+  </ul>
+  <p><a href="/golang/"><strong>See all 198 Go articles</strong></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

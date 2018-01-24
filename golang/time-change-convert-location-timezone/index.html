@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time zones | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="How to get the time in a different time zone.">
+  <meta name="keywords" content="go, golang, time, time zone, example, location, convert, change, utc, local">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Time zones</h1>
+<div class="tagline">yourbasic.org</div>
+<p>Each <a href="https://golang.org/pkg/time/#Time"><code>Time</code></a> has an associated <a href="https://golang.org/pkg/time/#Location"><code>Location</code></a>, which is used for display purposes.</p>
+
+<p>The method <a href="https://golang.org/pkg/time/#Time.In"><code>In</code></a> returns a time with a specific location. Changing the location in this way changes only the presentation; it does not change the instant in time.</p>
+
+<p>Here is a convenience function that changes the location associated with a&nbsp;time.</p>
+
+<pre><code>// TimeIn returns the time in UTC if the name is "" or "UTC".
+// It returns the local time if the name is "Local".
+// Otherwise, the name is taken to be a location name in
+// the IANA Time Zone database, such as "Africa/Lagos".
+func TimeIn(t time.Time, name string) (time.Time, error) {
+    loc, err := time.LoadLocation(name)
+    if err == nil {
+        t = t.In(loc)
+    }
+    return t, err
+}</code></pre>
+
+<p>In use:</p>
+
+<pre><code>for _, name := range []string{
+	&quot;&quot;,
+	&quot;Local&quot;,
+	&quot;Asia/Shanghai&quot;,
+	&quot;America/Metropolis&quot;,
+} {
+	t, err := TimeIn(time.Now(), name)
+	if err == nil {
+		fmt.Println(t.Location(), t.Format(&quot;15:04&quot;))
+	} else {
+		fmt.Println(name, &quot;&lt;time unknown&gt;&quot;)
+	}
+}
+</code></pre>
+
+<pre><code>UTC 19:32
+Local 20:32
+Asia/Shanghai 03:32
+America/Metropolis &lt;time unknown&gt;
+</code></pre>
+
+<blockquote class="warning">
+<b>Warning:</b> A daylight savings time transition skips or repeats times.
+For example, in the United States, March 13, 2011 2:15am never occurred,
+while November 6, 2011 1:15am occurred twice.
+In such cases, the choice of time zone, and therefore the time, is not well-defined.
+Date returns a time that is correct in one of the two zones involved in the transition,
+but it does not guarantee which.
+<a class="quote-source" href="https://golang.org/pkg/time/#Date">Package time: Date</a>
+</blockquote>
+
+</article>
+
+<aside>
+
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/current-time/">Current time</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/format-parse-string-time-date-example/">Format/parse a time or date</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/days-between-dates/">Days between two dates</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/last-day-month-date/">Days in a month</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="https://golang.org/pkg/time/">Package time</a><br />
+    <span class="source">golang.org</span>
+    <span class="author"></span>
+  </div>
+
+  <div class="reference">
+    <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">List of tz database time zones</a><br />
+    <span class="source">Wikipedia</span>
+    <span class="author"></span>
+  </div>
+
+
+  <h2>New in Go 1.10</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/build-append-concatenate-strings-efficiently/">Build and concatenate strings efficiently</a></li>
+
+    <li><a href="/golang/round-float-to-int/">Round float to integer value</a></li>
+
+    <li><a href="/golang/shuffle-slice-array/">Shuffle slice or array</a></li>
+
+  </ul>
+
+  <h2>Top Go articles</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/gotcha/">Go gotcha</a></li>
+
+    <li><a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a></li>
+
+    <li><a href="/golang/slices-explained/">Slices in a nutshell</a></li>
+
+    <li><a href="/golang/maps-explained/">Maps in a nutshell</a></li>
+
+    <li><a href="/golang/concurrent-programming/">Concurrent programming</a></li>
+
+  </ul>
+  <p><a href="/golang/"><strong>See all 198 Go articles</strong></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

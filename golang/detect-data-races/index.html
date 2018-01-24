@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detect data races | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="By starting your application with the &#39;-race&#39; option, the Go runtime might be able to detect and inform you about data races.">
+  <meta name="keywords" content="go, golang, data race, detection">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Detect data races</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+
+<p class="lead">Data races can happen easily and are hard to debug. Luckily, the Go runtime is often able to&nbsp;help.</p>
+
+<p>Use <code>-race</code> to enable the built-in data race detector.</p>
+
+<pre><code>$ go test -race [packages]
+$ go run -race [packages]
+</code></pre>
+
+<h2 id="example">Example</h2>
+
+<p>Here&rsquo;s a program with a data race:</p>
+
+<pre><code>package main
+import "fmt"
+
+func main() {
+    i := 0
+    go func() {
+        <b>i++</b> <span class="comment">// write</span>
+    }()
+    <b>fmt.Println(i)</b> <span class="comment">// concurrent read</span>
+}</code></pre>
+
+<p>Running this program with the <code>-race</code> options tells us that there&rsquo;s a race
+between the write at line&nbsp;7 and the read at line&nbsp;9:</p>
+
+<pre><code class="skiphl">$ go run -race main.go
+0
+==================
+WARNING: DATA RACE
+<span class="highlight">Write</span> by goroutine 6:
+  main.main.func1()
+      <span class="highlight">/tmp/main.go:7</span> +0x44
+
+Previous <span class="highlight">read</span> by main goroutine:
+  main.main()
+      <span class="highlight">/tmp/main.go:9</span> +0x7e
+
+Goroutine 6 (running) created at:
+  main.main()
+      /tmp/main.go:8 +0x70
+==================
+Found 1 data race(s)
+exit status 66</code></pre>
+
+<h2 id="details">Details</h2>
+
+<p>The data race detector does not perform any static analysis. It checks the memory access in runtime and only for the code paths that are actually executed.</p>
+
+<p>It runs on darwin/amd64, freebsd/amd64, linux/amd64 and windows/amd64.</p>
+
+<p>The overhead varies, but typically there&rsquo;s a 5-10x increase in memory usage, and 2-20x increase in execution time.</p>
+
+<ul class="pagina">
+  
+        <li><a href="/golang/data-races-explained/">« Prev</a></li>
+      
+        <li><a href="/golang/concurrent-programming/">Index</a></li>
+      
+        <li><a href="/golang/detect-deadlock/">Next »</a></li>
+      
+</ul>
+
+</article>
+
+<aside>
+
+  <h2>Concurrent programming</h2>
+  <ul class="none">
+  
+      <li><a href="/golang/goroutines-explained/">Goroutines</a></li>
+
+      <li><a href="/golang/channels-explained/">Channels</a></li>
+
+      <li><a href="/golang/select-explained/">Select</a></li>
+
+      <li><a href="/golang/data-races-explained/">Data races</a></li>
+
+      <li><b>🢒&nbsp;</b>Detect data races</li>
+
+      <li><a href="/golang/detect-deadlock/">Deadlock</a></li>
+
+      <li><a href="/golang/wait-for-goroutines-waitgroup/">Waiting for goroutines</a></li>
+
+      <li><a href="/golang/broadcast-channel/">Broadcast a signal on a channel</a></li>
+
+      <li><a href="/golang/stop-goroutine/">Stop a goroutine</a></li>
+
+      <li><a href="/golang/time-reset-wait-stop-timeout-cancel-interval/">Timer and Ticker</a></li>
+
+      <li><a href="/golang/mutex-explained/">Mutual exclusion lock (mutex)</a></li>
+
+      <li><a href="/golang/efficient-parallel-computation/">Efficient parallel computation</a></li>
+
+  </ul>
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="https://golang.org/doc/articles/race_detector.html">Data Race Detector</a><br />
+    <span class="source">golang.org</span>
+    <span class="author"></span>
+  </div>
+  <p><a href="/golang/"><b>See all 198 Go articles</b></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

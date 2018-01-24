@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Public vs. private | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="How to define public/private functions, methods and other types in Go.">
+  <meta name="keywords" content="go, golang, public, private, field, method, visibility, encapsulation, package, function, struct, type">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Public vs. private</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<!-- CC0: http://www.publicdomainpictures.net/view-image.php?image=23003 -->
+
+<div><img src="/golang/private.jpg" class="extra-content" alt="PRIVATE KEEP OUT" style="float: right; margin: 20px 0 0 20px;"></div>
+
+<p class="lead">A package is the smallest unit of private encap&shy;sulation in&nbsp;Go.</p>
+
+<ul>
+<li>All identifiers defined within a package are visible throughout that package.</li>
+<li>When importing a package you can access only its <strong>exported</strong> identifiers.</li>
+<li>An identifier is exported if it begins with a <strong>capital letter</strong>.</li>
+</ul>
+
+<p>Exported and unexported identifiers are used to describe the public interface of a package
+and to guard against certain programming errors.</p>
+
+<blockquote class="warning">
+<b>Warning:</b> Unexported identifiers is not a security measure and it does not hide or protect any information.
+</blockquote>
+
+<h2 id="example">Example</h2>
+
+<p>In this package, the only exported identifiers are <code>StopWatch</code> and <code>Start</code>.</p>
+
+<pre><code>package timer
+
+import "time"
+
+// A StopWatch is a simple clock utility.
+// Its zero value is an idle clock with 0 total time.
+type <b>StopWatch</b> struct {
+    start   time.Time
+    total   time.Duration
+    running bool
+}
+
+// Start turns the clock on.
+func (s *StopWatch) <b>Start</b>() {
+    if !s.running {
+        s.start = time.Now()
+        s.running = true
+    }
+}</code></pre>
+
+<p>The <code>StopWatch</code> and its exported methods can be imported and used in a different package.</p>
+
+<pre><code>package main
+
+import "timer"
+
+func main() {
+    clock := new(<b>timer.StopWatch</b>)
+    clock.<b>Start()</b>
+    if clock.<b>running</b> { <span class="comment">// <b>ILLEGAL</b></span>
+        <span class="comment">// …</span>
+    }
+}</code></pre>
+
+<pre><code>../main.go:8:15: clock.running undefined (cannot refer to unexported field or method clock.running)
+</code></pre>
+
+</article>
+
+<aside>
+
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/methods-explained/">Methods</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/constructor-best-practice/">Constructors</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/inheritance-object-oriented/">Inheritance and object-oriented programming</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/access-private-field-reflection/">Access private fields with reflection</a><br />
+    <span class="source"></span>
+  </div>
+
+
+  <h2>New in Go 1.10</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/build-append-concatenate-strings-efficiently/">Build and concatenate strings efficiently</a></li>
+
+    <li><a href="/golang/round-float-to-int/">Round float to integer value</a></li>
+
+    <li><a href="/golang/shuffle-slice-array/">Shuffle slice or array</a></li>
+
+  </ul>
+
+  <h2>Top Go articles</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/gotcha/">Go gotcha</a></li>
+
+    <li><a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a></li>
+
+    <li><a href="/golang/slices-explained/">Slices in a nutshell</a></li>
+
+    <li><a href="/golang/maps-explained/">Maps in a nutshell</a></li>
+
+    <li><a href="/golang/concurrent-programming/">Concurrent programming</a></li>
+
+  </ul>
+  <p><a href="/golang/"><strong>See all 198 Go articles</strong></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

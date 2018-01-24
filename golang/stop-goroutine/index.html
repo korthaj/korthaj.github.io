@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stop a goroutine | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="A goroutine can stop only by returning from it&#39;s top level function. To make it stoppable, let it listen to a stop signal on a channel.">
+  <meta name="keywords" content="go, golang, stop, kill, abort, goroutine">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Stop a goroutine</h1>
+<div class="tagline">yourbasic.org</div>
+
+<p class="lead">One&nbsp;goroutine can't forcibly stop another &ndash; a&nbsp;gorou&shy;tine can stop only by returning from it's top level function.</p>
+
+<p>To make a goroutine stoppable, let it listen to a stop signal on a channel.</p>
+
+<pre><code>quit := make(chan struct{})
+go func() {
+    for {
+        select {
+        case <-quit:
+            return
+        default:
+            <span class="comment">// …</span>
+        }
+    }
+}()
+<span class="comment">// …</span>
+close(quit)</code></pre>
+
+<p>Sometimes it&rsquo;s convenient to use a single channel for both data and signalling.</p>
+
+<pre><code>// Generator returns a channel that produces the numbers 1, 2, 3,…
+// To stop the underlying goroutine, close the channel.
+func Generator() chan int {
+    ch := make(chan int)
+    go func() {
+        n := 1
+        for {
+            select {
+            case ch <- n:
+                n++
+            case <-ch:
+                return
+            }
+        }
+    }()
+    return ch
+}
+
+func main() {
+    number := Generator()
+    fmt.Println(<-number)
+    fmt.Println(<-number)
+    close(number)
+    <span class="comment">// …</span>
+}</code></pre>
+
+<pre><code>1
+2
+</code></pre>
+
+<ul class="pagina">
+  
+        <li><a href="/golang/broadcast-channel/">« Prev</a></li>
+      
+        <li><a href="/golang/concurrent-programming/">Index</a></li>
+      
+        <li><a href="/golang/time-reset-wait-stop-timeout-cancel-interval/">Next »</a></li>
+      
+</ul>
+
+</article>
+
+<aside>
+
+  <h2>Concurrent programming</h2>
+  <ul class="none">
+  
+      <li><a href="/golang/goroutines-explained/">Goroutines</a></li>
+
+      <li><a href="/golang/channels-explained/">Channels</a></li>
+
+      <li><a href="/golang/select-explained/">Select</a></li>
+
+      <li><a href="/golang/data-races-explained/">Data races</a></li>
+
+      <li><a href="/golang/detect-data-races/">Detect data races</a></li>
+
+      <li><a href="/golang/detect-deadlock/">Deadlock</a></li>
+
+      <li><a href="/golang/wait-for-goroutines-waitgroup/">Waiting for goroutines</a></li>
+
+      <li><a href="/golang/broadcast-channel/">Broadcast a signal on a channel</a></li>
+
+      <li><b>🢒&nbsp;</b>Stop a goroutine</li>
+
+      <li><a href="/golang/time-reset-wait-stop-timeout-cancel-interval/">Timer and Ticker</a></li>
+
+      <li><a href="/golang/mutex-explained/">Mutual exclusion lock (mutex)</a></li>
+
+      <li><a href="/golang/efficient-parallel-computation/">Efficient parallel computation</a></li>
+
+  </ul>
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="https://blog.golang.org/context">Go Concurrency Patterns: Context</a><br />
+    <span class="source">The Go Blog</span>
+    <span class="author"></span>
+  </div>
+
+  <div class="reference">
+    <a href="https://blog.golang.org/pipelines">Go Concurrency Patterns: Pipelines and cancellation</a><br />
+    <span class="source">The Go Blog</span>
+    <span class="author"></span>
+  </div>
+  <p><a href="/golang/"><b>See all 198 Go articles</b></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

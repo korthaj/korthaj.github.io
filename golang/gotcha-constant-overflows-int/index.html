@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Constant overflows int | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="An untyped integer constant is converted to an int when the type can&#39;t be inferred from the context.">
+  <meta name="keywords" content="go, golang, untyped, constant, convertion">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Constant overflows int</h1>
+<div class="tagline">yourbasic.org</div>
+
+<p>Why doesn&rsquo;t this code compile?</p>
+
+<pre><code>const n = 9876543210 * 9876543210
+fmt.Println(n)</code></pre>
+
+<pre><code>../main.go:2:13: constant 97546105778997104100 overflows int
+</code></pre>
+
+<p><details class="answer">
+<summary class="answer">Answer</summary></p>
+
+<p>The untyped constant <code>n</code> must be converted to a type before it can be
+assigned to the <code>interface{}</code> parameter in the call to <code>fmt.Println</code>.</p>
+
+<pre><code>fmt.Println(a ...interface{})</code></pre>
+
+<p>When the type can’t be inferred from the context, an untyped constant
+is converted to a <code>bool</code>, <code>int</code>, <code>float64</code>, <code>complex128</code>, <code>string</code> or <code>rune</code>
+depending of the format of the&nbsp;constant.</p>
+
+<p>In this case the constant is an integer, but <code>n</code> is larger
+than the maximum value of an&nbsp;<code>int</code>.</p>
+
+<p>However, <code>n</code> can be represented as a&nbsp;<code>float64</code>.</p>
+
+<pre><code class="language-go">const n = 9876543210 * 9876543210
+fmt.Println(float64(n))
+</code></pre>
+
+<pre><code>9.75461057789971e+19
+</code></pre>
+
+<p>For exact representation of big numbers, the <a href="https://golang.org/pkg/math/big/">math/big</a>
+package implements arbitrary-precision arithmetic.
+It supports signed integers, rational numbers and floating-point numbers.</p>
+
+<p></details></p>
+
+<ul class="pagina">
+  
+        <li><a href="/golang/gotcha-append/">« Prev</a></li>
+      
+        <li><a href="/golang/gotcha/">Index</a></li>
+      
+        <li><a href="/golang/gotcha-increment-decrement-statement/">Next »</a></li>
+      
+</ul>
+
+</article>
+
+<aside>
+
+  <h2>Go gotcha</h2>
+  <ul class="none">
+  
+      <li><a href="/golang/gotcha-assignment-entry-nil-map/">Assignment to entry in nil map</a></li>
+
+      <li><a href="/golang/gotcha-nil-pointer-dereference/">Nil pointer dereference</a></li>
+
+      <li><a href="/golang/gotcha-multiple-value-sinlge-value-context/">Multiple values in single value context</a></li>
+
+      <li><a href="/golang/gotcha-function-doesnt-change-array/">Array won’t change</a></li>
+
+      <li><a href="/golang/gotcha-shadowing-variables/">Same name</a></li>
+
+      <li><a href="/golang/gotcha-missing-comma-slice-array-map-literal/">Unexpected newline</a></li>
+
+      <li><a href="/golang/gotcha-strings-are-immutable/">String won’t change</a></li>
+
+      <li><a href="/golang/gotcha-concatenate-rune-string/">Adding one character at a time</a></li>
+
+      <li><a href="/golang/gotcha-trim-string/">What happened to ABBA?</a></li>
+
+      <li><a href="/golang/gotcha-copy-missing/">Where is my copy?</a></li>
+
+      <li><a href="/golang/gotcha-append/">Why doesn’t append work every time?</a></li>
+
+      <li><b>🢒&nbsp;</b>Constant overflows int</li>
+
+      <li><a href="/golang/gotcha-increment-decrement-statement/">Increment, decrement</a></li>
+
+      <li><a href="/golang/gotcha-operator-precedence/">Does not compute</a></li>
+
+      <li><a href="/golang/gotcha-bitwise-operators/">Go and Pythagoras</a></li>
+
+      <li><a href="/golang/gotcha-integer-overflow-wrap-around/">No end in sight</a></li>
+
+      <li><a href="/golang/gotcha-octal-decimal-hexadecimal-literal/">Numbers that start with zero</a></li>
+
+      <li><a href="/golang/gotcha-remainder-modulo-operator/">Whatever remains</a></li>
+
+      <li><a href="/golang/gotcha-multiply-duration-integer/">Time is not a number</a></li>
+
+      <li><a href="/golang/gotcha-index-out-of-range/">Index out of range</a></li>
+
+      <li><a href="/golang/gotcha-unexpected-values-range/">Unexpected values in range loop</a></li>
+
+      <li><a href="/golang/gotcha-change-value-range/">Can’t change entries in range loop</a></li>
+
+      <li><a href="/golang/gotcha-range-copy-array/">Iteration variable doesn’t see change in range loop</a></li>
+
+      <li><a href="/golang/gotcha-data-race-closure/">Iteration variables and closures</a></li>
+
+      <li><a href="/golang/gotcha-json-marshal-empty/">No JSON in sight</a></li>
+
+      <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a></li>
+
+  </ul>
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/conversions/">Conversions</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/untyped-constants/">Untyped numeric constants with no limits</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/variadic-function/">Variadic functions (...T)</a><br />
+    <span class="source"></span>
+  </div>
+  <p><a href="/golang/"><strong>See all 198 Go articles</strong></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

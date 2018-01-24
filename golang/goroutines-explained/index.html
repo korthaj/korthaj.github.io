@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Goroutines | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="A goroutine is a lightweight thread of execution.">
+  <meta name="keywords" content="go, golang, goroutine, introduction">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Goroutines</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+
+<p class="lead">The <b>go</b> statement runs a func&shy;tion in a sepa&shy;rate thread of execu&shy;tion.</p>
+
+<!-- CC BY-NC-ND 2.0: http://www.flickr.com/photos/un_photo/5853737946/ -->
+
+<p><img src="/golang/bouncing-balls.jpg" alt="bouncing balls"></p>
+
+<p>Go permits starting a new thread of execution, a goroutine, using the <code>go</code> statement. It runs a function in a different, newly created, goroutine. All goroutines in a single program share the same address space.</p>
+
+<pre><code><b>go</b> list.Sort() <span class="comment">// Run list.Sort in parallel; don’t wait for it.</span></code></pre>
+
+<p>The following program will print &ldquo;Hello from main goroutine&rdquo;.
+It <em>might</em> also print &ldquo;Hello from another goroutine&rdquo;,
+depending on which of the two goroutines finish first.</p>
+
+<pre><code>func main() {
+    go fmt.Println("Hello from another goroutine")
+    fmt.Println("Hello from main goroutine")
+
+    <span class="comment">// At this point the program execution stops and all</span>
+    <span class="comment">// active goroutines are killed.</span>
+}</code></pre>
+
+<p>The next program will, most likely,
+print both &ldquo;Hello from main goroutine&rdquo;
+and &ldquo;Hello from another goroutine&rdquo;.
+They may be printed in any order.
+Yet another possibility is that the
+second goroutine is extremely slow and doesn’t print
+its message before the program ends.</p>
+
+<pre><code>func main() {
+    go fmt.Println("Hello from another goroutine")
+    fmt.Println("Hello from main goroutine")
+
+    time.Sleep(time.Second) <span class="comment">// wait for other goroutine to finish</span>
+}</code></pre>
+
+<p>Here is a somewhat more realistic example, where we define a function that
+uses concurrency to postpone an event.</p>
+
+<pre><code>// Publish prints text to stdout after the given time has expired.
+// It doesn’t block but returns right away.
+func Publish(text string, delay time.Duration) {
+    go func() {
+        time.Sleep(delay)
+        fmt.Println("BREAKING NEWS:", text)
+    }() <span class="comment">// Note the parentheses. We must call the anonymous function.</span>
+}</code></pre>
+
+<p>This is how you might use the <code>Publish</code> function.</p>
+
+<pre><code>func main() {
+    Publish("A goroutine starts a new thread.", 5*time.Second)
+    fmt.Println("Let’s hope the news will published before I leave.")
+
+    <span class="comment">// Wait for the news to be published.</span>
+    time.Sleep(10 * time.Second)
+
+    fmt.Println("Ten seconds later: I’m leaving now.")
+}</code></pre>
+
+<p>The program will, most likely, print the following three lines,
+in the given order and with a five second break in between each line.</p>
+
+<pre><code>$ go run publish1.go
+Let’s hope the news will published before I leave.
+BREAKING NEWS: A goroutine starts a new thread.
+Ten seconds later: I’m leaving now.
+</code></pre>
+
+<p>In general it’s not possible to arrange for threads to wait for each
+other by sleeping. Go’s main method for synchronization is to use
+<a href="/golang/channels-explained/">channels</a>.</p>
+
+<h2 id="implementation">Implementation</h2>
+
+<p>Goroutines are lightweight,
+costing little more than the allocation of stack space.
+The stacks start small and grow by allocating and freeing
+heap storage as required.</p>
+
+<p>Internally goroutines act like coroutines that are multiplexed
+among multiple operating system threads.
+If one goroutine blocks an OS thread, for example waiting for input,
+other goroutines in this thread will migrate so that they may continue running.</p>
+
+<ul class="pagina">
+  
+        <li><a href="/golang/concurrent-programming/">Index</a></li>
+      
+        <li><a href="/golang/channels-explained/">Next »</a></li>
+      
+</ul>
+
+</article>
+
+<aside>
+
+  <h2>Concurrent programming</h2>
+  <ul class="none">
+  
+      <li><b>🢒&nbsp;</b>Goroutines</li>
+
+      <li><a href="/golang/channels-explained/">Channels</a></li>
+
+      <li><a href="/golang/select-explained/">Select</a></li>
+
+      <li><a href="/golang/data-races-explained/">Data races</a></li>
+
+      <li><a href="/golang/detect-data-races/">Detect data races</a></li>
+
+      <li><a href="/golang/detect-deadlock/">Deadlock</a></li>
+
+      <li><a href="/golang/wait-for-goroutines-waitgroup/">Waiting for goroutines</a></li>
+
+      <li><a href="/golang/broadcast-channel/">Broadcast a signal on a channel</a></li>
+
+      <li><a href="/golang/stop-goroutine/">Stop a goroutine</a></li>
+
+      <li><a href="/golang/time-reset-wait-stop-timeout-cancel-interval/">Timer and Ticker</a></li>
+
+      <li><a href="/golang/mutex-explained/">Mutual exclusion lock (mutex)</a></li>
+
+      <li><a href="/golang/efficient-parallel-computation/">Efficient parallel computation</a></li>
+
+  </ul>
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/anonymous-function-literal-lambda-closure/">Anonymous functions and closures</a><br />
+    <span class="source"></span>
+  </div>
+  <p><a href="/golang/"><b>See all 198 Go articles</b></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

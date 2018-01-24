@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Optional parameters and method overloading | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="Method overloading is emulated by writing several methods with different names.">
+  <meta name="keywords" content="go, golang, optional, named, parameter, overload, overwrite, default, method, function">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Optional parameters and method overloading</h1>
+<div class="tagline">yourbasic.org</div>
+<p>Go does not have optional parameters, nor does it support method overloading.</p>
+
+<blockquote>
+<p>Method dispatch is simplified if it doesn&rsquo;t need to do type matching as well.
+Experience with other languages told us that having a variety of methods
+with the same name but different signatures was occasionally useful
+but that it could also be confusing and fragile in practice.
+Matching only by name and requiring consistency in the types
+was a major simplifying decision in Go&rsquo;s type system.
+<a class="quote-source" href="https://golang.org/doc/faq#overloading">Go FAQ: Why does Go not support overloading of methods and operators?</a></p>
+</blockquote>
+
+<p>However, there are <a href="/golang/variadic-function/">variadic functions</a> (functions that accept a variable number of arguments), and dynamic method dispatch is supported through interfaces. See the <a href="/golang/interfaces-explained/">Interfaces</a>&nbsp;article.</p>
+
+<p>The idiomatic way to emulate optional parameters and method overloading in Go
+is to write several methods with different names.
+For example, the <a href="https://golang.org/pkg/sort/"><code>sort</code></a> package
+ has five different functions for sorting a slice:</p>
+
+<ul>
+<li>the generic <a href="https://golang.org/pkg/sort/#Slice"><code>sort.Slice</code></a> and
+<a href="https://golang.org/pkg/sort/#SliceStable"><code>sort.SliceStable</code></a>,</li>
+<li>and the three more specific <a href="https://golang.org/pkg/sort/#Float64s"><code>sort.Float64s</code></a>,
+<a href="https://golang.org/pkg/sort/#Ints"><code>sort.Ints</code></a>, and
+<a href="https://golang.org/pkg/sort/#Strings"><code>sort.Strings</code></a>.</li>
+</ul>
+
+</article>
+
+<aside>
+
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/variadic-function/">Variadic functions (...T)</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/interfaces-explained/">Interfaces</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/how-to-sort-in-go/">How to sort in Go</a><br />
+    <span class="source"></span>
+  </div>
+
+
+  <h2>New in Go 1.10</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/build-append-concatenate-strings-efficiently/">Build and concatenate strings efficiently</a></li>
+
+    <li><a href="/golang/round-float-to-int/">Round float to integer value</a></li>
+
+    <li><a href="/golang/shuffle-slice-array/">Shuffle slice or array</a></li>
+
+  </ul>
+
+  <h2>Top Go articles</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/gotcha/">Go gotcha</a></li>
+
+    <li><a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a></li>
+
+    <li><a href="/golang/slices-explained/">Slices in a nutshell</a></li>
+
+    <li><a href="/golang/maps-explained/">Maps in a nutshell</a></li>
+
+    <li><a href="/golang/concurrent-programming/">Concurrent programming</a></li>
+
+  </ul>
+  <p><a href="/golang/"><strong>See all 198 Go articles</strong></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

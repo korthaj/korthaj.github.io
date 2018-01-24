@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Binary search | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="How to find an element efficiently in a sorted slice.">
+  <meta name="keywords" content="go, golang, binary search, algorithm, function, slice">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Binary search</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<p>Use one of the <strong>binary search</strong> functions: <a href="https://golang.org/pkg/sort/#SearchInts"><code>sort.SearchInts</code></a>, <a href="https://golang.org/pkg/sort/#SearchFloat64s"><code>sort.SearchFloat64s</code></a> or  <a href="https://golang.org/pkg/sort/#SearchStrings"><code>sort.SearchStrings</code></a>.</p>
+
+<p>They all have the signature</p>
+
+<pre><code>func Search<b>Type</b>(a []<b>Type</b>, x <b>Type</b>) int</code></pre>
+
+<p>and return</p>
+
+<ul>
+<li>the smallest index <code>i</code> at which <code>x &lt;= a[i]</code>, or</li>
+<li><code>len(a)</code> if there is no such index.</li>
+</ul>
+
+<p>The slice must be sorted in <strong>ascending order</strong>.</p>
+
+<pre><code>a := []string{"A", "C", "C"}
+
+fmt.Println(sort.SearchStrings(a, "A")) <span class="comment">// 0</span>
+fmt.Println(sort.SearchStrings(a, "B")) <span class="comment">// 1</span>
+fmt.Println(sort.SearchStrings(a, "C")) <span class="comment">// 1</span>
+fmt.Println(sort.SearchStrings(a, "D")) <span class="comment">// 3</span></code></pre>
+
+<h2 id="generic-binary-search">Generic binary search</h2>
+
+<p>Use the <strong>generic binary search</strong> function <a href="https://golang.org/pkg/sort/#Search"><code>sort.Search</code></a>.</p>
+
+<pre><code>func Search(n int, f func(int) bool) int
+</code></pre>
+
+<p>It returns</p>
+
+<ul>
+<li>the smallest index <code>i</code> at which <code>f(i)</code> is true,</li>
+<li>or <code>n</code> if there is no such index.</li>
+</ul>
+
+<p>It requires that <code>f</code> is false for some (possibly empty) prefix
+of the input range and then true for the remainder.</p>
+
+<p>This example mirrors the one above, but uses the generic <a href="https://golang.org/pkg/sort/#Search"><code>sort.Search</code></a> instead of <a href="https://golang.org/pkg/sort/#SearchInts"><code>sort.SearchInts</code></a>.</p>
+
+<pre><code>a := []string{"A", "C", "C"}
+x := "C"
+
+i := sort.Search(len(a), func(i int) bool { return x <= a[i] })
+if i < len(a) && a[i] == x {
+    fmt.Printf("Found %s at index %d in %v.\n", x, i, a)
+} else {
+    fmt.Printf("Did not find %s in %v.\n", x, a)
+}
+<span class="comment">// Output: Found C at index 1 in [A C C].</span></code></pre>
+
+<h2 id="time-complexity">Time complexity</h2>
+
+<p>Binary search runs in worst-case logarithmic time, making <em>O</em>(log&nbsp;<em>n</em>) comparisons, where <em>n</em> is the size of the&nbsp;array.</p>
+
+</article>
+
+<aside>
+
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/algorithms/time-complexity-explained/">Time complexity</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/algorithms/big-o-notation-explained/">Big O notation</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/how-to-sort-in-go/">How to sort in Go</a><br />
+    <span class="source"></span>
+  </div>
+
+
+  <h2>New in Go 1.10</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/build-append-concatenate-strings-efficiently/">Build and concatenate strings efficiently</a></li>
+
+    <li><a href="/golang/round-float-to-int/">Round float to integer value</a></li>
+
+    <li><a href="/golang/shuffle-slice-array/">Shuffle slice or array</a></li>
+
+  </ul>
+
+  <h2>Top Go articles</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/gotcha/">Go gotcha</a></li>
+
+    <li><a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a></li>
+
+    <li><a href="/golang/slices-explained/">Slices in a nutshell</a></li>
+
+    <li><a href="/golang/maps-explained/">Maps in a nutshell</a></li>
+
+    <li><a href="/golang/concurrent-programming/">Concurrent programming</a></li>
+
+  </ul>
+  <p><a href="/golang/"><strong>See all 198 Go articles</strong></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

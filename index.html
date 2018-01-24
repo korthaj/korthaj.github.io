@@ -1,17 +1,18 @@
-<!DOCTYPE html>
-<html itemscope itemtype="http://schema.org/Article" lang="sv">
-
+<!doctype html>
+<html lang="en">
 <head>
+	<meta name="generator" content="Hugo 0.33-DEV" />
   <meta charset="utf-8">
-  <title>Professorn som fuskar i poker</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="spade16.png">
-  <meta name="description" content="Professionell underhållning för event och konferens.
-    Boka en föreläsare och korthaj till din fest i Stockholm.">
-  <meta itemprop="name" content="Professorn som fuskar i poker">
-  <meta itemprop="description" content="Professionell underhållning för event och konferens.
-    Boka en föreläsare och korthaj till din fest i Stockholm.">   
-  <!--[if lt IE 9]><script src="html5.js"></script><![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algorithms to Go | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="Articles about algorithms and Go, with plenty of code examples.">
+  <meta name="keywords" content="programming, algorithms, code examples, go, golang, tutorials, cheat sheets">
   <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -26,118 +27,94 @@
   </script>
 </head>
 
-<body id="top">
-  <div id="container">
-    <header>
-      <hgroup>
-        <!-- <a class="secret screen-only" href="hemligt/">top secret</a> -->
-        <h1>Prof. Nilsson</h1>
-        <h2>Korthaj och talare</h2>
-      </hgroup>
-    </header>
-    
-    <nav>
-      <ul>
-        <li class="english"><a tabindex="10" href="en/" title="In English">In English</a></li>
-        <li class="this">show</li>
-        <li><a tabindex="3" href="texter/">fusk</a></li>
-        <li><a tabindex="5" href="kontakt/">kontakt</a></li>
-      </ul>
-    </nav>
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li>Home</li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
 
-    <article>
-      <h1 itemprop="name">Professorn som fuskar i&nbsp;poker</h1>
+<main>
+<article>
+<h1>Algorithms to Go</h1>
+<div class="tagline">yourbasic.org</div>
+<style>
+.algo-container {
+  position: relative;
+  max-width: 480px;
+}
+.go-container {
+  position: relative;
+  width: 80px;
+  margin-left:40%;
+}
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: white;
+}
+.algo-container:hover .overlay {
+  opacity: 1;
+}
+.go-container:hover .overlay {
+  opacity: 1;
+}
+.text {
+  color:#C63D0F;
+  font-size: 200%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+</style>
 
-      <p>
-        <em class="intro"><span class="first-cap">B</span>jud dina gäster</em>
-        på ett ovanligt möte där de får uppleva hur det känns
-        att spela kort och vinna varenda gång.
-      </p>
+<p></p>
 
-      <div class="image">
-        <a href="hemligt/">
-          <img itemprop="image" style="margin-bottom:6px;" src="cardsharps.jpg"
-          width="480" height="347"
-          alt="Korthajarna, Caravaggio (ca 1594)"
-          title="TOP SECRET">
-        </a>
-        <div class="caption">
-          Korthajarna, Caravaggio (ca 1594)
-        </div>
-        <!-- http://gl.wikipedia.org/wiki/Ficheiro:Cardsharps-Caravaggio_(c.1597).jpg -->
-      </div>
+<!-- CC BY-SA 3.0: https://commons.wikimedia.org/wiki/File:Gophercolor.jpg -->
 
-      <p>
-        Showen är en perfekt snackis som snabbt
-        kan höja stäm&shy;ningen på en&nbsp;fest eller konferens.
-        Det är fängslande under&shy;hållning som passar alla,
-        inte bara kort&shy;spelare, och en upplevelse dina
-        gäster kommer att tala om länge.
-      </p>
+<div class="go-container">
+  <img src="res/gopher-mask.jpg" alt="Go" class="image">
+  <a href="golang/"><div class="overlay"><div class="text">Go</div></div></a>
+</div>
+<!-- CC BY-NC-SA 2.0: http://www.flickr.com/photos/stianeikeland/3696386615/ -->
+<div class="algo-container">
+  <img src="res/programmer-mask.jpg" alt="Algorithms" class="image">
+  <a href="algorithms/"><div class="overlay"><div class="text">Algorithms</div></div></a>
+</div>
 
-      <p>
-        Du får se bluffar, kortbyten och falsk&shy;blandningar
-        på nära håll när professorn visar några av de
-        <a href="texter/" title="Texter om gatusvindlare, vadslagning, poker, blackjack, roulette, mentalism.">hemliga&nbsp;trick</a>
-        som används av korthajar och gatusvindlare.
-      </p>
+<p></p>
 
-      <p>
-        Ingen förlorar sina pengar men alla får lära sig
-        hur man skyddar sig mot bedragare.
-        Det är ett nöje att bli lurad av Professor Nilsson –
-        han får folk att le även när de förlorar.
-      </p>
-            
+</article>
 
-      <h2 class="break">Vem är professorn?</h2>
-      
-      <div class="image">
-          <img style="margin:6px 0;" src="stefan_nilsson.jpg"
-            width="480" height="320" alt="Stefan Nilsson"
-            title="Stefan Nilsson">
-        <div class="caption">
-          Foto: Christer Gummeson
-        </div>
-      </div>
+<aside>
+<p></p>
+</aside>
+</main>
 
-      <p>
-        Till vardags är Stefan Nilsson lärare och forskare vid KTH,
-        men han är också en inspirerande föreläsare och skicklig trollkarl
-        med falskspel som specialitet.
-      </p>
-
-      <p>
-        Stefan har framträtt professionellt sedan 2002 på allehanda event –
-        från hovrätt till motorcykel&shy;klubb – och alltid haft glädjen
-        att mötas av skratt, leenden och tappade hakor.
-      </p>
-
-
-      <h2>Satsa på ett säkert kort</h2>
-      
-      <div class="image">
-          <img style="margin:6px 0 6px -12px;" src="cloud-small.png"
-            width="500" height="249" alt="Ord från gästboken"
-            title="Ord från gästboken">
-        <div class="caption">
-          Gästboken i molnformat
-        </div>
-      </div>
-
-      <p>
-        Föreställningen är nedlagt och spelas inte längre.
-        Kontakta gärna <a href="http://whoopsentertainment.com/leif/">Whoops Entertainment</a> i stället.
-      </p>
-
-    </article>
-
-    <footer>
-      <p>Copyright © 2002–2014
-        <a href="https://plus.google.com/+StefanNilsson/about?rel=author">Stefan Nilsson</a>
-        &nbsp;|&nbsp; <a href="#top">Top</a>
-      </p>
-    </footer>
-  </div>
-  </body>
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
 </html>

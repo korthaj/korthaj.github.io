@@ -1,230 +1,886 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
   <url>
-    <loc>http://korthaj.se/</loc>
-    <xhtml:link
-      rel="alternate"
-      hreflang="en"
-      href="http://korthaj.se/en/"
-    />
-    <lastmod>2012-07-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <loc>https://yourbasic.org/about/</loc>
   </url>
+  
   <url>
-    <loc>http://korthaj.se/kontakt/</loc>
-    <xhtml:link
-      rel="alternate"
-      hreflang="en"
-      href="http://korthaj.se/en/contact/"
-    />
-    <lastmod>2012-07-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://yourbasic.org/escape/</loc>
   </url>
+  
   <url>
-    <loc>http://korthaj.se/texter/</loc>
-    <xhtml:link
-      rel="alternate"
-      hreflang="en"
-      href="http://korthaj.se/en/texts/"
-    />
-    <lastmod>2012-07-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://yourbasic.org/golang/environment-variables/</loc>
   </url>
+  
   <url>
-    <loc>http://korthaj.se/monte/</loc>
-    <xhtml:link
-      rel="alternate"
-      hreflang="en"
-      href="http://korthaj.se/en/monte/"
-    />
-    <lastmod>2012-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://yourbasic.org/golang/access-private-field-reflection/</loc>
   </url>
+  
   <url>
-    <loc>http://korthaj.se/vadslagning/</loc>
-    <xhtml:link
-      rel="alternate"
-      hreflang="en"
-      href="http://korthaj.se/en/bar-bets/"
-    />
-    <lastmod>2012-07-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://yourbasic.org/404/</loc>
   </url>
+  
   <url>
-    <loc>http://korthaj.se/roulette/</loc>
-    <xhtml:link
-      rel="alternate"
-      hreflang="en"
-      href="http://korthaj.se/en/roulette/"
-    />
-    <lastmod>2012-08-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://yourbasic.org/golang/gotcha-concatenate-rune-string/</loc>
   </url>
+  
   <url>
-    <loc>http://korthaj.se/online-poker/</loc>
-    <xhtml:link
-      rel="alternate"
-      hreflang="en"
-      href="http://korthaj.se/en/poker/"
-    />
-    <lastmod>2012-07-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://yourbasic.org/algorithms/</loc>
   </url>
+  
   <url>
-    <loc>http://korthaj.se/blackjack/</loc>
-    <xhtml:link
-      rel="alternate"
-      hreflang="en"
-      href="http://korthaj.se/en/blackjack/"
-    />
-    <lastmod>2012-07-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://yourbasic.org/</loc>
   </url>
+  
   <url>
-    <loc>http://korthaj.se/mentalism/</loc>
-    <xhtml:link
-      rel="alternate"
-      hreflang="en"
-      href="http://korthaj.se/en/mentalism/"
-    />
-    <lastmod>2012-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://yourbasic.org/algorithms/amortized-time-complexity-analysis/</loc>
   </url>
+  
   <url>
-    <loc>http://korthaj.se/trolleri/</loc>
-    <lastmod>2012-07-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://yourbasic.org/golang/anonymous-function-literal-lambda-closure/</loc>
   </url>
+  
   <url>
-    <loc>http://korthaj.se/hemligt/</loc>
-    <xhtml:link
-      rel="alternate"
-      hreflang="en"
-      href="http://korthaj.se/en/secret/"
-    />
-    <lastmod>2012-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://yourbasic.org/golang/append-explained/</loc>
   </url>
+  
   <url>
-    <loc>http://korthaj.se/en/</loc>
-    <xhtml:link
-      rel="alternate"
-      hreflang="sv"
-      href="http://korthaj.se/"
-    />
-    <lastmod>2012-06-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <loc>https://yourbasic.org/golang/append-string-byte-slice/</loc>
   </url>
+  
   <url>
-    <loc>http://korthaj.se/en/contact/</loc>
-    <xhtml:link
-      rel="alternate"
-      hreflang="sv"
-      href="http://korthaj.se/kontakt/"
-    />
-    <lastmod>2012-06-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://yourbasic.org/golang/append-to-file/</loc>
   </url>
+  
   <url>
-    <loc>http://korthaj.se/en/texts/</loc>
-    <xhtml:link
-      rel="alternate"
-      hreflang="sv"
-      href="http://korthaj.se/texter/"
-    />
-    <lastmod>2012-07-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://yourbasic.org/golang/gotcha-function-doesnt-change-array/</loc>
   </url>
+  
   <url>
-    <loc>http://korthaj.se/en/monte/</loc>
-    <xhtml:link
-      rel="alternate"
-      hreflang="sv"
-      href="http://korthaj.se/monte/"
-    />
-    <lastmod>2012-06-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://yourbasic.org/golang/gotcha-assignment-entry-nil-map/</loc>
   </url>
+  
   <url>
-    <loc>http://korthaj.se/en/bar-bets/</loc>
-    <xhtml:link
-      rel="alternate"
-      hreflang="sv"
-      href="http://korthaj.se/vadslagning/"
-    />
-    <lastmod>2012-07-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://yourbasic.org/algorithms/big-o-notation-explained/</loc>
   </url>
+  
   <url>
-    <loc>http://korthaj.se/en/roulette/</loc>
-    <xhtml:link
-      rel="alternate"
-      hreflang="sv"
-      href="http://korthaj.se/roulette/"
-    />
-    <lastmod>2012-08-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://yourbasic.org/golang/binary-search/</loc>
   </url>
+  
   <url>
-    <loc>http://korthaj.se/en/poker/</loc>
-    <xhtml:link
-      rel="alternate"
-      hreflang="sv"
-      href="http://korthaj.se/online-poker/"
-    />
-    <lastmod>2012-07-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://yourbasic.org/golang/bitmask-flag-set-clear/</loc>
   </url>
+  
   <url>
-    <loc>http://korthaj.se/en/blackjack/</loc>
-    <xhtml:link
-      rel="alternate"
-      hreflang="sv"
-      href="http://korthaj.se/blackjack/"
-    />
-    <lastmod>2012-06-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://yourbasic.org/golang/bitwise-operator-cheat-sheet/</loc>
   </url>
+  
   <url>
-    <loc>http://korthaj.se/en/mentalism/</loc>
-    <xhtml:link
-      rel="alternate"
-      hreflang="sv"
-      href="http://korthaj.se/mentalism/"
-    />
-    <lastmod>2012-06-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://yourbasic.org/blackjack/</loc>
   </url>
+  
   <url>
-    <loc>http://korthaj.se/en/secret/</loc>
-    <xhtml:link
-      rel="alternate"
-      hreflang="sv"
-      href="http://korthaj.se/hemligt/"
-    />
-    <lastmod>2012-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>  
+    <loc>https://yourbasic.org/golang/underscore/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/algorithms/bloom-filter/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/broadcast-channel/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/build-append-concatenate-strings-efficiently/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/gotcha-change-value-range/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/channels-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/check-file-exists/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/check-map-contains-key/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/check-empty-map/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/check-prime/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/clear-slice/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/close-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/command-line-arguments/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/compare-slices/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/absolute-value-int-float/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/max-min-function/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/concatenate-slices/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/concurrent-programming/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/gotcha-constant-overflows-int/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/constructor-best-practice/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/conversions/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/formatting-byte-size-to-human-readable-format/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/convert-byte-slice-to-string/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/convert-float-to-int/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/convert-float-to-string/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/convert-int-to-string/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/convert-int64-to-string/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/interface-to-string/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/convert-rune-slice-to-string/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/convert-string-to-byte-slice/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/convert-string-to-int/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/convert-string-to-int64/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/convert-string-to-rune-slice/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/copy-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/count-items-map/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/create-error/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/create-image/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/temporary-file-directory/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/crypto-rand-int/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/current-time/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/current-directory/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/data-races-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/day-of-week-int/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/days-between-dates/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/last-day-month-date/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/detect-deadlock/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/default-zero-value/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/defer/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/delete-file-directory/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/delete-element-slice/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/detect-data-races/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/disable-logging-output/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/gotcha-operator-precedence/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/efficient-parallel-computation/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/nil-slice-vs-empty-slice/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/define-enumeration-string/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/errors-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/regexp-find-all-matches/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/find-search-contains-slice/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/find-go-build-version/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/regexp-find-first-match/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/monte/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/regexp-find-index-location/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/find-type-of-object/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/for-loop/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/format-string-without-printing/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/format-parse-string-time-date-example/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/function-pointer-type-declaration/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/generate-uuid-guid/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/generate-random-character/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/generate-number-random-range/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/generate-random-string-password-booking-reference/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/generate-permutation-slice-string/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/generics/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/slice-of-keys-values-from-map/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/getting-started-hello-world/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/day-month-year-from-time/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/gotcha-bitwise-operators/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/go-java-tutorial/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/gotcha/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/goroutines-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/http-server-example/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/hash-md5-sha256-string-file/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/algorithms/hash-tables-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/algorithms/avoid-initializing-memory/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/sort-custom-type/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/how-to-sort-in-go/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/split-string-into-slice/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/implement-fifo-queue/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/implement-set/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/implement-stack/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/gotcha-increment-decrement-statement/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/gotcha-index-out-of-range/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/inheritance-object-oriented/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/interfaces-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/gotcha-range-copy-array/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/gotcha-data-race-closure/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/iterator-generator-pattern/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/json-example/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/last-item-in-slice/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/library-package-example-template/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/list-files-in-directory/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/algorithms/loop-invariants-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/goroutine-block-sleep-forever/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/make-slice-map-channel/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/maps-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/max-min-int-uint/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/measure-execution-time/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/methods-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/multiline-string/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/gotcha-multiple-value-sinlge-value-context/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/mutex-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/named-return-values-parameters/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/gotcha-why-nil-error-not-equal-nil/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/gotcha-nil-pointer-dereference/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/gotcha-json-marshal-empty/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/gotcha-integer-overflow-wrap-around/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/gotcha-octal-decimal-hexadecimal-literal/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/opening-brace-separate-line/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/operator-priority/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/operators/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/overload-overwrite-optional-parameter/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/package-documentation/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/package-init-function-main-execution-order/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/packages-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/panic-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/pass-slice-to-variadic-function/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/fmt-printf-percent-sign/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/pointer-vs-value-receiver/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/pointers-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/public-private/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/algorithms/random-number-generator-seed/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/for-loop-range-array-slice-map-channel/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/read-file-line-by-line/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/read-file-to-string/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/read-stdin/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/recover-from-panic/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/redeclaring-variables/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/regexp-cheat-sheet/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/remove-duplicate-whitespace/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/repeat-multiply-string/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/regexp-replace-string/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/reverse-utf8-string/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/round-float-2-decimal-places/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/round-float-to-int/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/gotcha-shadowing-variables/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/select-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/shuffle-slice-array/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/slices-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/sort-map-keys-values/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/regexp-split-string/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/stack-trace/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/stop-goroutine/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/compare-strings/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/string-functions-reference-cheat-sheet/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/gotcha-strings-are-immutable/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/structs-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/switch-statement/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/table-driven-unit-test/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/empty-interface/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/algorithms/fastest-sorting-algorithm/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/io-reader-interface-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/io-writer-interface-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/three-dots-ellipsis/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/algorithms/time-complexity-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/gotcha-multiply-duration-integer/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/time-change-convert-location-timezone/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/time-reset-wait-stop-timeout-cancel-interval/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/quicksort-optimizations/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/trim-whitespace-from-string/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/type-alias/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/type-assertion-switch/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/rune/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/gotcha-missing-comma-slice-array-map-literal/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/gotcha-unexpected-values-range/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/untyped-constants/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/unused-imports/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/unused-local-variables/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/short-variable-declaration-outside-function/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/variadic-function/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/list-directory-recursive/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/wait-for-goroutines-waitgroup/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/gotcha-trim-string/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/gotcha-remainder-modulo-operator/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/gotcha-copy-missing/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/ternary-if-else-statement/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/gotcha-append/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/algorithms/worst-case-time-complexity/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/write-command-line-application/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/log-to-file/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/algorithms/your-basic-api/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/your-basic-func/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/algorithms/your-basic-int/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/do-while-loop/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/int-vs-int64/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/iota/</loc>
+  </url>
+  
 </urlset>

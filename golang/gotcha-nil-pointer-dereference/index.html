@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nil pointer dereference | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="An uninitialized pointer is nil, and you can&#39;t follow the nil pointer.">
+  <meta name="keywords" content="go, golang, nil, pointer, dereference">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Nil pointer dereference</h1>
+<div class="tagline">yourbasic.org</div>
+
+<p>Why does this program panic?</p>
+
+<pre><code>type Point struct {
+    X, Y float64
+}
+
+func (p *Point) Abs() float64 {
+    return math.Sqrt(p.X*p.X + p.Y*p.Y)
+}
+
+func main() {
+    var p *Point
+    fmt.Println(p.Abs())
+}</code></pre>
+
+<pre><code>panic: runtime error: invalid memory address or nil pointer dereference
+[signal SIGSEGV: segmentation violation code=0xffffffff addr=0x0 pc=0xd2c5a]
+
+goroutine 1 [running]:
+main.(*Point).Abs(...)
+	../main.go:6
+main.main()
+	../main.go:11 +0x1a
+</code></pre>
+
+<p><details class="answer">
+<summary class="answer">Answer</summary></p>
+
+<p>The uninitialized pointer <code>p</code> in the <code>main</code> function is <code>nil</code>,
+and you can't follow the nil pointer.</p>
+
+<blockquote>
+If <code>x</code> is nil, an attempt to evaluate <code>*x</code> will cause a run-time panic.
+<a class="quote-source" href="https://golang.org/ref/spec#Address_operators">The Go Programming Language Specification: Address operators</a>
+</blockquote>
+
+<p>You need to create a <code>Point</code>:</p>
+
+<pre><code>func main() {
+    var p *Point = new(Point)
+    fmt.Println(p.Abs())
+}</code></pre>
+
+<p>Since methods with pointer receivers take either a value or a pointer,
+you could also skip the pointer altogether:</p>
+
+<pre><code>func main() {
+    var p Point <span class="comment">// has zero value Point{X:0, Y:0}</span>
+    fmt.Println(p.Abs())
+}</code></pre>
+
+<p>See <a href="/golang/pointers-explained/">Pointers</a> for more about pointers in&nbsp;Go.</p>
+
+<p></details></p>
+
+<ul class="pagina">
+  
+        <li><a href="/golang/gotcha-assignment-entry-nil-map/">« Prev</a></li>
+      
+        <li><a href="/golang/gotcha/">Index</a></li>
+      
+        <li><a href="/golang/gotcha-multiple-value-sinlge-value-context/">Next »</a></li>
+      
+</ul>
+
+</article>
+
+<aside>
+
+  <h2>Go gotcha</h2>
+  <ul class="none">
+  
+      <li><a href="/golang/gotcha-assignment-entry-nil-map/">Assignment to entry in nil map</a></li>
+
+      <li><b>🢒&nbsp;</b>Nil pointer dereference</li>
+
+      <li><a href="/golang/gotcha-multiple-value-sinlge-value-context/">Multiple values in single value context</a></li>
+
+      <li><a href="/golang/gotcha-function-doesnt-change-array/">Array won’t change</a></li>
+
+      <li><a href="/golang/gotcha-shadowing-variables/">Same name</a></li>
+
+      <li><a href="/golang/gotcha-missing-comma-slice-array-map-literal/">Unexpected newline</a></li>
+
+      <li><a href="/golang/gotcha-strings-are-immutable/">String won’t change</a></li>
+
+      <li><a href="/golang/gotcha-concatenate-rune-string/">Adding one character at a time</a></li>
+
+      <li><a href="/golang/gotcha-trim-string/">What happened to ABBA?</a></li>
+
+      <li><a href="/golang/gotcha-copy-missing/">Where is my copy?</a></li>
+
+      <li><a href="/golang/gotcha-append/">Why doesn’t append work every time?</a></li>
+
+      <li><a href="/golang/gotcha-constant-overflows-int/">Constant overflows int</a></li>
+
+      <li><a href="/golang/gotcha-increment-decrement-statement/">Increment, decrement</a></li>
+
+      <li><a href="/golang/gotcha-operator-precedence/">Does not compute</a></li>
+
+      <li><a href="/golang/gotcha-bitwise-operators/">Go and Pythagoras</a></li>
+
+      <li><a href="/golang/gotcha-integer-overflow-wrap-around/">No end in sight</a></li>
+
+      <li><a href="/golang/gotcha-octal-decimal-hexadecimal-literal/">Numbers that start with zero</a></li>
+
+      <li><a href="/golang/gotcha-remainder-modulo-operator/">Whatever remains</a></li>
+
+      <li><a href="/golang/gotcha-multiply-duration-integer/">Time is not a number</a></li>
+
+      <li><a href="/golang/gotcha-index-out-of-range/">Index out of range</a></li>
+
+      <li><a href="/golang/gotcha-unexpected-values-range/">Unexpected values in range loop</a></li>
+
+      <li><a href="/golang/gotcha-change-value-range/">Can’t change entries in range loop</a></li>
+
+      <li><a href="/golang/gotcha-range-copy-array/">Iteration variable doesn’t see change in range loop</a></li>
+
+      <li><a href="/golang/gotcha-data-race-closure/">Iteration variables and closures</a></li>
+
+      <li><a href="/golang/gotcha-json-marshal-empty/">No JSON in sight</a></li>
+
+      <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a></li>
+
+  </ul>
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/pointers-explained/">Pointers</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/methods-explained/">Methods</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/pointer-vs-value-receiver/">Pointer vs. value receiver</a><br />
+    <span class="source"></span>
+  </div>
+  <p><a href="/golang/"><strong>See all 198 Go articles</strong></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

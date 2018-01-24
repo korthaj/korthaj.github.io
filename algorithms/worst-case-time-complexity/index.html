@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Worst-case time complexity | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="Worst-case time complexity gives an upper bound on the time required by an algorithm.">
+  <meta name="keywords" content="worst-case, time complexity, asymptotic notation">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Worst-case time complexity</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<p><strong>Worst-case time complexity</strong> denotes the longest possible running time W(<i>n</i>)
+of an algorithm, given any input of size <i>n</i>.
+This measure gives an upper bound on time requirements and is often easy to compute.
+The drawback is that it can be overly pessimistic.</p>
+
+<h2 id="example">Example</h2>
+
+<pre>
+// Tell whether the array a contains x.
+<b>Algorithm</b> contains(a, x):
+    <b>for</b> i = 0 <b>to</b> len(a)-1
+        <b>if</b> x == a[i]
+                <b>return</b> true
+    <b>return</b> false
+</pre>
+
+<p>The number of comparisons depends not only
+on the number of elements, <em>n</em>, in the array,
+but also on&nbsp;<code>x</code> and the elements in&nbsp;<code>a</code>.</p>
+
+<ul>
+<li>If <code>x</code> isn&rsquo;t found in <code>a</code> the algorithm makes <i>n</i>&nbsp;comparisons,</li>
+<li>but if <code>x</code> equals <code>a[0]</code> there is only one comparison.</li>
+</ul>
+
+<p>The worst-cast time complexity thus becomes W(<i>n</i>)&nbsp;=&nbsp;<i>n</i>.
+We often use <a href="/algorithms/big-o-notation-explained/"><strong>asymptotic notation</strong></a> and write
+<strong>W(<i>n</i>)&nbsp;∊&nbsp;&Theta;(<i>n</i>)</strong>, and say that this is a <strong>linear time algorithm</strong>.</p>
+
+</article>
+
+<aside>
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/algorithms/time-complexity-explained/">Time complexity</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/algorithms/big-o-notation-explained/">Big O notation</a><br />
+    <span class="source"></span>
+  </div>
+
+  <h2>Top algorithm articles</h2>
+  <ul class="none">
+  
+    <li><a href="/algorithms/your-basic-api/">Your basic API</a></li>
+
+    <li><a href="/algorithms/hash-tables-explained/">Hash tables</a></li>
+
+    <li><a href="/algorithms/big-o-notation-explained/">Big O notation</a></li>
+
+    <li><a href="/algorithms/loop-invariants-explained/">Loop invariants</a></li>
+
+    <li><a href="/golang/quicksort-optimizations/">Top 3 Quicksort optimizations</a></li>
+
+  </ul>
+
+  <p><a href="/algorithms/"><b>See all algorithm articles</b></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

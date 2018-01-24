@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mutual exclusion lock (mutex) | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="A sync.Mutex is used to synchronize data by explicit locking.">
+  <meta name="keywords" content="go, golang, mutex, synchronize">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Mutual exclusion lock (mutex)</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+
+<p class="lead">Mutexes let you synchronize data access by explicit locking, without channels.</p>
+
+<!-- CC BY-NC-ND 2.0: http://www.flickr.com/photos/dzarro72/7187334179/ -->
+
+<p><img src="/golang/lock.jpg" alt="lock"></p>
+
+<p>Sometimes it’s more convenient to synchronize data access by explicit locking instead of using channels. The Go standard library offers a mutual exclusion lock, <a href="https://golang.org/pkg/sync/#Mutex">sync.Mutex</a>, for this purpose.</p>
+
+<h2 id="use-with-caution">Use with caution</h2>
+
+<p>For this type of locking to be safe, it&rsquo;s crucial that all accesses
+to the shared data, both reads and writes, are performed only
+when a goroutine holds the lock. One mistake by a single goroutine
+is enough to introduce a data race and break the program.</p>
+
+<p>Because of this you should consider designing a custom data structure
+with a clean API and make sure that all the synchronization
+is done internally.</p>
+
+<p>In this example we build a safe and easy-to-use concurrent data structure, <code>AtomicInt</code>, that stores a single integer. Any number of goroutines can safely access this number through the <code>Add</code> and <code>Value</code> methods.</p>
+
+<pre><code>// AtomicInt is a concurrent data structure that holds an int.
+// Its zero value is 0.
+type AtomicInt struct {
+    mu sync.Mutex <span class="comment">// A lock than can be held by one goroutine at a time.</span>
+    n  int
+}
+
+// Add adds n to the AtomicInt as a single atomic operation.
+func (a *AtomicInt) Add(n int) {
+    a.mu.Lock() <span class="comment">// Wait for the lock to be free and then take it.</span>
+    a.n += n
+    a.mu.Unlock() <span class="comment">// Release the lock.</span>
+}
+
+// Value returns the value of a.
+func (a *AtomicInt) Value() int {
+    a.mu.Lock()
+    n := a.n
+    a.mu.Unlock()
+    return n
+}
+
+func main() {
+    wait := make(chan struct{})
+    var n AtomicInt
+    go func() {
+        n.Add(1) <span class="comment">// one access</span>
+        close(wait)
+    }()
+    n.Add(1) <span class="comment">// another concurrent access</span>
+    <-wait
+    fmt.Println(n.Value()) <span class="comment">// 2</span>
+}</code></pre>
+
+<ul class="pagina">
+  
+        <li><a href="/golang/time-reset-wait-stop-timeout-cancel-interval/">« Prev</a></li>
+      
+        <li><a href="/golang/concurrent-programming/">Index</a></li>
+      
+        <li><a href="/golang/efficient-parallel-computation/">Next »</a></li>
+      
+</ul>
+
+</article>
+
+<aside>
+
+  <h2>Concurrent programming</h2>
+  <ul class="none">
+  
+      <li><a href="/golang/goroutines-explained/">Goroutines</a></li>
+
+      <li><a href="/golang/channels-explained/">Channels</a></li>
+
+      <li><a href="/golang/select-explained/">Select</a></li>
+
+      <li><a href="/golang/data-races-explained/">Data races</a></li>
+
+      <li><a href="/golang/detect-data-races/">Detect data races</a></li>
+
+      <li><a href="/golang/detect-deadlock/">Deadlock</a></li>
+
+      <li><a href="/golang/wait-for-goroutines-waitgroup/">Waiting for goroutines</a></li>
+
+      <li><a href="/golang/broadcast-channel/">Broadcast a signal on a channel</a></li>
+
+      <li><a href="/golang/stop-goroutine/">Stop a goroutine</a></li>
+
+      <li><a href="/golang/time-reset-wait-stop-timeout-cancel-interval/">Timer and Ticker</a></li>
+
+      <li><b>🢒&nbsp;</b>Mutual exclusion lock (mutex)</li>
+
+      <li><a href="/golang/efficient-parallel-computation/">Efficient parallel computation</a></li>
+
+  </ul>
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="https://github.com/golang/go/wiki/MutexOrChannel">Use a sync.Mutex or a channel?</a><br />
+    <span class="source">The Go Wiki</span>
+    <span class="author"></span>
+  </div>
+  <p><a href="/golang/"><b>See all 198 Go articles</b></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

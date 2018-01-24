@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compute absolute values | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="How to compute the absolute value of an int or float in Go.">
+  <meta name="keywords" content="go, golang, abs, int, float">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Compute absolute values</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<h2 id="integers">Integers</h2>
+
+<p>Go has no built-in library function for computing the absolute value of an integer.
+It&rsquo;s simple to write your&nbsp;own.</p>
+
+<pre><code>func Abs(x int32) int32 {
+	if x &lt; 0 {
+		return -x
+	}
+	return x
+}
+</code></pre>
+
+<blockquote class="warning">
+<b>Warning:</b> The smallest value of a signed integer type doesn't have a corresponding positive value. For&nbsp;example
+
+<ul>
+<li><code>math.MinInt32</code> equals -214748364<b>8</b>, while</li>
+<li><code>math.MaxInt32</code> equals 214748364<b>7</b>.</li>
+</ul>
+
+There's no good way to deal with this.
+In fact, <code>Abs</code> returns a <b>negative value</b> in this case.
+
+<pre><code>fmt.Println(Abs(math.MinInt32)) <span class="comment">// Output: -2147483648</span></code></pre>
+
+The C and Java standard libraries also behave like this.
+</blockquote>
+
+<h2 id="floats">Floats</h2>
+
+<p>Use <a href="https://golang.org/pkg/math/#Abs"><code>math.Abs</code></a>
+to compute the absolute value of a floating-point number.</p>
+
+<pre><code>func Abs(x float64) float64
+</code></pre>
+
+<p>Note the special cases.</p>
+
+<pre><code>Abs(±Inf) = +Inf
+Abs(NaN) = NaN
+</code></pre>
+
+</article>
+
+<aside>
+
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/max-min-function/">Compute min and max</a><br />
+    <span class="source"></span>
+  </div>
+
+
+  <h2>New in Go 1.10</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/build-append-concatenate-strings-efficiently/">Build and concatenate strings efficiently</a></li>
+
+    <li><a href="/golang/round-float-to-int/">Round float to integer value</a></li>
+
+    <li><a href="/golang/shuffle-slice-array/">Shuffle slice or array</a></li>
+
+  </ul>
+
+  <h2>Top Go articles</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/gotcha/">Go gotcha</a></li>
+
+    <li><a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a></li>
+
+    <li><a href="/golang/slices-explained/">Slices in a nutshell</a></li>
+
+    <li><a href="/golang/maps-explained/">Maps in a nutshell</a></li>
+
+    <li><a href="/golang/concurrent-programming/">Concurrent programming</a></li>
+
+  </ul>
+  <p><a href="/golang/"><strong>See all 198 Go articles</strong></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

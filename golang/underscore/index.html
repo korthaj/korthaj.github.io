@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blank identifier (underscore) | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="The blank identifier is an anonymous placeholder.">
+  <meta name="keywords" content="go, golang, underscore, blank identifier, unused, variable, import, init">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Blank identifier (underscore)</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<p>The blank identifier <code>_</code> is an anonymous placeholder.
+It may be used like any other identifier in a declaration, but it does not introduce a binding.</p>
+
+<h2 id="ignore-values">Ignore values</h2>
+
+<p>The blank identifier provides a way to ignore left-hand side values in an assignment.</p>
+
+<pre><code>_, present := timeZone[&quot;CET&quot;]
+
+sum := 0
+for _, n := range a {
+	sum += n
+}
+</code></pre>
+
+<h2 id="import-for-side-effects">Import for side effects</h2>
+
+<p>It can also be used to import a package solely for its side effects.</p>
+
+<pre><code>import _ "image/png" <span class="comment">// init png decoder function</span></code></pre>
+
+<h2 id="silence-the-compiler">Silence the compiler</h2>
+
+<p>It can be used to during development to avoid compiler errors about
+unused imports and variables in a half-written program.</p>
+
+<pre><code>package main
+
+import (
+    "fmt"
+    "log"
+    "os"
+)
+
+var _ = fmt.Printf <span class="comment">// DEBUG: delete when done</span>
+
+func main() {
+    f, err := os.Open("test.go")
+    if err != nil {
+        log.Fatal(err)
+    }
+    _ = f <span class="comment">// TODO: read file</span>
+}</code></pre>
+
+<p>For an automatic solution, use the
+<a href="https://godoc.org/golang.org/x/tools/cmd/goimports">goimports</a> tool,
+which rewrites a Go source file to have the correct imports.
+Many Go editors and IDEs run this tool automatically.</p>
+
+</article>
+
+<aside>
+
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/unused-local-variables/">Unused local variables</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/unused-imports/">Unused imports</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="https://godoc.org/golang.org/x/tools/cmd/goimports">Command goimports</a><br />
+    <span class="source">GoDoc</span>
+    <span class="author"></span>
+  </div>
+
+
+  <h2>New in Go 1.10</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/build-append-concatenate-strings-efficiently/">Build and concatenate strings efficiently</a></li>
+
+    <li><a href="/golang/round-float-to-int/">Round float to integer value</a></li>
+
+    <li><a href="/golang/shuffle-slice-array/">Shuffle slice or array</a></li>
+
+  </ul>
+
+  <h2>Top Go articles</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/gotcha/">Go gotcha</a></li>
+
+    <li><a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a></li>
+
+    <li><a href="/golang/slices-explained/">Slices in a nutshell</a></li>
+
+    <li><a href="/golang/maps-explained/">Maps in a nutshell</a></li>
+
+    <li><a href="/golang/concurrent-programming/">Concurrent programming</a></li>
+
+  </ul>
+  <p><a href="/golang/"><strong>See all 198 Go articles</strong></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

@@ -1,16 +1,17 @@
-<!DOCTYPE html>
-<html itemscope itemtype="http://schema.org/Article" lang="sv">
-
+<!doctype html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Blackjack – att räkna kort</title>
-  <link rel="stylesheet" href="../style.css">
-  <link rel="icon" type="image/png" href="../spade16.png">
-  <meta name="description" content="Att vinna i blackjack med korträkning är svårt men inte omöjligt. Här är vad som krävs.">
-  <meta itemprop="name" content="Blackjack – att räkna kort">
-  <meta itemprop="description" content="Att vinna i blackjack med korträkning är svårt men inte omöjligt. Här är vad som krävs.">
-  <meta itemprop="image" content="http://korthaj.se/blackjack/blackjack_sands.jpg">
-  <!--[if lt IE 9]><script src="../html5.js"></script><![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blackjack | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="To win at blackjack by counting cards is hard, but possible. This is what it takes.">
+  
   <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -25,234 +26,155 @@
   </script>
 </head>
 
-<body id="top">
-  <div id="container">
-    <header>
-      <hgroup>
-        <h1><a tabindex="1" href="..">Prof. Nilsson</a></h1>
-        <h2>Korthaj och talare</h2>
-      </hgroup>
-    </header>
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
 
-    <nav>
-      <ul>
-        <li class="english"><a tabindex="10" href="../en/blackjack/" title="In English">In English</a></li>
-        <li><a tabindex="2" href="..">show</a></li>
-        <li class="this"><a tabindex="3" href="../texter/">fusk</a></li>
-        <li><a tabindex="5" href="../kontakt/">kontakt</a></li>
-      </ul>
-    </nav>
+<main>
+<article>
+<h1>Blackjack</h1>
+<div class="tagline">yourbasic.org</div>
+<p class="lead">It's possible to win at blackjack by counting cards, but most&nbsp;fail.</p>
 
-    <article>
-      <h1>Blackjack</h1>
+<p><img src="/res/cardsharps.jpg"></p>
 
-      <aside>
-        <ul class="sidelinks">
-          <li><a href="../monte/">Find the lady</a></li>
-          <li><a href="../vadslagning/">Slå vad</a></li>
-          <li><a href="../online-poker/">Nätpoker</a></li>
-          <li><a href="../roulette/">Roulette</a></li>
-          <li><em>» Blackjack</em></li>
-          <li><a href="../mentalism/">Mentalism</a></li>
-        </ul>
-      </aside>
+<h2>Always optimal strategy</h2>
 
-      <p>
-        <em class="intro"><span class="first-cap">D</span>et går att vinna</em>
-        i blackjack genom att räkna kort,
-        men de flesta misslyckas.
-        Här får du veta vad som krävs.
-      </p>
+<p>
+  Always use an optimal strategy adapted to the rules of your casino.
+  Here is an example
+  <a href="http://en.wikipedia.org/wiki/Blackjack#Blackjack_strategy">blackjack strategy</a>.
+  Every time you deviate from the optimal strategy –
+  because of hunches or fear – it depletes your funds.
+</p>
 
-      <div class="image">        
-        <a href="http://www.flickr.com/photos/unlvdigitalcollections/7205482620/">
-          <img style="margin-bottom:6px;" src="blackjack_sands.jpg" width="480" height="378"
-                alt="Blackjack på Sands Hotel and Casino, Las Vegas, sent 1950-tal"
-                title="Blackjack på Sands Hotel and Casino, Las Vegas, sent 1950-tal">
-        </a>
-      </div>
-      
-      <h2>Svenska regler – då är det kört</h2>
-      
-      <p>
-        De <a href="http://sv.wikipedia.org/wiki/Black_Jack#Svenska_regler">svenska reglerna</a>
-        för blackjack är värdelösa:
-      </p>
+<h2>Count cards</h2>
+<p>
+  If you find a casino with good rules, and if you play
+  with an optimal strategy, the odds are still against you –
+  but the house edge can sometimes be as low
+  as&nbsp;<span style="font-size:90%">0.5%</span>.
+</p>
 
-       <blockquote>
-         Om både spelare och dealer har <span class="smaller">17</span>,
-         <span class="smaller">18</span> eller <span class="smaller">19</span>
-         så vinner dealern, ...
-      </blockquote>       
-        
-      <p>
-        Fördelen för banken är så stor att du inte kan vinna,
-        inte ens om du räknar kort och spelar med en optimal strategi.
-      </p>
+<p>
+  <a href="http://en.wikipedia.org/wiki/Card_counting#Blackjack_Card_Counting">Card counting</a>
+  is simple. If there are many high cards in the deck,
+  the odds are better for the player:
+  then you should bet more and play with a more aggressive strategy.
+  The proportion of high cards is estimated by starting to count
+  after each&nbsp;shuffle.
+</p>
 
-      <p>
-        Om du ändå vill spela, så ska du sätta en maxgräns
-        och vara beredd på att förlora de pengarna.
-        Med svenska regler går det oftast mycket snabbt.
-      </p>
+<h2>The right casino</h2>
+  
 
-    <h2 class="break">Alltid optimal strategi</h2>
+<p>
+  In addition to good basic rules, card counting requires
+  that the casino uses few decks of cards, preferably one or two,
+  and deals deep into the deck. Directly after shuffling,
+  the proportion of high cards is always the same – too&nbsp;low.
+  Furthermore, betting limits must be wide enough
+  so that you can play aggressively when it pays&nbsp;off.
+</p>
 
-      <p>
-        Använd alltid en optimal strategi anpassad
-        för de regler som gäller på ditt kasino. Här är
-        <a href="http://en.wikipedia.org/wiki/Blackjack#Blackjack_strategy">ett exempel</a>.
-      </p>
+<h2 class="break">Few mistakes</h2>
+<p>
+  Most card counting systems are simple but require
+  a lot of practice and must often be adapted to local rules.
+  You must be able to count without being noticed and with few mistakes.
+  Practice at home first, it’s cheaper that&nbsp;way.
+</p>
 
-      <p>
-        Varje gång du avviker från den optimala strategin 
-        – på grund av ingivelser eller rädsla – 
-        så tär det på din kassa.
-      </p>
+<p>
+  It’s difficult to manage a job with alcohol in your blood:
+  the number of mistakes increases and
+  it becomes harder to follow a strategy.
+  Know yourself and know your error&nbsp;rate.
+</p>
 
-    <h2>Räkna kort</h2>
-      <p>
-        Om du hittar ett kasino med bra regler
-        och spelar med en optimal strategi så är oddsen fortfarande emot dig –
-        men bankens fördel kan ibland vara så låg
-        som&nbsp;<span class="smaller">0,5&nbsp;%</span>.
-      </p>
+<h2>Big funds and plenty of time</h2>
 
-      <p>
-        Idén med
-        <a href="http://en.wikipedia.org/wiki/Card_counting#Blackjack_Card_Counting">korträkning</a>
-        är enkel. Om det finns många
-        höga kort kvar i leken så är oddsen bättre för spelaren:
-        då ska man satsa  mer och spela med en aggresivare strategi.
-        Andelen höga kort uppskattar man genom att börja räkna
-        efter varje blandning.
-      </p>
+<p>
+  Blackjack is a game with <b>very large variance</b>.
+  You will meet both high peaks and long deep valleys.
+  If your money runs out the game is&nbsp;over.
+</p>
 
-    <h2>Rätt kasino</h2>
-        
-      <p>  
-        Förutom <em>bra grundregler</em>, så kräver korträkning
-        att kasinot använder <em>få kortlekar</em>, helst en eller två, och
-        <em>ger djupt</em> i talongen. Direkt efter en blandning så är
-        andelen höga kort alltid den samma – för låg.
-      </p>
+<p>
+  A long-term expected hourly income of a few hundred dollars
+  typically requires <span style="font-size:90%">$100.000</span>
+  in funds.
+  If your goal is <span style="font-size:90%">$1.000</span> per hour
+  with reasonable risk, you need millions.
+  It’s not uncommon to lose for an entire week,
+  even with a strategy with an expected profit.
+  Playing blackjack on your vacation is a bad&nbsp;idea.
+</p>
 
-      <p>
-        Dessutom måste <em>insats&shy;gränserna</em> vara
-        tillräckligt vida, så att det går att spela
-        tillräckligt aggressivt när det lönar sig.
-      </p>
-      
-      <p>
-        Svenska Casino Cosmopol har
-        <a href="https://www.casinocosmopol.se/stockholm/casinospel/bordsspel/black-jack">hyggliga regler</a> 
-        och hög max&shy;insats, men använder sex kortlekar
-        som blandas efter varje omgång.
-      </p>
+<h2>Keep a low profile</h2>
+ <p>
+   You’ve done your homework: you know your system,
+   know your limits, have found a place where you can work
+   and have sufficient funds.
+ </p>
 
-    <h2 class="break">Få misstag</h2>
-      <p>
-        De flesta korträkningssystem är enkla men kräver
-        mycket övning och måste ofta anpassas till
-        lokala regler. Du måste kunna räkna utan att
-        det märks och med få misstag. Öva hemma först,
-        det är billigare så.
-      </p>
-      
-      <p>
-        Det är svårt att sköta ett jobb med
-        alkohol i blodet: antalet misstag ökar och det blir
-        svårare att följa en strategi. Känn dig själv och vet din felprocent.
-      </p>
+ <p>
+   Now the cat-and-mouse game begins.
+   If you only place big bets when deep into the deck,
+   it’s discovered quickly;
+   and if the casino doesn’t like your playing style,
+   you’re not welcome&nbsp;back.
+   Most likely, you will be forced to work in a team,
+   where one person counts and the others enter the game
+   when the odds are&nbsp;right.
+ </p>
 
-    <h2>Stort kapital och mycket tid</h2>
+<h2 class="break">You must get everything right</h2>
 
-      <p>
-        Blackjack är ett spel med <em>mycket stor varians</em>:
-        du kommer att möta båda höga toppar och långa djupa dalar.
-        Om dina pengar inte räcker så är spelet slut.
-      </p>
+<p>
+  To win at blackjack, you must manage <em>all the points</em> above.
+  If you miss one, you end up a&nbsp;loser.
+</p>
 
-      <p>
-        En långsiktig förväntad timinkomst på några hundralappar
-        kräver typiskt <span class="smaller">100.000</span> i kapital.
-        Om ditt mål är <span class="smaller">1.000</span>&nbsp;kr
-        i timmen till rimlig risk, så krävs miljon&shy;belopp.
-      </p>
+<p>
+  Most casinos have closed the holes a long time&nbsp;ago.
+  Many casinos even have slot machines with
+  a statistical structure similar to blackjack:
+  a “secret” and simple playing strategy
+  with high bets gives a small expected profit.
+</p>
 
-      <p>
-        Det är inte ovanligt att gå back en hel vecka, även med
-        en strategi som ger dig en förväntad vinst.
-        Blackjack på semestern är ingen bra idé.
-      </p>
+<p>
+  The casino knows that few have the funds,
+  discipline, and time required –
+  and the ones that still manage, do it
+  with <em>low hourly wages</em> in a <em>dismal working environment</em>
+  with <em>poor gains</em> at <em>huge&nbsp;risk</em>.&nbsp;<span style="font-size:larger;">♠</span>
+</p>
 
-    <h2>Ligg lågt</h2>
-       <p>
-         Du har gjort din hemläxa: du kan ditt system,
-         vet dina gränser, har hittat en plats där du kan jobba
-         och har tillräckligt med kapital.
-         Nu börjar katt- och råttaleken.
-       </p>
+<p>
+<b>More on gambling:</b> <a title="3-card monte is not a game, it’s robbery." href="/monte/">Find the lady</a>
+</p>
 
-       <p>
-         Om du bara gör stora insatser i slutet av talongen
-         så upp&shy;täcks det snabbt, och om
-         kasinot inte gillar din spelstil
-         så är du inte välkommen tillbaka.
-       </p>
+</article>
 
-       <p>
-         Troligen kommer du tvingas jobba i lag,
-         där en räknar och de andra hoppar in i spelet
-         när oddsen är rätt.
-       </p>
+<aside>
+<p></p>
+</aside>
+</main>
 
-    <h2 class="break">Du måste ha alla rätt</h2>
-
-      <p>
-        För att vinna i blackjack måste du pricka in
-        <em>alla punkter</em> ovan.
-        Om du missar någon, slutar du som förlorare.
-        De flesta kasinon har sedan länge täppt till hålen.
-      </p>
-      
-      <p>
-        Flera kasinon har till och med enarmade banditer med
-        en sta&shy;tistisk struktur som liknar blackjack:
-        en ”hemlig” och enkel spel&shy;strategi
-        med höga insatser ger en liten för&shy;väntad vinst.
-      </p>
-
-      <p>
-        Kasinot vet att få har den budget, disciplin och tid som krävs –
-        och den som ändå lyckas
-        har gjort det med <em>låg timlön</em> och
-        <em>trist arbets&shy;miljö</em>
-        samt <em>dålig avkastning</em> med <em>hög risk</em>.
-      </p>
-
-      <div class="image">        
-        <a href="http://www.flickr.com/photos/unlvdigitalcollections/7210436464/in/photostream">
-          <img style="margin-bottom:6px;" src="winner.jpg" width="480" height="346"
-                alt="Enarmad bandit på Sands Hotel and Casino, Las Vegas, sent 1950-tal"
-                title="Enarmad bandit på Sands Hotel and Casino, Las Vegas, sent 1950-tal">
-        </a>
-      </div>
-
-      <p>
-        Om du mot alla odds ändå har bestämt dig för att bli proffs
-        i black&shy;jack så kom ihåg att
-        <em>tur&nbsp;finns&nbsp;inte</em>.&nbsp;<span id="red-end-mark">♦</span>
-      </p>
-    </article>
-
-    <footer>
-      <p>Copyright © 2002–2014
-        <a href="https://plus.google.com/+StefanNilsson/about?rel=author">Stefan Nilsson</a>
-        &nbsp;|&nbsp; <a href="#top">Top</a>
-      </p>
-    </footer>
-  </div>
-
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
 </body>
 </html>

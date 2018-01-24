@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timer and Ticker | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="Timers and Tickers are used to wait for, repeat, and cancel events in the future.">
+  <meta name="keywords" content="go, golang, timer, ticker, channel, wait, stop, reset, timeout, interval">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Timer and Ticker</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+
+<p class="lead">Timers and Tickers let you execute code in the future, once or repeatedly.</p>
+
+<h2 id="timeout-timer">Timeout (Timer)</h2>
+
+<p><a href="https://golang.org/pkg/time/#After"><code>time.After</code></a>
+waits for a specified duration and then sends the current time
+on the returned channel:</p>
+
+<pre><code>select {
+case news := &lt;-AFP:
+	fmt.Println(news)
+case &lt;-time.After(time.Hour):
+	fmt.Println(&quot;No news in an hour.&quot;)
+}
+</code></pre>
+
+<p>The underlying <a href="https://golang.org/pkg/time/#Timer"><code>time.Timer</code></a>
+will not be recovered by the garbage collector until the timer fires.
+If this is a concern, use <a href="https://golang.org/pkg/time/#NewTimer"><code>time.NewTimer</code></a>
+instead and call its <a href="https://golang.org/pkg/time/#Timer.Stop"><code>Stop</code></a> method
+when the timer is no longer needed:</p>
+
+<pre><code>for alive := true; alive; {
+	timer := time.NewTimer(time.Hour)
+	select {
+	case news := &lt;-AFP:
+		timer.Stop()
+		fmt.Println(news)
+	case &lt;-timer.C:
+		alive = false
+		fmt.Println(&quot;No news in an hour. Service aborting.&quot;)
+	}
+}
+</code></pre>
+
+<h2 id="repeat-ticker">Repeat (Ticker)</h2>
+
+<p><a href="https://golang.org/pkg/time/#Tick"><code>time.Tick</code></a> returns
+a channel that delivers clock ticks at even intervals:</p>
+
+<pre><code>go func() {
+	for now := range time.Tick(time.Minute) {
+		fmt.Println(now, statusUpdate())
+	}
+}()
+</code></pre>
+
+<p>The underlying <a href="https://golang.org/pkg/time/#Ticker"><code>time.Ticker</code></a>
+will not be recovered by the garbage collector.
+If this is a concern, use <a href="https://golang.org/pkg/time/#NewTicker"><code>time.NewTicker</code></a>
+instead and call its <a href="https://golang.org/pkg/time/#Timer.Stop"><code>Stop</code></a> method
+when the ticker is no longer needed.</p>
+
+<h2 id="wait-act-and-cancel">Wait, act and cancel</h2>
+
+<p><a href="https://golang.org/pkg/time/#AfterFunc"><code>time.AfterFunc</code></a>
+waits for a specified duration and then calls a function in its own goroutine.
+It returns a <a href="https://golang.org/pkg/time/#Timer"><code>time.Timer</code></a> that can be used
+to cancel the call:</p>
+
+<pre><code>func Foo() {
+    timer = time.AfterFunc(time.Minute, func() {
+        log.Println("Foo run for more than a minute.")
+    })
+    defer timer.Stop()
+
+    <span class="comment">// Do heavy work</span>
+}</code></pre>
+
+<ul class="pagina">
+  
+        <li><a href="/golang/stop-goroutine/">« Prev</a></li>
+      
+        <li><a href="/golang/concurrent-programming/">Index</a></li>
+      
+        <li><a href="/golang/mutex-explained/">Next »</a></li>
+      
+</ul>
+
+</article>
+
+<aside>
+
+  <h2>Concurrent programming</h2>
+  <ul class="none">
+  
+      <li><a href="/golang/goroutines-explained/">Goroutines</a></li>
+
+      <li><a href="/golang/channels-explained/">Channels</a></li>
+
+      <li><a href="/golang/select-explained/">Select</a></li>
+
+      <li><a href="/golang/data-races-explained/">Data races</a></li>
+
+      <li><a href="/golang/detect-data-races/">Detect data races</a></li>
+
+      <li><a href="/golang/detect-deadlock/">Deadlock</a></li>
+
+      <li><a href="/golang/wait-for-goroutines-waitgroup/">Waiting for goroutines</a></li>
+
+      <li><a href="/golang/broadcast-channel/">Broadcast a signal on a channel</a></li>
+
+      <li><a href="/golang/stop-goroutine/">Stop a goroutine</a></li>
+
+      <li><b>🢒&nbsp;</b>Timer and Ticker</li>
+
+      <li><a href="/golang/mutex-explained/">Mutual exclusion lock (mutex)</a></li>
+
+      <li><a href="/golang/efficient-parallel-computation/">Efficient parallel computation</a></li>
+
+  </ul>
+
+
+  <p><a href="/golang/"><b>See all 198 Go articles</b></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

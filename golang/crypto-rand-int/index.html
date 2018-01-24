@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cryptographically secure random numbers | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="How to use a cryptographically secure random source with math/rand in Go.">
+  <meta name="keywords" content="go, golang, crypto, rand, math, int, example">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Cryptographically secure random numbers</h1>
+<div class="tagline">yourbasic.org</div>
+<p>Go has two packages for random numbers:</p>
+
+<ul>
+<li><a href="https://golang.org/pkg/math/rand/"><code>math/rand</code></a> implements a large selection of pseudo-random number generators.</li>
+<li><a href="https://golang.org/pkg/crypto/rand/"><code>crypto/rand</code></a> implements a cryptographically secure pseudo-random number generator with a limited interface.</li>
+</ul>
+
+<p>The two packages can be combined by calling <a href="https://golang.org/pkg/math/rand/#New"><code>rand.New</code></a>
+in package <code>math/rand</code> with a source that gets its data from <code>crypto/rand</code>.</p>
+
+<pre><code>import (
+    crand "crypto/rand"
+    rand "math/rand"
+
+    "encoding/binary"
+    "fmt"
+    "log"
+)
+
+func main() {
+    var src cryptoSource
+    rnd := rand.New(src)
+    fmt.Println(rnd.Intn(1000)) <span class="comment">// a random number 0 to 999</span>
+}
+
+type cryptoSource struct{}
+
+func (s cryptoSource) Seed(seed int64) {}
+
+func (s cryptoSource) Int63() int64 {
+    return int64(s.Uint64() & ^uint64(1<<63))
+}
+
+func (s cryptoSource) Uint64() (v uint64) {
+    err := binary.Read(crand.Reader, binary.BigEndian, &v)
+    if err != nil {
+        log.Fatal(err)
+    }
+    return v
+}</code></pre>
+
+<p>The <code>crand.Reader</code> returns an error if the underlying system call fails. For instance if the runtime can&rsquo;t read <code>/dev/urandom</code> on a Unix system or if <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa379886(v=vs.85).aspx"><code>CryptAcquireContext</code></a> fails on a Windows system.</p>
+
+</article>
+
+<aside>
+
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/generate-number-random-range/">Generate a random number in a given range</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/generate-random-string-password-booking-reference/">Generate a random string (password, reference)</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/generate-uuid-guid/">Generate a random UUID (GUID)</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator">Cryptographically secure pseudorandom number generator</a><br />
+    <span class="source">Wikipedia</span>
+    <span class="author"></span>
+  </div>
+
+
+  <h2>New in Go 1.10</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/build-append-concatenate-strings-efficiently/">Build and concatenate strings efficiently</a></li>
+
+    <li><a href="/golang/round-float-to-int/">Round float to integer value</a></li>
+
+    <li><a href="/golang/shuffle-slice-array/">Shuffle slice or array</a></li>
+
+  </ul>
+
+  <h2>Top Go articles</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/gotcha/">Go gotcha</a></li>
+
+    <li><a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a></li>
+
+    <li><a href="/golang/slices-explained/">Slices in a nutshell</a></li>
+
+    <li><a href="/golang/maps-explained/">Maps in a nutshell</a></li>
+
+    <li><a href="/golang/concurrent-programming/">Concurrent programming</a></li>
+
+  </ul>
+  <p><a href="/golang/"><strong>See all 198 Go articles</strong></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

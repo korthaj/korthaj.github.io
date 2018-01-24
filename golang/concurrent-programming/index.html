@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Concurrent programming | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="This tutorial covers concurrent threads of execution (goroutines), basic synchronization techniques (channels and locks), basic concurrency patterns in Go, deadlock and data races, parallel computation.">
+  <meta name="keywords" content="go, golang, tutorial, code, examples, concurrency, goroutines, channels, deadlock, data race, timer, ticker, waitgroup, parallel computation">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Concurrent programming</h1>
+<div class="tagline">yourbasic.org</div>
+<!-- CC BY 3.0: https://golang.org/doc/gopher/ -->
+
+<div><img src="/golang/plane.png" width="120px" style="float: right; margin: 0 0 40px 20px;" /></div>
+
+<p class="lead">This tutorial covers the funda&shy;mentals of concur&shy;rent program&shy;ming with examples in&nbsp;Go.</p>
+
+<p>Before you start, you need to know how to write basic Go programs.
+If you need a refresher, the&nbsp;resources in <a href="/golang/getting-started-hello-world">Get started with Go</a> will help you come up to speed quickly with&nbsp;Go.</p>
+
+<p><a href="/golang/goroutines-explained" class="button">Start here</a></p>
+
+<h2>Table of contents</h2>
+
+  <ul class="none">
+  <li>
+  <a href="/golang/goroutines-explained/"><b>Goroutines</b></a>
+  <div style="padding: 0.5em 0 1em 0">A goroutine is a lightweight thread of execution.</div>
+</li>
+<li>
+  <a href="/golang/channels-explained/"><b>Channels</b></a>
+  <div style="padding: 0.5em 0 1em 0">A channel is a mechanism for two goroutines to synchronize execution and communicate by passing values.</div>
+</li>
+<li>
+  <a href="/golang/select-explained/"><b>Select</b></a>
+  <div style="padding: 0.5em 0 1em 0">A select statement allows you to wait for multiple send or receive operations simultaneously.</div>
+</li>
+<li>
+  <a href="/golang/data-races-explained/"><b>Data races</b></a>
+  <div style="padding: 0.5em 0 1em 0">A data race is easily introduced by mistake and can lead to situations that are very hard to debug. This article explains how to avoid this headache.</div>
+</li>
+<li>
+  <a href="/golang/detect-data-races/"><b>Detect data races</b></a>
+  <div style="padding: 0.5em 0 1em 0">By starting your application with the &#39;-race&#39; option, the Go runtime might be able to detect and inform you about data races.</div>
+</li>
+<li>
+  <a href="/golang/detect-deadlock/"><b>Deadlock</b></a>
+  <div style="padding: 0.5em 0 1em 0">The Go runtime can often detect when a program freezes because of a deadlock. This article explains how to debug and solve such issues.</div>
+</li>
+<li>
+  <a href="/golang/wait-for-goroutines-waitgroup/"><b>Waiting for goroutines</b></a>
+  <div style="padding: 0.5em 0 1em 0">A sync.WaitGroup waits for a group of goroutines to finish.</div>
+</li>
+<li>
+  <a href="/golang/broadcast-channel/"><b>Broadcast a signal on a channel</b></a>
+  <div style="padding: 0.5em 0 1em 0">When you close a channel, all readers receive a zero value. This can be used to broadcast a signal to several goroutines on a single channel.</div>
+</li>
+<li>
+  <a href="/golang/stop-goroutine/"><b>Stop a goroutine</b></a>
+  <div style="padding: 0.5em 0 1em 0">A goroutine can stop only by returning from it&#39;s top level function. To make it stoppable, let it listen to a stop signal on a channel.</div>
+</li>
+<li>
+  <a href="/golang/time-reset-wait-stop-timeout-cancel-interval/"><b>Timer and Ticker</b></a>
+  <div style="padding: 0.5em 0 1em 0">Timers and Tickers are used to wait for, repeat, and cancel events in the future.</div>
+</li>
+<li>
+  <a href="/golang/mutex-explained/"><b>Mutual exclusion lock (mutex)</b></a>
+  <div style="padding: 0.5em 0 1em 0">A sync.Mutex is used to synchronize data by explicit locking.</div>
+</li>
+<li>
+  <a href="/golang/efficient-parallel-computation/"><b>Efficient parallel computation</b></a>
+  <div style="padding: 0.5em 0 1em 0">To efficiently schedule parallel computation on separate CPUs is more of an art than a science. This article gives some rules of thumb.</div>
+</li>
+
+  </ul>
+</article>
+
+<aside>
+
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

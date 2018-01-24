@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regular expressions | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="How to use regular expressions in Go: examples and cheat sheet.">
+  <meta name="keywords" content="go, golang, regexp, regex, example, cheat sheet, syntax, multiline, performance, match, find, replace, split">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Regular expressions</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<div style="margin-top:1em;">
+<div style="float: left; min-width: 40%; margin-right: 2em;">
+<ul class="toc" style="font-weight: bold; margin:0;">
+  <li><a href="#basics">Basics</a>
+    <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
+      <li><a href="#compile">Compile</a></li>
+      <li><a href="#raw-strings">Raw strings</a></li>
+    </ul>
+  </li>
+  <li><a href="#cheat-sheet">Cheat sheet</a>
+    <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
+      <li><a href="#choice-and-grouping">Choice and grouping</a></li>
+      <li><a href="#repetition">Repetition</a></li>
+      <li><a href="#character-classes">Character classes</a></li>
+      <li><a href="#special-characters">Special characters</a></li>
+      <li><a href="#text-boundary-anchors">Text boundary anchors</a></li>
+    </ul>
+  </li>
+</ul>
+</div>
+<div style="float: left;">
+<ul class="toc" style="font-weight: bold; margin:0;">
+  <li><a href="#code-examples">Code examples</a>
+    <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
+      <li><a href="#first-match">First match</a></li>
+      <li><a href="#location">Location</a></li>
+      <li><a href="#all-matches">All matches</a></li>
+      <li><a href="#replace">Replace</a></li>
+      <li><a href="#split">Split</a></li>
+    </ul>
+  </li>
+  <li><a href="#implementation">Implementation</a></li>
+</ul>
+</div>
+</div>
+<div style="clear: both"></div>
+
+<h2 id="basics">Basics</h2>
+
+<p>The regular expression <code>a.b</code> matches any string that
+starts with an&nbsp;<code>a</code>, ends with a&nbsp;<code>b</code>,
+and has a single character in between (the period matches any character).</p>
+
+<p>To check if there is a <b>substring</b> matching <code>a.b</code>, use
+the <a href="https://golang.org/pkg/regexp/#MatchString">regexp.MatchString</a> function.</p>
+
+<pre><code>matched, err := regexp.MatchString(`a.b`, "aaxbb")
+fmt.Println(matched) <span class="comment">// true</span>
+fmt.Println(err)     <span class="comment">// nil (regexp is valid)</span></code></pre>
+
+<p>To check if a <b>full string</b> matches <code>a.b</code>,
+anchor the&nbsp;start and the&nbsp;end of the&nbsp;regexp:</p>
+
+<ul>
+<li>the caret&nbsp;<code>^</code> matches the beginning of a text or line,</li>
+<li>the dollar&nbsp;sign&nbsp;<code>$</code> matches the end of a text.</li>
+</ul>
+
+<pre><code>matched, _ := regexp.MatchString(`^a.b$`, "aaxbb")
+fmt.Println(matched) <span class="comment">// false</span></code></pre>
+
+<p>Similarly, we can check if a string <b>starts with</b> or <b>ends with</b> a pattern by using only the&nbsp;start or end&nbsp;anchor.</p>
+
+<h3 id="compile">Compile</h3>
+
+<p>For more complicated queries, you must compile a regular expression to create
+a <a href="https://golang.org/pkg/regexp/#Regexp"><code>Regexp</code></a> object.
+There are two&nbsp;options.</p>
+
+<pre><code>re1, err := regexp.Compile(`regexp`) <span class="comment">// <b>error</b> if regexp invalid</span>
+re2 := regexp.MustCompile(`regexp`)  <span class="comment">// <b>panic</b> if regexp invalid</span></code></pre>
+
+<h3 id="raw-strings">Raw strings</h3>
+
+<p>It&rsquo;s convenient to use <code><code>raw strings</code></code> when writing regular expressions &ndash;
+both ordinary string literals and regular expressions use backslashes for special characters.</p>
+
+<h2 id="cheat-sheet">Cheat sheet</h2>
+
+<h3 id="choice-and-grouping">Choice and grouping</h3>
+
+<table class="white">
+  <thead>
+    <tr>
+      <th>Regexp</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>xy</code></td>
+      <td><code>x</code> followed by <code>y</code></td>
+    </tr>
+    <tr>
+      <td><code>x|y</code></td>
+      <td><code>x</code> or <code>y</code>, prefer <code>x</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>xy|z</code></td>
+      <td style="border-bottom: 0;">same as <code>(xy)|z</code></td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>xy*</code></td>
+      <td style="padding-top: 0;">same as <code>x(y*)</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="repetition">Repetition</h3>
+
+<table class="white">
+  <thead>
+    <tr>
+      <th>Regexp</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border-bottom: 0;"><code>x*</code></td>
+      <td style="border-bottom: 0;">zero or more x, prefer more</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>x*?</code></td>
+      <td style="padding-top: 0;">prefer fewer</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>x+</code></td>
+      <td style="border-bottom: 0;">one or more x, prefer more</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>x+?</code></td>
+      <td style="padding-top: 0;">prefer fewer</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>x?</code></td>
+      <td style="border-bottom: 0;">zero or one x, prefer one</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>x??</code></td>
+      <td style="padding-top: 0;">prefer zero</td>
+    </tr>
+    <tr>
+      <td><code>x{n}</code></td>
+      <td>exactly n x</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="character-classes">Character classes</h3>
+
+<table class="white">
+  <thead>
+    <tr>
+      <th>Expression</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>.</code></td>
+      <td>any character</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>[ab]</code></td>
+      <td style="border-bottom: 0;">the character a or b</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>[^ab]</code></td>
+      <td style="padding-top: 0;">any character except a or b</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>[a-z]</code></td>
+      <td style="border-bottom: 0;">any character from a to z</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>[a-z0-9]</code></td>
+      <td style="padding-top: 0;">any character from a to z or 0 to 9</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>\d</code></td>
+      <td style="border-bottom: 0;">a digit: <code>[0-9]</code></td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>\D</code></td>
+      <td style="padding-top: 0;">a non-digit: <code>[^0-9]</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>\s</code></td>
+      <td style="border-bottom: 0;">a whitespace character: <code>[\t\n\f\r ]</code></td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>\S</code></td>
+      <td style="padding-top: 0;">a non-whitespace character: <code>[^\t\n\f\r ]</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>\w</code></td>
+      <td style="border-bottom: 0;">a word character: <code>[0-9A-Za-z_]</code></td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>\W</code></td>
+      <td style="padding-top: 0;">a non-word character: <code>[^0-9A-Za-z_]</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>\p{Greek}</code></td>
+      <td style="border-bottom: 0;">Unicode character class*</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>\pN</code></td>
+      <td style="padding-top: 0;">one-letter name</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>\P{Greek}</code></td>
+      <td style="border-bottom: 0;">negated Unicode character class*</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>\PN</code></td>
+      <td style="padding-top: 0;">one-letter name</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>&#42; <a href="https://github.com/google/re2/wiki/Syntax">RE2: Unicode character class names</a></p>
+
+<h3 id="special-characters">Special characters</h3>
+
+<p>To match a <strong>special character</strong> <code>\^$.|?*+-[]{}()</code> literally, escape it with a backslash. For example <code>\{</code> matches an opening brace symbol. Other escape sequences are:</p>
+
+<table class="white">
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>\t</code></td>
+      <td>horizontal tab = <code>\011</code></td>
+    </tr>
+    <tr>
+      <td><code>\n</code></td>
+      <td>newline = <code>\012</code></td>
+    </tr>
+    <tr>
+      <td><code>\f</code></td>
+      <td>form feed = <code>\014</code></td>
+    </tr>
+    <tr>
+      <td><code>\r</code></td>
+      <td>carriage return = <code>\015</code></td>
+    </tr>
+    <tr>
+      <td><code>\v</code></td>
+      <td>vertical tab = <code>\013</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>\123</code></td>
+      <td style="border-bottom: 0;">octal character code (up to three digits)</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>\x7F</code></td>
+      <td style="padding-top: 0;">hex character code (exactly two digits)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="text-boundary-anchors">Text boundary anchors</h3>
+
+<table class="white">
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Matches</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border-bottom: 0;"><code>\A</code></td>
+      <td style="border-bottom: 0;">at beginning of text</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>^</code></td>
+      <td style="padding-top: 0;">at beginning of text or line</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>$</code></td>
+      <td style="border-bottom: 0;">at end of text</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>\z</code></td>
+      <td style="padding-top: 0;"></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>\b</code></td>
+      <td style="border-bottom: 0;">at ASCII word boundary</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>\B</code></td>
+      <td style="padding-top: 0;">not at ASCII word boundary</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="code-examples">Code examples</h2>
+
+<h3 id="first-match">First match</h3>
+
+<p>Use the <a href="https://golang.org/pkg/regexp/#Regexp.FindString"><code>FindString</code></a> method
+to find the <strong>text of the first match</strong>.
+If there is no match, the return value is an empty string.</p>
+
+<pre><code>re := regexp.MustCompile(`foo.?`)
+fmt.Printf("%q\n", re.FindString("seafood fool")) <span class="comment">// "food"</span>
+fmt.Printf("%q\n", re.FindString("meat"))         <span class="comment">// ""</span></code></pre>
+
+<h3 id="location">Location</h3>
+
+<p>Use the <a href="https://golang.org/pkg/regexp/#Regexp.FindStringIndex"><code>FindStringIndex</code></a> method
+to find <code>loc</code>, the <strong>location of the first match</strong>, in a string&nbsp;<code>s</code>.
+The match is at <code>s[loc[0]:loc[1]]</code>. A return value of nil indicates no match.</p>
+
+<pre><code>re := regexp.MustCompile(`ab?`)
+fmt.Println(re.FindStringIndex("tablett"))    <span class="comment">// [1 3]</span>
+fmt.Println(re.FindStringIndex("foo") == nil) <span class="comment">// true</span></code></pre>
+
+<h3 id="all-matches">All matches</h3>
+
+<p>Use the <a href="https://golang.org/pkg/regexp/#Regexp.FindAllString"><code>FindAllString</code></a> method
+to find the <strong>text of all matches</strong>.
+A return value of nil indicates no match.</p>
+
+<p>The method takes an integer argument <code>n</code>;
+if <code>n &gt;= 0</code>, the function returns at most <code>n</code> matches.</p>
+
+<pre><code>re := regexp.MustCompile(`a.`)
+fmt.Printf("%q\n", re.FindAllString("paranormal", -1)) <span class="comment">// ["ar" "an" "al"]</span>
+fmt.Printf("%q\n", re.FindAllString("paranormal", 2))  <span class="comment">// ["ar" "an"]</span>
+fmt.Printf("%q\n", re.FindAllString("graal", -1))      <span class="comment">// ["aa"]</span>
+fmt.Printf("%q\n", re.FindAllString("none", -1))       <span class="comment">// [] (nil slice)</span></code></pre>
+
+<h3 id="replace">Replace</h3>
+
+<p>Use the <a href="https://golang.org/pkg/regexp/#Regexp.ReplaceAllString"><code>ReplaceAllString</code></a> method
+to <strong>replace the text of all matches</strong>.
+It returns a copy, replacing all matches of the regexp with a replacement string.</p>
+
+<pre><code>re := regexp.MustCompile(`ab*`)
+fmt.Printf("%q\n", re.ReplaceAllString("-a-abb-", "T")) <span class="comment">// "-T-T-"</span></code></pre>
+
+<h3 id="split">Split</h3>
+
+<p>Use the <a href="https://golang.org/pkg/regexp/#Regexp.Split"><code>Split</code></a> method
+to <strong>slice a string into substrings</strong> separated by the regexp.
+It returns a slice of the substrings between those expression matches.
+A return value of nil indicates no match.</p>
+
+<p>The method takes an integer argument <code>n</code>;
+if <code>n &gt;= 0</code>, the function returns at most <code>n</code> matches.</p>
+
+<pre><code>a := regexp.MustCompile(`a`)
+fmt.Printf("%q\n", a.Split("banana", -1)) <span class="comment">// ["b" "n" "n" ""]</span>
+fmt.Printf("%q\n", a.Split("banana", 0))  <span class="comment">// [] (nil slice)</span>
+fmt.Printf("%q\n", a.Split("banana", 1))  <span class="comment">// ["banana"]</span>
+fmt.Printf("%q\n", a.Split("banana", 2))  <span class="comment">// ["b" "nana"]</span>
+
+zp := regexp.MustCompile(`z+`)
+fmt.Printf("%q\n", zp.Split("pizza", -1)) <span class="comment">// ["pi" "a"]</span>
+fmt.Printf("%q\n", zp.Split("pizza", 0))  <span class="comment">// [] (nil slice)</span>
+fmt.Printf("%q\n", zp.Split("pizza", 1))  <span class="comment">// ["pizza"]</span>
+fmt.Printf("%q\n", zp.Split("pizza", 2))  <span class="comment">// ["pi" "a"]</span></code></pre>
+
+<h4 id="more-functions">More functions</h4>
+
+<p>There are 16 functions following the naming pattern</p>
+
+<pre>Find(All)?(String)?(Submatch)?(Index)?</pre>
+
+<p>For example: <code>Find</code>, <code>FindAllString</code>, <code>FindStringIndex</code>, …</p>
+
+<h2 id="implementation">Implementation</h2>
+
+<ul>
+<li>The <a href="https://golang.org/pkg/regexp/"><code>regexp</code></a> package implements regular expressions with <a href="https://golang.org/s/re2syntax">RE2</a> syntax.</li>
+<li>It supports UTF-8 encoded strings and Unicode character classes.</li>
+<li>The implementation is very efficient: the running time is linearly proportional to the size of the input.</li>
+<li>Backreferences are not supported since they cannot be efficiently implemented.
+Related: <a href="https://swtch.com/~rsc/regexp/regexp1.html">Regular expression matching can be simple and fast (but is slow in Java, Perl, PHP, Python, Ruby,&nbsp;…)</a>.</li>
+</ul>
+
+</article>
+
+<aside>
+
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="https://github.com/google/re2/wiki/Syntax">RE2 syntax</a><br />
+    <span class="source">Google open source</span>
+    <span class="author"></span>
+  </div>
+
+  <div class="reference">
+    <a href="https://swtch.com/~rsc/regexp/regexp1.html">Regular expression matching can be simple and fast</a><br />
+    <span class="source"></span>
+    <span class="author">Russ Cox</span>
+  </div>
+
+  <div class="reference">
+    <a href="/algorithms/time-complexity-explained/">Time complexity</a><br />
+    <span class="source"></span>
+  </div>
+
+
+  <h2>New in Go 1.10</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/build-append-concatenate-strings-efficiently/">Build and concatenate strings efficiently</a></li>
+
+    <li><a href="/golang/round-float-to-int/">Round float to integer value</a></li>
+
+    <li><a href="/golang/shuffle-slice-array/">Shuffle slice or array</a></li>
+
+  </ul>
+
+  <h2>Top Go articles</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/gotcha/">Go gotcha</a></li>
+
+    <li><a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a></li>
+
+    <li><a href="/golang/slices-explained/">Slices in a nutshell</a></li>
+
+    <li><a href="/golang/maps-explained/">Maps in a nutshell</a></li>
+
+    <li><a href="/golang/concurrent-programming/">Concurrent programming</a></li>
+
+  </ul>
+  <p><a href="/golang/"><strong>See all 198 Go articles</strong></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

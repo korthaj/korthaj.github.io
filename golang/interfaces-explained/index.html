@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interfaces | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="A brief tutorial of Go interfaces.">
+  <meta name="keywords" content="go, golang, interface, empty, equal, nil">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Interfaces</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<p class="lead">An interface type is a set of method signatures.</p>
+
+<ul class="toc">
+  <li><a href="#basics">Basics</a></li>
+  <li><a href="#structural-typing">Structural typing</a></li>
+  <li><a href="#the-empty-interface">The empty interface</a></li>
+  <li><a href="#interface-values">Interface values</a></li>
+  <li><a href="#equality">Equality</a></li>
+</ul>
+
+<h2 id="basics">Basics</h2>
+
+<p><em>An interface type consists of a set of method signatures.
+A variable of interface type can hold any value that implements these methods.</em></p>
+
+<p>In this example both <code>Temp</code> and <code>*Point</code> implement the <code>MyStringer</code> interface.</p>
+
+<pre><code>type MyStringer interface {
+	String() string
+}
+</code></pre>
+
+<pre><code>type Temp int
+
+func (t Temp) String() string {
+	return strconv.Itoa(int(t)) + &quot; °C&quot;
+}
+
+type Point struct {
+	x, y int
+}
+
+func (p *Point) String() string {
+	return fmt.Sprintf(&quot;(%d,%d)&quot;, p.x, p.y)
+}
+</code></pre>
+
+<p>Actually, <code>*Temp</code> also implements <code>MyStringer</code>, since the method set of
+a pointer type <code>*T</code> is the set of all methods with receiver <code>*T</code>&nbsp;or&nbsp;<code>T</code>.</p>
+
+<p>When you call a method on an interface value, the method of its underlying type is&nbsp;executed.</p>
+
+<pre><code>var x MyStringer
+
+x = Temp(24)
+fmt.Println(x.String()) <span class="comment">// "24 °C"</span>
+
+x = &Point{1, 2}
+fmt.Println(x.String()) <span class="comment">// "(1,2)"</span></code></pre>
+
+<h2 id="structural-typing">Structural typing</h2>
+
+<p><em>A type implements an interface by implementing its methods.
+No explicit declaration is&nbsp;required.</em></p>
+
+<p>In fact, the <code>Temp</code>, <code>*Temp</code> and <code>*Point</code> types also implement the <a href="https://golang.org/pkg/fmt/#Stringer"><code>fmt.Stringer</code></a> interface. The <code>String</code> method in this interface is used to print values passed as an operand to functions such as <a href="https://golang.org/pkg/fmt/#Println"><code>fmt.Println</code></a>.</p>
+
+<pre><code>var x MyStringer
+
+x = Temp(24)
+fmt.Println(x) <span class="comment">// "24 °C"</span>
+
+x = &Point{1, 2}
+fmt.Println(x) <span class="comment">// "(1,2)"</span></code></pre>
+
+<h2 id="the-empty-interface">The empty interface</h2>
+
+<p>The interface type that specifies no methods is known as the empty interface.</p>
+
+<pre><code>interface{}
+</code></pre>
+
+<p>An empty interface can hold values of any type since every type implements at&nbsp;least zero&nbsp;methods.</p>
+
+<pre><code>var x interface{}
+
+x = 2.4
+fmt.Println(x) <span class="comment">// "2.4"</span>
+
+x = &Point{1, 2}
+fmt.Println(x) <span class="comment">// "(1,2)"</span></code></pre>
+
+<p>The <a href="https://golang.org/pkg/fmt/#Println"><code>fmt.Println</code></a> function is a chief example from the standard library.
+It takes any number of arguments of any&nbsp;type.</p>
+
+<pre><code>func Println(a ...interface{}) (n int, err error)
+</code></pre>
+
+<h2 id="interface-values">Interface values</h2>
+
+<p><em>A <b>interface value</b> is a pair that consists of a <b>concrete value</b> and a <b>dynamic type</b>.</em></p>
+
+<pre><code>[Value, Type]
+</code></pre>
+
+<p>In a call to <a href="https://golang.org/pkg/fmt/#Printf"><code>fmt.Printf</code></a>, you can use <code>%v</code> to print the concrete value and <code>%T</code> to print the dynamic type.</p>
+
+<pre><code>var x MyStringer
+fmt.Printf("%v %T\n", x, x) <span class="comment">// "&lt;nil&gt; &lt;nil&gt;"</span>
+
+x = Temp(24)
+fmt.Printf("%v %T\n", x, x) <span class="comment">// "24 °C main.Temp"</span>
+
+x = &Point{1, 2}
+fmt.Printf("%v %T\n", x, x) <span class="comment">// "(1,2) *main.Point"</span>
+
+x = (*Point)(nil)
+fmt.Printf("%v %T\n", x, x) <span class="comment">// "&lt;nil&gt; *main.Point"</span></code></pre>
+
+<p>The <strong>zero value</strong> of an interface type is nil, which is represented as <code>[nil, nil]</code>.</p>
+
+<p>Calling a method on a nil interface is a run-time error.
+However, it&rsquo;s quite common to write methods that can handle
+a receiver value <code>[nil, T]</code>, where <code>T != nil</code>.</p>
+
+<p>You can also use <strong>type assertions</strong>, <strong>type switches</strong> and <strong>reflection</strong>
+to access the dynamic type of an interface value.
+The article <a href="/golang/find-type-of-object/">Find the type of an object</a>
+has more details.</p>
+
+<h2 id="equality">Equality</h2>
+
+<p>Two interface values are equal</p>
+
+<ul>
+<li>if they have equal concrete values <b>and</b> identical dynamic types,</li>
+<li>or if both are nil.</li>
+</ul>
+
+<p>A value <code>t</code> of interface type <code>T</code> and a value <code>x</code> of non-interface type <code>X</code> are equal if</p>
+
+<ul>
+<li><code>t</code>&rsquo;s concrete value is equal to <code>x</code></li>
+<li><b>and</b> <code>t</code>&rsquo;s dynamic type is identical to <code>X</code>.</li>
+</ul>
+
+<pre><code>var x MyStringer
+fmt.Println(x, x == nil)<span class="comment"> // "&lt;nil&gt; true"</span>
+
+x = (*Point)(nil)
+fmt.Println(x, x == nil) <span class="comment">// "&lt;nil&gt; false"</span></code></pre>
+
+<p>In the second print statement, the concrete value of <code>x</code> equals <code>nil</code>,
+but its dynamic type is <code>*Point</code>, which is not&nbsp;<code>nil</code>.</p>
+
+</article>
+
+<aside>
+
+
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/methods-explained/">Methods</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/find-type-of-object/">Find the type of an object</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/type-assertion-switch/">Type assertions and type switches</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="https://golang.org/doc/effective_go.html#interfaces_and_types">Interfaces and other types</a><br />
+    <span class="source">Effective Go</span>
+    <span class="author"></span>
+  </div>
+
+  <div class="reference">
+    <a href="https://golang.org/ref/spec#Interface_types">Interface types</a><br />
+    <span class="source">The Go Programming Language Specification</span>
+    <span class="author"></span>
+  </div>
+
+
+  <h2>New in Go 1.10</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/build-append-concatenate-strings-efficiently/">Build and concatenate strings efficiently</a></li>
+
+    <li><a href="/golang/round-float-to-int/">Round float to integer value</a></li>
+
+    <li><a href="/golang/shuffle-slice-array/">Shuffle slice or array</a></li>
+
+  </ul>
+
+  <h2>Top Go articles</h2>
+  <ul class="none">
+  
+    <li><a href="/golang/gotcha/">Go gotcha</a></li>
+
+    <li><a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a></li>
+
+    <li><a href="/golang/slices-explained/">Slices in a nutshell</a></li>
+
+    <li><a href="/golang/maps-explained/">Maps in a nutshell</a></li>
+
+    <li><a href="/golang/concurrent-programming/">Concurrent programming</a></li>
+
+  </ul>
+  <p><a href="/golang/"><strong>See all 198 Go articles</strong></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

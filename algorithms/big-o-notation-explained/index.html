@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Big O notation | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="How to use asymptotic notation to describe time complexity.">
+  <meta name="keywords" content="asymptotic, ordo, omega, theta, notation, elementary operations, worst-case, constant, logarithmic, linear, quadratic">
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31906484-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Big O notation</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<p class="lead">Big O notation is a convenient way to describe how fast a func&shy;tion is&nbsp;growing.</p>
+
+<p>When we compute the time complexity&nbsp;T(<i>n</i>) of an algorithm
+we rarely get an exact result. That&rsquo;s fine &ndash; typically
+we are only interested in how fast T(<i>n</i>) is growing
+as a function of the input size&nbsp;<i>n</i>.</p>
+
+<p>For example, if an algorithm increments each number in a list of length&nbsp;<i>n</i>,
+we might say: &ldquo;This algorithm runs in O(<i>n</i>) time and performs O(1) work for each element&rdquo;.</p>
+
+<p>Here is the formal mathematical definition of Big&nbsp;O.</p>
+
+<blockquote class="math">
+Let T(<i>n</i>) and f(<i>n</i>) be two positive functions.
+We write <b>T(<i>n</i>)&nbsp;∊&nbsp;<i>O</i>(f(<i>n</i>))</b>, and say that
+T(<i>n</i>) has order of&nbsp;f(<i>n</i>),
+if there are positive constants M and n₀ such that
+T(<i>n</i>)&nbsp;&le;&nbsp;M·f(<i>n</i>) for all&nbsp;<i>n</i>&nbsp;&ge;&nbsp;n₀.
+</blockquote>
+
+<p>This graph shows a situation where all of the conditions in the definition are&nbsp;met.</p>
+
+<p><img width="280px" style="padding:1em 0 1.5em 0;" src="/algorithms/Ordo.png" alt="Big O notation"></p>
+
+<p>In essence:</p>
+
+<blockquote>
+T(<i>n</i>)&nbsp;∊&nbsp;<i>O</i>(f(<i>n</i>)) means that
+T(<i>n</i>) doesn't grow faster than&nbsp;f(<i>n</i>).
+</blockquote>
+
+<h2 id="constant-time">Constant time</h2>
+
+<p>Let&rsquo;s start with the simplest possible example: <strong>T(<i>n</i>)&nbsp;∊&nbsp;<i>O</i>(1)</strong>.</p>
+
+<p>According to the definition this means that there are constants M and n₀
+such that T(<i>n</i>)&nbsp;&le;&nbsp;M when
+<i>n</i>&nbsp;&ge;&nbsp;n₀.
+In other words, T(<i>n</i>)&nbsp;∊&nbsp;<i>O</i>(1) means that
+T(<i>n</i>) is smaller than some fixed constants, whose value isn&rsquo;t stated,
+for all large enough values of&nbsp;<i>n</i>.</p>
+
+<p>An algorithm with T(<i>n</i>)&nbsp;∊&nbsp;<i>O</i>(1) is said to have
+<strong>constant time complexity</strong>.</p>
+
+<h2 id="linear-time">Linear time</h2>
+
+<p>In the <a href="/algorithms/time-complexity-explained/">Time complexity</a> article,
+we looked at an algorithm with complexity
+T(<i>n</i>)&nbsp;=&nbsp;<i>n</i>&nbsp;-1.
+Using Big&nbsp;O notation this can be written as <strong>T(<i>n</i>)&nbsp;∊&nbsp;<i>O</i>(<i>n</i>)</strong>.
+(If we choose M&nbsp;=&nbsp;1 and n₀&nbsp;=&nbsp;1, then
+T(<i>n</i>)&nbsp;=&nbsp;<i>n</i>&nbsp;-&nbsp;1
+&nbsp;&le;&nbsp;1·<i>n</i> when
+<i>n</i>&nbsp;&ge;&nbsp;1.)</p>
+
+<p>An algorithm with T(<i>n</i>)&nbsp;∊&nbsp;<i>O</i>(<i>n</i>) is said to have
+<strong>linear time complexity</strong>.</p>
+
+<h2 id="quadratic-time">Quadratic time</h2>
+
+<p>The second algorithm in the
+<a href="/algorithms/time-complexity-explained/">Time complexity</a> article
+had time complexity T(<i>n</i>)&nbsp;=&nbsp;<i>n</i><sup>2</sup>/2&nbsp;-&nbsp;<i>n</i>/2.
+With Big&nbsp;O notation, this becomes
+<strong>T(<i>n</i>)&nbsp;∊&nbsp;<i>O</i>(<i>n</i><sup>2</sup>)</strong>, and we say
+that the algorithm has <strong>quadratic time complexity</strong>.</p>
+
+<h2 id="sloppy-notation">Sloppy notation</h2>
+
+<p>The notation T(<i>n</i>)&nbsp;∊&nbsp;<i>O</i>(f(<i>n</i>)) can be used even when
+f(<i>n</i>) grows <strong>much faster</strong> than&nbsp;T(<i>n</i>). For example, we may write
+T(<i>n</i>)&nbsp;=&nbsp;<i>n</i>&nbsp;-&nbsp;1&nbsp;∊ <i>O</i>(<i>n</i><sup>2</sup>).
+This is indeed true, but not very useful.</p>
+
+<h2 id="omega-and-theta-notation">&Omega; and &Theta; notation</h2>
+
+<p><strong>Big Omega</strong> is used to give a <strong>lower bound</strong> for the growth of a function.
+It&rsquo;s defined in the same way as Big&nbsp;O, but with the inequality sign turned around:</p>
+
+<blockquote class="math">
+Let T(<i>n</i>) and f(<i>n</i>) be two positive functions
+We write <b>T(<i>n</i>)&nbsp;∊&nbsp;&Omega;(f(<i>n</i>))</b>, and say that
+T(<i>n</i>) is big omega of&nbsp;f(<i>n</i>),
+if there are positive constants m and n₀ such that
+T(<i>n</i>)&nbsp;&ge;&nbsp;m(f(<i>n</i>)) for all&nbsp;<i>n</i>&nbsp;&ge;&nbsp;n₀.
+</blockquote>
+
+<p><strong>Big Theta</strong> is used to indicate that a function is bounded both from both above and below.</p>
+
+<blockquote class="math">
+T(<i>n</i>):&nbsp;∊&nbsp;&Theta;(f(<i>n</i>)) if
+T(<i>n</i>) is both <i>O</i>(f(<i>n</i>)) and &Omega;(f(<i>n</i>)).
+</blockquote>
+
+<h3 id="example">Example</h3>
+
+<p>T(<i>n</i>)&nbsp;=&nbsp;3<i>n</i><sup>3</sup>&nbsp;+&nbsp;2<i>n</i>&nbsp;+&nbsp;7&nbsp;∊&nbsp;&Theta;(<i>n</i><sup>3</sup>)</p>
+
+<ul>
+<li>If <i>n</i>&nbsp;&ge;&nbsp;1, then
+T(<i>n</i>)&nbsp;=&nbsp;3<i>n</i><sup>3</sup>&nbsp;+&nbsp;2<i>n</i>&nbsp;+&nbsp;7&nbsp;&le;
+3<i>n</i><sup>3</sup>&nbsp;+&nbsp;2<i>n</i><sup>3</sup>&nbsp;+&nbsp;7<i>n</i><sup>3</sup>&nbsp;=
+12<i>n</i><sup>3</sup>. Hence T(<i>n</i>)&nbsp;∊ <i>O</i>(<i>n</i><sup>3</sup>).</li>
+<li>On the other hand,
+T(<i>n</i>)&nbsp;=&nbsp;3<i>n</i><sup>3</sup>&nbsp;+&nbsp;2<i>n</i>&nbsp;+&nbsp;7&nbsp;&gt;&nbsp;<i>n</i><sup>3</sup>
+for all positive&nbsp;<i>n</i>.
+Therefore  T(<i>n</i>)&nbsp;∊ &Omega;(<i>n</i><sup>3</sup>).</li>
+<li>And consequently  T(<i>n</i>)&nbsp;∊ &Theta;(<i>n</i><sup>3</sup>).</li>
+</ul>
+
+<h2 id="key-takeaways">Key takeaways</h2>
+
+<p>When analyzing algorithms you often come across the following time complexities.</p>
+
+<table class="white">
+  <thead>
+    <tr>
+      <th>Complexity</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border-bottom: 0;">&Theta;(1)</td>
+      <td style="border-bottom: 0;">Good news</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;">&Theta;(log&nbsp;<i>n</i>)</td>
+      <td style="border-bottom: 0; padding-top: 0;"></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;">&Theta;(<i>n</i>)</td>
+      <td style="border-bottom: 0; padding-top: 0;"></td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;">&Theta;(<i>n</i>&nbsp;log&nbsp;<i>n</i>)</td>
+      <td style="padding-top: 0;"></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;">&Theta;(<i>n</i><sup>k</sup>), where k&nbsp;≥&nbsp;2</td>
+      <td style="border-bottom: 0;">Bad news</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;">&Theta;(k<sup><i>n</i></sup>), where k&nbsp;≥&nbsp;2</td>
+      <td style="border-bottom: 0; padding-top: 0;"></td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;">&Theta;(<i>n</i>!)</td>
+      <td style="padding-top: 0;"></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="i-o-i-i-n-i-nbsp-log-nbsp-i-n-i-is-really-good"><i>O</i>(<i>n</i>&nbsp;log&nbsp;<i>n</i>) is really good</h3>
+
+<p>The first four complexities indicate an excellent algorithm.
+An algorithm with worst-case time complexity
+W(<i>n</i>)&nbsp;∊ <i>O</i>(<i>n</i>&nbsp;log&nbsp;<i>n</i>) scales very well.</p>
+
+<p>The logarithm function grows very slowly.</p>
+
+<blockquote>
+<ul  class="none">
+<li>log<sub>2</sub>&nbsp;1,000&nbsp;&asymp;&nbsp;10</li>
+<li>log<sub>2</sub>&nbsp;1,000,000&nbsp;&asymp;&nbsp;20</li>
+<li>log<sub>2</sub>&nbsp;1,000,000,000&nbsp;&asymp;&nbsp;30</li>
+</blockquote>
+
+<p>In fact, <i>O</i>(<i>n</i>&nbsp;log&nbsp;<i>n</i>) time complexity is close to linear &ndash;
+it takes roughly twice the time to solve a problem twice as big.</p>
+
+<h3 id="omega-i-n-i-sup-2-sup-is-pretty-bad">&Omega;(<i>n</i><sup>2</sup>) is pretty bad</h3>
+
+<p>The last three complexities typically spell trouble.
+Algorithms with time complexity &Omega;(<i>n</i><sup>2</sup>)
+are useful only for small input: <i>n</i> shouldn&rsquo;t be more than a few thousand.</p>
+
+<blockquote>
+<p>10,000<sup>2</sup> = 100,000,000</p>
+</blockquote>
+
+<p>An algorithm with quadratic time complexity scales poorly &ndash;
+if you increase the input size by a factor&nbsp;10,
+the time increases by a factor&nbsp;100.</p>
+
+</article>
+
+<aside>
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/algorithms/time-complexity-explained/">Time complexity</a><br />
+    <span class="source"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/algorithms/amortized-time-complexity-analysis/">Amortized time complexity</a><br />
+    <span class="source"></span>
+  </div>
+
+  <h2>Top algorithm articles</h2>
+  <ul class="none">
+  
+    <li><a href="/algorithms/your-basic-api/">Your basic API</a></li>
+
+    <li><a href="/algorithms/hash-tables-explained/">Hash tables</a></li>
+
+    <li><a href="/algorithms/big-o-notation-explained/">Big O notation</a></li>
+
+    <li><a href="/algorithms/loop-invariants-explained/">Loop invariants</a></li>
+
+    <li><a href="/golang/quicksort-optimizations/">Top 3 Quicksort optimizations</a></li>
+
+  </ul>
+
+  <p><a href="/algorithms/"><b>See all algorithm articles</b></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>
