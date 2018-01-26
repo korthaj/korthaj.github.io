@@ -74,7 +74,7 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/blackjack/</loc>
+    <loc>https://yourbasic.org/algorithms/blackjack/</loc>
   </url>
   
   <url>
@@ -480,6 +480,10 @@
   
   <url>
     <loc>https://yourbasic.org/golang/json-example/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/algorithms/las-vegas/</loc>
   </url>
   
   <url>

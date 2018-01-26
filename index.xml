@@ -192,10 +192,10 @@ Built-in operators   Operation Result Description     0011 &amp;amp; 0101 0001 B
     
     <item>
       <title>Blackjack</title>
-      <link>https://yourbasic.org/blackjack/</link>
+      <link>https://yourbasic.org/algorithms/blackjack/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://yourbasic.org/blackjack/</guid>
+      <guid>https://yourbasic.org/algorithms/blackjack/</guid>
       <description>It&#39;s possible to win at blackjack by counting cards, but most&amp;nbsp;fail.
 Always optimal strategy  Always use an optimal strategy adapted to the rules of your casino. Here is an example blackjack strategy. Every time you deviate from the optimal strategy – because of hunches or fear – it depletes your funds. Count cards  If you find a casino with good rules, and if you play with an optimal strategy, the odds are still against you – but the house edge can sometimes be as low as&amp;nbsp;0.</description>
     </item>
@@ -1270,6 +1270,17 @@ Iterate(func(n int) { fmt.</description>
       <description>Basic types Struct to JSON Pretty print JSON to struct Arbitrary objects and arrays Files  Basic types The default Go types for coding and encoding JSON are
  bool for JSON booleans, float64 for JSON numbers, string for JSON strings, and nil for JSON null.  Additionally, time.Time and the numeric types in the math/big package can be automatically coded and encoded as JSON strings.
 Note that JSON doesn&amp;rsquo;t support basic integer types.</description>
+    </item>
+    
+    <item>
+      <title>Las Vegas algorithm</title>
+      <link>https://yourbasic.org/algorithms/las-vegas/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/algorithms/las-vegas/</guid>
+      <description>A Las Vegas algo&amp;shy;rithm is a rando&amp;shy;mized algo&amp;shy;rithm that always gives the correct result but gambles with resources.
+Example It&amp;rsquo;s easy and convenient to compute a random point within a circle with a Las Vegas algorithm.
+The idea is to first generate a point (x,&amp;nbsp;y), with -1&amp;nbsp;&amp;leq;&amp;nbsp;x&amp;nbsp;&amp;leq;&amp;nbsp;1 and -1&amp;nbsp;&amp;leq;&amp;nbsp;y&amp;nbsp;&amp;leq;&amp;nbsp;1. If this point happens to fall within the unit circle we keep it, otherwise we throw it away and try&amp;nbsp;again.</description>
     </item>
     
     <item>

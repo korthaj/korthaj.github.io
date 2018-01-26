@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Random number generator seed | yourbasic.org </title>
+  <title>Las Vegas algorithm | yourbasic.org </title>
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
   <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
   <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
   <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
-  <meta name="description" content="A seed is a number used to initialize a pseudorandom number generator.">
-  <meta name="keywords" content="seed, meaning, random number, generator">
+  <meta name="description" content="A Las Vegas algorithm gambles with the resources used for computation.">
+  <meta name="keywords" content="Las Vegas algorithm, random point, circle, go, golang">
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -37,59 +37,39 @@ ga('send', 'pageview');
 
 <main>
 <article>
-<h1>Random number generator seed</h1>
+<h1>Las Vegas algorithm</h1>
 <div class="tagline">yourbasic.org</div>
 
 
-<p class="lead">In reality pseudo&shy;random numbers aren't random at all.
-They are computed using a fixed determi&shy;nistic algorithm.</p>
+<p><img src="/algorithms/circle.png" style="float:right; margin:0 0 40px 20px;"></p>
 
-<!-- CC BY-NC-SA 2.0: https://www.flickr.com/photos/rosswebsdale/2510946638/ -->
+<p class="lead">A Las Vegas algo&shy;rithm is a rando&shy;mized algo&shy;rithm
+that always gives the correct result
+but gambles with resources.</p>
 
-<p><img src="/algorithms/dominoes.jpg"></p>
+<h3 id="example">Example</h3>
 
-<p>The <strong>seed</strong> is a starting point for a sequence of pseudorandom numbers.
-If you start from the same seed, you get the very same sequence.
-This can be quite useful for&nbsp;debugging.</p>
+<p>It&rsquo;s easy and convenient to compute a random point within a circle with a Las Vegas algorithm.</p>
 
-<p>If you want a different sequence of numbers each time,
-you can use the <strong>current time</strong> as a&nbsp;seed.</p>
+<p>The idea is to first generate a point (x,&nbsp;y), with
+-1&nbsp;&leq;&nbsp;x&nbsp;&leq;&nbsp;1 and -1&nbsp;&leq;&nbsp;y&nbsp;&leq;&nbsp;1.
+If this point happens to fall within the unit circle we keep it,
+otherwise we throw it away and try&nbsp;again.</p>
 
-<h2 id="example">Example</h2>
+<p>This algorithm obviously gives the correct result,
+but it gambles with the number of calls to the random number generator.</p>
 
-<p>This generator produces a sequence of 97 different numbers, then it starts over again.
-The seed decides at what number the sequence will&nbsp;start.</p>
-
-<pre><code>// New returns a pseudorandom number generator Rand with a given seed.
-// Every time you call Rand, you get a new "random" number.
-func New(seed int) (Rand func() int) {
-    current := seed
-    return func() int {
-        <b>next := (17 * current) % 97</b>
-        current = next
-        return next
+<p><pre><code>// Point returns a random point within the unit circle.
+func Point() (x, y float64) {
+    for { <span class="comment">// This loop runs 4/π times on average.</span>
+        x = 2*rand.Float64() - 1
+        y = 2*rand.Float64() - 1
+        if x*x+y*y &lt; 1 {
+            return
+        }
     }
-}
-
-func main() {
-    rand1 := New(1)
-    fmt.Println(rand1(), rand1(), rand1())
-
-    rand2 := New(2)
-    fmt.Println(rand2(), rand2(), rand2())
-}
-</code></pre>
-
-<pre>
-17 95 63
-34 93 29
-</pre>
-
-<p>The random number generators you&rsquo;ll find in most programming langauges
-work just like this, but of course they use a smarter function.
-Ideally, you want a long sequence with good random properties
-computed by a function which uses only cheap arithmetic operations.
-For example, you would typically want to avoid the <code>%</code> modulus operator.</p>
+}</code></pre>
+<a href="/algorithms/las-vegas.go">las-vegas.go</a></p>
 
 </article>
 
@@ -98,18 +78,17 @@ For example, you would typically want to avoid the <code>%</code> modulus operat
   <h2>Related</h2>
 
   <div class="reference">
-    <a href="https://en.wikipedia.org/wiki/Random_number_generation">Random number generation</a><br />
-    <span class="source">Wikipedia</span>
-    <span class="author"></span>
-  </div>
-
-  <div class="reference">
-    <a href="/algorithms/las-vegas/">Las Vegas algorithm</a><br />
+    <a href="/algorithms/random-number-generator-seed/">Random number generator seed</a><br />
     <span class="source">yourbasic.org</span>
   </div>
 
   <div class="reference">
-    <a href="/golang/anonymous-function-literal-lambda-closure/">Anonymous functions and closures</a><br />
+    <a href="/golang/create-image/">Create a new image</a><br />
+    <span class="source">yourbasic.org</span>
+  </div>
+
+  <div class="reference">
+    <a href="/algorithms/blackjack/">Blackjack</a><br />
     <span class="source">yourbasic.org</span>
   </div>
 
