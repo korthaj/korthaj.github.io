@@ -49,17 +49,17 @@ but gambles with resources.</p>
 
 <h3 id="example">Example</h3>
 
-<p>It&rsquo;s easy and convenient to compute a random point within a circle with a Las Vegas algorithm.</p>
+<p>It&rsquo;s easy and convenient to compute a random point in a circle with a Las Vegas algorithm.</p>
 
 <p>The idea is to first generate a point (x,&nbsp;y), with
--1&nbsp;&leq;&nbsp;x&nbsp;&leq;&nbsp;1 and -1&nbsp;&leq;&nbsp;y&nbsp;&leq;&nbsp;1.
+-1&nbsp;&lt;&nbsp;x&nbsp;&lt;&nbsp;1 and -1&nbsp;&lt;&nbsp;y&nbsp;&lt;&nbsp;1.
 If this point happens to fall within the unit circle we keep it,
 otherwise we throw it away and try&nbsp;again.</p>
 
 <p>This algorithm obviously gives the correct result,
 but it gambles with the number of calls to the random number generator.</p>
 
-<p><pre><code>// Point returns a random point within the unit circle.
+<p><pre><code>// Point returns a random point in the unit circle.
 func Point() (x, y float64) {
     for { <span class="comment">// This loop runs 4/π times on average.</span>
         x = 2*rand.Float64() - 1

@@ -81,8 +81,8 @@ Neither arrays nor linked lists can achieve this:
       
       <guid>https://yourbasic.org/algorithms/las-vegas/</guid>
       <description>A Las Vegas algo&amp;shy;rithm is a rando&amp;shy;mized algo&amp;shy;rithm that always gives the correct result but gambles with resources.
-Example It&amp;rsquo;s easy and convenient to compute a random point within a circle with a Las Vegas algorithm.
-The idea is to first generate a point (x,&amp;nbsp;y), with -1&amp;nbsp;&amp;leq;&amp;nbsp;x&amp;nbsp;&amp;leq;&amp;nbsp;1 and -1&amp;nbsp;&amp;leq;&amp;nbsp;y&amp;nbsp;&amp;leq;&amp;nbsp;1. If this point happens to fall within the unit circle we keep it, otherwise we throw it away and try&amp;nbsp;again.</description>
+Example It&amp;rsquo;s easy and convenient to compute a random point in a circle with a Las Vegas algorithm.
+The idea is to first generate a point (x,&amp;nbsp;y), with -1&amp;nbsp;&amp;lt;&amp;nbsp;x&amp;nbsp;&amp;lt;&amp;nbsp;1 and -1&amp;nbsp;&amp;lt;&amp;nbsp;y&amp;nbsp;&amp;lt;&amp;nbsp;1. If this point happens to fall within the unit circle we keep it, otherwise we throw it away and try&amp;nbsp;again.</description>
     </item>
     
     <item>

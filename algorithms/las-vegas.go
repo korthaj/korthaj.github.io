@@ -8,7 +8,7 @@ import (
 	"os"
 )
 
-// Point returns a random point within the unit circle.
+// Point returns a random point in the unit circle.
 func Point() (x, y float64) {
 	for { // This loop runs 4/π times on average.
 		x = 2*rand.Float64() - 1
