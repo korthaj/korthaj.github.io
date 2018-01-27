@@ -65,9 +65,12 @@
 <pre><code>x := 5.1
 n := int(x) <span class="comment">// convert float to int</span></code></pre>
 
-<p>The conversion rules are extensive but predictable:
-- all conversions between typed expressions must be explicitly stated,
-- and illegal conversions are caught by the compiler.</p>
+<p>The conversion rules are extensive but predictable:</p>
+
+<ul>
+<li>all conversions between typed expressions must be explicitly stated,</li>
+<li>and illegal conversions are caught by the compiler.</li>
+</ul>
 
 <p>Conversions between numbers and strings may <strong>change the representation</strong>
 and have a <strong>run-time cost</strong>.
