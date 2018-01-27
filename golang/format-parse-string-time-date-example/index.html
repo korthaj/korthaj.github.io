@@ -45,7 +45,7 @@
 <!-- CC BY 2.0: https://www.flickr.com/photos/rsdio/3642425935 -->
 
 <div style="position:relative;">
-<img class="extra-content" src="/golang/stopwatch.png" alt="stopwatch" style="float:right; margin:0 0 20px 20px;" />
+<img class="extra-content" src="/golang/stopwatch.png" alt="stopwatch" style="float:right; margin:-40px 0 20px 20px;" />
 </div>
 
 <ul>
@@ -56,24 +56,168 @@
 <pre><code>func (t Time) Format(<span style="color: green"><b>layout</b></span> string) string
 func Parse(<span style="color: green"><b>layout</b></span>, value string) (Time, error)</code></pre>
 
-<p>The <code><span style="color: green"><b>layout</b></span></code> parameter describes the format.
-It should be the <em>special reference&nbsp;date</em></p>
-
-<pre><code><span style="color: green"><b>Mon Jan 2 15:04:05 MST 2006</b></span></code></pre>
-
-<p>formatted the same way as the value should be formatted.</p>
-
-<p>Written as
-<code><span style="color: green"><b>01/02 03:04:05PM &lsquo;06 -0700</b></span></code>
-the reference date is easy to rember.</p>
-
-<h2 id="example">Example</h2>
-
 <pre><code>input := "2017-08-31"
 <span style="color: green"><b>layout := "2006-01-02"</b></span>
 t, _ := <b>time.Parse</b>(<span style="color: green"><b>layout</b></span>, input)
 fmt.Println(t)                       <span class="comment">// 2017-08-31 00:00:00 +0000 UTC</span>
 fmt.Println(t.<b>Format</b>(<span style="color: green"><b>"02-Jan-2006"</b></span>)) <span class="comment">// 31-Aug-2017</span></code></pre>
+
+<p>The <code><span style="color: green"><b>layout</b></span></code> parameter describes the format.
+It should be the <em>special reference&nbsp;date</em>&hellip;</p>
+
+<pre><code><span style="color: green"><b>Mon Jan 2 15:04:05 MST 2006</b></span></code></pre>
+
+<p>&hellip;formatted the same way as the value should be formatted.</p>
+
+<p>(If you write this date as
+<code><span style="color: green"><b>01/02 03:04:05PM &lsquo;06 -0700</b></span></code>,
+it makes a bit more sense.)</p>
+
+<table class="white">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Templates</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border-bottom: 0;">Year</td>
+      <td style="border-bottom: 0;"><code>06</code> &nbsp; <code>2006</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;">Month</td>
+      <td style="border-bottom: 0; padding-top: 0;"><code>01</code> &nbsp; <code>1</code> &nbsp; <code>Jan</code> &nbsp; <code>January</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;">Day</td>
+      <td style="border-bottom: 0; padding-top: 0;"><code>02</code> &nbsp; <code>2</code> &nbsp; <code>_2</code></td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;">Weekday</td>
+      <td style="padding-top: 0;"><code>Mon</code> &nbsp; <code>Monday</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;">Hours</td>
+      <td style="border-bottom: 0;"><code>03</code> &nbsp; <code>3</code> &nbsp; <code>15</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;">Minutes</td>
+      <td style="border-bottom: 0; padding-top: 0;"><code>04</code> &nbsp; <code>4</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;">Seconds</td>
+      <td style="border-bottom: 0; padding-top: 0;"><code>05</code> &nbsp; <code>5</code></td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;">ms μs ns</td>
+      <td style="padding-top: 0;"><code>.000</code> &nbsp; <code>.000000</code> &nbsp; <code>.000000000</code></td>
+    </tr>
+    <tr>
+      <td>am/pm</td>
+      <td><code>PM</code> &nbsp; <code>pm</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;">Timezone</td>
+      <td style="border-bottom: 0;"><code>MST</code></td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;">Offset</td>
+      <td style="padding-top: 0;"><code>-0700</code> &nbsp; <code>-07</code> &nbsp; <code>-07:00</code> &nbsp; <code>Z0700</code> &nbsp; <code>Z07:00</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="common-formats">Common formats</h2>
+
+<table class="white">
+  <thead>
+    <tr>
+      <th>Layout</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border-bottom: 0;"><code>January 2, 2006</code></td>
+      <td style="border-bottom: 0;">Date</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;"><code>01/02/06</code></td>
+      <td style="border-bottom: 0; padding-top: 0;"></td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>Jan-02-06</code></td>
+      <td style="padding-top: 0;"></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>15:04:05</code></td>
+      <td style="border-bottom: 0;">Time</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>3:04:05 PM</code></td>
+      <td style="padding-top: 0;"></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>Jan _2 15:04:05</code></td>
+      <td style="border-bottom: 0;">Timestamp</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>Jan _2 15:04:05.000000</code></td>
+      <td style="padding-top: 0;">with microseconds</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>2006-01-02T15:04:05-0700</code></td>
+      <td style="border-bottom: 0;">ISO 8601</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;"><code>2006-01-02</code></td>
+      <td style="border-bottom: 0; padding-top: 0;"></td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>15:04:05</code></td>
+      <td style="padding-top: 0;"></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>02 Jan 06 15:04 MST</code></td>
+      <td style="border-bottom: 0;">RFC&nbsp;822</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>02 Jan 06 15:04 -0700</code></td>
+      <td style="padding-top: 0;">with numeric zone</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>Mon, 02 Jan 2006 15:04:05 MST</code></td>
+      <td style="border-bottom: 0;">RFC&nbsp;1123</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>Mon, 02 Jan 2006 15:04:05 -0700</code></td>
+      <td style="padding-top: 0;">with numeric zone</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The following predefined <a href="https://golang.org/pkg/time/#pkg-constants">formats</a>
+are also available.</p>
+
+<pre>
+ANSIC       = "Mon Jan _2 15:04:05 2006"
+UnixDate    = "Mon Jan _2 15:04:05 MST 2006"
+RubyDate    = "Mon Jan 02 15:04:05 -0700 2006"
+RFC822      = "02 Jan 06 15:04 MST"
+RFC822Z     = "02 Jan 06 15:04 -0700"
+RFC850      = "Monday, 02-Jan-06 15:04:05 MST"
+RFC1123     = "Mon, 02 Jan 2006 15:04:05 MST"
+RFC1123Z    = "Mon, 02 Jan 2006 15:04:05 -0700"
+RFC3339     = "2006-01-02T15:04:05Z07:00"
+RFC3339Nano = "2006-01-02T15:04:05.999999999Z07:00"
+Kitchen     = "3:04PM"
+// Handy time stamps.
+Stamp      = "Jan _2 15:04:05"
+StampMilli = "Jan _2 15:04:05.000"
+StampMicro = "Jan _2 15:04:05.000000"
+StampNano  = "Jan _2 15:04:05.000000000"
+</pre>
 
 <h2 id="corner-cases">Corner cases</h2>
 
