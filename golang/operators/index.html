@@ -49,26 +49,74 @@
   <li><a href="#others">Others</a></li>
 </ul>
 
-<p><em>See <a href="/golang/operator-priority/">Operator precedence</a> for evaluation order.</em></p>
-
 <h2 id="arithmetic">Arithmetic</h2>
 
-<pre><code>Operator   Name                 Types
---------   ----                 -----
-+          sum                  integers, floats, complex values, strings
--          difference           integers, floats, complex values
-*          product              integers, floats, complex values
-/          quotient             integers, floats, complex values
-
-%          remainder            integers
-&amp;          bitwise AND          integers
-|          bitwise OR           integers
-^          bitwise XOR          integers
-&amp;^         bit clear (AND NOT)  integers
-
-&lt;&lt;         left shift           integer &lt;&lt; unsigned integer
-&gt;&gt;         right shift          integer &gt;&gt; unsigned integer
-</code></pre>
+<table class="white">
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Name</th>
+      <th>Types</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>+</code></td>
+      <td>sum</td>
+      <td>integers, floats, complex values, strings</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>-</code></td>
+      <td style="border-bottom: 0;">difference</td>
+      <td style="border-bottom: 0;">integers, floats, complex values</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;padding-top: 0;"><code>*</code></td>
+      <td style="border-bottom: 0;padding-top: 0;">product</td>
+      <td style="border-bottom: 0;padding-top: 0;"></td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>/</code></td>
+      <td style="padding-top: 0;">quotient</td>
+      <td style="padding-top: 0;"></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>%</code></td>
+      <td style="border-bottom: 0;">remainder</td>
+      <td style="border-bottom: 0;">integers</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;padding-top: 0;"><code>&</code></td>
+      <td style="border-bottom: 0;padding-top: 0;">bitwise AND</td>
+      <td style="border-bottom: 0;padding-top: 0;"></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;padding-top: 0;"><code>|</code></td>
+      <td style="border-bottom: 0;padding-top: 0;">bitwise OR</td>
+      <td style="border-bottom: 0;padding-top: 0;"></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;padding-top: 0;"><code>^</code></td>
+      <td style="border-bottom: 0;padding-top: 0;">bitwise XOR</td>
+      <td style="border-bottom: 0;padding-top: 0;"></td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>&^</code></td>
+      <td style="padding-top: 0;">bit clear (AND&nbsp;NOT)</td>
+      <td style="padding-top: 0;"></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code><<</code></td>
+      <td style="border-bottom: 0;">left shift</td>
+      <td style="border-bottom: 0;">integer << unsigned integer</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>>></code></td>
+      <td style="padding-top: 0;">right shift</td>
+      <td style="padding-top: 0;">integer >> unsigned integer</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>See <a href="https://golang.org/ref/spec#Arithmetic_operators">Arithmetic operators</a>
 in the Go language specification for complete definitions of the shift, quotient and remainder operators,
@@ -78,27 +126,58 @@ integer overflow, and floating point behavior.</p>
 
 <p>Comparison operators compare two operands and yield an untyped boolean value.</p>
 
-<pre><code>Operator   Name                 Types
---------   ----                 -----
-==         equal                comparable
-!=         not equal            comparable
-
-&lt;          less                 integers, floats, strings
-&lt;=         less or equal        integers, floats, strings
-&gt;          greater              integers, floats, strings
-&gt;=         greater or equal     integers, floats, strings
-</code></pre>
+<table class="white">
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Name</th>
+      <th>Types</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border-bottom: 0;"><code>==</code></td>
+      <td style="border-bottom: 0;">equal</td>
+      <td style="border-bottom: 0;">comparable</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>!=</code></td>
+      <td style="padding-top: 0;">not equal</td>
+      <td style="padding-top: 0;"></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code><</code></td>
+      <td style="border-bottom: 0;">less</td>
+      <td style="border-bottom: 0;"> integers, floats, strings</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;"><code><=</code></td>
+      <td style="border-bottom: 0; padding-top: 0;">less or equal</td>
+      <td style="border-bottom: 0; padding-top: 0;"></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;"><code>></code></td>
+      <td style="border-bottom: 0; padding-top: 0;">greater</td>
+      <td style="border-bottom: 0; padding-top: 0;"></td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>>=</code></td>
+      <td style="padding-top: 0;">greater or equal</td>
+      <td style="padding-top: 0;"></td>
+    </tr>
+  </tbody>
+</table>
 
 <ul>
 <li>Boolean, integer, floats, complex values and strings are comparable.</li>
 <li>Strings are ordered lexically byte-wise.</li>
-<li>Two pointers are equal if they point to the same variable or if both are nil.</li>
-<li>Two channel values are equal if they were created by the same call to make or if both are nil.</li>
-<li>Two interface values are equal if they have identical dynamic types and equal concrete values or if both are nil.</li>
-<li>A value x of non-interface type X and a value t of interface type T are equal
-if t&rsquo;s dynamic type is identical to X and t&rsquo;s concrete value is equal to x.</li>
-<li>Two struct values are equal if their corresponding non-blank fields are equal.</li>
-<li>Two array values are equal if their corresponding elements are equal.</li>
+<li>Two pointers are equal if they point to the same variable or if both are&nbsp;nil.</li>
+<li>Two channel values are equal if they were created by the same call to make or if both are&nbsp;nil.</li>
+<li>Two interface values are equal if they have identical dynamic types and equal concrete values or if both are&nbsp;nil.</li>
+<li>A value <code>x</code> of non-interface type <code>X</code> and a value t of interface type <code>T</code> are&nbsp;equal
+if <code>t</code>&rsquo;s dynamic type is identical to <code>X</code> and <code>t</code>&rsquo;s concrete value is equal to&nbsp;<code>x</code>.</li>
+<li>Two struct values are equal if their corresponding non-blank fields are&nbsp;equal.</li>
+<li>Two array values are equal if their corresponding elements are&nbsp;equal.</li>
 </ul>
 
 <h2 id="logical">Logical</h2>
@@ -106,21 +185,61 @@ if t&rsquo;s dynamic type is identical to X and t&rsquo;s concrete value is equa
 <p>Logical operators apply to boolean values.
 The right operand is evaluated conditionally.</p>
 
-<pre><code>Operator   Name              Description
---------   ----              -----------
-&amp;&amp;         conditional AND   p &amp;&amp; q  denotes  &quot;if p then q else false&quot;
-||         conditional OR    p || q  denotes  &quot;if p then true else q&quot;
-!          NOT               !p      denotes  &quot;not p&quot;
-</code></pre>
+<table class="white">
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border-bottom: 0;"><code>&&</code></td>
+      <td style="border-bottom: 0;">conditional AND</td>
+      <td style="border-bottom: 0;"><code>p && q</code>  &nbsp; means "if p then q else false"</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;"><code>||</code></td>
+      <td style="border-bottom: 0; padding-top: 0;">conditional OR</td>
+      <td style="border-bottom: 0; padding-top: 0;"><code>p || q</code>  &nbsp; means "if p then true else q"</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>!</code></td>
+      <td style="padding-top: 0;">NOT</td>
+      <td style="padding-top: 0;"><code>!p</code>      &nbsp; means "not p"</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2 id="others">Others</h2>
 
-<pre><code>Operator   Name                  Description
---------   ----                  -----------
-&amp;          address of            &amp;x generates a pointer to x
-*          pointer indirection   *x denotes the variable pointed to by x
-&lt;-         receive               &lt;-ch is the value received from channel ch
-</code></pre>
+<table class="white">
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border-bottom: 0;"><code>&</code></td>
+      <td style="border-bottom: 0;">address of</td>
+      <td style="border-bottom: 0;"><code>&x</code> &nbsp; generates a pointer to&nbsp;<code>x</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;"><code>*</code></td>
+      <td style="border-bottom: 0; padding-top: 0;">pointer indirection</td>
+      <td style="border-bottom: 0; padding-top: 0;"><code>*x</code> &nbsp; denotes the variable pointed to by&nbsp;<code>x</code></td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code><-</code></td>
+      <td style="padding-top: 0;">receive </td>
+      <td style="padding-top: 0;"><code><-ch</code> &nbsp; is the value received from channel <code>ch</code></td>
+    </tr>
+  </tbody>
+</table>
 
 </article>
 
