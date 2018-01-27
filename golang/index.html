@@ -48,6 +48,7 @@ h3, h4{margin:1em 0 0.2em 0;}
 h3{font-size:100%;font-style:normal;font-weight:bold;}
 h4{font-size:100%;font-style:italic;font-weight:normal;}
 ul{margin:0;}
+p{margin:0.8em 0 0 0;}
 </style>
 
 <div style="margin-top:1em;">
@@ -55,7 +56,7 @@ ul{margin:0;}
     <ul class="toc" style="margin: 0;">
         <li><a href="#cheat-sheets"><b>Cheat sheets</b></a></li>
         <li><a href="#nutshell-summaries">Nutshell summaries</a></li>
-        <li><a href="#tutorials">Tutorials</a><span class="quicklink"><a href="/golang/gotcha/" title="Go gotcha: Pitfalls and corner cases">Quiz</a></span></li>
+        <li><a href="#tutorials">Tutorials</a></li>
         <li><a href="#tricks-of-the-trade">Tricks of the trade</a></li>
         <li style="margin-top: 0.2em;"></li>
 
@@ -63,7 +64,7 @@ ul{margin:0;}
         <li><a href="#standard-library">Standard library</a></li>
         <li style="margin-top: 0.2em;"></li>
 
-        <li><a href="#concurrent-programming"><b>Concurrent programming</b></a><span class="quicklink"><a href="/golang/concurrent-programming/" title="Concurrent programming">Tutorial</a></span></li>
+        <li><a href="#concurrent-programming"><b>Concurrent programming</b></a></li>
         <li><a href="#object-oriented-programming">Object-oriented programming</a></li>
         <li><a href="#functional-programming">Functional programming</a></li>
         <li style="margin-top: 0.2em;"></li>
@@ -71,9 +72,9 @@ ul{margin:0;}
 </div>
 <div style="float: left;">
     <ul class="toc" style="margin-top: 0;">
-        <li><a href="#strings"><b>Strings</b></a><span class="quicklink"><a href="/golang/string-functions-reference-cheat-sheet/" title="String handling cheat sheet">Cheat&nbsp;sheet</a></span></li>
-        <li><a href="#slices">Slices</a><span class="quicklink"><a href="/golang/slices-explained/" title="Slices in a nutshell">Nutshell</a></span></li>
-        <li><a href="#maps">Maps</a><span class="quicklink"><a href="/golang/maps-explained/" title="Maps in a nutshell">Nutshell</a></span></li>
+        <li><a href="#strings"><b>Strings</b></a></li>
+        <li><a href="#slices">Slices</a></li>
+        <li><a href="#maps">Maps</a></li>
         <li><a href="#files">Files</a></li>
         <li><a href="#time-and-date">Time and date</a></li>
         <li><a href="#random-numbers">Random numbers</a></li>
@@ -85,6 +86,7 @@ ul{margin:0;}
 <!-- CC BY 3.0: https://golang.org/doc/gopher/ -->
 <div><img src="/golang/find.png" style="float: right; padding: 30px 0 0 10px;"></div>
 </div>
+
 <div style="clear: both"></div>
 
 <h3 id="cheat-sheets">Cheat sheets</h3>
@@ -147,7 +149,13 @@ ul{margin:0;}
 
 <h3 id="tutorials">Tutorials</h3>
 
+<p><a href="/golang/gotcha/"><img src="/golang/surprise.jpg" title="Go gotcha: Pitfalls and corner cases" width="200px"></a></p>
+
 <ul class="index">
+
+
+<li><a href="/golang/gotcha/">Go gotcha</a></li>
+
 
 
 <li><a href="/golang/json-example/">JSON by example</a></li>
@@ -159,10 +167,6 @@ ul{margin:0;}
 
 
 <li><a href="/golang/go-java-tutorial/">Go for Java programmers</a></li>
-
-
-
-<li><a href="/golang/gotcha/">Go gotcha</a></li>
 
 
 
@@ -520,7 +524,9 @@ ul{margin:0;}
 
 </ul>
 
-<h3 id="concurrent-programming">Concurrent programming<span class="quicklink"><a href="/golang/concurrent-programming/" title="Concurrent programming">Tutorial</a></span></h3>
+<h3 id="concurrent-programming">Concurrent programming</h3>
+
+<p><a href="/golang/concurrent-programming/"><img src="/golang/bouncing-balls.jpg" title="Concurrent programming" width="200px"></a></p>
 
 <ul class="index">
 
@@ -623,9 +629,13 @@ ul{margin:0;}
 
 </ul>
 
-<h3 id="strings"><span class="quicklink">Strings<a href="/golang/string-functions-reference-cheat-sheet/" title="String handling cheat sheet">Cheat&nbsp;sheet</a></span></h3>
+<h3 id="strings">Strings</h3>
 
 <ul class="index">
+
+
+<li><a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a></li>
+
 
 
 <li><a href="/golang/fmt-printf-reference-cheat-sheet/">fmt cheat sheet</a></li>
@@ -782,11 +792,9 @@ ul{margin:0;}
 
 <h3 id="time-and-date">Time and date</h3>
 
+<p><a href="/golang/format-parse-string-time-date-example/"><img src="/golang/stopwatch.png" title="Format/parse a time or date" width="50px" style="margin-left:40px"></a></p>
+
 <ul class="index">
-
-
-<li><a href="/golang/current-time/">Current time</a></li>
-
 
 
 <li><a href="/golang/format-parse-string-time-date-example/">Format/parse a time or date</a></li>
@@ -797,7 +805,7 @@ ul{margin:0;}
 
 
 
-<li><a href="/golang/measure-execution-time/">Measure execution time</a></li>
+<li><a href="/golang/current-time/">Current time</a></li>
 
 
 
@@ -814,6 +822,10 @@ ul{margin:0;}
 
 
 <li><a href="/golang/last-day-month-date/">Days in a month</a></li>
+
+
+
+<li><a href="/golang/measure-execution-time/">Measure execution time</a></li>
 
 </ul>
 
