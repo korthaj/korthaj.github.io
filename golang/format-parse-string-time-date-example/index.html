@@ -62,14 +62,13 @@ t, _ := <b>time.Parse</b>(<span style="color: green"><b>layout</b></span>, input
 fmt.Println(t)                       <span class="comment">// 2017-08-31 00:00:00 +0000 UTC</span>
 fmt.Println(t.<b>Format</b>(<span style="color: green"><b>"02-Jan-2006"</b></span>)) <span class="comment">// 31-Aug-2017</span></code></pre>
 
-<p>The <code><span style="color: green"><b>layout</b></span></code> parameter describes the format.
-It should be the <em>special reference&nbsp;date</em>&hellip;</p>
+<p>The layout parameter should be the <em>reference&nbsp;date</em></p>
 
 <pre><code><span style="color: green"><b>Mon Jan 2 15:04:05 MST 2006</b></span></code></pre>
 
-<p>&hellip;formatted the same way as the value should be formatted.</p>
+<p>formatted the same way as the value should be formatted.</p>
 
-<p>(If you write this date as
+<p>(If you write the date as
 <code><span style="color: green"><b>01/02 03:04:05PM &lsquo;06 -0700</b></span></code>,
 it makes a bit more sense.)</p>
 
@@ -77,7 +76,7 @@ it makes a bit more sense.)</p>
   <thead>
     <tr>
       <th>Type</th>
-      <th>Templates</th>
+      <th>Options</th>
     </tr>
   </thead>
   <tbody>
@@ -91,7 +90,7 @@ it makes a bit more sense.)</p>
     </tr>
     <tr>
       <td style="border-bottom: 0; padding-top: 0;">Day</td>
-      <td style="border-bottom: 0; padding-top: 0;"><code>02</code> &nbsp; <code>2</code> &nbsp; <code>_2</code></td>
+      <td style="border-bottom: 0; padding-top: 0;"><code>02</code> &nbsp; <code>2</code> &nbsp; <code>_2</code> <span style="font-size:90%;">  &nbsp; (width two, right justified)</span></td>
     </tr>
     <tr>
       <td style="padding-top: 0;">Weekday</td>
@@ -197,7 +196,7 @@ it makes a bit more sense.)</p>
   </tbody>
 </table>
 
-<p>The following predefined <a href="https://golang.org/pkg/time/#pkg-constants">formats</a>
+<p>The following predefined <a href="https://golang.org/pkg/time/#pkg-constants">format constants</a>
 are also available.</p>
 
 <pre>
