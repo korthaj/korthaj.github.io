@@ -43,13 +43,14 @@
 
 
 
-<p class="lead">The <b>go</b> statement runs a func&shy;tion in a sepa&shy;rate thread of execu&shy;tion.</p>
+<!-- CC BY 3.0: https://golang.org/doc/gopher/ -->
 
-<!-- CC BY-NC-ND 2.0: http://www.flickr.com/photos/un_photo/5853737946/ -->
+<div><img src="/golang/plane.png" width="120px" style="float: right; margin: -40px 0 40px 20px;" /></div>
 
-<p><img src="/golang/bouncing-balls.jpg" alt="bouncing balls"></p>
+<p class="lead">The <b>go</b> statement runs a func&shy;tion in a sepa&shy;rate thread
+of&nbsp;execu&shy;tion.</p>
 
-<p>Go permits starting a new thread of execution, a goroutine, using the <code>go</code> statement. It runs a function in a different, newly created, goroutine. All goroutines in a single program share the same address space.</p>
+<p>Go permits starting a new thread of execution, a&nbsp;goroutine, using the <code>go</code> statement. It runs a function in a different, newly created, goroutine. All goroutines in a single program share the same address space.</p>
 
 <pre><code><b>go</b> list.Sort() <span class="comment">// Run list.Sort in parallel; don’t wait for it.</span></code></pre>
 
