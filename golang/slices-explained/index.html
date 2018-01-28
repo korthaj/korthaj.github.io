@@ -65,8 +65,8 @@ which takes the <strong>length</strong> and an optional <strong>capacity</strong
 The built-in <a href="https://golang.org/pkg/builtin/#len"><code>len</code></a> and <a href="https://golang.org/pkg/builtin/#cap"><code>cap</code></a> functions retrieve the length and capacity.</p>
 
 <pre><code>s1 := []string{"foo", "bar"}
-s2 := make([]string, 2)    <span class="comment">// same as []int{"", ""}</span>
-s3 := make([]string, 2, 4) <span class="comment">// same as new([4]string)[:2]</span>
+s2 := make([]int, 2)    <span class="comment">// same as []int{0, 0}</span>
+s3 := make([]int, 2, 4) <span class="comment">// same as new([4]int)[:2]</span>
 </code></pre>
 
 <h2 id="slice-an-array">Slice an array</h2>
@@ -91,10 +91,10 @@ which means you can extend the length of the slice.</li>
 <li>Trying to extend beyond the capacity causes a panic.</li>
 </ul>
 
-<pre><code>a := [...]int{0, 1, 2, 3, 4}
-s := a[1:4] <span class="comment">// s == []int{1, 2, 3}</span>
-s = s[1:2]  <span class="comment">// s == []int{2}       (index relative to slice, not array)</span>
-s = s[:]    <span class="comment">// s == []int{2, 3, 4} (extend length)</span>
+<pre><code>s := []int{0, 1, 2, 3, 4}
+s = s[1:4] <span class="comment">// s == []int{1, 2, 3}</span>
+s = s[1:2] <span class="comment">// s == []int{2}       (index relative to slice, not array)</span>
+s = s[:3]  <span class="comment">// s == []int{2, 3, 4} (extend length)</span>
 </code></pre>
 
 <h2 id="zero-value">Zero value</h2>
@@ -108,12 +108,14 @@ all regard <code>nil</code> as an empty slice with 0&nbsp;capacity.</p>
 
 <h2 id="append-and-copy">Append and copy</h2>
 
-<p>The <a href="/golang/append-explained/"><code>append</code></a> function appends elements to a slice.
-It will automatically allocate a larger backing array if the capacity is exceeded.</p>
+<p>The built-in append function appends elements to a slice.
+It will automatically allocate a larger backing array if the capacity is exceeded.
+See <a href="/golang/copy-explained/">Append function</a> for more info.</p>
 
-<p>The  <a href="/golang/copy-explained/"><code>copy</code></a> function copies elements
+<p>The built-in copy function copies elements
 into a destination slice <code>dst</code> from a source slice <code>src</code>.
-The number of elements copied is the minimum of <code>len(dst)</code> and <code>len(src)</code>.</p>
+The number of elements copied is the minimum of <code>len(dst)</code> and <code>len(src)</code>.
+See <a href="/golang/copy-explained/">Copy function</a> for more info.</p>
 
 </article>
 
