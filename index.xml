@@ -1818,9 +1818,9 @@ Before Go 1.10 Use the rand.</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/slices-explained/</guid>
-      <description>A slice does not store any data, it just describes a section of an underlying&amp;nbsp;array.
-Fundamentals Create slices Length and capacity Reslice and extend Append  Fundamentals A slice describes a section of an underlying array. When you change an element of a slice, you modify the corresponding element of its underlying array, and other slices that share the same underlying array will see the change.
-In particular, passing a slice as argument to a method does not cause the data to be copied (as&amp;nbsp;with&amp;nbsp;arrays).</description>
+      <description>A slice doesn&#39;t store any data, it just describes a section of an underlying&amp;nbsp;array.
+The type of a slice is []T. A slice describes a section of an underlying array:
+ When you change an element of a slice, you modify the corresponding element of its underlying array, and other slices that share the same underlying array will see the change. A slice can grow and shrink within the bounds of the underlying array.</description>
     </item>
     
     <item>

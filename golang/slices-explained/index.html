@@ -42,67 +42,78 @@
 <div class="tagline">yourbasic.org</div>
 
 
-<p class="lead">A slice does not store any data,
+<p class="lead">A slice doesn't store any data,
 it just describes a section of an underlying&nbsp;array.</p>
 
-<ul class="toc">
-  <li><a href="#fundamentals">Fundamentals</a></li>
-  <li><a href="#create-slices">Create slices</a></li>
-  <li><a href="#length-and-capacity">Length and capacity</a></li>
-  <li><a href="#reslice-and-extend">Reslice and extend</a></li>
-  <li><a href="#append">Append</a></li>
+<!-- CC0: https://pixabay.com/en/orange-food-juicy-fruit-188082/ -->
+
+<p><img src="/golang/orange.jpg" alt="A sliced orange"></p>
+
+<p>The <strong>type</strong> of a slice is <code>[]T</code>. A slice describes a section of an underlying array:</p>
+
+<ul>
+<li>When you change an element of a slice, you modify the corresponding element of its underlying array,
+and other slices that share the same underlying array will see the change.</li>
+<li>A slice can grow and shrink within the bounds of the underlying array.</li>
 </ul>
 
-<h2 id="fundamentals">Fundamentals</h2>
+<h2 id="create-a-slice">Create a slice</h2>
 
-<p>A slice describes a section of an underlying array.
-When you change an element of a slice, you modify the corresponding element of its underlying array, and other slices that share the same underlying array will see the change.</p>
+<p>You create a slice either by a <strong>slice literal</strong> or
+a call to the <a href="https://golang.org/pkg/builtin/#make"><code>make</code></a> function,
+which takes the <strong>length</strong> and an optional <strong>capacity</strong> as arguments.
+The built-in <a href="https://golang.org/pkg/builtin/#len"><code>len</code></a> and <a href="https://golang.org/pkg/builtin/#cap"><code>cap</code></a> functions retrieve the length and capacity.</p>
 
-<p>In particular, passing a slice as argument to a method does not cause
-the data to be copied (as&nbsp;with&nbsp;arrays).</p>
-
-<p>A slice can grow and shrink within the bounds of the underlying array.</p>
-
-<h2 id="create-slices">Create slices</h2>
-
-<p>The type of a slice is <code>[]T</code>. You can create a new slice either by a slice literal</p>
-
-<pre><code>s := []string{&quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot;, &quot;qux&quot;}
+<pre><code>s1 := []string{"foo", "bar"}
+s2 := make([]string, 2)    <span class="comment">// same as []int{"", ""}</span>
+s3 := make([]string, 2, 4) <span class="comment">// same as new([4]string)[:2]</span>
 </code></pre>
 
-<p>of by a call the built-in <a href="/golang/make-slice-map-channel/"><code>make</code></a> function</p>
+<h2 id="slice-an-array">Slice an array</h2>
 
-<pre><code>s := make([]int, 3) <span class="comment">// s == []int{0, 0, 0}</span></code></pre>
-    
-
-<p>The <a href="https://golang.org/pkg/builtin/#make"><code>make</code></a> function optionally takes a capacity as a third argument. <code>make([]int, 10, 100)</code> for example, is the same as <code>new([100]int)[:10]</code>.</p>
-
-<p>You can also create a slice backed by an existing array.</p>
+<p>You can also create a slice by slicing an array.</p>
 
 <pre><code>a := [...]int{0, 1, 2, 3}
-s := a[1:3] <span class="comment">// s == []int{1, 2}</span>
-s = a[:2]   <span class="comment">// s == []int{0, 1}</span>
-s = a[2:]   <span class="comment">// s == []int{2, 3}</span>
-s = a[:]    <span class="comment">// s == []int{0, 1, 2, 3}</span></code></pre>
+s := a[1:3] <span class="comment">// s == []int{1, 2}        cap(s) == 3</span>
+s = a[:2]   <span class="comment">// s == []int{0, 1}        cap(s) == 4</span>
+s = a[2:]   <span class="comment">// s == []int{2, 3}        cap(s) == 2</span>
+s = a[:]    <span class="comment">// s == []int{0, 1, 2, 3}  cap(s) == 4</span>
+</code></pre>
 
-<p>The default value of a slice is <code>nil</code>.
+<h2 id="slice-a-slice">Slice a slice</h2>
+
+<p>When you slice a slice, the indexes are relative to the slice itself,
+not to the backing array:</p>
+
+<ul>
+<li>The end index is not bound by the slice&rsquo;s length, but by it&rsquo;s capacity,
+which means you can extend the length of the slice.</li>
+<li>Trying to extend beyond the capacity causes a panic.</li>
+</ul>
+
+<pre><code>a := [...]int{0, 1, 2, 3, 4}
+s := a[1:4] <span class="comment">// s == []int{1, 2, 3}</span>
+s = s[1:2]  <span class="comment">// s == []int{2}       (index relative to slice, not array)</span>
+s = s[:]    <span class="comment">// s == []int{2, 3, 4} (extend length)</span>
+</code></pre>
+
+<h2 id="zero-value">Zero value</h2>
+
+<p>The default zero value of a slice is <code>nil</code>.
 The functions <code>len</code>, <code>cap</code> and <code>append</code>
 all regard <code>nil</code> as an empty slice with 0&nbsp;capacity.</p>
 
-<h2 id="length-and-capacity">Length and capacity</h2>
+<pre><code>var s []int <span class="comment">// s == nil, len(s) == 0, cap(s) == 0</span>
+</code></pre>
 
-<p>The <strong>length</strong> and <strong>capacity</strong> can be retrieved using the built-in functions <a href="https://golang.org/pkg/builtin/#len"><code>len</code></a> and <a href="https://golang.org/pkg/builtin/#cap"><code>cap</code></a>.</p>
+<h2 id="append-and-copy">Append and copy</h2>
 
-<h2 id="reslice-and-extend">Reslice and extend</h2>
-
-<p>The indices in the last line are relative to the slice itself, not to the backing array. The end index is not bound by the slice&rsquo;s length, but by it&rsquo;s the <strong>capacity</strong>, which means we can <strong>extend the slices length</strong>.</p>
-
-<p>Trying to extend beyond the capacity will cause a panic. You can not use a negative start index.</p>
-
-<h2 id="append">Append</h2>
-
-<p>There&rsquo;s a built-in <a href="/golang/append-explained/"><code>append</code></a> function appends elements to a slice.
+<p>The <a href="/golang/append-explained/"><code>append</code></a> function appends elements to a slice.
 It will automatically allocate a larger backing array if the capacity is exceeded.</p>
+
+<p>The  <a href="/golang/copy-explained/"><code>copy</code></a> function copies elements
+into a destination slice <code>dst</code> from a source slice <code>src</code>.
+The number of elements copied is the minimum of <code>len(dst)</code> and <code>len(src)</code>.</p>
 
 </article>
 
