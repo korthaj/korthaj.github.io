@@ -42,13 +42,41 @@
 <div class="tagline">yourbasic.org</div>
 
 
-<p class="lead">A map is an <b>unordered</b> collection of <b>key-value</b> pairs, where each key is&nbsp;<b>unique</b>.</p>
+<p class="lead">A map is an unordered collection of key-value&nbsp;pairs.</p>
 
-<pre><code><span class="comment">// Create an empty map for string-float64 key-value pairs.</span>
-m := make(map[string]float64)
+<!-- CC BY-SA 3.0: https://commons.wikimedia.org/wiki/File:Schlagwortkatalog.jpg -->
 
-m["pi"] = 3.1416 <span class="comment">// Add new key-value pair.</span>
-fmt.Println(m)   <span class="comment">// "map[pi:3.1416]"</span>
+<p><img src="/golang/Schlagwortkatalog.jpg" alt="Subject catalog drawer"></p>
+
+<p>A map is an <b>unordered</b> collection of <b>key-value</b> pairs, where each key is&nbsp;<b>unique</b>.</p>
+
+<pre><code>var m map[string]int                <span class="comment">// m == nil, len(m) == 0</span>
+m1 := make(map[string]float64)      <span class="comment">// empty map of string-float64 pairs</span>
+m2 := make(map[string]float64, 100) <span class="comment">// preallocate room for 100 entries</span>
+m3 := map[string]float64{
+    "e":  2.71828,
+    "pi": 3.1416,
+}
+fmt.Println(len(m1), len(m2), len(m3)) <span class="comment">// 0 0 2</span>
+</code></pre>
+
+<ul>
+<li>The default <strong>zero value</strong> of a map is <code>nil</code>.
+A nil map is equivalent to an empty map except
+that no elements can be&nbsp;added.</li>
+<li>You create a slice either by a <strong>map literal</strong> or
+a call to the <a href="https://golang.org/pkg/builtin/#make"><code>make</code></a> function,
+which takes an optional capacity as argument.</li>
+<li>The built-in <a href="https://golang.org/pkg/builtin/#len"><code>len</code></a> function retrieves
+the number of key-value&nbsp;pairs.</li>
+</ul>
+
+<h2 id="add-find-and-delete">Add, find and delete</h2>
+
+<pre><code>m := make(map[string]float64)
+
+m["pi"] = 3.1416 <span class="comment">// <b>Add a new key-value pair.</b></span>
+fmt.Println(m)   <span class="comment">// map[pi:3.1416]</span>
 
 v1 := m["pi"]  <span class="comment">// v1 == 3.1416</span>
 v2 := m["foo"] <span class="comment">// v2 == 0 (zero value)</span>
@@ -56,29 +84,20 @@ v2 := m["foo"] <span class="comment">// v2 == 0 (zero value)</span>
 _, exists := m["pi"] <span class="comment">// exists == true</span>
 _, exists = m["foo"] <span class="comment">// exists == false</span>
 
-if x, ok := m["pi"]; ok { <span class="comment">// Prints "3.1416".</span>
+if x, ok := m["pi"]; ok { <span class="comment">// Prints 3.1416.</span>
     fmt.Println(x)
 }
 
-delete(m, "pi") <span class="comment">// Delete key-value pair."</span>
-fmt.Println(m)  <span class="comment">// "map[]"</span></code></pre>
+delete(m, "pi") <span class="comment">// <b>Delete a key-value pair.</b></span>
+fmt.Println(m)  <span class="comment">// map[]</span></code></pre>
 
-<ul>
-<li>The default zero value of a map is <code>nil</code>.
-A nil map is equivalent to an empty map except   that no elements can be&nbsp;added.</li>
-<li>Use <code>make(mapType, n)</code> to preallocate room for <code>n</code>&nbsp;entries.</li>
-</ul>
-
-<h2 id="map-literals-and-iteration">Map literals and iteration</h2>
+<h2 id="iteration">Iteration</h2>
 
 <pre><code>m := map[string]float64{
     "e":  2.71828,
     "pi": 3.1416,
 }
-
-size := len(m) <span class="comment">// number of key-value pairs</span>
-
-for key, value := range m { <span class="comment">// order no specified</span> 
+for key, value := range m { <span class="comment">// order not specified</span> 
     fmt.Println(key, value)
 }</code></pre>
 
@@ -94,7 +113,7 @@ that entry may or may not be produced during the&nbsp;iteration.</li>
 
 <ul>
 <li>Maps are backed by <a href="/algorithms/hash-tables-explained/">hash tables</a>.</li>
-<li>They provide lookup, insert, and delete operations in <b>constant</b> <a href="/algorithms/amortized-time-complexity-analysis/">amortized time</a>.</li>
+<li>They provide lookup, insert, and delete operations in constant <a href="/algorithms/amortized-time-complexity-analysis/">amortized time</a>.</li>
 <li>The comparison operators <code>==</code> and <code>!=</code> must be  defined for the key type.</li>
 </ul>
 

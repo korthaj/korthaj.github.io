@@ -49,29 +49,44 @@ it just describes a section of an underlying&nbsp;array.</p>
 
 <p><img src="/golang/orange.jpg" alt="A sliced orange"></p>
 
-<p>The <strong>type</strong> of a slice is <code>[]T</code>. A slice describes a section of an underlying array:</p>
+<p>A slice describes a <strong>section</strong> of an <strong>underlying array</strong>.</p>
 
 <ul>
 <li>When you change an element of a slice, you modify the corresponding element of its underlying array,
 and other slices that share the same underlying array will see the change.</li>
 <li>A slice can grow and shrink within the bounds of the underlying array.</li>
+<li>Slices are indexed in the usual way: the expression <code>s[i]</code> accesses
+the <code>i</code>th element, starting from&nbsp;zero.</li>
 </ul>
 
-<h2 id="create-a-slice">Create a slice</h2>
+<pre><code>var s []int <span class="comment">// s == nil, len(s) == 0, cap(s) == 0</span>
+s1 := []string{"foo", "bar"}
+s2 := make([]int, 2)          <span class="comment">// same as []int{0, 0}</span>
+s3 := make([]int, 2, 4)       <span class="comment">// same as new([4]int)[:2]</span>
+fmt.Println(len(s3), cap(s3)) <span class="comment">// 2 4</span></code></pre>
 
-<p>You create a slice either by a <strong>slice literal</strong> or
+<ul>
+<li>The default <strong>zero value</strong> of a slice is <code>nil</code>.
+The functions <code>len</code>, <code>cap</code> and <code>append</code>
+all regard <code>nil</code> as an empty slice with 0&nbsp;capacity.</li>
+<li>You create a slice either by a <strong>slice literal</strong> or
 a call to the <a href="https://golang.org/pkg/builtin/#make"><code>make</code></a> function,
-which takes the <strong>length</strong> and an optional <strong>capacity</strong> as arguments.
-The built-in <a href="https://golang.org/pkg/builtin/#len"><code>len</code></a> and <a href="https://golang.org/pkg/builtin/#cap"><code>cap</code></a> functions retrieve the length and capacity.</p>
+which takes the <strong>length</strong> and an optional <strong>capacity</strong> as arguments.</li>
+<li>The built-in <a href="https://golang.org/pkg/builtin/#len"><code>len</code></a> and
+<a href="https://golang.org/pkg/builtin/#cap"><code>cap</code></a> functions
+retrieve the length and capacity.</li>
+</ul>
 
-<pre><code>s1 := []string{"foo", "bar"}
-s2 := make([]int, 2)    <span class="comment">// same as []int{0, 0}</span>
-s3 := make([]int, 2, 4) <span class="comment">// same as new([4]int)[:2]</span>
-</code></pre>
+<h2 id="slicing">Slicing</h2>
 
-<h2 id="slice-an-array">Slice an array</h2>
+<p>You can also create a slice by slicing an existing array or slice.</p>
 
-<p>You can also create a slice by slicing an array.</p>
+<ul>
+<li>A slice is formed by specifying two indexes: <code>a[low:high]</code>.
+This selects a half-open range which includes the first element, but excludes the last&nbsp;one.</li>
+<li>You may omit the high or low bounds to use their defaults instead.
+The default is zero for the low bound and the length of the slice for the high bound.</li>
+</ul>
 
 <pre><code>a := [...]int{0, 1, 2, 3}
 s := a[1:3] <span class="comment">// s == []int{1, 2}        cap(s) == 3</span>
@@ -80,13 +95,11 @@ s = a[2:]   <span class="comment">// s == []int{2, 3}        cap(s) == 2</span>
 s = a[:]    <span class="comment">// s == []int{0, 1, 2, 3}  cap(s) == 4</span>
 </code></pre>
 
-<h2 id="slice-a-slice">Slice a slice</h2>
-
 <p>When you slice a slice, the indexes are relative to the slice itself,
-not to the backing array:</p>
+not to the backing array.</p>
 
 <ul>
-<li>The end index is not bound by the slice&rsquo;s length, but by it&rsquo;s capacity,
+<li>The high bound is not bound by the slice&rsquo;s length, but by it&rsquo;s capacity,
 which means you can extend the length of the slice.</li>
 <li>Trying to extend beyond the capacity causes a panic.</li>
 </ul>
@@ -97,25 +110,36 @@ s = s[1:2] <span class="comment">// s == []int{2}       (index relative to slice
 s = s[:3]  <span class="comment">// s == []int{2, 3, 4} (extend length)</span>
 </code></pre>
 
-<h2 id="zero-value">Zero value</h2>
+<h2 id="iteration">Iteration</h2>
 
-<p>The default zero value of a slice is <code>nil</code>.
-The functions <code>len</code>, <code>cap</code> and <code>append</code>
-all regard <code>nil</code> as an empty slice with 0&nbsp;capacity.</p>
+<pre><code>s := []string{"Foo", "Bar"}
+<b>for i, v := range s</b> {
+    fmt.Println(i, v)
+}</code></pre>
 
-<pre><code>var s []int <span class="comment">// s == nil, len(s) == 0, cap(s) == 0</span>
+<pre><code>0 Foo
+1 Bar
 </code></pre>
+
+<ul>
+<li>The range expression, <code>s</code>, is <strong>evaluated once</strong> before beginning the loop.</li>
+<li>The iteration values are assigned to the respective iteration variables, <code>i</code> and <code>v</code>,
+<strong>as in an assignment statement</strong>.</li>
+<li>The second iteration variable is optional.</li>
+<li>If the slice is <code>nil</code>, the number of iterations is&nbsp;0.</li>
+</ul>
 
 <h2 id="append-and-copy">Append and copy</h2>
 
-<p>The built-in append function appends elements to a slice.
-It will automatically allocate a larger backing array if the capacity is exceeded.
-See <a href="/golang/copy-explained/">Append function</a> for more info.</p>
-
-<p>The built-in copy function copies elements
+<ul>
+<li>The <code>append</code> function appends elements to a slice.
+It will <strong>automatically allocate</strong> a larger backing array if the capacity is exceeded.
+See <a href="/golang/copy-explained/">Append&nbsp;function</a>.</li>
+<li>The <code>copy</code> function copies elements
 into a destination slice <code>dst</code> from a source slice <code>src</code>.
-The number of elements copied is the minimum of <code>len(dst)</code> and <code>len(src)</code>.
-See <a href="/golang/copy-explained/">Copy function</a> for more info.</p>
+The number of elements copied is the <strong>minimum</strong> of <code>len(dst)</code> and <code>len(src)</code>.
+See <a href="/golang/copy-explained/">Copy&nbsp;function</a>.</li>
+</ul>
 
 </article>
 
