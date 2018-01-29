@@ -2321,8 +2321,8 @@ An int or []int is a bit pattern that can represent any digital data. Furthermor
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/do-while-loop/</guid>
-      <description>There is no do-while loop in Go. To emulate the C/Java code…
-do { work(); } while (condition); …you may use one of these alternatives:
+      <description>There is no do-while loop in Go. To emulate the C/Java code
+do { work(); } while (condition); you may use one of these alternatives:
 for ok := true; ok; ok = condition { work() } for { work() if !condition { break } } </description>
     </item>
     

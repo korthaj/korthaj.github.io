@@ -50,6 +50,12 @@ aside{
   margin-top:40px;
   padding:0 15px;
 }
+p{
+  margin-right:5em;
+}
+ol, ul{
+  margin-right:3em;
+}
 @media only screen and (max-width:960px){
   header{
     max-width:100%;
@@ -57,6 +63,9 @@ aside{
   }
   main, article, aside{
     width:100%;
+  }
+  p, ol, ul{
+    margin-right:0;
   }
   .extra-content{
     display:none;
@@ -306,6 +315,7 @@ details.answer{
   color:#999;
 }
 .lead{
+  margin-right:0;
   font-weight:normal;
   color:#777;
   font-size:130%;
