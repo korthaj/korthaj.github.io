@@ -1355,7 +1355,7 @@ select {} // block forever </description>
       
       <guid>http://yourbasic.org/golang/maps-explained/</guid>
       <description>A map is an unordered collection of key-value pairs, where each key is&amp;nbsp;unique.
-Basics Map literals Size Iteration Implementation  Basics // Create an empty map for string-float64 key-value pairs. m := make(map[string]float64) m[&#34;pi&#34;] = 3.1416 // Add new key-value pair. fmt.Println(m) // &#34;map[pi:3.1416]&#34; v1 := m[&#34;pi&#34;] // v1 == 3.1416 v2 := m[&#34;foo&#34;] // v2 == 0 (zero value) _, exists := m[&#34;pi&#34;] // exists == true _, exists = m[&#34;</description>
+// Create an empty map for string-float64 key-value pairs. m := make(map[string]float64) m[&#34;pi&#34;] = 3.1416 // Add new key-value pair. fmt.Println(m) // &#34;map[pi:3.1416]&#34; v1 := m[&#34;pi&#34;] // v1 == 3.1416 v2 := m[&#34;foo&#34;] // v2 == 0 (zero value) _, exists := m[&#34;pi&#34;] // exists == true _, exists = m[&#34;foo&#34;] // exists == false if x, ok := m[&#34;</description>
     </item>
     
     <item>

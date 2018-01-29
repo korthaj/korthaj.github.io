@@ -44,16 +44,6 @@
 
 <p class="lead">A map is an <b>unordered</b> collection of <b>key-value</b> pairs, where each key is&nbsp;<b>unique</b>.</p>
 
-<ul class="toc">
-  <li><a href="#basics">Basics</a></li>
-  <li><a href="#map-literals">Map literals</a></li>
-  <li><a href="#size">Size</a></li>
-  <li><a href="#iteration">Iteration</a></li>
-  <li><a href="#implementation">Implementation</a></li>
-</ul>
-
-<h2 id="basics">Basics</h2>
-
 <pre><code><span class="comment">// Create an empty map for string-float64 key-value pairs.</span>
 m := make(map[string]float64)
 
@@ -79,20 +69,16 @@ A nil map is equivalent to an empty map except   that no elements can be&nbsp;ad
 <li>Use <code>make(mapType, n)</code> to preallocate room for <code>n</code>&nbsp;entries.</li>
 </ul>
 
-<h2 id="map-literals">Map literals</h2>
+<h2 id="map-literals-and-iteration">Map literals and iteration</h2>
 
 <pre><code>m := map[string]float64{
     "e":  2.71828,
     "pi": 3.1416,
-}</code></pre>
+}
 
-<h2 id="size">Size</h2>
+size := len(m) <span class="comment">// number of key-value pairs</span>
 
-<pre><code>size := len(m) <span class="comment">// number of key-value pairs</span></code></pre>
-
-<h2 id="iteration">Iteration</h2>
-
-<pre><code>for key, value := range m {
+for key, value := range m { <span class="comment">// order no specified</span> 
     fmt.Println(key, value)
 }</code></pre>
 
