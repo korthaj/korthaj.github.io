@@ -890,8 +890,8 @@ var x interface{} = 2.3 switch v := x.(type) { case int: fmt.Println(&#34;int:&#
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/for-loop/</guid>
-      <description>Three-component loop While loop Infinite loop For-each loop Exit a loop  Three-component loop sum := 0 for i := 1; i { sum += i } fmt.Println(sum) // 10 (1+2+3+4) This version of the Go for loop works just as in C/Java/JavaScript.
- The init statement, i := 0, runs. The condition, i &amp;lt; 5, is evaluated.  If it&amp;rsquo;s true, the loop body executes, otherwise the loop terminates.</description>
+      <description>Three-component loop While loop Infinite loop For-each loop Exit a loop  Three-component loop This version of the Go for loop works just as in C or&amp;nbsp;Java.
+sum := 0 for i := 1; i { sum += i } fmt.Println(sum) // 10 (1+2+3+4)  The init statement, i := 1, runs. The condition, i &amp;lt; 5, is computed.  If true, the loop body runs, otherwise the loop is done.</description>
     </item>
     
     <item>
