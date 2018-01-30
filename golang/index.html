@@ -41,10 +41,9 @@
 <h1>Go</h1>
 <div class="tagline">yourbasic.org</div>
 
-
-
 <style>
-h3, h4{margin:1em 0 0.2em 0;}
+h3, h4{margin:1.5em 0 0.2em 0;}
+h4{margin-top:0.8em}
 h3{font-size:100%;font-style:normal;font-weight:bold;}
 h4{font-size:100%;font-style:italic;font-weight:normal;}
 ul{margin:0;}
@@ -52,7 +51,7 @@ p{margin:0.8em 0 0 0;}
 </style>
 
 <div style="margin-top:1em;">
-<div style="float: left; min-width: 45%; margin-right: 2em; margin-top:0;">
+<div style="float: left; min-width: 33%; margin-right: 2em; margin-top:0;">
     <ul class="toc" style="margin: 0;">
         <li><a href="#tutorials"><b>Tutorials</b></a></li>
         <li><a href="#cheat-sheets">Cheat sheets</a></li>
@@ -64,30 +63,33 @@ p{margin:0.8em 0 0 0;}
         <li><a href="#standard-library">Standard library</a></li>
         <li style="margin-top: 0.2em;"></li>
 
-        <li><a href="#concurrent-programming"><b>Concurrent programming</b></a></li>
-        <li><a href="#object-oriented-programming">Object-oriented programming</a></li>
-        <li><a href="#functional-programming">Functional programming</a></li>
+        <li><a href="#new-in-go-110"><b>New in Go 1.10</b></a></li>
         <li style="margin-top: 0.2em;"></li>
     </ul>
 </div>
 <div style="float: left;">
     <ul class="toc" style="margin-top: 0;">
+        <li><a href="#concurrent-programming"><b>Concurrent programming</b></a></li>
+        <li><a href="#object-oriented-programming">Object-oriented programming</a></li>
+        <li><a href="#functional-programming">Functional programming</a></li>
+        <li style="margin-top: 0.2em;"></li>
+
         <li><a href="#strings"><b>Strings</b></a></li>
         <li><a href="#slices">Slices</a></li>
         <li><a href="#maps">Maps</a></li>
         <li><a href="#files">Files</a></li>
         <li><a href="#time-and-date">Time and date</a></li>
         <li><a href="#random-numbers">Random numbers</a></li>
-        <li style="margin-top: 0.2em"></li>
-
-        <li><a href="#new-in-go-110"><b>New in Go 1.10</b></a></li>
+        <li style="margin-top: 0.2em;"></li>
     </ul>
 </div>
 <!-- CC BY 3.0: https://golang.org/doc/gopher/ -->
-<div><img src="/golang/find.png" style="float: right; margin: 50px 20px 0 10px;" width="60px"></div>
+<div><img src="/golang/find.png" style="float: right; margin: 0 30px 0 10px;" width="60px"></div>
 </div>
 
 <div style="clear: both"></div>
+
+<div style="float:left; width: 320px; margin-right:40px;">
 
 <h3 id="tutorials">Tutorials</h3>
 
@@ -118,7 +120,7 @@ p{margin:0.8em 0 0 0;}
 
 <h3 id="cheat-sheets">Cheat sheets</h3>
 
-<p><a href="/golang/string-functions-reference-cheat-sheet/"><img src="/golang/typewriter-thumb.png" title="String handling cheat sheet" style="margin-left:35px;"></a></p>
+<p><a href="/golang/string-functions-reference-cheat-sheet/"><img src="/golang/typewriter-thumb.png" title="String handling cheat sheet"></a></p>
 
 <ul class="index">
 <b>
@@ -158,6 +160,7 @@ p{margin:0.8em 0 0 0;}
 <h3 id="nutshells">Nutshells</h3>
 
 <p><a href="/golang/slices-explained/"><img src="/golang/orange-thumb.jpg" title="Slices in a nutshell"></a></p>
+
 
 <ul class="index">
 <b>
@@ -292,7 +295,7 @@ p{margin:0.8em 0 0 0;}
 
 </ul>
 
-<h4 id="statements">Statements</h4>
+<h4>Statements</h4>
 
 <ul class="index">
 
@@ -329,7 +332,7 @@ p{margin:0.8em 0 0 0;}
 
 </ul>
 
-<h4 id="expressions">Expressions</h4>
+<h4>Expressions</h4>
 
 <ul class="index">
 
@@ -374,7 +377,7 @@ p{margin:0.8em 0 0 0;}
 
 </ul>
 
-<h4 id="methods-and-interfaces">Methods and interfaces</h4>
+<h4>Methods and interfaces</h4>
 
 <ul class="index">
 
@@ -403,9 +406,10 @@ p{margin:0.8em 0 0 0;}
 
 </ul>
 
-<h4 id="error-handling">Error handling</h4>
+<h4>Error handling</h4>
 
-<p><a href="/golang/errors-explained/"><img src="/golang/errors.png" title="Errors" style="margin-left:40px;" width="100px"></a></p>
+<p><a href="/golang/errors-explained/"><img src="/golang/errors.png" title="Errors" width="100px"></a></p>
+
 
 <ul class="index">
 <b>
@@ -430,7 +434,7 @@ p{margin:0.8em 0 0 0;}
 
 </ul>
 
-<h4 id="bits-and-pieces">Bits and pieces</h4>
+<h4>Bits and pieces</h4>
 
 <ul class="index">
 
@@ -529,6 +533,26 @@ p{margin:0.8em 0 0 0;}
 </li>
 
 </ul>
+
+<h3 id="new-in-go-110">New in Go 1.10</h3>
+
+<ul class="index">
+
+
+<li><a href="/golang/build-append-concatenate-strings-efficiently/">Build and concatenate strings efficiently</a></li>
+
+
+
+<li><a href="/golang/round-float-to-int/">Round float to integer value</a></li>
+
+
+
+<li><a href="/golang/shuffle-slice-array/">Shuffle slice or array</a></li>
+
+</ul>
+
+</div>
+<div style="float: left; width: 330px;">
 
 <h3 id="concurrent-programming">Concurrent programming</h3>
 
@@ -798,7 +822,8 @@ p{margin:0.8em 0 0 0;}
 
 <h3 id="time-and-date">Time and date</h3>
 
-<p><a href="/golang/format-parse-string-time-date-example/"><img src="/golang/stopwatch-thumb.png" title="Format/parse a time or date" style="margin-left:40px"></a></p>
+<p><a href="/golang/format-parse-string-time-date-example/"><img src="/golang/stopwatch-thumb.png" title="Format/parse a time or date" style="margin-left:10px;"></a></p>
+
 
 <ul class="index">
 <b>
@@ -864,22 +889,8 @@ p{margin:0.8em 0 0 0;}
 
 </ul>
 
-<h3 id="new-in-go-110">New in Go 1.10</h3>
-
-<ul class="index">
-
-
-<li><a href="/golang/build-append-concatenate-strings-efficiently/">Build and concatenate strings efficiently</a></li>
-
-
-
-<li><a href="/golang/round-float-to-int/">Round float to integer value</a></li>
-
-
-
-<li><a href="/golang/shuffle-slice-array/">Shuffle slice or array</a></li>
-
-</ul>
+</div>
+<div style="clear: both"></div>
 
 
 </article>
