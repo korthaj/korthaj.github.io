@@ -53,7 +53,7 @@ aside{
 p{
   margin-right:6em;
 }
-ol, ul{
+ol, ul, .lead{
   margin-right:4em;
 }
 @media only screen and (max-width:960px){
@@ -78,7 +78,7 @@ ol, ul{
   }
 }
 @media only screen and (max-width:720px){
-  p, ol, ul{
+  p, ol, ul, .lead{
     margin-right:0;
   }
 }
@@ -324,7 +324,6 @@ details.answer{
   color:#999;
 }
 .lead{
-  margin-right:4em;
   font-weight:normal;
   color:#777;
   font-size:130%;
