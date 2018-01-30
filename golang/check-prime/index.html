@@ -46,11 +46,11 @@
 
 <p>For integer types, use <a href="https://golang.org/pkg/math/big/#Int.ProbablyPrime"><code>ProbablyPrime(0)</code></a> from package <a href="https://golang.org/pkg/math/big/"><code>math/big</code></a>. This primality test is 100%&nbsp;accurate for inputs less than&nbsp;2<sup>64</sup>.</p>
 
-<pre><code>const i = 1212121
-if <b>big.NewInt(i).ProbablyPrime(0)</b> {
-    fmt.Println(i, "is prime")
+<pre><code>const n = 1212121
+if <b>big.NewInt(n).ProbablyPrime(0)</b> {
+    fmt.Println(n, "is prime")
 } else {
-    fmt.Println(i, "is not prime")
+    fmt.Println(n, "is not prime")
 }</code></pre>
 
 <pre><code>1212121 is prime
@@ -59,7 +59,7 @@ if <b>big.NewInt(i).ProbablyPrime(0)</b> {
 <h2 id="larger-numbers">Larger numbers</h2>
 
 <p>
-For larger numbers, you need to provide the desired number of tests&nbsp;`n` to
+For larger numbers, you need to provide the desired number of tests to
 <a href="https://golang.org/pkg/math/big/#Int.ProbablyPrime"><code></code>ProbablyPrime(n)</a>.
 For <i>n</i>&nbsp;tests, the&nbsp;probability of returning true for
 a randomly chosen non-prime is at most (1/4)<sup><i>n</i></sup>.

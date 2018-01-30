@@ -253,7 +253,7 @@ With a string builderGo 1.10 The strings.Builder type is used to efficiently bui
       <guid>http://yourbasic.org/golang/gotcha-change-value-range/</guid>
       <description>Why isn&amp;rsquo;t the slice updated in this example?
 s := []int{1, 1, 1} for _, n := range s { n += 1 } fmt.Println(s) // Output: [1 1 1] Answer
-The range loop copies the values from the slice to a local variable n; updating n will not affect the slice.
+The range loop copies the values from the slice to a local variable n; updating n will not affect the&amp;nbsp;slice.
 Update the slice entries like this:
 s := []int{1, 1, 1} for i := range s { s[i] += 1 } fmt.</description>
     </item>
@@ -305,7 +305,7 @@ if len(m) == 0 { // m is empty } </description>
       
       <guid>http://yourbasic.org/golang/check-prime/</guid>
       <description>Ints For integer types, use ProbablyPrime(0) from package math/big. This primality test is 100%&amp;nbsp;accurate for inputs less than&amp;nbsp;264.
-const i = 1212121 if big.NewInt(i).ProbablyPrime(0) { fmt.Println(i, &#34;is prime&#34;) } else { fmt.Println(i, &#34;is not prime&#34;) } 1212121 is prime  Larger numbers  For larger numbers, you need to provide the desired number of tests&amp;nbsp;`n` to ProbablyPrime(n). For n&amp;nbsp;tests, the&amp;nbsp;probability of returning true for a randomly chosen non-prime is at most (1/4)n.</description>
+const n = 1212121 if big.NewInt(n).ProbablyPrime(0) { fmt.Println(n, &#34;is prime&#34;) } else { fmt.Println(n, &#34;is not prime&#34;) } 1212121 is prime  Larger numbers  For larger numbers, you need to provide the desired number of tests to ProbablyPrime(n). For n&amp;nbsp;tests, the&amp;nbsp;probability of returning true for a randomly chosen non-prime is at most (1/4)n.</description>
     </item>
     
     <item>
@@ -367,8 +367,8 @@ func Abs(x int32) int32 { if x &amp;lt; 0 { return -x } return x }  Warning: The
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/max-min-function/</guid>
-      <description>Integers Go has no built-in min or max library functions for integers. It is simple to write your own.
-// Min returns the smaller of x or y. func Min(x, y int) int { if x  y { return y } return x } // Max returns the larger of x or y. func Max(x, y int) int { if x  Floats For floats, use math.Min and math.</description>
+      <description>Integers Go has no built-in min or max library functions for integers. It is simple to write your&amp;nbsp;own.
+// Min returns the smaller of x or y. func Min(x, y int) int { if x  y { return y } return x } // Max returns the larger of x or y. func Max(x, y int) int { if x  Floats For floats, use math.Min and math.Max from the standard library.</description>
     </item>
     
     <item>
@@ -1031,7 +1031,7 @@ t := time.Now() year := t.Year() // type int month := t.Month() // type time.</d
 A well-known example is (3,&amp;nbsp;4,&amp;nbsp;5):
 fmt.Println(3^2+4^2 == 5^2) // true The triple (6,&amp;nbsp;8,&amp;nbsp;10) is another example, but Go doesn&#39;t seem to agree.
 fmt.Println(6^2+8^2 == 10^2) // false Answer
-The circumflex&amp;nbsp;^ denotes bitwise&amp;nbsp;XOR in&amp;nbsp;Go. The computation written in base&amp;nbsp;2 looks like this:
+The circumflex&amp;nbsp;^ denotes bitwise&amp;nbsp;XOR in&amp;nbsp;Go. The computation written in base&amp;nbsp;2 looks like&amp;nbsp;this:
  0011 ^ 0010 == 0001 (3^2 == 1) 0100 ^ 0010 == 0110 (4^2 == 6) 0101 ^ 0010 == 0111 (5^2 == 7)  Of course, 1 + 6 == 7; Go and Pythagoras agree on that.</description>
     </item>
     
@@ -1445,7 +1445,7 @@ The names are not mandatory but can make for good documentation. Correctly used,
       <guid>http://yourbasic.org/golang/gotcha-why-nil-error-not-equal-nil/</guid>
       <description>Why is nil not equal to nil in this example?
 func Foo() error { var err *os.PathError = nil // … return err } func main() { err := Foo() fmt.Println(err) // &amp;lt;nil&amp;gt; fmt.Println(err == nil) // false } Answer
-An interface value is equal to nil only if both its value and dynamic type are nil. In the example above, Foo() returns [nil, *os.PathError] and we compare it with [nil, nil].</description>
+An interface value is equal to nil only if both its value and dynamic type are nil. In the example above, Foo() returns [nil, *os.PathError] and we compare it with [nil,&amp;nbsp;nil].</description>
     </item>
     
     <item>
@@ -2107,7 +2107,7 @@ func main() { fruit := []string{ &#34;apple&#34;, &#34;banana&#34;, &#34;cherry&
       <description>Why does this code
 primes := []int{2, 3, 5, 7} for p := range primes { fmt.Println(p) } print
 0 1 2 3  Answer
-For arrays and slices, the range loop generates two values:
+For arrays and slices, the range loop generates two&amp;nbsp;values:
   first the index,  then the data at this position.  If you omit the second value, you get only the indices.
 To print the data, use the second value instead:
 primes := []int{2, 3, 5, 7} for _, p := range primes { fmt.</description>
@@ -2211,8 +2211,8 @@ fmt.Println(strings.TrimSuffix(&#34;ABBA&#34;, &#34;BA&#34;)) // Output: &#34;AB
       <guid>http://yourbasic.org/golang/gotcha-remainder-modulo-operator/</guid>
       <description>Why isn&amp;rsquo;t -1 odd?
 func Odd(n int) bool { return n%2 == 1 } func main() { fmt.Println(Odd(-1)) // false } Answer
-The remainder operator can give negative answers if the dividend is negative: if n is an odd negative number, n % 2 equals&amp;nbsp;-1.
-The quotient q = x / y and remainder r = x % y satisfy the relationships
+The remainder operator can give negative answers if the dividend is negative: if n is an odd negative number, n&amp;nbsp;%&amp;nbsp;2 equals&amp;nbsp;-1.
+The quotient q = x&amp;nbsp;/&amp;nbsp;y and remainder r = x&amp;nbsp;%&amp;nbsp;y satisfy the relationships
 x = q*y + r and |r| &amp;lt; |y|  where x / y is truncated towards zero.</description>
     </item>
     

@@ -51,12 +51,18 @@ aside{
   padding:0 15px;
 }
 p{
-  margin-right:5em;
+  margin-right:6em;
 }
 ol, ul{
-  margin-right:3em;
+  margin-right:4em;
 }
 @media only screen and (max-width:960px){
+  p{
+    margin-right:10em;
+  }
+  ol, ul{
+    margin-right:8em;
+  }
   header{
     max-width:100%;
     margin:0;
@@ -64,14 +70,16 @@ ol, ul{
   main, article, aside{
     width:100%;
   }
-  p, ol, ul{
-    margin-right:0;
-  }
   .extra-content{
     display:none;
   }
   aside{
     margin-top:20px;
+  }
+}
+@media only screen and (max-width:720px){
+  p, ol, ul{
+    margin-right:0;
   }
 }
 
@@ -315,7 +323,7 @@ details.answer{
   color:#999;
 }
 .lead{
-  margin-right:0;
+  margin-right:4em;
   font-weight:normal;
   color:#777;
   font-size:130%;
