@@ -51,14 +51,22 @@
 c := 'a' + rand.Intn(26)
 </code></pre>
 
-<p>Without the call to <a href="https://golang.org/pkg/math/rand/#Seed"><code>rand.Seed</code></a>,
-a program will produce the same sequence of pseudo-random numbers for each execution.</p>
-
 <h3 id="from-arbitrary-set">From arbitrary set</h3>
 
 <pre><code>chars := []rune(&quot;ab⌘&quot;)
 c := chars[rand.Intn(len(chars))]
 </code></pre>
+
+<blockquote class="warning">
+<b>Warning:</b> Without the call to <code>rand.Seed</code> you will get
+the same sequence of pseudo&shy;random numbers each time you run the program.
+</blockquote>
+
+<h2 id="more-about-pseudorandom-numbers">More about pseudorandom numbers</h2>
+
+<div><a href="/algorithms/random-number-generator-seed/"><img src="/algorithms/dominoes-thumb.jpg" title="Random number generator seed"></a></div>
+
+<p style="margin-top:0; margin-bottom:2em;"><a href="/algorithms/random-number-generator-seed/">Random number generator seed</a></p>
 
 
 </article>

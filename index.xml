@@ -285,7 +285,7 @@ filepath := &#34;/dev/null&#34; if _, err := os.Stat(filepath); !os.IsNotExist(e
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/check-map-contains-key/</guid>
-      <description>m := map[string]float64{&#34;pi&#34;: 3.1416} v1 := m[&#34;pi&#34;] // v1 == 3.1416 v2 := m[&#34;foo&#34;] // v2 == 0.0 (zero value) _, exists := m[&#34;pi&#34;] // exists == true if x, ok := m[&#34;pi&#34;]; ok { fmt.Println(x) // 3.1416 } </description>
+      <description>m := map[string]float64{&#34;pi&#34;: 3.1416} v1 := m[&#34;pi&#34;] // v1 == 3.1416 v2 := m[&#34;foo&#34;] // v2 == 0.0 (zero value) _, exists := m[&#34;pi&#34;] // exists == true if x, ok := m[&#34;pi&#34;]; ok { fmt.Println(x) // 3.1416 } Read all about maps  Maps in a&amp;nbsp;nutshell</description>
     </item>
     
     <item>
@@ -295,7 +295,7 @@ filepath := &#34;/dev/null&#34; if _, err := os.Stat(filepath); !os.IsNotExist(e
       
       <guid>http://yourbasic.org/golang/check-empty-map/</guid>
       <description>The call len(m) returns the number of key-value pairs in&amp;nbsp;m.
-if len(m) == 0 { // m is empty } </description>
+if len(m) == 0 { // m is empty } Read all about maps  Maps in a&amp;nbsp;nutshell</description>
     </item>
     
     <item>
@@ -568,7 +568,7 @@ copy(dst []byte, src string) int  Examples Copy from one slice to another:</desc
       
       <guid>http://yourbasic.org/golang/count-items-map/</guid>
       <description>The call len(m) returns the number of key-value pairs in m.
-m := map[string]int{ &#34;key1&#34;: 1, &#34;key2&#34;: 10, &#34;key3&#34;: 100, } fmt.Println(len(m)) // 3 </description>
+m := map[string]int{ &#34;key1&#34;: 1, &#34;key2&#34;: 10, &#34;key3&#34;: 100, } fmt.Println(len(m)) // 3 Read all about maps  Maps in a&amp;nbsp;nutshell</description>
     </item>
     
     <item>
@@ -942,9 +942,8 @@ The rand.Read call returns an error if the underlying system call fails. For ins
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/generate-random-character/</guid>
-      <description> Between &amp;#39;a&amp;#39; and &amp;#39;z&amp;#39; Use the rand.Intn function in package math/rand.
-rand.Seed(time.Now().UnixNano()) c := &#39;a&#39; + rand.Intn(26)  Without the call to rand.Seed, a program will produce the same sequence of pseudo-random numbers for each execution.
-From arbitrary set chars := []rune(&amp;quot;ab⌘&amp;quot;) c := chars[rand.Intn(len(chars))]  </description>
+      <description>Between &amp;#39;a&amp;#39; and &amp;#39;z&amp;#39; Use the rand.Intn function in package math/rand.
+rand.Seed(time.Now().UnixNano()) c := &#39;a&#39; + rand.Intn(26)  From arbitrary set chars := []rune(&amp;quot;ab⌘&amp;quot;) c := chars[rand.Intn(len(chars))]  Warning: Without the call to rand.Seed you will get the same sequence of pseudo&amp;shy;random numbers each time you run the program.  More about pseudorandom numbers  Random number generator seed</description>
     </item>
     
     <item>
@@ -954,7 +953,7 @@ From arbitrary set chars := []rune(&amp;quot;ab⌘&amp;quot;) c := chars[rand.In
       
       <guid>http://yourbasic.org/golang/generate-number-random-range/</guid>
       <description>Use the rand.Seed and rand.Intn functions in package math/rand to generate a random number between a and b.
-rand.Seed(time.Now().UnixNano()) n := a + rand.Intn(b-a+1)  Without the call to rand.Seed, a program will produce the same sequence of pseudo-random numbers for each execution.</description>
+rand.Seed(time.Now().UnixNano()) n := a + rand.Intn(b-a+1)  Warning: Without the call to rand.Seed you will get the same sequence of pseudo&amp;shy;random numbers each time you run the program.  More about pseudorandom numbers  Random number generator seed</description>
     </item>
     
     <item>
@@ -996,7 +995,7 @@ The io.Reader interface, which represents the read end of a stream of data, is a
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/slice-of-keys-values-from-map/</guid>
-      <description>keys := make([]keyType, 0, len(myMap)) values := make([]valueType, 0, len(myMap)) for k, v := range myMap { keys = append(keys, k) values = append(values, v) }  </description>
+      <description>keys := make([]keyType, 0, len(myMap)) values := make([]valueType, 0, len(myMap)) for k, v := range myMap { keys = append(keys, k) values = append(values, v) }  Read all about maps  Maps in a&amp;nbsp;nutshell</description>
     </item>
     
     <item>
@@ -1286,11 +1285,11 @@ The idea is to first generate a point (x,&amp;nbsp;y), with -1&amp;nbsp;&amp;lt;
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/last-item-in-slice/</guid>
-      <description> To read the last element:
+      <description>To read the last element:
 a := []string{&#34;A&#34;, &#34;B&#34;, &#34;C&#34;} s := a[len(a)-1] // C To remove it:
 a = a[:len(a)-1] // [A B] (Go doesn&amp;rsquo;t have negative indexing like Python does.)
 Watch out for memory leaks If the slice is permanent and the element temporary, you may want to remove the reference before removing the element from the slice.
-a[len(a)-1] = &#34;&#34; // Erase element (write zero value) a = a[:len(a)-1] // [A B] </description>
+a[len(a)-1] = &#34;&#34; // Erase element (write zero value) a = a[:len(a)-1] // [A B] Read all about slices  Slices in a&amp;nbsp;nutshell</description>
     </item>
     
     <item>
@@ -1809,8 +1808,7 @@ func main() { n := 0 if true { n = 1 n++ } fmt.Println(n) // 2 } Detecting shado
       
       <guid>http://yourbasic.org/golang/shuffle-slice-array/</guid>
       <description>The rand.Shuffle function in package math/rand shuffles an input sequence using a given swap function.
-a := []int{1, 2, 3, 4, 5, 6, 7, 8} rand.Seed(time.Now().UnixNano()) rand.Shuffle(len(a), func(i, j int) { a[i], a[j] = a[j], a[i] })  [5 8 6 4 3 7 2 1]  Without the call to rand.Seed, a program will produce the same sequence of pseudo-random numbers for each execution.
-Before Go 1.10 Use the rand.</description>
+a := []int{1, 2, 3, 4, 5, 6, 7, 8} rand.Seed(time.Now().UnixNano()) rand.Shuffle(len(a), func(i, j int) { a[i], a[j] = a[j], a[i] })  [5 8 6 4 3 7 2 1]  Warning: Without the call to rand.Seed you will get the same sequence of pseudo&amp;shy;random numbers each time you run the program.  More about pseudorandom numbers  Random number generator seed</description>
     </item>
     
     <item>
@@ -2323,7 +2321,7 @@ An int or []int is a bit pattern that can represent any digital data. Furthermor
       <guid>http://yourbasic.org/golang/do-while-loop/</guid>
       <description>There is no do-while loop in Go. To emulate the C/Java code
 do { work(); } while (condition); you may use one of these alternatives:
-for ok := true; ok; ok = condition { work() } for { work() if !condition { break } } </description>
+for ok := true; ok; ok = condition { work() } for { work() if !condition { break } } Read all about for loops  For loops in a&amp;nbsp;nutshell</description>
     </item>
     
     <item>
