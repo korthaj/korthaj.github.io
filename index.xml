@@ -516,7 +516,7 @@ r := []rune{&#39;\u0061&#39;, &#39;\u0062&#39;, &#39;\u0063&#39;, &#39;\u65E5&#3
       
       <guid>http://yourbasic.org/golang/convert-string-to-byte-slice/</guid>
       <description>When you convert a string to a byte slice, you get a slice that contains the bytes of the string.
-fmt.Println([]byte(&#34;abc日&#34;)) // [97 98 99 230 151 165] </description>
+fmt.Println([]byte(&#34;abc日&#34;)) // [97 98 99 230 151 165] More about strings  String handling cheat sheet</description>
     </item>
     
     <item>
@@ -526,7 +526,7 @@ fmt.Println([]byte(&#34;abc日&#34;)) // [97 98 99 230 151 165] </description>
       
       <guid>http://yourbasic.org/golang/convert-string-to-int/</guid>
       <description>Use strconv.Atoi to convert a string to an int.
-str := &#34;123&#34; if n, err := strconv.Atoi(str); err == nil { fmt.Println(n+1) } else { fmt.Println(str, &#34;is not an integer.&#34;) } // Output: 124 </description>
+str := &#34;123&#34; if n, err := strconv.Atoi(str); err == nil { fmt.Println(n+1) } else { fmt.Println(str, &#34;is not an integer.&#34;) } // Output: 124 More about strings  String handling cheat sheet</description>
     </item>
     
     <item>
@@ -901,7 +901,7 @@ sum := 0 for i := 1; i { sum += i } fmt.Println(sum) // 10 (1+2+3+4)  The init s
       
       <guid>http://yourbasic.org/golang/format-string-without-printing/</guid>
       <description>The fmt.Sprintf function formats a string in the same way as fmt.Printf, but returns the string instead of printing&amp;nbsp;it.
-s := fmt.Sprintf(&#34;Size: %d MB.&#34;, 85) fmt.Println(s) // &#34;Size: 85 MB.&#34; </description>
+s := fmt.Sprintf(&#34;Size: %d MB.&#34;, 85) fmt.Println(s) // &#34;Size: 85 MB.&#34; More about strings  String handling cheat sheet</description>
     </item>
     
     <item>
@@ -1396,10 +1396,10 @@ type MyType struct { n int } func (p *MyType) Value() int { return p.</descripti
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/multiline-string/</guid>
-      <description> Raw string literals Raw string literals, delimited by back quotes, can contain line breaks.
+      <description>Raw string literals Raw string literals, delimited by back quotes, can contain line breaks.
 str := `First line Second line` fmt.Println(str) First line Second line Raw strings literals are interpreted literally and backslashes have no special meaning.
 Interpreted string literals To insert escape characters, use interpreted string literals delimited by double quotes.
-str := &#34;\tFirst line\n&#34; + &#34;Second line&#34; fmt.Println(str)  First line Second line </description>
+str := &#34;\tFirst line\n&#34; + &#34;Second line&#34; fmt.Println(str)  First line Second line More about strings  String handling cheat sheet</description>
     </item>
     
     <item>
@@ -1731,7 +1731,8 @@ To check if there is a substring matching a.</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/repeat-multiply-string/</guid>
-      <description>s := strings.Repeat(&#34;da&#34;, 2) // &#34;dada&#34; This corresponds to the string multiplication &amp;quot;da&amp;quot;*2 in Python.</description>
+      <description>s := strings.Repeat(&#34;da&#34;, 2) // &#34;dada&#34; This corresponds to the string multiplication &amp;quot;da&amp;quot;*2 in Python.
+More about strings  String handling cheat sheet</description>
     </item>
     
     <item>
