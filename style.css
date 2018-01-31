@@ -82,6 +82,9 @@ ol, ul, .lead{
     margin-right:0;
   }
 }
+aside p{
+  margin-right:0;
+}
 
 /* Style */
 html{
