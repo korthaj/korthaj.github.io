@@ -218,7 +218,7 @@ ol.none, ul.none{
   margin:0;
 }
 ol.toc, ul.toc{
-  line-height:1.2em;
+  line-height:1em;
   list-style:none;
   padding-left:0;
 }
