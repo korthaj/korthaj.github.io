@@ -1052,7 +1052,7 @@ The circumflex&amp;nbsp;^ denotes bitwise&amp;nbsp;XOR in&amp;nbsp;Go. The compu
       <guid>http://yourbasic.org/golang/gotcha/</guid>
       <description>Pitfalls and corner cases
 This collection of common mistakes in Go is intended to help you spot similar traps in your own code and save you time when debugging.
-Take quiz
+Start here
 Table of contents </description>
     </item>
     
