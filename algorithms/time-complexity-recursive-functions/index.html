@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time complexity of recursive functions | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="It&#39;s often possible to compute the time complexity of a recursive function by formulating and solving a recurrence relation. The master theorem gives solutions to a class of recurrence relations that often show up when we analyze recursive functions.">
+  
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-113104149-1');
+</script>
+
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Time complexity of recursive functions</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<p class="lead">It's often possible to compute the time complexity of a recursive function
+by formulating and solving a recurrence relation.</p>
+
+<p>This text contains a few examples and a formula, the &rdquo;master theorem&rdquo;,
+which gives the solution to a class of recurrence relations that
+often show up when we analyze recursive functions.</p>
+
+<h2 id="sum-of-an-arithmetic-series">Sum of an arithmetic series</h2>
+
+<p>As an introduction we show that the following recursive function
+has linear time complexity.</p>
+
+<pre><code>// Sum returns the sum 1 + 2 + ... + n, where n &gt;= 1.
+func Sum(n int) int64 {
+    if n == 1 {
+        return 1
+    }
+    return int64(n) + Sum(n-1)
+}
+</code></pre>
+
+<p>Let the function T(<i>n</i>) denote the number
+of elementary operations performed by the function call&nbsp;<code>Sum(n)</code>.</p>
+
+<p>We identify two properties of T(<i>n</i>).</p>
+
+<ul>
+<li>Since <code>Sum(1)</code> is computed using a fixed number of
+operations&nbsp;<i>k</i><sub>1</sub>,
+T(1)&nbsp;=&nbsp;<i>k</i><sub>1</sub>.</li>
+<li>If <i>n</i>&nbsp;&gt;&nbsp;1 the function will perform a fixed number
+of operations&nbsp;<i>k</i><sub>2</sub>, and in addition,
+it will make a recursive call to&nbsp;<code>Sum(n-1)</code>.
+This recursive call will perform T(<i>n</i>-1) operations.
+In total, we get
+T(<i>n</i>)&nbsp;=&nbsp;<i>k</i><sub>2</sub>&nbsp;+&nbsp;T(<i>n</i>-1)</code>.</li>
+</ul>
+
+<p>If we are only looking for an asymptotic estimate of the time complexity,
+we don&rsquo;t need to specify the actual values of
+the constants&nbsp;<i>k</i><sub>1</sub>
+and&nbsp;<i>k</i><sub>2</sub>.
+Instead, we let <i>k</i><sub>1</sub>&nbsp;=&nbsp;<i>k</i><sub>2</sub>&nbsp;=&nbsp;1.
+To find the time complexity for the <code>Sum</code> function
+can then be reduced to solving the recurrence relation</p>
+
+<ul>
+<li>T(1)&nbsp;=&nbsp;1,&nbsp;&nbsp;(*)</li>
+<li>T(<i>n</i>)&nbsp;=&nbsp;1&nbsp;+&nbsp;T(<i>n</i>-1),
+when&nbsp;<i>n</i>&nbsp;&gt;&nbsp;1.&nbsp;&nbsp;(**)</li>
+</ul>
+
+<p>By repeatedly applying these relations, we can compute T(<i>n</i>)
+for any positive number&nbsp;<i>n</i>.</p>
+
+<blockquote style="line-height:1.8em;">
+T(<i>n</i>)&nbsp;=&nbsp;(**)&nbsp;<br>
+1&nbsp;+&nbsp;T(<i>n</i>-1)&nbsp;=&nbsp;(**)&nbsp;<br>
+1&nbsp;+&nbsp;(1&nbsp;+&nbsp;T(<i>n</i>-2))&nbsp;=
+2&nbsp;+&nbsp;T(<i>n</i>-2)&nbsp;=&nbsp;(**)&nbsp;<br>
+2&nbsp;+&nbsp;(1&nbsp;+&nbsp;T(<i>n</i>-3))&nbsp;=
+3&nbsp;+&nbsp;T(<i>n</i>-3)&nbsp;=&nbsp;…&nbsp;<br>
+k&nbsp;+&nbsp;T(<i>n</i>-<i>k</i>)&nbsp;=&nbsp;…&nbsp;<br>
+n&nbsp;-&nbsp;1&nbsp;+&nbsp;T(1)&nbsp;=&nbsp;(*)&nbsp;<br>
+n&nbsp;-&nbsp;1&nbsp;+&nbsp;1=&nbsp;&Theta;(<i>n</i>)
+</blockquote>
+
+<h2 id="binary-search">Binary search</h2>
+
+<p>The very same method can be used also for more complex recursive algorithms.
+Formulating the recurrences is straightforward,
+but solving them is sometimes more difficult.</p>
+
+<p>Let&rsquo;s try to compute the time complexity of this recursive implementation
+of binary search.</p>
+
+<pre><code>// Find returns the smallest index i at which x <= a[i].
+// If there is no such index, it returns len(a).
+// The slice must be sorted in ascending order.
+func Find(a []int, x int) int {
+    switch len(a) {
+    case 0:
+        return 0
+    case 1:
+        if x <= a[0] {
+            return 0
+        }
+        return 1
+    }
+    mid := 1 + (len(a)-1)/2
+    if x <= a[mid-1] {
+        return Find(a[:mid], x)
+    }
+    return mid + Find(a[mid:], x)
+}
+</code></pre>
+
+<p>We use the notation&nbsp;T(<i>n</i>) to mean the number of
+elementary operations performed by this algorithm in the worst case,
+when given a sorted slice of <i>n</i>&nbsp;elements.</p>
+
+<p>Once again, we simplify the problem by only computing the asymptotic time complexity,
+and let all constants be&nbsp;1.
+Then the recurrences become</p>
+
+<ul>
+<li>T(1)&nbsp;=&nbsp;1,&nbsp;&nbsp;(*)</li>
+<li>T(<i>n</i>)&nbsp;=&nbsp;1&nbsp;+&nbsp;T(<i>n</i>/2),
+ when&nbsp;<i>n</i>&nbsp;&gt;&nbsp;1.&nbsp;&nbsp;(**)</li>
+</ul>
+
+<p>The equation&nbsp;(**) captures the fact that the function performs constant work
+(that&rsquo;s the one) and a single recursive call to a slice of size&nbsp;<i>n</i>/2.</p>
+
+<p>(In fact, the slice may also end up having <i>n</i>/2&nbsp;+&nbsp;1 elements.
+We don&rsquo;t worry about that, since we&rsquo;re only looking for an asymptotic estimate.)</p>
+
+<p>Once again, it&rsquo;s possible to find a solution by repeated substitution.</p>
+
+<blockquote style="line-height:1.8em;">
+T(<i>n</i>)&nbsp;=&nbsp;(**)<br>
+1&nbsp;+&nbsp;T(<i>n</i>/2)&nbsp;=&nbsp;(**)<br>
+1&nbsp;+&nbsp;(1&nbsp;+&nbsp;T(<i>n</i>/4))&nbsp;=&nbsp;2&nbsp;+&nbsp;T(<i>n</i>/4)&nbsp;=&nbsp;(**)<br>
+2&nbsp;+&nbsp;(1&nbsp;+&nbsp;T(<i>n</i>/8))&nbsp;=&nbsp;3&nbsp;+&nbsp;T(<i>n</i>/8)&nbsp;=&nbsp;...<br>
+k&nbsp;+&nbsp;T(<i>n</i>/2<sup>k</sup>)&nbsp;=&nbsp;...<br>
+log&nbsp;n&nbsp;+&nbsp;T(<i>n</i>/2<sup>log&nbsp;<i>n</i></sup>)&nbsp;=&nbsp;log&nbsp;n&nbsp;+&nbsp;T(1)&nbsp;=&nbsp;(*)<br>
+log&nbsp;n&nbsp;+&nbsp;1&nbsp;=&nbsp;&Theta;(log&nbsp;<i>n</i>).
+</blockquote>
+
+<h2>Master theorem</h2>
+
+<p>The master theorem is a recipe that gives asymptotic estimates for a class of
+recurrence relations that often show up when analyzing recursive algorithms.</p>
+
+<p>Let a&nbsp;&ge;&nbsp;1 and b&nbsp;&gt;&nbsp;1
+be constants, let&nbsp;f(<i>n</i>) be a function,
+and let&nbsp;T(<i>n</i>) be a function over the positive numbers
+defined by the recurrence</p>
+
+<blockquote>
+T(<i>n</i>)&nbsp;=&nbsp;aT(<i>n</i>/b)&nbsp;+&nbsp;f(<i>n</i>).
+</blockquote>
+
+<p>If f(<i>n</i>)&nbsp;=&nbsp;&Theta;(<i>n</i><sup>d</sup>),
+where&nbsp;d&nbsp;&ge;&nbsp;0, then</p>
+
+<ul>
+<li>T(<i>n</i>)&nbsp;=&nbsp;&Theta;(<i>n</i><sup>d</sup>)
+if a&nbsp;&lt;&nbsp;b<sup>d</sup>,</li>
+<li>T(<i>n</i>)&nbsp;=&nbsp;&Theta;(<i>n</i><sup>d</sup>log&nbsp;<i>n</i>)
+if a&nbsp;=&nbsp;b<sup>d</sup>,</li>
+<li>T(<i>n</i>)&nbsp;=&nbsp;&Theta;(<i>n</i><sup>log<sub>b</sub>a</sup>)
+if a&nbsp;&gt;&nbsp;b<sup>d</sup>.</li>
+</ul>
+
+<p>We&rsquo;ll skip the proof. It isn&rsquo;t hard, but long.
+In fact, you can use repeated substitution in the same way as in
+the previous examples.</p>
+
+<p>Let&rsquo;s check that the master theorem gives the correct solution
+to the recurrence in the binary search example.
+In this case&nbsp;a&nbsp;=&nbsp;1,
+&nbsp;b&nbsp;=&nbsp;2, and
+the function&nbsp;f(<i>n</i>)&nbsp;=&nbsp;1. This implies that
+f(<i>n</i>)&nbsp;=&nbsp;&Theta;(<i>n</i><sup>0</sup>), i.e. d&nbsp;=&nbsp;0.
+We see that a&nbsp;=&nbsp;b<sup>d</sup>, and can use the second bullet point
+of the master theorem to conclude that
+<blockquote>
+T(<i>n</i>)&nbsp;=&nbsp;&Theta;(<i>n</i><sup>0</sup>log&nbsp;<i>n</i>),
+</blockquote></p>
+
+<p>which is correct.</p>
+
+
+</article>
+<aside>
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/algorithms/time-complexity-explained/">Time complexity</a><br />
+    <span class="source">yourbasic.org</span>
+  </div>
+
+  <div class="reference">
+    <a href="/algorithms/big-o-notation-explained/">Big O notation</a><br />
+    <span class="source">yourbasic.org</span>
+  </div>
+
+  <div class="reference">
+    <a href="/algorithms/induction-recursive-functions/">Induction and recursive functions</a><br />
+    <span class="source">yourbasic.org</span>
+  </div>
+
+  <h2>Top algorithm articles</h2>
+  <ul class="none">
+  
+    <li><a href="/algorithms/your-basic-api/">Your basic API</a></li>
+
+    <li><a href="/algorithms/hash-tables-explained/">Hash tables</a></li>
+
+    <li><a href="/algorithms/big-o-notation-explained/">Big O notation</a></li>
+
+    <li><a href="/algorithms/loop-invariants-explained/">Loop invariants</a></li>
+
+    <li><a href="/golang/quicksort-optimizations/">Top 3 Quicksort optimizations</a></li>
+
+  </ul>
+
+  <p><a href="/algorithms/"><b>See all algorithm articles</b></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>
