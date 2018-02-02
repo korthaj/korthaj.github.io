@@ -108,6 +108,15 @@ A well-chosen loop invariant is useful both when designing, testing, and modifyi
     </item>
     
     <item>
+      <title>Monte Carlo simulations</title>
+      <link>http://yourbasic.org/algorithms/monte-carlo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/algorithms/monte-carlo/</guid>
+      <description>Monte Carlo simulations are a broad class of algorithms that use repeated random sampling to obtain numerical results.  Monte Carlo simulations are typically used to simulate the behaviour of other systems. Monte Carlo algorithms, on the other hand, are randomized algorithms whose output may be incorrect with a certain, typically small, probability.  Example If points (x,&amp;nbsp;y), with -1&amp;nbsp;&amp;lt;&amp;nbsp;x&amp;nbsp;&amp;lt;&amp;nbsp;1 and -1&amp;nbsp;&amp;lt;&amp;nbsp;y&amp;nbsp;&amp;lt;&amp;nbsp;1, are placed randomly, the ratio of points that fall within the unit circle will be close to&amp;nbsp;π/4.</description>
+    </item>
+    
+    <item>
       <title>Random number generator seed</title>
       <link>http://yourbasic.org/algorithms/random-number-generator-seed/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
