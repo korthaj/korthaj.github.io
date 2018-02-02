@@ -40,6 +40,8 @@
 <article>
 <h1>Table-driven unit tests</h1>
 <div class="tagline">yourbasic.org</div>
+
+
 <!-- CC BY 3.0: https://golang.org/doc/gopher/ -->
 
 <p><img src="/golang/swim-safe.png" style="float:right; margin-top: -40px;" width="90px"></p>
@@ -52,19 +54,22 @@
 // If there is no such index, it returns len(a).
 // The slice must be sorted in ascending order.
 func Find(a []int, x int) int {
-    <span class="comment">// binary search</span>
-    i, j := 0, len(a)
-    for i < j {
-        m := i + (j-i)/2
-        <span class="comment">// i ≤ m < j</span>
-        if x > a[m] {
-            i = m + 1
-        } else {
-            j = m
+    switch len(a) {
+    case 0:
+        return 0
+    case 1:
+        if x <= a[0] {
+            return 0
         }
+        return 1
     }
-    return i
-}</code></pre>
+    mid := 1 + (len(a)-1)/2
+    if x <= a[mid-1] {
+        return Find(a[:mid], x)
+    }
+    return mid + Find(a[mid:], x)
+}
+</code></pre>
 
 <ul>
 <li>Put the test code in a file whose name ends with <strong>_test.go</strong>.</li>
@@ -87,7 +92,7 @@ var tests = []struct {
     {[]int{1, 2, 3, 3}, 0, 0},
     {[]int{1, 2, 3, 3}, 1, 0},
     {[]int{1, 2, 3, 3}, 2, 1},
-    {[]int{1, 2, 3, 3}, 3, 3}, <span class="comment">// Here's an error.</span>
+    {[]int{1, 2, 3, 3}, 3, 3}, <span class="comment">// incorrect test case</span>
     {[]int{1, 2, 3, 3}, 4, 4},
 }
 
@@ -110,6 +115,11 @@ FAIL
 exit status 1
 FAIL    .../search  0.001s</pre>
 
+<h3 id="related">Related</h3>
+
+<p>The <a href="/algorithms/induction-recursive-functions/">Induction and recursive functions</a> article
+has a correctness proof for the&nbsp;<code>Find</code>&nbsp;function.</p>
+
 
 </article>
 <aside>
@@ -122,6 +132,11 @@ FAIL    .../search  0.001s</pre>
     <a href="https://golang.org/doc/code.html#Testing">How to Write Go Code</a><br />
     <span class="source">golang.org</span>
     <span class="author"></span>
+  </div>
+
+  <div class="reference">
+    <a href="/algorithms/induction-recursive-functions/">Induction and recursive functions</a><br />
+    <span class="source">yourbasic.org</span>
   </div>
 
 

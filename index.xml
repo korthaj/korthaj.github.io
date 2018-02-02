@@ -1198,6 +1198,18 @@ Loop from 0 to len(a)-1 instead.</description>
     </item>
     
     <item>
+      <title>Induction and recursive functions</title>
+      <link>http://yourbasic.org/algorithms/induction-recursive-functions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/algorithms/induction-recursive-functions/</guid>
+      <description>To make sense of recursive functions we can use a way of thinking closely related to mathematical induction.
+This text introduces mathematical induction and explains why it works. It contains examples from both mathematics and programming.
+Induction is a proof method often used to prove statements about integers. We&amp;rsquo;ll use the notation P(n), where n&amp;nbsp;&amp;ge;&amp;nbsp;0, to denote such a&amp;nbsp;statement. To prove P(n) with induction is a two-step procedure.
+ Base case: Show that P(0) is true.</description>
+    </item>
+    
+    <item>
       <title>Inheritance and object-oriented programming</title>
       <link>http://yourbasic.org/golang/inheritance-object-oriented/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1929,7 +1941,7 @@ Basics No condition Case lists Fall through Exit a switch Execution order  Basic
       
       <guid>http://yourbasic.org/golang/table-driven-unit-test/</guid>
       <description>Here is the code we want to&amp;nbsp;test.
-package search // Find returns the smallest index i at which x // binary search i, j := 0, len(a) for i // i ≤ m if x  a[m] { i = m + 1 } else { j = m } } return i }  Put the test code in a file whose name ends with _test.go. Write a function TestXXX with a single argument of type *testing.</description>
+package search // Find returns the smallest index i at which x   Put the test code in a file whose name ends with _test.go. Write a function TestXXX with a single argument of type *testing.T. The test framework runs each such function. To indicate a failed test, call a failure function such as t.Errorf.  package search import &#34;testing&#34; var tests = []struct { a []int x int exp int }{ {[]int{}, 1, 0}, {[]int{1, 2, 3, 3}, 0, 0}, {[]int{1, 2, 3, 3}, 1, 0}, {[]int{1, 2, 3, 3}, 2, 1}, {[]int{1, 2, 3, 3}, 3, 3}, // incorrect test case {[]int{1, 2, 3, 3}, 4, 4}, } func TestFind(t *testing.</description>
     </item>
     
     <item>
