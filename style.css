@@ -39,6 +39,11 @@ header nav{
   max-width:930px; /* 960 - 2*15 */
   margin:0 auto;
 }
+footer{
+  padding:15px;
+  max-width:480px;
+  margin:0 auto;
+}
 article{
   float:right;
   width:75%;
@@ -63,7 +68,7 @@ ol, ul, .lead{
   ol, ul{
     margin-right:8em;
   }
-  header{
+  header, footer{
     max-width:100%;
     margin:0;
   }
@@ -124,16 +129,9 @@ header nav ul li a:hover{
 footer{
   color:#666;
   font-size:smaller;
-  margin: 15px;
-  text-align:center;
 }
 footer a, footer a:visited{
   color:inherit;
-}
-@media only screen and (max-width:960px){
-  footer{
-    text-align:left;
-  }
 }
 aside{
   font-size:smaller;
