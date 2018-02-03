@@ -84,20 +84,7 @@ func ByteCountBinary(b int64) string {
    math.MaxInt64         &quot;9.2 EB&quot;        &quot;8.0 EiB
 </code></pre>
 
-<!--
-func main() {
-    fmt.Printf("%20s %16s %16s\n", "Input", "Decimal (SI)", "Binary (IEC)")
-    for _, b := range []int64{
-        0, 27, 999, 1000, 1023, 1024,
-        1728, 1855425871872, math.MaxInt64,
-    } {
-        fmt.Printf("%20d %16q %16q\n",
-            b,
-            ByteCountDecimal(b),
-            ByteCountBinary(b))
-    }
-}
--->
+<p><a href="/golang/byte-count.go">byte-count.go</a></p>
 
 
 </article>

@@ -1,3 +1,11 @@
+/*
+	Monte carlo simulations
+
+	Monte Carlo simulations are a broad class of algorithms that
+	use repeated random sampling to obtain numerical results.
+
+	Source: http://yourbasic.org/algorithms/monte-carlo/
+*/
 package main
 
 import (
