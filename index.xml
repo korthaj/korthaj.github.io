@@ -196,7 +196,7 @@ Built-in operators   Operation Result Description     0011 &amp;amp; 0101 0001 B
     </item>
     
     <item>
-      <title>Blackjack</title>
+      <title>Blackjack: How to count cards</title>
       <link>http://yourbasic.org/algorithms/blackjack/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -631,15 +631,6 @@ now := time.Now() // current local time sec := now.Unix() // number of seconds s
     </item>
     
     <item>
-      <title>Current working directory</title>
-      <link>http://yourbasic.org/golang/current-directory/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/current-directory/</guid>
-      <description>Use os.Executable to find the path name for the executable that started the current process. Use filepath.Dir in package path/filepath to extract the path&amp;rsquo;s directory.  path, err := os.Executable() if err != nil { log.Printf(err) } dir := filepath.Dir(path) fmt.Println(path) // for example /home/user/main fmt.Println(dir) // for example /home/user Warning: There is no guarantee that the path is still pointing to the correct executable. If a symlink was used to start the process, depending on the operating system, the result might be the symlink or the path it pointed to.</description>
-    </item>
-    
-    <item>
       <title>Data races</title>
       <link>http://yourbasic.org/golang/data-races-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -858,7 +849,16 @@ Find(All)?(String)?(Submatch)?(Index)?  </description>
     </item>
     
     <item>
-      <title>Find the lady</title>
+      <title>Find the current working directory</title>
+      <link>http://yourbasic.org/golang/current-directory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/current-directory/</guid>
+      <description>Use os.Executable to find the path name for the executable that started the current process. Use filepath.Dir in package path/filepath to extract the path&amp;rsquo;s directory.  path, err := os.Executable() if err != nil { log.Printf(err) } dir := filepath.Dir(path) fmt.Println(path) // for example /home/user/main fmt.Println(dir) // for example /home/user Warning: There is no guarantee that the path is still pointing to the correct executable. If a symlink was used to start the process, depending on the operating system, the result might be the symlink or the path it pointed to.</description>
+    </item>
+    
+    <item>
+      <title>Find the lady: 3-card monte</title>
       <link>http://yourbasic.org/monte/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1115,6 +1115,18 @@ Neither arrays nor linked lists can achieve this:
     </item>
     
     <item>
+      <title>How to kill a goroutine</title>
+      <link>http://yourbasic.org/golang/stop-goroutine/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/stop-goroutine/</guid>
+      <description>One&amp;nbsp;goroutine can&#39;t forcibly stop another &amp;ndash; a&amp;nbsp;gorou&amp;shy;tine can stop only by returning from it&#39;s top level function.
+To make a goroutine stoppable, let it listen to a stop signal on a channel.
+quit := make(chan struct{}) go func() { for { select { case // … } } }() // … close(quit) Sometimes it&amp;rsquo;s convenient to use a single channel for both data and signalling.
+// Generator returns a channel that produces the numbers 1, 2, 3,… // To stop the underlying goroutine, close the channel.</description>
+    </item>
+    
+    <item>
       <title>How to sort a custom type in Go</title>
       <link>http://yourbasic.org/golang/sort-custom-type/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1214,7 +1226,7 @@ Induction is a proof method often used to prove statements about integers. We&am
     </item>
     
     <item>
-      <title>Inheritance and object-oriented programming</title>
+      <title>Inheritance and object-oriented programming in Go</title>
       <link>http://yourbasic.org/golang/inheritance-object-oriented/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1308,7 +1320,7 @@ The idea is to first generate a point (x,&amp;nbsp;y), with -1&amp;nbsp;&amp;lt;
     </item>
     
     <item>
-      <title>Last item in slice</title>
+      <title>Last item in a slice</title>
       <link>http://yourbasic.org/golang/last-item-in-slice/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1670,18 +1682,6 @@ Warning: Unexported identifiers is not a security measure and it does not hide o
     </item>
     
     <item>
-      <title>Random number generator seed</title>
-      <link>http://yourbasic.org/algorithms/random-number-generator-seed/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/algorithms/random-number-generator-seed/</guid>
-      <description>In reality pseudo&amp;shy;random numbers aren&#39;t random at all. They are computed using a fixed determi&amp;shy;nistic algorithm.
-The seed is a starting point for a sequence of pseudorandom numbers. If you start from the same seed, you get the very same sequence. This can be quite useful for&amp;nbsp;debugging.
-If you want a different sequence of numbers each time, you can use the current time as a&amp;nbsp;seed.
-Example This generator produces a sequence of 97 different numbers, then it starts over again.</description>
-    </item>
-    
-    <item>
       <title>Range loops (for-each loops)</title>
       <link>http://yourbasic.org/golang/for-loop-range-array-slice-map-channel/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1763,7 +1763,7 @@ To check if there is a substring matching a.</description>
     </item>
     
     <item>
-      <title>Repeat string</title>
+      <title>Repeat a string</title>
       <link>http://yourbasic.org/golang/repeat-multiply-string/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1840,7 +1840,7 @@ func main() { n := 0 if true { n = 1 n++ } fmt.Println(n) // 2 } Detecting shado
     </item>
     
     <item>
-      <title>Shuffle slice or array</title>
+      <title>Shuffle a slice or array</title>
       <link>http://yourbasic.org/golang/shuffle-slice-array/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1890,18 +1890,6 @@ a := regexp.MustCompile(`a`) fmt.Printf(&#34;%q\n&#34;, a.Split(&#34;banana&#34;
       <description>A stack trace is a list of active function calls at a certain point in time.
 Stack traces are typically printed to the console when unexpected error occurs. They can be very useful for&amp;nbsp;debugging: - not only do you see where the error happened, - but also how the program arrived in this place.
 Example goroutine 11 [running]: testing.tRunner.func1(0xc420092690) /usr/local/go/src/testing/testing.go:711 +0x2d2 panic(0x53f820, 0x594da0) /usr/local/go/src/runtime/panic.go:491 +0x283 github.com/yourbasic/bit.(*Set).Max(0xc42000a940, 0x0) ../src/github.com/bit/set_math_bits.go:137 +0x89 github.</description>
-    </item>
-    
-    <item>
-      <title>Stop a goroutine</title>
-      <link>http://yourbasic.org/golang/stop-goroutine/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/stop-goroutine/</guid>
-      <description>One&amp;nbsp;goroutine can&#39;t forcibly stop another &amp;ndash; a&amp;nbsp;gorou&amp;shy;tine can stop only by returning from it&#39;s top level function.
-To make a goroutine stoppable, let it listen to a stop signal on a channel.
-quit := make(chan struct{}) go func() { for { select { case // … } } }() // … close(quit) Sometimes it&amp;rsquo;s convenient to use a single channel for both data and signalling.
-// Generator returns a channel that produces the numbers 1, 2, 3,… // To stop the underlying goroutine, close the channel.</description>
     </item>
     
     <item>
@@ -2011,12 +1999,12 @@ Example The standard library provides many Writer implementations, and Writers a
     </item>
     
     <item>
-      <title>Three dots (ellipsis) notation</title>
+      <title>Three dots in four places</title>
       <link>http://yourbasic.org/golang/three-dots-ellipsis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/three-dots-ellipsis/</guid>
-      <description>Three dots are used in four different places in&amp;nbsp;Go.
+      <description>The three dots notation is used in four different places in&amp;nbsp;Go.
 Variadic function parameters If the last parameter of a function has type ...T, it can be called with any number of trailing arguments of type&amp;nbsp;T. The actual type of ...T inside the function is&amp;nbsp;[]T.
 This example function can be called with, for instance, Sum(1, 2, 3) or&amp;nbsp;Sum().
 func Sum(nums ...int) int { res := 0 for _, n := range nums { res += n } return res } Arguments to variadic functions You can pass a slice s directly to a variadic funtion if you unpack it with the s.</description>
@@ -2069,7 +2057,7 @@ Here is a convenience function that changes the location associated with a&amp;n
     </item>
     
     <item>
-      <title>Timer and Ticker</title>
+      <title>Timer and Ticker: events in the future</title>
       <link>http://yourbasic.org/golang/time-reset-wait-stop-timeout-cancel-interval/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -2123,7 +2111,7 @@ The type assertion x.(T) asserts that the concrete value stored in&amp;nbsp;x is
     </item>
     
     <item>
-      <title>Type rune</title>
+      <title>Type rune: a Unicode code point</title>
       <link>http://yourbasic.org/golang/rune/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -2264,6 +2252,18 @@ x = q*y + r and |r| &amp;lt; |y|  where x / y is truncated towards zero.</descri
     </item>
     
     <item>
+      <title>What’s a seed: random number generators</title>
+      <link>http://yourbasic.org/algorithms/random-number-generator-seed/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/algorithms/random-number-generator-seed/</guid>
+      <description>In reality pseudo&amp;shy;random numbers aren&#39;t random at all. They are computed using a fixed determi&amp;shy;nistic algorithm.
+The seed is a starting point for a sequence of pseudorandom numbers. If you start from the same seed, you get the very same sequence. This can be quite useful for&amp;nbsp;debugging.
+If you want a different sequence of numbers each time, you can use the current time as a&amp;nbsp;seed.
+Example This generator produces a sequence of 97 different numbers, then it starts over again.</description>
+    </item>
+    
+    <item>
       <title>Where is my copy?</title>
       <link>http://yourbasic.org/golang/gotcha-copy-missing/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -2351,7 +2351,7 @@ It&amp;rsquo;s a tool for building virtual graphs. In a virtual graph no vertice
     </item>
     
     <item>
-      <title>Your basic int</title>
+      <title>Your basic int: a most powerful datatype</title>
       <link>http://yourbasic.org/algorithms/your-basic-int/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -2385,7 +2385,7 @@ fmt.Printf(&#34;Hex: %x.\n&#34;, 255) // &#34;Hex: ff.&#34;  the format specifie
     </item>
     
     <item>
-      <title>int vs. int64</title>
+      <title>int vs. int64: which one should I use?</title>
       <link>http://yourbasic.org/golang/int-vs-int64/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

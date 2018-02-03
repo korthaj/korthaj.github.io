@@ -33,7 +33,7 @@ For example, if an algorithm increments each number in a list of length&amp;nbsp
     </item>
     
     <item>
-      <title>Blackjack</title>
+      <title>Blackjack: How to count cards</title>
       <link>http://yourbasic.org/algorithms/blackjack/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -128,18 +128,6 @@ A well-chosen loop invariant is useful both when designing, testing, and modifyi
     </item>
     
     <item>
-      <title>Random number generator seed</title>
-      <link>http://yourbasic.org/algorithms/random-number-generator-seed/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/algorithms/random-number-generator-seed/</guid>
-      <description>In reality pseudo&amp;shy;random numbers aren&#39;t random at all. They are computed using a fixed determi&amp;shy;nistic algorithm.
-The seed is a starting point for a sequence of pseudorandom numbers. If you start from the same seed, you get the very same sequence. This can be quite useful for&amp;nbsp;debugging.
-If you want a different sequence of numbers each time, you can use the current time as a&amp;nbsp;seed.
-Example This generator produces a sequence of 97 different numbers, then it starts over again.</description>
-    </item>
-    
-    <item>
       <title>The fastest sorting algorithm?</title>
       <link>http://yourbasic.org/algorithms/fastest-sorting-algorithm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -170,6 +158,18 @@ Sum of an arithmetic series As an introduction we show that the following recurs
     </item>
     
     <item>
+      <title>What’s a seed: random number generators</title>
+      <link>http://yourbasic.org/algorithms/random-number-generator-seed/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/algorithms/random-number-generator-seed/</guid>
+      <description>In reality pseudo&amp;shy;random numbers aren&#39;t random at all. They are computed using a fixed determi&amp;shy;nistic algorithm.
+The seed is a starting point for a sequence of pseudorandom numbers. If you start from the same seed, you get the very same sequence. This can be quite useful for&amp;nbsp;debugging.
+If you want a different sequence of numbers each time, you can use the current time as a&amp;nbsp;seed.
+Example This generator produces a sequence of 97 different numbers, then it starts over again.</description>
+    </item>
+    
+    <item>
       <title>Worst-case time complexity</title>
       <link>http://yourbasic.org/algorithms/worst-case-time-complexity/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -190,7 +190,7 @@ Introduction The 5 Commandments 1. Tell me what this thing is 2. Tell me what it
     </item>
     
     <item>
-      <title>Your basic int</title>
+      <title>Your basic int: a most powerful datatype</title>
       <link>http://yourbasic.org/algorithms/your-basic-int/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

@@ -243,10 +243,6 @@
   </url>
   
   <url>
-    <loc>http://yourbasic.org/golang/current-directory/</loc>
-  </url>
-  
-  <url>
     <loc>http://yourbasic.org/golang/data-races-explained/</loc>
   </url>
   
@@ -324,6 +320,10 @@
   
   <url>
     <loc>http://yourbasic.org/golang/regexp-find-first-match/</loc>
+  </url>
+  
+  <url>
+    <loc>http://yourbasic.org/golang/current-directory/</loc>
   </url>
   
   <url>
@@ -424,6 +424,10 @@
   
   <url>
     <loc>http://yourbasic.org/algorithms/avoid-initializing-memory/</loc>
+  </url>
+  
+  <url>
+    <loc>http://yourbasic.org/golang/stop-goroutine/</loc>
   </url>
   
   <url>
@@ -627,10 +631,6 @@
   </url>
   
   <url>
-    <loc>http://yourbasic.org/algorithms/random-number-generator-seed/</loc>
-  </url>
-  
-  <url>
     <loc>http://yourbasic.org/golang/for-loop-range-array-slice-map-channel/</loc>
   </url>
   
@@ -708,10 +708,6 @@
   
   <url>
     <loc>http://yourbasic.org/golang/stack-trace/</loc>
-  </url>
-  
-  <url>
-    <loc>http://yourbasic.org/golang/stop-goroutine/</loc>
   </url>
   
   <url>
@@ -845,6 +841,10 @@
   
   <url>
     <loc>http://yourbasic.org/golang/gotcha-remainder-modulo-operator/</loc>
+  </url>
+  
+  <url>
+    <loc>http://yourbasic.org/algorithms/random-number-generator-seed/</loc>
   </url>
   
   <url>
