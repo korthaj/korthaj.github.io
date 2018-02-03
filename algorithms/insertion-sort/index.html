@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insertion sort | yourbasic.org </title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  <meta name="description" content="Insertion sort is a simple algorithm with quadratic worst-case running time. It can outperform more complicated algorithms for short lists and lists that are almost sorted.">
+  
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-113104149-1');
+</script>
+
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Insertion sort</h1>
+<div class="tagline">yourbasic.org</div>
+<p class="lead">Insertion sort can outperform more complicated algorithms
+for short lists and lists that are almost sorted.</p>
+
+<p>Insertion sort is a simple sorting algorithm with <strong>quadratic</strong> worst-case running time,
+but in some cases it&rsquo;s still the algorithm of choice.</p>
+
+<ul>
+<li>It&rsquo;s efficient for <strong>really small data sets</strong>.
+It typically outperforms other simple quadratic algorithms,
+such as selection sort or bubble sort.</li>
+<li>It&rsquo;s <strong>adaptive</strong>: it sorts data sets that are already substantially sorted efficiently.
+The&nbsp;time complexity is O(<i>nk</i>) when each element is at most <i>k</i>&nbsp;places
+away from its sorted position.</li>
+<li>It&rsquo;s <strong>stable</strong>: it doesn&rsquo;t change the order of elements with equal keys.</li>
+<li>It&rsquo;s <strong>in-place</strong>: it only requires a constant amount of additional memory.</li>
+</ul>
+
+<pre><code>// InsertionSort sorts the elements of a in ascending order.
+func InsertionSort(a []int) {
+    for j := 1; j < len(a); j++ {
+        <span class="comment">// Invariant: a[:j] contains the same elements as</span>
+        <span class="comment">// the original slice a[:j], but in sorted order.</span>
+        key := a[j]
+        i := j - 1
+        for i >= 0 && a[i] > key {
+            a[i+1] = a[i]
+            i--
+        }
+        a[i+1] = key
+    }
+}</code></pre>
+
+
+</article>
+<aside>
+
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/algorithms/time-complexity-explained/">Time complexity</a><br />
+    <span class="source">yourbasic.org</span>
+  </div>
+
+  <div class="reference">
+    <a href="/algorithms/loop-invariants-explained/">Loop invariants</a><br />
+    <span class="source">yourbasic.org</span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/quicksort-optimizations/">Top 3 Quicksort optimizations</a><br />
+    <span class="source">yourbasic.org</span>
+  </div>
+
+  <h2>Top algorithm articles</h2>
+  <ul class="none">
+  
+    <li><a href="/algorithms/your-basic-api/">Your basic API</a></li>
+
+    <li><a href="/algorithms/hash-tables-explained/">Hash tables</a></li>
+
+    <li><a href="/algorithms/big-o-notation-explained/">Big O notation</a></li>
+
+    <li><a href="/algorithms/loop-invariants-explained/">Loop invariants</a></li>
+
+    <li><a href="/golang/quicksort-optimizations/">Top 3 Quicksort optimizations</a></li>
+
+  </ul>
+
+  <p><a href="/algorithms/"><b>See all algorithm articles</b></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>
