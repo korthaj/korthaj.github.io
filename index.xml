@@ -2351,12 +2351,12 @@ It&amp;rsquo;s a tool for building virtual graphs. In a virtual graph no vertice
     </item>
     
     <item>
-      <title>Your basic int: a most powerful datatype</title>
+      <title>Your basic int: a most powerful data type</title>
       <link>http://yourbasic.org/algorithms/your-basic-int/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/algorithms/your-basic-int/</guid>
-      <description>The int datatype is generic, effective, simple and efficient.
+      <description>The int data type is generic, effective, simple and efficient.
 Introduction Generic graph data Effective searching and sorting Simple sets Efficient filtering  Introduction Every kid can spot an integer number, and every programmer is familiar with the int data type. Still we frequently forget how powerful an integer can be.
  Generic
 An int or []int is a bit pattern that can represent any digital data. Furthermore, an int can point into any type of array.</description>
