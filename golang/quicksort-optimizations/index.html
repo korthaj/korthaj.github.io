@@ -86,9 +86,10 @@ func Quicksort(v []int) {
 
 <p>If we assume that the partition is done in linear time (which is possible to achieve)
 and that the list is divided exactly in the middle (which is unlikely),
-the expected time to sort a list of <code>n</code>&nbsp;elements is&nbsp;<code>O(nlog(n))</code>.</p>
+the expected time to sort a list of <i>n</i>&nbsp;elements
+is&nbsp;<i>O</i>(<i>n</i>&nbsp;log&nbsp;<i>n</i>).</p>
 
-<p>Unfortunately the worst case is <code>θ(n²)</code>,
+<p>Unfortunately the worst case is θ(<i>n</i><sup>2</sup>),
 but this case is rare if the pivot is chosen carefully.</p>
 
 <h2 id="pivot">Pivot</h2>
@@ -103,7 +104,7 @@ this step may dominate the running time.</li>
 
 <p>A simple solution is to choose <code>p</code> as a random list element.
 The expected number of comparisons for sorting a list of elements, all different,
-then becomes <code>1.4nlog(n)</code>. Also, with a good random source, this choice virtually
+then becomes 1.4&#8202;<i>n</i>&nbsp;log&nbsp;<i>n</i>. Also, with a good random source, this choice virtually
 eliminates the risk of quadratic performance.</p>
 
 <p>Another common choice is <code>p := Median(v[0], v[len(v)/2], v[len(v)-1])</code>,
@@ -112,7 +113,8 @@ in the next section gives very poor performance when sorting an already sorted l
 
 <p>A more robust solution is to combine the two ideas and use
 the median of three random elements.
-With this strategy, the expected number of comparisons becomes <code>1.2nlog(n)</code>.</p>
+With this strategy, the expected number of comparisons becomes
+1.2&#8202;<i>n</i>&nbsp;log&nbsp;<i>n</i>.</p>
 
 <pre><code>func Pivot(v []int) int {
 	n := len(v)
