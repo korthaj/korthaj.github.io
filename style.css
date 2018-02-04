@@ -201,6 +201,15 @@ a:hover{
   text-decoration:underline;
   color:#C63D0F;
 }
+h2 a{
+  color:#292f33;
+}
+h2 a:visited{
+  color:#292f33;
+}
+h2 a:hover{
+  color:#292f33;
+}
 ol, ul{
   padding-left:2em;
 }
