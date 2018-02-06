@@ -1201,6 +1201,17 @@ a[len(a)-1] = &#34;&#34; // Erase element (write zero value) a = a[:len(a)-1] //
     </item>
     
     <item>
+      <title>Learn to love your compiler</title>
+      <link>http://yourbasic.org/golang/compiler-error-messages/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/compiler-error-messages/</guid>
+      <description>The Go compiler often confuses and sometimes annoys developers who are new to&amp;nbsp;Go.
+This is a list of articles with strategies and workarounds for fresh Go programmers. Click the links for tips that will help you love &amp;ndash; or at least understand &amp;ndash; the Go compiler.
+The most misunderstood Go error messages  imported and not used Programs with unused imports won&#39;t compile.   declared and not used You must use all local variables.</description>
+    </item>
+    
+    <item>
       <title>Library package template</title>
       <link>http://yourbasic.org/golang/library-package-example-template/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
