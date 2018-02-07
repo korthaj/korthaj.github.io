@@ -1746,9 +1746,9 @@ a := regexp.MustCompile(`a`) fmt.Printf(&#34;%q\n&#34;, a.Split(&#34;banana&#34;
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/stack-trace/</guid>
-      <description>A stack trace is a list of active function calls at a certain point in time.
-Stack traces are typically printed to the console when unexpected error occurs. They can be very useful for&amp;nbsp;debugging: - not only do you see where the error happened, - but also how the program arrived in this place.
-Example goroutine 11 [running]: testing.tRunner.func1(0xc420092690) /usr/local/go/src/testing/testing.go:711 +0x2d2 panic(0x53f820, 0x594da0) /usr/local/go/src/runtime/panic.go:491 +0x283 github.com/yourbasic/bit.(*Set).Max(0xc42000a940, 0x0) ../src/github.com/bit/set_math_bits.go:137 +0x89 github.</description>
+      <description>A stack trace is a list of active function calls at a certain point in&amp;nbsp;time.
+Stack traces are typically printed to the console when an unexpected error occurs. They can be very useful for&amp;nbsp;debugging:
+ not only do you see where the error happened, but also how the program arrived in this place.  Example goroutine 11 [running]: testing.tRunner.func1(0xc420092690) /usr/local/go/src/testing/testing.go:711 +0x2d2 panic(0x53f820, 0x594da0) /usr/local/go/src/runtime/panic.go:491 +0x283 github.com/yourbasic/bit.(*Set).Max(0xc42000a940, 0x0) ../src/github.com/bit/set_math_bits.go:137 +0x89 github.</description>
     </item>
     
     <item>
