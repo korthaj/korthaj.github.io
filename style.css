@@ -87,6 +87,12 @@ ol, ul, .lead{
     margin-right:0;
   }
 }
+@media only screen and (min-width:720px){
+  .small-content{
+    display:none;
+  }
+}
+
 aside p{
   margin-right:0;
 }
