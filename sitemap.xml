@@ -22,14 +22,6 @@
   </url>
   
   <url>
-    <loc>http://yourbasic.org/algorithms/</loc>
-  </url>
-  
-  <url>
-    <loc>http://yourbasic.org/</loc>
-  </url>
-  
-  <url>
     <loc>http://yourbasic.org/algorithms/amortized-time-complexity-analysis/</loc>
   </url>
   
@@ -388,10 +380,6 @@
   
   <url>
     <loc>http://yourbasic.org/golang/day-month-year-from-time/</loc>
-  </url>
-  
-  <url>
-    <loc>http://yourbasic.org/golang/</loc>
   </url>
   
   <url>
@@ -876,7 +864,19 @@
   </url>
   
   <url>
+    <loc>http://yourbasic.org/</loc>
+  </url>
+  
+  <url>
     <loc>http://yourbasic.org/algorithms/your-basic-api/</loc>
+  </url>
+  
+  <url>
+    <loc>http://yourbasic.org/golang/</loc>
+  </url>
+  
+  <url>
+    <loc>http://yourbasic.org/algorithms/</loc>
   </url>
   
   <url>
