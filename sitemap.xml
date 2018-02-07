@@ -864,10 +864,6 @@
   </url>
   
   <url>
-    <loc>http://yourbasic.org/</loc>
-  </url>
-  
-  <url>
     <loc>http://yourbasic.org/algorithms/your-basic-api/</loc>
   </url>
   
@@ -885,6 +881,10 @@
   
   <url>
     <loc>http://yourbasic.org/algorithms/your-basic-int/</loc>
+  </url>
+  
+  <url>
+    <loc>http://yourbasic.org/</loc>
   </url>
   
   <url>
