@@ -1115,14 +1115,14 @@ Loop from 0 to len(a)-1 instead.</description>
     </item>
     
     <item>
-      <title>Inheritance and object-oriented programming in Go</title>
+      <title>Inheritance and OOP: Go one better</title>
       <link>http://yourbasic.org/golang/inheritance-object-oriented/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/inheritance-object-oriented/</guid>
-      <description>Go uses interfaces and embedding to support code reuse and polymorphism.
+      <description>Go doesn&#39;t support inheritance. It has a new and improved solution &amp;ndash; interfaces and embedding support code reuse and polymorphism.
 Inheritance in traditional object-oriented programming offers three features in&amp;nbsp;one. When a&amp;nbsp;Dog inherits from an&amp;nbsp;Animal
- the Dog class reuses code from the Animal&amp;nbsp;class, a variable x of type Animal can refer to either a Dog or an Animal, x.Eat() will choose an Eat method based on what type of object x refers&amp;nbsp;to.  In object-oriented lingo, these features are known as code reuse, poly&amp;shy;mor&amp;shy;phism and dynamic dispatch.</description>
+ the Dog class reuses code from the Animal&amp;nbsp;class, a variable x of type Animal can refer to either a Dog or an Animal, x.Eat() will choose an Eat method based on what type of object x refers&amp;nbsp;to.</description>
     </item>
     
     <item>
