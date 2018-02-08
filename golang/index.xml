@@ -972,13 +972,12 @@ The circumflex&amp;nbsp;^ denotes bitwise&amp;nbsp;XOR in&amp;nbsp;Go. The compu
     </item>
     
     <item>
-      <title>Go gotcha</title>
+      <title>Go gotcha: Pitfalls and corner cases</title>
       <link>http://yourbasic.org/golang/gotcha/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/gotcha/</guid>
-      <description>Pitfalls and corner cases
-This collection of common mistakes in Go is intended to help you spot similar traps in your own code and save you time when debugging.
+      <description>This collection of common mistakes in Go is intended to help you spot similar traps in your own code and save you time when debugging.
 Start here
 Table of contents </description>
     </item>
