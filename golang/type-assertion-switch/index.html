@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Type assertions and type switches | yourbasic.org </title>
-  <meta name="description" content="A type assertion provides access to an interface&#39;s concrete value.">
+  <title>Convert interface to X: type assertions and type switches | yourbasic.org </title>
+  <meta name="description" content="To convert an interface to a string, struct or map you should use a type assertion, which provides access to an interface’s concrete value.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -38,9 +38,12 @@
 
 <main>
 <article>
-<h1>Type assertions and type switches</h1>
+<h1>Convert interface to X: type assertions and type switches</h1>
 <div class="tagline">yourbasic.org</div>
-<p>A type assertion provides access to an interface&rsquo;s concrete value.</p>
+
+
+<p class="lead">A type assertion doesn’t really convert an interface to another data type,
+but it provides access to an interface’s concrete value, which is typically what you want.</p>
 
 <p>The type assertion <code>x.(T)</code> asserts that the concrete value stored in&nbsp;<code>x</code>
 is of type&nbsp;<code>T</code>, and that <code>x</code> is&nbsp;not&nbsp;nil.</p>
@@ -49,6 +52,8 @@ is of type&nbsp;<code>T</code>, and that <code>x</code> is&nbsp;not&nbsp;nil.</p
 <li>If <code>T</code> is not an interface, it asserts that the dynamic type of&nbsp;<code>x</code> is identical to&nbsp;<code>T</code>.</li>
 <li>If <code>T</code> is an interface, it asserts that the dynamic type of&nbsp;<code>x</code> implements&nbsp;<code>T</code>.</li>
 </ul>
+
+<h2 id="example-interface-to-string">Example: interface to string</h2>
 
 <pre><code>var x interface{} = "foo"
 
@@ -91,6 +96,11 @@ default:
 
     
   <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/find-type-of-object/">Find the type of an object</a><br />
+    <span class="source">yourbasic.org</span>
+  </div>
 
   <div class="reference">
     <a href="/golang/interfaces-explained/">Interfaces</a><br />
