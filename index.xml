@@ -856,7 +856,7 @@ re := regexp.MustCompile(`a.`) fmt.Printf(&#34;%q\n&#34;, re.FindAllString(&#34;
       <guid>http://yourbasic.org/golang/regexp-find-first-match/</guid>
       <description>Use the FindString method to find the text of the first match. If there is no match, the return value is an empty string.
 re := regexp.MustCompile(`foo.?`) fmt.Printf(&#34;%q\n&#34;, re.FindString(&#34;seafood fool&#34;)) // &#34;food&#34; fmt.Printf(&#34;%q\n&#34;, re.FindString(&#34;meat&#34;)) // &#34;&#34; There are several more search functions available in the regexp package. The strings All, String, Submatch, and Index can be combined to form the methods
-Find(All)?(String)?(Submatch)?(Index)?  </description>
+Find(All)?(String)?(Submatch)?(Index)?  The Regular expressions cheat sheet has more details.</description>
     </item>
     
     <item>
@@ -886,7 +886,7 @@ Find(All)?(String)?(Submatch)?(Index)?  </description>
       <guid>http://yourbasic.org/golang/regexp-find-index-location/</guid>
       <description>Use the FindStringIndex method to find loc, the location of the first match, in a string&amp;nbsp;s. The match is at s[loc[0]:loc[1]]. A return value of nil indicates no match.
 re := regexp.MustCompile(`ab?`) fmt.Println(re.FindStringIndex(&#34;tablett&#34;)) // [1 3] fmt.Println(re.FindStringIndex(&#34;foo&#34;) == nil) // true There are several more search functions available in the regexp package. The strings All, String, Submatch, and Index can be combined to form the methods:
-Find(All)?(String)?(Submatch)?(Index)?  </description>
+Find(All)?(String)?(Submatch)?(Index)?  The Regular expressions cheat sheet has more details.</description>
     </item>
     
     <item>
@@ -1800,7 +1800,7 @@ More about strings  String handling cheat sheet</description>
       
       <guid>http://yourbasic.org/golang/regexp-replace-string/</guid>
       <description>Use the ReplaceAllString method to replace the text of all matches. It returns a copy, replacing all matches of the regexp with a replacement string.
-re := regexp.MustCompile(`ab*`) fmt.Printf(&#34;%q\n&#34;, re.ReplaceAllString(&#34;-a-abb-&#34;, &#34;T&#34;)) // &#34;-T-T-&#34; </description>
+re := regexp.MustCompile(`ab*`) fmt.Printf(&#34;%q\n&#34;, re.ReplaceAllString(&#34;-a-abb-&#34;, &#34;T&#34;)) // &#34;-T-T-&#34; The Regular expressions cheat sheet has more details.</description>
     </item>
     
     <item>
