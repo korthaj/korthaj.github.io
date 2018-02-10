@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Binary search trees | yourbasic.org </title>
+  <meta name="description" content="A binary tree is a data structure in which each node has at most two children: the left child and the right child. A binary search tree stores items in sorted order and offers efficient lookup, addition and removal of items.">
+  
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-113104149-1');
+  </script>
+
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li class="here"><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Binary search trees</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<h2 id="tree-terminology">Tree terminology</h2>
+
+<p>A <b>binary tree</b> is a data structure most easily described by recursion.</p>
+
+<blockquote>
+A <b>binary tree</b>
+<ul style="margin:0.5em 0;">
+<li> is either empty,</li>
+<li> or consists of a <b>node</b>
+  (also known as the <b>root</b> of the tree) and two subtrees,
+  the left and right subtree, which are also binary trees.</li>
+</ul>
+</blockquote>
+
+<p>A node with two empty subtrees is called a&nbsp;<b>leaf</b>.</p>
+
+<p>If <code>p</code> is a node and <code>q</code> is the root of
+<code>p</code>&rsquo;s subtree, we say that
+<code>p</code> is the <b>parent</b> of <code>q</code>
+and that <code>q</code> is a <b>child</b> of&nbsp;<code>p</code>.
+Two nodes with the same parents are called <b>siblings</b>.</p>
+
+<p>The set of <b>ancestors</b> if the node&nbsp;<code>n</code>
+is defined recursively by these two&nbsp;rules:</p>
+
+<ul>
+<li><code>n</code> is an ancestor of&nbsp;<code>n</code>.
+</li>
+<li>If <code>q</code> is a child of&nbsp;<code>p</code> and
+    <code>q</code> is an ancestor of&nbsp;<code>n</code>, then
+    <code>p</code> is an ancestor of&nbsp;<code>n</code> as&nbsp;well.
+</li>
+</ul>
+
+<p>The set of ancestors to the node&nbsp;<code>n</code>
+form a <b>path</b> from&nbsp;<code>n</code>
+to the root of the&nbsp;tree.</p>
+
+<p>The <b>depth of a node</b> is the number of element on the path from
+the node to the&nbsp;root.</p>
+
+<p>The <b>depth of a tree</b> is defined to be the largest depth of any
+node in the tree. The empty tree has depth&nbsp;0.</p>
+
+<h2 id="binary-search-trees">Binary search trees</h2>
+
+<p>A <b>binary search tree</b> is a binary tree where each node contains
+a value from a well-ordered set.</p>
+
+<p>For <b>each node</b> <code>n</code> in a binary search tree
+the following invariants&nbsp;hold.</p>
+
+<ul>
+<li>Every node in the <b>left subtree</b> of&nbsp;<code>n</code> contains
+a value which is <b>smaller</b> than the value in the node&nbsp;<code>n</code>.
+</li>
+<li>Every node in the <b>right subtree</b> of&nbsp;<code>n</code> contains
+a value which is <b>larger</b> than the value in the node&nbsp;<code>n</code>.
+</li>
+</ul>
+
+<h3 id="example">Example</h3>
+
+<p>This binary tree has 9&nbsp;nodes and depth&nbsp;4.</p>
+
+<!-- Public domain: https://en.wikipedia.org/wiki/File:Binary_search_tree.svg -->
+
+<p><img style="margin: 8px 18px;" src="/algorithms/binary-tree.png" alt="binary search tree"></p>
+
+<p>The root of the tree contains the value&nbsp;8.
+The leaf values are 1, 4, 7 and 13.</p>
+
+<ul>
+<li>Each node in the left subtree has a value smaller than &nbsp;8,</li>
+<li>while each node in the right subtree has a value larger than &nbsp;8.</li>
+</ul>
+
+<p>In fact, this is a binary search tree, since
+the corresponding invariant holds for <b>each&nbsp;node</b> in the&nbsp;tree.</p>
+
+<h2 id="basic-binary-tree-algorithms">Basic binary tree algorithms</h2>
+
+<p>We say that a tree is <b>well-balanced</b> if each node in the tree has
+two subtrees with roughly the same number of nodes.
+It&rsquo;s possible to show that a well-balanced tree with <i>n</i>&nbsp;nodes
+has depth <i>O</i>(log&nbsp;<i>n</i>).</p>
+
+<p>If we can manage to keep a binary search tree well-balanced,
+we get an <b>ordered</b> data structure with
+excellent worst-case time complexity for all basic operations:
+lookup, addition and removal.</p>
+
+<p>There are several, more or less complicated, strategies
+to keep a binary search tree well-balanced.</p>
+
+<ul>
+<li><b>AVL trees</b> came first,
+</li>
+<li><b>Red-black trees</b> are used by Java’s <code>TreeSet</code>,
+</li>
+<li><b>Treaps</b>, randomized binary search trees, are simple and elegant.
+</li>
+</ul>
+
+<p>See the <a href="/algorithms/treap/">Treaps: randomized search trees</a> article
+for a full description of treaps.</p>
+
+<p>In this text we only present pseudocode for some basic operations
+on unbalanced binary search trees.</p>
+
+<blockquote class="warning">
+Warning: An unbalanced tree can be very inefficient.
+In the most extreme case, for example when all left subtrees are empty,
+the tree degrades into a singly linked list.
+</blockquote>
+
+<h3 id="inorder-traversal">Inorder traversal</h3>
+
+<p>An <b>inorder</b> traversal of a binary search tree visits the nodes in sorted order.</p>
+
+<pre>
+// Visit all nodes of a binary search tree in sorted order.
+<b>Algorithm</b> inorder(root)
+    <b>if</b> root is empty
+        // do nothing
+    <b>else</b>
+        inorder(root.left)
+        // do something with root
+        inorder(root.right)
+</pre>
+
+<h3 id="find">Find</h3>
+
+<p>It&rsquo;s pretty straightforward to implement the lookup operation
+in a binary search tree with iteration, but to
+keep things simple, here is a recursive version.</p>
+
+<pre>
+// Returns true if the value is found in the tree.
+<b>Algorithm</b> find(value, root)
+    <b>if</b> root is empty
+        return false
+    <b>if</b> value = root.value
+        return true
+    <b>if</b> value &lt; root.value
+        return find(value, root.left)    
+    <b>else</b>
+        return find(value, root.right)
+</pre>
+
+<h3 id="insert">Insert</h3>
+
+<p>To implement an algorithm that changes the structure of a tree,
+it&rsquo;s convenient to define a function that takes the root of the old tree
+as input, and returns the root of new updated tree.</p>
+
+<pre>
+// Adds a new node and returns the root of the updated tree.
+<b>Algorithm</b> insert(node, root)
+    <b>if</b> root is empty
+        return node
+    <b>if</b> node.value = root.value
+        // do nothing, element already in tree
+    <b>else</b> <b>if</b> node.value &lt; root.value
+        root.left ← insert(node, root.left)
+    <b>else</b>
+        root.right ← insert(node, root.right)
+    return root
+</pre>
+
+
+</article>
+<aside>
+
+    
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/algorithms/treap/">Treaps: randomized search trees</a><br />
+    <span class="source">yourbasic.org</span>
+  </div>
+
+<h2>Top algorithm articles</h2>
+  <ul class="none">
+  
+    <li><a href="/algorithms/your-basic-api/">Your basic API</a></li>
+
+    <li><a href="/algorithms/hash-tables-explained/">Hash tables</a></li>
+
+    <li><a href="/algorithms/big-o-notation-explained/">Big O notation</a></li>
+
+    <li><a href="/algorithms/loop-invariants-explained/">Loop invariants</a></li>
+
+    <li><a href="/golang/quicksort-optimizations/">Top 3 Quicksort optimizations</a></li>
+
+  </ul>
+  <p><a href="/algorithms/"><b>See all 20 algorithm articles</b></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

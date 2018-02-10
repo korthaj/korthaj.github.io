@@ -62,6 +62,10 @@
   </url>
   
   <url>
+    <loc>http://yourbasic.org/algorithms/binary-search-tree/</loc>
+  </url>
+  
+  <url>
     <loc>http://yourbasic.org/golang/bitmask-flag-set-clear/</loc>
   </url>
   
@@ -781,6 +785,10 @@
   
   <url>
     <loc>http://yourbasic.org/golang/quicksort-optimizations/</loc>
+  </url>
+  
+  <url>
+    <loc>http://yourbasic.org/algorithms/treap/</loc>
   </url>
   
   <url>

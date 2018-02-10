@@ -33,6 +33,17 @@ For example, if an algorithm increments each number in a list of length&amp;nbsp
     </item>
     
     <item>
+      <title>Binary search trees</title>
+      <link>http://yourbasic.org/algorithms/binary-search-tree/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/algorithms/binary-search-tree/</guid>
+      <description>Tree terminology A binary tree is a data structure most easily described by recursion.
+ A binary tree  is either empty,  or consists of a node (also known as the root of the tree) and two subtrees, the left and right subtree, which are also binary trees.   A node with two empty subtrees is called a&amp;nbsp;leaf.
+If p is a node and q is the root of p&amp;rsquo;s subtree, we say that p is the parent of q and that q is a child of&amp;nbsp;p.</description>
+    </item>
+    
+    <item>
       <title>Blackjack: How to count cards</title>
       <link>http://yourbasic.org/algorithms/blackjack/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -155,6 +166,17 @@ A well-chosen loop invariant is useful both when designing, testing, and modifyi
       <description>It&#39;s often possible to compute the time complexity of a recursive function by formulating and solving a recurrence relation.
 This text contains a few examples and a formula, the &amp;rdquo;master theorem&amp;rdquo;, which gives the solution to a class of recurrence relations that often show up when we analyze recursive functions.
 Sum of an arithmetic series As an introduction we show that the following recursive function has linear time complexity.</description>
+    </item>
+    
+    <item>
+      <title>Treaps: randomized search trees</title>
+      <link>http://yourbasic.org/algorithms/treap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/algorithms/treap/</guid>
+      <description>A treap stores items in sorted order and offers effi&amp;shy;cient lookup, addi&amp;shy;tion and remo&amp;shy;val of items.
+If you could use only one data structure, which one would you choose? A&amp;nbsp;hash table? While it supports the basic lookup, addition and removal operations, it&amp;nbsp;doesn’t keep the elements sorted. Therefore it can’t efficiently perform some common tasks, such as finding the minimum element or producing an ordered list of all&amp;nbsp;elements.
+What would you require of this ideal, sole structure?</description>
     </item>
     
     <item>
