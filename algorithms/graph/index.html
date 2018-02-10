@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graphs | yourbasic.org </title>
+  <meta name="description" content="Basic graph terminology, data structures and search algorithms: vertex set and edge set, self-loops, multigraphs, simple graphs, degree, path, cycle, connected, tree, leaf, digraph, DAG; adjacency list and adjacency matrix; DFS, BFS and Dijkstra’s algorithm.">
+  
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-113104149-1');
+  </script>
+
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li class="here"><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Graphs</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<p class="lead">Terminology, data structures and search algorithms</p>
+
+<!-- CC BY-SA 3.0: https://commons.wikimedia.org/wiki/File:Social_Network_Analysis_Visualization.png -->
+
+<p><img src="/algorithms/social-graph.png"></p>
+
+<p>This text introduces basic graph terminology,
+standard graph data structures, and three fundamental
+algorithms for traversing a graph in a systematic&nbsp;way.</p>
+
+<p>You may also want to take a look at the Github
+<a href="https://github.com/yourbasic/graph">yourbasic/graph</a> repository.
+It&rsquo;s a Go library with generic implementations of several basic graph algorithms.</p>
+
+<h2 id="terminology">Terminology</h2>
+
+<p>A <b>graph</b> <em>G</em> consists of two types of elements:
+<b>vertices</b> and <b>edges</b>.
+Each edge has two <b>endpoints</b>, which belong to the vertex set.
+We say that the edge <b>connects</b> (or&nbsp;joins) these two&nbsp;vertices.</p>
+
+<p>The <b>vertex set</b> of <em>G</em> is denoted&nbsp;<em>V(G)</em>,
+or just <em>V</em> if their is no ambiguity.</p>
+
+<p>An edge between vertices <em>x</em> and&nbsp;<em>y</em> is written as {<em>x</em>,&nbsp;<em>y</em>}.
+The <b>edge set</b> of <em>G</em> is denoted&nbsp;<em>E(G)</em>,
+or just&nbsp;<em>E</em> if their is no ambiguity.</p>
+
+<p>The graph in this picture has the vertex set V = {1, 2, 3, 4, 5,&nbsp;6}.
+The edge set E = {{1,&nbsp;2}, {1,&nbsp;5}, {2,&nbsp;3}, {2,&nbsp;5}, {3,&nbsp;4}, {4,&nbsp;5}, {4,&nbsp;6}}.</p>
+
+<!-- Wikimedia Commons, http://en.wikipedia.org/wiki/File:6n-graf.svg -->
+
+<p><img alt="6n-graf" src="/algorithms/6n-graph.png"></p>
+
+<p>A <b>self-loop</b> is an edge whose endpoints is a single vertex.
+<b>Multiple edges</b> are two or more edges that join the same two vertices.</p>
+
+<p>A graph is called <b>simple</b> if it has no self-loops and no multiple edges,
+and a <b>multigraph</b> if it does have multiple edges.</p>
+
+<p>The <b>degree</b> of an edge&nbsp;<em>v</em> is the number of edges
+that connect to&nbsp;<em>v</em>.</p>
+
+<p>A <b>path</b> in a graph <em>G = (V, E)</em> is a sequence of vertices
+<em>v<sub>1</sub></em>, <em>v<sub>2</sub></em>, &hellip;,
+<em>v<sub>k</sub></em>, with the property that there are edges between
+<em>v<sub>i</sub></em> and <em>v<sub>i+1</sub></em>.
+We say that the path goes from <em>v<sub>1</sub></em>
+to <em>v<sub>k</sub></em>.
+The sequence 6, 4, 5, 1, 2 is a path from 6 to 2 in the graph above.
+A path is <b>simple</b> if its vertices are all different.</p>
+
+<p>A <b>cycle</b> is a path <em>v<sub>1</sub></em>, <em>v<sub>2</sub></em>, &hellip;,
+<em>v<sub>k</sub></em> for which <em>k</em>&nbsp;&gt;&nbsp;2,
+the firs <em>k</em>&nbsp;-&nbsp;1 vertices are all different,
+and <em>v<sub>1</sub></em>&nbsp;=&nbsp;<em>v<sub>k</sub></em>.
+The sequence 4, 5, 2, 3, 4 is a cycle in the graph above.</p>
+
+<p>A graph is <b>connected</b> if for every pair of vertices
+<em>u</em> and <em>v</em>, there is a path from <em>u</em> to&nbsp;<em>v</em>.</p>
+
+<p>If there is a path connecting <em>u</em> and&nbsp;<em>v</em>,
+the <b>distance</b> between these vertices is defined as the minimal number
+of edges on a path from <em>u</em> to&nbsp;<em>v</em>.</p>
+
+<p>A <b>connected component</b> is a subgraph of maximum size,
+in which every pair of vertices are connected by a path.
+Here is a graph with three connected components.</p>
+
+<!-- Wikimedia Commons, http://en.wikipedia.org/wiki/File:Pseudoforest.svg -->
+
+<p><img src="/algorithms/forest.png"></p>
+
+<h3 id="trees">Trees</h3>
+
+<p>A <b>tree</b> is a connected simple acyclic graph.
+An vertex with degree&nbsp;1 in a tree is called a&nbsp;<b>leaf</b>.</p>
+
+<h3 id="directed-graphs">Directed graphs</h3>
+
+<p>A <b>directed graph</b> or <b>digraph</b> <em>G = (V, E)</em>
+consists of a vertex set <em>V</em> and an edge set of <b>ordered pairs</b>
+<em>E</em> of elements in the vertex&nbsp;set.</p>
+
+<p>Here is a simple acyclic digraph (often called a <b>DAG</b>,
+&ldquo;directed acyclic graph&rdquo;) with seven vertices and eight edges.</p>
+
+<!-- Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Directed_acyclic_graph.svg -->
+
+<p><img src="/algorithms/dag.png"></p>
+
+<h2 id="data-structures">Data structures</h2>
+
+<h3 id="adjacency-matrix">Adjacency matrix</h3>
+
+<p>An adjacency matrix is a |V|x|V|-matrix of integers,
+representing a graph&nbsp;<em>G = (V,&nbsp;E)</em>.</p>
+
+<ul>
+<li>The vertices are number from 1 to&nbsp;|V|.</li>
+<li>The number at position&nbsp;(<em>i</em>,&nbsp;<em>j</em>)
+indicates the number of edges from&nbsp;<em>i</em> to&nbsp;<em>j</em>.</li>
+</ul>
+
+<p>Here is an undirected graph and its symmetric adjacency matrix.</p>
+
+<!-- Wikimedia Commons, http://en.wikipedia.org/wiki/File:6n-graph2.svg -->
+
+<p><img  style="float:left; margin-right:20px;" src="/algorithms/graph2.png"></p>
+
+<p><img style="margin:30px 0 20px 10px;"
+  alt="graph2-matrix" src="/algorithms/graph2-matrix.png"></p>
+
+<p>The adjacency matrix representation is best suited for <b>dense graphs</b>,
+graphs in which the number of edges is close to the maximal.</p>
+
+<p>In a <b>sparse graph</b>, an adjacency matrix will have a large <b>memory overhead</b>,
+and <b>finding all neighbors</b> of a vertex will be <b>costly</b>.</p>
+
+<h3 id="adjacency-list">Adjacency list</h3>
+
+<p>The adjacency list graph data structure is well suited for sparse graphs.
+It consists of a array of size&nbsp;|V|, where
+position&nbsp;<em>k</em> in the array contains a list
+of all neighbors to&nbsp;<em>k</em>.</p>
+
+<p>Note that the &ldquo;neighbor list&rdquo; doesn&rsquo;t have to be an actual list. It could be
+any data structure representing a set of&nbsp;vertices.
+Hash tables, arrays or linked lists are common choices.</p>
+
+<h2 id="search-algorithms">Search algorithms</h2>
+
+<h3 id="depth-first-search">Depth-first search</h3>
+
+<p>Depth-first search <code>DFS(G,&nbsp;v)</code> is an algorithm
+that visits all edges in the graph&nbsp;<code>G</code> that belong to the
+same connected component as vertex&nbsp;<emcode>v</code>.</p>
+
+<pre>
+<b>Algorithm</b> DFS(G, v)
+    <b>if</b> v is already visited
+        <b>return</b>        
+    Mark v as visited.
+    // Perform some operation on v.
+    <b>for</b> all neighbors x of v
+        DFS(G, x)
+</pre>
+
+<h3 id="breadth-first-search">Breadth-first search</h3>
+
+<p>Breadth-first search <code>BFS(G,&nbsp;v)</code> also visits all vertices
+that belong to the same component as&nbsp;<em>v</em>.
+However, the vertices are visited in distance order: the algorithm first visits&nbsp;<em>v</em>,
+then all neighbors of&nbsp;<em>v</em>, then their neighbors, and so&nbsp;on.</p>
+
+<pre>
+<b>Algorithm</b> BFS(G, v)
+    Q ← new empty FIFO queue
+    Mark v as visited.
+    Q.enqueue(v)
+    <b>while</b> Q is not empty
+        a ← Q.dequeue()
+        // Perform some operation on a.
+        <b>for</b> all unvisited neighbors x of a
+            Mark x as visited.
+            Q.enqueue(x)
+</pre>
+
+<h3 id="dijkstra-s-algorithm">Dijkstra’s algorithm</h3>
+
+<p>The algorithm <code>Dijkstra(G,&nbsp;s)</code> computes
+the shortest path from a vertex <code>s</code>, the source,
+to all other vertices in a graph&nbsp;<code>g</code> with non-negative edge costs.</p>
+
+<p>The algorithms returns two arrays:</p>
+
+<ul>
+<li>
+<code>dist[k]</code> holds the length of a shortest path
+  from&nbsp;<code>s</code> to&nbsp;<code>k</code>,
+</li>
+<li>
+<code>prev[k]</code> holds the previous vertex in a shortest path
+from&nbsp;<code>s</code> to&nbsp;<code>k</code>.
+</li>
+</ul>
+
+<pre>
+<b>Algorithm</b> Dijkstra(G, s)
+    <b>for</b> each vertex v in G
+        dist[v] ← ∞
+        prev[v] ← undefined
+    dist[s] = 0
+
+    Q ← the set of all nodes in G
+    <b>while</b> Q is not empty
+        u ← vertex in Q with smallest distance in dist[]
+        Remove u from Q.
+        <b>if</b> dist[u] = ∞
+            <b>break</b>
+        <b>for</b> each neighbor v of u
+            alt ← dist[u] + dist_between(u, v)
+            <b>if</b> alt &lt; dist[v]
+                dist[v] ← alt
+                prev[v] ← u
+
+    <b>return</b> dist[], prev[]
+</pre>
+
+
+</article>
+<aside>
+
+    
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="https://godoc.org/github.com/yourbasic/graph">Package graph</a><br />
+    <span class="source">godoc.org</span>
+    <span class="author"></span>
+  </div>
+
+<h2>Top algorithm articles</h2>
+  <ul class="none">
+  
+    <li><a href="/algorithms/your-basic-api/">Your basic API</a></li>
+
+    <li><a href="/algorithms/hash-tables-explained/">Hash tables</a></li>
+
+    <li><a href="/algorithms/big-o-notation-explained/">Big O notation</a></li>
+
+    <li><a href="/algorithms/loop-invariants-explained/">Loop invariants</a></li>
+
+    <li><a href="/golang/quicksort-optimizations/">Top 3 Quicksort optimizations</a></li>
+
+  </ul>
+  <p><a href="/algorithms/"><b>See all 21 algorithm articles</b></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

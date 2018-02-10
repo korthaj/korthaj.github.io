@@ -1094,6 +1094,18 @@ go list.Sort() // Run list.Sort in parallel; don’t wait for it. The following 
     </item>
     
     <item>
+      <title>Graphs</title>
+      <link>http://yourbasic.org/algorithms/graph/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/algorithms/graph/</guid>
+      <description>Terminology, data structures and search algorithms
+This text introduces basic graph terminology, standard graph data structures, and three fundamental algorithms for traversing a graph in a systematic&amp;nbsp;way.
+You may also want to take a look at the Github yourbasic/graph repository. It&amp;rsquo;s a Go library with generic implementations of several basic graph algorithms.
+Terminology A graph G consists of two types of elements: vertices and edges. Each edge has two endpoints, which belong to the vertex set.</description>
+    </item>
+    
+    <item>
       <title>HTTP server example</title>
       <link>http://yourbasic.org/golang/http-server-example/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
