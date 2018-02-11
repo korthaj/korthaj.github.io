@@ -83,7 +83,7 @@ ol, ul, .lead{
   }
 }
 @media only screen and (max-width:720px){
-  p, ol, ul, .lead{
+  p, ol, ul, .lead, blockquote{
     margin-right:0;
   }
 }
