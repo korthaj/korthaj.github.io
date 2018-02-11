@@ -55,14 +55,14 @@ aside{
   margin-top:40px;
   padding:0 15px;
 }
-p{
+p, blockquote{
   margin-right:6em;
 }
 ol, ul, .lead{
   margin-right:4em;
 }
 @media only screen and (max-width:960px){
-  p{
+  p, blockquote{
     margin-right:10em;
   }
   ol, ul{
@@ -274,10 +274,8 @@ pre code{
 }
 blockquote{
   display:block;
-  margin:0 0 1em 0;
-  padding:1em 1.5em;
-  border:1px solid #c4c5c0;
-  border-radius:4px;
+  margin-left:0;
+  padding:0.2em 0 0.2em 1.2em;
   border-left:4px solid #4885ed;
 }
 blockquote.warning{
