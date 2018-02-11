@@ -11,6 +11,17 @@
     
     
     <item>
+      <title>Algorithms: What’s the problem?</title>
+      <link>http://yourbasic.org/algorithms/algorithms/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/algorithms/algorithms/</guid>
+      <description>A good programmer describes algo&amp;shy;rithms in a form that can be&amp;nbsp;effi&amp;shy;ciently exe&amp;shy;cuted by&amp;nbsp;ma&amp;shy;chines and easily under&amp;shy;stood by&amp;nbsp;humans.
+Algorithms and programs are pretty much the same thing &amp;ndash; the difference is that we can talk about algorithms without relying on a programming language. An algorithm invented today will be equally as useful when the last Java programmer has logged&amp;nbsp;out. Here is an attempt at a formal definition.
+ An algorithm is a stepwise procedure of well-defined executable instructions intended to perform a task or solve a problem, often with the added requirement that the procedure must come to a stop.</description>
+    </item>
+    
+    <item>
       <title>Amortized time complexity</title>
       <link>http://yourbasic.org/algorithms/amortized-time-complexity-analysis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -181,7 +192,7 @@ Sum of an arithmetic series As an introduction we show that the following recurs
     </item>
     
     <item>
-      <title>Treaps: randomized search trees</title>
+      <title>Treaps: Randomized search trees</title>
       <link>http://yourbasic.org/algorithms/treap/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -192,7 +203,7 @@ What would you require of this ideal, sole structure?</description>
     </item>
     
     <item>
-      <title>What’s a seed: random number generators</title>
+      <title>What’s a seed: Random number generators</title>
       <link>http://yourbasic.org/algorithms/random-number-generator-seed/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

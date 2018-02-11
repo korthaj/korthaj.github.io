@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algorithms: What’s the problem? | yourbasic.org </title>
+  <meta name="description" content="What&#39;s an algorithm.">
+  
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-113104149-1');
+  </script>
+
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li class="here"><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Algorithms: What’s the problem?</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<p class="lead">A good programmer describes algo&shy;rithms in a form
+that can be&nbsp;effi&shy;ciently exe&shy;cuted by&nbsp;ma&shy;chines
+and easily under&shy;stood by&nbsp;humans.</p>
+
+<!-- CC0: https://pixabay.com/en/maze-labyrinth-solution-lost-1804499/ -->
+
+<p><img src="/algorithms/maze.jpg"></p>
+
+<p>Algorithms and programs are pretty much the same thing &ndash;
+the difference is that we can talk about algorithms without relying
+on a programming language.
+An algorithm invented today will be equally as useful when
+the last Java programmer has logged&nbsp;out.
+Here is an attempt at a formal definition.</p>
+
+<blockquote>
+An <b>algorithm</b> is a stepwise procedure of well-defined
+executable instructions intended to perform a task or solve a problem,
+often with the added requirement that the procedure must come to a stop.
+</blockquote>
+
+<p>A programmer&rsquo;s job is to design and implement algorithms that are
+<b>correct</b>, <b>simple</b> and <b>efficient</b>.</p>
+
+<h2 id="problems">Problems</h2>
+
+<p>Algorithms are commonly used to solve certain types of computational problems.
+We can often describe such a problem by specifying a relationship between
+input and output.</p>
+
+<p><b>The sorting problem</b>, for example, can be described like this:</p>
+
+<ul>
+<li><b>Input:</b> a sequence
+<i>a<sub>1</sub></i>,&nbsp;<i>a<sub>2</sub></i>,&nbsp;...,&nbsp;<i>a<sub>n</sub></i>
+of <i>n</i>&nbsp;numbers.
+</li>
+<li><b>Output:</b> a permutation (reordering)
+<i>a'<sub>1</sub></i>,&nbsp;<i>a'<sub>2</sub></i>,&nbsp;...,&nbsp;<i>a'<sub>n</sub></i>
+of the input, which satisfies the property
+<i>a'<sub>1</sub></i>&nbsp;&le;&nbsp;<i>a'<sub>2</sub></i>&nbsp;&le;&nbsp;...&nbsp;&le;&nbsp;<i>a'<sub>n</sub></i>.
+</li>
+</ul>
+
+<p>As an example: given the input sequence 12,&nbsp;24,&nbsp;13,&nbsp;12,&nbsp;8
+a sorting algorithm must produce the output sequence 8,&nbsp;12,&nbsp;12,&nbsp;13,&nbsp;24.
+One such specific example of input for a problem is called
+an <b>instance of the problem</b>.</p>
+
+<p>We say that an algorithm is <b>correct</b> if the algorithmic procedure <b>stops</b>
+for each problem instance and returns the <b>required output</b>.
+The algorithm <b>solves</b> the problem.</p>
+
+<h2>Pseudocode</h2>
+
+<p>When talking and writing about algorithms its convenient to use pseudocode
+instead of executable code.</p>
+
+<blockquote>
+<b>Pseudocode</b> is a compact and informal high-level description
+of an algorithm intended for humans rather than machines.
+</blockquote>
+
+<p>In pseudocode you can omit details that are easy to figure out for a human,
+such as variable declarations and system-specific function calls.
+You can also use natural language and mathematical notation.</p>
+
+<p>For obvious reasons, there is no standard for writing pseudocode,
+but here is a typical example.
+First take a look at the code written in Go.</p>
+
+<pre><code>// Sum returns the sum 1 + 2 + ... + n, where n ≥ 1.
+func Sum(n int) int {
+    var sum int
+    for i := 1; i <= n; i++ {
+        sum += i
+    }
+    return sum
+}
+</code></pre>
+
+<p>The same algorithm described in pseudocode might look like&nbsp;this.</p>
+
+<pre>
+// Returns the sum 1 + 2 + ... + n, where n ≥ 1.
+<b>Algorithm</b> sum(n)
+    sum ← 0
+    <b>for</b> i ← 1 to n
+        sum += i
+    return sum
+</pre>
+
+<h2>Efficiency</h2>
+
+<p>Different algorithms that solve the same problem
+can have large performance differences.
+Here is a typical situation.</p>
+
+<ul>
+<li>
+The number of machine instructions required to sort <i>n</i>&nbsp;numbers with
+<b>Insertion sort</b> can be approximated with the formula
+<b><i>c<sub>1&#8202;</sub>n<sup>2</sup></i></b>, where <i>c<sub>1</sub></i>
+is a constant that depends on how well the algorithm is implemented.
+</li>
+<li>
+<b>Merge sort</b> requires roughly
+<b><i>c<sub>2&#8202;</sub>n</i>&nbsp;log<sub>2</sub>&nbsp;<i>n</i></b> instructions, where
+<i>c<sub>2</sub></i> is an implementation-dependent constant.
+</li>
+</ul>
+
+<p>From this we can see that Merge sort is much&nbsp;faster than Insertion sort
+when <i>n</i>&nbsp;is&nbsp;large.
+This holds true even if we use an <b>incompetent implementation</b> of Merge sort
+running on a <b>slow computer</b>.</p>
+
+<h3 id="example">Example</h3>
+
+<p>The differences become painfully obvious when
+we plug in some actual values in the&nbsp;formulas.</p>
+
+<ol>
+<li>Let's run Insertion sort on a fast computer
+  that can execute 10<sup>9</sup>&nbsp;instructions per&nbsp;second.
+  The algorithm is implemented by a skillful programmer and the constant
+  <i>c<sub>1</sub></i>&nbsp;=&nbsp;5.
+</li>
+<li>Merge sort run will run on a much slower computer that can only execute
+  10<sup>7</sup>&nbsp;instructions per&nbsp;second.
+  Also, the implementation is sloppy:
+  <i>c<sub>2</sub></i>&nbsp;=&nbsp;100.
+</li>
+</ol>
+
+<p>For small instances of the sorting problem, the faster computer wins.</p>
+
+<ul>
+<li>If <i>n</i>&nbsp;=&nbsp;1000 it takes bout 5&nbsp;ms to sort using in the first case,</li>
+<li>while the second case takes 100&nbsp;ms.</li>
+</ul>
+
+<p>For larger instances, the picture is very different.</p>
+
+<ul>
+<li>If <i>n</i>&nbsp;=&nbsp;1,000,000, the first case takes <b>more than an hour</b> (5000&nbsp;s),</li>
+<li>while the second case takes <b>less than five minutes</b> (200&nbsp;s).</li>
+</ul>
+
+<p>For larger problem instances, the differences are even bigger
+and the choice of algorithm becomes even more critical.</p>
+
+
+</article>
+<aside>
+
+    
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/algorithms/monte-carlo/">Monte Carlo simulations</a><br />
+    <span class="source">yourbasic.org</span>
+  </div>
+
+  <div class="reference">
+    <a href="/algorithms/random-number-generator-seed/">What’s a seed: Random number generators</a><br />
+    <span class="source">yourbasic.org</span>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/create-image/">Create a new image</a><br />
+    <span class="source">yourbasic.org</span>
+  </div>
+
+  <div class="reference">
+    <a href="/algorithms/blackjack/">Blackjack: How to count cards</a><br />
+    <span class="source">yourbasic.org</span>
+  </div>
+
+<h2>Top algorithm articles</h2>
+  <ul class="none">
+  
+    <li><a href="/algorithms/your-basic-api/">Your basic API</a></li>
+
+    <li><a href="/algorithms/hash-tables-explained/">Hash tables</a></li>
+
+    <li><a href="/algorithms/big-o-notation-explained/">Big O notation</a></li>
+
+    <li><a href="/algorithms/loop-invariants-explained/">Loop invariants</a></li>
+
+    <li><a href="/golang/quicksort-optimizations/">Top 3 Quicksort optimizations</a></li>
+
+  </ul>
+  <p><a href="/algorithms/"><b>See all 22 algorithm articles</b></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>
