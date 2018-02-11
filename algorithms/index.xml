@@ -17,7 +17,7 @@
       
       <guid>http://yourbasic.org/algorithms/algorithms/</guid>
       <description>A good programmer describes algo&amp;shy;rithms in a form that can be&amp;nbsp;effi&amp;shy;ciently exe&amp;shy;cuted by&amp;nbsp;ma&amp;shy;chines and easily under&amp;shy;stood by&amp;nbsp;humans.
-Algorithms and programs are pretty much the same thing &amp;ndash; the difference is that we can talk about algorithms without relying on a programming language. An algorithm invented today will be equally as useful when the last Java programmer has logged&amp;nbsp;out. Here is an attempt at a formal definition.
+Algorithms and programs are pretty much the same thing &amp;ndash; the main difference is that we can talk about algorithms without relying on a programming language. An algorithm invented today will be equally as useful when the last Java programmer has logged&amp;nbsp;out. Here is an attempt at a formal definition.
  An algorithm is a stepwise procedure of well-defined executable instructions intended to perform a task or solve a problem, often with the added requirement that the procedure must come to a stop.</description>
     </item>
     
