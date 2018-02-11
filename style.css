@@ -181,8 +181,8 @@ a img{
 transition:all 0.5s ease;
 }
 a img:hover{
--webkit-transform:scale(0.9);
-transform:scale(0.9):
+-webkit-transform:scale(0.95);
+transform:scale(0.95):
 }
 h1{
   font-size:230%;
