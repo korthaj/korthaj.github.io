@@ -40,8 +40,14 @@
 <article>
 <h1>Insertion sort</h1>
 <div class="tagline">yourbasic.org</div>
+
+
 <p class="lead">Insertion sort can outperform more complicated algorithms
 for short lists and lists that are almost sorted.</p>
+
+<!-- CC0: http://www.publicdomainpictures.net/view-image.php?image=96282&picture=playing-cards -->
+
+<p><img src="/algorithms/sort-playing-cards.jpg"></p>
 
 <p>Insertion sort is a simple sorting algorithm with <strong>quadratic</strong> worst-case running time,
 but in some cases it&rsquo;s still the algorithm of choice.</p>
@@ -71,6 +77,13 @@ func InsertionSort(a []int) {
         a[i+1] = key
     }
 }</code></pre>
+
+<h3 id="further-reading">Further reading</h3>
+
+<div><a href="/golang/quicksort-optimizations/"><img src="/golang/divide-conquer.jpg" width="200px" title="Top 3 Quicksort optimizations"></a></div>
+
+<p style="margin-top:0;">See <a href="/golang/quicksort-optimizations/">Top 3 Quicksort optimizations</a>
+for a fast Quicksort implementation that uses Insertion sort to improve performance.</p>
 
 
 </article>
