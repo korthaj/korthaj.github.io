@@ -143,20 +143,20 @@ Here is a typical situation.</p>
 <ul>
 <li>
 The number of machine instructions required to sort <i>n</i>&nbsp;numbers with
-<b>Insertion sort</b> can be approximated with the formula
+<a href="/algorithms/insertion-sort/">Insertion sort</a> can be approximated with the formula
 <b><i>c<sub>1&#8202;</sub>n<sup>2</sup></i></b>, where <i>c<sub>1</sub></i>
 is a constant that depends on how well the algorithm is implemented.
 </li>
 <li>
-<b>Merge sort</b> requires roughly
+<a href="/golang/quicksort-optimizations/">Quicksort</a> requires roughly
 <b><i>c<sub>2&#8202;</sub>n</i>&nbsp;log<sub>2</sub>&nbsp;<i>n</i></b> instructions, where
 <i>c<sub>2</sub></i> is an implementation-dependent constant.
 </li>
 </ul>
 
-<p>From this we can see that Merge sort is much&nbsp;faster than Insertion sort
+<p>From this we can see that Quicksort is much&nbsp;faster than Insertion sort
 when <i>n</i>&nbsp;is&nbsp;large.
-This holds true even if we use an <b>incompetent implementation</b> of Merge sort
+This holds true even if we use an <b>incompetent implementation</b> of Quicksort
 running on a <b>slow computer</b>.</p>
 
 <h3 id="example">Example</h3>
@@ -170,7 +170,7 @@ we plug in some actual values in the&nbsp;formulas.</p>
   The algorithm is implemented by a skillful programmer and the constant
   <i>c<sub>1</sub></i>&nbsp;=&nbsp;5.
 </li>
-<li>Merge sort run will run on a much slower computer that can only execute
+<li>Quicksort run will run on a much slower computer that can only execute
   10<sup>7</sup>&nbsp;instructions per&nbsp;second.
   Also, the implementation is sloppy:
   <i>c<sub>2</sub></i>&nbsp;=&nbsp;100.
@@ -191,8 +191,15 @@ we plug in some actual values in the&nbsp;formulas.</p>
 <li>while the second case takes <b>less than five minutes</b> (200&nbsp;s).</li>
 </ul>
 
-<p>For larger problem instances, the differences are even bigger
+<p>For even larger problem instances, the differences are even bigger
 and the choice of algorithm becomes even more critical.</p>
+
+<h3 id="further-reading">Further reading</h3>
+
+<div><a href="/golang/quicksort-optimizations/"><img src="/golang/divide-conquer.jpg" width="200px" title="Top 3 Quicksort optimizations"></a></div>
+
+<p style="margin-top:0;">See <a href="/golang/quicksort-optimizations/">Top 3 Quicksort optimizations</a>
+for a fast Quicksort implementation that uses Insertion sort to improve performance.</p>
 
 
 </article>
