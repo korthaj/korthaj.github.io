@@ -2053,16 +2053,6 @@ func Sum(nums ...int) int { res := 0 for _, n := range nums { res += n } return 
     </item>
     
     <item>
-      <title>Time complexity</title>
-      <link>http://yourbasic.org/algorithms/time-complexity-explained/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/algorithms/time-complexity-explained/</guid>
-      <description>Time complexity esti&amp;shy;mates the time to run an algo&amp;shy;rithm. It&#39;s calcu&amp;shy;lated by counting elemen&amp;shy;tary opera&amp;shy;tions. Example Worst-case time Average-case time Linear vs. quadratic time  Example What&amp;rsquo;s the running time of the following algorithm?
- // Compute the maximum element in the array a. Algorithm max(a): max ← a[0] for i = 1 to len(a)-1 if a[i] &amp;gt; max max ← a[i] return max  The answer depends on factors such as input, programming language and runtime, coding skill, compiler, operating system, and hardware.</description>
-    </item>
-    
-    <item>
       <title>Time complexity of recursive functions</title>
       <link>http://yourbasic.org/algorithms/time-complexity-recursive-functions/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -2071,6 +2061,16 @@ func Sum(nums ...int) int { res := 0 for _, n := range nums { res += n } return 
       <description>It&#39;s often possible to compute the time complexity of a recursive function by formulating and solving a recurrence relation.
 This text contains a few examples and a formula, the &amp;rdquo;master theorem&amp;rdquo;, which gives the solution to a class of recurrence relations that often show up when we analyze recursive functions.
 Sum of an arithmetic series As an introduction we show that the following recursive function has linear time complexity.</description>
+    </item>
+    
+    <item>
+      <title>Time complexity: count your steps</title>
+      <link>http://yourbasic.org/algorithms/time-complexity-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/algorithms/time-complexity-explained/</guid>
+      <description>Time complexity esti&amp;shy;mates the time to run an algo&amp;shy;rithm. It&#39;s calcu&amp;shy;lated by counting elemen&amp;shy;tary opera&amp;shy;tions. Example Worst-case time Average-case time Linear vs. quadratic time  Example What&amp;rsquo;s the running time of the following algorithm?
+ // Compute the maximum element in the array a. Algorithm max(a): max ← a[0] for i = 1 to len(a)-1 if a[i] &amp;gt; max max ← a[i] return max  The answer depends on factors such as input, programming language and runtime, coding skill, compiler, operating system, and hardware.</description>
     </item>
     
     <item>
