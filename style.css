@@ -32,12 +32,10 @@ main{
   width:960px;
   margin:0 auto;
 }
-header{
-  padding:10px 15px;
-}
 header nav{
-  max-width:930px; /* 960 - 2*15 */
+  max-width:960px;
   margin:0 auto;
+  padding:10px 15px;
 }
 footer{
   padding:15px;
@@ -115,13 +113,12 @@ header nav ul{
 }
 header nav ul li {
   display:inline;
-  white-space:nowrap;
   color:#555;
   margin-right:1em;
   padding:10px 0;
 }
 .here {
-  padding:10px 0 4px 0;
+  padding-bottom:4px;
   border-bottom:4px solid #C63D0F;
 }
 header nav ul li:first-child{
@@ -131,12 +128,11 @@ header nav ul li:first-child{
 }
 header nav ul li a, header nav ul li a:visited{
   color:#555;
-  padding:10px 0;
 }
 header nav ul li a:hover{
   text-decoration:none;
   color:#555;
-  padding:10px 0 4px 0;
+  padding-bottom:4px;
   border-bottom:4px solid #C63D0F;
   transition: all 300ms ease-out;
 }
