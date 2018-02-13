@@ -2427,7 +2427,7 @@ fmt.Printf(&#34;Hex: %x.\n&#34;, 255) // &#34;Hex: ff.&#34;  the format specifie
     </item>
     
     <item>
-      <title>int vs. int64: which one should I use?</title>
+      <title>int vs. int64: Which one should I use?</title>
       <link>http://yourbasic.org/golang/int-vs-int64/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
