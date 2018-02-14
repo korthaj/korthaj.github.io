@@ -284,16 +284,6 @@ A new channel value can be made using the built-in function make.
     </item>
     
     <item>
-      <title>Check if a file or directory exists</title>
-      <link>http://yourbasic.org/golang/check-file-exists/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/check-file-exists/</guid>
-      <description>Use the os.Stat and os.IsNotExist functions.
-filepath := &#34;/dev/null&#34; if _, err := os.Stat(filepath); !os.IsNotExist(err) { fmt.Println(filepath, &#34;exists&#34;) // If there was an error, it wasn&#39;t a missing file // but something else, such as a permission error. } /dev/null exists  Warning: A file that is hidden from the current process will, of course, not be found.  </description>
-    </item>
-    
-    <item>
       <title>Check if a map contains a key</title>
       <link>http://yourbasic.org/golang/check-map-contains-key/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -726,16 +716,6 @@ var n int // n == 0 type T struct { n int f float64 next *T } t := new(T) // t.<
 func main() { defer fmt.Println(&#34;World&#34;) fmt.Println(&#34;Hello&#34;) } Hello World Deferred calls are executed even when the function panics.
 func main() { defer fmt.Println(&#34;World&#34;) panic(&#34;Stop&#34;) fmt.Println(&#34;Hello&#34;) } World panic: Stop goroutine 1 [running]: main.main() ../main.go:3 +0xa0 Deferred function calls are executed in last-in-first-out order, and a deferred function&amp;rsquo;s arguments are evaluated when the defer statement executes.
 func main() { fmt.</description>
-    </item>
-    
-    <item>
-      <title>Delete a file or directory</title>
-      <link>http://yourbasic.org/golang/delete-file-directory/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/delete-file-directory/</guid>
-      <description>Use the os.Remove function to remove a file or directory:
-if err := os.Remove(&amp;quot;/path/to/file&amp;quot;); err != nil {	fmt.Println(err) }  remove /path/to/file: No such file or directory  The error, if any, will be of type os.PathError.</description>
     </item>
     
     <item>
