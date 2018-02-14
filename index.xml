@@ -1050,13 +1050,15 @@ The circumflex&amp;nbsp;^ denotes bitwise&amp;nbsp;XOR in&amp;nbsp;Go. The compu
     </item>
     
     <item>
-      <title>Go gotcha: Pitfalls and corner cases</title>
+      <title>Go gotcha: newbie or ninja?</title>
       <link>http://yourbasic.org/golang/gotcha/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/gotcha/</guid>
-      <description>This collection of common mistakes in Go is intended to help you spot similar traps in your own code and save you time when debugging.
-Start here
+      <description>26 sneaky traps and corner cases
+This collection of gotchas and pitfalls in Go is intended to help you find and fix similar problems in your own&amp;nbsp;code.
+Some of the puzzles are pretty easy. To solve all 26, you have to be a&amp;nbsp;ninja.
+Take quiz
 Table of contents </description>
     </item>
     
@@ -1067,7 +1069,7 @@ Table of contents </description>
       
       <guid>http://yourbasic.org/golang/goroutines-explained/</guid>
       <description>The go statement runs a func&amp;shy;tion in a sepa&amp;shy;rate thread of&amp;nbsp;execu&amp;shy;tion.
-Go permits starting a new thread of execution, a&amp;nbsp;goroutine, using the go statement. It runs a function in a different, newly created, goroutine. All goroutines in a single program share the same address space.
+You can start a new thread of execution, a&amp;nbsp;goroutine, with the go statement. It runs a function in a different, newly created, goroutine. All goroutines in a single program share the same address space.
 go list.Sort() // Run list.Sort in parallel; don’t wait for it. The following program will print &amp;ldquo;Hello from main goroutine&amp;rdquo;. It might also print &amp;ldquo;Hello from another goroutine&amp;rdquo;, depending on which of the two goroutines finish first.</description>
     </item>
     
