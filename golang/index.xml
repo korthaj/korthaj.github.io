@@ -1013,7 +1013,7 @@ s := &#34;Foo&#34; md5 := md5.Sum([]byte(s)) sha1 := sha1.Sum([]byte(s)) sha256 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/stop-goroutine/</guid>
-      <description>One&amp;nbsp;goroutine can&#39;t forcibly stop another &amp;ndash; a&amp;nbsp;gorou&amp;shy;tine can stop only by returning from it&#39;s top level function.
+      <description>One&amp;nbsp;goroutine can&#39;t forcibly stop another.
 To make a goroutine stoppable, let it listen to a stop signal on a channel.
 quit := make(chan struct{}) go func() { for { select { case // … } } }() // … close(quit) Sometimes it&amp;rsquo;s convenient to use a single channel for both data and signalling.
 // Generator returns a channel that produces the numbers 1, 2, 3,… // To stop the underlying goroutine, close the channel.</description>
