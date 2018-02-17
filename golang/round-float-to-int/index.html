@@ -49,9 +49,9 @@
 <li><a href="#before-go-110">Before Go 1.10</a></li>
 </ul>
 
-<h2 id="round-away-from-zero">Round away from zero<span class="quicklink"><a href="https://tip.golang.org/doc/go1.10" title="Go 1.10 Release Notes">Go&nbsp;1.10</a></span></h2>
+<h2 id="round-away-from-zero">Round away from zero<span class="quicklink"><a href="https://golang.org/doc/go1.10" title="Go 1.10 Release Notes">Go&nbsp;1.10</a></span></h2>
 
-<p>Use <a href="https://tip.golang.org/pkg/math/#Round"><code>math.Round</code></a>
+<p>Use <a href="https://golang.org/pkg/math/#Round"><code>math.Round</code></a>
 to return the nearest integer, as a <code>float64</code>, rounding ties away from&nbsp;zero.</p>
 
 <pre><code>fmt.Println(math.Round(-0.6)) <span class="comment">// -1</span>
@@ -67,9 +67,9 @@ Round(±Inf) = ±Inf
 Round(NaN) = NaN
 </code></pre>
 
-<h2 id="round-to-even-number">Round to even number<span class="quicklink"><a href="https://tip.golang.org/doc/go1.10" title="Go 1.10 Release Notes">Go&nbsp;1.10</a></span></h2>
+<h2 id="round-to-even-number">Round to even number<span class="quicklink"><a href="https://golang.org/doc/go1.10" title="Go 1.10 Release Notes">Go&nbsp;1.10</a></span></h2>
 
-<p>Use <a href="https://tip.golang.org/pkg/math/#RoundToEven"><code>math.RoundToEven</code></a>
+<p>Use <a href="https://golang.org/pkg/math/#RoundToEven"><code>math.RoundToEven</code></a>
 to return the nearest integer, as a <code>float64</code>, rounding ties to an even&nbsp;number.</p>
 
 <pre><code>fmt.Println(math.RoundToEven(0.5)) <span class="comment">// 0</span>
@@ -89,7 +89,7 @@ fmt.Println(int64(-1.9)) <span class="comment">// -1</span></code></pre>
 
 <h2 id="before-go-1-10">Before Go 1.10</h2>
 
-<p>The following implementations are equivalent to <a href="https://tip.golang.org/pkg/math/#Round"><code>math.Round</code></a> and <a href="https://tip.golang.org/pkg/math/#RoundToEven"><code>math.RoundToEven</code></a>, but less efficient.</p>
+<p>The following implementations are equivalent to <a href="https://golang.org/pkg/math/#Round"><code>math.Round</code></a> and <a href="https://golang.org/pkg/math/#RoundToEven"><code>math.RoundToEven</code></a>, but less efficient.</p>
 
 <pre><code><span class="comment">// Round returns the nearest integer, rounding ties away from zero.</span>
 func Round(x float64) float64 {

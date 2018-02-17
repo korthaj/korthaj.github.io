@@ -52,15 +52,15 @@
 <p>The <a href="/golang/fmt-printf-reference-cheat-sheet/">fmt cheat sheet</a>
 lists the most common formatting verbs and flags.</p>
 
-<h2>With a string builder<span class="quicklink"><a href="https://tip.golang.org/doc/go1.10" title="Go 1.10 Release Notes">Go 1.10</a></span></h2>
+<h2>With a string builder<span class="quicklink"><a href="https://golang.org/doc/go1.10" title="Go 1.10 Release Notes">Go 1.10</a></span></h2>
 
-<p>The <a href="https://tip.golang.org/pkg/strings/#Builder"><code>strings.Builder</code></a> type
+<p>The <a href="https://golang.org/pkg/strings/#Builder"><code>strings.Builder</code></a> type
 is used to efficiently build a&nbsp;string using write&nbsp;methods.</p>
 
 <ul>
 <li>It offers a subset of the <a href="https://golang.org/pkg/bytes/#Buffer"><code>bytes.Buffer</code></a> methods
 that allows it to safely avoid redundant copying.</li>
-<li>The <a href="https://tip.golang.org/pkg/strings/#Builder.Grow"><code>Grow</code></a>&nbsp;method
+<li>The <a href="https://golang.org/pkg/strings/#Builder.Grow"><code>Grow</code></a>&nbsp;method
 can be used to preallocate memory when the maximum size of the&nbsp;string is&nbsp;known.</li>
 </ul>
 
