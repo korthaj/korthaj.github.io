@@ -87,7 +87,11 @@ for i, p := range []int{2, 3, 5, 7, 11, 13} {
     fmt.Fprintf(&buf, "%d:%d, ", i+1, p)
 }
 buf.Truncate(buf.Len() - 2) <span class="comment">// Remove trailing ", "</span>
-s := buf.String()           <span class="comment">// s == "1:2, 2:3, 3:5, 4:7, 5:11, 6:13"</span></code></pre>
+s := buf.String()           <span class="comment">// Copy into a new string</span></code></pre>
+
+<pre>
+1:2, 2:3, 3:5, 4:7, 5:11, 6:13
+</pre>
 
 <p>This solution is pretty efficient but may generate some excess garbage.
 For higher performance, you can try to use the append functions
