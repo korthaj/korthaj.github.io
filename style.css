@@ -388,11 +388,15 @@ details.answer{
   font-weight:bold;    
 }
 .reference{
-  margin-bottom:1em;
+  margin:1em 0;
 }
 .source, .author{
+  margin:0.2em 0;
   color:grey;
   font-size:smaller;
+}
+.desc {
+  margin:0.2em 0;
 }
 ul.pagina{
   padding:0;
