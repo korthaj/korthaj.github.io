@@ -401,10 +401,12 @@ details.answer{
 }
 .source, .author{
   margin:0.2em 0;
+  font-style:italic;
   color:grey;
   font-size:smaller;
 }
 .desc {
+  color:grey;
   line-height:1.4em;
   margin:0.2em 0;
 }
