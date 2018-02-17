@@ -287,8 +287,17 @@ blockquote.warning{
 }
 blockquote.math{}
 
+blockquote p{
+  margin-left:0;
+  margin-right:0;
+}
+
 blockquote p:first-child{
-  margin:0;
+  margin-top:0;
+}
+
+blockquote p:last-child{
+  margin-bottom:0;
 }
 
 blockquote ul:first-child{
