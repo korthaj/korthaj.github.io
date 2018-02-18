@@ -81,8 +81,15 @@ which is true every time the execu&shy;tion of the program reaches the&nbsp;inva
 
 <p><img src="/algorithms/vanishing-point.jpg" alt="Repeating circular patterns"></p>
 
+<ul class="toc">
+<li><a href="#basic-example">Basic example</a></li>
+<li><a href="#designing-with-invariants">Designing with invariants</a></li>
+<li><a href="#trickier-example">Trickier example</a></li>
+<li><a href="#3-way-partition">3-way partition</a></li>
+</ul>
+
 <p>When struggling with a tricky 3-way partion algorithm as a student,
-a friend suggested a good invariant.
+a friend suggested a well-fitting invariant.
 It was like getting a secret superpower: suddenly I could write code
 that used to be impossible.</p>
 
@@ -227,13 +234,55 @@ and only need to check that the code inserts the element <code>A[j]</code> in th
 This is achieved by moving all elements <code>A[j-1], A[j-2],…</code> larger than <code>A[j]</code>
 one step to the right and then inserting <code>A[j]</code> in its proper position.</p>
 
-<h2 id="ninja-example">Ninja example</h2>
+<h2 id="3-way-partition">3-way partition</h2>
 
-<div><a href="/golang/quicksort-optimizations/"><img src="/golang/divide-conquer.jpg" width="200px" title="Quicksort 3-way partition"></a></div>
+<p style="margin-top:0;">The 3-way partition
+used in <a href="/golang/quicksort-optimizations/">Quicksort</a> is an intricate algorithm
+that would be quite hard to implement without a well-chosen loop&nbsp;invariant.</p>
 
-<p style="margin-top:0;">The <a href="/golang/quicksort-optimizations/">3-way partition</a>
-used in Quicksort is an intricate algorithm that would be quite hard
-to implement without a well-chosen loop&nbsp;invariant.</p>
+<pre><code>// Partition reorders the elements of v so that:
+// - all elements in v[:low] are less than p,
+// - all elements in v[low:high] are equal to p,
+// - all elements in v[high:] are greater than p.
+func Partition(v []int, p int) (low, high int) {
+	low, high = 0, len(v)
+	for mid := 0; mid &lt; high; {
+		// Invariant:
+		//  - v[:low] &lt; p
+		//  - v[low:mid] = p
+		//  - v[mid:high] are unknown
+		//  - v[high:] &gt; p
+		//
+		//         &lt; p       = p        unknown       &gt; p
+		//     -----------------------------------------------
+		// v: |          |          |a            |           |
+		//     -----------------------------------------------
+		//                ^          ^             ^
+		//               low        mid           high
+		switch a := v[mid]; {
+		case a &lt; p:
+			v[mid] = v[low]
+			v[low] = a
+			low++
+			mid++
+		case a == p:
+			mid++
+		default: // a &gt; p
+			v[mid] = v[high-1]
+			v[high-1] = a
+			high--
+		}
+	}
+	return
+}
+</code></pre>
+
+<h3 id="further-reading">Further reading</h3>
+
+<div><a href="/golang/quicksort-optimizations/"><img src="/golang/divide-conquer.jpg" width="200px" title="Top 3 Quicksort optimizations"></a></div>
+
+<p style="margin-top:0;">See <a href="/golang/quicksort-optimizations/">Top 3 Quicksort optimizations</a>
+for a complete implementation of Quicksort.</p>
 
 <p><b>Share<span class="extra-content"> this page</span>:</b>
 <span class="small-content"><a href="mailto:?subject=Loop%20invariants%20can%20give%20you%20coding%20superpowers&body=http%3a%2f%2fyourbasic.org%2falgorithms%2floop-invariants-explained%2f">Email</a>&nbsp;|</span>
