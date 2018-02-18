@@ -527,8 +527,8 @@ type SyntaxError struct { Line int Col int } func (e *SyntaxError) Error() strin
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/create-image/</guid>
-      <description>Use the image, image/color, and image/png packages to create a PNG&amp;nbsp;image.
-width := 200 height := 100 upLeft := image.Point{0, 0} lowRight := image.Point{width, height} img := image.NewRGBA(image.Rectangle{upLeft, lowRight}) // Colors are defined by Red, Green, Blue, Alpha uint8 values. red := color.RGBA{0xff, 0, 0, 0xff} // Set color for each pixel. for x := 0; x // upper left quadrant img.Set(x, y, red) case x = width/2 &amp;&amp; y = height/2: // lower right quadrant img.</description>
+      <description>Use the image, image/color, and image/png packages to create a&amp;nbsp;PNG&amp;nbsp;image.
+width := 200 height := 100 upLeft := image.Point{0, 0} lowRight := image.Point{width, height} img := image.NewRGBA(image.Rectangle{upLeft, lowRight}) // Colors are defined by Red, Green, Blue, Alpha uint8 values. cyan := color.RGBA{105, 215, 230, 0xff} // Set color for each pixel. for x := 0; x // upper left quadrant img.Set(x, y, cyan) case x = width/2 &amp;&amp; y = height/2: // lower right quadrant img.</description>
     </item>
     
     <item>

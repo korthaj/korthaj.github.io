@@ -42,8 +42,10 @@
 <div class="tagline">yourbasic.org</div>
 
 
+<p><img src="/golang/square-gopher.png"></div></p>
+
 <p>Use the <a href="https://golang.org/pkg/image/"><code>image</code></a>, <a href="https://golang.org/pkg/image/color/"><code>image/color</code></a>, and <a href="https://golang.org/pkg/image/png/"><code>image/png</code></a> packages
-to create a PNG&nbsp;image.</p>
+to create a&nbsp;PNG&nbsp;image.</p>
 
 <pre><code>width := 200
 height := 100
@@ -54,14 +56,14 @@ lowRight := image.Point{width, height}
 img := image.NewRGBA(image.Rectangle{upLeft, lowRight})
 
 <span class="comment">// Colors are defined by Red, Green, Blue, Alpha uint8 values.</span>
-red := color.RGBA{0xff, 0, 0, 0xff}
+cyan := color.RGBA{105, 215, 230, 0xff}
 
 <span class="comment">// Set color for each pixel.</span>
 for x := 0; x < width; x++ {
     for y := 0; y < height; y++ {
         switch {
         case x < width/2 && y < height/2: <span class="comment">// upper left quadrant</span>
-            img.Set(x, y, red)
+            img.Set(x, y, cyan)
         case x >= width/2 && y >= height/2: <span class="comment">// lower right quadrant</span>
             img.Set(x, y, color.White)
         default:
