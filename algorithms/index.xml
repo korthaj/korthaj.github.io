@@ -142,14 +142,14 @@ The idea is to first generate a point (x,&amp;nbsp;y), with -1&amp;nbsp;&amp;lt;
     </item>
     
     <item>
-      <title>Loop invariants</title>
+      <title>Loop invariants can give you coding superpowers</title>
       <link>http://yourbasic.org/algorithms/loop-invariants-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/algorithms/loop-invariants-explained/</guid>
       <description>An invariant is a state&amp;shy;ment about the vari&amp;shy;ables in a program, which is true every time the execu&amp;shy;tion of the program reaches the&amp;nbsp;invariant.
-In this text we&amp;rsquo;ll look at loop invariants, invariants placed at the beginning of a loop. They are a simple yet powerful tool to help understand iterative code.
-A well-chosen loop invariant is useful both when designing, testing, and modifying code. It also serves as documentation and can be the foundation of a correctness proof.</description>
+When struggling with a tricky 3-way partion algorithm as a student, a friend suggested a good invariant. It was like getting a secret superpower: suddenly I could write code that used to be impossible.
+In this text we&amp;rsquo;ll look at loop invariants, invariants placed at the beginning of a loop.</description>
     </item>
     
     <item>
