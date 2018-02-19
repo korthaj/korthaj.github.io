@@ -547,6 +547,10 @@
   </url>
   
   <url>
+    <loc>http://yourbasic.org/golang/gotcha-multiple-value-single-value-context/</loc>
+  </url>
+  
+  <url>
     <loc>http://yourbasic.org/golang/gotcha-multiple-value-sinlge-value-context/</loc>
   </url>
   

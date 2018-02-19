@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iteration variables and closures | yourbasic.org </title>
-  <meta name="description" content="A data race occurs when two goroutines access the same variable concurrently and at least one of the accesses is a write.">
+  <title>Multiple values in single value context | yourbasic.org </title>
+  <meta name="description" content="If a function returns multiple values, you must use all of them.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -38,89 +38,41 @@
 
 <main>
 <article>
-<h1>Iteration variables and closures</h1>
+<h1>Multiple values in single value context</h1>
 <div class="tagline">yourbasic.org</div>
 
-<p>Why does this program</p>
+<p>Why doesn&rsquo;t this code compile?</p>
 
-<pre><code>func main() {
-    var wg sync.WaitGroup
-    wg.Add(5)
-    for i := 0; i < 5; i++ {
-        go func() {
-            fmt.Print(i)
-            wg.Done()
-        }()
-    }
-    wg.Wait()
-    fmt.Println()
-}</code></pre>
+<pre><code>t := time.Parse(time.RFC822, "04 Nov 17 12:54 CET")
+fmt.Println(t)</code></pre>
 
-<p>print</p>
-
-<pre><code>55555
+<pre><code>../main.go:1: multiple-value time.Parse() in single-value context
 </code></pre>
-
-<p>(A <a href="/golang/wait-for-goroutines-waitgroup/">WaitGroup</a> waits for a collection of goroutines to finish.)</p>
 
 <p><details class="answer">
 <summary class="answer">Answer</summary></p>
 
-<p>There is a <strong>data race</strong>: the variable <code>i</code> is shared
-by six&nbsp;(6) goroutines.</p>
+<p>The <a href="https://golang.org/pkg/time/#Parse"><code>time.Parse</code></a> function returns two values,
+a <a href="https://golang.org/pkg/time/#Time"><code>time.Time</code></a> and
+an <a href="/golang/errors-explained/"><code>error</code></a>, and you must use&nbsp;both.</p>
 
-<blockquote>
-  <p>A data race occurs when two goroutines access the same variable concurrently and at least one of the accesses is a write.</p>
-</blockquote>
+<pre><code>t, err := time.Parse(time.RFC822, "04 Nov 17 12:54 CET")
+if err != nil {
+    <span class="comment">// TODO: Handle error.</span>
+}
+fmt.Println(t)</code></pre>
 
-<p>To avoid this, use a local variable and pass the number as a parameter when starting the goroutine.</p>
-
-<pre><code class="language-go">func main() {
-    var wg sync.WaitGroup
-    wg.Add(5)
-    for i := 0; i &lt; 5; i++ {
-        go func(n int) { <span class="comment">// Use a local variable.</span>
-            fmt.Print(n)
-            wg.Done()
-        }(i)
-    }
-    wg.Wait()
-    fmt.Println()
-}</code></pre>
-
-<p>Example output:</p>
-
-<pre><code>40123
-</code></pre>
-
-<p>It’s also possible to avoid this data race while still using a closure,
-but then we must take care to use a unique variable for each goroutine.</p>
-
-<pre><code class="language-go">func main() {
-    var wg sync.WaitGroup
-    wg.Add(5)
-    for i := 0; i &lt; 5; i++ {
-        n := i <span class="comment">// Create a unique variable for each closure.</span>
-        go func() {
-            fmt.Print(n)
-            wg.Done()
-        }()
-    }
-    wg.Wait()
-    fmt.Println()
-}</code></pre>
-
-<p>See <a href="/golang/data-races-explained">Data races</a> for a detailed epxlanation of data races in&nbsp;Go.</p>
+<pre><code>2017-11-04 12:54:00 +0000 CET</code></pre>
 
 <p></details></p>
 
 <ul class="pagina">
   
-        <li><a href="/golang/gotcha-range-copy-array/">« Prev</a></li>
+        <li><a href="/golang/gotcha-nil-pointer-dereference/">« Prev</a></li>
       
         <li><a href="/golang/gotcha/">Index</a></li>
       
-        <li><a href="/golang/gotcha-json-marshal-empty/">Next »</a></li>
+        <li><a href="/golang/gotcha-function-doesnt-change-array/">Next »</a></li>
       
 </ul>
 
@@ -135,7 +87,7 @@ but then we must take care to use a unique variable for each goroutine.</p>
 
       <li><a href="/golang/gotcha-nil-pointer-dereference/">Nil pointer dereference</a></li>
 
-      <li><a href="/golang/gotcha-multiple-value-single-value-context/">Multiple values in single value context</a></li>
+      <li><b>»&nbsp;</b>Multiple values in single value context</li>
 
       <li><a href="/golang/gotcha-function-doesnt-change-array/">Array won’t change</a></li>
 
@@ -177,7 +129,7 @@ but then we must take care to use a unique variable for each goroutine.</p>
 
       <li><a href="/golang/gotcha-range-copy-array/">Iteration variable doesn’t see change in range loop</a></li>
 
-      <li><b>»&nbsp;</b>Iteration variables and closures</li>
+      <li><a href="/golang/gotcha-data-race-closure/">Iteration variables and closures</a></li>
 
       <li><a href="/golang/gotcha-json-marshal-empty/">No JSON in sight</a></li>
 
@@ -190,20 +142,20 @@ but then we must take care to use a unique variable for each goroutine.</p>
   <h2>Related</h2>
 
   <div class="reference">
-    <a href="/golang/data-races-explained/">Data races</a>
-    <div class="desc">A data race is easily introduced by mistake and can lead to situations that are very hard to debug. This article explains how to avoid this headache.</div>
+    <a href="/golang/compiler-error-messages/">Learn to love your compiler</a>
+    <div class="desc">A list of common Go compiler error messages: what they mean and how to fix the problem.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
   <div class="reference">
-    <a href="/golang/anonymous-function-literal-lambda-closure/">Anonymous functions and closures</a>
-    <div class="desc">A function literal, or lambda, represents a function without a name. Function literals in Go are closures: they may refer to variables defined in a enclosing function.</div>
+    <a href="/golang/errors-explained/">Errors</a>
+    <div class="desc">Go uses return values that implement the error interface to indicate errors.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
   <div class="reference">
-    <a href="/golang/wait-for-goroutines-waitgroup/">Waiting for goroutines</a>
-    <div class="desc">A sync.WaitGroup waits for a group of goroutines to finish.</div>
+    <a href="/golang/format-parse-string-time-date-example/">Format/parse a time or date</a>
+    <div class="desc">To format/parse a date or timestamp in Go, you specify the desired format by formatting a special layout parameter, Mon Jan 2 15:04:05 MST 2006, the same way as the value should be formatted.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
