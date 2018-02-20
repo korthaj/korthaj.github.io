@@ -32,7 +32,7 @@
   },
   "headline": "Your basic int: a most powerful data type",
   "image": [
-    "http://yourbasic.org/algorithms/eratosthenes.png"
+    "http://yourbasic.org/algorithms/counting.png"
    ],
   "datePublished": "2018-01-26T00:00:00&#43;0000",
   "dateModified": "2018-01-26T00:00:00&#43;0000",
@@ -90,25 +90,25 @@
 
 <h2 id="introduction">Introduction</h2>
 
-<p>Every kid can spot an <a href="https://en.wikipedia.org/wiki/Integer">integer number</a>,
-and every programmer is familiar with the <a href="https://en.wikipedia.org/wiki/Integer_(computer_science)">int data type</a>.
-Still we frequently forget how powerful an integer can be.</p>
+<p>Every kid can spot an integer number,
+and every programmer is familiar with the&nbsp;<code>int</code> data&nbsp;type.
+Still we frequently forget how powerful an integer can&nbsp;be.</p>
 
 <ul>
 <li><strong>Generic</strong><br />
 An <code>int</code> or <code>[]int</code> is a bit pattern that can represent any digital data.
 Furthermore, an <code>int</code> can point into any type of array.
-That&rsquo;s as generic as it gets.</li>
+That&rsquo;s as generic as it&nbsp;gets.</li>
 <li><strong>Effective</strong><br />
 With an <code>int</code> you have all of basic mathematics at your finger tips,
-and boolean algebra, implemented with bit-level parallelism, to boot.</li>
+and boolean algebra, implemented with bit-level parallelism, to&nbsp;boot.</li>
 <li><strong>Simple</strong><br />
 Not really, but we&rsquo;ve used arithmetic since childhood so it feels that way.
 Familiarity breeds both simplicity and contempt.</li>
 <li><strong>Efficient</strong><br />
 An <code>int</code> fits inside a register sitting on the main datapath of the CPU,
 and an <code>[]int</code> is the main focus of hardware memory optimization.
-It doesn&rsquo;t get much faster or more efficient than that.</li>
+It doesn&rsquo;t get much faster or more efficient than&nbsp;that.</li>
 </ul>
 
 <h3 id="resources">Resources</h3>
@@ -121,16 +121,16 @@ contains a bit array and some bit-twiddling functions,</li>
 <li><a href="https://github.com/yourbasic/bloom">bloom</a>
 is a Bloom filter, a probabilistic set data structure,</li>
 <li><a href="https://github.com/yourbasic/graph">graph</a>
-is a library of basic graph algorithms, and</li>
+is a library of basic graph algorithms,</li>
 <li><a href="https://github.com/yourbasic/radix">radix</a>
-is a string sorting algorithm implemented with MSD radix sort.</li>
+is a string sorting algorithm implemented with MSD radix&nbsp;sort.</li>
 </ul>
 
 <h2 id="generic-graph-data">Generic graph data</h2>
 
 <p><img src="/algorithms/graph.png" alt="Graph" /></p>
 
-<p><strong>Cubical graph with vertex colors</strong> <!-- *image from [Wikipedia][wikicube].* --></p>
+<p><em>Cubical graph with vertex colors</em> <!-- *image from [Wikipedia][wikicube].* --></p>
 
 <p>Since graphs are used to model countless types of relations and processes
 in varied kinds of systems and settings, there is no telling what kind of data
@@ -147,35 +147,35 @@ and edges with integer cost.
 </code></pre>
 
 <p>Since vertices are represented by integers, it&rsquo;s easy to add any kind of
-vertex data on the side.</p>
+vertex data on the side.
+For example, this generic implementation of breadth-first search uses
+an array of booleans, <code>visited</code>,
+to keep track of which vertices have been visited.</p>
 
-<h3 id="breadth-first-search">Breadth-first search</h3>
-
-<p>For example, this generic implementation of breadth-first search uses
-an array of booleans to keep track of which vertices have been visited.</p>
-
-<pre><code class="language-go">// BFS traverses g in breadth-first order starting at v.
+<pre><code>// BFS traverses g in breadth-first order starting at v.
 // When the algorithm follows an edge (v, w) and finds
 // a previously unvisited vertex w, it calls do(v, w, c)
 // with c equal to the cost of the edge (v, w).
 func BFS(g Iterator, v int, do func(v, w int, c int64)) {
-	visited := make([]bool, g.Order())
-	visited[v] = true
-	for queue := []int{v}; len(queue) &gt; 0; {
-		v := queue[0]
-		queue = queue[1:]
-		g.Visit(v, func(w int, c int64) (skip bool) {
-			if visited[w] {
-				return
-			}
-			do(v, w, c)
-			visited[w] = true
-			queue = append(queue, w)
-			return
-		})
-	}
+    <b>visited := make([]bool, g.Order())</b>
+    <b>visited</b>[v] = true
+    for queue := []int{v}; len(queue) > 0; {
+        v := queue[0]
+        queue = queue[1:]
+        g.Visit(v, func(w int, c int64) (skip bool) {
+            if <b>visited</b>[w] {
+                return
+            }
+            do(v, w, c)
+            <b>visited</b>[w] = true
+            queue = append(queue, w)
+            return
+        })
+    }
 }
 </code></pre>
+
+<p><em>Code from <a href="https://github.com/yourbasic/graph/blob/master/bfs.go">bfs.go</a></em></p>
 
 <h2 id="effective-searching-and-sorting">Effective searching and sorting</h2>
 
@@ -186,9 +186,9 @@ Even though they don&rsquo;t form a Turing-complete set of operations,
 they can still be surprisingly effective.</p>
 
 <p>The standard set of bitwise operators, found in almost every CPU,
-includes the bitwise <code>not</code>, <code>and</code>, <code>or</code> and <code>xor</code> instructions; plus
-a collection of <code>shift</code> and <code>rotate</code> instructions. A bit count instruction,
-often known as <code>popcnt</code>, is also quite common.</p>
+includes the bitwise NOT, AND, OR and XOR instructions; plus
+a collection of shift and rotate instructions. A bit count instruction,
+often known as popcnt, is also quite common.</p>
 
 <h3 id="needles-in-huge-haystacks">Needles in huge haystacks</h3>
 
@@ -199,8 +199,8 @@ using just one <code>xor</code> and one <code>popcnt</code> instruction.</p>
 
 <p><img src="/algorithms/hamming.png" alt="Hamming distance" /></p>
 
-<p><strong>The Hamming distance</strong> <em>between adjacent vertices
-in a cubical graph is one.</em> <!-- image from [Wikipedia][wikihammingpic]. --></p>
+<p><em>The Hamming distance between adjacent vertices
+in a cubical graph is&nbsp;one.</em> <!-- image from [Wikipedia][wikihammingpic]. --></p>
 
 <p>Rumor has it that organizations who are sifting through huge amounts of data
 prefer to buy CPUs that come with a bit count instruction.
@@ -209,9 +209,9 @@ no less than four <code>popcnt</code> instructions per clock cycle.</p>
 
 <h3 id="bit-count">Bit count</h3>
 
-<p>If the CPU doesn&rsquo;t have a native bit count operation, <code>popcnt</code> can still
+<p>If the CPU doesn&rsquo;t have a native bit count operation, popcnt can still
 be implemented quite efficiently using the more common bitwise operators.
-Here is a fun code sample from the <a href="https://github.com/yourbasic/bit">bit</a> package.</p>
+Here is a fun code sample from the <a href="https://github.com/yourbasic/bit">bit</a>&nbsp;package.</p>
 
 <pre><code class="language-go">// Count returns the number of nonzero bits in w.
 func Count(w uint64) int {
@@ -241,11 +241,14 @@ func Count(w uint64) int {
 }
 </code></pre>
 
-<p><em>Source code from <a href="https://github.com/yourbasic/bit/blob/master/funcs.go">funcs.go</a>.</em></p>
+<p><em>Code from <a href="https://github.com/yourbasic/bit/blob/master/funcs.go">funcs.go</a></em></p>
 
-<p>As of Go 1.9 a bit count function is available in the new package <code>math/bits</code>.
+<p>As of Go 1.9 a bit count function is available in the new package
+<a href="https://golang.org/pkg/math/bits/"><code>math/bits</code></a>.
 On most architectures functions in this package are recognized
-by the compiler and treated as intrinsics for additional performance.</p>
+by the compiler and treated as intrinsics for additional performance.
+The <a href="/golang/bitwise-operator-cheat-sheet/">Bitwise operators cheat sheet</a>
+has more details.</p>
 
 <h3 id="fast-sorting">Fast sorting</h3>
 
@@ -259,8 +262,11 @@ with other well-known sorting algorithms can be found in
 <p>Bitwise operators are also crucial in the implementation of the fastest
 known integer sorting algorithm. It sorts <em>n</em> integers
 in O(<em>n</em> log log <em>n</em>) worst-case time on a unit-cost RAM machine,
-the standard computational model in theoretical computer science.
-<a href="https://www.nada.kth.se/~snilsson/fast-sorting/">The fastest sorting algorithm?</a> has all the details.</p>
+the standard computational model in theoretical computer science.</p>
+
+<div><a href="/algorithms/fastest-sorting-algorithm/"><img src="/algorithms/sorted-thumb.jpg" title="The fastest sorting algorithm?"></a></div>
+
+<p>See <a href="https://www.nada.kth.se/~snilsson/fast-sorting/">The fastest sorting algorithm?</a> for a complete description of this algorithm.</p>
 
 <h2 id="simple-sets">Simple sets</h2>
 
@@ -281,7 +287,7 @@ of RAM to spare, you can story a set of integer elements in the range
 
 <p><img src="/algorithms/eratosthenes.png" alt="Eratosthenes" /></p>
 
-<p><strong>Eratosthenes of Cyrene</strong> <!-- *276-194 BC, image from [Wikipedia][eratosthenes] --></p>
+<p><em>Eratosthenes of Cyrene</em> <!-- *276-194 BC, image from [Wikipedia][eratosthenes] --></p>
 
 <p>This code snippet implements the sieve of Eratosthenes
 (with an optimization suggested by <a href="https://gmplib.org/~tege/">tege</a>).
@@ -309,7 +315,7 @@ the index variable <em>k</em> will eventually wrap around and become negative.</
 
 <h2 id="efficient-filtering">Efficient filtering</h2>
 
-<p><a href="https://en.wikipedia.org/wiki/Hash_function">Hash functions</a> are yet another triumph for the integer data type.
+<p>Hash functions are yet another triumph for the integer data type.
 They are worth a tribute of their own, but in this section we will
 just take them for granted. If we combine a bit array with
 a set of hash functions we get a <a href="https://en.wikipedia.org/wiki/Bloom_filter">Bloom filter</a>, a probabilistic
@@ -324,9 +330,7 @@ With more elements in the filter, the error rate increases.</p>
 
 <p>Content distribution networks use them to avoid caching one-hit wonders, files that are seen only once. Web browsers use them to check for potentially harmful URLs.</p>
 
-<h3 id="a-blacklist-of-shady-websites">A blacklist of shady websites</h3>
-
-<p>This piece of code, from the Go package <a href="https://godoc.org/github.com/yourbasic/bloom">bloom</a>,
+<p>This piece of code, from package <a href="https://godoc.org/github.com/yourbasic/bloom">bloom</a>,
 shows a typical Bloom filter use case.</p>
 
 <pre><code><span class="comment">// A Bloom filter with room for at most 100000 elements.
@@ -346,7 +350,7 @@ if blacklist.Test(url) {
 
 <pre><code>https://rascal.com may be blacklisted.</code></pre>
 
-<h3 id="bloom-filter-implementation">Bloom filter implementation</h3>
+<h3 id="implementation">Implementation</h3>
 
 <p>An empty Bloom filter is a bit array of <i>m</i>&nbsp;bits, all set to&nbsp;0.
 There are also <i>k</i>&nbsp;different hash functions,
@@ -363,8 +367,6 @@ and&nbsp;set the&nbsp;bits at these positions to&nbsp;1.</li>
 <li>If all are&nbsp;1, then the&nbsp;element <strong>may be</strong> in the&nbsp;set.</li>
 </ul></li>
 </ul>
-
-<h3 id="example">Example</h3>
 
 <p>Here is a Bloom filter with three elements <i>x</i>, <i>y </i> and <i>z</i>.
 It consists of 18&nbsp;bits and uses 3&nbsp;hash functions.
@@ -396,14 +398,20 @@ because it hashes to a bit position containing 0.</p>
   <h2>Related</h2>
 
   <div class="reference">
-    <a href="/algorithms/bloom-filter/">Bloom filters</a>
-    <div class="desc">A Bloom filter is a probabilistic data structure used to test set membership. It tells if an element may be in a set, or definitely isn’t. </div>
+    <a href="/algorithms/fastest-sorting-algorithm/">The fastest sorting algorithm?</a>
+    <div class="desc">Which sorting algorithm is the fastest? If you count the number of operations needed to sort integer numbers on a unit cost RAM, there is a clear winner. You can sort n integers in time proportional to n log log n.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
   <div class="reference">
     <a href="/algorithms/hash-tables-explained/">Hash tables</a>
     <div class="desc">A hash table is an unordered collection of key-value pairs. It offers a combination of efficient lookup, insert and delete operations.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="/algorithms/bloom-filter/">Bloom filters</a>
+    <div class="desc">A Bloom filter is a probabilistic data structure used to test set membership. It tells if an element may be in a set, or definitely isn’t. </div>
     <div class="source">yourbasic.org</div>
   </div>
 
