@@ -70,7 +70,7 @@ n := int(x) <span class="comment">// convert float to int</span></code></pre>
 
 <ul>
 <li>all conversions between typed expressions must be explicitly stated,</li>
-<li>and illegal conversions are caught by the compiler.</li>
+<li>illegal conversions are caught by the compiler.</li>
 </ul>
 
 <p>Conversions between numbers and strings may <strong>change the representation</strong>
@@ -127,11 +127,6 @@ y := float32(n) <span class="comment">// 1.234568e+09</span></code></pre>
 
 <h2 id="integer-to-string">Integer to string</h2>
 
-<p>To get the decimal string representation of an integer,
-use the <a href="https://golang.org/pkg/strconv/#Itoa"><code>strconv.Itoa</code></a> function:</p>
-
-<pre><code>strconv.Itoa(97) <span class="comment">// "97"</span></code></pre>
-
 <ul>
 <li>When converting an integer to a string, the value is interpreted as a Unicode code point,
 and the resulting string will contain the character represented by that code point, encoded in UTF-8.</li>
@@ -141,6 +136,10 @@ the result will be <code>&quot;\ufffd&quot;</code>, the Unicode replacement char
 
 <pre><code>string(97) <span class="comment">// "a"</span>
 string(-1) <span class="comment">// "\ufffd" == "\xef\xbf\xbd"</span></code></pre>
+
+<p>To get the decimal string representation of an integer:</p>
+
+<pre><code><a href="https://golang.org/pkg/strconv/#Itoa">strconv.Itoa</a>(97) <span class="comment">// "97"</span></code></pre>
 
 <h2 id="strings-and-byte-slices">Strings and byte slices</h2>
 
