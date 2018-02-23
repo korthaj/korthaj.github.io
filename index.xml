@@ -1010,7 +1010,8 @@ The io.Reader interface, which represents the read end of a stream of data, is a
       
       <guid>http://yourbasic.org/golang/getting-started-hello-world/</guid>
       <description>Try it out The Go Playground is an interactive web&amp;nbsp;service that lets you run small Go programs, such as this &amp;ldquo;Hello,&amp;nbsp;world!&amp;rdquo; program, inside a sandbox. Try&amp;nbsp;it&amp;nbsp;out!
-package main import ( &#34;fmt&#34; ) func main() { fmt.Println(&#34;Hello, world!&#34;) } Learn the basics A Tour of Go is an interactive tutorial with many example programs. It teaches you the basics of Go programming directly in your browser, and it&amp;rsquo;s fun.</description>
+package main import ( &#34;fmt&#34; ) func main() { fmt.Println(&#34;Hello, world!&#34;) } Learn the basics A Tour of Go is an interactive tutorial with many example programs. It teaches you the basics of Go programming directly in your browser, and it&amp;rsquo;s fun.
+Install the tools Getting Started explains how to install the Go tools.</description>
     </item>
     
     <item>
