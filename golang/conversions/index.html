@@ -35,7 +35,7 @@
     "http://yourbasic.org/golang/butterfly.jpg"
    ],
   "datePublished": "2018-02-21T00:00:00&#43;0000",
-  "dateModified": "2018-02-21T00:00:00&#43;0000",
+  "dateModified": "2018-02-24T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -169,9 +169,12 @@ the result will be <code>&quot;\ufffd&quot;</code>, the Unicode replacement char
 <pre><code>string(97) <span class="comment">// "a"</span>
 string(-1) <span class="comment">// "\ufffd" == "\xef\xbf\xbd"</span></code></pre>
 
-<p>To get the decimal string representation of an integer:</p>
-
-<pre><code><a href="https://golang.org/pkg/strconv/#Itoa">strconv.Itoa</a>(97) <span class="comment">// "97"</span></code></pre>
+<blockquote>
+Use <a href="https://golang.org/pkg/strconv/#Itoa"><code>strconv.Itoa</code></a>
+to get the decimal string representation of an integer.
+ 
+<pre><code>strconv.Itoa(97) <span class="comment">// "97"</span></code></pre>
+</blockquote>
 
 <h2 id="strings-and-byte-slices">Strings and byte slices</h2>
 
@@ -276,20 +279,26 @@ A package using unsafe must be vetted manually for type safety and may not be po
   <h2>Related</h2>
 
   <div class="reference">
+    <a href="/golang/type-assertion-switch/">Convert interface to X: type assertions and type switches</a>
+    <div class="desc">To convert an interface to a string, struct or map you should use a type assertion, which provides access to an interface’s concrete value.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/convert-string-to-int/">Convert string to int</a>
+    <div class="desc">Use strconv.Atoi to convert/parse a string to an int.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/convert-int-to-string/">Convert int to string</a>
+    <div class="desc">Use strconv.Itoa to convert an int to a decimal string.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
     <a href="/golang/format-parse-string-time-date-example/">Format/parse a time or date</a>
     <div class="desc">To format/parse a date or timestamp in Go, you specify the desired format by formatting a special layout parameter, Mon Jan 2 15:04:05 MST 2006, the same way as the value should be formatted.</div>
-    <div class="source">yourbasic.org</div>
-  </div>
-
-  <div class="reference">
-    <a href="/golang/untyped-constants/">Untyped numeric constants with no limits</a>
-    <div class="desc">Numeric constants in Go have no limits and can be untyped. When it&#39;s used in a context that requires a type, a type will be inferred and a limit applied.</div>
-    <div class="source">yourbasic.org</div>
-  </div>
-
-  <div class="reference">
-    <a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a>
-    <div class="desc">String functions in a nutshell: literals, basics, length, contains, index, join, replace, split, trim, strip, delete, remove, lowercase, uppercase.</div>
     <div class="source">yourbasic.org</div>
   </div>
 

@@ -477,7 +477,7 @@ s := fmt.Sprintf(&#34;%f&#34;, 123.456) // s == &#34;123.456000&#34;   Formattin
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/convert-int-to-string/</guid>
-      <description>Use the strconv.Itoa function.
+      <description>Use the strconv.Itoa function to convert an int to a decimal string.
 str := strconv.Itoa(123) // str == &#34;123&#34; </description>
     </item>
     
@@ -540,7 +540,7 @@ fmt.Println([]byte(&#34;abc日&#34;)) // [97 98 99 230 151 165] More about strin
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/convert-string-to-int/</guid>
-      <description>Use strconv.Atoi to convert a string to an int.
+      <description>Use strconv.Atoi to convert/parse a string to an int.
 str := &#34;123&#34; if n, err := strconv.Atoi(str); err == nil { fmt.Println(n+1) } else { fmt.Println(str, &#34;is not an integer.&#34;) } // Output: 124 More about strings  String handling cheat sheet</description>
     </item>
     
@@ -550,7 +550,7 @@ str := &#34;123&#34; if n, err := strconv.Atoi(str); err == nil { fmt.Println(n+
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/convert-string-to-int64/</guid>
-      <description>Use strconv.ParseInt to convert a decimal string (base&amp;nbsp;10) and check that it fits into a 64-bit signed integer.
+      <description>Use strconv.ParseInt to parse a decimal string (base&amp;nbsp;10) and check if it fits into a 64-bit signed integer.
 str := &#34;123&#34; n, err := strconv.ParseInt(str, 10, 64) if err == nil { fmt.Printf(&#34;%d of type %T&#34;, n, n) } // Output: 123 of type int64 </description>
     </item>
     

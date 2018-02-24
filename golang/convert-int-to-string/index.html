@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Convert int to string | yourbasic.org </title>
-  <meta name="description" content="How to convert an int to a string in Go.">
+  <meta name="description" content="Use strconv.Itoa to convert an int to a decimal string.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -40,13 +40,23 @@
 <article>
 <h1>Convert int to string</h1>
 <div class="tagline">yourbasic.org</div>
-<p>Use the <a href="https://golang.org/pkg/strconv/#Itoa"><code>strconv.Itoa</code></a> function.</p>
+<p>Use the <a href="https://golang.org/pkg/strconv/#Itoa"><code>strconv.Itoa</code></a> function to convert an int to a decimal string.</p>
 
 <pre><code>str := strconv.Itoa(123) <span class="comment">// str == "123"</span></code></pre>
 
 
 </article>
 <aside>
+
+    
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/convert-int64-to-string/">Convert int64 to string</a>
+    <div class="desc">Use strconf.FormatInt to convert an int64 to a decimal or hexadecimal string in Go.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
 <h2>New in Go 1.10</h2>
   <ul class="none">
     <li><a href="/golang/build-append-concatenate-strings-efficiently/">Build and concatenate strings efficiently</a></li>
