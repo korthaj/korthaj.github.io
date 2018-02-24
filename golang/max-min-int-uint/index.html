@@ -52,9 +52,9 @@
 <pre><code>const BitsPerWord = 32 << (^uint(0) >> 63) <span class="comment">// either 32 or 64</span>
 
 const (
-    MaxInt  = 1<<(BitsPerWord-1) - 1 <span class="comment">// either 1<<31 - 1 or 1<<63 - 1</span>
+    MaxInt  = 1&lt;&lt;(BitsPerWord-1) - 1 <span class="comment">// either 1<<31 - 1 or 1<<63 - 1</span>
     MinInt  = -MaxInt - 1            <span class="comment">// either -1 << 31 or -1 << 63</span>
-    MaxUint = 1<<BitsPerWord - 1     <span class="comment">// either 1<<32 - 1 or 1<<64 - 1</span>
+    MaxUint = 1&lt;&lt;BitsPerWord - 1     <span class="comment">// either 1<<32 - 1 or 1<<64 - 1</span>
 )</code></pre>
 
 
