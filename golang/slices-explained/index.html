@@ -138,9 +138,19 @@ See <a href="/golang/copy-explained/">Append&nbsp;function</a>.</li>
 <li>The <code>copy</code> function copies elements
 into a destination slice <code>dst</code> from a source slice <code>src</code>.
 The number of elements copied is the <strong>minimum</strong> of <code>len(dst)</code> and <code>len(src)</code>.
-See <a href="/golang/copy-explained/">Copy&nbsp;function</a>.
-<br /></li>
+See <a href="/golang/copy-explained/">Copy&nbsp;function</a>.</li>
 </ul>
+
+<h2 id="stacks-and-queues">Stacks and queues</h2>
+
+<p>The idiomatic way to implement a stack or queue in Go is to use a slice.
+For code examples, see</p>
+
+<ul>
+<li><a href="/golang/implement-stack/">Implement a stack (LIFO)</a></li>
+<li><a href="/golang/implement-fifo-queue/">Implement a FIFO queue</a></li>
+</ul> 
+  
 
 <h2 id="more-nutshells">More nutshells</h2>
 
@@ -166,18 +176,6 @@ See <a href="/golang/copy-explained/">Copy&nbsp;function</a>.
   <h2>Related</h2>
 
   <div class="reference">
-    <a href="/golang/append-explained/">Append function</a>
-    <div class="desc">The built-in append function appends elements to the end of a slice: if there is enough capacity, the underlying array is reused; if not, a new underlying array is allocated and the data is copied over.</div>
-    <div class="source">yourbasic.org</div>
-  </div>
-
-  <div class="reference">
-    <a href="/golang/copy-explained/">Copy function</a>
-    <div class="desc">The built-in copy function copies elements to and from a slice. It returns the number of elements copied, which will be the minimum of len(dst) and len(src).</div>
-    <div class="source">yourbasic.org</div>
-  </div>
-
-  <div class="reference">
     <a href="/golang/find-search-contains-slice/">Find an element in a slice</a>
     <div class="desc">Code to check if a slice contains an element: linear and binary search.</div>
     <div class="source">yourbasic.org</div>
@@ -185,19 +183,19 @@ See <a href="/golang/copy-explained/">Copy&nbsp;function</a>.
 
   <div class="reference">
     <a href="/golang/delete-element-slice/">Delete an element from a slice</a>
-    <div class="desc">How to remove an element from a slice, with or without preserving the order.</div>
+    <div class="desc">Code to remove an element from a slice, with or without preserving the order.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/compare-slices/">Compare slices (arrays)</a>
+    <div class="desc">Code for comparing slices/arrays. Use the optimized bytes.Equal for byte slices.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
   <div class="reference">
     <a href="/golang/clear-slice/">Clear a slice</a>
     <div class="desc">You can clear a slice in Go either by setting it to nil and releasing the underlying memory, or by slicing it to zero length and thereby keeping the memory.</div>
-    <div class="source">yourbasic.org</div>
-  </div>
-
-  <div class="reference">
-    <a href="/golang/compare-slices/">Compare slices (arrays)</a>
-    <div class="desc">Code for comparing slices (arrays) in Go.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
