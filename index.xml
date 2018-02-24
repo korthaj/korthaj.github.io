@@ -428,7 +428,7 @@ Zero value Try to make the default zero value useful and document its behavior. 
       <guid>http://yourbasic.org/golang/conversions/</guid>
       <description>Basics Interfaces Integers Floats Integer to string Strings and byte slices Strings and rune slices Underlying type Implicit conversions Pointers   Basics The expression T(x) converts the value x to the type&amp;nbsp;T.
 x := 5.1 n := int(x) // convert float to int The conversion rules are extensive but predictable:
- all conversions between typed expressions must be explicitly stated, illegal conversions are caught by the compiler.  Conversions between numbers and strings may change the representation and have a run-time cost.</description>
+ all conversions between typed expressions must be explicitly stated, illegal conversions are caught by the compiler.  Conversions to and from numbers and strings may change the representation and have a run-time cost.</description>
     </item>
     
     <item>
