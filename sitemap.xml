@@ -127,6 +127,10 @@
   </url>
   
   <url>
+    <loc>http://yourbasic.org/golang/write-command-line-application/</loc>
+  </url>
+  
+  <url>
     <loc>http://yourbasic.org/golang/command-line-arguments/</loc>
   </url>
   
@@ -865,10 +869,6 @@
   
   <url>
     <loc>http://yourbasic.org/algorithms/worst-case-time-complexity/</loc>
-  </url>
-  
-  <url>
-    <loc>http://yourbasic.org/golang/write-command-line-application/</loc>
   </url>
   
   <url>

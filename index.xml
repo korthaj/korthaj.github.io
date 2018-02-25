@@ -336,6 +336,16 @@ ch := make(chan string) go func { ch // prints &#34;</description>
     </item>
     
     <item>
+      <title>Command-line application (CLI)</title>
+      <link>http://yourbasic.org/golang/write-command-line-application/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/write-command-line-application/</guid>
+      <description>This example is a simplified version of the Unix grep command. The program searches the input file for lines containing the given pattern and prints these lines.
+func main() { log.SetPrefix(&#34;grep: &#34;) log.SetFlags(0) // no extra info in log messages if len(os.Args) != 3 { fmt.Printf(&#34;Usage: %v PATTERN FILE\n&#34;, os.Args[0]) return } pattern, err := regexp.Compile(os.Args[1]) if err != nil { log.Fatalln(err) } file, err := os.Open(os.Args[2]) if err != nil { log.</description>
+    </item>
+    
+    <item>
       <title>Command-line arguments</title>
       <link>http://yourbasic.org/golang/command-line-arguments/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -2343,16 +2353,6 @@ To avoid this, we need to use two separate byte&amp;nbsp;arrays.</description>
       <guid>http://yourbasic.org/algorithms/worst-case-time-complexity/</guid>
       <description>Worst-case time complexity denotes the longest possible running time W(n) of an algorithm, given any input of size n. This measure gives an upper bound on time requirements and is often easy to compute. The drawback is that it can be overly pessimistic.
 Example  // Tell whether the array a contains x. Algorithm contains(a, x): for i = 0 to len(a)-1 if x == a[i] return true return false  The number of comparisons depends not only on the number of elements, n, in the array, but also on&amp;nbsp;x and the elements in&amp;nbsp;a.</description>
-    </item>
-    
-    <item>
-      <title>Write a command-line application</title>
-      <link>http://yourbasic.org/golang/write-command-line-application/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/write-command-line-application/</guid>
-      <description>This example is a simplified version of the Unix grep command. The program searches the input file for lines containing the given pattern and prints these lines.
-func main() { log.SetPrefix(&#34;grep: &#34;) log.SetFlags(0) // no extra info in log messages if len(os.Args) != 3 { fmt.Printf(&#34;Usage: %v PATTERN FILE\n&#34;, os.Args[0]) return } pattern, err := regexp.Compile(os.Args[1]) if err != nil { log.Fatalln(err) } file, err := os.Open(os.Args[2]) if err != nil { log.</description>
     </item>
     
     <item>

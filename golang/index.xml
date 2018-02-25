@@ -259,6 +259,16 @@ ch := make(chan string) go func { ch // prints &#34;</description>
     </item>
     
     <item>
+      <title>Command-line application (CLI)</title>
+      <link>http://yourbasic.org/golang/write-command-line-application/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/write-command-line-application/</guid>
+      <description>This example is a simplified version of the Unix grep command. The program searches the input file for lines containing the given pattern and prints these lines.
+func main() { log.SetPrefix(&#34;grep: &#34;) log.SetFlags(0) // no extra info in log messages if len(os.Args) != 3 { fmt.Printf(&#34;Usage: %v PATTERN FILE\n&#34;, os.Args[0]) return } pattern, err := regexp.Compile(os.Args[1]) if err != nil { log.Fatalln(err) } file, err := os.Open(os.Args[2]) if err != nil { log.</description>
+    </item>
+    
+    <item>
       <title>Command-line arguments</title>
       <link>http://yourbasic.org/golang/command-line-arguments/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -2107,16 +2117,6 @@ a := []byte(&#34;ba&#34;) a1 := append(a, &#39;d&#39;) a2 := append(a, &#39;g&#3
 If there is room for more elements, append reuses the underlying array. Let&#39;s take a&amp;nbsp;look:
 a := []byte(&#34;ba&#34;) fmt.Println(len(a), cap(a)) // 2 32 This means that the slices a, a1 and a2 will refer to the same underlying array in our example.
 To avoid this, we need to use two separate byte&amp;nbsp;arrays.</description>
-    </item>
-    
-    <item>
-      <title>Write a command-line application</title>
-      <link>http://yourbasic.org/golang/write-command-line-application/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/write-command-line-application/</guid>
-      <description>This example is a simplified version of the Unix grep command. The program searches the input file for lines containing the given pattern and prints these lines.
-func main() { log.SetPrefix(&#34;grep: &#34;) log.SetFlags(0) // no extra info in log messages if len(os.Args) != 3 { fmt.Printf(&#34;Usage: %v PATTERN FILE\n&#34;, os.Args[0]) return } pattern, err := regexp.Compile(os.Args[1]) if err != nil { log.Fatalln(err) } file, err := os.Open(os.Args[2]) if err != nil { log.</description>
     </item>
     
     <item>
