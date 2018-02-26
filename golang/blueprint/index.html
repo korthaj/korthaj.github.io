@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Go blueprints: code for common tasks | yourbasic.org </title>
+  <meta name="description" content="A collection of code examples intended to help you solve common everyday programming tasks in Go.">
+  
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-113104149-1');
+  </script>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://yourbasic.org/golang/blueprint/"
+  },
+  "headline": "Go blueprints: code for common tasks",
+  "image": [
+    "http://yourbasic.org/golang/blueprint.jpg"
+   ],
+  "datePublished": "2018-02-26T00:00:00&#43;0000",
+  "dateModified": "2018-02-26T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "A collection of code examples intended to help you solve common everyday programming tasks in Go."
+}
+</script>
+
+
+
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li class="here"><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Go blueprints: code for common tasks</h1>
+<div class="tagline">yourbasic.org</div>
+<!-- CC0: https://pixabay.com/en/communication-technology-blueprint-3104305/ -->
+
+<p><img src="/golang/blueprint.jpg"></p>
+
+<p>These code examples are intended to help you
+quickly solve some common everyday tasks in&nbsp;Go.
+There are also a few oddities that may be nice to have
+when writing more exotic&nbsp;code.</p>
+
+<h2 id="toc" style="font-size: 150%;">Table of contents</h2>
+
+
+  <ul class="none">
+  <li>
+  <a href="/golang/environment-variables/"><b>Access environment variables</b></a>
+  <div style="padding: 0.5em 0 1em 0">Use the Setenv, Getenv, Unsetenv and Environ functions to read and write environment variables.</div>
+</li>
+<li>
+  <a href="/golang/access-private-field-reflection/"><b>Access private fields with reflection</b></a>
+  <div style="padding: 0.5em 0 1em 0">Code to read unexported fields in a struct using reflection in Go.</div>
+</li>
+<li>
+  <a href="/golang/bitmask-flag-set-clear/"><b>Bitmasks and flags</b></a>
+  <div style="padding: 0.5em 0 1em 0">How to use a bitmask to represent a set of flags in Go.</div>
+</li>
+<li>
+  <a href="/golang/check-prime/"><b>Check if a number is prime</b></a>
+  <div style="padding: 0.5em 0 1em 0">To check if a number is prime in Go use the ProbablyPrime function from package math/big.</div>
+</li>
+<li>
+  <a href="/golang/write-command-line-application/"><b>Command-line application (CLI)</b></a>
+  <div style="padding: 0.5em 0 1em 0">Code for a basic command-line (CLI) application in Go.</div>
+</li>
+<li>
+  <a href="/golang/command-line-arguments/"><b>Command-line arguments</b></a>
+  <div style="padding: 0.5em 0 1em 0">You can access command-line arguments passed to a Go program through the os.Args variable.</div>
+</li>
+<li>
+  <a href="/golang/absolute-value-int-float/"><b>Compute absolute values</b></a>
+  <div style="padding: 0.5em 0 1em 0">Code to compute the absolute value of an int or float in Go.</div>
+</li>
+<li>
+  <a href="/golang/max-min-function/"><b>Compute min and max</b></a>
+  <div style="padding: 0.5em 0 1em 0">Code to compute the minimum and maximum of integer and floating point numeric values in Go.</div>
+</li>
+<li>
+  <a href="/golang/formatting-byte-size-to-human-readable-format/"><b>Convert byte size to human readable format</b></a>
+  <div style="padding: 0.5em 0 1em 0">Code to format 1000 to 1 kB, 1000000 to 1 MB etc. in Go. The code supports both SI and IEC formats.</div>
+</li>
+<li>
+  <a href="/golang/create-error/"><b>Create a custom error</b></a>
+  <div style="padding: 0.5em 0 1em 0">How to handle an error and how to create custom error types in Go.</div>
+</li>
+<li>
+  <a href="/golang/create-image/"><b>Create a new image</b></a>
+  <div style="padding: 0.5em 0 1em 0">To generate a png image programmatically in Go use the image, image/color, and image/png packages.</div>
+</li>
+<li>
+  <a href="/golang/define-enumeration-string/"><b>Enumeration with string representation</b></a>
+  <div style="padding: 0.5em 0 1em 0">How to declare enums and give them a string representation in Go.</div>
+</li>
+<li>
+  <a href="/golang/find-go-build-version/"><b>Find build version</b></a>
+  <div style="padding: 0.5em 0 1em 0">Use runtime.Version to find the current Go build version.</div>
+</li>
+<li>
+  <a href="/golang/generate-permutation-slice-string/"><b>Generate all permutations</b></a>
+  <div style="padding: 0.5em 0 1em 0">Code to generate all permutations in Go.</div>
+</li>
+<li>
+  <a href="/golang/hash-md5-sha256-string-file/"><b>Hash checksums</b></a>
+  <div style="padding: 0.5em 0 1em 0">Code for computing hash checksums (MD5, SHA-1, SHA-256) of strings, byte slices and files.</div>
+</li>
+<li>
+  <a href="/golang/how-to-sort-in-go/"><b>How to sort in Go</b></a>
+  <div style="padding: 0.5em 0 1em 0">Code to sort any type of data in Go using the sort package. All algorithms in the package perform O(n log n) comparisons in the worst case.</div>
+</li>
+<li>
+  <a href="/golang/http-server-example/"><b>HTTP server example</b></a>
+  <div style="padding: 0.5em 0 1em 0">Example code for implementing a basic HTTP web server in Go with client requests and responses.</div>
+</li>
+<li>
+  <a href="/golang/implement-fifo-queue/"><b>Implement a FIFO queue</b></a>
+  <div style="padding: 0.5em 0 1em 0">Code to implement a FIFO queue in Go.</div>
+</li>
+<li>
+  <a href="/golang/implement-set/"><b>Implement a set</b></a>
+  <div style="padding: 0.5em 0 1em 0">Code to implement a hashset in Go.</div>
+</li>
+<li>
+  <a href="/golang/implement-stack/"><b>Implement a stack (LIFO)</b></a>
+  <div style="padding: 0.5em 0 1em 0">Code to implement a stack or LIFO queue in Go.</div>
+</li>
+<li>
+  <a href="/golang/iterator-generator-pattern/"><b>Iterator pattern</b></a>
+  <div style="padding: 0.5em 0 1em 0">Code to write iterators and generators in Go.</div>
+</li>
+<li>
+  <a href="/golang/max-min-int-uint/"><b>Maximum value of an int</b></a>
+  <div style="padding: 0.5em 0 1em 0">Code to compute the max and min values of an int and uint in Go.</div>
+</li>
+<li>
+  <a href="/golang/round-float-2-decimal-places/"><b>Round float to 2 decimal places</b></a>
+  <div style="padding: 0.5em 0 1em 0">Code to round a float to a string/float with 2 decimal places in Go.</div>
+</li>
+<li>
+  <a href="/golang/round-float-to-int/"><b>Round float to integer value</b></a>
+  <div style="padding: 0.5em 0 1em 0">Code to round a float64 to the nearest integer in Go.</div>
+</li>
+<li>
+  <a href="/golang/table-driven-unit-test/"><b>Table-driven unit tests</b></a>
+  <div style="padding: 0.5em 0 1em 0">How to write a table-driven unit test for binary search in Go.</div>
+</li>
+
+  </ul>
+<h3>Further reading</h3>
+
+<div><a href="/golang/string-functions-reference-cheat-sheet/"><img src="/golang/typewriter-thumb.png" title="String handling cheat sheet"></a></div>
+
+<p>See the <a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a> for
+all about basic string manipulation in&nbsp;Go.</p>
+<p><b>Share<span class="extra-content"> this page</span>:</b>
+<span class="small-content"><a href="mailto:?subject=Go%20blueprints:%20code%20for%20common%20tasks&body=http%3a%2f%2fyourbasic.org%2fgolang%2fblueprint%2f">Email</a>&nbsp;|</span>
+<a href="https://twitter.com/share?url=http%3a%2f%2fyourbasic.org%2fgolang%2fblueprint%2f&amp;text=Go%20blueprints:%20code%20for%20common%20tasks">Twitter</a>&nbsp;|
+<a href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fyourbasic.org%2fgolang%2fblueprint%2f">Facebook</a>&nbsp;|
+<a href="https://www.reddit.com/submit?url=http%3a%2f%2fyourbasic.org%2fgolang%2fblueprint%2f&amp;title=Go%20blueprints:%20code%20for%20common%20tasks">Reddit</a></p>
+
+
+
+</article>
+<aside>
+
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>
