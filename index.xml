@@ -1083,6 +1083,16 @@ Table of contents </description>
     </item>
     
     <item>
+      <title>Go vs. Java</title>
+      <link>http://yourbasic.org/golang/go-vs-java/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/go-vs-java/</guid>
+      <description>The following Java code, adapted from Effective Java, implements an immutable class representing a complex number.
+public final class Complex { private final double re; private final double im; public Complex(double re, double im) { if (Double.isNaN(re) || Double.isNaN(im)) { throw new ArithmeticException(); } this.re = re; this.im = im; } public double realPart() { return re; } public double imaginaryPart() { return im; } public Complex add(Complex c) { return new Complex(re + c.</description>
+    </item>
+    
+    <item>
       <title>Goroutines</title>
       <link>http://yourbasic.org/golang/goroutines-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
