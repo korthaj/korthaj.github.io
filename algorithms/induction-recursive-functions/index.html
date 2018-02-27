@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Induction and recursive functions | yourbasic.org </title>
-  <meta name="description" content="To make sense of recursive functions we can use a way of thinking closely related to mathematical induction.">
+  <meta name="description" content="Mathematical induction can help you understand recursive functions better.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -48,7 +48,7 @@
       "url": "http://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "To make sense of recursive functions we can use a way of thinking closely related to mathematical induction."
+  "description": "Mathematical induction can help you understand recursive functions better."
 }
 </script>
 
@@ -74,8 +74,7 @@
 <div class="tagline">yourbasic.org</div>
 
 
-<p class="lead">To make sense of recursive functions we can use
-a way of thinking closely related to mathematical induction.</p>
+<p class="lead">To make sense of recursive functions, you can use a way of thinking closely related to mathematical induction.</p>
 
 <!-- CC BY-NC-SA 2.0: https://www.flickr.com/photos/gadl/254387060/ -->
 
@@ -175,7 +174,7 @@ for all <i>i</i>&nbsp;&lt;&nbsp;<i>k</i>,
 we can deduce that P(<i>n</i>) must be true for all positive integers&nbsp;<i>n</i>.
 <b>Q.E.D.</b></p>
 
-<h2 id="the-same-sum-in-nbsp-go">The same sum in&nbsp;Go</h2>
+<h2 id="the-same-sum-in-nbsp-code">The same sum in&nbsp;code</h2>
 
 <p>Induction works beautifully for proving statements about recursive functions,
 and for thinking about recursion in&nbsp;general.</p>
@@ -234,7 +233,7 @@ whenever&nbsp;<i>n</i>&nbsp;&ge;&nbsp;1.
 <p>Binary search is known as &rdquo;the simplest algorithm
 than no one can implement&rdquo;. This seems to be true:
 the top ten search results when I looked for binary search implementations
-exposed ten dubious pieces of code.
+exposed some dubious pieces of code.
 We&rsquo;d better use both test code and a correctness proof.</p>
 
 <pre><code>// Find returns the smallest index i at which x <= a[i].
@@ -314,6 +313,13 @@ by an&nbsp;<code>int</code> in&nbsp;Go,
 we have proved this code to be&nbsp;correct. <b>Q.E.D.</b></p>
 
 <h3 id="test-code">Test code</h3>
+
+<p><blockquote>
+Beware of bugs in the above code; I have only proved it correct, not tried&nbsp;it.
+</blockquote>
+<em>Donald Knuth</em></p>
+
+<p><a href="/golang/table-driven-unit-test/" title="Table driven unit tests"><img src="/golang/swim-safe.png" style="margin-top:5px;"></a></p>
 
 <p>The <a href="/golang/table-driven-unit-test/">Table driven unit tests</a> article
 has test code for this function.</p>

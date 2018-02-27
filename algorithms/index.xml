@@ -114,7 +114,7 @@ Neither arrays nor linked lists can achieve this:
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/algorithms/induction-recursive-functions/</guid>
-      <description>To make sense of recursive functions we can use a way of thinking closely related to mathematical induction.
+      <description>To make sense of recursive functions, you can use a way of thinking closely related to mathematical induction.
 This text introduces mathematical induction and explains how and why it works. It contains examples from both mathematics and programming.
 Induction is a proof method often used to prove statements about integers. We&amp;rsquo;ll use the notation P(n), where n&amp;nbsp;&amp;ge;&amp;nbsp;0, to denote such a&amp;nbsp;statement. To prove P(n) with induction is a two-step procedure.</description>
     </item>
