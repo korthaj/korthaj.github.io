@@ -22,6 +22,38 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://yourbasic.org/golang/regexp-cheat-sheet/"
+  },
+  "headline": "Regular expressions",
+  "image": [
+    "http://yourbasic.org/golang/cog-wheels.jpg"
+   ],
+  "datePublished": "2018-02-27T00:00:00&#43;0000",
+  "dateModified": "2018-02-27T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "How to use regular expressions in Go: examples and cheat sheet."
+}
+</script>
+
+
+
 </head>
 
 <body>
@@ -111,9 +143,9 @@ fmt.Println(matched) <span class="comment">// false</span></code></pre>
 
 <h3 id="compile">Compile</h3>
 
-<p>For more complicated queries, you must compile a regular expression to create
+<p>For more complicated queries, you can compile a regular expression to create
 a <a href="https://golang.org/pkg/regexp/#Regexp"><code>Regexp</code></a> object.
-There are two&nbsp;options.</p>
+There are two&nbsp;options:</p>
 
 <pre><code>re1, err := regexp.Compile(`regexp`) <span class="comment">// <b>error</b> if regexp invalid</span>
 re2 := regexp.MustCompile(`regexp`)  <span class="comment">// <b>panic</b> if regexp invalid</span></code></pre>
@@ -272,7 +304,9 @@ both ordinary string literals and regular expressions use backslashes for specia
 
 <h3 id="special-characters">Special characters</h3>
 
-<p>To match a <strong>special character</strong> <code>\^$.|?*+-[]{}()</code> literally, escape it with a backslash. For example <code>\{</code> matches an opening brace symbol. Other escape sequences are:</p>
+<p>To match a <strong>special character</strong> <code>\^$.|?*+-[]{}()</code> literally, escape it with a backslash. For example <code>\{</code> matches an opening brace symbol.</p>
+
+<p>Other escape sequences are:</p>
 
 <table class="white">
   <thead>
@@ -431,10 +465,15 @@ fmt.Printf("%q\n", zp.Split("pizza", 2))  <span class="comment">// ["pi" "a"]</s
 <ul>
 <li>The <a href="https://golang.org/pkg/regexp/"><code>regexp</code></a> package implements regular expressions with <a href="https://golang.org/s/re2syntax">RE2</a> syntax.</li>
 <li>It supports UTF-8 encoded strings and Unicode character classes.</li>
-<li>The implementation is very efficient: the running time is linearly proportional to the size of the input.</li>
-<li>Backreferences are not supported since they cannot be efficiently implemented.
-Related: <a href="https://swtch.com/~rsc/regexp/regexp1.html">Regular expression matching can be simple and fast (but is slow in Java, Perl, PHP, Python, Ruby,&nbsp;…)</a>.</li>
+<li>The implementation is very efficient: the running time is linear in the size of the&nbsp;input.</li>
+<li>Backreferences are not supported since they cannot be efficiently implemented.</li>
 </ul>
+
+<h3 id="further-reading">Further reading</h3>
+
+<div><a href="https://swtch.com/~rsc/regexp/regexp1.html"><img src="/golang/automata.png" title="Regular expression matching can be simple and fast"></a></div>
+
+<p><a href="https://swtch.com/~rsc/regexp/regexp1.html">Regular expression matching can be simple and fast (but is slow in Java, Perl, PHP, Python, Ruby,&nbsp;…)</a>.</p>
 
 <p><b>Share<span class="extra-content"> this page</span>:</b>
 <span class="small-content"><a href="mailto:?subject=Regular%20expressions&body=http%3a%2f%2fyourbasic.org%2fgolang%2fregexp-cheat-sheet%2f">Email</a>&nbsp;|</span>
