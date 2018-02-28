@@ -157,7 +157,6 @@ see <a href="https://golang.org/pkg/encoding/json/#Marshal"><code>json.Marshal</
 <ul>
 <li><strong>Only the exported (public) fields</strong> of a struct will be present in the JSON output.</li>
 <li>A field with a <code>json:</code> tag is stored with its tag name instead of its variable name.</li>
-<li>JSON objects only support strings as keys: a map must be of the form <code>map[string]T</code>.</li>
 <li>Pointers will be encoded as the values they point to,
 or <code>null</code> if the pointer is <code>nil</code>.</li>
 </ul>
