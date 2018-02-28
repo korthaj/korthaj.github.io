@@ -166,8 +166,7 @@ or <code>null</code> if the pointer is <code>nil</code>.</li>
 <p>Replace <code>json.Marshal</code> with <a href="https://golang.org/pkg/encoding/json/#MarshalIndent"><code>json.MarshalIndent</code></a>
 in the example above to indent the JSON output.</p>
 
-<pre><code>
-jsonData, err := <b>json.MarshalIndent</b>(basket, "", "    ")</code></pre>
+<pre><code>jsonData, err := <b>json.MarshalIndent</b>(basket, "", "    ")</code></pre>
 
 <p>Output:</p>
 
