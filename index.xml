@@ -2139,7 +2139,7 @@ select { case news := &amp;lt;-AFP: fmt.Println(news) case &amp;lt;-time.After(t
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/quicksort-optimizations/</guid>
-      <description>Most Quicksort optimi&amp;shy;zations give only small improve&amp;shy;ments. Here&amp;nbsp;are the ones that make a&amp;nbsp;real differ&amp;shy;ence.
+      <description>Most Quicksort optimi&amp;shy;zations give only small improve&amp;shy;ments. Here&amp;nbsp;are three that can make a&amp;nbsp;real differ&amp;shy;ence.
  Choose a good pivot. Use 3-way partitioning. Switch to a simpler algorithm for short sublists.  Algorithm overview  Pick an element p, called a pivot, from the list. Partition the list so that  all elements less than p come first, all elements greater than p come last, elements equal to p go into the middle.</description>
     </item>
     
