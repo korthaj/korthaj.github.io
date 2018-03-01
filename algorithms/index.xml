@@ -105,7 +105,7 @@ Neither arrays nor linked lists can achieve this:
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/algorithms/avoid-initializing-memory/</guid>
-      <description>Consider an algorithm that uses a large memory area. If the running time of the algorithm is smaller than the size of the memory, initializing the memory will take longer than running the algorithm. However, using a shrewd trick, it’s possible to refrain from initializing the&amp;nbsp;memory.  The idea is to keep track of which memory positions have been used so far. Using this information, you may postpone the initialization until the first time a memory cell is encountered.</description>
+      <description>Consider an algorithm that uses a large memory area. If the running time of the algorithm is smaller than the size of the memory, initializing the memory will take longer than running the algorithm. However, using a shrewd trick, it’s possible to refrain from initializing the&amp;nbsp;memory. This mysterious trick is used quite frequently in research articles, often with a reference to Exercise 2.12 in The Design and Analysis of Computer Algorithms by Aho, Hopcroft, and Ullman, 1974.</description>
     </item>
     
     <item>
