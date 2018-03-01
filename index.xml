@@ -66,7 +66,7 @@ s := fmt.Sprintf(&#34;%c%c, world!&#34;, 72, &#39;i&#39;) fmt.Println(s)// &#34;
       
       <guid>http://yourbasic.org/algorithms/algorithms/</guid>
       <description>A good programmer describes algo&amp;shy;rithms in a form that can be&amp;nbsp;effi&amp;shy;ciently exe&amp;shy;cuted by&amp;nbsp;ma&amp;shy;chines and easily under&amp;shy;stood by&amp;nbsp;humans.
-Algorithms and programs are pretty much the same thing &amp;ndash; the main difference is that we can talk about algorithms without relying on a programming language. An algorithm invented today will be equally as useful when the last Java programmer has logged&amp;nbsp;out. Here is an attempt at a formal definition.
+ Algorithms and programs are pretty much the same thing &amp;ndash; the main difference is that we can talk about algorithms without relying on a programming language. An algorithm invented today will be equally as useful when the last Java programmer has logged&amp;nbsp;out. Here is an attempt at a formal definition.
  An algorithm is a stepwise procedure of well-defined executable instructions intended to perform a task or solve a problem, often with the added requirement that the procedure must come to a stop.</description>
     </item>
     
@@ -211,7 +211,7 @@ Built-in operators   Operation Result Description     0011 &amp;amp; 0101 0001 B
       
       <guid>http://yourbasic.org/algorithms/blackjack/</guid>
       <description>It&#39;s possible to win at blackjack by counting cards, but most&amp;nbsp;fail. The mean is positive, but the variance is&amp;nbsp;mean.
-Always optimal strategy  Always use an optimal strategy adapted to the rules of your casino. Here is an example blackjack strategy. Every time you deviate from the optimal strategy – because of hunches or fear – it depletes your funds. Count cards  If you find a casino with good rules, and if you play with an optimal strategy, the odds are still against you – but the house edge can sometimes be as low as&amp;nbsp;0.</description>
+ Always optimal strategy  Always use an optimal strategy adapted to the rules of your casino. Here is an example blackjack strategy. Every time you deviate from the optimal strategy – because of hunches or fear – it depletes your funds. Count cards  If you find a casino with good rules, and if you play with an optimal strategy, the odds are still against you – but the house edge can sometimes be as low as&amp;nbsp;0.</description>
     </item>
     
     <item>
@@ -402,7 +402,7 @@ a := []int{1, 2} b := []int{11, 22} a = append(a, b...) // a == [1 2 11 22] The 
       
       <guid>http://yourbasic.org/golang/concurrent-programming/</guid>
       <description>This tutorial covers the funda&amp;shy;mentals of concur&amp;shy;rent program&amp;shy;ming with examples in&amp;nbsp;Go.
-Before you start, you need to know how to write basic Go programs. If you need a refresher, the&amp;nbsp;resources in Get started with Go will help you come up to speed quickly with&amp;nbsp;Go.
+ Before you start, you need to know how to write basic Go programs. If you need a refresher, the&amp;nbsp;resources in Get started with Go will help you come up to speed quickly with&amp;nbsp;Go.
 Start here
 Table of contents </description>
     </item>
@@ -637,7 +637,7 @@ file, err := ioutil.TempFile(&#34;dir&#34;, &#34;prefix&#34;) if err != nil { lo
       <guid>http://yourbasic.org/golang/crypto-rand-int/</guid>
       <description>Go has two packages for random numbers:
  math/rand implements a large selection of pseudo-random number generators. crypto/rand implements a cryptographically secure pseudo-random number generator with a limited interface.  The two packages can be combined by calling rand.New in package math/rand with a source that gets its data from crypto/rand.
-import ( crand &#34;crypto/rand&#34; rand &#34;math/rand&#34; &#34;encoding/binary&#34; &#34;fmt&#34; &#34;log&#34; ) func main() { var src cryptoSource rnd := rand.New(src) fmt.</description>
+import ( crand &#34;crypto/rand&#34; rand &#34;math/rand&#34; &#34;encoding/binary&#34; &#34;fmt&#34; &#34;log&#34; ) func main() { var src cryptoSource rnd := rand.</description>
     </item>
     
     <item>
@@ -701,7 +701,7 @@ func main() { t := Date(2000, 3, 0) // the day before 2000-03-01 fmt.Println(t) 
       
       <guid>http://yourbasic.org/golang/detect-deadlock/</guid>
       <description>A deadlock happens when a group of goroutines are waiting for each other and none of them is able to&amp;nbsp;proceed.
-Take a look at this simple example.
+ Take a look at this simple example.
 func main() { ch := make(chan int) ch &amp;lt;- 1 fmt.Println(&amp;lt;-ch) }  The program will get stuck on the channel send operation waiting forever for someone to read the value. Go is able to detect situations like this at runtime. Here is the output from our program:</description>
     </item>
     
@@ -1020,8 +1020,7 @@ The io.Reader interface, which represents the read end of a stream of data, is a
       
       <guid>http://yourbasic.org/golang/getting-started-hello-world/</guid>
       <description>Try it out The Go Playground is an interactive web&amp;nbsp;service that lets you run small Go programs, such as this &amp;ldquo;Hello,&amp;nbsp;world!&amp;rdquo; program, inside a sandbox. Try&amp;nbsp;it&amp;nbsp;out!
-package main import ( &#34;fmt&#34; ) func main() { fmt.Println(&#34;Hello, world!&#34;) } Learn the basics A Tour of Go is an interactive tutorial with many example programs. It teaches you the basics of Go programming directly in your browser, and it&amp;rsquo;s fun.
-Install the tools Getting Started explains how to install the Go tools.</description>
+package main import ( &#34;fmt&#34; ) func main() { fmt.Println(&#34;Hello, world!&#34;) } Learn the basics A Tour of Go is an interactive tutorial with many example programs. It teaches you the basics of Go programming directly in your browser, and it&amp;rsquo;s fun.</description>
     </item>
     
     <item>
@@ -1076,7 +1075,7 @@ The circumflex&amp;nbsp;^ denotes bitwise&amp;nbsp;XOR in&amp;nbsp;Go. The compu
       
       <guid>http://yourbasic.org/golang/gotcha/</guid>
       <description>26 sneaky traps and corner cases
-This collection of gotchas and pitfalls in Go is intended to help you find and fix similar problems in your own&amp;nbsp;code.
+ This collection of gotchas and pitfalls in Go is intended to help you find and fix similar problems in your own&amp;nbsp;code.
 Some of the puzzles are pretty easy. To solve all 26, you have to be a&amp;nbsp;ninja.
 Take quiz
 Table of contents </description>
@@ -1275,7 +1274,7 @@ Induction is a proof method often used to prove statements about integers. We&am
       
       <guid>http://yourbasic.org/golang/inheritance-object-oriented/</guid>
       <description>Go doesn&#39;t support inheritance. It has a new and improved solution &amp;ndash; interfaces and embedding support code reuse and polymorphism.
-Inheritance in traditional object-oriented programming offers three features in&amp;nbsp;one. When a&amp;nbsp;Dog inherits from an&amp;nbsp;Animal
+ Inheritance in traditional object-oriented programming offers three features in&amp;nbsp;one. When a&amp;nbsp;Dog inherits from an&amp;nbsp;Animal
  the Dog class reuses code from the Animal&amp;nbsp;class, a variable x of type Animal can refer to either a Dog or an Animal, x.Eat() will choose an Eat method based on what type of object x refers&amp;nbsp;to.</description>
     </item>
     
@@ -1382,7 +1381,7 @@ a[len(a)-1] = &#34;&#34; // Erase element (write zero value) a = a[:len(a)-1] //
       
       <guid>http://yourbasic.org/golang/compiler-error-messages/</guid>
       <description>The Go compiler often confuses and sometimes annoys developers who are new to&amp;nbsp;Go.
-This is a list of articles with strategies and workarounds for fresh Go programmers. Click the links for tips that will help you love &amp;ndash; or at least understand &amp;ndash; the Go compiler.
+ This is a list of articles with strategies and workarounds for fresh Go programmers. Click the links for tips that will help you love &amp;ndash; or at least understand &amp;ndash; the Go compiler.
 The most misunderstood Go error messages  imported and not used Programs with unused imports won&#39;t compile.   declared and not used You must use all local variables.</description>
     </item>
     
@@ -1448,7 +1447,7 @@ select {} // block forever </description>
       
       <guid>http://yourbasic.org/golang/maps-explained/</guid>
       <description>A map is an unordered collection of key-value&amp;nbsp;pairs.
-A map is an unordered collection of key-value pairs, where each key is&amp;nbsp;unique.
+ A map is an unordered collection of key-value pairs, where each key is&amp;nbsp;unique.
 var m map[string]int // m == nil, len(m) == 0 m1 := make(map[string]float64) // empty map of string-float64 pairs m2 := make(map[string]float64, 100) // preallocate room for 100 entries m3 := map[string]float64{ &#34;e&#34;: 2.71828, &#34;pi&#34;: 3.1416, } fmt.Println(len(m1), len(m2), len(m3)) // 0 0 2   The default zero value of a map is nil.</description>
     </item>
     
@@ -1536,7 +1535,7 @@ t, err := time.Parse(time.RFC822, &#34;04 Nov 17 12:54 CET&#34;) if err != nil {
       
       <guid>http://yourbasic.org/golang/mutex-explained/</guid>
       <description>Mutexes let you synchronize data access by explicit locking, without channels.
-Sometimes it’s more convenient to synchronize data access by explicit locking instead of using channels. The Go standard library offers a mutual exclusion lock, sync.Mutex, for this purpose.
+ Sometimes it’s more convenient to synchronize data access by explicit locking instead of using channels. The Go standard library offers a mutual exclusion lock, sync.Mutex, for this purpose.
 Use with caution For this type of locking to be safe, it&amp;rsquo;s crucial that all accesses to the shared data, both reads and writes, are performed only when a goroutine holds the lock.</description>
     </item>
     
@@ -1660,7 +1659,7 @@ Statement operators The ++ and -&amp;#8202;- operators form statements and fall 
       <description>The GoDoc website hosts docu&amp;shy;men&amp;shy;tation for all public Go packages on Bitbucket, GitHub, Google Project Hosting and&amp;nbsp;Launchpad.
 Godoc command The godoc command extracts and generates documentation for all locally installed Go programs, both your own code and the standard libraries.
 The following command starts a web server that presents the documentation at http://localhost:6060/.
-$ godoc -http=:6060 &amp;amp;  The documentation is tightly coupled with the code. For example, you can navigate from a function&amp;rsquo;s documentation to its implementation with a single click.</description>
+$ godoc -http=:6060 &amp;amp;   The documentation is tightly coupled with the code. For example, you can navigate from a function&amp;rsquo;s documentation to its implementation with a single click.</description>
     </item>
     
     <item>
@@ -1922,7 +1921,7 @@ a := []int{1, 2, 3, 4, 5, 6, 7, 8} rand.Seed(time.Now().UnixNano()) rand.Shuffle
       
       <guid>http://yourbasic.org/golang/slices-explained/</guid>
       <description>A slice doesn&#39;t store any data, it just describes a section of an underlying&amp;nbsp;array.
-A slice describes a section of an underlying array.
+ A slice describes a section of an underlying array.
  When you change an element of a slice, you modify the corresponding element of its underlying array, and other slices that share the same underlying array will see the change. A slice can grow and shrink within the bounds of the underlying array. Slices are indexed in the usual way: the expression s[i] accesses the ith element, starting from&amp;nbsp;zero.</description>
     </item>
     
@@ -1954,7 +1953,7 @@ a := regexp.MustCompile(`a`) fmt.Printf(&#34;%q\n&#34;, a.Split(&#34;banana&#34;
       
       <guid>http://yourbasic.org/golang/stack-trace/</guid>
       <description>A stack trace is a list of active function calls at a certain point in&amp;nbsp;time.
-Stack traces are typically printed to the console when an unexpected error occurs. They can be very useful for&amp;nbsp;debugging:
+ Stack traces are typically printed to the console when an unexpected error occurs. They can be very useful for&amp;nbsp;debugging:
  not only do you see where the error happened, but also how the program arrived in this place.  Example goroutine 11 [running]: testing.tRunner.func1(0xc420092690) /usr/local/go/src/testing/testing.go:711 +0x2d2 panic(0x53f820, 0x594da0) /usr/local/go/src/runtime/panic.go:491 +0x283 github.com/yourbasic/bit.(*Set).Max(0xc42000a940, 0x0) ../src/github.com/bit/set_math_bits.go:137 +0x89 github.</description>
     </item>
     
@@ -2324,7 +2323,7 @@ x = q*y + r and |r| &amp;lt; |y|  where x / y is truncated towards zero.</descri
       
       <guid>http://yourbasic.org/algorithms/random-number-generator-seed/</guid>
       <description>In reality pseudo&amp;shy;random numbers aren&#39;t random at all. They are computed using a fixed determi&amp;shy;nistic algorithm.
-The seed is a starting point for a sequence of pseudorandom numbers. If you start from the same seed, you get the very same sequence. This can be quite useful for&amp;nbsp;debugging.
+ The seed is a starting point for a sequence of pseudorandom numbers. If you start from the same seed, you get the very same sequence. This can be quite useful for&amp;nbsp;debugging.
 If you want a different sequence of numbers each time, you can use the current time as a&amp;nbsp;seed.
 Example This generator produces a sequence of 97 different numbers, then it starts over again.</description>
     </item>
@@ -2402,7 +2401,7 @@ Introduction The 5 Commandments 1. Tell me what this thing is 2. Tell me what it
       
       <guid>http://yourbasic.org/golang/your-basic-func/</guid>
       <description>Unexpected functional programming in&amp;nbsp;Go
-The Petersen graph and its complement Introduction This text is about the implementation of a Go tool based entirely on functions – the API contains only immutable data types, and the code is built on top of a struct with five func fields.
+ The Petersen graph and its complement Introduction This text is about the implementation of a Go tool based entirely on functions – the API contains only immutable data types, and the code is built on top of a struct with five func fields.
 It&amp;rsquo;s a tool for building virtual graphs. In a virtual graph no vertices or edges are stored in memory, they are instead computed as needed.</description>
     </item>
     
