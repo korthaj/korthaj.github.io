@@ -78,7 +78,7 @@
 
 <p class="lead">A hash table is an <b>unordered</b> collection of <b>key-value</b> pairs, where each key is&nbsp;<b>unique</b>.</p>
 
-<p><img src="/algorithms/file-cabinet.jpg" alt="file cabinet"></p>
+<div><img src="/algorithms/file-cabinet.jpg" alt="file cabinet"></div>
 
 <p>A hash table offers a combination of efficient lookup, insert and delete operations.</p>
 
@@ -150,16 +150,19 @@ We want this function to be uniform: it should map the expected inputs as evenly
 <h2 id="typical-hash-function">Typical hash function</h2>
 
 <p>Java&rsquo;s implementation of hash functions for strings is a good example.
-The <code>hashCode</code> method in the <code>String</code> class computes the value
-s[0]·31<sup>n-1</sup>&nbsp;+ s[1]·31<sup>n-2</sup>&nbsp;+&nbsp;… +&nbsp;s[n-1]
-using int arithmetic, where <code>s[i]</code> is the i:th character of the string, and n is the length of the string.</p>
+The <code>hashCode</code> method in the <code>String</code> class computes the&nbsp;value</p>
 
-<p>This method can be used as a hash function like this:</p>
+<p>s[0]·31<sup>n-1</sup>&nbsp;+ s[1]·31<sup>n-2</sup>&nbsp;+&nbsp;… +&nbsp;s[n-1]</p>
+
+<p>using int arithmetic, where <code>s[i]</code> is the i:th character of the string,
+and n is the length of the&nbsp;string.</p>
+
+<p>This method can be used as a hash function like&nbsp;this:</p>
 
 <pre><code>hash = Math.abs(s.hashCode() % size)
 </code></pre>
 
-<p>where <code>size</code> is the number of entry points in the hash table.</p>
+<p>where <code>size</code> is the number of entry points in the hash&nbsp;table.</p>
 
 <p>Note that this function depends on all characters in the string,
 and that the value changes when we change the order of the characters.
@@ -168,7 +171,8 @@ Two properties that should hold for a good hash function.</p>
 <h2 id="resizing">Resizing</h2>
 
 <p>The efficiency of a hash table depends on the fact that the table size is proportional to the number of elements.
-If the number of elements is not known in advance, the table must be resized when the lists become too long:</p>
+If the number of elements is not known in advance,
+the table must be resized when the lists become too&nbsp;long:</p>
 
 <ul>
 <li>a new larger table is allocated,</li>

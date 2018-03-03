@@ -1109,7 +1109,7 @@ go list.Sort() // Run list.Sort in parallel; don’t wait for it. The following 
       
       <guid>http://yourbasic.org/algorithms/graph/</guid>
       <description>Terminology, data structures and search algorithms
-This text introduces basic graph terminology, standard graph data structures, and three fundamental algorithms for traversing a graph in a systematic&amp;nbsp;way.
+ This text introduces basic graph terminology, standard graph data structures, and three fundamental algorithms for traversing a graph in a systematic&amp;nbsp;way.
 You may also want to take a look at the Github yourbasic/graph repository. It&amp;rsquo;s a Go library with generic implementations of several basic graph algorithms.
 Terminology A graph G consists of two types of elements: vertices and edges. Each edge has two endpoints, which belong to the vertex set.</description>
     </item>
@@ -1142,7 +1142,7 @@ s := &#34;Foo&#34; md5 := md5.Sum([]byte(s)) sha1 := sha1.Sum([]byte(s)) sha256 
       
       <guid>http://yourbasic.org/algorithms/hash-tables-explained/</guid>
       <description>A hash table is an unordered collection of key-value pairs, where each key is&amp;nbsp;unique.
-A hash table offers a combination of efficient lookup, insert and delete operations.
+ A hash table offers a combination of efficient lookup, insert and delete operations.
 Neither arrays nor linked lists can achieve this:
  a lookup in an unsorted array takes linear worst-case time; in a sorted array, a lookup using binary search is very fast, but insertions become inefficient; in a linked list an insertion can be efficient, but lookups take linear time.</description>
     </item>
@@ -1263,7 +1263,7 @@ Loop from 0 to len(a)-1 instead.</description>
       
       <guid>http://yourbasic.org/algorithms/induction-recursive-functions/</guid>
       <description>To make sense of recursive functions, you can use a way of thinking closely related to mathematical induction.
-This text introduces mathematical induction and explains how and why it works. It contains examples from both mathematics and programming.
+ This text introduces mathematical induction and explains how and why it works. It contains examples from both mathematics and programming.
 Induction is a proof method often used to prove statements about integers. We&amp;rsquo;ll use the notation P(n), where n&amp;nbsp;&amp;ge;&amp;nbsp;0, to denote such a&amp;nbsp;statement. To prove P(n) with induction is a two-step procedure.</description>
     </item>
     
@@ -1285,7 +1285,7 @@ Induction is a proof method often used to prove statements about integers. We&am
       
       <guid>http://yourbasic.org/algorithms/insertion-sort/</guid>
       <description>Insertion sort can outperform more complicated algorithms for short lists and lists that are almost sorted.
-Insertion sort is a simple sorting algorithm with quadratic worst-case running time, but in some cases it&amp;rsquo;s still the algorithm of choice.
+ Insertion sort is a simple sorting algorithm with quadratic worst-case running time, but in some cases it&amp;rsquo;s still the algorithm of choice.
  It&amp;rsquo;s efficient for really small data sets. It typically outperforms other simple quadratic algorithms, such as selection sort or bubble sort. It&amp;rsquo;s adaptive: it sorts data sets that are already substantially sorted efficiently.</description>
     </item>
     
@@ -1416,7 +1416,7 @@ dev etc tmp usr  </description>
       
       <guid>http://yourbasic.org/algorithms/loop-invariants-explained/</guid>
       <description>An invariant is a state&amp;shy;ment about the vari&amp;shy;ables in a program, which is true every time the execu&amp;shy;tion of the program reaches the&amp;nbsp;invariant.
-Basic example Designing with invariants Trickier example 3-way partition  When struggling with a tricky 3-way partion algorithm as a student, a friend suggested a well-fitting invariant. It was like getting a secret superpower: suddenly I could write code that used to be impossible.
+ Basic example Designing with invariants Trickier example 3-way partition  When struggling with a tricky 3-way partion algorithm as a student, a friend suggested a well-fitting invariant. It was like getting a secret superpower: suddenly I could write code that used to be impossible.
 In this text we&amp;rsquo;ll look at loop invariants, invariants placed at the beginning of a loop.</description>
     </item>
     
@@ -2092,7 +2092,7 @@ Sum of an arithmetic series As an introduction we show that the following recurs
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/algorithms/time-complexity-explained/</guid>
-      <description>Time complexity esti&amp;shy;mates the time to run an algo&amp;shy;rithm. It&#39;s calcu&amp;shy;lated by counting elemen&amp;shy;tary opera&amp;shy;tions. Example Worst-case time Average-case time Linear vs. quadratic time  Example What&amp;rsquo;s the running time of the following algorithm?
+      <description>Time complexity esti&amp;shy;mates the time to run an algo&amp;shy;rithm. It&#39;s calcu&amp;shy;lated by counting elemen&amp;shy;tary opera&amp;shy;tions.  Example Worst-case time Average-case time Linear vs. quadratic time  Example What&amp;rsquo;s the running time of the following algorithm?
  // Compute the maximum element in the array a. Algorithm max(a): max ← a[0] for i = 1 to len(a)-1 if a[i] &amp;gt; max max ← a[i] return max  The answer depends on factors such as input, programming language and runtime, coding skill, compiler, operating system, and hardware.</description>
     </item>
     
@@ -2412,7 +2412,7 @@ It&amp;rsquo;s a tool for building virtual graphs. In a virtual graph no vertice
       
       <guid>http://yourbasic.org/algorithms/your-basic-int/</guid>
       <description>The int data type is generic, effective, simple and efficient.
-Introduction Generic graph data Effective searching and sorting Simple sets Efficient filtering  Introduction Every kid can spot an integer number, and every programmer is familiar with the&amp;nbsp;int data&amp;nbsp;type. Still we frequently forget how powerful an integer can&amp;nbsp;be.
+ Introduction Generic graph data Effective searching and sorting Simple sets Efficient filtering  Introduction Every kid can spot an integer number, and every programmer is familiar with the&amp;nbsp;int data&amp;nbsp;type. Still we frequently forget how powerful an integer can&amp;nbsp;be.
  Generic
 An int or []int is a bit pattern that can represent any digital data. Furthermore, an int can point into any type of array.</description>
     </item>
