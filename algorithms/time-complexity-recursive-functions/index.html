@@ -22,6 +22,38 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://yourbasic.org/algorithms/time-complexity-recursive-functions/"
+  },
+  "headline": "Time complexity of recursive functions",
+  "image": [
+    "http://yourbasic.org/algorithms/recursive-soup.jpg"
+   ],
+  "datePublished": "2018-03-04T00:00:00&#43;0000",
+  "dateModified": "2018-03-04T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "You can often compute the time complexity of a recursive function by solving a recurrence relation. The master theorem gives solutions to a class of common recurrences."
+}
+</script>
+
+
+
 </head>
 
 <body>
@@ -44,6 +76,10 @@
 
 <p class="lead">It's often possible to compute the time complexity of a recursive function
 by formulating and solving a recurrence relation.</p>
+
+<!-- CC BY-SA 2.0: https://www.flickr.com/photos/gadl/337714905 -->
+
+<div><img src="/algorithms/recursive-soup.jpg"></div>
 
 <p>This text contains a few examples and a formula, the &rdquo;master theorem&rdquo;,
 which gives the solution to a class of recurrence relations that
@@ -215,6 +251,16 @@ T(<i>n</i>)&nbsp;=&nbsp;&Theta;(<i>n</i><sup>0</sup>log&nbsp;<i>n</i>),
 
 <p>which is correct.</p>
 
+<h2 id="more-on-algorithm-analysis">More on algorithm analysis</h2>
+
+<div><a href="/algorithms/time-complexity-explained/"><img src="/algorithms/abacus-thumb.jpg" title="Time complexity: Count your steps"></a></div>
+
+<p style="margin-top:0; margin-bottom:2em;"><a href="/algorithms/time-complexity-explained/">Time complexity: Count your steps</a></p>
+
+<div><a href="/algorithms/big-o-notation-explained/"><img src="/algorithms/big-o-thumb.jpg" title="Big O notation"></a></div>
+
+<p style="margin-top:0; margin-bottom:2em;"><a href="/algorithms/big-o-notation-explained/">Big O notation</a></p>
+
 <p><b>Share<span class="extra-content"> this page</span>:</b>
 <span class="small-content"><a href="mailto:?subject=Time%20complexity%20of%20recursive%20functions&body=http%3a%2f%2fyourbasic.org%2falgorithms%2ftime-complexity-recursive-functions%2f">Email</a>&nbsp;|</span>
 <a href="https://twitter.com/share?url=http%3a%2f%2fyourbasic.org%2falgorithms%2ftime-complexity-recursive-functions%2f&amp;text=Time%20complexity%20of%20recursive%20functions">Twitter</a>&nbsp;|
@@ -227,18 +273,6 @@ T(<i>n</i>)&nbsp;=&nbsp;&Theta;(<i>n</i><sup>0</sup>log&nbsp;<i>n</i>),
 
     
   <h2>Related</h2>
-
-  <div class="reference">
-    <a href="/algorithms/time-complexity-explained/">Time complexity: Count your steps</a>
-    <div class="desc">Time complexity esti­mates the time to run an algo­rithm. It&#39;s calcu­lated by counting elemen­tary opera­tions.</div>
-    <div class="source">yourbasic.org</div>
-  </div>
-
-  <div class="reference">
-    <a href="/algorithms/big-o-notation-explained/">Big O notation</a>
-    <div class="desc">Big O notation is a convenient way to describe how fast a function is growing. It is often used to describe time complexity.</div>
-    <div class="source">yourbasic.org</div>
-  </div>
 
   <div class="reference">
     <a href="/algorithms/induction-recursive-functions/">Induction and recursive functions</a>

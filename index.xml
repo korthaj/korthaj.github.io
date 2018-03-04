@@ -153,8 +153,8 @@ m := make(map[string]float64) m[&#34;pi&#34;] = 3.1416  A new, empty map value i
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/algorithms/big-o-notation-explained/</guid>
-      <description>Big O notation is a convenient way to describe how fast a func&amp;shy;tion is&amp;nbsp;growing.
-When we compute the time complexity&amp;nbsp;T(n) of an algorithm we rarely get an exact result. That&amp;rsquo;s fine &amp;ndash; typically we are only interested in how fast T(n) is growing as a function of the input size&amp;nbsp;n.
+      <description>Big O notation is a convenient way to describe how fast a function is&amp;nbsp;growing.
+ When we compute the time complexity&amp;nbsp;T(n) of an algorithm we rarely get an exact result. That&amp;rsquo;s fine &amp;ndash; typically we are only interested in how fast T(n) is growing as a function of the input size&amp;nbsp;n.
 For example, if an algorithm increments each number in a list of length&amp;nbsp;n, we might say: &amp;ldquo;This algorithm runs in O(n) time and performs O(1) work for each element&amp;rdquo;.</description>
     </item>
     
@@ -2082,7 +2082,7 @@ func Sum(nums ...int) int { res := 0 for _, n := range nums { res += n } return 
       
       <guid>http://yourbasic.org/algorithms/time-complexity-recursive-functions/</guid>
       <description>It&#39;s often possible to compute the time complexity of a recursive function by formulating and solving a recurrence relation.
-This text contains a few examples and a formula, the &amp;rdquo;master theorem&amp;rdquo;, which gives the solution to a class of recurrence relations that often show up when we analyze recursive functions.
+ This text contains a few examples and a formula, the &amp;rdquo;master theorem&amp;rdquo;, which gives the solution to a class of recurrence relations that often show up when we analyze recursive functions.
 Sum of an arithmetic series As an introduction we show that the following recursive function has linear time complexity.</description>
     </item>
     
