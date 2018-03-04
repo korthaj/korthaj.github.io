@@ -2082,7 +2082,7 @@ func Sum(nums ...int) int { res := 0 for _, n := range nums { res += n } return 
       
       <guid>http://yourbasic.org/algorithms/time-complexity-recursive-functions/</guid>
       <description>It&#39;s often possible to compute the time complexity of a recursive function by formulating and solving a recurrence relation.
- This text contains a few examples and a formula, the &amp;rdquo;master theorem&amp;rdquo;, which gives the solution to a class of recurrence relations that often show up when we analyze recursive functions.
+ This text contains a few examples and a formula, the &amp;ldquo;master theorem&amp;rdquo;, which gives the solution to a class of recurrence relations that often show up when we analyze recursive functions.
 Sum of an arithmetic series As an introduction we show that the following recursive function has linear time complexity.</description>
     </item>
     
