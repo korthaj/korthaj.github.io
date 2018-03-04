@@ -399,10 +399,6 @@
   </url>
   
   <url>
-    <loc>http://yourbasic.org/golang/go-java-tutorial/</loc>
-  </url>
-  
-  <url>
     <loc>http://yourbasic.org/golang/gotcha/</loc>
   </url>
   
@@ -500,6 +496,10 @@
   
   <url>
     <loc>http://yourbasic.org/golang/json-example/</loc>
+  </url>
+  
+  <url>
+    <loc>http://yourbasic.org/golang/go-java-tutorial/</loc>
   </url>
   
   <url>

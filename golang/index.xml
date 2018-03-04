@@ -972,16 +972,6 @@ The circumflex&amp;nbsp;^ denotes bitwise&amp;nbsp;XOR in&amp;nbsp;Go. The compu
     </item>
     
     <item>
-      <title>Go for Java programmers</title>
-      <link>http://yourbasic.org/golang/go-java-tutorial/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/go-java-tutorial/</guid>
-      <description>This tutorial is in&amp;shy;tended to help Java deve&amp;shy;lopers come up to speed quickly with&amp;nbsp;Go.
- Hello stack (example) Main differences Syntax Constants Structs Pointers Slices   Making values Methods and interfaces Errors Panic and recover Goroutines and channels Hello server (example)    Hello stack (example) Let&amp;rsquo;s start with a small but complete example. It shows how to implement and use a simple abstract data type in Go.</description>
-    </item>
-    
-    <item>
       <title>Go gotcha: newbie or ninja?</title>
       <link>http://yourbasic.org/golang/gotcha/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1206,6 +1196,16 @@ Iterate(func(n int) { fmt.</description>
       <description>The JSON data-interchange format is easy for humans to read and write, and efficient for machines to parse and generate.
  Basic types Struct to JSON Pretty print JSON to struct Arbitrary objects and arrays Files  Basic types The default Go types for coding and encoding JSON are
  bool for JSON booleans, float64 for JSON numbers, string for JSON strings, and nil for JSON null.  Additionally, time.</description>
+    </item>
+    
+    <item>
+      <title>Java to Go</title>
+      <link>http://yourbasic.org/golang/go-java-tutorial/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/go-java-tutorial/</guid>
+      <description>This tutorial is in&amp;shy;tended to help Java deve&amp;shy;lopers come up to speed quickly with&amp;nbsp;Go.
+ Hello stack (example) Main differences Syntax Constants Structs Pointers Slices   Making values Methods and interfaces Errors Panic and recover Goroutines and channels Hello server (example)    Hello stack (example) Let&amp;rsquo;s start with a small but complete example. It shows how to implement and use a simple abstract data type in Go.</description>
     </item>
     
     <item>
