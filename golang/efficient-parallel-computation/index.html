@@ -135,8 +135,6 @@ in a separate goroutine. Here is a parallel version of <code>Convolve</code>.</p
     return w
 }</code></pre>
 
-<h2 id="limit-the-number-of-goroutines">Limit the number of goroutines</h2>
-
 <p>When the work units have been defined, it’s often best to
 leave the scheduling to the runtime and the operating system.
 However, if needed, you can tell the runtime how many goroutines
