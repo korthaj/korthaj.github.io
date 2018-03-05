@@ -45,7 +45,7 @@
 
 <!-- CC0: http://maxpixel.freegreatpicture.com/Hardware-Microprocessor-Chip-Pc-Amd-Cpu-Processor-1310766 -->
 
-<div><img src="/golang/cpu.jpg" alt="cpu" style="float: right; margin:10px 0 0 10px;"></div>
+<div><img src="/golang/cpu.jpg" alt="cpu" style="float: right; margin:0 0 10px 10px;"></div>
 
 <p class="lead">Dividing&nbsp;a&nbsp;large compu&shy;tation into work units for parallel pro&shy;cessing is more of an art than a&nbsp;science.</p>
 
@@ -69,6 +69,11 @@ If data can be kept in cache memory, data loading and storing
 will be dramatically faster.
 Once again, this is particularly important for writing.</li>
 </ul>
+
+<p>Whatever strategies you are using, don&rsquo;t forget to
+<a href="https://dave.cheney.net/2013/06/30/how-to-write-benchmarks-in-go">benchmark</a> and
+<a href="https://blog.golang.org/profiling-go-programs">profile</a>
+your&nbsp;code.</p>
 
 <h2 id="example">Example</h2>
 
@@ -117,7 +122,7 @@ in a separate goroutine. Here is a parallel version of <code>Convolve</code>.</p
         if j > n {
             j = n
         }
-        <span class="comment">// The goroutines share memory, but only for reading.</span>
+        <span class="comment">// These goroutines share memory, but only for reading.</span>
         wg.Add(1)
         go func(i, j int) {
             for k := i; k < j; k++ {
@@ -130,12 +135,12 @@ in a separate goroutine. Here is a parallel version of <code>Convolve</code>.</p
     return w
 }</code></pre>
 
-<h2 id="limiting-the-number-of-goroutines">Limiting the number of goroutines</h2>
+<h2 id="limit-the-number-of-goroutines">Limit the number of goroutines</h2>
 
 <p>When the work units have been defined, it’s often best to
 leave the scheduling to the runtime and the operating system.
 However, if needed, you can tell the runtime how many goroutines
-you want executing code simultaneously:</p>
+you want executing code simultaneously.</p>
 
 <pre><code>func init() {
     numcpu := runtime.NumCPU()
@@ -188,6 +193,22 @@ you want executing code simultaneously:</p>
       <li><b>»&nbsp;</b>Efficient parallel computation</li>
 
   </ul>
+
+
+  
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="https://dave.cheney.net/2013/06/30/how-to-write-benchmarks-in-go">How to write benchmarks in Go</a>
+    <div class="source"></div>
+    <div class="author">Dave Cheney</div>
+  </div>
+
+  <div class="reference">
+    <a href="https://blog.golang.org/profiling-go-programs">Profiling Go Programs</a>
+    <div class="source">The Go Blog</div>
+    <div class="author"></div>
+  </div>
 
 
 
