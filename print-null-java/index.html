@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Print null in Java | yourbasic.org </title>
+  <meta name="description" content="What happens if you try to print null in Java? It depends.">
+  
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-113104149-1');
+  </script>
+
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Print null in Java</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<p class="lead">What happens if you try to print null in&nbsp;Java?
+It&nbsp;depends.
+</p>
+
+<div><img src="/res/programmer.jpg"></div>
+
+<h2 id="what-the-compiler-said">What the compiler said</h2>
+
+<p>The following line will <strong>not compile</strong>.</p>
+
+<pre>
+System.out.println(null);
+</pre>
+
+<p>
+This is the message from my compiler.
+</p>
+
+<pre>
+reference to println is ambiguous, both
+method println(char[]) in java.io.PrintStream and
+method println(java.lang.String) in java.io.PrintStream match
+</pre>
+
+<p>In fact, <code>println(java.lang.Object)</code> in <code>java.io.PrintStream</code>
+is yet another match,
+but Java has a way of chosing between that one and each of the two methods above.
+It’s just the string and the character array parameters
+that cause ambiguity; character arrays and objects can happily coexist.</p>
+
+<p>I’m not making this up.</p>
+
+<h2 id="what-the-runtime-did">What the runtime did</h2>
+
+<p>The following lines will compile.</p>
+
+<pre>
+Object o = null;
+String s = null;
+System.out.println(o);
+System.out.println(s);
+</pre>
+
+<p>Here is the output.</p>
+
+<pre>
+null
+null
+</pre>
+
+<p>The following will also compile.</p>
+
+<pre>
+char[] a = null;
+System.out.println(a);
+</pre>
+
+<p>But this method <strong>throws an exception</strong>.</p>
+
+<pre>
+Exception in thread "main" java.lang.NullPointerException
+    at java.io.Writer.write(Writer.java:127)
+    at java.io.PrintStream.write(PrintStream.java:470)
+    at java.io.PrintStream.print(PrintStream.java:620)
+    at java.io.PrintStream.println(PrintStream.java:759)
+    ...
+</pre>
+
+<p>With some more research funding I might be able to figure this&nbsp;out!</p>
+
+<h2 id="related">Related</h2>
+
+<div style="margin-top:1em;"><a href="/golang/go-vs-java/"><img src="/golang/fight-thumb.png" title="Go vs. Java"></a></div>
+
+<p><a href="/golang/go-vs-java/">Go vs. Java</a>
+is a brief code comparison.</p>
+
+<div style="margin-top:2em;"><a href="/golang/go-java-tutorial/"><img src="/golang/java-go-tiny.png" title="Java to Go"></a></div>
+
+<p><a href="/golang/go-java-tutorial/">Java to Go</a>
+is a  tutorial in­tended to help Java deve­lopers come up to speed quickly with&nbsp;Go.</p>
+
+<p><b>Share<span class="extra-content"> this page</span>:</b>
+<span class="small-content"><a href="mailto:?subject=Print%20null%20in%20Java&body=http%3a%2f%2fyourbasic.org%2fprint-null-java%2f">Email</a>&nbsp;|</span>
+<a href="https://twitter.com/share?url=http%3a%2f%2fyourbasic.org%2fprint-null-java%2f&amp;text=Print%20null%20in%20Java">Twitter</a>&nbsp;|
+<a href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fyourbasic.org%2fprint-null-java%2f">Facebook</a>&nbsp;|
+<a href="https://www.reddit.com/submit?url=http%3a%2f%2fyourbasic.org%2fprint-null-java%2f&amp;title=Print%20null%20in%20Java">Reddit</a></p>
+
+
+</article>
+<aside>
+<p></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

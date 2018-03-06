@@ -874,7 +874,7 @@ Find(All)?(String)?(Submatch)?(Index)?  The Regular expressions cheat sheet has 
       
       <guid>http://yourbasic.org/monte/</guid>
       <description>3-card monte is not a&amp;nbsp;game, it’s&amp;nbsp;robbery.
- You’ll find the game on the streets of most big cities – if you find the black lady, or a little paper ball under a&amp;nbsp;match-box, you win. There are many variations of the game, but the secret is always the same. If you manage to choose the right card they will still take your money, and run with&amp;nbsp;it.  Everyone you see on the street belongs to the mob, except the single victim.</description>
+  You’ll find the game on the streets of most big cities – if you find the black lady, or a little paper ball under a&amp;nbsp;match-box, you win. There are many variations of the game, but the secret is always the same. If you manage to choose the right card they will still take your money, and run with&amp;nbsp;it.  Everyone you see on the street belongs to the mob, except the single victim.</description>
     </item>
     
     <item>
@@ -1733,6 +1733,16 @@ fmt.Printf(&#34;%d %%&#34;, 50) // &#34;50 %&#34; </description>
 Basics Address operator Pointer indirection Pointers as parameters  Basics Structs and arrays are copied when used in assignments and passed as arguments to functions. With pointers this can be&amp;nbsp;avoided.
 Pointers store addresses of objects. The addresses can be passed around more efficiently than the actual&amp;nbsp;objects.
 A pointer has type *T. The keyword new allocates a new object and returns its&amp;nbsp;address.</description>
+    </item>
+    
+    <item>
+      <title>Print null in Java</title>
+      <link>http://yourbasic.org/print-null-java/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/print-null-java/</guid>
+      <description>What happens if you try to print null in&amp;nbsp;Java? It&amp;nbsp;depends.  What the compiler said The following line will not compile.
+ System.out.println(null);   This is the message from my compiler.  reference to println is ambiguous, both method println(char[]) in java.io.PrintStream and method println(java.lang.String) in java.io.PrintStream match  In fact, println(java.lang.Object) in java.io.PrintStream is yet another match, but Java has a way of chosing between that one and each of the two methods above.</description>
     </item>
     
     <item>
