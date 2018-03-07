@@ -77,7 +77,7 @@ s := fmt.Sprintf(&#34;%c%c, world!&#34;, 72, &#39;i&#39;) fmt.Println(s)// &#34;
       
       <guid>http://yourbasic.org/algorithms/amortized-time-complexity-analysis/</guid>
       <description>Amortized analysis is used for algo&amp;shy;rithms that have expensive opera&amp;shy;tions that happen only&amp;nbsp;rarely.
-Amortized complexity analysis is most commonly used with data structures, which have state that persists between operations. The basic idea is that an expensive operation can alter the state so that the worst case cannot occur again for a long time, thus amortizing its cost.
+ Amortized complexity analysis is most commonly used with data structures, which have state that persists between operations. The basic idea is that an expensive operation can alter the state so that the worst case cannot occur again for a long time, thus amortizing its cost.
 Let T1, T2,&amp;nbsp;…, Tk be the complexities of a sequence of operations on a data structuture.</description>
     </item>
     
