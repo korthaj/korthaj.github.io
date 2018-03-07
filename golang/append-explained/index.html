@@ -57,6 +57,11 @@ often in the variable holding the slice itself.</p>
 slice = append(slice, anotherSlice...)
 </code></pre>
 
+<blockquote class="warning">
+See <a href="/golang/gotcha-append/">Why doesn’t append work every time?</a> for an example
+of what can happen if your forget that <code>append</code> may reuse the underlying array.
+</blockquote>
+
 <h2 id="time-complexity">Time complexity</h2>
 
 <div><a href="/algorithms/big-o-notation-explained/"><img src="/algorithms/pink-coins-thumb.jpg" title="Amortized time complexity"></a></div>
@@ -101,12 +106,6 @@ a = append(a, a...) <span class="comment">// a == [1 2 1 2]</span></code></pre>
 
     
   <h2>Related</h2>
-
-  <div class="reference">
-    <a href="/golang/slices-explained/">Slices in a nutshell</a>
-    <div class="desc">A slice refers to a section of an underlying array. It can grow and shrink within the bounds of this array.</div>
-    <div class="source">yourbasic.org</div>
-  </div>
 
   <div class="reference">
     <a href="/golang/delete-element-slice/">Delete an element from a slice</a>
