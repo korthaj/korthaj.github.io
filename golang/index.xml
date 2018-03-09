@@ -901,7 +901,7 @@ rand.Seed(time.Now().UnixNano()) digits := &#34;0123456789&#34; specials := &#34
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/generate-permutation-slice-string/</guid>
-      <description>// Perm calls f with each permutation of a. func Perm(a []rune, f func([]rune)) { perm(a, f, 0) } // Permute the values at index i to len(a)-1. func perm(a []rune, f func([]rune), i int) { if i  len(a) { f(a) return } perm(a, f, i+1) for j := i + 1; j  Example usage:
+      <description> // Perm calls f with each permutation of a. func Perm(a []rune, f func([]rune)) { perm(a, f, 0) } // Permute the values at index i to len(a)-1. func perm(a []rune, f func([]rune), i int) { if i  len(a) { f(a) return } perm(a, f, i+1) for j := i + 1; j  Example usage:
 Perm([]rune(&amp;quot;abc&amp;quot;), func(a []rune) { fmt.Println(string(a)) })  Output:
 abc acb bac bca cba cab  </description>
     </item>
