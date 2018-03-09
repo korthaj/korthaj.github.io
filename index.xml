@@ -1395,7 +1395,7 @@ The most misunderstood Go error messages  imported and not used Programs with un
       <description>The repository at https://github.com/yourbasic/fenwick is a small but complete Go library package. It is intended to be used as a template for larger projects.
 In addition to source code and resources, it includes
  a README file with sections on  installation, documentation and compatability policy,  unit tests, benchmarks, godoc links, a testable doc example and a licence.  Further reading 
-Your basic API is an introduction to API design and software engineering.</description>
+Your basic API is an introduction to API design.</description>
     </item>
     
     <item>
