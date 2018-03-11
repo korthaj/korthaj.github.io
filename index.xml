@@ -1387,18 +1387,6 @@ The most misunderstood Go error messages  imported and not used Programs with un
     </item>
     
     <item>
-      <title>Library package template</title>
-      <link>http://yourbasic.org/golang/library-package-example-template/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/library-package-example-template/</guid>
-      <description>The repository at https://github.com/yourbasic/fenwick is a small but complete Go library package. It is intended to be used as a template for larger projects.
-In addition to source code and resources, it includes
- a README file with sections on  installation, documentation and compatability policy,  unit tests, benchmarks, godoc links, a testable doc example and a licence.  Further reading 
-Your basic API is an introduction to API design.</description>
-    </item>
-    
-    <item>
       <title>List files and folders in a directory</title>
       <link>http://yourbasic.org/golang/list-files-in-directory/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -2030,6 +2018,18 @@ Basics No condition Case lists Fall through Exit a switch Execution order  Basic
       <guid>http://yourbasic.org/golang/table-driven-unit-test/</guid>
       <description>Here is the code we want to&amp;nbsp;test.
 package search // Find returns the smallest index i at which x   Put the test code in a file whose name ends with _test.go. Write a function TestXXX with a single argument of type *testing.T. The test framework runs each such function. To indicate a failed test, call a failure function such as t.Errorf.  package search import &#34;testing&#34; var tests = []struct { a []int x int exp int }{ {[]int{}, 1, 0}, {[]int{1, 2, 3, 3}, 0, 0}, {[]int{1, 2, 3, 3}, 1, 0}, {[]int{1, 2, 3, 3}, 2, 1}, {[]int{1, 2, 3, 3}, 3, 3}, // incorrect test case {[]int{1, 2, 3, 3}, 4, 4}, } func TestFind(t *testing.</description>
+    </item>
+    
+    <item>
+      <title>Template for library packages</title>
+      <link>http://yourbasic.org/golang/library-package-example-template/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/library-package-example-template/</guid>
+      <description>The repository at https://github.com/yourbasic/fenwick is a small but complete Go library package. It is intended to be used as a template for larger projects.
+In addition to source code and resources, it includes
+ a README file with sections on  installation, documentation and compatability policy,  unit tests, benchmarks, godoc links, a testable doc example and a licence.  Further reading 
+Your basic API is an introduction to API design with examples in Go and&amp;nbsp;Java.</description>
     </item>
     
     <item>

@@ -515,10 +515,6 @@
   </url>
   
   <url>
-    <loc>http://yourbasic.org/golang/library-package-example-template/</loc>
-  </url>
-  
-  <url>
     <loc>http://yourbasic.org/golang/list-files-in-directory/</loc>
   </url>
   
@@ -757,6 +753,10 @@
   <url>
     <loc>http://yourbasic.org/tags/</loc>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://yourbasic.org/golang/library-package-example-template/</loc>
   </url>
   
   <url>
