@@ -38,7 +38,7 @@ Acknowledgement Some of the content was origi&amp;shy;nally published on Program
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/environment-variables/</guid>
-      <description>Use the os.Setenv, os.Getenv and os.Unsetenv functions to access environment variables.
+      <description> Use the os.Setenv, os.Getenv and os.Unsetenv functions to access environment variables.
 fmt.Printf(&#34;%q\n&#34;, os.Getenv(&#34;SHELL&#34;)) // &#34;/bin/bash&#34; os.Unsetenv(&#34;SHELL&#34;) fmt.Printf(&#34;%q\n&#34;, os.Getenv(&#34;SHELL&#34;)) // &#34;&#34; os.Setenv(&#34;SHELL&#34;, &#34;/bin/dash&#34;) fmt.Printf(&#34;%q\n&#34;, os.Getenv(&#34;SHELL&#34;)) // &#34;/bin/dash&#34; The os.Environ function returns a slice of &amp;quot;key=value&amp;quot; strings listing all environment variables.
 for _, s := range os.Environ() { kv := strings.SplitN(s, &#34;=&#34;, 2) // unpacks &#34;key=value&#34; fmt.Printf(&#34;key:%q value:%q\n&#34;, kv[0], kv[1]) } key:&amp;quot;SHELL&amp;quot; value:&amp;quot;/bin/bash&amp;quot; key:&amp;quot;SESSION&amp;quot; value:&amp;quot;ubuntu&amp;quot; key:&amp;quot;TERM&amp;quot; value:&amp;quot;xterm-256color&amp;quot; key:&amp;quot;LANG&amp;quot; value:&amp;quot;en_US.UTF-8&amp;quot; key:&amp;quot;XMODIFIERS&amp;quot; value:&amp;quot;@im=ibus&amp;quot; …  </description>
     </item>
