@@ -2352,6 +2352,17 @@ The number of elements copied by the copy function is the minimum of len(dst) an
     </item>
     
     <item>
+      <title>Where is the do-while loop?</title>
+      <link>http://yourbasic.org/golang/do-while-loop/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/do-while-loop/</guid>
+      <description>There is no do-while loop in Go. To emulate the C/Java code
+do { work(); } while (condition); you may use one of these alternatives:
+for ok := true; ok; ok = condition { work() } for { work() if !condition { break } } Read all about for loops  For loops in a&amp;nbsp;nutshell</description>
+    </item>
+    
+    <item>
       <title>Where is the ternary conditional operator?</title>
       <link>http://yourbasic.org/golang/ternary-if-else-statement/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -2428,17 +2439,6 @@ It&amp;rsquo;s a tool for building virtual graphs. In a virtual graph no vertice
  Introduction Generic graph data Effective searching and sorting Simple sets Efficient filtering  Introduction Every kid can spot an integer number, and every programmer is familiar with the&amp;nbsp;int data&amp;nbsp;type. Still we frequently forget how powerful an integer can&amp;nbsp;be.
  Generic
 An int or []int is a bit pattern that can represent any digital data. Furthermore, an int can point into any type of array.</description>
-    </item>
-    
-    <item>
-      <title>do-while loop</title>
-      <link>http://yourbasic.org/golang/do-while-loop/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/do-while-loop/</guid>
-      <description>There is no do-while loop in Go. To emulate the C/Java code
-do { work(); } while (condition); you may use one of these alternatives:
-for ok := true; ok; ok = condition { work() } for { work() if !condition { break } } Read all about for loops  For loops in a&amp;nbsp;nutshell</description>
     </item>
     
     <item>

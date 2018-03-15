@@ -2116,6 +2116,17 @@ The number of elements copied by the copy function is the minimum of len(dst) an
     </item>
     
     <item>
+      <title>Where is the do-while loop?</title>
+      <link>http://yourbasic.org/golang/do-while-loop/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/do-while-loop/</guid>
+      <description>There is no do-while loop in Go. To emulate the C/Java code
+do { work(); } while (condition); you may use one of these alternatives:
+for ok := true; ok; ok = condition { work() } for { work() if !condition { break } } Read all about for loops  For loops in a&amp;nbsp;nutshell</description>
+    </item>
+    
+    <item>
       <title>Where is the ternary conditional operator?</title>
       <link>http://yourbasic.org/golang/ternary-if-else-statement/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -2160,17 +2171,6 @@ prefix: 2017/10/20 07:52:58 text to append prefix: 2017/10/20 07:52:58 more text
       <description>Unexpected functional programming in&amp;nbsp;Go
  The Petersen graph and its complement Introduction This text is about the implementation of a Go tool based entirely on functions – the API contains only immutable data types, and the code is built on top of a struct with five func fields.
 It&amp;rsquo;s a tool for building virtual graphs. In a virtual graph no vertices or edges are stored in memory, they are instead computed as needed.</description>
-    </item>
-    
-    <item>
-      <title>do-while loop</title>
-      <link>http://yourbasic.org/golang/do-while-loop/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/do-while-loop/</guid>
-      <description>There is no do-while loop in Go. To emulate the C/Java code
-do { work(); } while (condition); you may use one of these alternatives:
-for ok := true; ok; ok = condition { work() } for { work() if !condition { break } } Read all about for loops  For loops in a&amp;nbsp;nutshell</description>
     </item>
     
     <item>
