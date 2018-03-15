@@ -2121,7 +2121,8 @@ The number of elements copied by the copy function is the minimum of len(dst) an
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/ternary-if-else-statement/</guid>
-      <description>Go has no ternary conditional operator. Instead of res = expr ? x : y you write
+      <description> Go has no ternary conditional operator. Instead&amp;nbsp;of
+res = expr ? x : y  you write
 if expr { res = x } else { res = y }  In some cases, you may want to create a dedicated function.
 func Min(x, y int) int { if x &amp;lt;= y { return x } return y }  </description>
     </item>
