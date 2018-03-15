@@ -2,6 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yourbasic.org/golang/panic-explained/</loc>
+  </url>
+  
+  <url>
     <loc>http://yourbasic.org/about/</loc>
   </url>
   
@@ -616,10 +620,6 @@
   
   <url>
     <loc>http://yourbasic.org/golang/packages-explained/</loc>
-  </url>
-  
-  <url>
-    <loc>http://yourbasic.org/golang/panic-explained/</loc>
   </url>
   
   <url>

@@ -11,6 +11,16 @@
     
     
     <item>
+      <title>A panic is an exception in Go</title>
+      <link>http://yourbasic.org/golang/panic-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/panic-explained/</guid>
+      <description>Panics are similar to C++ and Java exceptions, but are only intended for run-time errors, such as following a nil pointer or attempting to index an array out of bounds. To signify events such as end-of-file, Go programs use the built-in error type. See Errors for more on&amp;nbsp;errors.
+A panic stops the normal execution of a goroutine. When a program panics, it immediately starts to unwind the call stack. This continues until the program crashes, or until the built-in recover function is&amp;nbsp;called.</description>
+    </item>
+    
+    <item>
       <title>About</title>
       <link>http://yourbasic.org/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -806,7 +816,7 @@ const ( Sunday int = iota // Sunday == 0 Monday // Monday == 1 Tuesday // Tuesda
     </item>
     
     <item>
-      <title>Errors</title>
+      <title>Error handling</title>
       <link>http://yourbasic.org/golang/errors-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1343,7 +1353,7 @@ Iterate(func(n int) { fmt.</description>
     </item>
     
     <item>
-      <title>Java to Go</title>
+      <title>Java to Go in-depth tutorial</title>
       <link>http://yourbasic.org/golang/go-java-tutorial/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1463,7 +1473,7 @@ func foo() { defer duration(track(&#34;foo&#34;)) // Code to measure } func trac
     </item>
     
     <item>
-      <title>Methods</title>
+      <title>Methods for all types</title>
       <link>http://yourbasic.org/golang/methods-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1670,16 +1680,6 @@ $ godoc -http=:6060 &amp;amp;   The documentation is tightly coupled with the co
       <description>Every Go program is made up of packages and each package has an&amp;nbsp;import&amp;nbsp;path:
  &amp;quot;fmt&amp;quot; &amp;quot;math/rand&amp;quot; &amp;quot;github.com/yourbasic/graph&amp;quot;  Packages in the standard library have short import paths, such&amp;nbsp;as &amp;quot;fmt&amp;quot; and &amp;quot;math/rand&amp;quot;. Third-party packages, such as &amp;quot;github.com/yourbasic/graph&amp;quot;, typically have an import path that includes a hosting service (github.com) and an organization name (yourbasic).
 By convention, the package name is the same as the last element of the import path:</description>
-    </item>
-    
-    <item>
-      <title>Panic</title>
-      <link>http://yourbasic.org/golang/panic-explained/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/panic-explained/</guid>
-      <description>Panics are similar to C++ and Java exceptions, but are only intended for run-time errors, such as following a nil pointer or attempting to index an array out of bounds. To signify events such as end-of-file, Go programs use the built-in error type. See Errors for more on&amp;nbsp;errors.
-A panic stops the normal execution of a goroutine. When a program panics, it immediately starts to unwind the call stack. This continues until the program crashes, or until the built-in recover function is&amp;nbsp;called.</description>
     </item>
     
     <item>
