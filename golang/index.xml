@@ -1890,7 +1890,7 @@ Example The standard library provides many Writer implementations, and Writers a
       
       <guid>http://yourbasic.org/golang/three-dots-ellipsis/</guid>
       <description>The three dots notation is used in four different places in&amp;nbsp;Go.
-Variadic function parameters If the last parameter of a function has type ...T, it can be called with any number of trailing arguments of type&amp;nbsp;T. The actual type of ...T inside the function is&amp;nbsp;[]T.
+ Variadic function parameters If the last parameter of a function has type ...T, it can be called with any number of trailing arguments of type&amp;nbsp;T. The actual type of ...T inside the function is&amp;nbsp;[]T.
 This example function can be called with, for instance, Sum(1, 2, 3) or&amp;nbsp;Sum().
 func Sum(nums ...int) int { res := 0 for _, n := range nums { res += n } return res } Arguments to variadic functions You can pass a slice s directly to a variadic funtion if you unpack it with the s.</description>
     </item>
