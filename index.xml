@@ -2007,7 +2007,7 @@ type Student struct { Name string Age int } var a Student // a == Student{&#34;&
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/switch-statement/</guid>
-      <description>A switch is a shorter and cleaner way to write a&amp;nbsp;sequence of if-else statements.
+      <description>A switch is a cleaner way to write a&amp;nbsp;sequence of if&amp;nbsp;statements.
 Basics No condition Case lists Fall through Exit a switch Execution order  Basics switch time.Now().Weekday() { case time.Saturday: fmt.Println(&#34;Today is Saturday.&#34;) case time.Sunday: fmt.Println(&#34;Today is Sunday.&#34;) default: fmt.Println(&#34;Today is a weekday.&#34;) }  A switch statement runs the first case equal to the condition expression. The cases are evaluated from top to bottom, stopping when a case succeeds.</description>
     </item>
     
