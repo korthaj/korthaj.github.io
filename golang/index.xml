@@ -11,6 +11,18 @@
     
     
     <item>
+      <title>3 dots in 4 places</title>
+      <link>http://yourbasic.org/golang/three-dots-ellipsis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/three-dots-ellipsis/</guid>
+      <description>Can you name four places where three&amp;nbsp;dots (...) are used in&amp;nbsp;Go?
+ Variadic function parameters If the last parameter of a function has type ...T, it can be called with any number of trailing arguments of type&amp;nbsp;T. The actual type of ...T inside the function is&amp;nbsp;[]T.
+This example function can be called with, for instance, Sum(1, 2, 3) or&amp;nbsp;Sum().
+func Sum(nums ...int) int { res := 0 for _, n := range nums { res += n } return res } Arguments to variadic functions You can pass a slice s directly to a variadic funtion if you unpack it with the s.</description>
+    </item>
+    
+    <item>
       <title>A panic is an exception in Go</title>
       <link>http://yourbasic.org/golang/panic-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1881,18 +1893,6 @@ Example The standard library provides numerous Reader implementations (including
       <description>The io.Writer interface represents an entity to which you can write a stream of&amp;nbsp;bytes.
 type Writer interface { Write(p []byte) (n int, err error) }  Write writes up to len(p) bytes from p to the underlying data stream &amp;ndash; it returns the number of bytes written and any error encountered that caused the write to stop&amp;nbsp;early.
 Example The standard library provides many Writer implementations, and Writers are accepted as input by many utilities.</description>
-    </item>
-    
-    <item>
-      <title>Three dots in four places</title>
-      <link>http://yourbasic.org/golang/three-dots-ellipsis/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/three-dots-ellipsis/</guid>
-      <description>The three dots notation is used in four different places in&amp;nbsp;Go.
- Variadic function parameters If the last parameter of a function has type ...T, it can be called with any number of trailing arguments of type&amp;nbsp;T. The actual type of ...T inside the function is&amp;nbsp;[]T.
-This example function can be called with, for instance, Sum(1, 2, 3) or&amp;nbsp;Sum().
-func Sum(nums ...int) int { res := 0 for _, n := range nums { res += n } return res } Arguments to variadic functions You can pass a slice s directly to a variadic funtion if you unpack it with the s.</description>
     </item>
     
     <item>
