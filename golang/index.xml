@@ -1162,15 +1162,14 @@ Loop from 0 to len(a)-1 instead.</description>
     </item>
     
     <item>
-      <title>Interfaces</title>
+      <title>Interfaces in a nutshell</title>
       <link>http://yourbasic.org/golang/interfaces-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/interfaces-explained/</guid>
-      <description>An interface type is a set of method signatures.
-Basics Structural typing The empty interface Interface values Equality  Basics An interface type consists of a set of method signatures. A variable of interface type can hold any value that implements these methods.
-In this example both Temp and *Point implement the MyStringer interface.
-type MyStringer interface { String() string }  type Temp int func (t Temp) String() string { return strconv.</description>
+      <description>Basics Structural typing The empty interface Interface values Equality  Basics  An interface type consists of a set of method signatures. A variable of interface type can hold any value that implements these methods.
+ In this example both Temp and *Point implement the MyStringer interface.
+type MyStringer interface { String() string }  type Temp int func (t Temp) String() string { return strconv.Itoa(int(t)) + &amp;quot; °C&amp;quot; } type Point struct { x, y int } func (p *Point) String() string { return fmt.</description>
     </item>
     
     <item>

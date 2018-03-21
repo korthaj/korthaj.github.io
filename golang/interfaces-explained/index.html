@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interfaces - yourbasic.org/golang </title>
+  <title>Interfaces in a nutshell - yourbasic.org/golang </title>
   <meta name="description" content="An interface type consists of a set of method signatures. A variable of interface type can hold any value that implements these methods.">
   
   <link rel="stylesheet" href="/style.css">
@@ -22,6 +22,38 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://yourbasic.org/golang/interfaces-explained/"
+  },
+  "headline": "Interfaces in a nutshell",
+  "image": [
+    "http://yourbasic.org/golang/connection.jpg"
+   ],
+  "datePublished": "2018-03-21T00:00:00&#43;0000",
+  "dateModified": "2018-03-21T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "An interface type consists of a set of method signatures. A variable of interface type can hold any value that implements these methods."
+}
+</script>
+
+
+
 </head>
 
 <body>
@@ -38,11 +70,13 @@
 
 <main>
 <article>
-<h1>Interfaces</h1>
+<h1>Interfaces in a nutshell</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
-<p class="lead">An interface type is a set of method signatures.</p>
+<!-- CC0: http://maxpixel.freegreatpicture.com/Hand-In-Hand-Hands-Connection-Love-Heart-Anchor-1100886 -->
+
+<div style="margin-top:1em;"><img src="/golang/connection.jpg"></div>
 
 <ul class="toc">
   <li><a href="#basics">Basics</a></li>
@@ -54,8 +88,10 @@
 
 <h2 id="basics">Basics</h2>
 
-<p><em>An interface type consists of a set of method signatures.
-A variable of interface type can hold any value that implements these methods.</em></p>
+<blockquote>
+<p>An interface type consists of a set of method signatures.
+A variable of interface type can hold any value that implements these methods.</p>
+</blockquote>
 
 <p>In this example both <code>Temp</code> and <code>*Point</code> implement the <code>MyStringer</code> interface.</p>
 
@@ -87,25 +123,30 @@ a pointer type <code>*T</code> is the set of all methods with receiver <code>*T<
 <pre><code>var x MyStringer
 
 x = Temp(24)
-fmt.Println(x.String()) <span class="comment">// "24 °C"</span>
+fmt.Println(x.String()) <span class="comment">// 24 °C</span>
 
 x = &Point{1, 2}
-fmt.Println(x.String()) <span class="comment">// "(1,2)"</span></code></pre>
+fmt.Println(x.String()) <span class="comment">// (1,2)</span></code></pre>
 
 <h2 id="structural-typing">Structural typing</h2>
 
-<p><em>A type implements an interface by implementing its methods.
-No explicit declaration is&nbsp;required.</em></p>
+<blockquote>
+<p>A type implements an interface by implementing its methods.
+No explicit declaration is&nbsp;required.</p>
+</blockquote>
 
-<p>In fact, the <code>Temp</code>, <code>*Temp</code> and <code>*Point</code> types also implement the <a href="https://golang.org/pkg/fmt/#Stringer"><code>fmt.Stringer</code></a> interface. The <code>String</code> method in this interface is used to print values passed as an operand to functions such as <a href="https://golang.org/pkg/fmt/#Println"><code>fmt.Println</code></a>.</p>
+<p>In fact, the <code>Temp</code>, <code>*Temp</code> and <code>*Point</code> types also implement
+the standard library <a href="https://golang.org/pkg/fmt/#Stringer"><code>fmt.Stringer</code></a> interface.
+The <code>String</code> method in this interface is used to print values passed as an operand
+to functions such as <a href="https://golang.org/pkg/fmt/#Println"><code>fmt.Println</code></a>.</p>
 
 <pre><code>var x MyStringer
 
 x = Temp(24)
-fmt.Println(x) <span class="comment">// "24 °C"</span>
+fmt.Println(x) <span class="comment">// 24 °C</span>
 
 x = &Point{1, 2}
-fmt.Println(x) <span class="comment">// "(1,2)"</span></code></pre>
+fmt.Println(x) <span class="comment">// (1,2)</span></code></pre>
 
 <h2 id="the-empty-interface">The empty interface</h2>
 
@@ -119,12 +160,12 @@ fmt.Println(x) <span class="comment">// "(1,2)"</span></code></pre>
 <pre><code>var x interface{}
 
 x = 2.4
-fmt.Println(x) <span class="comment">// "2.4"</span>
+fmt.Println(x) <span class="comment">// 2.4</span>
 
 x = &Point{1, 2}
-fmt.Println(x) <span class="comment">// "(1,2)"</span></code></pre>
+fmt.Println(x) <span class="comment">// (1,2)</span></code></pre>
 
-<p>The <a href="https://golang.org/pkg/fmt/#Println"><code>fmt.Println</code></a> function is a chief example from the standard library.
+<p>The <a href="https://golang.org/pkg/fmt/#Println"><code>fmt.Println</code></a> function is a chief example.
 It takes any number of arguments of any&nbsp;type.</p>
 
 <pre><code>func Println(a ...interface{}) (n int, err error)
@@ -132,34 +173,34 @@ It takes any number of arguments of any&nbsp;type.</p>
 
 <h2 id="interface-values">Interface values</h2>
 
-<p><em>A <b>interface value</b> is a pair that consists of a <b>concrete value</b> and a <b>dynamic type</b>.</em></p>
-
-<pre><code>[Value, Type]
-</code></pre>
+<blockquote>
+<p>An <strong>interface value</strong> consists of a <strong>concrete&nbsp;value</strong>
+and a <strong>dynamic&nbsp;type</strong>: <code>[Value,&nbsp;Type]</code></p>
+</blockquote>
 
 <p>In a call to <a href="https://golang.org/pkg/fmt/#Printf"><code>fmt.Printf</code></a>, you can use <code>%v</code> to print the concrete value and <code>%T</code> to print the dynamic type.</p>
 
 <pre><code>var x MyStringer
-fmt.Printf("%v %T\n", x, x) <span class="comment">// "&lt;nil&gt; &lt;nil&gt;"</span>
+fmt.Printf("%v %T\n", x, x) <span class="comment">// &lt;nil&gt; &lt;nil&gt;</span>
 
 x = Temp(24)
-fmt.Printf("%v %T\n", x, x) <span class="comment">// "24 °C main.Temp"</span>
+fmt.Printf("%v %T\n", x, x) <span class="comment">// 24 °C main.Temp</span>
 
 x = &Point{1, 2}
-fmt.Printf("%v %T\n", x, x) <span class="comment">// "(1,2) *main.Point"</span>
+fmt.Printf("%v %T\n", x, x) <span class="comment">// (1,2) *main.Point</span>
 
 x = (*Point)(nil)
-fmt.Printf("%v %T\n", x, x) <span class="comment">// "&lt;nil&gt; *main.Point"</span></code></pre>
+fmt.Printf("%v %T\n", x, x) <span class="comment">// &lt;nil&gt; *main.Point</span></code></pre>
 
 <p>The <strong>zero value</strong> of an interface type is nil, which is represented as <code>[nil, nil]</code>.</p>
 
 <p>Calling a method on a nil interface is a run-time error.
 However, it&rsquo;s quite common to write methods that can handle
-a receiver value <code>[nil, T]</code>, where <code>T != nil</code>.</p>
+a receiver value <code>[nil, Type]</code>, where <code>Type</code> isn&rsquo;t&nbsp;nil.</p>
 
 <p>You can also use <strong>type assertions</strong>, <strong>type switches</strong> and <strong>reflection</strong>
 to access the dynamic type of an interface value.
-The article <a href="/golang/find-type-of-object/">Find the type of an object</a>
+<a href="/golang/find-type-of-object/">Find the type of an object</a>
 has more details.</p>
 
 <h2 id="equality">Equality</h2>
@@ -179,13 +220,25 @@ has more details.</p>
 </ul>
 
 <pre><code>var x MyStringer
-fmt.Println(x, x == nil)<span class="comment"> // "&lt;nil&gt; true"</span>
+fmt.Println(x == nil)<span class="comment"> // true</span>
 
 x = (*Point)(nil)
-fmt.Println(x, x == nil) <span class="comment">// "&lt;nil&gt; false"</span></code></pre>
+fmt.Println(x == nil) <span class="comment">// false</span></code></pre>
 
 <p>In the second print statement, the concrete value of <code>x</code> equals <code>nil</code>,
 but its dynamic type is <code>*Point</code>, which is not&nbsp;<code>nil</code>.</p>
+
+<h3 id="further-reading">Further reading</h3>
+
+<div><a href="/golang/generics/"><img src="/golang/bland-face-tiny.png" title="Generics (alternatives and workarounds)"></a></div>
+
+<p><a href="/golang/generics/">Generics (alternatives and workarounds)</a> discusses how interfaces, multiple functions, type assertions, reflection and code generation can be use in place of parametric polymorphism in&nbsp;Go.</p>
+
+<p><b>Share<span class="extra-content"> this page</span>:</b>
+<span class="small-content"><a href="mailto:?subject=Interfaces%20in%20a%20nutshell&body=http%3a%2f%2fyourbasic.org%2fgolang%2finterfaces-explained%2f">Email</a>&nbsp;|</span>
+<a href="https://twitter.com/share?url=http%3a%2f%2fyourbasic.org%2fgolang%2finterfaces-explained%2f&amp;text=Interfaces%20in%20a%20nutshell&amp;via=yourbasic%5forg">Twitter</a>&nbsp;|
+<a href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fyourbasic.org%2fgolang%2finterfaces-explained%2f">Facebook</a>&nbsp;|
+<a href="https://www.reddit.com/submit?url=http%3a%2f%2fyourbasic.org%2fgolang%2finterfaces-explained%2f&amp;title=Interfaces%20in%20a%20nutshell">Reddit</a></p>
 
 
 </article>
