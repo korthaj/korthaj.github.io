@@ -1457,9 +1457,8 @@ select {} // block forever </description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/maps-explained/</guid>
-      <description>A map is an unordered collection of key-value&amp;nbsp;pairs.
- A map is an unordered collection of key-value pairs, where each key is&amp;nbsp;unique.
-var m map[string]int // m == nil, len(m) == 0 m1 := make(map[string]float64) // empty map of string-float64 pairs m2 := make(map[string]float64, 100) // preallocate room for 100 entries m3 := map[string]float64{ &#34;e&#34;: 2.71828, &#34;pi&#34;: 3.1416, } fmt.Println(len(m1), len(m2), len(m3)) // 0 0 2   The default zero value of a map is nil.</description>
+      <description>A map is an unordered collection of key-value pairs, where each key is&amp;nbsp;unique.
+var m map[string]int // m == nil, len(m) == 0 m1 := make(map[string]float64) // empty map of string-float64 pairs m2 := make(map[string]float64, 100) // preallocate room for 100 entries m3 := map[string]float64{ &#34;e&#34;: 2.71828, &#34;pi&#34;: 3.1416, } fmt.Println(len(m1), len(m2), len(m3)) // 0 0 2   The default zero value of a map is nil. A nil map is equivalent to an empty map except that no elements can be&amp;nbsp;added.</description>
     </item>
     
     <item>
@@ -1931,8 +1930,7 @@ a := []int{1, 2, 3, 4, 5, 6, 7, 8} rand.Seed(time.Now().UnixNano()) rand.Shuffle
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/slices-explained/</guid>
-      <description>A slice doesn&#39;t store any data, it just describes a section of an underlying&amp;nbsp;array.
- A slice describes a section of an underlying array.
+      <description>A slice doesn&amp;rsquo;t store any data, it just describes a section of an underlying&amp;nbsp;array.
  When you change an element of a slice, you modify the corresponding element of its underlying array, and other slices that share the same underlying array will see the change. A slice can grow and shrink within the bounds of the underlying array. Slices are indexed in the usual way: the expression s[i] accesses the ith element, starting from&amp;nbsp;zero.</description>
     </item>
     
