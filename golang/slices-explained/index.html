@@ -53,11 +53,14 @@ a <strong>section</strong> of an <strong>underlying&nbsp;array</strong>.</p>
 <li>When you change an element of a slice, you modify the corresponding element of its underlying array,
 and other slices that share the same underlying array will see the change.</li>
 <li>A slice can grow and shrink within the bounds of the underlying array.</li>
-<li>Slices are indexed in the usual way: the expression <code>s[i]</code> accesses
-the <code>i</code>th element, starting from&nbsp;zero.</li>
+<li>Slices are indexed in the usual way: <code>s[i]</code> accesses
+the <code>i</code>th element, starting from&nbsp;zero.
+<br /></li>
 </ul>
 
-<pre><code>var s []int <span class="comment">// s == nil, len(s) == 0, cap(s) == 0</span>
+<h2 id="construction">Construction</h2>
+
+<pre><code>var s []int                   <span class="comment">// a nil slice</span>
 s1 := []string{"foo", "bar"}
 s2 := make([]int, 2)          <span class="comment">// same as []int{0, 0}</span>
 s3 := make([]int, 2, 4)       <span class="comment">// same as new([4]int)[:2]</span>
@@ -77,20 +80,26 @@ retrieve the length and capacity.</li>
 
 <h2 id="slicing">Slicing</h2>
 
+<pre><code>a := [...]int{0, 1, 2, 3} <span class="comment">// an array</span>
+s := a[1:3]               <span class="comment">// s == []int{1, 2}        cap(s) == 3</span>
+s = a[:2]                 <span class="comment">// s == []int{0, 1}        cap(s) == 4</span>
+s = a[2:]                 <span class="comment">// s == []int{2, 3}        cap(s) == 2</span>
+s = a[:]                  <span class="comment">// s == []int{0, 1, 2, 3}  cap(s) == 4</span>
+</code></pre>
+
 <p>You can also create a slice by slicing an existing array or slice.</p>
 
 <ul>
 <li>A slice is formed by specifying a low&nbsp;bound and a high&nbsp;bound: <code>a[low:high]</code>.
-This selects a half-open range which includes the first element, but excludes the last&nbsp;one.</li>
+This selects a half-open range which includes the first element, but excludes the last.</li>
 <li>You may omit the high or low bounds to use their defaults instead.
 The default is zero for the low bound and the length of the slice for the high bound.</li>
 </ul>
 
-<pre><code>a := [...]int{0, 1, 2, 3}
-s := a[1:3] <span class="comment">// s == []int{1, 2}        cap(s) == 3</span>
-s = a[:2]   <span class="comment">// s == []int{0, 1}        cap(s) == 4</span>
-s = a[2:]   <span class="comment">// s == []int{2, 3}        cap(s) == 2</span>
-s = a[:]    <span class="comment">// s == []int{0, 1, 2, 3}  cap(s) == 4</span>
+<pre><code>s := []int{0, 1, 2, 3, 4} <span class="comment">// a slice</span>
+s = s[1:4]                <span class="comment">// s == []int{1, 2, 3}</span>
+s = s[1:2]                <span class="comment">// s == []int{2} (index relative to slice)</span>
+s = s[:3]                 <span class="comment">// s == []int{2, 3, 4} (extend length)</span>
 </code></pre>
 
 <p>When you slice a slice, the indexes are relative to the slice itself,
@@ -101,12 +110,6 @@ not to the backing array.</p>
 which means you can extend the length of the slice.</li>
 <li>Trying to extend beyond the capacity causes a panic.</li>
 </ul>
-
-<pre><code>s := []int{0, 1, 2, 3, 4}
-s = s[1:4] <span class="comment">// s == []int{1, 2, 3}</span>
-s = s[1:2] <span class="comment">// s == []int{2}       (index relative to slice, not array)</span>
-s = s[:3]  <span class="comment">// s == []int{2, 3, 4} (extend length)</span>
-</code></pre>
 
 <h2 id="iteration">Iteration</h2>
 

@@ -1931,7 +1931,7 @@ a := []int{1, 2, 3, 4, 5, 6, 7, 8} rand.Seed(time.Now().UnixNano()) rand.Shuffle
       
       <guid>http://yourbasic.org/golang/slices-explained/</guid>
       <description>A slice doesn&amp;rsquo;t store any data, it just describes a section of an underlying&amp;nbsp;array.
- When you change an element of a slice, you modify the corresponding element of its underlying array, and other slices that share the same underlying array will see the change. A slice can grow and shrink within the bounds of the underlying array. Slices are indexed in the usual way: the expression s[i] accesses the ith element, starting from&amp;nbsp;zero.</description>
+ When you change an element of a slice, you modify the corresponding element of its underlying array, and other slices that share the same underlying array will see the change. A slice can grow and shrink within the bounds of the underlying array. Slices are indexed in the usual way: s[i] accesses the ith element, starting from&amp;nbsp;zero.</description>
     </item>
     
     <item>
