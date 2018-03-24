@@ -2177,7 +2177,7 @@ It&amp;rsquo;s a tool for building virtual graphs. In a virtual graph no vertice
       
       <guid>http://yourbasic.org/golang/zero-knowledge/</guid>
       <description>0 isn’t a decimal number in Go – it’s an octal literal.
- A number literal in Go (as well as in C and Java) is
+ An integer literal in Go (as well as in C and Java) is
  in base&amp;nbsp;16 if it starts with 0x or 0X, in base&amp;nbsp;8 if it starts with 0, otherwise it&#39;s a decimal&amp;nbsp;number.  In fact, there are many ways to write zero in base&amp;nbsp;8 in Go, including 0, 00 and&amp;nbsp;000. If&amp;nbsp;you prefer hexadecimal notation, you also have a smörgåsbord of options: such as 0x0, 0X0, 0x00 and&amp;nbsp;0X00.</description>
     </item>
     
