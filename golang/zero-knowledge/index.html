@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Template for library packages - yourbasic.org/golang </title>
-  <meta name="description" content="A small Go package with README, godoc, testable examples, license, unit tests, benchmarks.">
+  <title>Zero knowledge (besserwisser alert) - yourbasic.org/golang </title>
+  <meta name="description" content="There are infintitely many ways to write a zero literal in base 8 or 16 in Go, but no way to do it in base 10.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -28,14 +28,14 @@
   "@type": "Article",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "http://yourbasic.org/golang/library-package-example-template/"
+    "@id": "http://yourbasic.org/golang/zero-knowledge/"
   },
-  "headline": "Template for library packages",
+  "headline": "Zero knowledge (besserwisser alert)",
   "image": [
-    "http://yourbasic.org/golang/stencil.jpg"
+    "http://yourbasic.org/golang/habermas.jpg"
    ],
-  "datePublished": "2018-03-09T00:00:00&#43;0000",
-  "dateModified": "2018-03-11T00:00:00&#43;0000",
+  "datePublished": "2018-03-24T00:00:00&#43;0000",
+  "dateModified": "2018-03-24T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,7 +48,7 @@
       "url": "http://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "A small Go package with README, godoc, testable examples, license, unit tests, benchmarks."
+  "description": "There are infintitely many ways to write a zero literal in base 8 or 16 in Go, but no way to do it in base 10."
 }
 </script>
 
@@ -70,44 +70,34 @@
 
 <main>
 <article>
-<h1>Template for library packages</h1>
+<h1>Zero knowledge (besserwisser alert)</h1>
 <div class="tagline">yourbasic.org/golang</div>
+<p class="lead">0 isn't a decimal number in Go.</p>
 
+<!-- CC BY-SA 3.0: https://commons.wikimedia.org/wiki/File:JuergenHabermas.jpg -->
 
-<!-- CC0:  http://maxpixel.freegreatpicture.com/Design-Pen-Pattern-Style-Set-Stencil-Retro-933150 -->
+<div><img src="/golang/habermas.jpg"></div>
 
-<div style="margin-top:1em;"><img src="/golang/stencil.jpg"></div>
+<p><code>0</code> isn&rsquo;t a decimal number in&nbsp;Go – it&rsquo;s an octal literal.</p>
 
-<p>The repository at <a href="https://github.com/yourbasic/fenwick">https://github.com/yourbasic/fenwick</a> is a small but complete Go library package. It is intended to be used as a template for larger projects.</p>
+<p>In fact, there are many ways to write zero in base&nbsp;8 in Go, including
+<code>0</code>, <code>00</code> and&nbsp;<code>000</code>.
+If&nbsp;you prefer hexadecimal notation, you also have a smörgåsbord of options: such as
+<code>0x0</code>, <code>0X0</code>,
+<code>0x00</code> and&nbsp;<code>0X00</code>.
+However, there is no decimal zero literal in&nbsp;Go.</p>
 
-<p>In addition to source code and resources, it includes</p>
+<p>Note that Go doesn&rsquo;t have any negative decimal literals either:
+<code>-1</code>&nbsp;is the unary negation operator
+followed by the decimal literal&nbsp;<code>1</code>.</p>
 
-<ul>
-<li>a <a href="https://github.com/yourbasic/fenwick/blob/master/README.md">README</a> file with sections on
-
-<ul>
-<li>installation,</li>
-<li>documentation and</li>
-<li>compatability policy,</li>
-</ul></li>
-<li>unit tests,</li>
-<li>benchmarks,</li>
-<li>godoc links,</li>
-<li>a testable doc example and</li>
-<li>a licence.</li>
-</ul>
-
-<h3 id="further-reading">Further reading</h3>
-
-<p><a href="/algorithms/your-basic-api/"><img src="/algorithms/go-thumb.jpg" width="250px" title="Your basic API: Thoughts on effective API design"></a></p>
-
-<p style="margin-top:0; margin-bottom:2em;"><a href="/algorithms/your-basic-api/">Your basic API</a> is an introduction to API design with examples in Go and&nbsp;Java.</p>
+<p>But surely you knew all of this already.</p>
 
 <p><b>Share<span class="extra-content"> this page</span>:</b>
-<span class="small-content"><a href="mailto:?subject=Template%20for%20library%20packages&body=http%3a%2f%2fyourbasic.org%2fgolang%2flibrary-package-example-template%2f">Email</a>&nbsp;|</span>
-<a href="https://twitter.com/share?url=http%3a%2f%2fyourbasic.org%2fgolang%2flibrary-package-example-template%2f&amp;text=Template%20for%20library%20packages&amp;via=yourbasic%5forg">Twitter</a>&nbsp;|
-<a href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fyourbasic.org%2fgolang%2flibrary-package-example-template%2f">Facebook</a>&nbsp;|
-<a href="https://www.reddit.com/submit?url=http%3a%2f%2fyourbasic.org%2fgolang%2flibrary-package-example-template%2f&amp;title=Template%20for%20library%20packages">Reddit</a></p>
+<span class="small-content"><a href="mailto:?subject=Zero%20knowledge%20%28besserwisser%20alert%29&body=http%3a%2f%2fyourbasic.org%2fgolang%2fzero-knowledge%2f">Email</a>&nbsp;|</span>
+<a href="https://twitter.com/share?url=http%3a%2f%2fyourbasic.org%2fgolang%2fzero-knowledge%2f&amp;text=Zero%20knowledge%20%28besserwisser%20alert%29&amp;via=yourbasic%5forg">Twitter</a>&nbsp;|
+<a href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fyourbasic.org%2fgolang%2fzero-knowledge%2f">Facebook</a>&nbsp;|
+<a href="https://www.reddit.com/submit?url=http%3a%2f%2fyourbasic.org%2fgolang%2fzero-knowledge%2f&amp;title=Zero%20knowledge%20%28besserwisser%20alert%29">Reddit</a></p>
 
 
 </article>
@@ -117,9 +107,15 @@
   <h2>Related</h2>
 
   <div class="reference">
-    <a href="https://golang.org/doc/code.html">How to Write Go Code</a>
-    <div class="source">golang.org</div>
+    <a href="https://golang.org/ref/spec#Integer_literals">Integer literals</a>
+    <div class="source">The Go Programming Language Specification</div>
     <div class="author"></div>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/bitwise-operator-cheat-sheet/">Bitwise operators cheat sheet</a>
+    <div class="desc">A complete list of bitwise operators and functions in Go: not, and, or, xor, bit, bit clear, shift, rotate, popcount</div>
+    <div class="source">yourbasic.org</div>
   </div>
 
 <h2>New in Go 1.10</h2>

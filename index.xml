@@ -2439,6 +2439,18 @@ An int or []int is a bit pattern that can represent any digital data. Furthermor
     </item>
     
     <item>
+      <title>Zero knowledge (besserwisser alert)</title>
+      <link>http://yourbasic.org/golang/zero-knowledge/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/zero-knowledge/</guid>
+      <description>0 isn&#39;t a decimal number in Go.
+ 0 isn&amp;rsquo;t a decimal number in&amp;nbsp;Go – it&amp;rsquo;s an octal literal.
+In fact, there are many ways to write zero in base&amp;nbsp;8 in Go, including 0, 00 and&amp;nbsp;000. If&amp;nbsp;you prefer hexadecimal notation, you also have a smörgåsbord of options: such as 0x0, 0X0, 0x00 and&amp;nbsp;0X00. However, there is no decimal zero literal in&amp;nbsp;Go.
+Note that Go doesn&amp;rsquo;t have any negative decimal literals either: -1&amp;nbsp;is the unary negation operator followed by the decimal literal&amp;nbsp;1.</description>
+    </item>
+    
+    <item>
       <title>fmt cheat sheet</title>
       <link>http://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
