@@ -419,10 +419,6 @@
   </url>
   
   <url>
-    <loc>http://yourbasic.org/algorithms/graph/</loc>
-  </url>
-  
-  <url>
     <loc>http://yourbasic.org/golang/http-server-example/</loc>
   </url>
   
@@ -909,6 +905,10 @@
   
   <url>
     <loc>http://yourbasic.org/golang/your-basic-func/</loc>
+  </url>
+  
+  <url>
+    <loc>http://yourbasic.org/algorithms/graph/</loc>
   </url>
   
   <url>

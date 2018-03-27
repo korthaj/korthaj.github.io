@@ -1117,18 +1117,6 @@ go list.Sort() // Run list.Sort in parallel; don’t wait for it. The following 
     </item>
     
     <item>
-      <title>Graphs</title>
-      <link>http://yourbasic.org/algorithms/graph/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/algorithms/graph/</guid>
-      <description>Terminology, data structures and search algorithms
- This text introduces basic graph terminology, standard graph data structures, and three fundamental algorithms for traversing a graph in a systematic&amp;nbsp;way.
-You may also want to take a look at the Github yourbasic/graph repository. It&amp;rsquo;s a Go library with generic implementations of several basic graph algorithms.
-Terminology A graph G consists of two types of elements: vertices and edges. Each edge has two endpoints, which belong to the vertex set.</description>
-    </item>
-    
-    <item>
       <title>HTTP server example</title>
       <link>http://yourbasic.org/golang/http-server-example/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -2434,6 +2422,17 @@ prefix: 2017/10/20 07:52:58 text to append prefix: 2017/10/20 07:52:58 more text
       <description>Unexpected functional programming in&amp;nbsp;Go
  The Petersen graph and its complement Introduction This text is about the implementation of a Go tool based entirely on functions – the API contains only immutable data types, and the code is built on top of a struct with five func fields.
 It&amp;rsquo;s a tool for building virtual graphs. In a virtual graph no vertices or edges are stored in memory, they are instead computed as needed.</description>
+    </item>
+    
+    <item>
+      <title>Your basic graph</title>
+      <link>http://yourbasic.org/algorithms/graph/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/algorithms/graph/</guid>
+      <description>Terminology Data structures Search algorithms  This text introduces basic graph terminology, standard graph data structures, and three fundamental algorithms for traversing a graph in a systematic&amp;nbsp;way.
+You may also want to take a look at the Github yourbasic/graph repository. It&amp;rsquo;s a Go library with generic implementations of several basic graph algorithms.
+Terminology A graph G consists of two types of elements: vertices and edges. Each edge has two endpoints, which belong to the vertex set.</description>
     </item>
     
     <item>
