@@ -75,10 +75,10 @@ s := fmt.Sprintf(&#34;%c%c, world!&#34;, 72, &#39;i&#39;) fmt.Println(s)// &#34;
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/anonymous-function-literal-lambda-closure/</guid>
-      <description>A function literal, or lambda, is a function without a&amp;nbsp;name.
+      <description>A function literal (or lambda) is a&amp;nbsp;function without a&amp;nbsp;name.
  In this example a function literal is passed as the less argument to the sort.Slice function.
-people := []string{&#34;Alice&#34;, &#34;Bob&#34;, &#34;Dave&#34;} sort.Slice(people, func(i, j int) bool { return len(people[i]) ) fmt.Println(people) // Output: [Bob Dave Alice] You can also use an intermediate variable.
-people := []string{&#34;Alice&#34;, &#34;Bob&#34;, &#34;Dave&#34;} less := func(i, j int) bool { return len(people[i]) sort.Slice(people, less) Note that the less function is a closure: it references the people variable, which is declared outside the function.</description>
+func Slice(slice interface{}, less func(i, j int) bool)  people := []string{&#34;Alice&#34;, &#34;Bob&#34;, &#34;Dave&#34;} sort.Slice(people, func(i, j int) bool { return len(people[i]) ) fmt.Println(people) // Output: [Bob Dave Alice] You can also use an intermediate variable.
+people := []string{&#34;Alice&#34;, &#34;Bob&#34;, &#34;Dave&#34;} less := func(i, j int) bool { return len(people[i]) sort.</description>
     </item>
     
     <item>
