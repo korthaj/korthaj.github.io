@@ -109,8 +109,8 @@ Let T1, T2,&amp;nbsp;…, Tk be the complexities of a sequence of operations on 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/anonymous-function-literal-lambda-closure/</guid>
-      <description>A function literal, or lambda, represents a function without a name.
-In this example a function literal is passed as the less argument to the sort.Slice function.
+      <description>A function literal, or lambda, is a function without a&amp;nbsp;name.
+ In this example a function literal is passed as the less argument to the sort.Slice function.
 people := []string{&#34;Alice&#34;, &#34;Bob&#34;, &#34;Dave&#34;} sort.Slice(people, func(i, j int) bool { return len(people[i]) ) fmt.Println(people) // Output: [Bob Dave Alice] You can also use an intermediate variable.
 people := []string{&#34;Alice&#34;, &#34;Bob&#34;, &#34;Dave&#34;} less := func(i, j int) bool { return len(people[i]) sort.Slice(people, less) Note that the less function is a closure: it references the people variable, which is declared outside the function.</description>
     </item>
