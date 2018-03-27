@@ -72,6 +72,8 @@
 <article>
 <h1>Zero knowledge (besserwisser alert)</h1>
 <div class="tagline">yourbasic.org/golang</div>
+
+
 <p class="lead">0 isn’t a decimal number in Go – it’s an octal literal.</p>
 
 <!-- CC BY-SA 3.0: https://commons.wikimedia.org/wiki/File:JuergenHabermas.jpg -->
@@ -96,6 +98,13 @@ However, there is no decimal zero integer literal in&nbsp;Go.</p>
 <p>Note that Go doesn&rsquo;t have any negative decimal literals either:
 <code>-1</code>&nbsp;is the unary negation operator
 followed by the decimal literal&nbsp;<code>1</code>.</p>
+
+<h2 id="why-should-i-care">Why should I care?</h2>
+
+<p>This is mostly useless knowledge, unless perhaps you&rsquo;re writing a Go compiler.
+But it&rsquo;s good to be aware of the octal integer literals.
+If your write a number with leading zeroes by mistake, you could be in for
+a <a href="http://localhost:1313/golang/gotcha-octal-decimal-hexadecimal-literal/">nasty surprise</a>.</p>
 
 <p><b>Share<span class="extra-content"> this page</span>:</b>
 <span class="small-content"><a href="mailto:?subject=Zero%20knowledge%20%28besserwisser%20alert%29&body=http%3a%2f%2fyourbasic.org%2fgolang%2fzero-knowledge%2f">Email</a>&nbsp;|</span>
