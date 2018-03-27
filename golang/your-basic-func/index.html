@@ -147,7 +147,7 @@ for which <em>v</em> is odd and <em>w</em> even.</p>
 
 <pre><code><span class="comment">// Define a graph by a function.</span>
 g := build.Generic(10, func(v, w int) bool {
-    // Include all edges with v odd and w even.
+    <span class="comment">// Include all edges with v odd and w even.</span>
     return v%2 == 1 && w%2 == 0
 })
 </code></pre>
