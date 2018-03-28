@@ -1009,6 +1009,16 @@ Table of contents </description>
     </item>
     
     <item>
+      <title>Go nutshells</title>
+      <link>http://yourbasic.org/golang/nutshells/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/nutshells/</guid>
+      <description> Concise descriptions of core Go concepts
+ Table of contents </description>
+    </item>
+    
+    <item>
       <title>Go vs. Java: 13 main differences</title>
       <link>http://yourbasic.org/golang/go-vs-java/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1509,7 +1519,7 @@ $ godoc -http=:6060 &amp;amp;   The documentation is tightly coupled with the co
     </item>
     
     <item>
-      <title>Packages</title>
+      <title>Packages in a nutshell</title>
       <link>http://yourbasic.org/golang/packages-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
