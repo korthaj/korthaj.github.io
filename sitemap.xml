@@ -46,10 +46,6 @@
   </url>
   
   <url>
-    <loc>http://yourbasic.org/golang/append-string-byte-slice/</loc>
-  </url>
-  
-  <url>
     <loc>http://yourbasic.org/golang/append-to-file/</loc>
   </url>
   
@@ -183,10 +179,6 @@
   </url>
   
   <url>
-    <loc>http://yourbasic.org/golang/convert-float-to-int/</loc>
-  </url>
-  
-  <url>
     <loc>http://yourbasic.org/golang/convert-float-to-string/</loc>
   </url>
   
@@ -315,10 +307,6 @@
   </url>
   
   <url>
-    <loc>http://yourbasic.org/golang/regexp-find-all-matches/</loc>
-  </url>
-  
-  <url>
     <loc>http://yourbasic.org/golang/find-search-contains-slice/</loc>
   </url>
   
@@ -336,10 +324,6 @@
   
   <url>
     <loc>http://yourbasic.org/monte/</loc>
-  </url>
-  
-  <url>
-    <loc>http://yourbasic.org/golang/regexp-find-index-location/</loc>
   </url>
   
   <url>
@@ -440,10 +424,6 @@
   
   <url>
     <loc>http://yourbasic.org/golang/stop-goroutine/</loc>
-  </url>
-  
-  <url>
-    <loc>http://yourbasic.org/golang/sort-custom-type/</loc>
   </url>
   
   <url>
