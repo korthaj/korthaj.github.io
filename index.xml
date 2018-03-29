@@ -1710,7 +1710,7 @@ Warning: Unexported identifiers is not a security measure and it does not hide o
       
       <guid>http://yourbasic.org/golang/for-loop-range-array-slice-map-channel/</guid>
       <description>Range statements iterate over slices, arrays, strings, maps or&amp;nbsp;channels.
-Basics Strings Maps Channels  Basics a := []string{&#34;Foo&#34;, &#34;Bar&#34;} for i, s := range a { fmt.Println(i, s) } 0 Foo 1 Bar   The range expression, a, is evaluated once before beginning the loop. The iteration values are assigned to the respective iteration variables, i and s, as in an assignment statement. The second iteration variable is optional.</description>
+ Basics Strings Maps Channels  Basics a := []string{&#34;Foo&#34;, &#34;Bar&#34;} for i, s := range a { fmt.Println(i, s) } 0 Foo 1 Bar   The range expression, a, is evaluated once before beginning the loop. The iteration values are assigned to the respective iteration variables, i and s, as in an assignment statement. The second iteration variable is optional.</description>
     </item>
     
     <item>
