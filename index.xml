@@ -1188,7 +1188,7 @@ set := make(map[string]bool) // New empty set set[&#34;Foo&#34;] = true // Add f
       
       <guid>http://yourbasic.org/golang/implement-stack/</guid>
       <description>The idiomatic way to implement a stack in Go is to use a slice:
- to push you use the built-in append function, and to pop you slice off the top element.  var stack []string stack = append(stack, &#34;world!&#34;) // Push stack = append(stack, &#34;Hello &#34;) for len(stack)  0 { n := len(stack) - 1 // Top element fmt.Print(stack[n]) stack = stack[:n] // Pop } Hello world! Watch out for memory leaks If the stack is permanent and the elements temporary, you may want to remove the top element before popping the stack.</description>
+ to push you use the built-in append function, and to pop you slice off the top element.  var stack []string stack = append(stack, &#34;world!&#34;) // Push stack = append(stack, &#34;Hello &#34;) for len(stack)  0 { n := len(stack) - 1 // Top element fmt.Print(stack[n]) stack = stack[:n] // Pop } Hello world!</description>
     </item>
     
     <item>
