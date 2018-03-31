@@ -1058,7 +1058,7 @@ s := strings.Fields(&amp;quot; a \t b \n&amp;quot;) fmt.Println(s) // Output: [a
       
       <guid>http://yourbasic.org/golang/implement-set/</guid>
       <description>The idiomatic way to implement a set in Go is to use a&amp;nbsp;map.
-set := make(map[string]bool) // New empty set set[&#34;Foo&#34;] = true // Add for k := range set { // Loop fmt.Println(k) } delete(set, &#34;Foo&#34;) // Delete size := len(set) // Size exists := set[&#34;Foo&#34;] // Membership Alternative If the memory used by the booleans is an issue, which seems unlikely, you could replace them with empty&amp;nbsp;structs. In Go, an empty struct typically doesn&amp;rsquo;t require any&amp;nbsp;memory.</description>
+set := make(map[string]bool) // New empty set set[&#34;Foo&#34;] = true // Add for k := range set { // Loop fmt.Println(k) } delete(set, &#34;Foo&#34;) // Delete size := len(set) // Size exists := set[&#34;Foo&#34;] // Membership Alternative If the memory used by the booleans is an issue, which seems unlikely, you could replace them with empty&amp;nbsp;structs.</description>
     </item>
     
     <item>
