@@ -94,10 +94,6 @@
   </url>
   
   <url>
-    <loc>http://yourbasic.org/golang/build-append-concatenate-strings-efficiently/</loc>
-  </url>
-  
-  <url>
     <loc>http://yourbasic.org/golang/gotcha-change-value-range/</loc>
   </url>
   
@@ -708,6 +704,10 @@
   
   <url>
     <loc>http://yourbasic.org/golang/stack-trace/</loc>
+  </url>
+  
+  <url>
+    <loc>http://yourbasic.org/golang/build-append-concatenate-strings-efficiently/</loc>
   </url>
   
   <url>
