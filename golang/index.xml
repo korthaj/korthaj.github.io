@@ -1925,8 +1925,8 @@ Type aliases are not meant for everyday use. They were introduced to support gra
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/rune/</guid>
-      <description>A rune is a type meant to represent a Unicode code point.
-The rune type is an alias for int32, and is used to emphasize than an integer represents a code&amp;nbsp;point.
+      <description>A rune is a type meant to repre&amp;shy;sent a Unicode code&amp;nbsp;point.
+ The rune type is an alias for int32, and is used to emphasize than an integer represents a code&amp;nbsp;point.
  ASCII defines 128 characters, identified by the code points 0–127. It covers English letters, Latin numbers, and a few other characters. Unicode, which is a superset of ASCII, defines a codespace of 1,114,112 code points. Unicode version 10.</description>
     </item>
     
