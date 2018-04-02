@@ -41,11 +41,11 @@
 <h1>Broadcast a signal on a channel</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-<!-- CC BY 3.0: https://golang.org/doc/gopher/ -->
-
-<p><img src="/golang/talks.png"  width="100px" style="float:right; margin:-10px 0 10px 10px"/></p>
-
 <p class="lead">When you close a channel, <b>all readers</b> receive a zero&nbsp;value.</p>
+
+<!-- Public domain: https://en.wikipedia.org/wiki/File:Frances_Densmore_recording_Mountain_Chief2.jpg -->
+
+<p><img src="/golang/phonograph.jpg"></p>
 
 <p>In this example the <code>Publish</code> function returns a channel, which is used to broadcast a signal when a message has been published.</p>
 
@@ -67,15 +67,15 @@ func Publish(text string, delay time.Duration) (wait <-chan struct{}) {
 
 <pre><code>func main() {
     wait := Publish("Channels let goroutines communicate.", 5*time.Second)
-    fmt.Println("Waiting for the news...")
+    fmt.Println("Waiting for news...")
     <-wait
-    fmt.Println("The news is out, time to leave.")
+    fmt.Println("Time to leave.")
 }</code></pre>
 
 <pre>
-Waiting for the news...
+Waiting for news...
 BREAKING NEWS: Channels let goroutines communicate.
-The news is out, time to leave.
+Time to leave.
 </pre>
 
 <ul class="pagina">
