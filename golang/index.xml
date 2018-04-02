@@ -349,7 +349,7 @@ fmt.Println(a ...interface{}) When the type can’t be inferred from the context
       
       <guid>http://yourbasic.org/golang/constructor-best-practice/</guid>
       <description>Go doesn&#39;t have explicit constructors. The idiomatic way to set up new data structures is to use proper zero values coupled with factory functions.
-Zero value Try to make the default zero value useful and document its behavior. Sometimes this is all that&amp;rsquo;s needed.
+ Zero value Try to make the default zero value useful and document its behavior. Sometimes this is all that&amp;rsquo;s needed.
 // A StopWatch is a simple clock utility. // Its zero value is an idle clock with 0 total time. type StopWatch struct { start time.</description>
     </item>
     
