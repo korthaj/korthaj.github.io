@@ -295,7 +295,7 @@ func main() { if len(os.Args) != 3 { fmt.Println(&#34;Usage:&#34;, os.Args[0], &
       
       <guid>http://yourbasic.org/golang/absolute-value-int-float/</guid>
       <description>Integers Go has no built-in library function for computing the absolute value of an integer. It&amp;rsquo;s simple to write your&amp;nbsp;own.
-func Abs(x int32) int32 { if x &amp;lt; 0 { return -x } return x }  Warning: The smallest value of a signed integer type doesn&#39;t have a corresponding positive value. For&amp;nbsp;example  math.MinInt32 equals -2147483648, while math.MaxInt32 equals 2147483647.  There&#39;s no good way to deal with this.</description>
+func Abs(x int32) int32 { if x &amp;lt; 0 { return -x } return x }  Warning: The smallest value of a signed integer type doesn’t have a corresponding positive value. For&amp;nbsp;example  math.MinInt32 equals -2147483648, while math.MaxInt32 equals 2147483647.  There’s no good way to deal with this.</description>
     </item>
     
     <item>
