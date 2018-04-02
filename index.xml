@@ -927,7 +927,8 @@ The rand.Read call returns an error if the underlying system call fails. For ins
       
       <guid>http://yourbasic.org/golang/generate-random-character/</guid>
       <description>Between &amp;#39;a&amp;#39; and &amp;#39;z&amp;#39; Use the rand.Intn function in package math/rand.
-rand.Seed(time.Now().UnixNano()) c := &#39;a&#39; + rand.Intn(26)  From arbitrary set chars := []rune(&amp;quot;ab⌘&amp;quot;) c := chars[rand.Intn(len(chars))]  Warning: Without the call to rand.Seed you will get the same sequence of pseudo&amp;shy;random numbers each time you run the program.  More about pseudorandom numbers  Random number generator seed</description>
+rand.Seed(time.Now().UnixNano()) c := &#39;a&#39; + rand.Intn(26)  From arbitrary set chars := []rune(&amp;quot;ab⌘&amp;quot;) c := chars[rand.Intn(len(chars))]  Warning: Without the call to rand.Seed you will get the same sequence of pseudo&amp;shy;random numbers each time you run the program.  Further reading  What’s a seed: Random number generators
+ Type rune: a Unicode code point</description>
     </item>
     
     <item>
@@ -937,7 +938,7 @@ rand.Seed(time.Now().UnixNano()) c := &#39;a&#39; + rand.Intn(26)  From arbitrar
       
       <guid>http://yourbasic.org/golang/generate-number-random-range/</guid>
       <description>Use the rand.Seed and rand.Intn functions in package math/rand to generate a random number between a and b.
-rand.Seed(time.Now().UnixNano()) n := a + rand.Intn(b-a+1)  Warning: Without the call to rand.Seed you will get the same sequence of pseudo&amp;shy;random numbers each time you run the program.  More about pseudorandom numbers  Random number generator seed</description>
+rand.Seed(time.Now().UnixNano()) n := a + rand.Intn(b-a+1)  Warning: Without the call to rand.Seed you will get the same sequence of pseudo&amp;shy;random numbers each time you run the program.  Further reading  What’s a seed: Random number generators</description>
     </item>
     
     <item>

@@ -42,7 +42,7 @@
 <div class="tagline">yourbasic.org/golang</div>
 
 
-<h3 id="between-39-a-39-and-39-z-39">Between &#39;a&#39; and &#39;z&#39;</h3>
+<h2 id="between-39-a-39-and-39-z-39">Between &#39;a&#39; and &#39;z&#39;</h2>
 
 <p>Use the <a href="https://golang.org/pkg/math/rand/#Intn"><code>rand.Intn</code></a> function in package
 <a href="https://golang.org/pkg/math/rand/"><code>math/rand</code></a>.</p>
@@ -51,7 +51,7 @@
 c := 'a' + rand.Intn(26)
 </code></pre>
 
-<h3 id="from-arbitrary-set">From arbitrary set</h3>
+<h2 id="from-arbitrary-set">From arbitrary set</h2>
 
 <pre><code>chars := []rune(&quot;ab⌘&quot;)
 c := chars[rand.Intn(len(chars))]
@@ -62,25 +62,19 @@ c := chars[rand.Intn(len(chars))]
 the same sequence of pseudo&shy;random numbers each time you run the program.
 </blockquote>
 
-<h2 id="more-about-pseudorandom-numbers">More about pseudorandom numbers</h2>
+<h3 id="further-reading">Further reading</h3>
 
-<div><a href="/algorithms/random-number-generator-seed/"><img src="/algorithms/dominoes-thumb.jpg" title="Random number generator seed"></a></div>
+<div><a href="/algorithms/random-number-generator-seed/"><img src="/algorithms/dominoes-thumb.jpg" title="What’s a seed: Random number generators"></a></div>
 
-<p style="margin-top:0; margin-bottom:2em;"><a href="/algorithms/random-number-generator-seed/">Random number generator seed</a></p>
+<p style="margin-top:0; margin-bottom:2em;"><a href="/algorithms/random-number-generator-seed/">What’s a seed: Random number generators</a></p>
+
+<div><a href="/golang/rune/"><img src="/golang/rune-stone-thumb.jpg" title="Type rune: a Unicode code point"></a></div>
+
+<p style="margin-top:0; margin-bottom:2em;"><a href="/golang/rune/">Type rune: a Unicode code point</a></p>
 
 
 </article>
 <aside>
-
-    
-  <h2>Related</h2>
-
-  <div class="reference">
-    <a href="/algorithms/random-number-generator-seed/">What’s a seed: Random number generators</a>
-    <div class="desc">A seed is a number used to initialize a pseudorandom number generator. If you start from the same seed, you get the very same sequence.</div>
-    <div class="source">yourbasic.org</div>
-  </div>
-
 <h2>New in Go 1.10</h2>
   <ul class="none">
     <li><a href="/golang/build-append-concatenate-strings-efficiently/">String builder: concatenate strings efficiently</a></li>
