@@ -1599,7 +1599,7 @@ func main() { m := 0 m, n := 1, 2 fmt.Println(m, n) }   Unlike regular variable 
       
       <guid>http://yourbasic.org/golang/remove-duplicate-whitespace/</guid>
       <description>space := regexp.MustCompile(`\s+`) s := space.ReplaceAllString(&#34;Hello \t \n world!&#34;, &#34; &#34;) fmt.Printf(&#34;%q&#34;, s) // &#34;Hello world!&#34; \s+ is a regular expression:
- the character class \s matches a space, tab, new line, carriage return or form feed, and + says “one or more of those”.  In other words, the code will replace all whitespace substrings with a single space&amp;nbsp;character.
+ the character class \s matches a space, tab, new line, carriage return or form feed, and + says “one or more of those”.  In other words, the code will replace each whitespace substring with a single space&amp;nbsp;character.
 Further reading  Regular expressions is a gentle introduction to the regexp package with cheat sheet and plenty of examples.</description>
     </item>
     
