@@ -40,6 +40,8 @@
 <article>
 <h1>Remove duplicate whitespace</h1>
 <div class="tagline">yourbasic.org/golang</div>
+
+
 <pre><code>space := regexp.MustCompile(`\s+`)
 s := space.ReplaceAllString("Hello  \t \n world!", " ")
 fmt.Printf("%q", s) <span class="comment">// "Hello world!"</span></code></pre>
@@ -53,6 +55,14 @@ fmt.Printf("%q", s) <span class="comment">// "Hello world!"</span></code></pre>
 
 <p>In other words, the code will replace all whitespace substrings with a single space&nbsp;character.</p>
 
+<h3 id="further-reading">Further reading</h3>
+
+<div><a href="/golang/regexp-cheat-sheet/"><img src="/golang/cog-wheels-thumb.jpg" title="Regular expressions"></a></div>
+
+<p><a href="/golang/regexp-cheat-sheet/">Regular expressions</a>
+is a gentle introduction to the <code>regexp</code> package with cheat sheet
+and plenty of examples.</p>
+
 
 </article>
 <aside>
@@ -61,14 +71,14 @@ fmt.Printf("%q", s) <span class="comment">// "Hello world!"</span></code></pre>
   <h2>Related</h2>
 
   <div class="reference">
-    <a href="/golang/regexp-cheat-sheet/">Regular expressions</a>
-    <div class="desc">How to use regular expressions in Go: examples and cheat sheet.</div>
+    <a href="/golang/trim-whitespace-from-string/">Trim leading and trailing whitespace</a>
+    <div class="desc">Code to strip and remove whitespace from a string in Go.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
   <div class="reference">
-    <a href="/golang/trim-whitespace-from-string/">Trim leading and trailing whitespace</a>
-    <div class="desc">Code to strip and remove whitespace from a string in Go.</div>
+    <a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a>
+    <div class="desc">String functions in a nutshell: literals, basics, length, contains, index, join, replace, split, trim, strip, delete, remove, lowercase, uppercase.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
