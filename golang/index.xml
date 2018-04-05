@@ -1291,18 +1291,6 @@ str := &#34;\tFirst line\n&#34; + &#34;Second line&#34; fmt.Println(str)  First 
     
     <item>
       <title>Multiple values in single value context</title>
-      <link>http://yourbasic.org/golang/gotcha-multiple-value-single-value-context/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/gotcha-multiple-value-single-value-context/</guid>
-      <description>Why doesn&amp;rsquo;t this code compile?
-t := time.Parse(time.RFC822, &#34;04 Nov 17 12:54 CET&#34;) fmt.Println(t) ../main.go:1: multiple-value time.Parse() in single-value context  Answer
-The time.Parse function returns two values, a time.Time and an error, and you must use&amp;nbsp;both.
-t, err := time.Parse(time.RFC822, &#34;04 Nov 17 12:54 CET&#34;) if err != nil { // TODO: Handle error. } fmt.Println(t) 2017-11-04 12:54:00 +0000 CET</description>
-    </item>
-    
-    <item>
-      <title>Multiple values in single value context</title>
       <link>http://yourbasic.org/golang/gotcha-multiple-value-sinlge-value-context/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1311,6 +1299,18 @@ t, err := time.Parse(time.RFC822, &#34;04 Nov 17 12:54 CET&#34;) if err != nil {
 t := time.Parse(time.RFC822, &#34;04 Nov 17 12:54 CET&#34;) fmt.Println(t) ../main.go:1: multiple-value time.Parse() in single-value context  Answer
 The time.Parse function returns two values, a time.Time and an error, and you must use&amp;nbsp;both.
 t, err := time.Parse(time.RFC822, &#34;04 Nov 17 12:54 CET&#34;) if err != nil { // TODO: Handle error. } fmt.Println(t) 2017-11-04 12:54:00 +0000 CET</description>
+    </item>
+    
+    <item>
+      <title>Multiple-value in single-value context</title>
+      <link>http://yourbasic.org/golang/gotcha-multiple-value-single-value-context/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/gotcha-multiple-value-single-value-context/</guid>
+      <description>Why does this code give a compiler error?
+t := time.Parse(time.RFC822, &#34;04 Nov 17 12:54 CET&#34;) fmt.Println(t) ../main.go:1: multiple-value time.Parse() in single-value context  Answer
+The time.Parse function returns two values, a time.Time and an error, and you must use&amp;nbsp;both.
+t, err := time.Parse(time.RFC822, &#34;04 Nov 17 12:54 CET&#34;) if err != nil { // TODO: Handle error. } fmt.Println(t) 2017-11-04 12:54:00 +0000 CET Blank identifier (underscore) You can use the blank identifier to ignore unwanted return values.</description>
     </item>
     
     <item>

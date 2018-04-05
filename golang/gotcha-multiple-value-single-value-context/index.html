@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Multiple values in single value context - yourbasic.org/golang </title>
+  <title>Multiple-value in single-value context - yourbasic.org/golang </title>
   <meta name="description" content="If a function returns multiple values, you must use all of them.">
   
   <link rel="stylesheet" href="/style.css">
@@ -38,10 +38,12 @@
 
 <main>
 <article>
-<h1>Multiple values in single value context</h1>
+<h1>Multiple-value in single-value context</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-<p>Why doesn&rsquo;t this code compile?</p>
+
+
+<p>Why does this code give a compiler error?</p>
 
 <pre><code>t := time.Parse(time.RFC822, "04 Nov 17 12:54 CET")
 fmt.Println(t)</code></pre>
@@ -63,6 +65,15 @@ if err != nil {
 fmt.Println(t)</code></pre>
 
 <pre><code>2017-11-04 12:54:00 +0000 CET</code></pre>
+
+<h3 id="blank-identifier-underscore">Blank identifier (underscore)</h3>
+
+<p>You can use the <a href="/golang/underscore/">blank identifier</a>
+to ignore unwanted return values.</p>
+
+<pre><code>m := map[string]float64{"pi": 3.1416}
+_, exists := m["pi"] <span class="comment">// exists == true</span>
+</code></pre>
 
 <p></details></p>
 
@@ -87,7 +98,7 @@ fmt.Println(t)</code></pre>
 
       <li><a href="/golang/gotcha-nil-pointer-dereference/">Nil pointer dereference</a></li>
 
-      <li><b>»&nbsp;</b>Multiple values in single value context</li>
+      <li><b>»&nbsp;</b>Multiple-value in single-value context</li>
 
       <li><a href="/golang/gotcha-function-doesnt-change-array/">Array won’t change</a></li>
 
@@ -154,8 +165,8 @@ fmt.Println(t)</code></pre>
   </div>
 
   <div class="reference">
-    <a href="/golang/format-parse-string-time-date-example/">Format/parse a time or date</a>
-    <div class="desc">To format/parse a date or timestamp in Go, you specify the desired format by formatting a special layout parameter, Mon Jan 2 15:04:05 MST 2006, the same way as the value should be formatted.</div>
+    <a href="/golang/underscore/">Blank identifier (underscore)</a>
+    <div class="desc">The blank identifier is an anonymous placeholder. It may be used like any other identifier in a declaration, but it does not introduce a binding.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
