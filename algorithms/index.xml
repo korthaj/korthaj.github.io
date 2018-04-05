@@ -155,7 +155,8 @@ In this text we&amp;rsquo;ll look at loop invariants, invariants placed at the b
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/algorithms/fastest-sorting-algorithm/</guid>
-      <description>Which sorting algorithm is the fastest? Ask this question to any group of programmers and you’ll get an animated discussion. Of course, there is no one answer. It depends not only on the algorithm, but also on the computer, data, and implementation. However, if you count the number of operations needed to sort integer numbers on a standard von Neumann computer, there is a clear winner – the algorithm presented in the paper “Sorting In Linear Time?</description>
+      <description>Integer sorting in O(n&amp;nbsp;log&amp;nbsp;log&amp;nbsp;n) time
+  Which sorting algorithm is the fastest? Ask this question to any group of programmers and you’ll get an animated discussion. Of course, there is no one answer. It depends not only on the algorithm, but also on the computer, data, and implementation. However, if you count the number of operations needed to sort integer numbers on a standard von Neumann computer, there is a clear winner – the algorithm presented in the paper “Sorting In Linear Time?</description>
     </item>
     
     <item>
