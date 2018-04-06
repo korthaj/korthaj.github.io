@@ -54,7 +54,7 @@ Go programs use the built-in <code>error</code> type.</p>
 
 <p>A panic stops the normal execution of a goroutine.
 When a program panics, it immediately starts to unwind the call stack.
-This continues until the program crashes,
+This continues until the program crashes and prints a <a href="/golang/stack-trace/">stack trace</a>,
 or until the built-in <code>recover</code> function is&nbsp;called.
 See <a href="/golang/recover-from-panic/">Recover from a panic</a> for&nbsp;details.</p>
 
@@ -73,6 +73,12 @@ or an explicit call to the built-in <code>panic</code>&nbsp;function.</p>
 
     
   <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/stack-trace/">Stack traces</a>
+    <div class="desc">A stack trace is a list of active method calls at a certain point in time during the execution of a program.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
 
   <div class="reference">
     <a href="/golang/recover-from-panic/">Recover from a panic</a>
