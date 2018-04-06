@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Multiple-value in single-value context - yourbasic.org/golang </title>
-  <meta name="description" content="If a function returns multiple values, you must use all of them.">
+  <meta name="description" content="When a function returns multiple values, you must take care of each one.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -43,12 +43,12 @@
 
 
 
-<p>Why does this code give a compiler error?</p>
+<p>Why does this code give a compile error?</p>
 
-<pre><code>t := time.Parse(time.RFC822, "04 Nov 17 12:54 CET")
+<pre><code>t := time.Parse(time.RFC3339, "2018-04-06T10:49:05Z")
 fmt.Println(t)</code></pre>
 
-<pre><code>../main.go:1: multiple-value time.Parse() in single-value context
+<pre><code>../main.go:9:17: multiple-value time.Parse() in single-value context
 </code></pre>
 
 <p><details class="answer">
@@ -58,13 +58,13 @@ fmt.Println(t)</code></pre>
 a <a href="https://golang.org/pkg/time/#Time"><code>time.Time</code></a> and
 an <a href="/golang/errors-explained/"><code>error</code></a>, and you must use&nbsp;both.</p>
 
-<pre><code>t, err := time.Parse(time.RFC822, "04 Nov 17 12:54 CET")
+<pre><code>t, err := time.Parse(time.RFC3339, "2018-04-06T10:49:05Z")
 if err != nil {
     <span class="comment">// TODO: Handle error.</span>
 }
 fmt.Println(t)</code></pre>
 
-<pre><code>2017-11-04 12:54:00 +0000 CET</code></pre>
+<pre><code>2018-04-06 10:49:05 +0000 UTC</code></pre>
 
 <h3 id="blank-identifier-underscore">Blank identifier (underscore)</h3>
 
