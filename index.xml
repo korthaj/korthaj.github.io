@@ -357,7 +357,7 @@ func main() { if len(os.Args) != 3 { fmt.Println(&#34;Usage:&#34;, os.Args[0], &
     </item>
     
     <item>
-      <title>Compare slices (arrays)</title>
+      <title>Compare slices for equality</title>
       <link>http://yourbasic.org/golang/compare-slices/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
