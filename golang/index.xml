@@ -324,7 +324,7 @@ a := []int{1, 2} b := []int{11, 22} a = append(a, b...) // a == [1 2 11 22] The 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/concurrent-programming/</guid>
-      <description>This tutorial covers the funda&amp;shy;mentals of concur&amp;shy;rent program&amp;shy;ming with examples in&amp;nbsp;Go.
+      <description>This tutorial covers the funda&amp;shy;mentals of concurrency with examples in&amp;nbsp;Go.
  Before you start, you need to know how to write basic Go programs. If you need a refresher, the&amp;nbsp;resources in Get started with Go will help you come up to speed quickly with&amp;nbsp;Go.
 Start here
 Table of contents </description>
