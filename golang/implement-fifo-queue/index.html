@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Implement a FIFO queue - yourbasic.org/golang </title>
-  <meta name="description" content="Code to implement a FIFO queue in Go.">
+  <meta name="description" content="Code to implement a FIFO queue in Go. Use a slice for a temporary queue. For a long-living queue you should probably use a dynamic data structure, such as a linked list.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -21,6 +21,38 @@
 
     gtag('config', 'UA-113104149-1');
   </script>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://yourbasic.org/golang/implement-fifo-queue/"
+  },
+  "headline": "Implement a FIFO queue",
+  "image": [
+    "http://yourbasic.org/golang/queue.jpg"
+   ],
+  "datePublished": "2018-04-11T00:00:00&#43;0000",
+  "dateModified": "2018-04-11T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "Code to implement a FIFO queue in Go. Use a slice for a temporary queue. For a long-living queue you should probably use a dynamic data structure, such as a linked list."
+}
+</script>
+
+
 
 </head>
 
@@ -130,7 +162,7 @@ for queue.Len() > 0 {
 
   <div class="reference">
     <a href="/golang/implement-stack/">Implement a stack (LIFO)</a>
-    <div class="desc">Code to implement a stack or LIFO queue in Go.</div>
+    <div class="desc">Code to implement a stack or LIFO queue in Go using a slice and the append function.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
