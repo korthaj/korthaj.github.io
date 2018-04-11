@@ -22,6 +22,38 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://yourbasic.org/golang/write-command-line-application/"
+  },
+  "headline": "Command-line application (CLI)",
+  "image": [
+    "http://yourbasic.org/golang/hp-terminal.jpg"
+   ],
+  "datePublished": "2018-04-11T00:00:00&#43;0000",
+  "dateModified": "2018-04-11T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "Code for a basic command-line (CLI) application in Go."
+}
+</script>
+
+
+
 </head>
 
 <body>
@@ -40,6 +72,10 @@
 <article>
 <h1>Command-line application (CLI)</h1>
 <div class="tagline">yourbasic.org/golang</div>
+
+<!-- CC BY-SA 3.0: https://commons.wikimedia.org/wiki/File:HP-HP2624B-Terminal_11.jpg -->
+
+<div style="margin-top:1em;"><img src="/golang/hp-terminal.jpg"></div>
 
 <p>This example is a simplified version of the Unix <code>grep</code> command.
 The program searches the input file for lines containing the given pattern and prints these lines.</p>

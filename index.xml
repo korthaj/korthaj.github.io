@@ -343,7 +343,7 @@ ch := make(chan string) go func { ch // prints &#34;</description>
       
       <guid>http://yourbasic.org/golang/write-command-line-application/</guid>
       <description>This example is a simplified version of the Unix grep command. The program searches the input file for lines containing the given pattern and prints these lines.
-func main() { log.SetPrefix(&#34;grep: &#34;) log.SetFlags(0) // no extra info in log messages if len(os.Args) != 3 { fmt.Printf(&#34;Usage: %v PATTERN FILE\n&#34;, os.Args[0]) return } pattern, err := regexp.Compile(os.Args[1]) if err != nil { log.Fatalln(err) } file, err := os.Open(os.Args[2]) if err != nil { log.</description>
+func main() { log.SetPrefix(&#34;grep: &#34;) log.SetFlags(0) // no extra info in log messages if len(os.Args) != 3 { fmt.Printf(&#34;Usage: %v PATTERN FILE\n&#34;, os.Args[0]) return } pattern, err := regexp.Compile(os.Args[1]) if err != nil { log.Fatalln(err) } file, err := os.Open(os.Args[2]) if err !</description>
     </item>
     
     <item>
