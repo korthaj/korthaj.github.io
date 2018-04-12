@@ -1420,8 +1420,7 @@ func main() { fmt.Println(&amp;quot;Hello&amp;quot;) }  This is a trade-off in t
       
       <guid>http://yourbasic.org/golang/operator-priority/</guid>
       <description>Unary operators Unary operators have the highest precedence and bind the strongest.
-Binary operators   Prio Operators     1 *&amp;nbsp; /&amp;nbsp; %&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;&amp;nbsp; &amp;^   2 +&amp;nbsp; -&amp;nbsp; |&amp;nbsp; ^   3 ==&amp;nbsp; !=&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; =   4 &amp;&amp;   5 ||    Binary operators of the same precedence associate from left to right.
-Statement operators The ++ and -&amp;#8202;- operators form statements and fall outside the operator hierarchy.</description>
+Binary operators (MACAO)   Prio Operators Note     1 *&amp;nbsp; /&amp;nbsp; %&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;&amp;nbsp; &amp;^ Multiplicative   2 +&amp;nbsp; -&amp;nbsp; |&amp;nbsp; ^ Additive   3 ==&amp;nbsp; !=&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; = Comparison   4 &amp;&amp; And   5 || Or    Binary operators of the same precedence associate from left to right.</description>
     </item>
     
     <item>

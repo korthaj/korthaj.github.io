@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Operator precedence - yourbasic.org/golang </title>
-  <meta name="description" content="The evaluation order of operators in a Go expression.">
+  <meta name="description" content="Evaluation order of operators in Go expressions. Unary operators bind the strongest, followed by binary operators in MACAO order: Multiplicative, Additive, Comparison, And, Or.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -21,6 +21,38 @@
 
     gtag('config', 'UA-113104149-1');
   </script>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://yourbasic.org/golang/operator-priority/"
+  },
+  "headline": "Operator precedence",
+  "image": [
+    "http://yourbasic.org/golang/macao-skyline.jpg"
+   ],
+  "datePublished": "2018-04-12T00:00:00&#43;0000",
+  "dateModified": "2018-04-12T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "Evaluation order of operators in Go expressions. Unary operators bind the strongest, followed by binary operators in MACAO order: Multiplicative, Additive, Comparison, And, Or."
+}
+</script>
+
+
 
 </head>
 
@@ -42,39 +74,49 @@
 <div class="tagline">yourbasic.org/golang</div>
 
 
+<!-- CC BY 2.0: https://en.wikipedia.org/wiki/File:Macau_-_Skyline.jpg -->
+
+<div style="margin-top:1em;"><img src="/golang/macao-skyline.jpg"></div>
+
 <h3 id="unary-operators">Unary operators</h3>
 
 <p>Unary operators have the highest precedence and bind the strongest.</p>
 
-<h3 id="binary-operators">Binary operators</h3>
+<h3 id="binary-operators-macao">Binary operators (MACAO)</h3>
 
 <table class="white">
   <thead>
     <tr>
       <th>Prio</th>
       <th>Operators</th>
+      <th>Note</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>1</td>
       <td><code>*</code>&nbsp; <code>/</code>&nbsp; <code>%</code>&nbsp; <code><<</code>&nbsp; <code>>></code>&nbsp; <code>&</code>&nbsp; <code>&^</code></td>
+      <td><b>M</b>ultiplicative</td>
     </tr>
     <tr>
       <td>2</td>
       <td><code>+</code>&nbsp; <code>-</code>&nbsp; <code>|</code>&nbsp; <code>^</code></td>
+      <td><b>A</b>dditive</td>
     </tr>
     <tr>
       <td>3</td>
       <td><code>==</code>&nbsp; <code>!=</code>&nbsp; <code><</code>&nbsp; <code><=</code>&nbsp; <code>></code>&nbsp; <code>>=</code></td>
+      <td><b>C</b>omparison</td>
     </tr>
     <tr>
       <td>4</td>
       <td><code>&&</code></td>
+      <td><b>A</b>nd</td>
     </tr>
     <tr>
       <td>5</td>
       <td><code>||</code></td>
+      <td><b>O</b>r</td>
     </tr>
   </tbody>
 </table>
@@ -116,6 +158,12 @@
       <td><code>(m&nbsp;==&nbsp;(n+1))&nbsp;&&&nbsp;((<-ch)&nbsp;>&nbsp;0)</code></td>
     </tr>
 </table>
+
+<p><b>Share<span class="extra-content"> this page</span>:</b>
+<span class="small-content"><a href="mailto:?subject=Operator%20precedence&body=http%3a%2f%2fyourbasic.org%2fgolang%2foperator-priority%2f">Email</a>&nbsp;|</span>
+<a href="https://twitter.com/share?url=http%3a%2f%2fyourbasic.org%2fgolang%2foperator-priority%2f&amp;text=Operator%20precedence&amp;via=yourbasic%5forg">Twitter</a>&nbsp;|
+<a href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fyourbasic.org%2fgolang%2foperator-priority%2f">Facebook</a>&nbsp;|
+<a href="https://www.reddit.com/submit?url=http%3a%2f%2fyourbasic.org%2fgolang%2foperator-priority%2f&amp;title=Operator%20precedence">Reddit</a></p>
 
 
 </article>
