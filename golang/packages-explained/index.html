@@ -35,7 +35,7 @@
     "http://yourbasic.org/golang/paket.jpg"
    ],
   "datePublished": "2018-03-28T00:00:00&#43;0000",
-  "dateModified": "2018-03-28T00:00:00&#43;0000",
+  "dateModified": "2018-04-14T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -79,6 +79,17 @@
 
 <div><img src="/golang/paket.jpg" class="extra-content" style="float: right; margin: 0 0 25px 0;"></div>
 
+<ul class="toc">
+  <li><a href="#basics">Basics</a></li>
+  <li><a href="#declare-a-package">Declare a package</a></li>
+  <li><a href="#package-name-conflicts">Package name conflicts</a></li>
+  <li><a href="#dot-imports">Dot imports</a></li>
+  <li><a href="#package-download">Package download</a></li>
+  <li><a href="#package-documentation">Package documentation</a></li>
+</ul>
+
+<h2 id="basics">Basics</h2>
+
 <p>Every Go program is made up of packages and each package has an&nbsp;<strong>import&nbsp;path</strong>:</p>
 
 <ul>
@@ -119,7 +130,7 @@ func main() {
     <b>fmt.Println</b>(g)
 }</code></pre>
 
-<h2 id="declaring-a-package">Declaring a package</h2>
+<h2 id="declare-a-package">Declare a package</h2>
 
 <p>Every Go source file starts with a package declaration, which contains only the package name.</p>
 

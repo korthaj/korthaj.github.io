@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maps in a nutshell - yourbasic.org/golang </title>
-  <meta name="description" content="A map is an unordered collection of key-value pairs, where each key is unique.">
+  <meta name="description" content="A map is an unordered collection of key-value pairs, where each key is unique: zero value, make, map literal, size, add, find, delete, iterate.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -35,7 +35,7 @@
     "http://yourbasic.org/golang/Schlagwortkatalog.jpg"
    ],
   "datePublished": "2018-03-28T00:00:00&#43;0000",
-  "dateModified": "2018-03-28T00:00:00&#43;0000",
+  "dateModified": "2018-04-14T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,7 +48,7 @@
       "url": "http://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "A map is an unordered collection of key-value pairs, where each key is unique."
+  "description": "A map is an unordered collection of key-value pairs, where each key is unique: zero value, make, map literal, size, add, find, delete, iterate."
 }
 </script>
 
@@ -78,6 +78,15 @@
 <!-- CC BY-SA 3.0: https://commons.wikimedia.org/wiki/File:Schlagwortkatalog.jpg -->
 
 <div style="margin-top:1em;"><img src="/golang/Schlagwortkatalog.jpg" alt="Subject catalog drawer"></div>
+
+<ul class="toc">
+  <li><a href="#basics">Basics</a></li>
+  <li><a href="#add-find-and-delete">Add, find and delete</a></li>
+  <li><a href="#iteration">Iteratation</a></li>
+  <li><a href="#implementation">Implementation</a></li>
+</ul>
+
+<h2 id="basics">Basics</h2>
 
 <p>A map is an <b>unordered</b> collection of <b>key-value</b> pairs, where each key is&nbsp;<b>unique</b>.</p>
 

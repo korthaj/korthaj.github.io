@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Slices in a nutshell - yourbasic.org/golang </title>
-  <meta name="description" content="A slice refers to a section of an underlying array. It can grow and shrink within the bounds of this array.">
+  <meta name="description" content="A slice refers to a section of an underlying array. It can grow and shrink within the bounds of this array: construction, slicing, iteration, append and copy, stacks and queues.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -35,7 +35,7 @@
     "http://yourbasic.org/golang/orange.jpg"
    ],
   "datePublished": "2018-03-28T00:00:00&#43;0000",
-  "dateModified": "2018-03-28T00:00:00&#43;0000",
+  "dateModified": "2018-04-14T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,7 +48,7 @@
       "url": "http://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "A slice refers to a section of an underlying array. It can grow and shrink within the bounds of this array."
+  "description": "A slice refers to a section of an underlying array. It can grow and shrink within the bounds of this array: construction, slicing, iteration, append and copy, stacks and queues."
 }
 </script>
 
@@ -78,6 +78,16 @@
 <!-- CC0: https://pixabay.com/en/orange-food-juicy-fruit-188082/ -->
 
 <div style="margin-top:1em;"><img src="/golang/orange.jpg" alt="A sliced orange"></div>
+
+<ul class="toc">
+  <li><a href="#basics">Basics</a></li>
+  <li><a href="#construction">Construction</a></li>
+  <li><a href="#iteration">Iteration</a></li>
+  <li><a href="#append-and-copy">Append and copy</a></li>
+  <li><a href="#stacks-and-queues">Stacks and queues</a></li>
+</ul>
+
+<h2 id="basics">Basics</h2>
 
 <p>A slice doesn&rsquo;t store any data, it just describes
 a <strong>section</strong> of an <strong>underlying&nbsp;array</strong>.</p>
@@ -177,7 +187,7 @@ See <a href="/golang/copy-explained/">Copy&nbsp;function</a>.</li>
 
 <h2 id="stacks-and-queues">Stacks and queues</h2>
 
-<p>The idiomatic way to implement a stack or queue in Go is to use a slice.
+<p>The idiomatic way to implement a stack or queue in Go is to use a slice directly.
 For code examples, see</p>
 
 <ul>
