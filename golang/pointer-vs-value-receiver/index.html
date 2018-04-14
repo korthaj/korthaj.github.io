@@ -22,6 +22,38 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://yourbasic.org/golang/pointer-vs-value-receiver/"
+  },
+  "headline": "Pointer vs. value receiver",
+  "image": [
+    "http://yourbasic.org/golang/pointing-man.jpg"
+   ],
+  "datePublished": "2018-04-14T00:00:00&#43;0000",
+  "dateModified": "2018-04-14T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "How to choose between pointer and value receivers for Go methods."
+}
+</script>
+
+
+
 </head>
 
 <body>
@@ -41,6 +73,10 @@
 <h1>Pointer vs. value receiver</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
+
+<!-- Public domain: https://en.wikipedia.org/wiki/File:Ducreux1.jpg -->
+
+<div style="margin-top:1em;"><img src="/golang/pointing-man.jpg"></div>
 
 <h2 id="basics">Basics</h2>
 
@@ -82,6 +118,12 @@ with no mutable fields and no pointers.</li>
 <ul>
 <li>for slices with methods that do not reslice or reallocate the slice.</li>
 </ul>
+
+<p><b>Share<span class="extra-content"> this page</span>:</b>
+<span class="small-content"><a href="mailto:?subject=Pointer%20vs.%20value%20receiver&body=http%3a%2f%2fyourbasic.org%2fgolang%2fpointer-vs-value-receiver%2f">Email</a>&nbsp;|</span>
+<a href="https://twitter.com/share?url=http%3a%2f%2fyourbasic.org%2fgolang%2fpointer-vs-value-receiver%2f&amp;text=Pointer%20vs.%20value%20receiver&amp;via=yourbasic%5forg">Twitter</a>&nbsp;|
+<a href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fyourbasic.org%2fgolang%2fpointer-vs-value-receiver%2f">Facebook</a>&nbsp;|
+<a href="https://www.reddit.com/submit?url=http%3a%2f%2fyourbasic.org%2fgolang%2fpointer-vs-value-receiver%2f&amp;title=Pointer%20vs.%20value%20receiver">Reddit</a></p>
 
 
 </article>

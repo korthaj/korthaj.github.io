@@ -22,6 +22,38 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://yourbasic.org/golang/pointers-explained/"
+  },
+  "headline": "Pointers",
+  "image": [
+    "http://yourbasic.org/golang/pointing-finger.png"
+   ],
+  "datePublished": "2018-04-14T00:00:00&#43;0000",
+  "dateModified": "2018-04-14T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "Pointers store addresses of objects. Addresses can be passed around more efficiently than the actual objects. A pointer has type *T."
+}
+</script>
+
+
+
 </head>
 
 <body>
@@ -42,9 +74,9 @@
 <div class="tagline">yourbasic.org/golang</div>
 
 
-<!-- http://www.flickr.com/photos/lwr/374707207/" -->
+<!-- CC0: https://pixabay.com/en/pointing-finger-hand-pointing-1922074/ -->
 
-<div><img src="/golang/pointers.jpg" style="float: right; width: 160px; margin: 10px 0 10px 10px;"></div>
+<div><img src="/golang/pointing-finger.png" style="float: right; margin: 10px 0 10px 10px;"></div>
 
 <p class="lead">A pointer is a vari&shy;able that con&shy;tains the address of an&nbsp;object.</p>
 
@@ -122,6 +154,12 @@ func main() {
     Charlie(&s)
     fmt.Println(s) <span class="comment">// prints {Charlie}</span>
 }</code></pre>
+
+<p><b>Share<span class="extra-content"> this page</span>:</b>
+<span class="small-content"><a href="mailto:?subject=Pointers&body=http%3a%2f%2fyourbasic.org%2fgolang%2fpointers-explained%2f">Email</a>&nbsp;|</span>
+<a href="https://twitter.com/share?url=http%3a%2f%2fyourbasic.org%2fgolang%2fpointers-explained%2f&amp;text=Pointers&amp;via=yourbasic%5forg">Twitter</a>&nbsp;|
+<a href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fyourbasic.org%2fgolang%2fpointers-explained%2f">Facebook</a>&nbsp;|
+<a href="https://www.reddit.com/submit?url=http%3a%2f%2fyourbasic.org%2fgolang%2fpointers-explained%2f&amp;title=Pointers">Reddit</a></p>
 
 
 </article>
