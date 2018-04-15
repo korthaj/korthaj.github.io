@@ -171,10 +171,6 @@
   </url>
   
   <url>
-    <loc>http://yourbasic.org/golang/convert-byte-slice-to-string/</loc>
-  </url>
-  
-  <url>
     <loc>http://yourbasic.org/golang/convert-float-to-string/</loc>
   </url>
   
@@ -191,15 +187,11 @@
   </url>
   
   <url>
-    <loc>http://yourbasic.org/golang/convert-rune-slice-to-string/</loc>
+    <loc>http://yourbasic.org/golang/convert-string-to-int/</loc>
   </url>
   
   <url>
     <loc>http://yourbasic.org/golang/convert-string-to-byte-slice/</loc>
-  </url>
-  
-  <url>
-    <loc>http://yourbasic.org/golang/convert-string-to-int/</loc>
   </url>
   
   <url>
