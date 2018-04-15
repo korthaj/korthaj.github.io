@@ -305,7 +305,7 @@ func Abs(x int32) int32 { if x &amp;lt; 0 { return -x } return x }  Warning: The
       
       <guid>http://yourbasic.org/golang/max-min-function/</guid>
       <description>Integers Go has no built-in min or max library functions for integers. It is simple to write your&amp;nbsp;own.
-// Min returns the smaller of x or y. func Min(x, y int) int { if x  y { return y } return x } // Max returns the larger of x or y. func Max(x, y int) int { if x  Floats For floats, use math.Min and math.Max from the standard library.</description>
+// Min returns the smaller of x or y. func Min(x, y int) int { if x  y { return y } return x } // Max returns the larger of x or y. func Max(x, y int) int { if x  Floats For floats, use math.Min and math.</description>
     </item>
     
     <item>
