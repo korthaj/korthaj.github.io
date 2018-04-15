@@ -183,10 +183,6 @@
   </url>
   
   <url>
-    <loc>http://yourbasic.org/golang/convert-int64-to-string/</loc>
-  </url>
-  
-  <url>
     <loc>http://yourbasic.org/golang/type-assertion-switch/</loc>
   </url>
   
@@ -204,10 +200,6 @@
   
   <url>
     <loc>http://yourbasic.org/golang/convert-string-to-int/</loc>
-  </url>
-  
-  <url>
-    <loc>http://yourbasic.org/golang/convert-string-to-int64/</loc>
   </url>
   
   <url>

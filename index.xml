@@ -469,27 +469,18 @@ b := []byte{&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;\xe6&#39;, &#39;\x97&#39
       
       <guid>http://yourbasic.org/golang/convert-float-to-string/</guid>
       <description>Use the fmt.Sprintf method to convert a floating-point number to a string.
-s := fmt.Sprintf(&#34;%f&#34;, 123.456) // s == &#34;123.456000&#34;   Formatting Description Verb     1.234560e+02 Scientific notation %e   123.456000 Decimal point, no exponent %f   123.46 Default width, precision 2 %.2f   ␣␣123.46 Width 8, precision 2 %8.2f   123.456 Exponent as needed, necessary digits only %g    </description>
+s := fmt.Sprintf(&#34;%f&#34;, 123.456) // s == &#34;123.456000&#34;   Formatting Description Verb     1.234560e+02 Scientific notation %e   123.456000 Decimal point, no exponent %f   123.46 Default width, precision 2 %.2f   ␣␣123.46 Width 8, precision 2 %8.2f   123.456 Exponent as needed, necessary digits only %g    Further reading  fmt cheat sheet</description>
     </item>
     
     <item>
-      <title>Convert int to string</title>
+      <title>Convert int/int64 to string</title>
       <link>http://yourbasic.org/golang/convert-int-to-string/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/convert-int-to-string/</guid>
-      <description>Use the strconv.Itoa function to convert an int to a decimal string.
-str := strconv.Itoa(123) // str == &#34;123&#34; </description>
-    </item>
-    
-    <item>
-      <title>Convert int64 to string</title>
-      <link>http://yourbasic.org/golang/convert-int64-to-string/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/convert-int64-to-string/</guid>
-      <description>Use strconv.FormatInt to format an integer in a given base.
-var n int64 = 32 str := strconv.FormatInt(n, 10) // decimal fmt.Println(str) // 32  var n int64 = 32 str := strconv.FormatInt(n, 16) // hexadecimal fmt.Println(str) // 20  </description>
+      <description>int to string Use the strconv.Itoa function to convert an int to a decimal string.
+str := strconv.Itoa(123) // str == &#34;123&#34; int64 to string Use strconv.FormatInt to format an integer in a given base.
+var n int64 = 32 str := strconv.FormatInt(n, 10) // decimal fmt.Println(str) // 32  var n int64 = 32 str := strconv.FormatInt(n, 16) // hexadecimal fmt.Println(str) // 20  Further reading  fmt cheat sheet</description>
     </item>
     
     <item>
@@ -536,23 +527,14 @@ fmt.Println([]byte(&#34;abc日&#34;)) // [97 98 99 230 151 165] More about strin
     </item>
     
     <item>
-      <title>Convert string to int</title>
+      <title>Convert string to int/int64</title>
       <link>http://yourbasic.org/golang/convert-string-to-int/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/convert-string-to-int/</guid>
-      <description>Use strconv.Atoi to convert/parse a string to an int.
-str := &#34;123&#34; if n, err := strconv.Atoi(str); err == nil { fmt.Println(n+1) } else { fmt.Println(str, &#34;is not an integer.&#34;) } // Output: 124 Further reading  String handling cheat sheet</description>
-    </item>
-    
-    <item>
-      <title>Convert string to int64</title>
-      <link>http://yourbasic.org/golang/convert-string-to-int64/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/convert-string-to-int64/</guid>
-      <description>Use strconv.ParseInt to parse a decimal string (base&amp;nbsp;10) and check if it fits into a 64-bit signed integer.
-str := &#34;123&#34; n, err := strconv.ParseInt(str, 10, 64) if err == nil { fmt.Printf(&#34;%d of type %T&#34;, n, n) } // Output: 123 of type int64 Further reading  String handling cheat sheet</description>
+      <description>String to int Use strconv.Atoi to convert/parse a string to an int.
+str := &#34;123&#34; if n, err := strconv.Atoi(str); err == nil { fmt.Println(n+1) } else { fmt.Println(str, &#34;is not an integer.&#34;) } // Output: 124 String to int64 Use strconv.ParseInt to parse a decimal string (base&amp;nbsp;10) and check if it fits into a 64-bit signed integer.
+str := &#34;123&#34; n, err := strconv.ParseInt(str, 10, 64) if err == nil { fmt.</description>
     </item>
     
     <item>

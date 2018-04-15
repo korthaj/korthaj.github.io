@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Convert string to int - yourbasic.org/golang </title>
-  <meta name="description" content="Code example: use strconv.Atoi to convert/parse a string to an int in Go.">
+  <title>Convert string to int/int64 - yourbasic.org/golang </title>
+  <meta name="description" content="Code examples: Use strconv.Atoi to convert/parse a string to an int. Use strconv.ParseInt to parse a string and check if it fits into a 64-bit integer.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -38,9 +38,11 @@
 
 <main>
 <article>
-<h1>Convert string to int</h1>
+<h1>Convert string to int/int64</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
+
+<h2 id="string-to-int">String to int</h2>
 
 <p>Use <a href="https://golang.org/pkg/strconv/#Atoi"><code>strconv.Atoi</code></a> to convert/parse a string to an int.</p>
 
@@ -52,11 +54,29 @@ if n, err := strconv.Atoi(str); err == nil {
 }
 <span class="comment">// Output: 124</span></code></pre>
 
-<h2 id="further-reading">Further reading</h2>
+<h2 id="string-to-int64">String to int64</h2>
+
+<p>Use <a href="https://golang.org/pkg/strconv/#ParseInt"><code>strconv.ParseInt</code></a>
+to parse a decimal string (base&nbsp;<code>10</code>) and check if it fits into a <code>64</code>-bit signed integer.</p>
+
+<pre><code>str := "123"
+n, err := strconv.ParseInt(str, 10, 64)
+if err == nil {
+    fmt.Printf("%d of type %T", n, n)
+}
+<span class="comment">// Output: 123 of type int64</span></code></pre>
+
+<h3 id="further-reading">Further reading</h3>
 
 <div><a href="/golang/string-functions-reference-cheat-sheet/"><img src="/golang/typewriter-thumb.png" title="String handling cheat sheet"></a></div>
 
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a></p>
+
+<p><b>Share<span class="extra-content"> this page</span>:</b>
+<span class="small-content"><a href="mailto:?subject=Convert%20string%20to%20int/int64&body=http%3a%2f%2fyourbasic.org%2fgolang%2fconvert-string-to-int%2f">Email</a>&nbsp;|</span>
+<a href="https://twitter.com/share?url=http%3a%2f%2fyourbasic.org%2fgolang%2fconvert-string-to-int%2f&amp;text=Convert%20string%20to%20int/int64&amp;via=yourbasic%5forg">Twitter</a>&nbsp;|
+<a href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fyourbasic.org%2fgolang%2fconvert-string-to-int%2f">Facebook</a>&nbsp;|
+<a href="https://www.reddit.com/submit?url=http%3a%2f%2fyourbasic.org%2fgolang%2fconvert-string-to-int%2f&amp;title=Convert%20string%20to%20int/int64">Reddit</a></p>
 
 
 </article>
@@ -66,8 +86,8 @@ if n, err := strconv.Atoi(str); err == nil {
   <h2>Related</h2>
 
   <div class="reference">
-    <a href="/golang/convert-string-to-int64/">Convert string to int64</a>
-    <div class="desc">Code example: use strconv.ParseInt to convert/parse a decimal string.</div>
+    <a href="/golang/convert-int-to-string/">Convert int/int64 to string</a>
+    <div class="desc">Code examples: Use strconv.Itoa to convert an int to a decimal string. Use strconf.FormatInt to convert an int64 to a decimal or hexadecimal string.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
@@ -104,7 +124,7 @@ if n, err := strconv.Atoi(str); err == nil {
 
   </ul>
   
-  <p><a href="/golang/"><strong>See all 198 Go articles</strong></a></p>
+  <p><a href="/golang/"><strong>See all 196 Go articles</strong></a></p>
 
 </aside>
 </main>
