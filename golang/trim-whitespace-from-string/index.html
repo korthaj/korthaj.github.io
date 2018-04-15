@@ -22,6 +22,38 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://yourbasic.org/golang/trim-whitespace-from-string/"
+  },
+  "headline": "Trim leading and trailing whitespace",
+  "image": [
+    "http://yourbasic.org/golang/trim-hair.jpg"
+   ],
+  "datePublished": "2018-04-15T00:00:00&#43;0000",
+  "dateModified": "2018-04-15T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "Code to strip and remove whitespace from a string in Go."
+}
+</script>
+
+
+
 </head>
 
 <body>
@@ -42,11 +74,15 @@
 <div class="tagline">yourbasic.org/golang</div>
 
 
+<!-- Public domain: https://www.defense.gov/Photos/Photo-Gallery/igphoto/2001864620/ -->
+
+<div style="margin-top:1em;"><img src="/golang/trim-hair.jpg"></div>
+
 <p>Use the <a href="https://golang.org/pkg/strings/#TrimSpace"><code>strings.TrimSpace</code></a> function
 to remove leading and trailing whitespace as defined by&nbsp;Unicode.</p>
 
-<pre><code>s := strings.TrimSpace("\t Hello world!\n ")
-fmt.Printf("%q", s) <span class="comment">// "Hello world!"</span></code></pre>
+<pre><code>s := strings.TrimSpace("\t Goodbye hair!\n ")
+fmt.Printf("%q", s) <span class="comment">// "Goodbye hair!"</span></code></pre>
 
 <p>To remove other leading and trailing characters, use <a href="https://golang.org/pkg/strings/#Trim"><code>strings.Trim</code></a>.
 To remove only the leading or the trailing characters, use <a href="https://golang.org/pkg/strings/#TrimLeft"><code>strings.TrimLeft</code></a> or
@@ -57,6 +93,12 @@ To remove only the leading or the trailing characters, use <a href="https://gola
 <p><a href="/golang/string-functions-reference-cheat-sheet/"><img src="/golang/typewriter-thumb.png" title="String handling cheat sheet"></a></p>
 
 <p style="margin-top:0; margin-bottom:2em;">The <a href="/golang/string-functions-reference-cheat-sheet/">String handling cheat sheet</a> presents the top Go string functions.</p>
+
+<p><b>Share<span class="extra-content"> this page</span>:</b>
+<span class="small-content"><a href="mailto:?subject=Trim%20leading%20and%20trailing%20whitespace&body=http%3a%2f%2fyourbasic.org%2fgolang%2ftrim-whitespace-from-string%2f">Email</a>&nbsp;|</span>
+<a href="https://twitter.com/share?url=http%3a%2f%2fyourbasic.org%2fgolang%2ftrim-whitespace-from-string%2f&amp;text=Trim%20leading%20and%20trailing%20whitespace&amp;via=yourbasic%5forg">Twitter</a>&nbsp;|
+<a href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fyourbasic.org%2fgolang%2ftrim-whitespace-from-string%2f">Facebook</a>&nbsp;|
+<a href="https://www.reddit.com/submit?url=http%3a%2f%2fyourbasic.org%2fgolang%2ftrim-whitespace-from-string%2f&amp;title=Trim%20leading%20and%20trailing%20whitespace">Reddit</a></p>
 
 
 </article>

@@ -1886,7 +1886,7 @@ select { case news := &amp;lt;-AFP: fmt.Println(news) case &amp;lt;-time.After(t
       
       <guid>http://yourbasic.org/golang/trim-whitespace-from-string/</guid>
       <description>Use the strings.TrimSpace function to remove leading and trailing whitespace as defined by&amp;nbsp;Unicode.
-s := strings.TrimSpace(&#34;\t Hello world!\n &#34;) fmt.Printf(&#34;%q&#34;, s) // &#34;Hello world!&#34; To remove other leading and trailing characters, use strings.Trim. To remove only the leading or the trailing characters, use strings.TrimLeft or strings.TrimRight.
+s := strings.TrimSpace(&#34;\t Goodbye hair!\n &#34;) fmt.Printf(&#34;%q&#34;, s) // &#34;Goodbye hair!&#34; To remove other leading and trailing characters, use strings.Trim. To remove only the leading or the trailing characters, use strings.TrimLeft or strings.TrimRight.
 Further reading 
 The String handling cheat sheet presents the top Go string functions.</description>
     </item>
