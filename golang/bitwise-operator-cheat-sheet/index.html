@@ -22,6 +22,38 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://yourbasic.org/golang/bitwise-operator-cheat-sheet/"
+  },
+  "headline": "Bitwise operators cheat sheet",
+  "image": [
+    "http://yourbasic.org/golang/Leibniz-binary-system-1697.jpg"
+   ],
+  "datePublished": "2018-04-15T00:00:00&#43;0000",
+  "dateModified": "2018-04-15T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "A complete list of bitwise operators and functions in Go: not, and, or, xor, bit, bit clear, shift, rotate, popcount"
+}
+</script>
+
+
+
 </head>
 
 <body>
@@ -42,7 +74,11 @@
 <div class="tagline">yourbasic.org/golang</div>
 
 
-<p>The binary number 00010000 can be written as <code>020</code>, <code>16</code> or <code>0x10</code>.</p>
+<!-- Public domain: https://commons.wikimedia.org/wiki/File:Leibniz_binary_system_1697.jpg -->
+
+<div style="margin-top:1em; margin-bottom:1.5em;"><img src="/golang/Leibniz-binary-system-1697.jpg"></div>
+
+<p>The binary number 10000 can be written as <code>020</code>, <code>16</code> or <code>0x10</code>.</p>
 
 <table class="white">
   <thead>
@@ -61,7 +97,7 @@
     <tr>
       <td><code>16</code></td>
       <td>10</td>
-      <td>Never starts with&nbsp;<code>0</code>*</td>
+      <td>Never starts with&nbsp;<code>0</code></td>
     </tr>
     <tr>
       <td><code>0x10</code></td>
@@ -71,7 +107,7 @@
   </tbody>
 </table>
 
-<p>*&nbsp;<code>0</code> is an octal literal in&nbsp;Go.</p>
+<p>&nbsp;</p>
 
 <h2 id="built-in-operators">Built-in operators</h2>
 
@@ -215,6 +251,12 @@ For example, <code>Len</code>, <code>Len8</code>, <code>Len16</code>, <code>Len3
 <li>The functions are recognized by the compiler and on most architectures
 they are treated as intrinsics for additional performance.</li>
 </ul>
+
+<p><b>Share<span class="extra-content"> this page</span>:</b>
+<span class="small-content"><a href="mailto:?subject=Bitwise%20operators%20cheat%20sheet&body=http%3a%2f%2fyourbasic.org%2fgolang%2fbitwise-operator-cheat-sheet%2f">Email</a>&nbsp;|</span>
+<a href="https://twitter.com/share?url=http%3a%2f%2fyourbasic.org%2fgolang%2fbitwise-operator-cheat-sheet%2f&amp;text=Bitwise%20operators%20cheat%20sheet&amp;via=yourbasic%5forg">Twitter</a>&nbsp;|
+<a href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fyourbasic.org%2fgolang%2fbitwise-operator-cheat-sheet%2f">Facebook</a>&nbsp;|
+<a href="https://www.reddit.com/submit?url=http%3a%2f%2fyourbasic.org%2fgolang%2fbitwise-operator-cheat-sheet%2f&amp;title=Bitwise%20operators%20cheat%20sheet">Reddit</a></p>
 
 
 </article>
