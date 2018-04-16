@@ -431,10 +431,6 @@
   </url>
   
   <url>
-    <loc>http://yourbasic.org/golang/how-to-sort-in-go/</loc>
-  </url>
-  
-  <url>
     <loc>http://yourbasic.org/golang/split-string-into-slice/</loc>
   </url>
   
@@ -737,6 +733,10 @@
   
   <url>
     <loc>http://yourbasic.org/golang/library-package-example-template/</loc>
+  </url>
+  
+  <url>
+    <loc>http://yourbasic.org/golang/how-to-sort-in-go/</loc>
   </url>
   
   <url>
