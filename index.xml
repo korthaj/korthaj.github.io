@@ -728,6 +728,17 @@ log.SetOutput(ioutil.Discard)  </description>
     </item>
     
     <item>
+      <title>Do-while loop in 2 different ways</title>
+      <link>http://yourbasic.org/golang/do-while-loop/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/do-while-loop/</guid>
+      <description>There is no do-while loop in Go. To emulate the C/Java code
+do { work(); } while (condition); you may use one of these alternatives:
+for ok := true; ok; ok = condition { work() } for { work() if !condition { break } } Further reading  For loops in a&amp;nbsp;nutshell</description>
+    </item>
+    
+    <item>
       <title>Does not compute</title>
       <link>http://yourbasic.org/golang/gotcha-operator-precedence/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -2292,17 +2303,6 @@ Example This generator produces a sequence of 97 different numbers, then it star
       <description>Why does the copy disappear?
 var src, dst []int src = []int{1, 2, 3} copy(dst, src) // Copy elements to dst from src. fmt.Println(&#34;dst:&#34;, dst) dst: []  Answer
 The number of elements copied by the copy function is the minimum of len(dst) and len(src). To make a full copy, you must allocate a big enough destination slice. var src, dst []int dst = make([]int, len(src)) n := copy(dst, src) fmt.</description>
-    </item>
-    
-    <item>
-      <title>Where is the do-while loop?</title>
-      <link>http://yourbasic.org/golang/do-while-loop/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/do-while-loop/</guid>
-      <description>There is no do-while loop in Go. To emulate the C/Java code
-do { work(); } while (condition); you may use one of these alternatives:
-for ok := true; ok; ok = condition { work() } for { work() if !condition { break } } Read all about for loops  For loops in a&amp;nbsp;nutshell</description>
     </item>
     
     <item>

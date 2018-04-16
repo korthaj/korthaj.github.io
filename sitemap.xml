@@ -271,6 +271,10 @@
   </url>
   
   <url>
+    <loc>http://yourbasic.org/golang/do-while-loop/</loc>
+  </url>
+  
+  <url>
     <loc>http://yourbasic.org/golang/gotcha-operator-precedence/</loc>
   </url>
   
@@ -845,10 +849,6 @@
   
   <url>
     <loc>http://yourbasic.org/golang/gotcha-copy-missing/</loc>
-  </url>
-  
-  <url>
-    <loc>http://yourbasic.org/golang/do-while-loop/</loc>
   </url>
   
   <url>
