@@ -1638,7 +1638,7 @@ fmt.Printf(&#34;%d %%&#34;, 50) // &#34;50 %&#34; </description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/pointer-vs-value-receiver/</guid>
-      <description>Basics  For a given type, don&amp;rsquo;t mix value and pointer receivers. If in doubt, use pointer receivers (they are safe and extendable).  Pointer receivers You must use pointer receivers
+      <description>Basic guidelines  For a given type, don&amp;rsquo;t mix value and pointer receivers. If in doubt, use pointer receivers (they are safe and extendable).  Pointer receivers You must use pointer receivers
  if any method needs to mutate the receiver, for structs that contain a sync.Mutex or similar synchronizing field (they musn&amp;rsquo;t be copied).  You probably want to use pointer receivers
  for large structs or arrays (it can be more efficient), in all other cases.</description>
     </item>
