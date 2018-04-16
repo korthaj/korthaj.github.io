@@ -11,6 +11,26 @@
     
     
     <item>
+      <title>2 basic FIFO queue implementations</title>
+      <link>http://yourbasic.org/golang/implement-fifo-queue/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/implement-fifo-queue/</guid>
+      <description>A simple way to implement a temporary queue in Go is to use a slice:
+ to enqueue you use the built-in append function, and to dequeue you slice off the first element.  var queue []string queue = append(queue, &#34;Hello &#34;) // Enqueue queue = append(queue, &#34;world!&#34;) for len(queue)  0 { fmt.Print(queue[0]) // First element queue = queue[1:] // Dequeue } Hello world! Watch out for memory leaks You may want to remove the first element before dequeuing.</description>
+    </item>
+    
+    <item>
+      <title>2 basic set implementations</title>
+      <link>http://yourbasic.org/golang/implement-set/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/implement-set/</guid>
+      <description>The idiomatic way to implement a set in Go is to use a&amp;nbsp;map.
+set := make(map[string]bool) // New empty set set[&#34;Foo&#34;] = true // Add for k := range set { // Loop fmt.Println(k) } delete(set, &#34;Foo&#34;) // Delete size := len(set) // Size exists := set[&#34;Foo&#34;] // Membership Alternative If the memory used by the booleans is an issue, which seems unlikely, you could replace them with empty&amp;nbsp;structs.</description>
+    </item>
+    
+    <item>
       <title>3 dots in 4 places</title>
       <link>http://yourbasic.org/golang/three-dots-ellipsis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -20,6 +40,16 @@
  Variadic function parameters If the last parameter of a function has type ...T, it can be called with any number of trailing arguments of type&amp;nbsp;T. The actual type of ...T inside the function is&amp;nbsp;[]T.
 This example function can be called with, for instance, Sum(1, 2, 3) or&amp;nbsp;Sum().
 func Sum(nums ...int) int { res := 0 for _, n := range nums { res += n } return res } Arguments to variadic functions You can pass a slice s directly to a variadic funtion if you unpack it with the s.</description>
+    </item>
+    
+    <item>
+      <title>A basic stack (LIFO) implementation</title>
+      <link>http://yourbasic.org/golang/implement-stack/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/implement-stack/</guid>
+      <description>The idiomatic way to implement a stack in Go is to use a slice:
+ to push you use the built-in append function, and to pop you slice off the top element.  var stack []string stack = append(stack, &#34;world!&#34;) // Push stack = append(stack, &#34;Hello &#34;) for len(stack)  0 { n := len(stack) - 1 // Top element fmt.Print(stack[n]) stack = stack[:n] // Pop } Hello world!</description>
     </item>
     
     <item>
@@ -1032,36 +1062,6 @@ Sort a slice of ints, float64s or strings Use one of the functions
 s := strings.Split(&amp;quot;a,b,c&amp;quot;, &amp;quot;,&amp;quot;) fmt.Println(s) // Output: [a b c]  To include the separators, use strings.SplitAfter. To split only the first n values, use strings.SplitN and strings.SplitAfterN.
 Fields Use the strings.Fields function to split a string into substrings removing white space.
 s := strings.Fields(&amp;quot; a \t b \n&amp;quot;) fmt.Println(s) // Output: [a b]  In more complicated situations, regular expressions might do the&amp;nbsp;trick.</description>
-    </item>
-    
-    <item>
-      <title>Implement a FIFO queue</title>
-      <link>http://yourbasic.org/golang/implement-fifo-queue/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/implement-fifo-queue/</guid>
-      <description>A simple way to implement a temporary queue in Go is to use a slice:
- to enqueue you use the built-in append function, and to dequeue you slice off the first element.  var queue []string queue = append(queue, &#34;Hello &#34;) // Enqueue queue = append(queue, &#34;world!&#34;) for len(queue)  0 { fmt.Print(queue[0]) // First element queue = queue[1:] // Dequeue } Hello world! Watch out for memory leaks You may want to remove the first element before dequeuing.</description>
-    </item>
-    
-    <item>
-      <title>Implement a set</title>
-      <link>http://yourbasic.org/golang/implement-set/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/implement-set/</guid>
-      <description>The idiomatic way to implement a set in Go is to use a&amp;nbsp;map.
-set := make(map[string]bool) // New empty set set[&#34;Foo&#34;] = true // Add for k := range set { // Loop fmt.Println(k) } delete(set, &#34;Foo&#34;) // Delete size := len(set) // Size exists := set[&#34;Foo&#34;] // Membership Alternative If the memory used by the booleans is an issue, which seems unlikely, you could replace them with empty&amp;nbsp;structs.</description>
-    </item>
-    
-    <item>
-      <title>Implement a stack (LIFO)</title>
-      <link>http://yourbasic.org/golang/implement-stack/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/implement-stack/</guid>
-      <description>The idiomatic way to implement a stack in Go is to use a slice:
- to push you use the built-in append function, and to pop you slice off the top element.  var stack []string stack = append(stack, &#34;world!&#34;) // Push stack = append(stack, &#34;Hello &#34;) for len(stack)  0 { n := len(stack) - 1 // Top element fmt.Print(stack[n]) stack = stack[:n] // Pop } Hello world!</description>
     </item>
     
     <item>

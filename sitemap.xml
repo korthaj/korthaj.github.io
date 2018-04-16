@@ -2,7 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yourbasic.org/golang/implement-fifo-queue/</loc>
+  </url>
+  
+  <url>
+    <loc>http://yourbasic.org/golang/implement-set/</loc>
+  </url>
+  
+  <url>
     <loc>http://yourbasic.org/golang/three-dots-ellipsis/</loc>
+  </url>
+  
+  <url>
+    <loc>http://yourbasic.org/golang/implement-stack/</loc>
   </url>
   
   <url>
@@ -424,18 +436,6 @@
   
   <url>
     <loc>http://yourbasic.org/golang/split-string-into-slice/</loc>
-  </url>
-  
-  <url>
-    <loc>http://yourbasic.org/golang/implement-fifo-queue/</loc>
-  </url>
-  
-  <url>
-    <loc>http://yourbasic.org/golang/implement-set/</loc>
-  </url>
-  
-  <url>
-    <loc>http://yourbasic.org/golang/implement-stack/</loc>
   </url>
   
   <url>
