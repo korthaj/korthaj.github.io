@@ -14,6 +14,10 @@
   </url>
   
   <url>
+    <loc>http://yourbasic.org/golang/compare-slices/</loc>
+  </url>
+  
+  <url>
     <loc>http://yourbasic.org/golang/implement-stack/</loc>
   </url>
   
@@ -144,10 +148,6 @@
   
   <url>
     <loc>http://yourbasic.org/golang/command-line-arguments/</loc>
-  </url>
-  
-  <url>
-    <loc>http://yourbasic.org/golang/compare-slices/</loc>
   </url>
   
   <url>

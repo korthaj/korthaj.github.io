@@ -43,6 +43,16 @@ func Sum(nums ...int) int { res := 0 for _, n := range nums { res += n } return 
     </item>
     
     <item>
+      <title>3 ways to compare slices</title>
+      <link>http://yourbasic.org/golang/compare-slices/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/compare-slices/</guid>
+      <description>In general, the preferred approach is to write your own code to compare slices.
+// Equal tells whether a and b contain the same elements. // A nil argument is equivalent to an empty slice. func Equal(a, b []int) bool { if len(a) != len(b) { return false } for i, v := range a { if v != b[i] { return false } } return true } Byte slices For comparing bytes slices, use the optimized bytes.</description>
+    </item>
+    
+    <item>
       <title>A basic stack (LIFO) implementation</title>
       <link>http://yourbasic.org/golang/implement-stack/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -306,16 +316,6 @@ func main() { log.SetPrefix(&#34;grep: &#34;) log.SetFlags(0) // no extra info i
       <guid>http://yourbasic.org/golang/command-line-arguments/</guid>
       <description>The os.Args variable holds the command-line arguments, starting with the program name.
 func main() { if len(os.Args) != 3 { fmt.Println(&#34;Usage:&#34;, os.Args[0], &#34;PATTERN&#34;, &#34;FILE&#34;) return } pattern := os.Args[1] file := os.Args[2] // ... } $ go build grep.go $ ./grep Usage: ./grep PATTERN FILE  </description>
-    </item>
-    
-    <item>
-      <title>Compare slices for equality</title>
-      <link>http://yourbasic.org/golang/compare-slices/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/compare-slices/</guid>
-      <description>In general, the preferred approach is to write your own code for comparing slices.
-// Equal tells whether a and b contain the same elements. // A nil argument is equivalent to an empty slice. func Equal(a, b []int) bool { if len(a) != len(b) { return false } for i, v := range a { if v != b[i] { return false } } return true } Byte slices For comparing bytes slices, use the optimized bytes.</description>
     </item>
     
     <item>
