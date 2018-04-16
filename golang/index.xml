@@ -1259,7 +1259,7 @@ type MyType struct { n int } func (p *MyType) Value() int { return p.</descripti
     </item>
     
     <item>
-      <title>Multiline strings</title>
+      <title>Multiline strings in 2 different ways</title>
       <link>http://yourbasic.org/golang/multiline-string/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
