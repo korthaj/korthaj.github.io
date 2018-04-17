@@ -837,6 +837,17 @@ type Operator func(x float64) float64 // Map applies op to each element of a. fu
     </item>
     
     <item>
+      <title>Functional programming in Go</title>
+      <link>http://yourbasic.org/golang/your-basic-func/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/your-basic-func/</guid>
+      <description>A graph implementation based entirely on functions
+ The Petersen graph and its complement Introduction This text is about the implementation of a Go tool based entirely on functions – the API contains only immutable data types, and the code is built on top of a struct with five func fields.
+It&amp;rsquo;s a tool for building virtual graphs. In a virtual graph no vertices or edges are stored in memory, they are instead computed as needed.</description>
+    </item>
+    
+    <item>
       <title>Generate a random UUID (GUID)</title>
       <link>http://yourbasic.org/golang/generate-uuid-guid/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -2100,17 +2111,6 @@ To avoid this, we need to use two separate byte&amp;nbsp;arrays.</description>
       <description>This code appends a log message to the file text.log. It creates the file if it doesn&amp;rsquo;t already exist.
 f, err := os.OpenFile(&amp;quot;text.log&amp;quot;, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644) if err != nil { log.Println(err) } defer f.Close() logger := log.New(f, &amp;quot;prefix&amp;quot;, log.LstdFlags) logger.Println(&amp;quot;text to append&amp;quot;) logger.Println(&amp;quot;more text to append&amp;quot;)  Contents of text.log:
 prefix: 2017/10/20 07:52:58 text to append prefix: 2017/10/20 07:52:58 more text to append   log.New creates a new log.Logger that writes to f.</description>
-    </item>
-    
-    <item>
-      <title>Your basic func</title>
-      <link>http://yourbasic.org/golang/your-basic-func/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/your-basic-func/</guid>
-      <description>Unexpected functional programming in&amp;nbsp;Go
- The Petersen graph and its complement Introduction This text is about the implementation of a Go tool based entirely on functions – the API contains only immutable data types, and the code is built on top of a struct with five func fields.
-It&amp;rsquo;s a tool for building virtual graphs. In a virtual graph no vertices or edges are stored in memory, they are instead computed as needed.</description>
     </item>
     
     <item>

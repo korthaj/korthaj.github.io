@@ -928,6 +928,17 @@ type Operator func(x float64) float64 // Map applies op to each element of a. fu
     </item>
     
     <item>
+      <title>Functional programming in Go</title>
+      <link>http://yourbasic.org/golang/your-basic-func/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/your-basic-func/</guid>
+      <description>A graph implementation based entirely on functions
+ The Petersen graph and its complement Introduction This text is about the implementation of a Go tool based entirely on functions – the API contains only immutable data types, and the code is built on top of a struct with five func fields.
+It&amp;rsquo;s a tool for building virtual graphs. In a virtual graph no vertices or edges are stored in memory, they are instead computed as needed.</description>
+    </item>
+    
+    <item>
       <title>Generate a random UUID (GUID)</title>
       <link>http://yourbasic.org/golang/generate-uuid-guid/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -2359,17 +2370,6 @@ prefix: 2017/10/20 07:52:58 text to append prefix: 2017/10/20 07:52:58 more text
       <guid>http://yourbasic.org/algorithms/your-basic-api/</guid>
       <description>Thoughts on effective API design
  Introduction The 5 Commandments 1. Tell me what this thing is 2. Tell me what it does 3. Don&#39;t tell me how it works 4. Grant me the right to use it 5. Don&#39;t change it   Keep it simple Don&#39;t use complicated constructs where simple ones will do Don&#39;t use a lot where a little will do One package, one idea Just say no Math is simple   Give it time Eat your own dog food   Show, don&#39;t tell Create tutorials Use examples   Tools of the trade Keep it consistent Write functions that need little and give much Discover a well-fitting interface Make it generic Names, keep them short and sweet    Introduction The aim of this text is to explore API design and try to find strategies and rules that can help us create code libraries that are safe, effective and easy to use.</description>
-    </item>
-    
-    <item>
-      <title>Your basic func</title>
-      <link>http://yourbasic.org/golang/your-basic-func/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/your-basic-func/</guid>
-      <description>Unexpected functional programming in&amp;nbsp;Go
- The Petersen graph and its complement Introduction This text is about the implementation of a Go tool based entirely on functions – the API contains only immutable data types, and the code is built on top of a struct with five func fields.
-It&amp;rsquo;s a tool for building virtual graphs. In a virtual graph no vertices or edges are stored in memory, they are instead computed as needed.</description>
     </item>
     
     <item>

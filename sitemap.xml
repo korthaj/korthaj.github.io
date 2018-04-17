@@ -347,6 +347,10 @@
   </url>
   
   <url>
+    <loc>http://yourbasic.org/golang/your-basic-func/</loc>
+  </url>
+  
+  <url>
     <loc>http://yourbasic.org/golang/generate-uuid-guid/</loc>
   </url>
   
@@ -877,10 +881,6 @@
   
   <url>
     <loc>http://yourbasic.org/algorithms/</loc>
-  </url>
-  
-  <url>
-    <loc>http://yourbasic.org/golang/your-basic-func/</loc>
   </url>
   
   <url>
