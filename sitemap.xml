@@ -191,10 +191,6 @@
   </url>
   
   <url>
-    <loc>http://yourbasic.org/golang/type-assertion-switch/</loc>
-  </url>
-  
-  <url>
     <loc>http://yourbasic.org/golang/interface-to-string/</loc>
   </url>
   
@@ -793,6 +789,10 @@
   
   <url>
     <loc>http://yourbasic.org/golang/type-alias/</loc>
+  </url>
+  
+  <url>
+    <loc>http://yourbasic.org/golang/type-assertion-switch/</loc>
   </url>
   
   <url>

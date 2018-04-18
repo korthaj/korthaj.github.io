@@ -507,17 +507,6 @@ var n int64 = 32 str := strconv.FormatInt(n, 10) // decimal fmt.Println(str) // 
     </item>
     
     <item>
-      <title>Convert interface to X: type assertions and type switches</title>
-      <link>http://yourbasic.org/golang/type-assertion-switch/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/type-assertion-switch/</guid>
-      <description>A type assertion doesn’t really convert an interface to another data type, but it provides access to an interface’s concrete value, which is typically what you want.
-The type assertion x.(T) asserts that the concrete value stored in&amp;nbsp;x is of type&amp;nbsp;T, and that x is&amp;nbsp;not&amp;nbsp;nil.
- If T is not an interface, it asserts that the dynamic type of&amp;nbsp;x is identical to&amp;nbsp;T. If T is an interface, it asserts that the dynamic type of&amp;nbsp;x implements&amp;nbsp;T.</description>
-    </item>
-    
-    <item>
       <title>Convert interface to string</title>
       <link>http://yourbasic.org/golang/interface-to-string/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -2139,6 +2128,17 @@ The String handling cheat sheet presents the top Go string functions.</descripti
 type T1 = T2 as opposed to a standard type definition
 type T1 T2  An alias declaration doesn&amp;rsquo;t create a new distinct type different from the type it&amp;rsquo;s created from. It just introduces an alias name T1, an alternate spelling, for the type denoted by&amp;nbsp;T2.
 Type aliases are not meant for everyday use. They were introduced to support gradual code repair while movin a type between packages during large-scale refactoring.</description>
+    </item>
+    
+    <item>
+      <title>Type assertions and type switches: convert interface to concrete type</title>
+      <link>http://yourbasic.org/golang/type-assertion-switch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/type-assertion-switch/</guid>
+      <description>A type assertion doesn’t really convert an interface to another data type, but it provides access to an interface’s concrete value, which is typically what you want.
+The type assertion x.(T) asserts that the concrete value stored in&amp;nbsp;x is of type&amp;nbsp;T, and that x is&amp;nbsp;not&amp;nbsp;nil.
+ If T is not an interface, it asserts that the dynamic type of&amp;nbsp;x is identical to&amp;nbsp;T. If T is an interface, it asserts that the dynamic type of&amp;nbsp;x implements&amp;nbsp;T.</description>
     </item>
     
     <item>
