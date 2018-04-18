@@ -35,7 +35,7 @@
     "http://yourbasic.org/golang/sorted-ring-binders.jpg"
    ],
   "datePublished": "2018-04-15T00:00:00&#43;0000",
-  "dateModified": "2018-04-16T00:00:00&#43;0000",
+  "dateModified": "2018-04-18T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -106,6 +106,8 @@
 <pre><code>s := []int{4, 2, 3, 1}
 sort.Ints(s)
 fmt.Println(s) // <span class="comment">[1 2 3 4]</span></code></pre>
+
+<p>Package <a href="https://godoc.org/github.com/yourbasic/radix">radix</a> is a drop-in replacement for sort.Strings, which can be twice as fast in some settings.</p>
 
 <h2 id="sort-with-custom-compare-function">Sort with custom compare function</h2>
 
@@ -208,6 +210,12 @@ func main() {
     <a href="/algorithms/big-o-notation-explained/">Big O notation</a>
     <div class="desc">Big O notation is a convenient way to describe how fast a function is growing. It is often used to describe time complexity.</div>
     <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="https://github.com/yourbasic/radix">Package radix: A fast string sorting algorithm</a>
+    <div class="source">github.com/yourbasic</div>
+    <div class="author"></div>
   </div>
 
   <h2>Follow on Twitter</h2>
