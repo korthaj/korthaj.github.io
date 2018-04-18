@@ -546,17 +546,6 @@ file, err := ioutil.TempFile(&#34;dir&#34;, &#34;prefix&#34;) if err != nil { lo
     </item>
     
     <item>
-      <title>Cryptographically secure random numbers</title>
-      <link>http://yourbasic.org/golang/crypto-rand-int/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/crypto-rand-int/</guid>
-      <description>Go has two packages for random numbers:
- math/rand implements a large selection of pseudo-random number generators. crypto/rand implements a cryptographically secure pseudo-random number generator with a limited interface.  The two packages can be combined by calling rand.New in package math/rand with a source that gets its data from crypto/rand.
-import ( crand &#34;crypto/rand&#34; rand &#34;math/rand&#34; &#34;encoding/binary&#34; &#34;fmt&#34; &#34;log&#34; ) func main() { var src cryptoSource rnd := rand.</description>
-    </item>
-    
-    <item>
       <title>Current time</title>
       <link>http://yourbasic.org/golang/current-time/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1994,6 +1983,17 @@ package main import ( &#34;fmt&#34; &#34;log&#34; // &#34;imported and not used:
       <description>As you may have noticed, programs with unused local variables do not compile. func main() { var n int // &amp;ldquo;n declared and not used&amp;rdquo; n = 5 // this doesn&amp;rsquo;t help }
 ../main.go:2:6: n declared and not used  This is a deliberate feature of the Go language.
  The presence of an unused variable may indicate a bug [&amp;hellip;] Go refuses to compile programs with unused variables or imports, trading short-term convenience for long-term build speed and program clarity.</description>
+    </item>
+    
+    <item>
+      <title>User-friendly access to crypto/rand</title>
+      <link>http://yourbasic.org/golang/crypto-rand-int/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/crypto-rand-int/</guid>
+      <description>Go has two packages for random numbers:
+ math/rand implements a large selection of pseudo-random number generators. crypto/rand implements a cryptographically secure pseudo-random number generator with a limited interface.  The two packages can be combined by calling rand.New in package math/rand with a source that gets its data from crypto/rand.
+import ( crand &#34;crypto/rand&#34; rand &#34;math/rand&#34; &#34;encoding/binary&#34; &#34;fmt&#34; &#34;log&#34; ) func main() { var src cryptoSource rnd := rand.</description>
     </item>
     
     <item>

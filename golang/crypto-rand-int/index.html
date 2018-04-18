@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cryptographically secure random numbers - yourbasic.org/golang </title>
-  <meta name="description" content="How to use a cryptographically secure random source with math/rand in Go.">
+  <title>User-friendly access to crypto/rand - yourbasic.org/golang </title>
+  <meta name="description" content="Code to combine the convenient math/rand library with the secure crypto/rand source.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -22,6 +22,50 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://yourbasic.org/golang/crypto-rand-int/"
+  },
+  "headline": "User-friendly access to crypto/rand",
+  "image": [
+    "http://yourbasic.org/res/programmer.jpg"
+   ],
+  "datePublished": "2018-04-18T00:00:00&#43;0000",
+  "dateModified": "2018-04-18T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "Code to combine the convenient math/rand library with the secure crypto/rand source."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="User-friendly access to crypto/rand">
+<meta property="og:description" content="Code to combine the convenient math/rand library with the secure crypto/rand source.">
+<meta property="og:url" content="http://yourbasic.org/golang/crypto-rand-int/">
+<meta property="og:image" content="http://yourbasic.org/res/programmer.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="User-friendly access to crypto/rand">
+<meta name="twitter:description" content="Code to combine the convenient math/rand library with the secure crypto/rand source.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="http://yourbasic.org/res/programmer.jpg">
+
+
 </head>
 
 <body>
@@ -38,7 +82,7 @@
 
 <main>
 <article>
-<h1>Cryptographically secure random numbers</h1>
+<h1>User-friendly access to crypto/rand</h1>
 <div class="tagline">yourbasic.org/golang</div>
 <!-- CC BY-NC-SA 2.0: http://www.flickr.com/photos/stianeikeland/3696386615/ -->
 
@@ -85,10 +129,18 @@ func (s cryptoSource) Uint64() (v uint64) {
     return v
 }</code></pre>
 
-<p>The <code>crand.Reader</code> returns an error if the underlying system call fails.
-For instance if it can&rsquo;t read <code>/dev/urandom</code> on a Unix system,
+<blockquote class="warning">
+<b>Warning:</b> The <code>crand.Reader</code> returns an error if the underlying system call fails.
+For instance if it can't read <code>/dev/urandom</code> on a Unix system,
 or if <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa379886(v=vs.85).aspx"><code>CryptAcquireContext</code></a>
-fails on a Windows system.</p>
+fails on a Windows system.
+</blockquote>
+
+<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=http%3a%2f%2fyourbasic.org%2fgolang%2fcrypto-rand-int%2f&amp;text=User-friendly%20access%20to%20crypto/rand&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fyourbasic.org%2fgolang%2fcrypto-rand-int%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.reddit.com/submit?url=http%3a%2f%2fyourbasic.org%2fgolang%2fcrypto-rand-int%2f&amp;title=User-friendly%20access%20to%20crypto/rand" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=User-friendly%20access%20to%20crypto/rand&body=http%3a%2f%2fyourbasic.org%2fgolang%2fcrypto-rand-int%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
