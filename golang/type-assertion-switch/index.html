@@ -22,6 +22,50 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://yourbasic.org/golang/type-assertion-switch/"
+  },
+  "headline": "Type assertions and type switches: convert interface to concrete type",
+  "image": [
+    "http://yourbasic.org/golang/thumbs-up.jpg"
+   ],
+  "datePublished": "2018-04-18T00:00:00&#43;0000",
+  "dateModified": "2018-04-18T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "To convert an interface to a string, struct or map you should use a type assertion, which provides access to an interface’s concrete value."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Type assertions and type switches: convert interface to concrete type">
+<meta property="og:description" content="To convert an interface to a string, struct or map you should use a type assertion, which provides access to an interface’s concrete value.">
+<meta property="og:url" content="http://yourbasic.org/golang/type-assertion-switch/">
+<meta property="og:image" content="http://yourbasic.org/golang/thumbs-up.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Type assertions and type switches: convert interface to concrete type">
+<meta name="twitter:description" content="To convert an interface to a string, struct or map you should use a type assertion, which provides access to an interface’s concrete value.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="http://yourbasic.org/golang/thumbs-up.jpg">
+
+
 </head>
 
 <body>
@@ -42,7 +86,11 @@
 <div class="tagline">yourbasic.org/golang</div>
 
 
-<p class="lead">A type assertion doesn’t really convert an interface to another data type,
+<!-- CC0: https://www.maxpixel.net/Gesture-Thumbs-Up-Feedback-Faust-Hand-Wrist-3050586 -->
+
+<div><img width="720px" src="/golang/thumbs-up.jpg"></div>
+
+<p>A <strong>type assertion</strong> doesn’t really convert an interface to another data type,
 but it provides access to an interface’s concrete value, which is typically what you want.</p>
 
 <p>The type assertion <code>x.(T)</code> asserts that the concrete value stored in&nbsp;<code>x</code>
@@ -90,6 +138,12 @@ default:
 <pre><code>x is bool or string
 </code></pre>
 
+<h3 id="further-reading">Further reading</h3>
+
+<div><a href="/golang/interfaces-explained/"><img src="/golang/connection-thumb.jpg" title="Interfaces in a nutshell"></a></div>
+
+<div><a href="/golang/interfaces-explained/">Interfaces in a nutshell</a></div>
+
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
 <a href="https://twitter.com/share?url=http%3a%2f%2fyourbasic.org%2fgolang%2ftype-assertion-switch%2f&amp;text=Type%20assertions%20and%20type%20switches:%20convert%20interface%20to%20concrete%20type&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fyourbasic.org%2fgolang%2ftype-assertion-switch%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
@@ -106,12 +160,6 @@ default:
   <div class="reference">
     <a href="/golang/find-type-of-object/">Find the type of an object</a>
     <div class="desc">You can find type information about an interface variable in Go using the fmt package, type assertions, type switches or reflection.</div>
-    <div class="source">yourbasic.org</div>
-  </div>
-
-  <div class="reference">
-    <a href="/golang/interfaces-explained/">Interfaces in a nutshell</a>
-    <div class="desc">An interface type consists of a set of method signatures. A variable of interface type can hold any value that implements these methods. Structural typing, the empty interface, interface values, equality.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
