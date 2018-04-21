@@ -224,7 +224,7 @@ For example, if an algorithm increments each number in a list of length&amp;nbsp
 They all have the signature
 func SearchType(a []Type, x Type) int and return
  the smallest index i at which x &amp;lt;= a[i], or len(a) if there is no such index.  The slice must be sorted in ascending order.
-a := []string{&#34;A&#34;, &#34;C&#34;, &#34;C&#34;} fmt.Println(sort.SearchStrings(a, &#34;A&#34;)) // 0 fmt.Println(sort.SearchStrings(a, &#34;B&#34;)) // 1 fmt.Println(sort.SearchStrings(a, &#34;C&#34;)) // 1 fmt.Println(sort.SearchStrings(a, &#34;</description>
+a := []string{&#34;A&#34;, &#34;C&#34;, &#34;C&#34;} fmt.Println(sort.SearchStrings(a, &#34;A&#34;)) // 0 fmt.Println(sort.SearchStrings(a, &#34;B&#34;)) // 1 fmt.Println(sort.SearchStrings(a, &#34;C&#34;)) // 1 fmt.</description>
     </item>
     
     <item>
