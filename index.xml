@@ -333,7 +333,7 @@ A new channel value can be made using the built-in function make.
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/check-map-contains-key/</guid>
-      <description>m := map[string]float64{&#34;pi&#34;: 3.1416} v1 := m[&#34;pi&#34;] // v1 == 3.1416 v2 := m[&#34;foo&#34;] // v2 == 0.0 (zero value) _, exists := m[&#34;pi&#34;] // exists == true if x, ok := m[&#34;pi&#34;]; ok { fmt.Println(x) // 3.1416 } Read all about maps  Maps in a&amp;nbsp;nutshell</description>
+      <description>m := map[string]float64{&#34;pi&#34;: 3.1416} v1 := m[&#34;pi&#34;] // v1 == 3.1416 v2 := m[&#34;foo&#34;] // v2 == 0.0 (zero value) _, exists := m[&#34;pi&#34;] // exists == true if x, ok := m[&#34;pi&#34;]; ok { fmt.Println(x) // 3.1416 } Further reading  Maps in a&amp;nbsp;nutshell</description>
     </item>
     
     <item>
@@ -343,7 +343,7 @@ A new channel value can be made using the built-in function make.
       
       <guid>http://yourbasic.org/golang/check-empty-map/</guid>
       <description>The call len(m) returns the number of key-value pairs in&amp;nbsp;m.
-if len(m) == 0 { // m is empty } Read all about maps  Maps in a&amp;nbsp;nutshell</description>
+if len(m) == 0 { // m is empty } Further reading  Maps in a&amp;nbsp;nutshell</description>
     </item>
     
     <item>
@@ -426,7 +426,8 @@ func Abs(x int32) int32 { if x &amp;lt; 0 { return -x } return x }  Warning: The
       
       <guid>http://yourbasic.org/golang/concatenate-slices/</guid>
       <description>Use the append functions with three dots after the second slice.
-a := []int{1, 2} b := []int{11, 22} a = append(a, b...) // a == [1 2 11 22] The ... unpacks b. Without the dots, the code would attempt to append the slice as a whole, which is&amp;nbsp;invalid.</description>
+a := []int{1, 2} b := []int{11, 22} a = append(a, b...) // a == [1 2 11 22] The ... unpacks b. Without the dots, the code would attempt to append the slice as a whole, which is&amp;nbsp;invalid.
+Further reading  Slices in a&amp;nbsp;nutshell</description>
     </item>
     
     <item>
@@ -579,7 +580,7 @@ copy(dst []byte, src string) int  Examples Copy from one slice to another:</desc
       
       <guid>http://yourbasic.org/golang/count-items-map/</guid>
       <description>The call len(m) returns the number of key-value pairs in m.
-m := map[string]int{ &#34;key1&#34;: 1, &#34;key2&#34;: 10, &#34;key3&#34;: 100, } fmt.Println(len(m)) // 3 Read all about maps  Maps in a&amp;nbsp;nutshell</description>
+m := map[string]int{ &#34;key1&#34;: 1, &#34;key2&#34;: 10, &#34;key3&#34;: 100, } fmt.Println(len(m)) // 3 Further reading  Maps in a&amp;nbsp;nutshell</description>
     </item>
     
     <item>
@@ -987,7 +988,7 @@ The io.Reader interface, which represents the read end of a stream of data, is a
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/slice-of-keys-values-from-map/</guid>
-      <description>keys := make([]keyType, 0, len(myMap)) values := make([]valueType, 0, len(myMap)) for k, v := range myMap { keys = append(keys, k) values = append(values, v) }  Read all about maps  Maps in a&amp;nbsp;nutshell</description>
+      <description>keys := make([]keyType, 0, len(myMap)) values := make([]valueType, 0, len(myMap)) for k, v := range myMap { keys = append(keys, k) values = append(values, v) }  Further reading  Maps in a&amp;nbsp;nutshell</description>
     </item>
     
     <item>
@@ -1304,7 +1305,7 @@ The idea is to first generate a point (x,&amp;nbsp;y), with -1&amp;nbsp;&amp;lt;
 a := []string{&#34;A&#34;, &#34;B&#34;, &#34;C&#34;} s := a[len(a)-1] // C To remove it:
 a = a[:len(a)-1] // [A B] (Go doesn&amp;rsquo;t have negative indexing like Python does.)
 Watch out for memory leaks If the slice is permanent and the element temporary, you may want to remove the reference before removing the element from the slice.
-a[len(a)-1] = &#34;&#34; // Erase element (write zero value) a = a[:len(a)-1] // [A B] Read all about slices  Slices in a&amp;nbsp;nutshell</description>
+a[len(a)-1] = &#34;&#34; // Erase element (write zero value) a = a[:len(a)-1] // [A B] Further reading  Slices in a&amp;nbsp;nutshell</description>
     </item>
     
     <item>
@@ -1608,7 +1609,7 @@ By convention, the package name is the same as the last element of the import pa
       
       <guid>http://yourbasic.org/golang/pass-slice-to-variadic-function/</guid>
       <description>You can pass a slice s directly to a variadic funtion using the s... notation.
-func main() { primes := []int{2, 3, 5, 7} fmt.Println(Sum(primes...)) // 17 } func Sum(nums ...int) int { res := 0 for _, n := range nums { res += n } return res } </description>
+func main() { primes := []int{2, 3, 5, 7} fmt.Println(Sum(primes...)) // 17 } func Sum(nums ...int) int { res := 0 for _, n := range nums { res += n } return res } Further reading  Slices in a&amp;nbsp;nutshell</description>
     </item>
     
     <item>

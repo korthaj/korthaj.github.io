@@ -40,6 +40,8 @@
 <article>
 <h1>Concatenate slices</h1>
 <div class="tagline">yourbasic.org/golang</div>
+
+
 <p>Use the <a href="/golang/append-explained/"><code>append</code></a> functions with three dots after the second slice.</p>
 
 <pre><code>a := []int{1, 2}
@@ -47,6 +49,12 @@ b := []int{11, 22}
 a = append(a, b...) <span class="comment">// a == [1 2 11 22]</span></code></pre>
 
 <p>The <code>...</code> unpacks <code>b</code>. Without the dots, the code would attempt to append the slice as a whole, which is&nbsp;invalid.</p>
+
+<h3 id="further-reading">Further reading</h3>
+
+<div><a href="/golang/slices-explained/"><img src="/golang/orange-thumb.jpg" title="Slices in a nutshell"></a></div>
+
+<p style="margin-top:0; margin-bottom:2em;"><a href="/golang/slices-explained/">Slices in a&nbsp;nutshell</a></p>
 
 
 </article>
