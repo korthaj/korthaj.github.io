@@ -1422,7 +1422,7 @@ $ godoc -http=:6060 &amp;amp;   The documentation is tightly coupled with the co
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/package-init-function-main-execution-order/</guid>
-      <description>In a nutshell  First the main package is initialized.  Imported packages are initialized before the package itself. Packages are initialized one at a time: first package-level variables are initialized in declaration order, then the init functions are run.  Finally the main function is called.  Program execution Program execution begins by initializing the main package and then calling the function main. When main returns, the program exits.</description>
+      <description>Basics Program execution Package initialization Init function Warning  Basics  First the main package is initialized.  Imported packages are initialized before the package itself. Packages are initialized one at a time: first package-level variables are initialized in declaration order, then the init functions are run.  Finally the main function is called.  Program execution Program execution begins by initializing the main package and then calling the function main.</description>
     </item>
     
     <item>

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Package initialization and program execution order - yourbasic.org/golang </title>
-  <meta name="description" content="A concise description of Go package initialization and program execution order.">
+  <meta name="description" content="Imported packages are initialized before the package itself. Packages are initialized one at a time: first package-level variables are initialized in declaration order, then the init functions are run.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -21,6 +21,50 @@
 
     gtag('config', 'UA-113104149-1');
   </script>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://yourbasic.org/golang/package-init-function-main-execution-order/"
+  },
+  "headline": "Package initialization and program execution order",
+  "image": [
+    "http://yourbasic.org/golang/birds-in-formation.jpg"
+   ],
+  "datePublished": "2018-04-21T00:00:00&#43;0000",
+  "dateModified": "2018-04-21T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "Imported packages are initialized before the package itself. Packages are initialized one at a time: first package-level variables are initialized in declaration order, then the init functions are run."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Package initialization and program execution order">
+<meta property="og:description" content="Imported packages are initialized before the package itself. Packages are initialized one at a time: first package-level variables are initialized in declaration order, then the init functions are run.">
+<meta property="og:url" content="http://yourbasic.org/golang/package-init-function-main-execution-order/">
+<meta property="og:image" content="http://yourbasic.org/golang/birds-in-formation.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Package initialization and program execution order">
+<meta name="twitter:description" content="Imported packages are initialized before the package itself. Packages are initialized one at a time: first package-level variables are initialized in declaration order, then the init functions are run.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="http://yourbasic.org/golang/birds-in-formation.jpg">
+
 
 </head>
 
@@ -42,7 +86,19 @@
 <div class="tagline">yourbasic.org/golang</div>
 
 
-<h2 id="in-a-nutshell">In a nutshell</h2>
+<!-- CC0: https://pixabay.com/en/formation-migratory-birds-geese-508038/ -->
+
+<div style="margin-top:1em;"><img src="/golang/birds-in-formation.jpg"></div>
+
+<ul class="toc">
+  <li><a href="#basics">Basics</a></li>
+  <li><a href="#program-execution">Program execution</a></li>
+  <li><a href="#package-initialization">Package initialization</a></li>
+  <li><a href="#init-function">Init function</a></li>
+  <li><a href="#warning">Warning</a></li>
+</ul>
+
+<h2 id="basics">Basics</h2>
 
 <ul>
 <li>First the <code>main</code> package is initialized.
@@ -121,6 +177,12 @@ func f() int {
 To ensure reproducible initialization behavior, build systems are encouraged to present multiple files belonging to the same package in lexical file name order to a compiler.<br />
 <a class="quote-source" href="https://golang.org/ref/spec#Package_initialization">The Go Programming Language Specification: Package initialization</a>
 </blockquote>
+
+<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=http%3a%2f%2fyourbasic.org%2fgolang%2fpackage-init-function-main-execution-order%2f&amp;text=Package%20initialization%20and%20program%20execution%20order&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fyourbasic.org%2fgolang%2fpackage-init-function-main-execution-order%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.reddit.com/submit?url=http%3a%2f%2fyourbasic.org%2fgolang%2fpackage-init-function-main-execution-order%2f&amp;title=Package%20initialization%20and%20program%20execution%20order" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Package%20initialization%20and%20program%20execution%20order&body=http%3a%2f%2fyourbasic.org%2fgolang%2fpackage-init-function-main-execution-order%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
