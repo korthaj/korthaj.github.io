@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enumeration with string representation - yourbasic.org/golang </title>
-  <meta name="description" content="How to declare enums and give them a string representation in Go.">
+  <title>Enum with String function - yourbasic.org/golang </title>
+  <meta name="description" content="Code example: declare enumerations and give them a string representation.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -22,6 +22,50 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://yourbasic.org/golang/define-enumeration-string/"
+  },
+  "headline": "Enum with String function",
+  "image": [
+    "http://yourbasic.org/golang/lane-numbers.jpg"
+   ],
+  "datePublished": "2018-04-22T00:00:00&#43;0000",
+  "dateModified": "2018-04-22T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "Code example: declare enumerations and give them a string representation."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Enum with String function">
+<meta property="og:description" content="Code example: declare enumerations and give them a string representation.">
+<meta property="og:url" content="http://yourbasic.org/golang/define-enumeration-string/">
+<meta property="og:image" content="http://yourbasic.org/golang/lane-numbers.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Enum with String function">
+<meta name="twitter:description" content="Code example: declare enumerations and give them a string representation.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="http://yourbasic.org/golang/lane-numbers.jpg">
+
+
 </head>
 
 <body>
@@ -38,8 +82,14 @@
 
 <main>
 <article>
-<h1>Enumeration with string representation</h1>
+<h1>Enum with String function</h1>
 <div class="tagline">yourbasic.org/golang</div>
+
+
+
+<div style="margin-top:1em;"><img src="/golang/lane-numbers.jpg"></div>
+
+<h2 id="basic-solution">Basic solution</h2>
 
 <p>A group of constants enumerated with <code>iota</code> might do the job.</p>
 
@@ -54,7 +104,7 @@
 )</code></pre>
 
 <ul>
-<li>The <code>iota</code> keyword represents successive integer constants 0, 1, 2,…</li>
+<li>The <a href="/golang/iota/"><code>iota</code></a> keyword represents successive integer constants 0, 1, 2,…</li>
 <li>It resets to 0 whenever the word <code>const</code> appears in the source code,</li>
 <li>and increments after each const specification.</li>
 </ul>
@@ -62,6 +112,8 @@
 <p>In the example, we also rely on the fact that expressions are implicitly repeated
 in a paren&shy;thesized const declaration &ndash; this indicates a repetition
 of the preceding expression and its&nbsp;type.</p>
+
+<h2 id="add-a-string-representation">Add a string representation</h2>
 
 <p>You could also introduce a new type…</p>
 
@@ -108,10 +160,10 @@ default:
 <div style="clear:both;"></div>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=http%3a%2f%2fyourbasic.org%2fgolang%2fdefine-enumeration-string%2f&amp;text=Enumeration%20with%20string%20representation&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=http%3a%2f%2fyourbasic.org%2fgolang%2fdefine-enumeration-string%2f&amp;text=Enum%20with%20String%20function&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fyourbasic.org%2fgolang%2fdefine-enumeration-string%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=http%3a%2f%2fyourbasic.org%2fgolang%2fdefine-enumeration-string%2f&amp;title=Enumeration%20with%20string%20representation" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Enumeration%20with%20string%20representation&body=http%3a%2f%2fyourbasic.org%2fgolang%2fdefine-enumeration-string%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=http%3a%2f%2fyourbasic.org%2fgolang%2fdefine-enumeration-string%2f&amp;title=Enum%20with%20String%20function" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Enum%20with%20String%20function&body=http%3a%2f%2fyourbasic.org%2fgolang%2fdefine-enumeration-string%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 
