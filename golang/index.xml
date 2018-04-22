@@ -1142,7 +1142,7 @@ Iterate(func(n int) { fmt.</description>
     </item>
     
     <item>
-      <title>JSON by example</title>
+      <title>JSON in-depth tutorial</title>
       <link>http://yourbasic.org/golang/json-example/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1565,7 +1565,7 @@ func main() { m := 0 m, n := 1, 2 fmt.Println(m, n) }   Unlike regular variable 
     </item>
     
     <item>
-      <title>Regexp: regular expressions</title>
+      <title>Regexp in-depth tutorial</title>
       <link>http://yourbasic.org/golang/regexp-cheat-sheet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
