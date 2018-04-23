@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Type assertions and type switches: convert interface to concrete type - yourbasic.org/golang </title>
+  <title>Type assertions and type switches - yourbasic.org/golang </title>
   <meta name="description" content="To convert an interface to a string, struct or map you should use a type assertion, which provides access to an interface’s concrete value.">
   
   <link rel="stylesheet" href="/style.css">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "http://yourbasic.org/golang/type-assertion-switch/"
   },
-  "headline": "Type assertions and type switches: convert interface to concrete type",
+  "headline": "Type assertions and type switches",
   "image": [
     "http://yourbasic.org/golang/thumbs-up.jpg"
    ],
   "datePublished": "2018-04-18T00:00:00&#43;0000",
-  "dateModified": "2018-04-18T00:00:00&#43;0000",
+  "dateModified": "2018-04-23T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -54,13 +54,13 @@
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Type assertions and type switches: convert interface to concrete type">
+<meta property="og:title" content="Type assertions and type switches">
 <meta property="og:description" content="To convert an interface to a string, struct or map you should use a type assertion, which provides access to an interface’s concrete value.">
 <meta property="og:url" content="http://yourbasic.org/golang/type-assertion-switch/">
 <meta property="og:image" content="http://yourbasic.org/golang/thumbs-up.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Type assertions and type switches: convert interface to concrete type">
+<meta name="twitter:title" content="Type assertions and type switches">
 <meta name="twitter:description" content="To convert an interface to a string, struct or map you should use a type assertion, which provides access to an interface’s concrete value.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="http://yourbasic.org/golang/thumbs-up.jpg">
@@ -82,16 +82,25 @@
 
 <main>
 <article>
-<h1>Type assertions and type switches: convert interface to concrete type</h1>
+<h1>Type assertions and type switches</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
+<p class="lead">A type assertion provides access to an interface’s concrete value.</p>
+
 <!-- CC0: https://www.maxpixel.net/Gesture-Thumbs-Up-Feedback-Faust-Hand-Wrist-3050586 -->
 
-<div><img width="720px" src="/golang/thumbs-up.jpg"></div>
+<div style="float:right" class="extra-content"><img width="320px" src="/golang/thumbs-up.jpg"></div>
+
+<ul class="toc">
+  <li><a href="#type-assertions">Type assertions</a></li>
+  <li><a href="#type-switches">Type switches</a></li>
+</ul>
+
+<h2 id="type-assertions">Type assertions</h2>
 
 <p>A <strong>type assertion</strong> doesn’t really convert an interface to another data type,
-but it provides access to an interface’s concrete value, which is typically what you want.</p>
+but it provides access to an interface’s concrete value, which is typically what you&nbsp;want.</p>
 
 <p>The type assertion <code>x.(T)</code> asserts that the concrete value stored in&nbsp;<code>x</code>
 is of type&nbsp;<code>T</code>, and that <code>x</code> is&nbsp;not&nbsp;nil.</p>
@@ -100,8 +109,6 @@ is of type&nbsp;<code>T</code>, and that <code>x</code> is&nbsp;not&nbsp;nil.</p
 <li>If <code>T</code> is not an interface, it asserts that the dynamic type of&nbsp;<code>x</code> is identical to&nbsp;<code>T</code>.</li>
 <li>If <code>T</code> is an interface, it asserts that the dynamic type of&nbsp;<code>x</code> implements&nbsp;<code>T</code>.</li>
 </ul>
-
-<h2 id="example-interface-to-string">Example: interface to string</h2>
 
 <pre><code>var x interface{} = "foo"
 
@@ -118,6 +125,8 @@ n = x.(int)        <span class="comment">// ILLEGAL</span></code></pre>
 
 <pre><code>panic: interface conversion: interface {} is string, not int
 </code></pre>
+
+<h2 id="type-switches">Type switches</h2>
 
 <p>A <strong>type switch</strong> performs several type assertions in series and
 runs the first case with a matching&nbsp;type.</p>
@@ -145,10 +154,10 @@ default:
 <div><a href="/golang/interfaces-explained/">Interfaces in a nutshell</a></div>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=http%3a%2f%2fyourbasic.org%2fgolang%2ftype-assertion-switch%2f&amp;text=Type%20assertions%20and%20type%20switches:%20convert%20interface%20to%20concrete%20type&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=http%3a%2f%2fyourbasic.org%2fgolang%2ftype-assertion-switch%2f&amp;text=Type%20assertions%20and%20type%20switches&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fyourbasic.org%2fgolang%2ftype-assertion-switch%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=http%3a%2f%2fyourbasic.org%2fgolang%2ftype-assertion-switch%2f&amp;title=Type%20assertions%20and%20type%20switches:%20convert%20interface%20to%20concrete%20type" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Type%20assertions%20and%20type%20switches:%20convert%20interface%20to%20concrete%20type&body=http%3a%2f%2fyourbasic.org%2fgolang%2ftype-assertion-switch%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=http%3a%2f%2fyourbasic.org%2fgolang%2ftype-assertion-switch%2f&amp;title=Type%20assertions%20and%20type%20switches" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Type%20assertions%20and%20type%20switches&body=http%3a%2f%2fyourbasic.org%2fgolang%2ftype-assertion-switch%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
