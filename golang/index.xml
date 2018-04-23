@@ -1025,10 +1025,9 @@ s := &#34;Foo&#34; md5 := md5.Sum([]byte(s)) sha1 := sha1.Sum([]byte(s)) sha256 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/build-append-concatenate-strings-efficiently/</guid>
-      <description>Clean and simple For simple cases where performance is a non-issue, fmt.Sprintf is your friend.
+      <description>Clean and simple Fast concatenation with a string builder Before Go 1.10  Clean and simple For simple cases where performance is a non-issue, fmt.Sprintf is your friend.
 s := fmt.Sprintf(&#34;Size: %d MB.&#34;, 85) // s == &#34;Size: 85 MB.&#34; The fmt cheat sheet lists the most common formatting verbs and flags.
-With a string builderGo 1.10 The strings.Builder type is used to efficiently concatenate strings using write&amp;nbsp;methods.
- It offers a subset of the bytes.Buffer methods that allows it to safely avoid redundant copying.</description>
+Fast concatenation with a string builderGo 1.10 The strings.Builder type is used to efficiently concatenate strings using write&amp;nbsp;methods.</description>
     </item>
     
     <item>
