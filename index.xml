@@ -160,17 +160,6 @@ people := []string{&#34;Alice&#34;, &#34;Bob&#34;, &#34;Dave&#34;} less := func(
     </item>
     
     <item>
-      <title>Append function</title>
-      <link>http://yourbasic.org/golang/append-explained/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/append-explained/</guid>
-      <description>The built-in append function appends elements to the end of a slice:
- if there is enough capacity, the underlying array is reused; if not, a new underlying array is allocated and the data is copied over.  Append returns the updated slice. Therefore you need to store the result of an append, often in the variable holding the slice itself.
-slice = append(slice, elem1, elem2) slice = append(slice, anotherSlice.</description>
-    </item>
-    
-    <item>
       <title>Append text to a file</title>
       <link>http://yourbasic.org/golang/append-to-file/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -557,18 +546,6 @@ b := []byte{&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;\xe6&#39;, &#39;\x97&#39
       <guid>http://yourbasic.org/golang/convert-string-to-rune-slice/</guid>
       <description>String to rune slice Converting a string to a slice of runes yields a slice whose elements are the Unicode code points of the&amp;nbsp;string.
 s := &#34;abc日&#34; r := []rune(s) fmt.Printf(&#34;%v\n&#34;, r) // [97 98 99 26085] fmt.Printf(&#34;%U\n&#34;, r) // [U+0061 U+0062 U+0063 U+65E5] Rune slice to string Converting a slice of runes to a string yields a string that is the concatenation of the runes converted to UTF-8 encoded strings.</description>
-    </item>
-    
-    <item>
-      <title>Copy function</title>
-      <link>http://yourbasic.org/golang/copy-explained/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/copy-explained/</guid>
-      <description>The built-in copy function copies elements into a destination slice dst from a source slice&amp;nbsp;src.
-func copy(dst, src []Type) int  It returns the number of elements copied, which will be the minimum of len(dst) and len(src). The result does not depend on whether the arguments overlap.
-Special case It is legal to copy bytes from a string to a slice of&amp;nbsp;bytes.
-copy(dst []byte, src string) int  Examples Copy from one slice to another:</description>
     </item>
     
     <item>
@@ -1165,6 +1142,29 @@ s := strings.Fields(&amp;quot; a \t b \n&amp;quot;) fmt.Println(s) // Output: [a
     </item>
     
     <item>
+      <title>How to use the append function</title>
+      <link>http://yourbasic.org/golang/append-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/append-explained/</guid>
+      <description>The built-in append function appends elements to the end of a slice:
+ if there is enough capacity, the underlying array is reused; if not, a new underlying array is allocated and the data is copied over.  Append returns the updated slice. Therefore you need to store the result of an append, often in the variable holding the slice itself.
+slice = append(slice, elem1, elem2) slice = append(slice, anotherSlice.</description>
+    </item>
+    
+    <item>
+      <title>How to use the copy function</title>
+      <link>http://yourbasic.org/golang/copy-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/copy-explained/</guid>
+      <description>The built-in copy function copies elements into a destination slice dst from a source slice&amp;nbsp;src.
+func copy(dst, src []Type) int  It returns the number of elements copied, which will be the minimum of len(dst) and len(src). The result does not depend on whether the arguments overlap.
+Special case It is legal to copy bytes from a string to a slice of&amp;nbsp;bytes.
+copy(dst []byte, src string) int  Examples Copy from one slice to another:</description>
+    </item>
+    
+    <item>
       <title>Increment, decrement</title>
       <link>http://yourbasic.org/golang/gotcha-increment-decrement-statement/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1561,7 +1561,7 @@ Binary operators (MACAO)   Prio Operators Note     1 *&amp;nbsp; /&amp;nbsp; %&a
     </item>
     
     <item>
-      <title>Operators</title>
+      <title>Operators: complete list</title>
       <link>http://yourbasic.org/golang/operators/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1643,7 +1643,7 @@ fmt.Printf(&#34;%d %%&#34;, 50) // &#34;50 %&#34; </description>
     </item>
     
     <item>
-      <title>Pointers in 5 minutes</title>
+      <title>Pointers in no time</title>
       <link>http://yourbasic.org/golang/pointers-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1921,13 +1921,13 @@ See String handling cheat sheet for an overview of strings in&amp;nbsp;Go.</desc
     </item>
     
     <item>
-      <title>Structs</title>
+      <title>Structs in a jiffy</title>
       <link>http://yourbasic.org/golang/structs-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/structs-explained/</guid>
       <description>A struct is a typed collection of fields, useful for grouping data into records.
-type Student struct { Name string Age int } var a Student // a == Student{&#34;&#34;, 0} a.Name = &#34;Alice&#34; // a == Student{&#34;Alice&#34;, 0} var pa *Student // pa == nil pa = new(Student) // pa == &amp;Student{&#34;&#34;, 0} pa.Name = &#34;Alice&#34; // pa == &amp;Student{&#34;Alice&#34;, 0} b := Student{ // b == Student{&#34;Bob&#34;, 0} Name: &#34;</description>
+ type Student struct { Name string Age int } var a Student // a == Student{&#34;&#34;, 0} a.Name = &#34;Alice&#34; // a == Student{&#34;Alice&#34;, 0} var pa *Student // pa == nil pa = new(Student) // pa == &amp;Student{&#34;&#34;, 0} pa.Name = &#34;Alice&#34; // pa == &amp;Student{&#34;Alice&#34;, 0} b := Student{ // b == Student{&#34;Bob&#34;, 0} Name: &#34;</description>
     </item>
     
     <item>

@@ -58,10 +58,6 @@
   </url>
   
   <url>
-    <loc>http://yourbasic.org/golang/append-explained/</loc>
-  </url>
-  
-  <url>
     <loc>http://yourbasic.org/golang/append-to-file/</loc>
   </url>
   
@@ -208,10 +204,6 @@
   
   <url>
     <loc>http://yourbasic.org/golang/convert-string-to-rune-slice/</loc>
-  </url>
-  
-  <url>
-    <loc>http://yourbasic.org/golang/copy-explained/</loc>
   </url>
   
   <url>
@@ -432,6 +424,14 @@
   
   <url>
     <loc>http://yourbasic.org/golang/split-string-into-slice/</loc>
+  </url>
+  
+  <url>
+    <loc>http://yourbasic.org/golang/append-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>http://yourbasic.org/golang/copy-explained/</loc>
   </url>
   
   <url>
