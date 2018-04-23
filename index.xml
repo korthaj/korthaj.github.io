@@ -210,8 +210,7 @@ m := make(map[string]float64) m[&#34;pi&#34;] = 3.1416  A new, empty map value i
       
       <guid>http://yourbasic.org/algorithms/big-o-notation-explained/</guid>
       <description>Big O notation is a convenient way to describe how fast a function is&amp;nbsp;growing.
- When we compute the time complexity&amp;nbsp;T(n) of an algorithm we rarely get an exact result. That&amp;rsquo;s fine &amp;ndash; typically we are only interested in how fast T(n) is growing as a function of the input size&amp;nbsp;n.
-For example, if an algorithm increments each number in a list of length&amp;nbsp;n, we might say: &amp;ldquo;This algorithm runs in O(n) time and performs O(1) work for each element&amp;rdquo;.</description>
+ Basics Constant time Linear time Quadratic time   Sloppy notation Ω and Θ notation Key takeaways     Basics When we compute the time complexity&amp;nbsp;T(n) of an algorithm we rarely get an exact result. That&amp;rsquo;s fine &amp;ndash; typically we are only interested in how fast T(n) is growing as a function of the input size&amp;nbsp;n.</description>
     </item>
     
     <item>
@@ -233,9 +232,8 @@ a := []string{&#34;A&#34;, &#34;C&#34;, &#34;C&#34;} fmt.Println(sort.SearchStri
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/algorithms/binary-search-tree/</guid>
-      <description>Tree terminology A binary tree is a data structure most easily described by&amp;nbsp;recursion.
- A binary tree  is either empty,  or consists of a node (also known as the root of the tree) and two subtrees, the left and right subtree, which are also binary trees.   A node with two empty subtrees is called a&amp;nbsp;leaf.
-If p is a node and q is the root of p&amp;rsquo;s subtree, we say that p is the parent of q and that q is a child of&amp;nbsp;p.</description>
+      <description>Tree terminology Binary search trees Well-balanced trees Basic tree algorithms  Tree terminology A binary tree is a data structure most easily described by&amp;nbsp;recursion.
+ A binary tree  is either empty,  or consists of a node (also known as the root of the tree) and two subtrees, the left and right subtree, which are also binary trees.   A node with two empty subtrees is called a&amp;nbsp;leaf.</description>
     </item>
     
     <item>
@@ -2035,8 +2033,8 @@ Example The standard library provides many Writer implementations, and Writers a
       
       <guid>http://yourbasic.org/algorithms/time-complexity-recursive-functions/</guid>
       <description>It&#39;s often possible to compute the time complexity of a recursive function by formulating and solving a recurrence relation.
- This text contains a few examples and a formula, the &amp;ldquo;master theorem&amp;rdquo;, which gives the solution to a class of recurrence relations that often show up when we analyze recursive functions.
-Sum of an arithmetic series As an introduction we show that the following recursive function has linear time complexity.</description>
+ This text contains a few examples and a formula, the &amp;ldquo;master theorem&amp;rdquo;, which gives the solution to a class of recurrence relations that often show up when analyzing recursive functions.
+Basic example Binary search Master theorem  Basic example As an introduction we show that the following recursive function has linear time complexity.</description>
     </item>
     
     <item>
