@@ -1921,7 +1921,7 @@ See String handling cheat sheet for an overview of strings in&amp;nbsp;Go.</desc
     </item>
     
     <item>
-      <title>Structs example</title>
+      <title>Struct initialization code example</title>
       <link>http://yourbasic.org/golang/structs-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
