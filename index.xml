@@ -535,7 +535,7 @@ str := &#34;123&#34; n, err := strconv.ParseInt(str, 10, 64) if err == nil { fmt
       <guid>http://yourbasic.org/golang/convert-string-to-byte-slice/</guid>
       <description>String to byte slice When you convert a string to a byte slice, you get a slice that contains the bytes of the string.
 fmt.Println([]byte(&#34;abc日&#34;)) // [97 98 99 230 151 165] Byte slice to string Converting a slice of bytes to a string yields a string whose bytes are the elements of the&amp;nbsp;slice.
-b := []byte{&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;\xe6&#39;, &#39;\x97&#39;, &#39;\xa5&#39;} s := string(b) fmt.Println(s) // Output: abc日 Further reading  String handling cheat sheet</description>
+b := []byte{&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;\xe6&#39;, &#39;\x97&#39;, &#39;\xa5&#39;} s := string(b) fmt.Println(s) // Output: abc日 Further reading  String functions cheat sheet</description>
     </item>
     
     <item>
@@ -1431,7 +1431,7 @@ type MyType struct { n int } func (p *MyType) Value() int { return p.</descripti
       <description>Raw string literals Raw string literals, delimited by back quotes, can contain line breaks.
 str := `First line Second line` fmt.Println(str) First line Second line Raw strings literals are interpreted literally and backslashes have no special meaning.
 Interpreted string literals To insert escape characters, use interpreted string literals delimited by double quotes.
-str := &#34;\tFirst line\n&#34; + &#34;Second line&#34; fmt.Println(str)  First line Second line More about strings  String handling cheat sheet</description>
+str := &#34;\tFirst line\n&#34; + &#34;Second line&#34; fmt.Println(str)  First line Second line More about strings  String functions cheat sheet</description>
     </item>
     
     <item>
@@ -1764,7 +1764,7 @@ Further reading  Regular expressions is a gentle introduction to the regexp pack
       
       <guid>http://yourbasic.org/golang/repeat-multiply-string/</guid>
       <description>s := strings.Repeat(&#34;da&#34;, 2) // &#34;dada&#34; This corresponds to the string multiplication &amp;quot;da&amp;quot;*2 in Python.
-More about strings  String handling cheat sheet</description>
+More about strings  String functions cheat sheet</description>
     </item>
     
     <item>
@@ -1898,7 +1898,7 @@ if &#34;Foo&#34; &amp;lt; &#34;Bar&#34; { fmt.Println(&#34;Foo comes before Bar.
     </item>
     
     <item>
-      <title>String handling cheat sheet</title>
+      <title>String functions cheat sheet</title>
       <link>http://yourbasic.org/golang/string-functions-reference-cheat-sheet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1917,7 +1917,7 @@ s := &#34;hello&#34; s[0] = &#39;H&#39; fmt.Println(s) ../main.go:3:7: cannot as
 Go strings are immutable and behave like read-only byte slices (with a few extra properties).
 To update the data, use a rune slice instead.
 buf := []rune(&#34;hello&#34;) buf[0] = &#39;H&#39; s := string(buf) fmt.Println(s) // &#34;Hello&#34;  If the string only contains ASCII characters, you could also use a byte&amp;nbsp;slice.
-See String handling cheat sheet for an overview of strings in&amp;nbsp;Go.</description>
+See String functions cheat sheet for an overview of strings in&amp;nbsp;Go.</description>
     </item>
     
     <item>
@@ -2113,7 +2113,7 @@ What would you require of this ideal, sole structure?</description>
       <description>Use the strings.TrimSpace function to remove leading and trailing whitespace as defined by&amp;nbsp;Unicode.
 s := strings.TrimSpace(&#34;\t Goodbye hair!\n &#34;) fmt.Printf(&#34;%q&#34;, s) // &#34;Goodbye hair!&#34; To remove other leading and trailing characters, use strings.Trim. To remove only the leading or the trailing characters, use strings.TrimLeft or strings.TrimRight.
 Further reading 
-The String handling cheat sheet presents the top Go string functions.</description>
+The String functions cheat sheet presents the top Go string functions.</description>
     </item>
     
     <item>
@@ -2276,7 +2276,7 @@ var wg sync.WaitGroup wg.Add(2) go func() { // Do work. wg.Done() }() go func() 
 fmt.Println(strings.TrimRight(&#34;ABBA&#34;, &#34;BA&#34;)) // Output: &#34;&#34;  Answer
 The Trim, TrimLeft and TrimRight functions strip all Unicode code points contained in a cutset. In this case, all trailing A:s and B:s are stripped from the string, leaving the empty string.
 To strip a trailing string, use strings.TrimSuffix.
-fmt.Println(strings.TrimSuffix(&#34;ABBA&#34;, &#34;BA&#34;)) // Output: &#34;AB&#34;  See String handling cheat sheet for more about strings in&amp;nbsp;Go.</description>
+fmt.Println(strings.TrimSuffix(&#34;ABBA&#34;, &#34;BA&#34;)) // Output: &#34;AB&#34;  See String functions cheat sheet for more about strings in&amp;nbsp;Go.</description>
     </item>
     
     <item>
