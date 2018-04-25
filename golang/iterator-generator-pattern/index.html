@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iterator pattern - yourbasic.org/golang </title>
-  <meta name="description" content="Code to write iterators and generators in Go.">
+  <title>How to iterate in Go - yourbasic.org/golang </title>
+  <meta name="description" content="Iterator pattern: Code to write iterators and generators in Go.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -22,6 +22,50 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://yourbasic.org/golang/iterator-generator-pattern/"
+  },
+  "headline": "How to iterate in Go",
+  "image": [
+    "http://yourbasic.org/golang/spinning-wheel.gif"
+   ],
+  "datePublished": "2018-04-25T00:00:00&#43;0000",
+  "dateModified": "2018-04-25T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "Iterator pattern: Code to write iterators and generators in Go."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to iterate in Go">
+<meta property="og:description" content="Iterator pattern: Code to write iterators and generators in Go.">
+<meta property="og:url" content="http://yourbasic.org/golang/iterator-generator-pattern/">
+<meta property="og:image" content="http://yourbasic.org/golang/spinning-wheel.gif">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to iterate in Go">
+<meta name="twitter:description" content="Iterator pattern: Code to write iterators and generators in Go.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="http://yourbasic.org/golang/spinning-wheel.gif">
+
+
 </head>
 
 <body>
@@ -38,14 +82,14 @@
 
 <main>
 <article>
-<h1>Iterator pattern</h1>
+<h1>How to iterate in Go</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
 
 <div style="float:right; margin-left:16px;"><img src="/golang/spinning-wheel.gif"></div>
 
-<p>Go has built-in range loops for iterating over slices, arrays, strings, maps and channels. See <a href="/golang/for-loop-range-array-slice-map-channel/">Range loops explained</a>.</p>
+<p>Go has a built-in range loop for iterating over slices, arrays, strings, maps and channels. See <a href="/golang/for-loop-range-array-slice-map-channel/">Range loops (for-each loops)</a>.</p>
 
 <p>To iterate over other types of data, an iterator function with callbacks is a clean and fairly efficient abstraction.</p>
 
@@ -103,11 +147,17 @@ func Iterate(f func(n int) (skip bool)) {
 <div style="clear:both;"></div>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=http%3a%2f%2fyourbasic.org%2fgolang%2fiterator-generator-pattern%2f&amp;text=Iterator%20pattern&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=http%3a%2f%2fyourbasic.org%2fgolang%2fiterator-generator-pattern%2f&amp;text=How%20to%20iterate%20in%20Go&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fyourbasic.org%2fgolang%2fiterator-generator-pattern%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=http%3a%2f%2fyourbasic.org%2fgolang%2fiterator-generator-pattern%2f&amp;title=Iterator%20pattern" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Iterator%20pattern&body=http%3a%2f%2fyourbasic.org%2fgolang%2fiterator-generator-pattern%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=http%3a%2f%2fyourbasic.org%2fgolang%2fiterator-generator-pattern%2f&amp;title=How%20to%20iterate%20in%20Go" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=How%20to%20iterate%20in%20Go&body=http%3a%2f%2fyourbasic.org%2fgolang%2fiterator-generator-pattern%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
+
+<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=http%3a%2f%2fyourbasic.org%2fgolang%2fiterator-generator-pattern%2f&amp;text=How%20to%20iterate%20in%20Go&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fyourbasic.org%2fgolang%2fiterator-generator-pattern%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.reddit.com/submit?url=http%3a%2f%2fyourbasic.org%2fgolang%2fiterator-generator-pattern%2f&amp;title=How%20to%20iterate%20in%20Go" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=How%20to%20iterate%20in%20Go&body=http%3a%2f%2fyourbasic.org%2fgolang%2fiterator-generator-pattern%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>

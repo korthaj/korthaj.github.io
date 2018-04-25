@@ -155,7 +155,7 @@ m := make(map[string]float64) m[&#34;pi&#34;] = 3.1416  A new, empty map value i
     </item>
     
     <item>
-      <title>Binary search</title>
+      <title>Binary search in Go</title>
       <link>http://yourbasic.org/golang/binary-search/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -363,7 +363,7 @@ fmt.Println(a ...interface{}) When the type can’t be inferred from the context
     </item>
     
     <item>
-      <title>Constructors</title>
+      <title>Constructors deconstructed</title>
       <link>http://yourbasic.org/golang/constructor-best-practice/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -513,16 +513,6 @@ file, err := ioutil.TempFile(&#34;dir&#34;, &#34;prefix&#34;) if err != nil { lo
     </item>
     
     <item>
-      <title>Current time</title>
-      <link>http://yourbasic.org/golang/current-time/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/current-time/</guid>
-      <description>Use the time.Now function and the time.Unix and time.UnixNano methods to get a timestamp.
-now := time.Now() // current local time sec := now.Unix() // number of seconds since January 1, 1970 UTC nsec := now.UnixNano() // number of nanoseconds since January 1, 1970 UTC fmt.Println(now) fmt.Println(sec) fmt.Println(nsec) 2009-11-10 23:00:00 +0000 UTC m=+0.000000000 1257894000 1257894000000000000  </description>
-    </item>
-    
-    <item>
       <title>Data races</title>
       <link>http://yourbasic.org/golang/data-races-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -532,18 +522,6 @@ now := time.Now() // current local time sec := now.Unix() // number of seconds s
 Data races are quite common and can be very hard to debug.
 This function has a data race and it’s behavior is undefined. It may, for example, print the number&amp;nbsp;1. Try to figure out how that can happen – one possible explanation comes after the&amp;nbsp;code.
 func race() { wait := make(chan struct{}) n := 0 go func() { n++ // read, increment, write close(wait) }() n++ // conflicting access // Output: &amp;lt;unspecified&amp;gt; } The two goroutines, g1 and g2, participate in a race and there is no way to know in which order the operations will take place.</description>
-    </item>
-    
-    <item>
-      <title>Day of week</title>
-      <link>http://yourbasic.org/golang/day-of-week-int/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/day-of-week-int/</guid>
-      <description> The Weekday function returns returns the day of the week of a time.Time.
-func (t Time) Weekday() Weekday  In use:
-weekday := time.Now().Weekday() fmt.Println(weekday) // &#34;Tuesday&#34; fmt.Println(int(weekday)) // &#34;2&#34; Type Weekday The time.Weekday type specifies a day of the week (Sunday = 0, …).
-type Weekday int const ( Sunday Weekday = iota Monday Tuesday Wednesday Thursday Friday Saturday )  </description>
     </item>
     
     <item>
@@ -586,18 +564,6 @@ func main() { ch := make(chan int) ch &amp;lt;- 1 fmt.Println(&amp;lt;-ch) }  Th
       <description>Variables declared without an explicit initial value are set to their zero&amp;nbsp;values:
  false for booleans, 0 for integers, 0.0 for floats, &amp;quot;&amp;quot; for strings, and nil for pointers, functions, interfaces, slices, channels, and maps.  This initialization is done recursively; for example each element of an array of structs will have its fields zeroed if no value is specified.
 var n int // n == 0 type T struct { n int f float64 next *T } t := new(T) // t.</description>
-    </item>
-    
-    <item>
-      <title>Defer statement</title>
-      <link>http://yourbasic.org/golang/defer/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/defer/</guid>
-      <description>A deferred method call is executed just before leaving the surrounding function.
-func main() { defer fmt.Println(&#34;World&#34;) fmt.Println(&#34;Hello&#34;) } Hello World Deferred calls are executed even when the function panics.
-func main() { defer fmt.Println(&#34;World&#34;) panic(&#34;Stop&#34;) fmt.Println(&#34;Hello&#34;) } World panic: Stop goroutine 1 [running]: main.main() ../main.go:3 +0xa0 Deferred function calls are executed in last-in-first-out order, and a deferred function&amp;rsquo;s arguments are evaluated when the defer statement executes.
-func main() { fmt.</description>
     </item>
     
     <item>
@@ -689,7 +655,7 @@ const ( Sunday int = iota // Sunday == 0 Monday // Monday == 1 Tuesday // Tuesda
     </item>
     
     <item>
-      <title>Error handling</title>
+      <title>Error handling explained</title>
       <link>http://yourbasic.org/golang/errors-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1008,6 +974,39 @@ Fast concatenation with a string builderGo 1.10 The strings.Builder type is used
     </item>
     
     <item>
+      <title>How to find the current time</title>
+      <link>http://yourbasic.org/golang/current-time/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/current-time/</guid>
+      <description>Use the time.Now function and the time.Unix and time.UnixNano methods to get a timestamp.
+now := time.Now() // current local time sec := now.Unix() // number of seconds since January 1, 1970 UTC nsec := now.UnixNano() // number of nanoseconds since January 1, 1970 UTC fmt.Println(now) fmt.Println(sec) fmt.Println(nsec) 2009-11-10 23:00:00 +0000 UTC m=+0.000000000 1257894000 1257894000000000000  </description>
+    </item>
+    
+    <item>
+      <title>How to find the day of week</title>
+      <link>http://yourbasic.org/golang/day-of-week-int/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/day-of-week-int/</guid>
+      <description> The Weekday function returns returns the day of the week of a time.Time.
+func (t Time) Weekday() Weekday  In use:
+weekday := time.Now().Weekday() fmt.Println(weekday) // &#34;Tuesday&#34; fmt.Println(int(weekday)) // &#34;2&#34; Type Weekday The time.Weekday type specifies a day of the week (Sunday = 0, …).
+type Weekday int const ( Sunday Weekday = iota Monday Tuesday Wednesday Thursday Friday Saturday )  </description>
+    </item>
+    
+    <item>
+      <title>How to iterate in Go</title>
+      <link>http://yourbasic.org/golang/iterator-generator-pattern/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/iterator-generator-pattern/</guid>
+      <description>Go has a built-in range loop for iterating over slices, arrays, strings, maps and channels. See Range loops (for-each loops).
+To iterate over other types of data, an iterator function with callbacks is a clean and fairly efficient abstraction.
+Basic iterator pattern // Iterate calls the f function with n = 1, 2, and 3. func Iterate(f func(n int)) { for i := 1; i  In use:</description>
+    </item>
+    
+    <item>
       <title>How to kill a goroutine</title>
       <link>http://yourbasic.org/golang/stop-goroutine/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1029,6 +1028,18 @@ quit := make(chan struct{}) go func() { for { select { case // … } } }() // �
 s := strings.Split(&amp;quot;a,b,c&amp;quot;, &amp;quot;,&amp;quot;) fmt.Println(s) // Output: [a b c]  To include the separators, use strings.SplitAfter. To split only the first n values, use strings.SplitN and strings.SplitAfterN.
 Fields Use the strings.Fields function to split a string into substrings removing white space.
 s := strings.Fields(&amp;quot; a \t b \n&amp;quot;) fmt.Println(s) // Output: [a b]  In more complicated situations, regular expressions might do the&amp;nbsp;trick.</description>
+    </item>
+    
+    <item>
+      <title>How to use a defer statement</title>
+      <link>http://yourbasic.org/golang/defer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/defer/</guid>
+      <description>A deferred method call is executed just before leaving the surrounding function.
+func main() { defer fmt.Println(&#34;World&#34;) fmt.Println(&#34;Hello&#34;) } Hello World Deferred calls are executed even when the function panics.
+func main() { defer fmt.Println(&#34;World&#34;) panic(&#34;Stop&#34;) fmt.Println(&#34;Hello&#34;) } World panic: Stop goroutine 1 [running]: main.main() ../main.go:3 +0xa0 Deferred function calls are executed in last-in-first-out order, and a deferred function&amp;rsquo;s arguments are evaluated when the defer statement executes.
+func main() { fmt.</description>
     </item>
     
     <item>
@@ -1126,18 +1137,6 @@ Answer
 There is a data race: the variable i is shared by six&amp;nbsp;(6) goroutines.
  A data race occurs when two goroutines access the same variable concurrently and at least one of the accesses is a write.
  To avoid this, use a local variable and pass the number as a parameter when starting the goroutine.</description>
-    </item>
-    
-    <item>
-      <title>Iterator pattern</title>
-      <link>http://yourbasic.org/golang/iterator-generator-pattern/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/iterator-generator-pattern/</guid>
-      <description>Go has built-in range loops for iterating over slices, arrays, strings, maps and channels. See Range loops explained.
-To iterate over other types of data, an iterator function with callbacks is a clean and fairly efficient abstraction.
-Basic iterator pattern // Iterate calls the f function with n = 1, 2, and 3. func Iterate(f func(n int)) { for i := 1; i  In use:
-Iterate(func(n int) { fmt.</description>
     </item>
     
     <item>
@@ -1703,7 +1702,7 @@ a := regexp.MustCompile(`a`) fmt.Printf(&#34;%q\n&#34;, a.Split(&#34;banana&#34;
     </item>
     
     <item>
-      <title>Stack traces</title>
+      <title>Stack traces in detail</title>
       <link>http://yourbasic.org/golang/stack-trace/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1892,7 +1891,7 @@ The String functions cheat sheet presents the top Go string functions.</descript
     </item>
     
     <item>
-      <title>Type alias</title>
+      <title>Type alias explained</title>
       <link>http://yourbasic.org/golang/type-alias/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

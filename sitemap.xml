@@ -223,15 +223,7 @@
   </url>
   
   <url>
-    <loc>http://yourbasic.org/golang/current-time/</loc>
-  </url>
-  
-  <url>
     <loc>http://yourbasic.org/golang/data-races-explained/</loc>
-  </url>
-  
-  <url>
-    <loc>http://yourbasic.org/golang/day-of-week-int/</loc>
   </url>
   
   <url>
@@ -248,10 +240,6 @@
   
   <url>
     <loc>http://yourbasic.org/golang/default-zero-value/</loc>
-  </url>
-  
-  <url>
-    <loc>http://yourbasic.org/golang/defer/</loc>
   </url>
   
   <url>
@@ -419,11 +407,27 @@
   </url>
   
   <url>
+    <loc>http://yourbasic.org/golang/current-time/</loc>
+  </url>
+  
+  <url>
+    <loc>http://yourbasic.org/golang/day-of-week-int/</loc>
+  </url>
+  
+  <url>
+    <loc>http://yourbasic.org/golang/iterator-generator-pattern/</loc>
+  </url>
+  
+  <url>
     <loc>http://yourbasic.org/golang/stop-goroutine/</loc>
   </url>
   
   <url>
     <loc>http://yourbasic.org/golang/split-string-into-slice/</loc>
+  </url>
+  
+  <url>
+    <loc>http://yourbasic.org/golang/defer/</loc>
   </url>
   
   <url>
@@ -464,10 +468,6 @@
   
   <url>
     <loc>http://yourbasic.org/golang/gotcha-data-race-closure/</loc>
-  </url>
-  
-  <url>
-    <loc>http://yourbasic.org/golang/iterator-generator-pattern/</loc>
   </url>
   
   <url>
