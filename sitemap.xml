@@ -375,6 +375,10 @@
   </url>
   
   <url>
+    <loc>http://yourbasic.org/golang/operator-priority/</loc>
+  </url>
+  
+  <url>
     <loc>http://yourbasic.org/golang/tutorials/</loc>
   </url>
   
@@ -568,10 +572,6 @@
   
   <url>
     <loc>http://yourbasic.org/golang/opening-brace-separate-line/</loc>
-  </url>
-  
-  <url>
-    <loc>http://yourbasic.org/golang/operator-priority/</loc>
   </url>
   
   <url>

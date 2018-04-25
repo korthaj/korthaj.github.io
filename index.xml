@@ -1001,6 +1001,16 @@ Table of contents </description>
     </item>
     
     <item>
+      <title>Go operator precedence spells MACAO</title>
+      <link>http://yourbasic.org/golang/operator-priority/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/operator-priority/</guid>
+      <description>Unary operators Unary operators have the highest precedence and bind the strongest.
+Binary operators (MACAO)   Prio Operators Note     1 *&amp;nbsp; /&amp;nbsp; %&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;&amp;nbsp; &amp;^ Multiplicative   2 +&amp;nbsp; -&amp;nbsp; |&amp;nbsp; ^ Additive   3 ==&amp;nbsp; !=&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; = Comparison   4 &amp;&amp; And   5 || Or    Binary operators of the same precedence associate from left to right.</description>
+    </item>
+    
+    <item>
       <title>Go tutorials</title>
       <link>http://yourbasic.org/golang/tutorials/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1547,16 +1557,6 @@ Integer literals in Go are specified in octal, decimal or hexadecimal. The numbe
 func main() { fmt.Println(&amp;quot;Hello&amp;quot;) }  ../main.go:1:6: missing function body for &amp;quot;main&amp;quot; ../main.go:2:1: syntax error: unexpected semicolon or newline before {  You must write:
 func main() { fmt.Println(&amp;quot;Hello&amp;quot;) }  This is a trade-off in the design of the Go language.
  Some have argued that the lexer should do lookahead to permit the brace to live on the next line.</description>
-    </item>
-    
-    <item>
-      <title>Operator precedence</title>
-      <link>http://yourbasic.org/golang/operator-priority/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/operator-priority/</guid>
-      <description>Unary operators Unary operators have the highest precedence and bind the strongest.
-Binary operators (MACAO)   Prio Operators Note     1 *&amp;nbsp; /&amp;nbsp; %&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;&amp;nbsp; &amp;^ Multiplicative   2 +&amp;nbsp; -&amp;nbsp; |&amp;nbsp; ^ Additive   3 ==&amp;nbsp; !=&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; = Comparison   4 &amp;&amp; And   5 || Or    Binary operators of the same precedence associate from left to right.</description>
     </item>
     
     <item>
