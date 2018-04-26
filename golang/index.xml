@@ -225,7 +225,7 @@ s := []int{1, 1, 1} for i := range s { s[i] += 1 } fmt.</description>
     </item>
     
     <item>
-      <title>Channels</title>
+      <title>Channels offer synchronized communication</title>
       <link>http://yourbasic.org/golang/channels-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -513,7 +513,7 @@ file, err := ioutil.TempFile(&#34;dir&#34;, &#34;prefix&#34;) if err != nil { lo
     </item>
     
     <item>
-      <title>Data races</title>
+      <title>Data races explained</title>
       <link>http://yourbasic.org/golang/data-races-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -545,7 +545,7 @@ func main() { t := Date(2000, 3, 0) // the day before 2000-03-01 fmt.Println(t) 
     </item>
     
     <item>
-      <title>Deadlock</title>
+      <title>Deadlock detection</title>
       <link>http://yourbasic.org/golang/detect-deadlock/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -574,18 +574,6 @@ var n int // n == 0 type T struct { n int f float64 next *T } t := new(T) // t.<
       <guid>http://yourbasic.org/golang/delete-element-slice/</guid>
       <description>Fast version (changes order) a := []string{&#34;A&#34;, &#34;B&#34;, &#34;C&#34;, &#34;D&#34;, &#34;E&#34;} i := 2 // Remove the element at index i from a. a[i] = a[len(a)-1] // Copy last element to index i. a[len(a)-1] = &#34;&#34; // Erase last element (write zero value). a = a[:len(a)-1] // Truncate slice. fmt.Println(a) // [A B E D] The code copies a single element and runs in constant time.
 Slow version (maintains order) a := []string{&#34;</description>
-    </item>
-    
-    <item>
-      <title>Detect data races</title>
-      <link>http://yourbasic.org/golang/detect-data-races/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/detect-data-races/</guid>
-      <description>Data races can happen easily and are hard to debug. Luckily, the Go runtime is often able to&amp;nbsp;help.
-Use -race to enable the built-in data race detector.
-$ go test -race [packages] $ go run -race [packages]  Example Here&amp;rsquo;s a program with a data race:
-package main import &#34;fmt&#34; func main() { i := 0 go func() { i++ // write }() fmt.Println(i) // concurrent read } Running this program with the -race options tells us that there&amp;rsquo;s a race between the write at line&amp;nbsp;7 and the read at line&amp;nbsp;9:</description>
     </item>
     
     <item>
@@ -941,7 +929,7 @@ public final class Complex { private final double re; private final double im; p
     </item>
     
     <item>
-      <title>Goroutines</title>
+      <title>Goroutines are lightweight threads</title>
       <link>http://yourbasic.org/golang/goroutines-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -981,6 +969,18 @@ s := &#34;Foo&#34; md5 := md5.Sum([]byte(s)) sha1 := sha1.Sum([]byte(s)) sha256 
       <description>Clean and simple Fast concatenation with a string builder Before Go 1.10  Clean and simple For simple cases where performance is a non-issue, fmt.Sprintf is your friend.
 s := fmt.Sprintf(&#34;Size: %d MB.&#34;, 85) // s == &#34;Size: 85 MB.&#34; The fmt cheat sheet lists the most common formatting verbs and flags.
 Fast concatenation with a string builderGo 1.10 The strings.Builder type is used to efficiently concatenate strings using write&amp;nbsp;methods.</description>
+    </item>
+    
+    <item>
+      <title>How to detect data races</title>
+      <link>http://yourbasic.org/golang/detect-data-races/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/detect-data-races/</guid>
+      <description>Data races can happen easily and are hard to debug. Luckily, the Go runtime is often able to&amp;nbsp;help.
+Use -race to enable the built-in data race detector.
+$ go test -race [packages] $ go run -race [packages]  Example Here&amp;rsquo;s a program with a data race:
+package main import &#34;fmt&#34; func main() { i := 0 go func() { i++ // write }() fmt.Println(i) // concurrent read } Running this program with the -race options tells us that there&amp;rsquo;s a race between the write at line&amp;nbsp;7 and the read at line&amp;nbsp;9:</description>
     </item>
     
     <item>
@@ -1651,7 +1651,7 @@ func main() { n := 0 if true { n = 1 n++ } fmt.Println(n) // 2 } Detecting shado
     </item>
     
     <item>
-      <title>Select</title>
+      <title>Select waits on a group of channels</title>
       <link>http://yourbasic.org/golang/select-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

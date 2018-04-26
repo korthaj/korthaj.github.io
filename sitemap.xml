@@ -247,10 +247,6 @@
   </url>
   
   <url>
-    <loc>http://yourbasic.org/golang/detect-data-races/</loc>
-  </url>
-  
-  <url>
     <loc>http://yourbasic.org/golang/disable-logging-output/</loc>
   </url>
   
@@ -408,6 +404,10 @@
   
   <url>
     <loc>http://yourbasic.org/golang/build-append-concatenate-strings-efficiently/</loc>
+  </url>
+  
+  <url>
+    <loc>http://yourbasic.org/golang/detect-data-races/</loc>
   </url>
   
   <url>
