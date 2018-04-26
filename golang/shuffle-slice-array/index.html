@@ -22,6 +22,50 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://yourbasic.org/golang/shuffle-slice-array/"
+  },
+  "headline": "Shuffle a slice or array",
+  "image": [
+    "http://yourbasic.org/golang/riffle-shuffle.jpg"
+   ],
+  "datePublished": "2018-04-26T00:00:00&#43;0000",
+  "dateModified": "2018-04-26T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "Code to create a random permutation of a slice or array in Go."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shuffle a slice or array">
+<meta property="og:description" content="Code to create a random permutation of a slice or array in Go.">
+<meta property="og:url" content="http://yourbasic.org/golang/shuffle-slice-array/">
+<meta property="og:image" content="http://yourbasic.org/golang/riffle-shuffle.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shuffle a slice or array">
+<meta name="twitter:description" content="Code to create a random permutation of a slice or array in Go.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="http://yourbasic.org/golang/riffle-shuffle.jpg">
+
+
 </head>
 
 <body>
@@ -41,6 +85,10 @@
 <h1>Shuffle a slice or array</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
+
+<!-- CC BY-SA 2.0: https://en.wikipedia.org/wiki/File:Riffle_shuffle.jpg -->
+
+<div style="margin-top:1em;"><img src="/golang/riffle-shuffle.jpg"></div>
 
 <p>The <a href="https://golang.org/pkg/math/rand/#Shuffle"><code>rand.Shuffle</code></a> function
 in package <a href="https://golang.org/pkg/math/rand/"><code>math/rand</code></a>
@@ -77,6 +125,12 @@ for i := len(a) - 1; i > 0; i-- { <span class="comment">// Fisher–Yates shuffl
     j := rand.Intn(i + 1)
     a[i], a[j] = a[j], a[i]
 }</code></pre>
+
+<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=http%3a%2f%2fyourbasic.org%2fgolang%2fshuffle-slice-array%2f&amp;text=Shuffle%20a%20slice%20or%20array&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fyourbasic.org%2fgolang%2fshuffle-slice-array%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.reddit.com/submit?url=http%3a%2f%2fyourbasic.org%2fgolang%2fshuffle-slice-array%2f&amp;title=Shuffle%20a%20slice%20or%20array" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Shuffle%20a%20slice%20or%20array&body=http%3a%2f%2fyourbasic.org%2fgolang%2fshuffle-slice-array%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
