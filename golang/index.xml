@@ -935,7 +935,7 @@ public final class Complex { private final double re; private final double im; p
       
       <guid>http://yourbasic.org/golang/goroutines-explained/</guid>
       <description>The go statement runs a func&amp;shy;tion in a sepa&amp;shy;rate thread of&amp;nbsp;execu&amp;shy;tion.
-You can start a new thread of execution, a&amp;nbsp;goroutine, with the go statement. It runs a function in a different, newly created, goroutine. All goroutines in a single program share the same address space.
+You can start a new thread of execution, a&amp;nbsp;goroutine, with the go statement. It&amp;nbsp;runs a function in a different, newly created, goroutine. All goroutines in a single program share the same address space.
 go list.Sort() // Run list.Sort in parallel; don’t wait for it. The following program will print &amp;ldquo;Hello from main goroutine&amp;rdquo;. It might also print &amp;ldquo;Hello from another goroutine&amp;rdquo;, depending on which of the two goroutines finish first.</description>
     </item>
     
