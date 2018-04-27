@@ -119,7 +119,7 @@ header nav ul li {
 }
 .here {
   padding-bottom:4px;
-  border-bottom:4px solid #C63D0F;
+  border-bottom:4px solid #ce3262;
 }
 header nav ul li:first-child{
   float:right;
@@ -133,7 +133,7 @@ header nav ul li a:hover{
   text-decoration:none;
   color:#555;
   padding-bottom:4px;
-  border-bottom:4px solid #C63D0F;
+  border-bottom:4px solid #ce3262;
   transition: all 300ms ease-out;
 }
 footer{
@@ -280,10 +280,10 @@ blockquote{
   display:block;
   margin-left:0;
   padding:0.2em 0 0.2em 1.2em;
-  border-left:4px solid #4885ed;
+  border-left:4px solid #00acd7;
 }
 blockquote.warning{
-  border-left:4px solid #db3236;
+  border-left:4px solid #ce3262;
 }
 blockquote.math{}
 
@@ -330,13 +330,13 @@ table.column th, table.column td{
   cursor:pointer;
   padding:0.3em 1.5em;
   color:white;
-  background-color:#4885ed;
-  border:1px solid #4885ed;
+  background-color:#00acd7;
+  border:1px solid #00acd7;
   border-radius:3px;
 }
 .button:hover{
   color:white;
-  background-color:#4885ed;
+  background-color:#00bce7;
   text-decoration:none;
 }
 summary.answer{
@@ -344,7 +344,7 @@ summary.answer{
   margin:1em 0;
 }
 summary.answer:hover{
-  background-color:#4885ed;
+  background-color:#00bce7;
 }
 a.button:visited{
   color:white;
