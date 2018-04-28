@@ -522,7 +522,7 @@ f := &#34;3.14159265&#34; if s, err := strconv.ParseFloat(f, 32); err == nil { f
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/convert-string-to-int/</guid>
-      <description>String to int Use strconv.Atoi to convert/parse a string to an int.
+      <description>String to int Use strconv.Atoi to convert/parse a string to an&amp;nbsp;int.
 str := &#34;123&#34; if n, err := strconv.Atoi(str); err == nil { fmt.Println(n+1) } else { fmt.Println(str, &#34;is not an integer.&#34;) } // Output: 124 String to int64 Use strconv.ParseInt to parse a decimal string (base&amp;nbsp;10) and check if it fits into a 64-bit signed integer.
 str := &#34;123&#34; n, err := strconv.ParseInt(str, 10, 64) if err == nil { fmt.</description>
     </item>
