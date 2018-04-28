@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Generate a random string (password, reference) - yourbasic.org/golang </title>
-  <meta name="description" content="Code to generate a plain random string as well as strings with password-like constraints, such as at least 1 special character.">
+  <title>Generate a random string/password - yourbasic.org/golang </title>
+  <meta name="description" content="Code to generate a random string with constraints, such as at least one special character.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -22,6 +22,50 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://yourbasic.org/golang/generate-random-string-password-booking-reference/"
+  },
+  "headline": "Generate a random string/password",
+  "image": [
+    "http://yourbasic.org/golang/password-generator.jpg"
+   ],
+  "datePublished": "2018-04-28T00:00:00&#43;0000",
+  "dateModified": "2018-04-28T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "Code to generate a random string with constraints, such as at least one special character."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Generate a random string/password">
+<meta property="og:description" content="Code to generate a random string with constraints, such as at least one special character.">
+<meta property="og:url" content="http://yourbasic.org/golang/generate-random-string-password-booking-reference/">
+<meta property="og:image" content="http://yourbasic.org/golang/password-generator.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Generate a random string/password">
+<meta name="twitter:description" content="Code to generate a random string with constraints, such as at least one special character.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="http://yourbasic.org/golang/password-generator.jpg">
+
+
 </head>
 
 <body>
@@ -38,11 +82,13 @@
 
 <main>
 <article>
-<h1>Generate a random string (password, reference)</h1>
+<h1>Generate a random string/password</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
-<!-- TODO: Use strings.Builder and rand.Shuffle -->
+<!-- CC0: https://pixabay.com/en/password-app-application-business-2781614/ -->
+
+<div style="margin-top:1em;"><img src="/golang/password-generator.jpg"></div>
 
 <h2 id="random-unicode-string">Random Unicode string</h2>
 
@@ -74,11 +120,22 @@ buf[1] = specials[rand.Intn(len(specials))]
 for i := 2; i < length; i++ {
     buf[i] = all[rand.Intn(len(all))]
 }
-for i := len(buf) - 1; i > 0; i-- {
+rand.Shuffle(len(buf), func(i, j int) {
+    buf[i], buf[j] = buf[j], buf[i]
+})
+str := string(buf)
+</code></pre>
+
+<h3 id="before-go-1-10">Before Go 1.10</h3>
+
+<p>In code before Go 1.10, replace the call to <a href="https://golang.org/pkg/math/rand/#Shuffle">rand.Shuffle</a>
+with an explicit implentation:</p>
+
+<pre><code>for i := len(buf) - 1; i > 0; i-- { <span class="comment">// Fisher–Yates shuffle</span>
     j := rand.Intn(i + 1)
     buf[i], buf[j] = buf[j], buf[i]
 }
-str := string(buf)</code></pre>
+</code></pre>
 
 <blockquote class="warning">
 <strong>Warning:</strong> If you're building a password generator, consider using a string generation algorithm from a high-quality cryptographic library. If you're running your own, and you probably shouldn't, package <a href="https://golang.org/pkg/crypto/rand/"><code>crypto/rand</code></a> offers a cryptographically secure pseudorandom number generator.
@@ -90,9 +147,15 @@ str := string(buf)</code></pre>
 
 <p style="margin-top:0; margin-bottom:2em;"><a href="/algorithms/random-number-generator-seed/">What’s a seed: Random number generators</a></p>
 
-<div><a href="/golang/rune/"><img src="/golang/rune-stone-thumb.jpg" title="Type rune: a Unicode code point"></a></div>
+<div><a href="/golang/crypto-rand-int/"><img src="/res/programmer-thumb.jpg" title="User-friendly access to crypto/rand"></a></div>
 
-<p style="margin-top:0; margin-bottom:2em;"><a href="/golang/rune/">Type rune: a Unicode code point</a></p>
+<p style="margin-top:0; margin-bottom:2em;"><a href="/golang/crypto-rand-int/">User-friendly access to crypto/rand</a></p>
+
+<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=http%3a%2f%2fyourbasic.org%2fgolang%2fgenerate-random-string-password-booking-reference%2f&amp;text=Generate%20a%20random%20string/password&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fyourbasic.org%2fgolang%2fgenerate-random-string-password-booking-reference%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.reddit.com/submit?url=http%3a%2f%2fyourbasic.org%2fgolang%2fgenerate-random-string-password-booking-reference%2f&amp;title=Generate%20a%20random%20string/password" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Generate%20a%20random%20string/password&body=http%3a%2f%2fyourbasic.org%2fgolang%2fgenerate-random-string-password-booking-reference%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
@@ -102,14 +165,20 @@ str := string(buf)</code></pre>
   <h2>Related</h2>
 
   <div class="reference">
-    <a href="/golang/crypto-rand-int/">User-friendly access to crypto/rand</a>
-    <div class="desc">Code to combine the convenient math/rand library with the secure crypto/rand source.</div>
+    <a href="/golang/generate-uuid-guid/">Generate a random UUID (GUID)</a>
+    <div class="desc">Code to generate a universally unique identifier (UUID, GUID) in Go.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
   <div class="reference">
-    <a href="/golang/generate-uuid-guid/">Generate a random UUID (GUID)</a>
-    <div class="desc">Code to generate a universally unique identifier (UUID, GUID) in Go.</div>
+    <a href="/golang/rune/">Type rune: a Unicode code point</a>
+    <div class="desc">A rune is a Go type meant to represent a Unicode code point.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/shuffle-slice-array/">Shuffle a slice or array</a>
+    <div class="desc">Code to create a random permutation of a slice or array in Go.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
