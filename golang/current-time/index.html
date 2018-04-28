@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>How to find the current time - yourbasic.org/golang </title>
-  <meta name="description" content="To get a second or nanosecond timestamp in Go use time.Now, time.Unix, or time.UnixNano.">
+  <meta name="description" content="To get a second/nanosecond timestamp in Go use time.Now and time.Unix or time.UnixNano.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -48,20 +48,20 @@
       "url": "http://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "To get a second or nanosecond timestamp in Go use time.Now, time.Unix, or time.UnixNano."
+  "description": "To get a second/nanosecond timestamp in Go use time.Now and time.Unix or time.UnixNano."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to find the current time">
-<meta property="og:description" content="To get a second or nanosecond timestamp in Go use time.Now, time.Unix, or time.UnixNano.">
+<meta property="og:description" content="To get a second/nanosecond timestamp in Go use time.Now and time.Unix or time.UnixNano.">
 <meta property="og:url" content="http://yourbasic.org/golang/current-time/">
 <meta property="og:image" content="http://yourbasic.org/golang/wrist-watch-and-dog.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="How to find the current time">
-<meta name="twitter:description" content="To get a second or nanosecond timestamp in Go use time.Now, time.Unix, or time.UnixNano.">
+<meta name="twitter:description" content="To get a second/nanosecond timestamp in Go use time.Now and time.Unix or time.UnixNano.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="http://yourbasic.org/golang/wrist-watch-and-dog.jpg">
 
@@ -88,20 +88,19 @@
 
 <div style="margin-top:1em;"><img src="/golang/wrist-watch-and-dog.jpg"></div>
 
-<p>Use <a href="https://golang.org/pkg/time/#Now"><code>time.Now</code></a> or one of
+<p>Use <a href="https://golang.org/pkg/time/#Now"><code>time.Now</code></a> and one of
 <a href="https://golang.org/pkg/time/#Time.Unix"><code>time.Unix</code></a> and
 <a href="https://golang.org/pkg/time/#Time.UnixNano"><code>time.UnixNano</code></a>
-to get a timestamp.
-The first one returns a <a href="https://golang.org/pkg/time/#Time"><code>time.Time</code></a>,
-the other two an <code>int64</code>.</p>
+to get a timestamp.</p>
 
 <pre><code>now := time.Now()      <span class="comment">// current local time</span>
 sec := now.Unix()      <span class="comment">// number of seconds since January 1, 1970 UTC</span>
 nsec := now.UnixNano() <span class="comment">// number of nanoseconds since January 1, 1970 UTC</span>
 
-fmt.Println(now)
-fmt.Println(sec)
-fmt.Println(nsec)</code></pre>
+fmt.Println(now)  <span class="comment">// time.Time</span>
+fmt.Println(sec)  <span class="comment">// int64</span>
+fmt.Println(nsec) <span class="comment">// int64</span>
+</code></pre>
 
 <pre><code>2009-11-10 23:00:00 +0000 UTC m=+0.000000000
 1257894000
