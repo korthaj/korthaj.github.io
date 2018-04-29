@@ -260,7 +260,7 @@ if len(m) == 0 { // m is empty } Further reading  Maps in a&amp;nbsp;nutshell</d
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/check-prime/</guid>
-      <description>Ints For integer types, use ProbablyPrime(0) from package math/big. This primality test is 100%&amp;nbsp;accurate for inputs less than&amp;nbsp;264.
+      <description>Sacks spiral of prime numbers Ints For integer types, use ProbablyPrime(0) from package math/big. This primality test is 100%&amp;nbsp;accurate for inputs less than&amp;nbsp;264.
 const n = 1212121 if big.NewInt(n).ProbablyPrime(0) { fmt.Println(n, &#34;is prime&#34;) } else { fmt.Println(n, &#34;is not prime&#34;) } 1212121 is prime  Larger numbers  For larger numbers, you need to provide the desired number of tests to ProbablyPrime(n). For n&amp;nbsp;tests, the&amp;nbsp;probability of returning true for a randomly chosen non-prime is at most (1/4)n.</description>
     </item>
     
