@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bitmasks and flags - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE How to use a bitmask to represent a set of flags in Go.">
+  <meta name="description" content="CODE EXAMPLE A bitmask is a small set of booleans, often called flags, represented by the bits in a single number.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -21,6 +21,50 @@
 
     gtag('config', 'UA-113104149-1');
   </script>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://yourbasic.org/golang/bitmask-flag-set-clear/"
+  },
+  "headline": "Bitmasks and flags",
+  "image": [
+    "http://yourbasic.org/golang/bits.jpg"
+   ],
+  "datePublished": "2018-04-30T00:00:00&#43;0000",
+  "dateModified": "2018-04-30T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "CODE EXAMPLE A bitmask is a small set of booleans, often called flags, represented by the bits in a single number."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bitmasks and flags">
+<meta property="og:description" content="CODE EXAMPLE A bitmask is a small set of booleans, often called flags, represented by the bits in a single number.">
+<meta property="og:url" content="http://yourbasic.org/golang/bitmask-flag-set-clear/">
+<meta property="og:image" content="http://yourbasic.org/golang/bits.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bitmasks and flags">
+<meta name="twitter:description" content="CODE EXAMPLE A bitmask is a small set of booleans, often called flags, represented by the bits in a single number.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="http://yourbasic.org/golang/bits.jpg">
+
 
 </head>
 
@@ -44,6 +88,10 @@
 
 
 <p class="lead">A bitmask is a small set of booleans, often called flags, represented by the bits in a single number.</p>
+
+<!-- CC BY-SA 2.0: https://www.flickr.com/photos/christiaancolen/20445410340 -->
+
+<div><img src="/golang/bits.jpg"></div>
 
 <pre><code>type Bits uint8
 
@@ -75,7 +123,7 @@ func main() {
 <h2 id="larger-bit-sets">Larger bit sets</h2>
 
 <p>To represent larger sets of bits, you may want to use a custom data structure.
-The external package <a href="https://godoc.org/github.com/yourbasic/bit"><code>bit</code></a>
+The package <a href="https://godoc.org/github.com/yourbasic/bit"><code>github.com/yourbasic/bit</code></a>
 provides a bit array implementation and some utility bit functions.</p>
 
 <p>Because a bit array uses bit-level parallelism, limits memory access, and efficiently uses the data cache, it often outperforms other data structures.

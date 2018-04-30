@@ -232,7 +232,7 @@ a := []string{&#34;A&#34;, &#34;C&#34;, &#34;C&#34;} fmt.Println(sort.SearchStri
       
       <guid>http://yourbasic.org/golang/bitmask-flag-set-clear/</guid>
       <description>A bitmask is a small set of booleans, often called flags, represented by the bits in a single number.
-type Bits uint8 const ( F0 Bits = 1  0 true 1 false 2 true  Larger bit sets To represent larger sets of bits, you may want to use a custom data structure. The external package bit provides a bit array implementation and some utility bit functions.
+ type Bits uint8 const ( F0 Bits = 1  0 true 1 false 2 true  Larger bit sets To represent larger sets of bits, you may want to use a custom data structure. The package github.com/yourbasic/bit provides a bit array implementation and some utility bit functions.
 Because a bit array uses bit-level parallelism, limits memory access, and efficiently uses the data cache, it often outperforms other data structures.</description>
     </item>
     
