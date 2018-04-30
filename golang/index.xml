@@ -577,16 +577,6 @@ Slow version (maintains order) a := []string{&#34;</description>
     </item>
     
     <item>
-      <title>Disable logging</title>
-      <link>http://yourbasic.org/golang/disable-logging-output/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/disable-logging-output/</guid>
-      <description>To turn off all output from a log.Logger, set the output destination to ioutil.Discard, a writer on which all calls succeed without doing anything.
-log.SetOutput(ioutil.Discard)  </description>
-    </item>
-    
-    <item>
       <title>Do-while loop in 2 different ways</title>
       <link>http://yourbasic.org/golang/do-while-loop/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -984,6 +974,16 @@ package main import &#34;fmt&#34; func main() { i := 0 go func() { i++ // write 
     </item>
     
     <item>
+      <title>How to disable logging</title>
+      <link>http://yourbasic.org/golang/disable-logging-output/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/disable-logging-output/</guid>
+      <description>To turn off all output from a log.Logger, set the output destination to ioutil.Discard, a writer on which all calls succeed without doing anything.
+log.SetOutput(ioutil.Discard)  </description>
+    </item>
+    
+    <item>
       <title>How to find the current time</title>
       <link>http://yourbasic.org/golang/current-time/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1073,6 +1073,17 @@ slice = append(slice, elem1, elem2) slice = append(slice, anotherSlice.</descrip
 func copy(dst, src []Type) int  It returns the number of elements copied, which will be the minimum of len(dst) and len(src). The result does not depend on whether the arguments overlap.
 Special case It is legal to copy bytes from a string to a slice of&amp;nbsp;bytes.
 copy(dst []byte, src string) int  Examples Copy from one slice to another:</description>
+    </item>
+    
+    <item>
+      <title>How to write a log message to file</title>
+      <link>http://yourbasic.org/golang/log-to-file/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/log-to-file/</guid>
+      <description>This code appends a log message to the file text.log. It creates the file if it doesn&amp;rsquo;t already exist.
+f, err := os.OpenFile(&amp;quot;text.log&amp;quot;, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644) if err != nil { log.Println(err) } defer f.Close() logger := log.New(f, &amp;quot;prefix&amp;quot;, log.LstdFlags) logger.Println(&amp;quot;text to append&amp;quot;) logger.Println(&amp;quot;more text to append&amp;quot;)  Contents of text.log:
+prefix: 2017/10/20 07:52:58 text to append prefix: 2017/10/20 07:52:58 more text to append   log.New creates a new log.Logger that writes to f.</description>
     </item>
     
     <item>
@@ -2100,17 +2111,6 @@ a := []byte(&#34;ba&#34;) a1 := append(a, &#39;d&#39;) a2 := append(a, &#39;g&#3
 If there is room for more elements, append reuses the underlying array. Let&#39;s take a&amp;nbsp;look:
 a := []byte(&#34;ba&#34;) fmt.Println(len(a), cap(a)) // 2 32 This means that the slices a, a1 and a2 will refer to the same underlying array in our example.
 To avoid this, we need to use two separate byte&amp;nbsp;arrays.</description>
-    </item>
-    
-    <item>
-      <title>Write log to file</title>
-      <link>http://yourbasic.org/golang/log-to-file/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/log-to-file/</guid>
-      <description>This code appends a log message to the file text.log. It creates the file if it doesn&amp;rsquo;t already exist.
-f, err := os.OpenFile(&amp;quot;text.log&amp;quot;, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644) if err != nil { log.Println(err) } defer f.Close() logger := log.New(f, &amp;quot;prefix&amp;quot;, log.LstdFlags) logger.Println(&amp;quot;text to append&amp;quot;) logger.Println(&amp;quot;more text to append&amp;quot;)  Contents of text.log:
-prefix: 2017/10/20 07:52:58 text to append prefix: 2017/10/20 07:52:58 more text to append   log.New creates a new log.Logger that writes to f.</description>
     </item>
     
     <item>

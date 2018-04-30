@@ -247,10 +247,6 @@
   </url>
   
   <url>
-    <loc>http://yourbasic.org/golang/disable-logging-output/</loc>
-  </url>
-  
-  <url>
     <loc>http://yourbasic.org/golang/do-while-loop/</loc>
   </url>
   
@@ -411,6 +407,10 @@
   </url>
   
   <url>
+    <loc>http://yourbasic.org/golang/disable-logging-output/</loc>
+  </url>
+  
+  <url>
     <loc>http://yourbasic.org/golang/current-time/</loc>
   </url>
   
@@ -440,6 +440,10 @@
   
   <url>
     <loc>http://yourbasic.org/golang/copy-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>http://yourbasic.org/golang/log-to-file/</loc>
   </url>
   
   <url>
@@ -865,10 +869,6 @@
   
   <url>
     <loc>http://yourbasic.org/algorithms/worst-case-time-complexity/</loc>
-  </url>
-  
-  <url>
-    <loc>http://yourbasic.org/golang/log-to-file/</loc>
   </url>
   
   <url>
