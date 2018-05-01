@@ -1105,6 +1105,17 @@ type Weekday int const ( Sunday Weekday = iota Monday Tuesday Wednesday Thursday
     </item>
     
     <item>
+      <title>How to format with fmt</title>
+      <link>http://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</guid>
+      <description>Basics Generic formatting Integer Boolean   Pointer Float String or byte slice Special values     Basics A format specifier is a string that contains the text you want to format plus some placeholders, called verbs, that tell the functions in the fmt package how to format your arguments.
+In this example
+fmt.Printf(&#34;Hex: %x.\n&#34;, 255) // &#34;Hex: ff.&#34;  the format specifier is &amp;quot;Hex: %x.\n&amp;quot;, the verb %x formats 255 in base 16 notation, and the special value \n is a line feed.</description>
+    </item>
+    
+    <item>
       <title>How to iterate in Go</title>
       <link>http://yourbasic.org/golang/iterator-generator-pattern/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -2403,17 +2414,6 @@ An int or []int is a bit pattern that can represent any digital data. Furthermor
       <description>0 isn’t a decimal number in Go – it’s an octal literal.
  An integer literal in Go (as well as in C and Java) is
  in base&amp;nbsp;16 if it starts with 0x or 0X, in base&amp;nbsp;8 if it starts with 0, otherwise it&#39;s a decimal&amp;nbsp;number.  In fact, there are many ways to write zero in base&amp;nbsp;8 in Go, including 0, 00 and&amp;nbsp;000. If&amp;nbsp;you prefer hexadecimal notation, you also have a smörgåsbord of options: such as 0x0, 0x00 and 0x000 (as well as 0X0, 0X00 and&amp;nbsp;0X000).</description>
-    </item>
-    
-    <item>
-      <title>fmt cheat sheet</title>
-      <link>http://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</guid>
-      <description>Basics Generic formatting Integer Boolean   Pointer Float String or byte slice Special values     Basics A format specifier is a string that contains the text you want to format plus some placeholders, called verbs, that tell the functions in the fmt package how to format your arguments.
-In this example
-fmt.Printf(&#34;Hex: %x.\n&#34;, 255) // &#34;Hex: ff.&#34;  the format specifier is &amp;quot;Hex: %x.\n&amp;quot;, the verb %x formats 255 in base 16 notation, and the special value \n is a line feed.</description>
     </item>
     
     <item>
