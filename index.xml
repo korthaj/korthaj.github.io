@@ -356,17 +356,6 @@ Note that nil slices and empty slices are very similar:
     </item>
     
     <item>
-      <title>Close a channel</title>
-      <link>http://yourbasic.org/golang/close-explained/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/close-explained/</guid>
-      <description>The close function records that no more values will be sent on a channel. (Sending to or closing a closed channel causes a run-time panic.)
-After calling close, and after any previously sent values have been received, receive operations will return a zero value without blocking. A multi-valued receive operation additionally returns a boolean indicating whether the value was delivered by a send operation.
-ch := make(chan string) go func { ch // prints &#34;</description>
-    </item>
-    
-    <item>
       <title>Command-line application (CLI)</title>
       <link>http://yourbasic.org/golang/write-command-line-application/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
