@@ -995,17 +995,6 @@ type Weekday int const ( Sunday Weekday = iota Monday Tuesday Wednesday Thursday
     </item>
     
     <item>
-      <title>How to format with fmt</title>
-      <link>http://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</guid>
-      <description>Basics Generic formatting Integer Boolean   Pointer Float String or byte slice Special values     Basics A format specifier is a string that contains the text you want to format plus some placeholders, called verbs, that tell the functions in the fmt package how to format your arguments.
-In this example
-fmt.Printf(&#34;Hex: %x.\n&#34;, 255) // &#34;Hex: ff.&#34;  the format specifier is &amp;quot;Hex: %x.\n&amp;quot;, the verb %x formats 255 in base 16 notation, and the special value \n is a line feed.</description>
-    </item>
-    
-    <item>
       <title>How to iterate in Go</title>
       <link>http://yourbasic.org/golang/iterator-generator-pattern/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1026,6 +1015,17 @@ Basic iterator pattern // Iterate calls the f function with n = 1, 2, and 3. fun
 To make a goroutine stoppable, let it listen for a stop signal on a channel.
 quit := make(chan struct{}) go func() { for { select { case // … } } }() // … close(quit) Sometimes it&amp;rsquo;s convenient to use a single channel for both data and signalling.
 // Generator returns a channel that produces the numbers 1, 2, 3,… // To stop the underlying goroutine, close the channel.</description>
+    </item>
+    
+    <item>
+      <title>How to print with fmt</title>
+      <link>http://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</guid>
+      <description>Basics Generic formatting Integer Boolean   Pointer Float String or byte slice Special values     Basics A format specifier is a string that contains the text you want to format plus some placeholders, called verbs, that tell the functions in the fmt package how to format your arguments.
+In this example
+fmt.Printf(&#34;Hex: %x.\n&#34;, 255) // &#34;Hex: ff.&#34;  the format specifier is &amp;quot;Hex: %x.\n&amp;quot;, the verb %x formats 255 in base 16 notation, and the special value \n is a line feed.</description>
     </item>
     
     <item>
