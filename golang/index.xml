@@ -872,9 +872,9 @@ The circumflex&amp;nbsp;^ denotes bitwise&amp;nbsp;XOR in&amp;nbsp;Go. The compu
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://yourbasic.org/golang/gotcha/</guid>
-      <description>26 sneaky traps and corner cases
+      <description>27 sneaky traps and corner cases
  This collection of gotchas and pitfalls in Go is intended to help you find and fix similar problems in your own&amp;nbsp;code.
-Some of the puzzles are pretty easy. To solve all 26, you have to be a&amp;nbsp;ninja.
+Some of the puzzles are pretty easy. To solve all 27, you have to be a&amp;nbsp;ninja.
 Take quiz
 Table of contents </description>
     </item>
@@ -1132,6 +1132,18 @@ Loop from 0 to len(a)-1 instead.</description>
       <description>Basics Structural typing The empty interface Interface values Equality  Basics  An interface type consists of a set of method signatures. A variable of interface type can hold any value that implements these methods.
  In this example both Temp and *Point implement the MyStringer interface.
 type MyStringer interface { String() string }  type Temp int func (t Temp) String() string { return strconv.Itoa(int(t)) + &amp;quot; °C&amp;quot; } type Point struct { x, y int } func (p *Point) String() string { return fmt.</description>
+    </item>
+    
+    <item>
+      <title>Is &#34;three&#34; a digit?</title>
+      <link>http://yourbasic.org/golang/gotcha-regexp-substring/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/gotcha-regexp-substring/</guid>
+      <description>Why does the regular expression [0-9]*, which is supposed to match a string with zero or more digits, match a string with characters in&amp;nbsp;it?
+matched, err := regexp.MatchString(`[0-9]*`, &#34;12three45&#34;) fmt.Println(matched) // true fmt.Println(err) // nil (regexp is valid)  Answer
+The function regexp.MatchString (as well as most functions in the regexp package) does substring matching.
+To check if a full string matches [0-9]*, anchor the start and the end of the regular expression:</description>
     </item>
     
     <item>

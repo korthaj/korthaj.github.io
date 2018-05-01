@@ -471,6 +471,10 @@
   </url>
   
   <url>
+    <loc>http://yourbasic.org/golang/gotcha-regexp-substring/</loc>
+  </url>
+  
+  <url>
     <loc>http://yourbasic.org/golang/gotcha-range-copy-array/</loc>
   </url>
   

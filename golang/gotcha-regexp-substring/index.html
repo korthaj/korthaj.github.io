@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Increment, decrement - yourbasic.org/golang </title>
-  <meta name="description" content="In Go increment and decrement are statements written with postfix notation.">
+  <title>Is &#34;three&#34; a digit? - yourbasic.org/golang </title>
+  <meta name="description" content="Most of the functions in the regexp package do substring matching.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -38,55 +38,57 @@
 
 <main>
 <article>
-<h1>Increment, decrement</h1>
+<h1>Is &#34;three&#34; a digit?</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-<p>Why doesn&rsquo;t these lines compile?</p>
+<p>Why does the regular expression <code>[0-9]*</code>, which is supposed to match
+a string with zero or more digits, match a string with characters in&nbsp;it?</p>
 
-<pre><code>i := 0
-fmt.Println(++i)
-fmt.Println(i++)</code></pre>
-
-<pre><code>main.go:9:14: syntax error: unexpected ++, expecting expression
-main.go:10:15: syntax error: unexpected ++, expecting comma or )
+<pre><code>matched, err := regexp.MatchString(`[0-9]*`, "12three45")
+fmt.Println(matched) // <b>true</b>
+fmt.Println(err)     // nil (regexp is valid)
 </code></pre>
 
 <p><details class="answer">
 <summary class="answer">Answer</summary></p>
 
-<p>In Go increment and decrement operations can’t be used as expressions, only as <strong>statements</strong>.
-Also, only the <strong>postfix notation</strong> is&nbsp;allowed.</p>
+<p>The function <a href="https://golang.org/pkg/regexp/#MatchString"><code>regexp.MatchString</code></a>
+(as well as most functions in the <a href="https://golang.org/pkg/regexp/"><code>regexp</code></a> package)
+does <b>substring</b> matching.</p>
 
-<p>The above snippet needs to be written as:</p>
+<p>To check if a full string matches <code>[0-9]*</code>,
+anchor the start and the end of the regular expression:</p>
 
-<pre><code>i := 0
-i++
-fmt.Println(i)
-fmt.Println(i)
-i++</code></pre>
+<ul>
+<li>the caret ^ matches the beginning of a text or line,
+<li>the dollar sign $ matches the end of a text.
+</ul>
 
-<blockquote>
-  <p>Without pointer arithmetic, the convenience value of pre- and postfix increment operators drops. By removing them from the expression hierarchy altogether, expression syntax is simplified and the messy issues around order of evaluation of <code>++</code> and <code>--</code> (consider <code>f(i++)</code> and <code>p[i] = q[++i]</code>) are eliminated as well. The simplification is&nbsp;significant.
-<a class="quote-source" href="https://golang.org/doc/faq#inc_dec">Go FAQ: Why are ++ and – statements and not expressions?</a></p>
-</blockquote>
+<pre><code>matched, err := regexp.MatchString(`<b>^</b>[0-9]*<b>$</b>`, "12three45")
+fmt.Println(matched) // <b>false</b>
+fmt.Println(err)     // nil (regexp is valid)
+</code></pre>
+
+<p>See this <a href="http://yourbasic.org/golang/regexp-cheat-sheet/">Regexp in-depth tutorial</a>
+for a cheat sheet and plenty of code examples.</p>
 
 <p></details></p>
 
 <ul class="pagina">
   
-        <li><a href="/golang/gotcha-constant-overflows-int/">« Prev</a></li>
+        <li><a href="/golang/gotcha-json-marshal-empty/">« Prev</a></li>
       
         <li><a href="/golang/gotcha/">Index</a></li>
       
-        <li><a href="/golang/gotcha-operator-precedence/">Next »</a></li>
+        <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Next »</a></li>
       
 </ul>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=http%3a%2f%2fyourbasic.org%2fgolang%2fgotcha-increment-decrement-statement%2f&amp;text=Increment,%20decrement&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fyourbasic.org%2fgolang%2fgotcha-increment-decrement-statement%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=http%3a%2f%2fyourbasic.org%2fgolang%2fgotcha-increment-decrement-statement%2f&amp;title=Increment,%20decrement" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Increment,%20decrement&body=http%3a%2f%2fyourbasic.org%2fgolang%2fgotcha-increment-decrement-statement%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://twitter.com/share?url=http%3a%2f%2fyourbasic.org%2fgolang%2fgotcha-regexp-substring%2f&amp;text=Is%20%22three%22%20a%20digit?&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fyourbasic.org%2fgolang%2fgotcha-regexp-substring%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.reddit.com/submit?url=http%3a%2f%2fyourbasic.org%2fgolang%2fgotcha-regexp-substring%2f&amp;title=Is%20%22three%22%20a%20digit?" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Is%20%22three%22%20a%20digit?&body=http%3a%2f%2fyourbasic.org%2fgolang%2fgotcha-regexp-substring%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 
@@ -120,7 +122,7 @@ i++</code></pre>
 
       <li><a href="/golang/gotcha-constant-overflows-int/">Constant overflows int</a></li>
 
-      <li><b>»&nbsp;</b>Increment, decrement</li>
+      <li><a href="/golang/gotcha-increment-decrement-statement/">Increment, decrement</a></li>
 
       <li><a href="/golang/gotcha-operator-precedence/">Does not compute</a></li>
 
@@ -146,7 +148,7 @@ i++</code></pre>
 
       <li><a href="/golang/gotcha-json-marshal-empty/">No JSON in sight</a></li>
 
-      <li><a href="/golang/gotcha-regexp-substring/">Is &#34;three&#34; a digit?</a></li>
+      <li><b>»&nbsp;</b>Is &#34;three&#34; a digit?</li>
 
       <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a></li>
 
@@ -165,8 +167,8 @@ i++</code></pre>
   <h2>Related</h2>
 
   <div class="reference">
-    <a href="/golang/compiler-error-messages/">Learn to love your compiler</a>
-    <div class="desc">A list of common Go compiler error messages: what they mean and how to fix the problem.</div>
+    <a href="/golang/regexp-cheat-sheet/">Regexp in-depth tutorial</a>
+    <div class="desc">Regular expressions in Go: introduction, cheat sheet and plenty of code examples.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
