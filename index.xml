@@ -53,6 +53,16 @@ func Sum(nums ...int) int { res := 0 for _, n := range nums { res += n } return 
     </item>
     
     <item>
+      <title>4 key Go sites to get you started</title>
+      <link>http://yourbasic.org/golang/getting-started-hello-world/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yourbasic.org/golang/getting-started-hello-world/</guid>
+      <description>Try it out The Go Playground is an interactive web&amp;nbsp;service that lets you run small Go programs, such as this &amp;ldquo;Hello,&amp;nbsp;world!&amp;rdquo; program, inside a sandbox. Try&amp;nbsp;it&amp;nbsp;out!
+package main import &#34;fmt&#34; func main() { fmt.Println(&#34;Hello, world!&#34;) } Learn the basics A Tour of Go is an interactive tutorial with many example programs. It comes from the official golang site and teaches you the basics of Go programming directly in your browser.</description>
+    </item>
+    
+    <item>
       <title>A basic stack (LIFO) implementation</title>
       <link>http://yourbasic.org/golang/implement-stack/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -897,16 +907,6 @@ The io.Reader interface, which represents the read end of a stream of data, is a
       
       <guid>http://yourbasic.org/golang/slice-of-keys-values-from-map/</guid>
       <description>keys := make([]keyType, 0, len(myMap)) values := make([]valueType, 0, len(myMap)) for k, v := range myMap { keys = append(keys, k) values = append(values, v) }  Further reading  Maps in a&amp;nbsp;nutshell</description>
-    </item>
-    
-    <item>
-      <title>Get started with Go</title>
-      <link>http://yourbasic.org/golang/getting-started-hello-world/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yourbasic.org/golang/getting-started-hello-world/</guid>
-      <description>Try it out The Go Playground is an interactive web&amp;nbsp;service that lets you run small Go programs, such as this &amp;ldquo;Hello,&amp;nbsp;world!&amp;rdquo; program, inside a sandbox. Try&amp;nbsp;it&amp;nbsp;out!
-package main import &#34;fmt&#34; func main() { fmt.Println(&#34;Hello, world!&#34;) } Learn the basics A Tour of Go is an interactive tutorial with many example programs. It comes from the official golang site and teaches you the basics of Go programming directly in your browser.</description>
     </item>
     
     <item>

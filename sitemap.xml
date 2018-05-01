@@ -18,6 +18,10 @@
   </url>
   
   <url>
+    <loc>http://yourbasic.org/golang/getting-started-hello-world/</loc>
+  </url>
+  
+  <url>
     <loc>http://yourbasic.org/golang/implement-stack/</loc>
   </url>
   
@@ -336,10 +340,6 @@
   
   <url>
     <loc>http://yourbasic.org/golang/slice-of-keys-values-from-map/</loc>
-  </url>
-  
-  <url>
-    <loc>http://yourbasic.org/golang/getting-started-hello-world/</loc>
   </url>
   
   <url>
