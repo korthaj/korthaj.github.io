@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Your basic algorithms on Algorithms to Go</title>
-    <link>http://yourbasic.org/algorithms/</link>
+    <link>https://yourbasic.org/algorithms/</link>
     <description>Recent content in Your basic algorithms on Algorithms to Go</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="http://yourbasic.org/algorithms/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yourbasic.org/algorithms/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Algorithms: What’s the problem?</title>
-      <link>http://yourbasic.org/algorithms/algorithms/</link>
+      <link>https://yourbasic.org/algorithms/algorithms/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://yourbasic.org/algorithms/algorithms/</guid>
+      <guid>https://yourbasic.org/algorithms/algorithms/</guid>
       <description>A good programmer describes algo&amp;shy;rithms in a form that can be&amp;nbsp;effi&amp;shy;ciently exe&amp;shy;cuted by&amp;nbsp;ma&amp;shy;chines and easily under&amp;shy;stood by&amp;nbsp;humans.
  Algorithms and programs are pretty much the same thing &amp;ndash; the main difference is that we can talk about algorithms without relying on a programming language. An algorithm invented today will be equally as useful when the last Java programmer has logged&amp;nbsp;out. Here is an attempt at a formal definition.
  An algorithm is a stepwise procedure of well-defined executable instructions intended to perform a task or solve a problem, often with the added requirement that the procedure must come to a stop.</description>
@@ -23,10 +23,10 @@
     
     <item>
       <title>Amortized time complexity</title>
-      <link>http://yourbasic.org/algorithms/amortized-time-complexity-analysis/</link>
+      <link>https://yourbasic.org/algorithms/amortized-time-complexity-analysis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://yourbasic.org/algorithms/amortized-time-complexity-analysis/</guid>
+      <guid>https://yourbasic.org/algorithms/amortized-time-complexity-analysis/</guid>
       <description>Amortized analysis is used for algo&amp;shy;rithms that have expensive opera&amp;shy;tions that happen only&amp;nbsp;rarely.
  Amortized complexity analysis is most commonly used with data structures, which have state that persists between operations. The basic idea is that an expensive operation can alter the state so that the worst case cannot occur again for a long time, thus amortizing its cost.
 Let T1, T2,&amp;nbsp;…, Tk be the complexities of a sequence of operations on a data structuture.</description>
@@ -34,40 +34,40 @@ Let T1, T2,&amp;nbsp;…, Tk be the complexities of a sequence of operations on 
     
     <item>
       <title>Big O notation</title>
-      <link>http://yourbasic.org/algorithms/big-o-notation-explained/</link>
+      <link>https://yourbasic.org/algorithms/big-o-notation-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://yourbasic.org/algorithms/big-o-notation-explained/</guid>
+      <guid>https://yourbasic.org/algorithms/big-o-notation-explained/</guid>
       <description>Big O notation is a convenient way to describe how fast a function is&amp;nbsp;growing.
  Basics Constant time Linear time Quadratic time   Sloppy notation Ω and Θ notation Key takeaways     Basics When we compute the time complexity&amp;nbsp;T(n) of an algorithm we rarely get an exact result. That&amp;rsquo;s fine &amp;ndash; typically we are only interested in how fast T(n) is growing as a function of the input size&amp;nbsp;n.</description>
     </item>
     
     <item>
       <title>Binary search trees</title>
-      <link>http://yourbasic.org/algorithms/binary-search-tree/</link>
+      <link>https://yourbasic.org/algorithms/binary-search-tree/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://yourbasic.org/algorithms/binary-search-tree/</guid>
+      <guid>https://yourbasic.org/algorithms/binary-search-tree/</guid>
       <description>Tree terminology Binary search trees Well-balanced trees Basic tree algorithms  Tree terminology A binary tree is a data structure most easily described by&amp;nbsp;recursion.
  A binary tree  is either empty,  or consists of a node (also known as the root of the tree) and two subtrees, the left and right subtree, which are also binary trees.   A node with two empty subtrees is called a&amp;nbsp;leaf.</description>
     </item>
     
     <item>
       <title>Blackjack: How to count cards</title>
-      <link>http://yourbasic.org/algorithms/blackjack/</link>
+      <link>https://yourbasic.org/algorithms/blackjack/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://yourbasic.org/algorithms/blackjack/</guid>
+      <guid>https://yourbasic.org/algorithms/blackjack/</guid>
       <description>It&#39;s possible to win at blackjack by counting cards, but most&amp;nbsp;fail. The mean is positive, but the variance is&amp;nbsp;mean.
  Always optimal strategy  Always use an optimal strategy adapted to the rules of your casino. Here is an example blackjack strategy. Every time you deviate from the optimal strategy – because of hunches or fear – it depletes your funds. Count cards  If you find a casino with good rules, and if you play with an optimal strategy, the odds are still against you – but the house edge can sometimes be as low as&amp;nbsp;0.</description>
     </item>
     
     <item>
       <title>Bloom filters</title>
-      <link>http://yourbasic.org/algorithms/bloom-filter/</link>
+      <link>https://yourbasic.org/algorithms/bloom-filter/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://yourbasic.org/algorithms/bloom-filter/</guid>
+      <guid>https://yourbasic.org/algorithms/bloom-filter/</guid>
       <description>A Bloom filter is a prob&amp;shy;abi&amp;shy;listic data struc&amp;shy;ture used to test set&amp;nbsp;member&amp;shy;ship.
 This data structure tells whether an element may be in a set, or definitely isn&amp;rsquo;t. The only possible errors are false positives: a search for a nonexistent element can give an incorrect answer. With more elements in the filter, the error rate increases.
 Bloom filters are both fast and space-efficient. However, elements can only be added, not removed.</description>
@@ -75,10 +75,10 @@ Bloom filters are both fast and space-efficient. However, elements can only be a
     
     <item>
       <title>Hash tables</title>
-      <link>http://yourbasic.org/algorithms/hash-tables-explained/</link>
+      <link>https://yourbasic.org/algorithms/hash-tables-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://yourbasic.org/algorithms/hash-tables-explained/</guid>
+      <guid>https://yourbasic.org/algorithms/hash-tables-explained/</guid>
       <description>A hash table is an unordered collection of key-value pairs, where each key is&amp;nbsp;unique.
  A hash table offers a combination of efficient lookup, insert and delete operations.
 Neither arrays nor linked lists can achieve this:
@@ -87,19 +87,19 @@ Neither arrays nor linked lists can achieve this:
     
     <item>
       <title>How to avoid initializing memory</title>
-      <link>http://yourbasic.org/algorithms/avoid-initializing-memory/</link>
+      <link>https://yourbasic.org/algorithms/avoid-initializing-memory/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://yourbasic.org/algorithms/avoid-initializing-memory/</guid>
+      <guid>https://yourbasic.org/algorithms/avoid-initializing-memory/</guid>
       <description>Consider an algorithm that uses a large memory area. If the running time of the algorithm is smaller than the size of the memory, initializing the memory will take longer than running the algorithm. However, using a shrewd trick, it’s possible to refrain from initializing the&amp;nbsp;memory. This mysterious trick is used quite frequently in research articles, often without explanation and a reference to Exercise 2.12 in The Design and Analysis of Computer Algorithms by Aho, Hopcroft, and Ullman, 1974.</description>
     </item>
     
     <item>
       <title>Induction and recursive functions</title>
-      <link>http://yourbasic.org/algorithms/induction-recursive-functions/</link>
+      <link>https://yourbasic.org/algorithms/induction-recursive-functions/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://yourbasic.org/algorithms/induction-recursive-functions/</guid>
+      <guid>https://yourbasic.org/algorithms/induction-recursive-functions/</guid>
       <description>To make sense of recursive functions, you can use a way of thinking closely related to mathematical induction.
  This text introduces mathematical induction and explains how and why it works. It contains examples from both mathematics and programming.
 Induction is a proof method often used to prove statements about integers. We&amp;rsquo;ll use the notation P(n), where n&amp;nbsp;&amp;ge;&amp;nbsp;0, to denote such a&amp;nbsp;statement. To prove P(n) with induction is a two-step procedure.</description>
@@ -107,10 +107,10 @@ Induction is a proof method often used to prove statements about integers. We&am
     
     <item>
       <title>Insertion sort</title>
-      <link>http://yourbasic.org/algorithms/insertion-sort/</link>
+      <link>https://yourbasic.org/algorithms/insertion-sort/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://yourbasic.org/algorithms/insertion-sort/</guid>
+      <guid>https://yourbasic.org/algorithms/insertion-sort/</guid>
       <description>Insertion sort can outperform more complicated algorithms for short lists and lists that are almost sorted.
  Insertion sort is a simple sorting algorithm with quadratic worst-case running time, but in some cases it&amp;rsquo;s still the algorithm of choice.
  It&amp;rsquo;s efficient for really small data sets. It typically outperforms other simple quadratic algorithms, such as selection sort or bubble sort. It&amp;rsquo;s adaptive: it sorts data sets that are already substantially sorted efficiently.</description>
@@ -118,10 +118,10 @@ Induction is a proof method often used to prove statements about integers. We&am
     
     <item>
       <title>Las Vegas algorithms</title>
-      <link>http://yourbasic.org/algorithms/las-vegas/</link>
+      <link>https://yourbasic.org/algorithms/las-vegas/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://yourbasic.org/algorithms/las-vegas/</guid>
+      <guid>https://yourbasic.org/algorithms/las-vegas/</guid>
       <description>A Las Vegas algo&amp;shy;rithm is a rando&amp;shy;mized algo&amp;shy;rithm that always gives the correct result but gambles with resources.
 Example It&amp;rsquo;s easy and convenient to compute a random point in a circle with a Las Vegas algorithm.
 The idea is to first generate a point (x,&amp;nbsp;y), with -1&amp;nbsp;&amp;lt;&amp;nbsp;x&amp;nbsp;&amp;lt;&amp;nbsp;1 and -1&amp;nbsp;&amp;lt;&amp;nbsp;y&amp;nbsp;&amp;lt;&amp;nbsp;1. If this point happens to fall within the unit circle we keep it, otherwise we throw it away and try&amp;nbsp;again.</description>
@@ -129,10 +129,10 @@ The idea is to first generate a point (x,&amp;nbsp;y), with -1&amp;nbsp;&amp;lt;
     
     <item>
       <title>Loop invariants can give you coding superpowers</title>
-      <link>http://yourbasic.org/algorithms/loop-invariants-explained/</link>
+      <link>https://yourbasic.org/algorithms/loop-invariants-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://yourbasic.org/algorithms/loop-invariants-explained/</guid>
+      <guid>https://yourbasic.org/algorithms/loop-invariants-explained/</guid>
       <description>An invariant is a state&amp;shy;ment about the vari&amp;shy;ables in a program, which is true every time the execu&amp;shy;tion of the program reaches the&amp;nbsp;invariant.
  Basic example Designing with invariants Trickier example 3-way partition  When struggling with a tricky 3-way partion algorithm as a student, a friend suggested a well-fitting invariant. It was like getting a secret superpower: suddenly I could write code that used to be impossible.
 In this text we&amp;rsquo;ll look at loop invariants, invariants placed at the beginning of a loop.</description>
@@ -140,39 +140,39 @@ In this text we&amp;rsquo;ll look at loop invariants, invariants placed at the b
     
     <item>
       <title>Monte Carlo simulations</title>
-      <link>http://yourbasic.org/algorithms/monte-carlo/</link>
+      <link>https://yourbasic.org/algorithms/monte-carlo/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://yourbasic.org/algorithms/monte-carlo/</guid>
+      <guid>https://yourbasic.org/algorithms/monte-carlo/</guid>
       <description>Monte Carlo simulations are a broad class of algorithms that use repeated random sampling to obtain numerical results.  Monte Carlo simulations are typically used to simulate the behaviour of other systems. Monte Carlo algorithms, on the other hand, are randomized algorithms whose output may be incorrect with a certain, typically small, probability.  Example If points (x,&amp;nbsp;y), with -1&amp;nbsp;&amp;lt;&amp;nbsp;x&amp;nbsp;&amp;lt;&amp;nbsp;1 and -1&amp;nbsp;&amp;lt;&amp;nbsp;y&amp;nbsp;&amp;lt;&amp;nbsp;1, are placed randomly, the ratio of points that fall within the unit circle will be close to&amp;nbsp;π/4.</description>
     </item>
     
     <item>
       <title>The fastest sorting algorithm?</title>
-      <link>http://yourbasic.org/algorithms/fastest-sorting-algorithm/</link>
+      <link>https://yourbasic.org/algorithms/fastest-sorting-algorithm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://yourbasic.org/algorithms/fastest-sorting-algorithm/</guid>
+      <guid>https://yourbasic.org/algorithms/fastest-sorting-algorithm/</guid>
       <description>Integer sorting in O(n&amp;nbsp;log&amp;nbsp;log&amp;nbsp;n) time
   Which sorting algorithm is the fastest? Ask this question to any group of programmers and you’ll get an animated discussion. Of course, there is no one answer. It depends not only on the algorithm, but also on the computer, data, and implementation. However, if you count the number of operations needed to sort integer numbers on a standard von Neumann computer, there is a clear winner – the algorithm presented in the paper “Sorting In Linear Time?</description>
     </item>
     
     <item>
       <title>Time complexity analysis: Count your steps</title>
-      <link>http://yourbasic.org/algorithms/time-complexity-explained/</link>
+      <link>https://yourbasic.org/algorithms/time-complexity-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://yourbasic.org/algorithms/time-complexity-explained/</guid>
+      <guid>https://yourbasic.org/algorithms/time-complexity-explained/</guid>
       <description>Time complexity esti&amp;shy;mates the time to run an algo&amp;shy;rithm. It&#39;s calcu&amp;shy;lated by counting elemen&amp;shy;tary opera&amp;shy;tions.  Example Worst-case time Average-case time Linear vs. quadratic time  Example What&amp;rsquo;s the running time of the following algorithm?
  // Compute the maximum element in the array a. Algorithm max(a): max ← a[0] for i = 1 to len(a)-1 if a[i] &amp;gt; max max ← a[i] return max  The answer depends on factors such as input, programming language and runtime, coding skill, compiler, operating system, and hardware.</description>
     </item>
     
     <item>
       <title>Time complexity of recursive functions</title>
-      <link>http://yourbasic.org/algorithms/time-complexity-recursive-functions/</link>
+      <link>https://yourbasic.org/algorithms/time-complexity-recursive-functions/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://yourbasic.org/algorithms/time-complexity-recursive-functions/</guid>
+      <guid>https://yourbasic.org/algorithms/time-complexity-recursive-functions/</guid>
       <description>It&#39;s often possible to compute the time complexity of a recursive function by formulating and solving a recurrence relation.
  This text contains a few examples and a formula, the &amp;ldquo;master theorem&amp;rdquo;, which gives the solution to a class of recurrence relations that often show up when analyzing recursive functions.
 Basic example Binary search Master theorem  Basic example As an introduction we show that the following recursive function has linear time complexity.</description>
@@ -180,10 +180,10 @@ Basic example Binary search Master theorem  Basic example As an introduction we 
     
     <item>
       <title>Treaps: Randomized search trees</title>
-      <link>http://yourbasic.org/algorithms/treap/</link>
+      <link>https://yourbasic.org/algorithms/treap/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://yourbasic.org/algorithms/treap/</guid>
+      <guid>https://yourbasic.org/algorithms/treap/</guid>
       <description>A treap stores items in sorted order and offers effi&amp;shy;cient lookup, addi&amp;shy;tion and remo&amp;shy;val of items.
 If you could use only one data structure, which one would you choose? A&amp;nbsp;hash table? While it supports the basic lookup, addition and removal operations, it&amp;nbsp;doesn’t keep the elements sorted. Therefore it can’t efficiently perform some common tasks, such as finding the minimum element or producing an ordered list of all&amp;nbsp;elements.
 What would you require of this ideal, sole structure?</description>
@@ -191,10 +191,10 @@ What would you require of this ideal, sole structure?</description>
     
     <item>
       <title>What’s a seed: Random number generators</title>
-      <link>http://yourbasic.org/algorithms/random-number-generator-seed/</link>
+      <link>https://yourbasic.org/algorithms/random-number-generator-seed/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://yourbasic.org/algorithms/random-number-generator-seed/</guid>
+      <guid>https://yourbasic.org/algorithms/random-number-generator-seed/</guid>
       <description>In reality pseudo&amp;shy;random numbers aren&#39;t random at all. They are computed using a fixed determi&amp;shy;nistic algorithm.
  The seed is a starting point for a sequence of pseudorandom numbers. If you start from the same seed, you get the very same sequence. This can be quite useful for&amp;nbsp;debugging.
 If you want a different sequence of numbers each time, you can use the current time as a&amp;nbsp;seed.
@@ -203,30 +203,30 @@ Example This generator produces a sequence of 97 different numbers, then it star
     
     <item>
       <title>Worst-case time complexity</title>
-      <link>http://yourbasic.org/algorithms/worst-case-time-complexity/</link>
+      <link>https://yourbasic.org/algorithms/worst-case-time-complexity/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://yourbasic.org/algorithms/worst-case-time-complexity/</guid>
+      <guid>https://yourbasic.org/algorithms/worst-case-time-complexity/</guid>
       <description>Worst-case time complexity denotes the longest possible running time W(n) of an algorithm, given any input of size n. This measure gives an upper bound on time requirements and is often easy to compute. The drawback is that it can be overly pessimistic.
 Example  // Tell whether the array a contains x. Algorithm contains(a, x): for i = 0 to len(a)-1 if x == a[i] return true return false  The number of comparisons depends not only on the number of elements, n, in the array, but also on&amp;nbsp;x and the elements in&amp;nbsp;a.</description>
     </item>
     
     <item>
       <title>Your basic API: guidelines and best practices</title>
-      <link>http://yourbasic.org/algorithms/your-basic-api/</link>
+      <link>https://yourbasic.org/algorithms/your-basic-api/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://yourbasic.org/algorithms/your-basic-api/</guid>
+      <guid>https://yourbasic.org/algorithms/your-basic-api/</guid>
       <description>Thoughts on effective API design
  Introduction The 5 Commandments 1. Tell me what this thing is 2. Tell me what it does 3. Don&#39;t tell me how it works 4. Grant me the right to use it 5. Don&#39;t change it   Keep it simple Don&#39;t use complicated constructs where simple ones will do Don&#39;t use a lot where a little will do One package, one idea Just say no Math is simple   Give it time Eat your own dog food   Show, don&#39;t tell Create tutorials Use examples   Tools of the trade Keep it consistent Write functions that need little and give much Discover a well-fitting interface Make it generic Names, keep them short and sweet    Introduction The aim of this text is to explore API design and try to find strategies and rules that can help us create code libraries that are safe, effective and easy to use.</description>
     </item>
     
     <item>
       <title>Your basic graph</title>
-      <link>http://yourbasic.org/algorithms/graph/</link>
+      <link>https://yourbasic.org/algorithms/graph/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://yourbasic.org/algorithms/graph/</guid>
+      <guid>https://yourbasic.org/algorithms/graph/</guid>
       <description>Terminology Data structures Search algorithms  This text introduces basic graph terminology, standard graph data structures, and three fundamental algorithms for traversing a graph in a systematic&amp;nbsp;way.
 You may also want to take a look at the Github yourbasic/graph repository. It&amp;rsquo;s a Go library with generic implementations of several basic graph algorithms.
 Terminology A graph G consists of two types of elements: vertices and edges. Each edge has two endpoints, which belong to the vertex set.</description>
@@ -234,10 +234,10 @@ Terminology A graph G consists of two types of elements: vertices and edges. Eac
     
     <item>
       <title>Your basic int: a most powerful data type</title>
-      <link>http://yourbasic.org/algorithms/your-basic-int/</link>
+      <link>https://yourbasic.org/algorithms/your-basic-int/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://yourbasic.org/algorithms/your-basic-int/</guid>
+      <guid>https://yourbasic.org/algorithms/your-basic-int/</guid>
       <description>The int data type is generic, effective, simple and efficient.
  Introduction Generic graph data Effective searching and sorting Simple sets Efficient filtering  Introduction Every kid can spot an integer number, and every programmer is familiar with the&amp;nbsp;int data&amp;nbsp;type. Still we frequently forget how powerful an integer can&amp;nbsp;be.
  Generic
