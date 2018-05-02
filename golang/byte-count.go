@@ -3,7 +3,7 @@
 
 	These utility functions convert 1000 to "1 kB", 1000000 to "1 MB", etc.
 
-	Source: http://yourbasic.org/golang/formatting-byte-size-to-human-readable-format/
+	Source: https://yourbasic.org/golang/formatting-byte-size-to-human-readable-format/
 */
 package main
 

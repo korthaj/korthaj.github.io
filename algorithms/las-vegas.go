@@ -4,7 +4,7 @@
 	A Las Vegas algorithm is a randomized algorithm that always gives
 	the correct result but gambles with resources. 
 
-	Source: http://yourbasic.org/algorithms/las-vegas/
+	Source: https://yourbasic.org/algorithms/las-vegas/
 */
 package main
 
