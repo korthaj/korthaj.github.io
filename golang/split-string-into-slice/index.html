@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>How to split a string into a slice - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE How to split a string into a slice in Go.">
+  <meta name="description" content="CODE EXAMPLE strings.Split splits a string into its comma separated values, strings.Fields splits a string into substrings removing white space, regexp.Split splits into substrings separated by a regular expression.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -21,6 +21,50 @@
 
     gtag('config', 'UA-113104149-1');
   </script>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/golang/split-string-into-slice/"
+  },
+  "headline": "How to split a string into a slice",
+  "image": [
+    "https://yourbasic.org/golang/cherry-cocktail-split.jpg"
+   ],
+  "datePublished": "2018-05-03T00:00:00&#43;0000",
+  "dateModified": "2018-05-03T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "CODE EXAMPLE strings.Split splits a string into its comma separated values, strings.Fields splits a string into substrings removing white space, regexp.Split splits into substrings separated by a regular expression."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to split a string into a slice">
+<meta property="og:description" content="CODE EXAMPLE strings.Split splits a string into its comma separated values, strings.Fields splits a string into substrings removing white space, regexp.Split splits into substrings separated by a regular expression.">
+<meta property="og:url" content="https://yourbasic.org/golang/split-string-into-slice/">
+<meta property="og:image" content="https://yourbasic.org/golang/cherry-cocktail-split.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to split a string into a slice">
+<meta name="twitter:description" content="CODE EXAMPLE strings.Split splits a string into its comma separated values, strings.Fields splits a string into substrings removing white space, regexp.Split splits into substrings separated by a regular expression.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="https://yourbasic.org/golang/cherry-cocktail-split.jpg">
+
 
 </head>
 
@@ -42,7 +86,11 @@
 <div class="tagline">yourbasic.org/golang</div>
 
 
-<h2 id="split">Split</h2>
+<!-- Public domain: https://commons.wikimedia.org/wiki/File:Cherry-Cocktail-Split.jpg -->
+
+<div style="margin-top:1em;"><img src="/golang/cherry-cocktail-split.jpg"></div>
+
+<h2 id="comma">Comma</h2>
 
 <p>Use the <a href="https://golang.org/pkg/strings/#Split"><code>strings.Split</code></a> function to split a string into its comma separated values.</p>
 
@@ -54,7 +102,7 @@ fmt.Println(s)
 <p>To include the separators, use <a href="https://golang.org/pkg/strings/#SplitAfter"><code>strings.SplitAfter</code></a>.
 To split only the first n values, use <a href="https://golang.org/pkg/strings/#SplitN"><code>strings.SplitN</code></a> and <a href="https://golang.org/pkg/strings/#SplitAfterN"><code>strings.SplitAfterN</code></a>.</p>
 
-<h2 id="fields">Fields</h2>
+<h2 id="white-space">White space</h2>
 
 <p>Use the <a href="https://golang.org/pkg/strings/#Fields"><code>strings.Fields</code></a> function to split a string into substrings removing white space.</p>
 
@@ -63,10 +111,23 @@ fmt.Println(s)
 // Output: [a b]
 </code></pre>
 
-<blockquote class="math">
-In more complicated situations,
-<a href="/golang/regexp-cheat-sheet/">regular expressions</a> might do the&nbsp;trick.
-</blockquote>
+<h2 id="general-case">General case</h2>
+
+<p>In more complicated situations,
+the <a href="http://localhost:1313/golang/regexp-cheat-sheet/#split"><code>Regexp.Split</code></a> function might do the trick.</p>
+
+<h3 id="further-reading">Further reading</h3>
+
+<div><a href="/golang/regexp-cheat-sheet/"><img src="/golang/cog-wheels-thumb.jpg" title="Regular expressions"></a></div>
+
+<p>This <a href="/golang/regexp-cheat-sheet/">Regexp in-depth tutorial</a>
+is a gentle introduction to the Go regexp package with cheat sheet and plenty of examples.</p>
+
+<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fsplit-string-into-slice%2f&amp;text=How%20to%20split%20a%20string%20into%20a%20slice&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fsplit-string-into-slice%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fsplit-string-into-slice%2f&amp;title=How%20to%20split%20a%20string%20into%20a%20slice" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=How%20to%20split%20a%20string%20into%20a%20slice&body=https%3a%2f%2fyourbasic.org%2fgolang%2fsplit-string-into-slice%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
@@ -78,12 +139,6 @@ In more complicated situations,
   <div class="reference">
     <a href="/golang/string-functions-reference-cheat-sheet/">String functions cheat sheet</a>
     <div class="desc">String essentials in one place: literals, concatenation, equality, ordering, indexing, UTF-8, search, join, replace, split, trim, strip, delete, lowercase/uppercase.</div>
-    <div class="source">yourbasic.org</div>
-  </div>
-
-  <div class="reference">
-    <a href="/golang/regexp-split-string/">Split a string using regexp delimiter</a>
-    <div class="desc">How to split a string using regular expressions in Go.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
