@@ -279,10 +279,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/regexp-find-first-match/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/golang/current-directory/</loc>
   </url>
   
@@ -663,10 +659,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/regexp-replace-string/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/golang/reverse-utf8-string/</loc>
   </url>
   
@@ -696,10 +688,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/sort-map-keys-values/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/regexp-split-string/</loc>
   </url>
   
   <url>

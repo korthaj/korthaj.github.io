@@ -663,17 +663,6 @@ type error interface { Error() string }  Example The os.Open function returns a 
     </item>
     
     <item>
-      <title>Find first substring matching a regexp</title>
-      <link>https://yourbasic.org/golang/regexp-find-first-match/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/regexp-find-first-match/</guid>
-      <description>Use the FindString method to find the text of the first match. If there is no match, the return value is an empty string.
-re := regexp.MustCompile(`foo.?`) fmt.Printf(&#34;%q\n&#34;, re.FindString(&#34;seafood fool&#34;)) // &#34;food&#34; fmt.Printf(&#34;%q\n&#34;, re.FindString(&#34;meat&#34;)) // &#34;&#34; There are several more search functions available in the regexp package. The strings All, String, Submatch, and Index can be combined to form the methods
-Find(All)?(String)?(Submatch)?(Index)?  The Regular expressions cheat sheet has more details.</description>
-    </item>
-    
-    <item>
       <title>Find the current working directory</title>
       <link>https://yourbasic.org/golang/current-directory/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1617,16 +1606,6 @@ More about strings  String functions cheat sheet</description>
     </item>
     
     <item>
-      <title>Replace all substrings matching a regexp</title>
-      <link>https://yourbasic.org/golang/regexp-replace-string/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/regexp-replace-string/</guid>
-      <description>Use the ReplaceAllString method to replace the text of all matches. It returns a copy, replacing all matches of the regexp with a replacement string.
-re := regexp.MustCompile(`ab*`) fmt.Printf(&#34;%q\n&#34;, re.ReplaceAllString(&#34;-a-abb-&#34;, &#34;T&#34;)) // &#34;-T-T-&#34; The Regular expressions cheat sheet has more details.</description>
-    </item>
-    
-    <item>
       <title>Reverse a UTF-8 encoded string</title>
       <link>https://yourbasic.org/golang/reverse-utf8-string/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1711,17 +1690,6 @@ a := []int{1, 2, 3, 4, 5, 6, 7, 8} rand.Seed(time.Now().UnixNano()) rand.Shuffle
       <guid>https://yourbasic.org/golang/sort-map-keys-values/</guid>
       <description>A map is an unordered collection of key-value pairs. If you need a stable iteration order, you must maintain a separate data structure.  This example uses a sorted slice of keys to print a map[string]int in key order.
 m := map[string]int{&amp;quot;Alice&amp;quot;: 23, &amp;quot;Eve&amp;quot;: 2, &amp;quot;Bob&amp;quot;: 25} keys := make([]string, 0, len(m)) for k := range m { keys = append(keys, k) } sort.Strings(keys) for _, k := range keys { fmt.</description>
-    </item>
-    
-    <item>
-      <title>Split a string using regexp delimiter</title>
-      <link>https://yourbasic.org/golang/regexp-split-string/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/regexp-split-string/</guid>
-      <description>Use the Split method to slice a string into substrings separated by the regexp. It returns a slice of the substrings between those expression matches. A return value of nil indicates no match.
-The method takes an integer argument n; if n &amp;gt;= 0, the function returns at most n matches.
-a := regexp.MustCompile(`a`) fmt.Printf(&#34;%q\n&#34;, a.Split(&#34;banana&#34;, -1)) // [&#34;b&#34; &#34;n&#34; &#34;n&#34; &#34;&#34;] fmt.Printf(&#34;%q\n&#34;, a.Split(&#34;banana&#34;, 0)) // [] (nil slice) fmt.Printf(&#34;%q\n&#34;, a.</description>
     </item>
     
     <item>
