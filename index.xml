@@ -527,7 +527,7 @@ str := &#34;123&#34; n, err := strconv.ParseInt(str, 10, 64) if err == nil { fmt
     </item>
     
     <item>
-      <title>Convert string to/from byte slice</title>
+      <title>Convert string ↔️ byte slice</title>
       <link>https://yourbasic.org/golang/convert-string-to-byte-slice/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -538,7 +538,7 @@ b := []byte{&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;\xe6&#39;, &#39;\x97&#39
     </item>
     
     <item>
-      <title>Convert string to/from rune slice</title>
+      <title>Convert string ↔️ rune slice</title>
       <link>https://yourbasic.org/golang/convert-string-to-rune-slice/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
