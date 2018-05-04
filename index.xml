@@ -1409,7 +1409,7 @@ var m map[string]int // m == nil, len(m) == 0 m1 := make(map[string]float64) // 
       
       <guid>https://yourbasic.org/golang/max-min-int-uint/</guid>
       <description>Go has two predeclared integer types with implementation-specific sizes:
- a uint has either 32 or 64 bits, an int has the same size as a uint.  This code computes the limit values as untyped constants.
+ a uint (unsigned integer) has either 32 or 64&amp;nbsp;bits, an int (signed integer) has the same size as a&amp;nbsp;uint.  This code computes the limit values as untyped constants.
 const BitsPerWord = 32  63) // either 32 or 64 const ( MaxInt = 1&amp;lt;&amp;lt;(BitsPerWord-1) - 1 // either 1MinInt = -MaxInt - 1 // either -1 MaxUint = 1&amp;lt;&amp;lt;BitsPerWord - 1 // either 1) </description>
     </item>
     
