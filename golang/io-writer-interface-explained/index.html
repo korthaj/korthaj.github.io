@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The io.Writer interface - yourbasic.org/golang </title>
-  <meta name="description" content="How to write byte streams in Go.">
+  <title>How to use the io.Writer interface - yourbasic.org/golang </title>
+  <meta name="description" content="CODE EXAMPLE An io.Writer is an entity to which you can write a stream of bytes. The standard library contains many Writers, and Writers are accepted as input by many utilities.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -38,9 +38,17 @@
 
 <main>
 <article>
-<h1>The io.Writer interface</h1>
+<h1>How to use the io.Writer interface</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
+
+<ul class="toc">
+  <li><a href="#basics">Basics</a></li>
+  <li><a href="#use-a-built-in-writer">Use a built-in writer</a></li>
+  <li><a href="#optimize-string-writes">Optimize string writes</a></li>
+</ul>
+
+<h2 id="basics">Basics</h2>
 
 <p>The <a href="https://golang.org/pkg/io/#Writer"><code>io.Writer</code></a> interface represents an entity
 to which you can write a stream of&nbsp;bytes.</p>
@@ -54,12 +62,12 @@ to which you can write a stream of&nbsp;bytes.</p>
 it returns the number of bytes written and any error encountered that caused
 the write to stop&nbsp;early.</p>
 
-<h2 id="example">Example</h2>
-
 <p>The standard library provides many Writer <a href="https://golang.org/search?q=Write#Global">implementations</a>,
 and Writers are accepted as input by many utilities.</p>
 
-<p>For example, since <a href="https://golang.org/pkg/bytes/#Buffer"><code>bytes.Buffer</code></a>
+<h2 id="use-a-built-in-writer">Use a built-in writer</h2>
+
+<p>Since <a href="https://golang.org/pkg/bytes/#Buffer"><code>bytes.Buffer</code></a>
 has a <code>Write</code> method you can write directly into the buffer using
 <a href="https://golang.org/pkg/fmt/#Fprintf"><code>fmt.Fprintf</code></a>.</p>
 
@@ -67,7 +75,7 @@ has a <code>Write</code> method you can write directly into the buffer using
 fmt.Fprintf(&buf, "Size: %d MB.", 85)
 s := buf.String()) <span class="comment">// s == "Size: 85 MB."</span></code></pre>
 
-<h2 id="optimizing-string-writes">Optimizing string writes</h2>
+<h2 id="optimize-string-writes">Optimize string writes</h2>
 
 <p>Some Writers in the standard library have an additional <code>WriteString</code> method.
 This method can be more efficient than the standard <code>Write</code> method
@@ -82,6 +90,12 @@ since it writes a string directly without allocating a byte&nbsp;slice.</p>
 <p>If <code>w</code> implements a <code>WriteString</code> method, it is invoked directly.
 Otherwise, <code>w.Write</code> is called exactly&nbsp;once.</p>
 
+<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fio-writer-interface-explained%2f&amp;text=How%20to%20use%20the%20io.Writer%20interface&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fio-writer-interface-explained%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fio-writer-interface-explained%2f&amp;title=How%20to%20use%20the%20io.Writer%20interface" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=How%20to%20use%20the%20io.Writer%20interface&body=https%3a%2f%2fyourbasic.org%2fgolang%2fio-writer-interface-explained%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+
 
 </article>
 <aside>
@@ -90,8 +104,8 @@ Otherwise, <code>w.Write</code> is called exactly&nbsp;once.</p>
   <h2>Related</h2>
 
   <div class="reference">
-    <a href="/golang/io-reader-interface-explained/">The io.Reader interface</a>
-    <div class="desc">How to read byte streams in Go.</div>
+    <a href="/golang/io-reader-interface-explained/">How to use the io.Reader interface</a>
+    <div class="desc">An io.Reader is an entity from which you can read a stream of bytes. The standard library has many Reader implementations, including in-memory byte buffers, files and network connections. Readers are accepted as input by many utilities such as HTTP clients and server implementations.</div>
     <div class="source">yourbasic.org</div>
   </div>
 

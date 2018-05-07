@@ -1065,6 +1065,28 @@ copy(dst []byte, src string) int  Examples Copy from one slice to another:</desc
     </item>
     
     <item>
+      <title>How to use the io.Reader interface</title>
+      <link>https://yourbasic.org/golang/io-reader-interface-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/io-reader-interface-explained/</guid>
+      <description>Basics Use a built-in reader Read directly from a byte stream Buffered reading and scanning  Basics The io.Reader interface represents an entity from which you can read a stream of&amp;nbsp;bytes.
+type Reader interface { Read(buf []byte) (n int, err error) }  Read reads up to len(buf) bytes into buf and returns the number of bytes read &amp;ndash; it returns an io.EOF error when the stream&amp;nbsp;ends.
+The standard library provides numerous Reader implementations (including in-memory byte buffers, files and network connections), and Readers are accepted as input by many utilities (including the HTTP client and server implementations).</description>
+    </item>
+    
+    <item>
+      <title>How to use the io.Writer interface</title>
+      <link>https://yourbasic.org/golang/io-writer-interface-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/io-writer-interface-explained/</guid>
+      <description>Basics Use a built-in writer Optimize string writes  Basics The io.Writer interface represents an entity to which you can write a stream of&amp;nbsp;bytes.
+type Writer interface { Write(p []byte) (n int, err error) }  Write writes up to len(p) bytes from p to the underlying data stream &amp;ndash; it returns the number of bytes written and any error encountered that caused the write to stop&amp;nbsp;early.
+The standard library provides many Writer implementations, and Writers are accepted as input by many utilities.</description>
+    </item>
+    
+    <item>
       <title>How to write a log message to file</title>
       <link>https://yourbasic.org/golang/log-to-file/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1799,28 +1821,6 @@ Sort a slice of ints, float64s or strings Use one of the functions
       <description>The empty interface in Go corresponds to a void pointer in&amp;nbsp;C or an Object reference in&amp;nbsp;Java. It specifies zero&amp;nbsp;methods.
 interface{}  A variable of empty interface type can hold values of any type since every type implements at least&amp;nbsp;zero methods.
 var a interface{} a = 24 fmt.Printf(&amp;quot;[%v, %T]\n&amp;quot;, a, a) // &amp;quot;[24, int]&amp;quot; a = &amp;amp;Point{1, 2} fmt.Printf(&amp;quot;[%v, %T]\n&amp;quot;, a, a) // &amp;quot;[(1,2), *main.Point]&amp;quot;  The fmt.Println function is a chief example from the standard library.</description>
-    </item>
-    
-    <item>
-      <title>The io.Reader interface</title>
-      <link>https://yourbasic.org/golang/io-reader-interface-explained/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/io-reader-interface-explained/</guid>
-      <description>The io.Reader interface represents an entity from which you can read a stream of bytes.
-type Reader interface { Read(buf []byte) (n int, err error) }  Read reads up to len(buf) bytes into buf and returns the number of bytes read &amp;ndash; it returns an io.EOF error when the stream ends.
-Example The standard library provides numerous Reader implementations (including in-memory byte buffers, files and network connections), and Readers are accepted as input by many utilities (including the HTTP client and server implementations).</description>
-    </item>
-    
-    <item>
-      <title>The io.Writer interface</title>
-      <link>https://yourbasic.org/golang/io-writer-interface-explained/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/io-writer-interface-explained/</guid>
-      <description>The io.Writer interface represents an entity to which you can write a stream of&amp;nbsp;bytes.
-type Writer interface { Write(p []byte) (n int, err error) }  Write writes up to len(p) bytes from p to the underlying data stream &amp;ndash; it returns the number of bytes written and any error encountered that caused the write to stop&amp;nbsp;early.
-Example The standard library provides many Writer implementations, and Writers are accepted as input by many utilities.</description>
     </item>
     
     <item>
