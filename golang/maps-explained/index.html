@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maps in a nutshell - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE A map is an unordered collection of key-value pairs, where each key is unique: zero value, make, map literal, size, add, find, delete, iterate.">
+  <meta name="description" content="CODE EXAMPLE A map is an unordered collection of key-value pairs: make, literals, default zero value, size, add, find, delete, and iterate.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/Schlagwortkatalog.jpg"
    ],
   "datePublished": "2018-03-28T00:00:00&#43;0000",
-  "dateModified": "2018-04-14T00:00:00&#43;0000",
+  "dateModified": "2018-05-10T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "CODE EXAMPLE A map is an unordered collection of key-value pairs, where each key is unique: zero value, make, map literal, size, add, find, delete, iterate."
+  "description": "CODE EXAMPLE A map is an unordered collection of key-value pairs: make, literals, default zero value, size, add, find, delete, and iterate."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Maps in a nutshell">
-<meta property="og:description" content="CODE EXAMPLE A map is an unordered collection of key-value pairs, where each key is unique: zero value, make, map literal, size, add, find, delete, iterate.">
+<meta property="og:description" content="CODE EXAMPLE A map is an unordered collection of key-value pairs: make, literals, default zero value, size, add, find, delete, and iterate.">
 <meta property="og:url" content="https://yourbasic.org/golang/maps-explained/">
 <meta property="og:image" content="https://yourbasic.org/golang/Schlagwortkatalog.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Maps in a nutshell">
-<meta name="twitter:description" content="CODE EXAMPLE A map is an unordered collection of key-value pairs, where each key is unique: zero value, make, map literal, size, add, find, delete, iterate.">
+<meta name="twitter:description" content="CODE EXAMPLE A map is an unordered collection of key-value pairs: make, literals, default zero value, size, add, find, delete, and iterate.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/Schlagwortkatalog.jpg">
 
@@ -94,8 +94,8 @@
 <ul class="toc">
   <li><a href="#basics">Basics</a></li>
   <li><a href="#add-find-and-delete">Add, find and delete</a></li>
-  <li><a href="#iteration">Iteratation</a></li>
-  <li><a href="#implementation">Implementation</a></li>
+  <li><a href="#iterate">Iterate</a></li>
+  <li><a href="#implementation-details">Implementation details</a></li>
 </ul>
 
 <h2 id="basics">Basics</h2>
@@ -143,7 +143,7 @@ if x, ok := m["pi"]; ok { <span class="comment">// Prints 3.1416.</span>
 delete(m, "pi") <span class="comment">// <b>Delete a key-value pair.</b></span>
 fmt.Println(m)  <span class="comment">// map[]</span></code></pre>
 
-<h2 id="iteration">Iteration</h2>
+<h2 id="iterate">Iterate</h2>
 
 <pre><code>m := map[string]float64{
     "e":  2.71828,
@@ -161,7 +161,7 @@ the corresponding iteration value will not be&nbsp;produced.</li>
 that entry may or may not be produced during the&nbsp;iteration.</li>
 </ul>
 
-<h2 id="implementation">Implementation</h2>
+<h2 id="implementation-details">Implementation details</h2>
 
 <ul>
 <li>Maps are backed by <a href="/algorithms/hash-tables-explained/">hash tables</a>.</li>

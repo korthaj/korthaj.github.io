@@ -1421,7 +1421,7 @@ select {} // block forever </description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/maps-explained/</guid>
-      <description>Basics Add, find and delete Iteratation Implementation  Basics A map is an unordered collection of key-value pairs, where each key is&amp;nbsp;unique.
+      <description>Basics Add, find and delete Iterate Implementation details  Basics A map is an unordered collection of key-value pairs, where each key is&amp;nbsp;unique.
 var m map[string]int // m == nil, len(m) == 0 m1 := make(map[string]float64) // empty map of string-float64 pairs m2 := make(map[string]float64, 100) // preallocate room for 100 entries m3 := map[string]float64{ &#34;e&#34;: 2.71828, &#34;pi&#34;: 3.1416, } fmt.Println(len(m1), len(m2), len(m3)) // 0 0 2   The default zero value of a map is nil.</description>
     </item>
     
