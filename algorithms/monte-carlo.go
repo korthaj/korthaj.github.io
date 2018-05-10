@@ -4,7 +4,7 @@
 	Monte Carlo simulations are a broad class of algorithms that
 	use repeated random sampling to obtain numerical results.
 
-	Source: https://yourbasic.org/algorithms/monte-carlo/
+	Source: https://yourbasic.org/algorithms/las-vegas/
 */
 package main
 
