@@ -117,14 +117,14 @@ Induction is a proof method often used to prove statements about integers. We&am
     </item>
     
     <item>
-      <title>Las Vegas algorithms</title>
+      <title>Las Vegas vs. Monte Carlo algorithms</title>
       <link>https://yourbasic.org/algorithms/las-vegas/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/algorithms/las-vegas/</guid>
-      <description>A Las Vegas algo&amp;shy;rithm is a rando&amp;shy;mized algo&amp;shy;rithm that always gives the correct result but gambles with resources.
-Example It&amp;rsquo;s easy and convenient to compute a random point in a circle with a Las Vegas algorithm.
-The idea is to first generate a point (x,&amp;nbsp;y), with -1&amp;nbsp;&amp;lt;&amp;nbsp;x&amp;nbsp;&amp;lt;&amp;nbsp;1 and -1&amp;nbsp;&amp;lt;&amp;nbsp;y&amp;nbsp;&amp;lt;&amp;nbsp;1. If this point happens to fall within the unit circle we keep it, otherwise we throw it away and try&amp;nbsp;again.</description>
+      <description>Zener cards A Las Vegas algorithm is a randomized algorithm that always gives the correct result but gambles with resources.
+Monte Carlo simulations are a broad class of algorithms that use repeated random sampling to obtain numerical results.
+ Monte Carlo simulations are typically used to simulate the behaviour of other systems. Monte Carlo algorithms, on the other hand, are randomized algorithms whose output may be incorrect with a certain, typically small, probability.</description>
     </item>
     
     <item>
@@ -136,15 +136,6 @@ The idea is to first generate a point (x,&amp;nbsp;y), with -1&amp;nbsp;&amp;lt;
       <description>An invariant is a state&amp;shy;ment about the vari&amp;shy;ables in a program, which is true every time the execu&amp;shy;tion of the program reaches the&amp;nbsp;invariant.
  Basic example Designing with invariants Trickier example 3-way partition  When struggling with a tricky 3-way partion algorithm as a student, a friend suggested a well-fitting invariant. It was like getting a secret superpower: suddenly I could write code that used to be impossible.
 In this text we&amp;rsquo;ll look at loop invariants, invariants placed at the beginning of a loop.</description>
-    </item>
-    
-    <item>
-      <title>Monte Carlo simulations</title>
-      <link>https://yourbasic.org/algorithms/monte-carlo/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/algorithms/monte-carlo/</guid>
-      <description>Monte Carlo simulations are a broad class of algorithms that use repeated random sampling to obtain numerical results.  Monte Carlo simulations are typically used to simulate the behaviour of other systems. Monte Carlo algorithms, on the other hand, are randomized algorithms whose output may be incorrect with a certain, typically small, probability.  Example If points (x,&amp;nbsp;y), with -1&amp;nbsp;&amp;lt;&amp;nbsp;x&amp;nbsp;&amp;lt;&amp;nbsp;1 and -1&amp;nbsp;&amp;lt;&amp;nbsp;y&amp;nbsp;&amp;lt;&amp;nbsp;1, are placed randomly, the ratio of points that fall within the unit circle will be close to&amp;nbsp;π/4.</description>
     </item>
     
     <item>

@@ -1338,14 +1338,14 @@ There is a data race: the variable i is shared by six&amp;nbsp;(6) goroutines.
     </item>
     
     <item>
-      <title>Las Vegas algorithms</title>
+      <title>Las Vegas vs. Monte Carlo algorithms</title>
       <link>https://yourbasic.org/algorithms/las-vegas/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/algorithms/las-vegas/</guid>
-      <description>A Las Vegas algo&amp;shy;rithm is a rando&amp;shy;mized algo&amp;shy;rithm that always gives the correct result but gambles with resources.
-Example It&amp;rsquo;s easy and convenient to compute a random point in a circle with a Las Vegas algorithm.
-The idea is to first generate a point (x,&amp;nbsp;y), with -1&amp;nbsp;&amp;lt;&amp;nbsp;x&amp;nbsp;&amp;lt;&amp;nbsp;1 and -1&amp;nbsp;&amp;lt;&amp;nbsp;y&amp;nbsp;&amp;lt;&amp;nbsp;1. If this point happens to fall within the unit circle we keep it, otherwise we throw it away and try&amp;nbsp;again.</description>
+      <description>Zener cards A Las Vegas algorithm is a randomized algorithm that always gives the correct result but gambles with resources.
+Monte Carlo simulations are a broad class of algorithms that use repeated random sampling to obtain numerical results.
+ Monte Carlo simulations are typically used to simulate the behaviour of other systems. Monte Carlo algorithms, on the other hand, are randomized algorithms whose output may be incorrect with a certain, typically small, probability.</description>
     </item>
     
     <item>
@@ -1455,15 +1455,6 @@ func foo() { defer duration(track(&#34;foo&#34;)) // Code to measure } func trac
       <description>Any type declared in a type definition can have methods attached.
  A method is a function with a receiver&amp;nbsp;argument. The receiver appears between the func keyword and the method&amp;nbsp;name. You can define methods on any type declared in a type definition.  In this example, the Value method is associated with&amp;nbsp;MyType. The method receiver is called&amp;nbsp;p.
 type MyType struct { n int } func (p *MyType) Value() int { return p.</description>
-    </item>
-    
-    <item>
-      <title>Monte Carlo simulations</title>
-      <link>https://yourbasic.org/algorithms/monte-carlo/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/algorithms/monte-carlo/</guid>
-      <description>Monte Carlo simulations are a broad class of algorithms that use repeated random sampling to obtain numerical results.  Monte Carlo simulations are typically used to simulate the behaviour of other systems. Monte Carlo algorithms, on the other hand, are randomized algorithms whose output may be incorrect with a certain, typically small, probability.  Example If points (x,&amp;nbsp;y), with -1&amp;nbsp;&amp;lt;&amp;nbsp;x&amp;nbsp;&amp;lt;&amp;nbsp;1 and -1&amp;nbsp;&amp;lt;&amp;nbsp;y&amp;nbsp;&amp;lt;&amp;nbsp;1, are placed randomly, the ratio of points that fall within the unit circle will be close to&amp;nbsp;π/4.</description>
     </item>
     
     <item>
