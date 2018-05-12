@@ -311,10 +311,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/generate-uuid-guid/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/golang/generate-random-character/</loc>
   </url>
   
@@ -408,6 +404,10 @@
   
   <url>
     <loc>https://yourbasic.org/golang/day-of-week-int/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/generate-uuid-guid/</loc>
   </url>
   
   <url>

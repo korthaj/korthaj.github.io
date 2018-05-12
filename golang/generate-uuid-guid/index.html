@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Generate a random UUID (GUID) - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE How to generate a universally unique identifier (UUID, GUID) in Go.">
+  <title>How to generate a random UUID/GUID - yourbasic.org/golang </title>
+  <meta name="description" content="CODE EXAMPLE You can use the rand.Read function from package crypto/rand to generate a universally unique identifier.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -38,7 +38,7 @@
 
 <main>
 <article>
-<h1>Generate a random UUID (GUID)</h1>
+<h1>How to generate a random UUID/GUID</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
@@ -47,18 +47,33 @@
 <pre><code>b := make([]byte, 16)
 _, err := rand.Read(b)
 if err != nil {
-	log.Fatal(err)
+    log.Fatal(err)
 }
-uuid := fmt.Sprintf(&quot;%x-%x-%x-%x-%x&quot;,
-	b[0:4], b[4:6], b[6:8], b[8:10], b[10:])
+uuid := fmt.Sprintf("%x-%x-%x-%x-%x",
+    b[0:4], b[4:6], b[6:8], b[8:10], b[10:])
+fmt.Println(uuid)
 </code></pre>
+
+<pre>46c6b063-c738-7fef-bc95-b31a13ca7989
+</pre>
 
 <h3 id="limitations">Limitations</h3>
 
 <p>This UUID doesn&rsquo;t conform to <a href="https://tools.ietf.org/html/rfc4122">RFC 4122</a>.
 In particular, it doesn&rsquo;t contain any version or variant numbers.</p>
 
-<p>The <code>rand.Read</code> call returns an error if the underlying system call fails. For instance if the runtime can&rsquo;t read <code>/dev/urandom</code> on a Unix system or if <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa379886(v=vs.85).aspx"><code>CryptAcquireContext</code></a> fails on a Windows system.</p>
+<blockquote class="warning">
+<b>Warning:</b> The <code>rand.Read</code> call returns an error if the underlying system call fails.
+For instance if it can't read <code>/dev/urandom</code> on a Unix system,
+or if <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa379886(v=vs.85).aspx"><code>CryptAcquireContext</code></a>
+fails on a Windows system.
+</blockquote>
+
+<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fgenerate-uuid-guid%2f&amp;text=How%20to%20generate%20a%20random%20UUID/GUID&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fgenerate-uuid-guid%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fgenerate-uuid-guid%2f&amp;title=How%20to%20generate%20a%20random%20UUID/GUID" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=How%20to%20generate%20a%20random%20UUID/GUID&body=https%3a%2f%2fyourbasic.org%2fgolang%2fgenerate-uuid-guid%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
