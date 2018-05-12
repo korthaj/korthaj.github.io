@@ -1999,7 +1999,7 @@ var a interface{} a = 24 fmt.Printf(&amp;quot;[%v, %T]\n&amp;quot;, a, a) // &am
     </item>
     
     <item>
-      <title>Time complexity of recursive functions</title>
+      <title>Time complexity of recursive functions [Master theorem]</title>
       <link>https://yourbasic.org/algorithms/time-complexity-recursive-functions/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
