@@ -649,7 +649,7 @@ Slow version (maintains order) a := []string{&#34;</description>
       
       <guid>https://yourbasic.org/golang/do-while-loop/</guid>
       <description>There is no do-while loop in Go. To emulate the C/Java code
-do { work(); } while (condition); you may use one of these alternatives:
+do { work(); } while (condition); you may use one of these two alternatives:
 for ok := true; ok; ok = condition { work() } for { work() if !condition { break } } Further reading  For loops in a&amp;nbsp;nutshell</description>
     </item>
     
