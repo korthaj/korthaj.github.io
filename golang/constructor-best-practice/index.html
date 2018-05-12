@@ -22,6 +22,50 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/golang/constructor-best-practice/"
+  },
+  "headline": "Constructors deconstructed",
+  "image": [
+    "https://yourbasic.org/golang/factory-conveyor-belt.jpg"
+   ],
+  "datePublished": "2018-05-12T00:00:00&#43;0000",
+  "dateModified": "2018-05-12T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "CODE EXAMPLE Best practice in Go is to use suitable zero values and factories instead of constructors."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Constructors deconstructed">
+<meta property="og:description" content="CODE EXAMPLE Best practice in Go is to use suitable zero values and factories instead of constructors.">
+<meta property="og:url" content="https://yourbasic.org/golang/constructor-best-practice/">
+<meta property="og:image" content="https://yourbasic.org/golang/factory-conveyor-belt.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Constructors deconstructed">
+<meta name="twitter:description" content="CODE EXAMPLE Best practice in Go is to use suitable zero values and factories instead of constructors.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="https://yourbasic.org/golang/factory-conveyor-belt.jpg">
+
+
 </head>
 
 <body>
@@ -61,22 +105,28 @@ type StopWatch struct {
     start   time.Time
     total   time.Duration
     running bool
-}</code></pre>
+}
+
+var clock StopWatch <span class="comment">// Ready to use, no initialization needed.</span></code></pre>
 
 <ul>
 <li><code>StopWatch</code> takes advantage of the useful zero values of <code>time.Time</code>, <code>time.Duration</code> and <code>bool</code>.</li>
-<li>In turn, users of <code>StopWatch</code> can benefit from <em>its</em> useful zero value.</li>
+<li>In turn, users of <code>StopWatch</code> can benefit from <em>its</em> useful zero&nbsp;value.</li>
 </ul>
-
-<pre><code>var clock StopWatch <span class="comment">// Ready to use, no initialization needed.</span></code></pre>
 
 <h2 id="factory">Factory</h2>
 
 <p>If the zero value doesn&rsquo;t suffice,
-use factory functions named <code>NewFoo</code> or just <code>New</code>.</p>
+use factory functions named <code>NewFoo</code> or just&nbsp;<code>New</code>.</p>
 
 <pre><code>scanner := bufio.NewScanner(os.Stdin)
 err := errors.New("Houston, we have a problem")</code></pre>
+
+<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fconstructor-best-practice%2f&amp;text=Constructors%20deconstructed&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fconstructor-best-practice%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fconstructor-best-practice%2f&amp;title=Constructors%20deconstructed" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Constructors%20deconstructed&body=https%3a%2f%2fyourbasic.org%2fgolang%2fconstructor-best-practice%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
