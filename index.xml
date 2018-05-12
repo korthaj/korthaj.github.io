@@ -473,16 +473,6 @@ func ByteCountDecimal(b int64) string { const unit = 1000 if b = unit; n /= unit
     </item>
     
     <item>
-      <title>Convert float to string</title>
-      <link>https://yourbasic.org/golang/convert-float-to-string/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/convert-float-to-string/</guid>
-      <description>Use the fmt.Sprintf method to convert a floating-point number to a string.
-s := fmt.Sprintf(&#34;%f&#34;, 123.456) // s == &#34;123.456000&#34;   Formatting Description Verb     1.234560e+02 Scientific notation %e   123.456000 Decimal point, no exponent %f   123.46 Default width, precision 2 %.2f   ␣␣123.46 Width 8, precision 2 %8.2f   123.456 Exponent as needed, necessary digits only %g    Further reading  fmt cheat sheet</description>
-    </item>
-    
-    <item>
       <title>Convert int/int64 to string</title>
       <link>https://yourbasic.org/golang/convert-int-to-string/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -505,17 +495,6 @@ var x interface{} = []int{1, 2, 3} str := fmt.Sprintf(&#34;%v&#34;, x) fmt.Print
     </item>
     
     <item>
-      <title>Convert string to float</title>
-      <link>https://yourbasic.org/golang/convert-string-to-float/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/convert-string-to-float/</guid>
-      <description>Use the strconv.ParseFloat function to convert a string to a floating-point number with the precision specified by bitSize: 32 for float32, or 64 for float64.
-func ParseFloat(s string, bitSize int) (float64, error) When bitSize is 32, the result still has type float64, but it will be convertible to float32 without changing its&amp;nbsp;value.
-f := &#34;3.14159265&#34; if s, err := strconv.ParseFloat(f, 32); err == nil { fmt.Println(s) // 3.1415927410125732 } if s, err := strconv.</description>
-    </item>
-    
-    <item>
       <title>Convert string to int/int64</title>
       <link>https://yourbasic.org/golang/convert-string-to-int/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -535,6 +514,15 @@ str := &#34;123&#34; n, err := strconv.ParseInt(str, 10, 64) if err == nil { fmt
       <description>String to byte slice When you convert a string to a byte slice, you get a slice that contains the bytes of the string.
 fmt.Println([]byte(&#34;abc日&#34;)) // [97 98 99 230 151 165] Byte slice to string Converting a slice of bytes to a string yields a string whose bytes are the elements of the&amp;nbsp;slice.
 b := []byte{&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;\xe6&#39;, &#39;\x97&#39;, &#39;\xa5&#39;} s := string(b) fmt.Println(s) // Output: abc日 Further reading  String functions cheat sheet</description>
+    </item>
+    
+    <item>
+      <title>Convert string to/from float</title>
+      <link>https://yourbasic.org/golang/convert-string-to-float/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/convert-string-to-float/</guid>
+      <description>3.141592653589793238462643383279 5028841971693993751058209749445923 07816406286208998628034825342117067 9821 48086 5132 823 06647 09384 46 09550 58223 17 25359 4081 2848 1117 4502 8410 2701 9385 21105 55964 46229 48954 9303 81964 4288 10975 66593 34461 284756 48233 78678 31652 71 2019091 456485 66 9234603 48610454326648 2133936 0726024914127 3724587 00660631558 817488 152092096  String to float Use the strconv.ParseFloat function to convert a string to a floating-point number with the precision specified by bitSize: 32 for float32, or 64 for float64.</description>
     </item>
     
     <item>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Convert string to float - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE How to convert/parse a string to a floating-point number in Go.">
+  <title>Convert string to/from float - yourbasic.org/golang </title>
+  <meta name="description" content="CODE EXAMPLE Use strconv.ParseFloat to parse a floating point number from a string, and fmt.Sprintf to convert a float to a string.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -22,6 +22,50 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/golang/convert-string-to-float/"
+  },
+  "headline": "Convert string to/from float",
+  "image": [
+    "https://yourbasic.org/golang/pi.png"
+   ],
+  "datePublished": "2018-05-12T00:00:00&#43;0000",
+  "dateModified": "2018-05-12T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "CODE EXAMPLE Use strconv.ParseFloat to parse a floating point number from a string, and fmt.Sprintf to convert a float to a string."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Convert string to/from float">
+<meta property="og:description" content="CODE EXAMPLE Use strconv.ParseFloat to parse a floating point number from a string, and fmt.Sprintf to convert a float to a string.">
+<meta property="og:url" content="https://yourbasic.org/golang/convert-string-to-float/">
+<meta property="og:image" content="https://yourbasic.org/golang/pi.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Convert string to/from float">
+<meta name="twitter:description" content="CODE EXAMPLE Use strconv.ParseFloat to parse a floating point number from a string, and fmt.Sprintf to convert a float to a string.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="https://yourbasic.org/golang/pi.png">
+
+
 </head>
 
 <body>
@@ -38,8 +82,39 @@
 
 <main>
 <article>
-<h1>Convert string to float</h1>
+<h1>Convert string to/from float</h1>
 <div class="tagline">yourbasic.org/golang</div>
+
+
+<!-- CC BY 2.0: https://www.flickr.com/photos/jorel314/3352784321 -->
+
+<pre style="font-size:50%;line-height:1em;border:0;">
+     3.141592653589793238462643383279
+   5028841971693993751058209749445923
+  07816406286208998628034825342117067
+  9821    48086         5132
+ 823      06647        09384
+46        09550        58223
+17        25359        4081
+          2848         1117
+          4502         8410
+          2701         9385
+         21105        55964
+         46229        48954
+         9303         81964
+         4288         10975
+        66593         34461
+       284756         48233
+       78678          31652        71
+      2019091         456485       66
+     9234603           48610454326648
+    2133936            0726024914127
+    3724587             00660631558
+    817488               152092096
+</pre>
+
+<h2 id="string-to-float">String to float</h2>
+
 <p>Use the <a href="https://golang.org/pkg/strconv/#ParseFloat"><code>strconv.ParseFloat</code></a> function to convert a string
 to a floating-point number with the precision specified by <code>bitSize</code>:
 32 for <code>float32</code>, or 64 for <code>float64</code>.</p>
@@ -58,25 +133,64 @@ if s, err := strconv.ParseFloat(f, 64); err == nil {
 }
 </code></pre>
 
+<h2 id="float-to-string">Float to string</h2>
+
+<p>Use the <a href="https://golang.org/pkg/fmt/#Sprintf"><code>fmt.Sprintf</code></a> method to convert a floating-point number to a string.</p>
+
+<pre><code>s := fmt.Sprintf("%f", 123.456) <span class="comment">// s == "123.456000"</span></code></pre>
+
+<table class="white">
+  <thead>
+    <tr>
+      <th>Formatting</th>
+      <th>Description</th>
+      <th>Verb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1.234560e+02</td>
+      <td>Scientific notation</td>
+      <td><code>%e</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;">123.456000</td>
+      <td style="border-bottom: 0;">Decimal point, no exponent</td>
+      <td style="border-bottom: 0;"><code>%f</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;">123.46</td>
+      <td style="border-bottom: 0; padding-top: 0;">Default width, precision 2</td>
+      <td style="border-bottom: 0; padding-top: 0;"><code>%.2f</code></td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;">␣␣123.46</td>
+      <td style="padding-top: 0;">Width 8, precision 2</td>
+      <td style="padding-top: 0;"><code>%8.2f</code></td>
+    </tr>
+    <tr>
+      <td>123.456</td>
+      <td>Exponent as needed, necessary digits only</td>
+      <td><code>%g</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="fmt-cheat-sheet">Fmt cheat sheet</h3>
+
+<div><a href="/golang/fmt-printf-reference-cheat-sheet/"><img src="/golang/format-thumb.jpg" title="How to print with fmt"></a></div>
+
+<p style="margin-top:0; margin-bottom:2em;"><a href="/golang/fmt-printf-reference-cheat-sheet/">How to print with fmt</a></p>
+
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fconvert-string-to-float%2f&amp;text=Convert%20string%20to%20float&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fconvert-string-to-float%2f&amp;text=Convert%20string%20to/from%20float&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fconvert-string-to-float%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fconvert-string-to-float%2f&amp;title=Convert%20string%20to%20float" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Convert%20string%20to%20float&body=https%3a%2f%2fyourbasic.org%2fgolang%2fconvert-string-to-float%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fconvert-string-to-float%2f&amp;title=Convert%20string%20to/from%20float" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Convert%20string%20to/from%20float&body=https%3a%2f%2fyourbasic.org%2fgolang%2fconvert-string-to-float%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
 <aside>
-
-    
-  <h2>Related</h2>
-
-  <div class="reference">
-    <a href="/golang/convert-float-to-string/">Convert float to string</a>
-    <div class="desc">How to convert a floating-point number to a string in Go.</div>
-    <div class="source">yourbasic.org</div>
-  </div>
-
   <h2>Follow on Twitter</h2>
   <ul class="none">
     <li><span><a href="https://twitter.com/yourbasic_org">
@@ -100,7 +214,7 @@ if s, err := strconv.ParseFloat(f, 64); err == nil {
 
   </ul>
   
-  <p><a href="/golang/"><strong>See all 191 Go articles</strong></a></p>
+  <p><a href="/golang/"><strong>See all 190 Go articles</strong></a></p>
 
 </aside>
 </main>
