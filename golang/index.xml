@@ -735,24 +735,13 @@ Warning: The rand.Read call returns an error if the underlying system call fails
     </item>
     
     <item>
-      <title>Generate a random character/rune</title>
-      <link>https://yourbasic.org/golang/generate-random-character/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/generate-random-character/</guid>
-      <description>Between &amp;#39;a&amp;#39; and &amp;#39;z&amp;#39; Use the rand.Intn function in package math/rand.
-rand.Seed(time.Now().UnixNano()) c := &#39;a&#39; + rand.Intn(26)  From arbitrary set chars := []rune(&amp;quot;ab⌘&amp;quot;) c := chars[rand.Intn(len(chars))]  Warning: Without the call to rand.Seed you will get the same sequence of pseudo&amp;shy;random numbers each time you run the program.  Further reading  What’s a seed: Random number generators
- Type rune: a Unicode code point</description>
-    </item>
-    
-    <item>
-      <title>Generate a random number in a given range</title>
+      <title>Generate a random number/character in a given range</title>
       <link>https://yourbasic.org/golang/generate-number-random-range/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/generate-number-random-range/</guid>
-      <description>Use the rand.Seed and rand.Intn functions in package math/rand to generate a random number between a and b.
-rand.Seed(time.Now().UnixNano()) n := a + rand.Intn(b-a+1)  Warning: Without the call to rand.Seed you will get the same sequence of pseudo&amp;shy;random numbers each time you run the program.  Further reading  What’s a seed: Random number generators</description>
+      <description>Use the rand.Seed and rand.Intn functions in package math/rand to generate a random number.
+Warning: Without an initial call to rand.Seed, you will get the same sequence of pseudo&amp;shy;random numbers each time you run the program.  Integer between a and b rand.Seed(time.Now().UnixNano()) n := a + rand.Intn(b-a+1)  Character between &amp;#39;a&amp;#39; and &amp;#39;z&amp;#39; c := &#39;a&#39; + rune(rand.Intn(&#39;z&#39;-&#39;a&#39;+1))  Character from arbitrary set chars := []rune(&amp;quot;ab⌘&amp;quot;) c := chars[rand.</description>
     </item>
     
     <item>
