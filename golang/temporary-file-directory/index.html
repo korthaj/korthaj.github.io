@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Create a temporary file or directory - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE How to create a temporary file or directory in Go.">
+  <meta name="description" content="CODE EXAMPLE Use ioutil.TempFile to create a temporary file, and ioutio.TempDir to create a temporary directory.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -21,6 +21,50 @@
 
     gtag('config', 'UA-113104149-1');
   </script>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/golang/temporary-file-directory/"
+  },
+  "headline": "Create a temporary file or directory",
+  "image": [
+    "https://yourbasic.org/golang/temporary-mailbox.jpg"
+   ],
+  "datePublished": "2018-05-13T00:00:00&#43;0000",
+  "dateModified": "2018-05-13T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "CODE EXAMPLE Use ioutil.TempFile to create a temporary file, and ioutio.TempDir to create a temporary directory."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Create a temporary file or directory">
+<meta property="og:description" content="CODE EXAMPLE Use ioutil.TempFile to create a temporary file, and ioutio.TempDir to create a temporary directory.">
+<meta property="og:url" content="https://yourbasic.org/golang/temporary-file-directory/">
+<meta property="og:image" content="https://yourbasic.org/golang/temporary-mailbox.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Create a temporary file or directory">
+<meta name="twitter:description" content="CODE EXAMPLE Use ioutil.TempFile to create a temporary file, and ioutio.TempDir to create a temporary directory.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="https://yourbasic.org/golang/temporary-mailbox.jpg">
+
 
 </head>
 
@@ -41,6 +85,10 @@
 <h1>Create a temporary file or directory</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
+
+<!-- CC BY-SA 2.0: https://www.flickr.com/photos/cjscott69/858673111 -->
+
+<div style="margin-top:1em;"><img src="/golang/temporary-mailbox.jpg"></div>
 
 <h2 id="file">File</h2>
 
@@ -91,6 +139,12 @@ defer os.RemoveAll(dir)
 the default directory for temporary files,
 call <a href="https://golang.org/pkg/io/ioutil/#TempDir"><code>ioutil.TempDir</code></a>
 with an empty directory string.</p>
+
+<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2ftemporary-file-directory%2f&amp;text=Create%20a%20temporary%20file%20or%20directory&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2ftemporary-file-directory%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2ftemporary-file-directory%2f&amp;title=Create%20a%20temporary%20file%20or%20directory" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Create%20a%20temporary%20file%20or%20directory&body=https%3a%2f%2fyourbasic.org%2fgolang%2ftemporary-file-directory%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>

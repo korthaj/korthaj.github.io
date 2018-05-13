@@ -496,7 +496,7 @@ width := 200 height := 100 upLeft := image.Point{0, 0} lowRight := image.Point{w
       <guid>https://yourbasic.org/golang/temporary-file-directory/</guid>
       <description>File Use ioutil.TempFile in package io/ioutil to create a temporary file.
 file, err := ioutil.TempFile(&#34;dir&#34;, &#34;prefix&#34;) if err != nil { log.Fatal(err) } defer os.Remove(file.Name()) fmt.Println(file.Name()) // For example &#34;dir/prefix054003078&#34; The call to ioutil.TempFile
- creates a new file with a name starting with &amp;quot;prefix&amp;quot; in the directory &amp;quot;dir&amp;quot;, opens the file for reading and writing, and returns the new *os.File.  To put the new file in os.TempDir(), the default directory for temporary files, call ioutil.</description>
+ creates a new file with a name starting with &amp;quot;prefix&amp;quot; in the directory &amp;quot;dir&amp;quot;, opens the file for reading and writing, and returns the new *os.File.  To put the new file in os.</description>
     </item>
     
     <item>
