@@ -627,10 +627,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/read-stdin/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/golang/recover-from-panic/</loc>
   </url>
   

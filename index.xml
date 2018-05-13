@@ -1678,12 +1678,14 @@ Warning: Unexported identifiers is not a security measure and it does not hide o
     </item>
     
     <item>
-      <title>Read a file line by line</title>
+      <title>Read a file (stdin) line by line</title>
       <link>https://yourbasic.org/golang/read-file-line-by-line/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/read-file-line-by-line/</guid>
-      <description>file, err := os.Open(&#34;file.txt&#34;) if err != nil { log.Fatal(err) } defer file.Close() scanner := bufio.NewScanner(file) for scanner.Scan() { fmt.Println(scanner.Text()) } if err := scanner.Err(); err != nil { log.Fatal(err) }  For more advanced scanning, see the examples in the bufio.Scanner documentation.</description>
+      <description>From file Use a bufio.Scanner to read a file line by&amp;nbsp;line.
+file, err := os.Open(&#34;file.txt&#34;) if err != nil { log.Fatal(err) } defer file.Close() scanner := bufio.NewScanner(file) for scanner.Scan() { fmt.Println(scanner.Text()) } if err := scanner.Err(); err != nil { log.Fatal(err) }  From stdin Use os.Stdin to read from the standard input&amp;nbsp;stream.
+scanner := bufio.NewScanner(os.Stdin) for scanner.Scan() { fmt.Println(scanner.Text()) } if err := scanner.Err(); err != nil { log.</description>
     </item>
     
     <item>
@@ -1694,16 +1696,6 @@ Warning: Unexported identifiers is not a security measure and it does not hide o
       <guid>https://yourbasic.org/golang/read-file-to-string/</guid>
       <description>Use ioutil.ReadFile in package io/ioutil to read a whole file into a byte slice.
 b, err := ioutil.ReadFile(&#34;file.txt&#34;) // b has type []byte if err != nil { log.Fatal(err) } s := string(b) </description>
-    </item>
-    
-    <item>
-      <title>Read from stdin</title>
-      <link>https://yourbasic.org/golang/read-stdin/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/read-stdin/</guid>
-      <description>Use a bufio.Scanner to read one line at a time from the standard input&amp;nbsp;stream.
-scanner := bufio.NewScanner(os.Stdin) for scanner.Scan() { fmt.Println(scanner.Text()) } if err := scanner.Err(); err != nil { log.Println(err) }  </description>
     </item>
     
     <item>
