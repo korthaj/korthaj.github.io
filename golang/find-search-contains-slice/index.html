@@ -120,8 +120,8 @@ func Contains(a []string, x string) bool {
 This will be much more efficient, since binary search runs in worst-case logarithmic time,
 making <b><em>O</em>(log&nbsp;<em>n</em>)</b> comparisons, where <em>n</em> is the size of the&nbsp;slice.</p>
 
-<p>If you are doing many searches, you should consider using a <a href="/golang/maps-explained/">map</a> instead
-of a slice.
+<p>If you are doing repeated searches and updates, you may want to use a <a href="/golang/maps-explained/">map</a>
+instead of a slice.
 A&nbsp;map provides lookup, insert, and delete operations in <strong><em>O</em>(1)</strong>
 <a href="/algorithms/amortized-time-complexity-analysis/">amortized time</a>.</p>
 
