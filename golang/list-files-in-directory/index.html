@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>List files and folders in a directory - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE How to create a sorted list of directory entries in Go.">
+  <title>List all files (recursively) in a directory - yourbasic.org/golang </title>
+  <meta name="description" content="CODE EXAMPLE Use ioutil.ReadDir to get a sorted directory listing. To visit all files recursively, use filepath.Walk.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -38,8 +38,12 @@
 
 <main>
 <article>
-<h1>List files and folders in a directory</h1>
+<h1>List all files (recursively) in a directory</h1>
 <div class="tagline">yourbasic.org/golang</div>
+
+
+<h2 id="directory-listing">Directory listing</h2>
+
 <p>Use the <a href="https://golang.org/pkg/io/ioutil/#ReadDir"><code>ioutil.ReadDir</code></a> function in package <a href="https://golang.org/pkg/io/ioutil/"><code>io/ioutil</code></a>. It returns a sorted slice containing elements of type <a href="https://golang.org/pkg/os/#FileInfo"><code>os.FileInfo</code></a>.</p>
 
 <p>The code in this example prints a sorted list of all file names in the current directory.</p>
@@ -60,6 +64,58 @@ tmp
 usr
 </code></pre>
 
+<h2 id="visit-all-files-and-folders-in-a-directory-tree">Visit all files and folders in a directory tree</h2>
+
+<p>Use the <a href="https://golang.org/pkg/path/filepath/#Walk"><code>filepath.Walk</code></a> function in package <a href="https://golang.org/pkg/path/filepath/"><code>path/filepath</code></a>.</p>
+
+<ul>
+<li>It walks a file tree calling a function of type <a href="https://golang.org/pkg/path/filepath/#WalkFunc"><code>filepath.WalkFunc</code></a> for each file or directory in the tree, including the root.</li>
+<li>The files are walked in lexical order.</li>
+<li>Symbolic links are not followed.</li>
+</ul>
+
+<p>The code in this example lists the paths and sizes of all files and directories in the file tree rooted at the current directory.</p>
+
+<pre><code>err := filepath.Walk(".",
+    func(path string, info os.FileInfo, err error) error {
+    if err != nil {
+        return err
+    }
+    fmt.Println(path, info.Size())
+    return nil
+})
+if err != nil {
+    log.Println(err)
+}</code></pre>
+
+<p>Example output:</p>
+
+<pre><code>. 1644
+dev 1644
+dev/null 0
+dev/random 0
+dev/urandom 0
+dev/zero 0
+etc 1644
+etc/group 116
+etc/hosts 20
+etc/passwd 0
+etc/resolv.conf 0
+tmp 548
+usr 822
+usr/local 822
+usr/local/go 822
+usr/local/go/lib 822
+usr/local/go/lib/time 822
+usr/local/go/lib/time/zoneinfo.zip 366776
+</code></pre>
+
+<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2flist-files-in-directory%2f&amp;text=List%20all%20files%20%28recursively%29%20in%20a%20directory&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2flist-files-in-directory%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2flist-files-in-directory%2f&amp;title=List%20all%20files%20%28recursively%29%20in%20a%20directory" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=List%20all%20files%20%28recursively%29%20in%20a%20directory&body=https%3a%2f%2fyourbasic.org%2fgolang%2flist-files-in-directory%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+
 
 </article>
 <aside>
@@ -68,8 +124,14 @@ usr
   <h2>Related</h2>
 
   <div class="reference">
-    <a href="/golang/list-directory-recursive/">Visit files and folders in a directory tree</a>
-    <div class="desc">How to walk the file tree recursively calling a given function for each file or directory in the  file tree.</div>
+    <a href="/golang/temporary-file-directory/">Create a temporary file or directory</a>
+    <div class="desc">How to create a temporary file or directory in Go.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/current-directory/">Find current working directory</a>
+    <div class="desc">Use os.Executable to find the path name for the executable that started the current process, and filepath.Dir to extracts its directory.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
@@ -96,7 +158,7 @@ usr
 
   </ul>
   
-  <p><a href="/golang/"><strong>See all 188 Go articles</strong></a></p>
+  <p><a href="/golang/"><strong>See all 187 Go articles</strong></a></p>
 
 </aside>
 </main>

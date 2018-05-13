@@ -808,10 +808,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/list-directory-recursive/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/golang/wait-for-goroutines-waitgroup/</loc>
   </url>
   

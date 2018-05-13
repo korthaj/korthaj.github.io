@@ -1350,15 +1350,15 @@ The most misunderstood Go error messages  imported and not used Programs with un
     </item>
     
     <item>
-      <title>List files and folders in a directory</title>
+      <title>List all files (recursively) in a directory</title>
       <link>https://yourbasic.org/golang/list-files-in-directory/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/list-files-in-directory/</guid>
-      <description>Use the ioutil.ReadDir function in package io/ioutil. It returns a sorted slice containing elements of type os.FileInfo.
+      <description>Directory listing Use the ioutil.ReadDir function in package io/ioutil. It returns a sorted slice containing elements of type os.FileInfo.
 The code in this example prints a sorted list of all file names in the current directory.
 files, err := ioutil.ReadDir(&#34;.&#34;) if err != nil { log.Fatal(err) } for _, f := range files { fmt.Println(f.Name()) } Example output:
-dev etc tmp usr  </description>
+dev etc tmp usr  Visit all files and folders in a directory tree Use the filepath.</description>
     </item>
     
     <item>
@@ -2184,17 +2184,6 @@ package main var n = 1 func main() {} This is a trade-off in the design of the G
       <description>If the last parameter of a function has type ...T it can be called with any number of trailing arguments of type&amp;nbsp;T.
 func Sum(nums ...int) int { res := 0 for _, n := range nums { res += n } return res } func main() fmt.Println(Sum()) // 0 fmt.Println(Sum(1, 2, 3)) // 6 } The actual type of ...T inside the function is []T.
 You can pass a slice s directly to a variadic funtion using the s.</description>
-    </item>
-    
-    <item>
-      <title>Visit files and folders in a directory tree</title>
-      <link>https://yourbasic.org/golang/list-directory-recursive/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/list-directory-recursive/</guid>
-      <description>Use the filepath.Walk function in package path/filepath.
- It walks a file tree calling a function of type filepath.WalkFunc for each file or directory in the tree, including the root. The files are walked in lexical order. Symbolic links are not followed.  The code in this example lists the paths and sizes of all files and directories in the file tree rooted at the current directory.
-err := filepath.Walk(&#34;.&#34;, func(path string, info os.</description>
     </item>
     
     <item>
