@@ -193,16 +193,6 @@ Example This generator produces a sequence of 97 different numbers, then it star
     </item>
     
     <item>
-      <title>Worst-case time complexity</title>
-      <link>https://yourbasic.org/algorithms/worst-case-time-complexity/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/algorithms/worst-case-time-complexity/</guid>
-      <description>Worst-case time complexity denotes the longest possible running time W(n) of an algorithm, given any input of size n. This measure gives an upper bound on time requirements and is often easy to compute. The drawback is that it can be overly pessimistic.
-Example  // Tell whether the array a contains x. Algorithm contains(a, x): for i = 0 to len(a)-1 if x == a[i] return true return false  The number of comparisons depends not only on the number of elements, n, in the array, but also on&amp;nbsp;x and the elements in&amp;nbsp;a.</description>
-    </item>
-    
-    <item>
       <title>Your basic API: guidelines and best practices</title>
       <link>https://yourbasic.org/algorithms/your-basic-api/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
