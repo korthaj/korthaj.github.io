@@ -88,8 +88,8 @@
 
 <div style="float:right;margin:-40px 0 0 10px;"><img width="100px;" src="/golang/man-with-magnifying-glass.jpg"></div>
 
-<p>Go has no generic search function for slices or arrays.
-However, it&rsquo;s straightforward to write your own <strong>linear&nbsp;search</strong>.</p>
+<p>Go has no built-in search function for slices or arrays.
+However, it&rsquo;s straightforward to implement your own <strong>linear&nbsp;search</strong>.</p>
 
 <pre><code>// Contains tells whether a contains x.
 func Contains(a []string, x string) bool {
@@ -99,9 +99,9 @@ func Contains(a []string, x string) bool {
         }
     }
     return false
-}</code></pre>
+}
 
-<pre><code>// Find returns the smallest index i at which x == a[i],
+// Find returns the smallest index i at which x == a[i],
 // or len(a) if there is no such index.
 func Find(a []string, x string) int {
     for i, n := range a {
@@ -112,11 +112,16 @@ func Find(a []string, x string) int {
     return len(a)
 }</code></pre>
 
-<h2 id="more-efficient-alternatives">More efficient alternatives</h2>
+<h2 id="faster-alternatives">Faster alternatives</h2>
 
-<p>If the slice is sorted, the search can be performed more efficiently with a <a href="/golang/binary-search/">binary&nbsp;search</a>.</p>
+<p>If the slice is sorted, you can use a <a href="/golang/binary-search/">binary&nbsp;search</a> instead.
+This will be much more efficient, since binary search runs in worst-case logarithmic time,
+making <b><em>O</em>(log&nbsp;<em>n</em>)</b> comparisons, where <em>n</em> is the size of the&nbsp;slice.</p>
 
-<p>If you are doing many searches, consider using a <a href="/golang/maps-explained/">map</a> instead.</p>
+<p>If you are doing many searches, you should consider using a <a href="/golang/maps-explained/">map</a> instead
+of a slice.
+A&nbsp;map provides lookup, insert, and delete operations in <strong><em>O</em>(1)</strong>
+<a href="/algorithms/amortized-time-complexity-analysis/">amortized time</a>.</p>
 
 <h3 id="further-reading">Further reading</h3>
 
