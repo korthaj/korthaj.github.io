@@ -697,7 +697,7 @@ m := map[string]float64{&#34;pi&#34;: 3.14} v1 := m[&#34;pi&#34;] // v1 == 3.14 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/find-search-contains-slice/</guid>
-      <description>Go has no generic search function for slices or arrays. It&amp;rsquo;s straightforward to write your own linear&amp;nbsp;search.
+      <description>Go has no generic search function for slices or arrays. However, it&amp;rsquo;s straightforward to write your own linear&amp;nbsp;search.
 // Contains tells whether a contains x. func Contains(a []string, x string) bool { for _, n := range a { if x == n { return true } } return false } // Find returns the smallest index i at which x == a[i], // or len(a) if there is no such index.</description>
     </item>
     
