@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Find an element in a slice - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE To check if a slice contains an element, you can do either a linear or a binary search.">
+  <title>How to find an element in a slice - yourbasic.org/golang </title>
+  <meta name="description" content="CODE EXAMPLE To check if a slice contains an element in Go, you can either write your own linear search or use one of the provided binary search functions.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -30,7 +30,7 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/find-search-contains-slice/"
   },
-  "headline": "Find an element in a slice",
+  "headline": "How to find an element in a slice",
   "image": [
     "https://yourbasic.org/golang/man-with-magnifying-glass.jpg"
    ],
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "CODE EXAMPLE To check if a slice contains an element, you can do either a linear or a binary search."
+  "description": "CODE EXAMPLE To check if a slice contains an element in Go, you can either write your own linear search or use one of the provided binary search functions."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Find an element in a slice">
-<meta property="og:description" content="CODE EXAMPLE To check if a slice contains an element, you can do either a linear or a binary search.">
+<meta property="og:title" content="How to find an element in a slice">
+<meta property="og:description" content="CODE EXAMPLE To check if a slice contains an element in Go, you can either write your own linear search or use one of the provided binary search functions.">
 <meta property="og:url" content="https://yourbasic.org/golang/find-search-contains-slice/">
 <meta property="og:image" content="https://yourbasic.org/golang/man-with-magnifying-glass.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Find an element in a slice">
-<meta name="twitter:description" content="CODE EXAMPLE To check if a slice contains an element, you can do either a linear or a binary search.">
+<meta name="twitter:title" content="How to find an element in a slice">
+<meta name="twitter:description" content="CODE EXAMPLE To check if a slice contains an element in Go, you can either write your own linear search or use one of the provided binary search functions.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/man-with-magnifying-glass.jpg">
 
@@ -82,26 +82,17 @@
 
 <main>
 <article>
-<h1>Find an element in a slice</h1>
+<h1>How to find an element in a slice</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
-<div style="float:right;margin:-40px 0 0 10px;"><img width="100px;" src="/golang/man-with-magnifying-glass.jpg"></div>
+<div style="float:right;margin:-30px 0 0 10px;"><img width="90px;" src="/golang/man-with-magnifying-glass.jpg"></div>
 
-<p>Go has no built-in search function for slices or arrays.
-However, it&rsquo;s straightforward to implement your own <strong>linear&nbsp;search</strong>.</p>
+<p>Go doesn&rsquo;t have an out-of-the-box search function for slices.
+Here are two example <strong>linear&nbsp;search</strong> implemen&shy;tations, which
+you can use as templates.</p>
 
-<pre><code>// Contains tells whether a contains x.
-func Contains(a []string, x string) bool {
-    for _, n := range a {
-        if x == n {
-            return true
-        }
-    }
-    return false
-}
-
-// Find returns the smallest index i at which x == a[i],
+<pre><code>// Find returns the smallest index i at which x == a[i],
 // or len(a) if there is no such index.
 func Find(a []string, x string) int {
     for i, n := range a {
@@ -110,7 +101,18 @@ func Find(a []string, x string) int {
         }
     }
     return len(a)
-}</code></pre>
+}
+
+// Contains tells whether a contains x.
+func Contains(a []string, x string) bool {
+    for _, n := range a {
+        if x == n {
+            return true
+        }
+    }
+    return false
+}
+</code></pre>
 
 <h2 id="faster-alternatives">Faster alternatives</h2>
 
@@ -130,10 +132,10 @@ A&nbsp;map provides lookup, insert, and delete operations in <strong><em>O</em>(
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/maps-explained/">Maps in a&nbsp;nutshell</a></p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2ffind-search-contains-slice%2f&amp;text=Find%20an%20element%20in%20a%20slice&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2ffind-search-contains-slice%2f&amp;text=How%20to%20find%20an%20element%20in%20a%20slice&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2ffind-search-contains-slice%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2ffind-search-contains-slice%2f&amp;title=Find%20an%20element%20in%20a%20slice" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Find%20an%20element%20in%20a%20slice&body=https%3a%2f%2fyourbasic.org%2fgolang%2ffind-search-contains-slice%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2ffind-search-contains-slice%2f&amp;title=How%20to%20find%20an%20element%20in%20a%20slice" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=How%20to%20find%20an%20element%20in%20a%20slice&body=https%3a%2f%2fyourbasic.org%2fgolang%2ffind-search-contains-slice%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
