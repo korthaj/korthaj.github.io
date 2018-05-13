@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Find the current working directory - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE How to find the path name for the executable that started the current process.">
+  <title>Find current working directory - yourbasic.org/golang </title>
+  <meta name="description" content="CODE EXAMPLE Use os.Executable to find the path name for the executable that started the current process, and filepath.Dir to extracts its directory.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -22,6 +22,50 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/golang/current-directory/"
+  },
+  "headline": "Find current working directory",
+  "image": [
+    "https://yourbasic.org/golang/directions.jpg"
+   ],
+  "datePublished": "2018-05-13T00:00:00&#43;0000",
+  "dateModified": "2018-05-13T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "CODE EXAMPLE Use os.Executable to find the path name for the executable that started the current process, and filepath.Dir to extracts its directory."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Find current working directory">
+<meta property="og:description" content="CODE EXAMPLE Use os.Executable to find the path name for the executable that started the current process, and filepath.Dir to extracts its directory.">
+<meta property="og:url" content="https://yourbasic.org/golang/current-directory/">
+<meta property="og:image" content="https://yourbasic.org/golang/directions.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Find current working directory">
+<meta name="twitter:description" content="CODE EXAMPLE Use os.Executable to find the path name for the executable that started the current process, and filepath.Dir to extracts its directory.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="https://yourbasic.org/golang/directions.jpg">
+
+
 </head>
 
 <body>
@@ -38,8 +82,12 @@
 
 <main>
 <article>
-<h1>Find the current working directory</h1>
+<h1>Find current working directory</h1>
 <div class="tagline">yourbasic.org/golang</div>
+<!-- -->
+
+<div style="margin-top:1em;"><img src="/golang/directions.jpg"></div>
+
 <ul>
 <li>Use <a href="https://golang.org/pkg/os/#Executable"><code>os.Executable</code></a> to find
 the path name for the executable that started the current process.</li>
@@ -65,9 +113,31 @@ If a stable result is needed,
 might help.
 </blockquote>
 
+<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fcurrent-directory%2f&amp;text=Find%20current%20working%20directory&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fcurrent-directory%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fcurrent-directory%2f&amp;title=Find%20current%20working%20directory" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Find%20current%20working%20directory&body=https%3a%2f%2fyourbasic.org%2fgolang%2fcurrent-directory%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+
 
 </article>
 <aside>
+
+    
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/list-files-in-directory/">List files and folders in a directory</a>
+    <div class="desc">How to create a sorted list of directory entries in Go.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/temporary-file-directory/">Create a temporary file or directory</a>
+    <div class="desc">How to create a temporary file or directory in Go.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
   <h2>Follow on Twitter</h2>
   <ul class="none">
     <li><span><a href="https://twitter.com/yourbasic_org">
