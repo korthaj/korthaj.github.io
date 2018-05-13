@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Get slices of keys and values from a map - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE How to get slices of keys and values from a map in Go.">
+  <meta name="description" content="CODE EXAMPLE You can use a range statement to extract slices of keys and values from a map in Go.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -42,6 +42,8 @@
 <div class="tagline">yourbasic.org/golang</div>
 
 
+<p>You can use a range statement to extract slices of keys and values from a&nbsp;map.</p>
+
 <pre><code>keys := make([]keyType, 0, len(myMap))
 values := make([]valueType, 0, len(myMap))
 
@@ -60,6 +62,22 @@ for k, v := range myMap {
 
 </article>
 <aside>
+
+    
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/check-map-contains-key/">Find a key in a map</a>
+    <div class="desc">Map indexing in Go returns two values, the second one is a boolean that indicates if the key exists. The built-in len function counts the number of key-value pairs.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/sort-map-keys-values/">Sort a map by key or value</a>
+    <div class="desc">To sort a map (which is an unordered collection) you must maintain a separate data structure, typically a slice of keys or values.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
   <h2>Follow on Twitter</h2>
   <ul class="none">
     <li><span><a href="https://twitter.com/yourbasic_org">
@@ -83,7 +101,7 @@ for k, v := range myMap {
 
   </ul>
   
-  <p><a href="/golang/"><strong>See all 187 Go articles</strong></a></p>
+  <p><a href="/golang/"><strong>See all 185 Go articles</strong></a></p>
 
 </aside>
 </main>

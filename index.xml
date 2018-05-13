@@ -325,25 +325,6 @@ A new channel value can be made using the built-in function make.
     </item>
     
     <item>
-      <title>Check if a map contains a key</title>
-      <link>https://yourbasic.org/golang/check-map-contains-key/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/check-map-contains-key/</guid>
-      <description>m := map[string]float64{&#34;pi&#34;: 3.1416} v1 := m[&#34;pi&#34;] // v1 == 3.1416 v2 := m[&#34;foo&#34;] // v2 == 0.0 (zero value) _, exists := m[&#34;pi&#34;] // exists == true if x, ok := m[&#34;pi&#34;]; ok { fmt.Println(x) // 3.1416 } Further reading  Maps in a&amp;nbsp;nutshell</description>
-    </item>
-    
-    <item>
-      <title>Check if a map is empty</title>
-      <link>https://yourbasic.org/golang/check-empty-map/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/check-empty-map/</guid>
-      <description>The call len(m) returns the number of key-value pairs in&amp;nbsp;m.
-if len(m) == 0 { // m is empty } Further reading  Maps in a&amp;nbsp;nutshell</description>
-    </item>
-    
-    <item>
       <title>Check if a number is prime</title>
       <link>https://yourbasic.org/golang/check-prime/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -536,16 +517,6 @@ s := &#34;abc日&#34; r := []rune(s) fmt.Printf(&#34;%v\n&#34;, r) // [97 98 99 
     </item>
     
     <item>
-      <title>Count elements in a map</title>
-      <link>https://yourbasic.org/golang/count-items-map/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/count-items-map/</guid>
-      <description>The call len(m) returns the number of key-value pairs in m.
-m := map[string]int{ &#34;key1&#34;: 1, &#34;key2&#34;: 10, &#34;key3&#34;: 100, } fmt.Println(len(m)) // 3 Further reading  Maps in a&amp;nbsp;nutshell</description>
-    </item>
-    
-    <item>
       <title>Create a custom error</title>
       <link>https://yourbasic.org/golang/create-error/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -707,6 +678,17 @@ const ( Sunday int = iota // Sunday == 0 Monday // Monday == 1 Tuesday // Tuesda
       <description>Go has two different error-handling mechanisms:
  most functions return errors; only truly unrecovorable conditions, such as an out-of-range index, produce run-time exceptions.  Go’s multivalued return makes it easy to return a detailed error message alongside the normal return value. By convention, such messages have type error, a simple built-in interface.
 type error interface { Error() string }  Example The os.Open function returns a non-nil error value when it fails to open a file.</description>
+    </item>
+    
+    <item>
+      <title>Find a key in a map</title>
+      <link>https://yourbasic.org/golang/check-map-contains-key/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/check-map-contains-key/</guid>
+      <description>When you index a map in Go you get two return values; the second one (which is&amp;nbsp;optional) indicates if the key&amp;nbsp;exists.
+If the key doesn&amp;rsquo;t exist, the first value will be the default zero&amp;nbsp;value.
+m := map[string]float64{&#34;pi&#34;: 3.14} v1 := m[&#34;pi&#34;] // v1 == 3.14 v2 := m[&#34;foo&#34;] // v2 == 0.0 _, exists := m[&#34;pi&#34;] // true if x, ok := m[&#34;pi&#34;]; ok { fmt.Println(x) // 3.14 } Count elements in a map The call len(m) returns the number of key-value pairs in&amp;nbsp;m.</description>
     </item>
     
     <item>
@@ -872,7 +854,8 @@ The io.Reader interface, which represents the read end of a stream of data, is a
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/slice-of-keys-values-from-map/</guid>
-      <description>keys := make([]keyType, 0, len(myMap)) values := make([]valueType, 0, len(myMap)) for k, v := range myMap { keys = append(keys, k) values = append(values, v) }  Further reading  Maps in a&amp;nbsp;nutshell</description>
+      <description>You can use a range statement to extract slices of keys and values from a&amp;nbsp;map.
+keys := make([]keyType, 0, len(myMap)) values := make([]valueType, 0, len(myMap)) for k, v := range myMap { keys = append(keys, k) values = append(values, v) }  Further reading  Maps in a&amp;nbsp;nutshell</description>
     </item>
     
     <item>

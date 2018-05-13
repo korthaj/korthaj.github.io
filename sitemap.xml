@@ -123,14 +123,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/check-map-contains-key/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/check-empty-map/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/golang/check-prime/</loc>
   </url>
   
@@ -203,10 +195,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/count-items-map/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/golang/create-error/</loc>
   </url>
   
@@ -264,6 +252,10 @@
   
   <url>
     <loc>https://yourbasic.org/golang/errors-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/check-map-contains-key/</loc>
   </url>
   
   <url>
