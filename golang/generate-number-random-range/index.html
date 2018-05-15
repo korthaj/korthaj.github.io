@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/dart.jpg"
    ],
   "datePublished": "2018-05-13T00:00:00&#43;0000",
-  "dateModified": "2018-05-13T00:00:00&#43;0000",
+  "dateModified": "2018-05-15T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -103,7 +103,7 @@ the same sequence of pseudo&shy;random numbers each time you run the program.
 <h3 id="integer-between-a-and-b">Integer between a and b</h3>
 
 <pre><code>rand.Seed(time.Now().UnixNano())
-n := a + rand.Intn(b-a+1)
+n := a + rand.Intn(b-a+1) <span class="comment">// a ≤ n ≤ b</span>
 </code></pre>
 
 <h3 id="character-between-39-a-39-and-39-z-39">Character between &#39;a&#39; and &#39;z&#39;</h3>

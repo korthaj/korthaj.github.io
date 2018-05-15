@@ -802,7 +802,7 @@ Warning: The rand.Read call returns an error if the underlying system call fails
       
       <guid>https://yourbasic.org/golang/generate-number-random-range/</guid>
       <description>Use the rand.Seed and rand.Intn functions in package math/rand to generate a random number.
-Warning: Without an initial call to rand.Seed, you will get the same sequence of pseudo&amp;shy;random numbers each time you run the program.  Integer between a and b rand.Seed(time.Now().UnixNano()) n := a + rand.Intn(b-a+1)  Character between &amp;#39;a&amp;#39; and &amp;#39;z&amp;#39; c := &#39;a&#39; + rune(rand.Intn(&#39;z&#39;-&#39;a&#39;+1))  Character from arbitrary set chars := []rune(&amp;quot;ab⌘&amp;quot;) c := chars[rand.</description>
+Warning: Without an initial call to rand.Seed, you will get the same sequence of pseudo&amp;shy;random numbers each time you run the program.  Integer between a and b rand.Seed(time.Now().UnixNano()) n := a + rand.Intn(b-a+1) // a ≤ n ≤ b  Character between &amp;#39;a&amp;#39; and &amp;#39;z&amp;#39; c := &#39;a&#39; + rune(rand.Intn(&#39;z&#39;-&#39;a&#39;+1))  Character from arbitrary set chars := []rune(&amp;quot;ab⌘&amp;quot;) c := chars[rand.</description>
     </item>
     
     <item>
