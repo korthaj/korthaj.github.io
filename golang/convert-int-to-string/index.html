@@ -86,6 +86,12 @@
 <div class="tagline">yourbasic.org/golang</div>
 
 
+<ul class="toc">
+  <li><a href="#int-to-string">int to string</a></li>
+  <li><a href="#int64-to-string">int64 to string</a></li>
+  <li><a href="#general-formatting">General formatting</a></li>
+</ul>
+
 <h2 id="int-to-string">int to string</h2>
 
 <p>Use the <a href="https://golang.org/pkg/strconv/#Itoa"><code>strconv.Itoa</code></a> function to convert an int to a decimal string.</p>
@@ -107,7 +113,7 @@ s = strconv.FormatInt(n, 16) <span class="comment">// hexadecimal</span>
 fmt.Println(s)                <span class="comment">// 6d</span>
 </code></pre>
 
-<h2 id="more-general-formatting">More general formatting</h2>
+<h2 id="general-formatting">General formatting</h2>
 
 <p>The <a href="https://golang.org/pkg/fmt/#Sprintf"><code>fmt.Sprintf</code></a> function
 is a useful general tool for converting data to&nbsp;string:</p>

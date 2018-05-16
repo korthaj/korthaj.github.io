@@ -380,9 +380,9 @@ func ByteCountDecimal(b int64) string { const unit = 1000 if b = unit; n /= unit
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/convert-int-to-string/</guid>
-      <description>int to string Use the strconv.Itoa function to convert an int to a decimal string.
+      <description>int to string int64 to string General formatting  int to string Use the strconv.Itoa function to convert an int to a decimal string.
 s := strconv.Itoa(109) // s == &#34;109&#34; int64 to string Use strconv.FormatInt to format an integer in a given base.
-var n int64 = 109 s := strconv.FormatInt(n, 10) // decimal fmt.Println(s) // 109  var n int64 = 109 s = strconv.FormatInt(n, 16) // hexadecimal fmt.Println(s) // 6d  More general formatting The fmt.</description>
+var n int64 = 109 s := strconv.FormatInt(n, 10) // decimal fmt.Println(s) // 109  var n int64 = 109 s = strconv.FormatInt(n, 16) // hexadecimal fmt.</description>
     </item>
     
     <item>
