@@ -1725,16 +1725,6 @@ Further reading  Regular expressions is a gentle introduction to the regexp pack
     </item>
     
     <item>
-      <title>Repeat a string</title>
-      <link>https://yourbasic.org/golang/repeat-multiply-string/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/repeat-multiply-string/</guid>
-      <description>s := strings.Repeat(&#34;da&#34;, 2) // &#34;dada&#34; This corresponds to the string multiplication &amp;quot;da&amp;quot;*2 in Python.
-More about strings  String functions cheat sheet</description>
-    </item>
-    
-    <item>
       <title>Reverse a UTF-8 encoded string</title>
       <link>https://yourbasic.org/golang/reverse-utf8-string/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1830,17 +1820,6 @@ m := map[string]int{&amp;quot;Alice&amp;quot;: 23, &amp;quot;Eve&amp;quot;: 2, &
       <description>A stack trace is a list of active function calls at a certain point in&amp;nbsp;time.
  Stack traces are typically printed to the console when an unexpected error occurs. They can be very useful for&amp;nbsp;debugging:
  not only do you see where the error happened, but also how the program arrived in this place.  Example goroutine 11 [running]: testing.tRunner.func1(0xc420092690) /usr/local/go/src/testing/testing.go:711 +0x2d2 panic(0x53f820, 0x594da0) /usr/local/go/src/runtime/panic.go:491 +0x283 github.com/yourbasic/bit.(*Set).Max(0xc42000a940, 0x0) ../src/github.com/bit/set_math_bits.go:137 +0x89 github.</description>
-    </item>
-    
-    <item>
-      <title>String comparison</title>
-      <link>https://yourbasic.org/golang/compare-strings/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/compare-strings/</guid>
-      <description>Use == or != to check if two strings are equal.
-if &#34;Foo&#34; == &#34;Bar&#34; { fmt.Println(&#34;Foo and Bar are equal.&#34;) } else { fmt.Println(&#34;Foo and Bar are not equal.&#34;) } // Output: Foo and Bar are not equal. Use &amp;lt;, &amp;gt;, &amp;lt;= or &amp;gt;= to determine lexical order.
-if &#34;Foo&#34; &amp;lt; &#34;Bar&#34; { fmt.Println(&#34;Foo comes before Bar.&#34;) } else { fmt.Println(&#34;Foo does not come before Bar.&#34;) } // Output: Foo does not come before Bar.</description>
     </item>
     
     <item>

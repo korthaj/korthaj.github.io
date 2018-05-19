@@ -635,10 +635,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/repeat-multiply-string/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/golang/reverse-utf8-string/</loc>
   </url>
   
@@ -672,10 +668,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/stack-trace/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/compare-strings/</loc>
   </url>
   
   <url>
