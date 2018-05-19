@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/typewriter.png"
    ],
   "datePublished": "2018-03-15T00:00:00&#43;0000",
-  "dateModified": "2018-04-24T00:00:00&#43;0000",
+  "dateModified": "2018-05-19T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -88,15 +88,17 @@
 
 <!-- CC0: https://pixabay.com/en/typewriter-old-letters-print-keys-1505997/ -->
 
-<div><img src="/golang/typewriter.png" class="extra-content" style="float:right;"></div>
+<div><img src="/golang/typewriter.png" class="extra-content" style="float:right;margin-top:1em;"></div>
 
 <ul class="toc">
   <li><a href="#string-literals">String literals</a></li>
-  <li><a href="#basic-string-handling">Basic string handling</a></li>
-  <li><a href="#find">Find</a></li>
+  <li><a href="#concatenate-compare">Concatenate, compare</a></li>
+  <li><a href="#length-in-bytes-and-runes">Length in bytes and runes</a></li>
+  <li><a href="#index-substring-iteratate">Index, substring, iteratate</a></li>
+  <li><a href="#search">Search</a></li>
   <li><a href="#replace">Replace</a></li>
-  <li><a href="#split-and-join">Split and join</a></li>
-  <li><a href="#convert">Convert</a></li>
+  <li><a href="#split-and-join-substrings">Split and join substrings</a></li>
+  <li><a href="#format-and-convert">Format and convert</a></li>
 </ul>
 
 <h2 id="string-literals">String literals</h2>
@@ -139,9 +141,10 @@
 </table>
 
 <p>&#42; In <code>``</code> string literals, characters are interpreted literally:
-backslashes have no special meaning and the string may contain newlines.</p>
+backslashes have no special meaning.
+See <a href="/golang/multiline-string/">Multiline strings</a> for more on raw strings.</p>
 
-<h2 id="basic-string-handling">Basic string handling</h2>
+<h2 id="concatenate-compare">Concatenate, compare</h2>
 
 <table class="white">
   <thead>
@@ -155,7 +158,7 @@ backslashes have no special meaning and the string may contain newlines.</p>
     <tr>
       <td><code>"Ja" + "pan"</code></td>
       <td>Japan</td>
-      <td>Concatenation</td>
+      <td>Concatenation*</td>
     </tr>
     <tr>
       <td style="border-bottom: 0;"><code>"Japan" == "Japan"</code></td>
@@ -172,6 +175,21 @@ backslashes have no special meaning and the string may contain newlines.</p>
       <td>true</td>
       <td>Lexical order</td>
     </tr>
+  </tbody>
+</table>
+
+<p>&#42; See <a href="/golang/build-append-concatenate-strings-efficiently/">How to best use a string builder</a> for more efficient string concatenation without redundant copying.</p>
+
+<h2 id="length-in-bytes-and-runes">Length in bytes and runes</h2>
+
+<table class="white">
+  <thead>
+    <tr>
+      <th>Expression</th>
+      <th>Result</th>
+      <th>Note</th>
+    </tr>
+  </thead>
     <tr>
       <td style="border-bottom: 0;"><code>len("日")</code></td>
       <td style="border-bottom: 0;">3</td>
@@ -187,6 +205,20 @@ backslashes have no special meaning and the string may contain newlines.</p>
       <td>true</td>
       <td>UTF-8? <span class="tag">unicode/utf8</span></td>
     </tr>
+  </tbody>
+</table>
+
+<h2 id="index-substring-iteratate">Index, substring, iteratate</h2>
+
+<table class="white">
+  <thead>
+    <tr>
+      <th>Expression</th>
+      <th>Result</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
     <tr>
       <td><code>"Japan"[2]</code></td>
       <td>'p'</td>
@@ -225,7 +257,7 @@ for i := 0; i < len(s); i++ {
 }
 <span class="comment">// Output: 'J' 'a' 'p' 'a' 'n' ' ' 'æ' '\u0097' '¥' 'æ' '\u009c' '¬'</span></code></pre>
 
-<h2 id="find">Find</h2>
+<h2 id="search">Search</h2>
 
 <table class="white">
   <thead>
@@ -353,7 +385,7 @@ for i := 0; i < len(s); i++ {
   </tbody>
 </table>
 
-<h2 id="split-and-join">Split and join</h2>
+<h2 id="split-and-join-substrings">Split and join substrings</h2>
 
 <table class="white">
   <thead>
@@ -392,7 +424,7 @@ for i := 0; i < len(s); i++ {
   </tbody>
 </table>
 
-<h2 id="convert">Convert</h2>
+<h2 id="format-and-convert">Format and convert</h2>
 
 <table class="white">
   <thead>
@@ -419,7 +451,7 @@ for i := 0; i < len(s); i++ {
 <h3 id="sprintf">Sprintf</h3>
 
 <p>The <a href="https://golang.org/pkg/fmt/#Sprintf"><code>fmt.Sprintf</code></a> function
-is often your best friend when converting data to&nbsp;string:</p>
+is often your best friend when formatting data:</p>
 
 <pre><code>s := fmt.Sprintf("%.4f", math.Pi) <span class="comment">// s == "3.1416"</span></code></pre>
 
@@ -432,8 +464,8 @@ covers the most common formatting flags.</p>
 
 <div><a href="/golang/regexp-cheat-sheet/"><img src="/golang/cog-wheels-thumb.jpg" title="Regular expressions"></a></div>
 
-<p>For more advanced string handling, see <a href="/golang/regexp-cheat-sheet/">Regular expressions</a>.
-It&rsquo;s a gentle introduction to the <code>regexp</code> package with cheat sheet
+<p>For more advanced string handling, see <a href="/golang/regexp-cheat-sheet/">Regular expressions</a>,
+a gentle introduction to the <code>regexp</code> package with cheat sheet
 and plenty of examples.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -450,12 +482,6 @@ and plenty of examples.</p>
   <h2>Related</h2>
 
   <div class="reference">
-    <a href="/golang/fmt-printf-reference-cheat-sheet/">How to print with fmt</a>
-    <div class="desc">Cheat sheet: the most common formatting verbs and flags in package fmt at a glance.</div>
-    <div class="source">yourbasic.org</div>
-  </div>
-
-  <div class="reference">
     <a href="/golang/rune/">Type rune: a Unicode code point</a>
     <div class="desc">A rune is a Go type meant to represent a Unicode code point.</div>
     <div class="source">yourbasic.org</div>
@@ -465,12 +491,6 @@ and plenty of examples.</p>
     <a href="https://blog.golang.org/strings">Strings, bytes, runes and characters in Go</a>
     <div class="source">The Go Blog</div>
     <div class="author"></div>
-  </div>
-
-  <div class="reference">
-    <a href="/golang/regexp-cheat-sheet/">Regexp in-depth tutorial</a>
-    <div class="desc">Regular expressions in Go: introduction, cheat sheet and plenty of code examples.</div>
-    <div class="source">yourbasic.org</div>
   </div>
 
   <h2>Follow on Twitter</h2>
