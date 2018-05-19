@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reverse a UTF-8 encoded string - yourbasic.org/golang </title>
+  <title>How to reverse a string by byte or rune - yourbasic.org/golang </title>
   <meta name="description" content="CODE EXAMPLE How to reverse a UTF-8 encoded string in Go.">
   
   <link rel="stylesheet" href="/style.css">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/reverse-utf8-string/"
   },
-  "headline": "Reverse a UTF-8 encoded string",
+  "headline": "How to reverse a string by byte or rune",
   "image": [
     "https://yourbasic.org/golang/ambiguity-ambigram.png"
    ],
   "datePublished": "2018-04-28T00:00:00&#43;0000",
-  "dateModified": "2018-04-28T00:00:00&#43;0000",
+  "dateModified": "2018-05-19T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -54,13 +54,13 @@
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Reverse a UTF-8 encoded string">
+<meta property="og:title" content="How to reverse a string by byte or rune">
 <meta property="og:description" content="CODE EXAMPLE How to reverse a UTF-8 encoded string in Go.">
 <meta property="og:url" content="https://yourbasic.org/golang/reverse-utf8-string/">
 <meta property="og:image" content="https://yourbasic.org/golang/ambiguity-ambigram.png">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Reverse a UTF-8 encoded string">
+<meta name="twitter:title" content="How to reverse a string by byte or rune">
 <meta name="twitter:description" content="CODE EXAMPLE How to reverse a UTF-8 encoded string in Go.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/ambiguity-ambigram.png">
@@ -82,7 +82,7 @@
 
 <main>
 <article>
-<h1>Reverse a UTF-8 encoded string</h1>
+<h1>How to reverse a string by byte or rune</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
@@ -90,11 +90,27 @@
 
 <div style="margin-top:1em;"><img src="/golang/ambiguity-ambigram.png"></div>
 
-<p>This function returns a string with the UTF-8 encoded characters of <code>s</code>
-in reverse order. Invalid UTF-8 sequences, if any, will be reversed
-byte by byte.</p>
+<h2 id="byte-by-byte">Byte by byte</h2>
 
-<pre><code>func ReverseUTF8(s string) string {
+<p>It&rsquo;s pretty straightforward to reverse a string one byte at a time.</p>
+
+<pre><code>// Reverse returns a string with the bytes of s in reverse order.
+func Reverse(s string) string {
+    var b strings.Builder
+    for i := len(s) - 1; i >= 0; i-- {
+        b.WriteByte(s[i])
+    }
+    return b.String()
+}
+</code></pre>
+
+<h2 id="rune-by-rune">Rune by rune</h2>
+
+<p>To reverse a string by UTF-8 encoded characters is a bit trickier.</p>
+
+<pre><code>// ReverseRune returns a string with the runes of s in reverse order.
+// Invalid UTF-8 sequences, if any, will be reversed byte by byte.
+func ReverseRune(s string) string {
     res := make([]byte, len(s))
     prevPos, resPos := 0, len(s)
     for pos := range s {
@@ -106,14 +122,14 @@ byte by byte.</p>
     return string(res)
 }</code></pre>
 
-<p>Example usage:</p>
+<h3 id="example-usage">Example usage</h3>
 
 <pre><code>for _, s := range []string{
 	&quot;Ångström&quot;,
 	&quot;Hello, 世界&quot;,
 	&quot;\xff\xfe\xfd&quot;, // invalid UTF-8
 } {
-	fmt.Printf(&quot;%q\n&quot;, ReverseUTF8(s))
+	fmt.Printf(&quot;%q\n&quot;, ReverseRune(s))
 }
 </code></pre>
 
@@ -122,17 +138,17 @@ byte by byte.</p>
 &quot;\xfd\xfe\xff&quot;
 </code></pre>
 
-<h3 id="further-reading">Further reading</h3>
+<h2 id="further-reading">Further reading</h2>
 
-<div><a href="/golang/string-functions-reference-cheat-sheet/"><img src="/golang/typewriter-thumb.png" title="String functions cheat sheet"></a></div>
+<div style="margin-top:1em;"><a href="/golang/string-functions-reference-cheat-sheet/"><img src="/golang/typewriter-thumb.png" title="String functions cheat sheet"></a></div>
 
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/string-functions-reference-cheat-sheet/">String functions cheat sheet</a></p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2freverse-utf8-string%2f&amp;text=Reverse%20a%20UTF-8%20encoded%20string&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2freverse-utf8-string%2f&amp;text=How%20to%20reverse%20a%20string%20by%20byte%20or%20rune&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2freverse-utf8-string%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2freverse-utf8-string%2f&amp;title=Reverse%20a%20UTF-8%20encoded%20string" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Reverse%20a%20UTF-8%20encoded%20string&body=https%3a%2f%2fyourbasic.org%2fgolang%2freverse-utf8-string%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2freverse-utf8-string%2f&amp;title=How%20to%20reverse%20a%20string%20by%20byte%20or%20rune" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=How%20to%20reverse%20a%20string%20by%20byte%20or%20rune&body=https%3a%2f%2fyourbasic.org%2fgolang%2freverse-utf8-string%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
@@ -142,14 +158,14 @@ byte by byte.</p>
   <h2>Related</h2>
 
   <div class="reference">
-    <a href="/golang/rune/">Type rune: a Unicode code point</a>
-    <div class="desc">A rune is a Go type meant to represent a Unicode code point.</div>
+    <a href="/golang/build-append-concatenate-strings-efficiently/">How to best use a string builder</a>
+    <div class="desc">With a string builder you can concatenate strings efficiently without redundant copying.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
   <div class="reference">
-    <a href="/golang/string-functions-reference-cheat-sheet/">String functions cheat sheet</a>
-    <div class="desc">String essentials in one place: literals, concatenation, equality, ordering, indexing, UTF-8, search, join, replace, split, trim, strip, delete, lowercase/uppercase.</div>
+    <a href="/golang/rune/">Type rune: a Unicode code point</a>
+    <div class="desc">A rune is a Go type meant to represent a Unicode code point.</div>
     <div class="source">yourbasic.org</div>
   </div>
 

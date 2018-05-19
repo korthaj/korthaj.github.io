@@ -979,6 +979,16 @@ quit := make(chan struct{}) go func() { for { select { case // … } } }() // �
     </item>
     
     <item>
+      <title>How to reverse a string by byte or rune</title>
+      <link>https://yourbasic.org/golang/reverse-utf8-string/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/reverse-utf8-string/</guid>
+      <description>Byte by byte It&amp;rsquo;s pretty straightforward to reverse a string one byte at a time.
+// Reverse returns a string with the bytes of s in reverse order. func Reverse(s string) string { var b strings.Builder for i := len(s) - 1; i = 0; i-- { b.WriteByte(s[i]) } return b.String() }  Rune by rune To reverse a string by UTF-8 encoded characters is a bit trickier.</description>
+    </item>
+    
+    <item>
       <title>How to split a string into a slice</title>
       <link>https://yourbasic.org/golang/split-string-into-slice/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1558,17 +1568,6 @@ func main() { m := 0 m, n := 1, 2 fmt.Println(m, n) }   Unlike regular variable 
       <description>space := regexp.MustCompile(`\s+`) s := space.ReplaceAllString(&#34;Hello \t \n world!&#34;, &#34; &#34;) fmt.Printf(&#34;%q&#34;, s) // &#34;Hello world!&#34; \s+ is a regular expression:
  the character class \s matches a space, tab, new line, carriage return or form feed, and + says “one or more of those”.  In other words, the code will replace each whitespace substring with a single space&amp;nbsp;character.
 Further reading  Regular expressions is a gentle introduction to the regexp package with cheat sheet and plenty of examples.</description>
-    </item>
-    
-    <item>
-      <title>Reverse a UTF-8 encoded string</title>
-      <link>https://yourbasic.org/golang/reverse-utf8-string/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/reverse-utf8-string/</guid>
-      <description>This function returns a string with the UTF-8 encoded characters of s in reverse order. Invalid UTF-8 sequences, if any, will be reversed byte by byte.
-func ReverseUTF8(s string) string { res := make([]byte, len(s)) prevPos, resPos := 0, len(s) for pos := range s { resPos -= pos - prevPos copy(res[resPos:], s[prevPos:pos]) prevPos = pos } copy(res[0:], s[prevPos:]) return string(res) } Example usage:
-for _, s := range []string{ &amp;quot;Ångström&amp;quot;, &amp;quot;Hello, 世界&amp;quot;, &amp;quot;\xff\xfe\xfd&amp;quot;, // invalid UTF-8 } { fmt.</description>
     </item>
     
     <item>
