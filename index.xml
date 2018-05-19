@@ -1048,7 +1048,7 @@ now := time.Now() // current local time sec := now.Unix() // number of seconds s
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/day-of-week-int/</guid>
-      <description> The Weekday function returns returns the day of the week of a time.Time.
+      <description>  The Weekday function returns returns the day of the week of a time.Time.
 func (t Time) Weekday() Weekday  In use:
 weekday := time.Now().Weekday() fmt.Println(weekday) // &#34;Tuesday&#34; fmt.Println(int(weekday)) // &#34;2&#34; Type Weekday The time.Weekday type specifies a day of the week (Sunday = 0, …).
 type Weekday int const ( Sunday Weekday = iota Monday Tuesday Wednesday Thursday Friday Saturday )  </description>

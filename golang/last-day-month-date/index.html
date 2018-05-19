@@ -22,6 +22,50 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/golang/last-day-month-date/"
+  },
+  "headline": "Days in a month",
+  "image": [
+    "https://yourbasic.org/golang/full-moon.jpg"
+   ],
+  "datePublished": "2018-05-19T00:00:00&#43;0000",
+  "dateModified": "2018-05-19T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "CODE EXAMPLE How to find the last day of a month in Go. The trick is that time.Date accepts values outside their usual ranges, and that these values are normalized during conversion."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Days in a month">
+<meta property="og:description" content="CODE EXAMPLE How to find the last day of a month in Go. The trick is that time.Date accepts values outside their usual ranges, and that these values are normalized during conversion.">
+<meta property="og:url" content="https://yourbasic.org/golang/last-day-month-date/">
+<meta property="og:image" content="https://yourbasic.org/golang/full-moon.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Days in a month">
+<meta name="twitter:description" content="CODE EXAMPLE How to find the last day of a month in Go. The trick is that time.Date accepts values outside their usual ranges, and that these values are normalized during conversion.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="https://yourbasic.org/golang/full-moon.jpg">
+
+
 </head>
 
 <body>
@@ -40,6 +84,10 @@
 <article>
 <h1>Days in a month</h1>
 <div class="tagline">yourbasic.org/golang</div>
+<!-- CC0: https://pixabay.com/en/moon-sea-full-moon-mediterranean-2762111/ -->
+
+<div style="margin-top:1em;"><img src="/golang/full-moon.jpg"></div>
+
 <p>To compute the last day of a month, you can use the fact that <a href="https://golang.org/pkg/time/#Date"><code>time.Date</code></a>
 accepts values outside their usual ranges &ndash; the values are normalized during the conversion.</p>
 
@@ -60,6 +108,12 @@ For example, adding one month to October&nbsp;31 yields December&nbsp;1, the nor
 
 <pre><code>t = Date(2000, 10, 31).AddDate(0, 1, 0) <span class="comment">// a month after October 31</span>
 fmt.Println(t)                          <span class="comment">// 2000-12-01 00:00:00 +0000 UTC</span></code></pre>
+
+<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2flast-day-month-date%2f&amp;text=Days%20in%20a%20month&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2flast-day-month-date%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2flast-day-month-date%2f&amp;title=Days%20in%20a%20month" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Days%20in%20a%20month&body=https%3a%2f%2fyourbasic.org%2fgolang%2flast-day-month-date%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
