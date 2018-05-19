@@ -806,13 +806,13 @@ Warning: Without an initial call to rand.Seed, you will get the same sequence of
     </item>
     
     <item>
-      <title>Generate a random string/password</title>
-      <link>https://yourbasic.org/golang/generate-random-string-password-booking-reference/</link>
+      <title>Generate a random string (password)</title>
+      <link>https://yourbasic.org/golang/generate-random-string/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://yourbasic.org/golang/generate-random-string-password-booking-reference/</guid>
-      <description>Random Unicode string rand.Seed(time.Now().UnixNano()) chars := []rune(&#34;ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ&#34; + &#34;abcdefghijklmnopqrstuvwxyzåäö&#34; + &#34;0123456789&#34;) length := 8 buf := make([]rune, length) for i := range buf { buf[i] = chars[rand.Intn(len(chars))] } str := string(buf) Random ASCII string with at least 1 digit and 1 special character If all characters can be represented by a single byte, e.g. ASCII characters, you can use []byte instead of []rune.
-rand.Seed(time.Now().UnixNano()) digits := &#34;0123456789&#34; specials := &#34;</description>
+      <guid>https://yourbasic.org/golang/generate-random-string/</guid>
+      <description>Random string This code generates a random string of numbers and characters from the Swedish alphabet (which includes the non-ASCII characters å, ä and ö).
+rand.Seed(time.Now().UnixNano()) chars := []rune(&#34;ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ&#34; + &#34;abcdefghijklmnopqrstuvwxyzåäö&#34; + &#34;0123456789&#34;) length := 8 var b strings.Builder for i := 0; i // E.g. &#34;ExcbsVQs&#34;  Warning: To generate a password, you should use cryptographically secure pseudorandom numbers. See User-friendly access to crypto/rand.  Random string with restrictions This code generates a random ASCII string with at least one digit and one special character.</description>
     </item>
     
     <item>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Generate a random string/password - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE How to generate a random string with constraints, such as at least one special character.">
+  <title>Generate a random string (password) - yourbasic.org/golang </title>
+  <meta name="description" content="CODE EXAMPLE How to generate a random string with restrictions (at least one special character, etc).">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -28,14 +28,14 @@
   "@type": "Article",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://yourbasic.org/golang/generate-random-string-password-booking-reference/"
+    "@id": "https://yourbasic.org/golang/generate-random-string/"
   },
-  "headline": "Generate a random string/password",
+  "headline": "Generate a random string (password)",
   "image": [
     "https://yourbasic.org/golang/password-generator.jpg"
    ],
-  "datePublished": "2018-04-28T00:00:00&#43;0000",
-  "dateModified": "2018-04-28T00:00:00&#43;0000",
+  "datePublished": "2018-05-19T00:00:00&#43;0000",
+  "dateModified": "2018-05-19T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "CODE EXAMPLE How to generate a random string with constraints, such as at least one special character."
+  "description": "CODE EXAMPLE How to generate a random string with restrictions (at least one special character, etc)."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Generate a random string/password">
-<meta property="og:description" content="CODE EXAMPLE How to generate a random string with constraints, such as at least one special character.">
-<meta property="og:url" content="https://yourbasic.org/golang/generate-random-string-password-booking-reference/">
+<meta property="og:title" content="Generate a random string (password)">
+<meta property="og:description" content="CODE EXAMPLE How to generate a random string with restrictions (at least one special character, etc).">
+<meta property="og:url" content="https://yourbasic.org/golang/generate-random-string/">
 <meta property="og:image" content="https://yourbasic.org/golang/password-generator.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Generate a random string/password">
-<meta name="twitter:description" content="CODE EXAMPLE How to generate a random string with constraints, such as at least one special character.">
+<meta name="twitter:title" content="Generate a random string (password)">
+<meta name="twitter:description" content="CODE EXAMPLE How to generate a random string with restrictions (at least one special character, etc).">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/password-generator.jpg">
 
@@ -82,7 +82,7 @@
 
 <main>
 <article>
-<h1>Generate a random string/password</h1>
+<h1>Generate a random string (password)</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
@@ -90,22 +90,32 @@
 
 <div style="margin-top:1em;"><img src="/golang/password-generator.jpg"></div>
 
-<h2 id="random-unicode-string">Random Unicode string</h2>
+<h2 id="random-string">Random string</h2>
+
+<p>This code generates a random string of numbers and characters from the Swedish alphabet
+(which includes the non-ASCII characters å, ä and ö).</p>
 
 <pre><code>rand.Seed(time.Now().UnixNano())
 chars := []rune("ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ" +
     "abcdefghijklmnopqrstuvwxyzåäö" +
     "0123456789")
 length := 8
-buf := make([]rune, length)
-for i := range buf {
-    buf[i] = chars[rand.Intn(len(chars))]
+var b strings.Builder
+for i := 0; i < length; i++ {
+    b.WriteRune(chars[rand.Intn(len(chars))])
 }
-str := string(buf)</code></pre>
+str := b.String() <span class="comment">// E.g. "ExcbsVQs"</span>
+</code></pre>
 
-<h2 id="random-ascii-string-with-at-least-1-digit-and-1-special-character">Random ASCII string with at least 1 digit and 1 special character</h2>
+<blockquote class="warning">
+<strong>Warning:</strong> To generate a password, you should use cryptographically
+secure pseudorandom numbers.
+See <a href="/golang/crypto-rand-int/">User-friendly access to crypto/rand</a>.
+</blockquote>
 
-<p>If all characters can be represented by a single byte, e.g. ASCII characters, you can use <code>[]byte</code> instead of <code>[]rune</code>.</p>
+<h2 id="random-string-with-restrictions">Random string with restrictions</h2>
+
+<p>This code generates a random ASCII string with at least one digit and one special character.</p>
 
 <pre><code>rand.Seed(time.Now().UnixNano())
 digits := "0123456789"
@@ -123,7 +133,7 @@ for i := 2; i < length; i++ {
 rand.Shuffle(len(buf), func(i, j int) {
     buf[i], buf[j] = buf[j], buf[i]
 })
-str := string(buf)
+str := string(buf) <span class="comment">// E.g. "3i[g0|)z"</span>
 </code></pre>
 
 <h3 id="before-go-1-10">Before Go 1.10</h3>
@@ -137,25 +147,17 @@ with an explicit implentation:</p>
 }
 </code></pre>
 
-<blockquote class="warning">
-<strong>Warning:</strong> If you're building a password generator, consider using a string generation algorithm from a high-quality cryptographic library. If you're running your own, and you probably shouldn't, package <a href="https://golang.org/pkg/crypto/rand/"><code>crypto/rand</code></a> offers a cryptographically secure pseudorandom number generator.
-</blockquote>
-
 <h3 id="further-reading">Further reading</h3>
 
 <div><a href="/algorithms/random-number-generator-seed/"><img src="/algorithms/dominoes-thumb.jpg" title="What’s a seed: Random number generators"></a></div>
 
 <p style="margin-top:0; margin-bottom:2em;"><a href="/algorithms/random-number-generator-seed/">What’s a seed: Random number generators</a></p>
 
-<div><a href="/golang/crypto-rand-int/"><img src="/res/programmer-thumb.jpg" title="User-friendly access to crypto/rand"></a></div>
-
-<p style="margin-top:0; margin-bottom:2em;"><a href="/golang/crypto-rand-int/">User-friendly access to crypto/rand</a></p>
-
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fgenerate-random-string-password-booking-reference%2f&amp;text=Generate%20a%20random%20string/password&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fgenerate-random-string-password-booking-reference%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fgenerate-random-string-password-booking-reference%2f&amp;title=Generate%20a%20random%20string/password" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Generate%20a%20random%20string/password&body=https%3a%2f%2fyourbasic.org%2fgolang%2fgenerate-random-string-password-booking-reference%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fgenerate-random-string%2f&amp;text=Generate%20a%20random%20string%20%28password%29&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fgenerate-random-string%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fgenerate-random-string%2f&amp;title=Generate%20a%20random%20string%20%28password%29" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Generate%20a%20random%20string%20%28password%29&body=https%3a%2f%2fyourbasic.org%2fgolang%2fgenerate-random-string%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
