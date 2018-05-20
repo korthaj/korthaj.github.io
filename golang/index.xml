@@ -49,7 +49,7 @@ func Sum(nums ...int) int { res := 0 for _, n := range nums { res += n } return 
       
       <guid>https://yourbasic.org/golang/compare-slices/</guid>
       <description>Basic case In most cases, you will want to write your own code to compare slices.
-// Equal tells whether a and b contain the same elements. // A nil argument is equivalent to an empty slice. func Equal(a, b []int) bool { if len(a) != len(b) { return false } for i, v := range a { if v != b[i] { return false } } return true } Optimzed code for byte slices To compare bytes slices, use the optimized bytes.</description>
+// Equal tells whether a and b contain the same elements. // A nil argument is equivalent to an empty slice. func Equal(a, b []int) bool { if len(a) != len(b) { return false } for i, v := range a { if v != b[i] { return false } } return true } Optimzed code for byte slices To compare byte slices, use the optimized bytes.</description>
     </item>
     
     <item>
