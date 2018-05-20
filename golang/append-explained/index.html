@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>How to use the append function - yourbasic.org/golang </title>
-  <meta name="description" content="The built-in append function appends elements to the end of a slice: if there is enough capacity, the underlying array is reused; if not, a new underlying array is allocated and the data is copied over.">
+  <meta name="description" content="The append function appends elements to the end of a slice: if there is enough capacity, the underlying array is reused; if not, a new underlying array is allocated and the data is copied over.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/toddler-fiat-with-trailer.jpg"
    ],
   "datePublished": "2018-04-15T00:00:00&#43;0000",
-  "dateModified": "2018-04-23T00:00:00&#43;0000",
+  "dateModified": "2018-05-20T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "The built-in append function appends elements to the end of a slice: if there is enough capacity, the underlying array is reused; if not, a new underlying array is allocated and the data is copied over."
+  "description": "The append function appends elements to the end of a slice: if there is enough capacity, the underlying array is reused; if not, a new underlying array is allocated and the data is copied over."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to use the append function">
-<meta property="og:description" content="The built-in append function appends elements to the end of a slice: if there is enough capacity, the underlying array is reused; if not, a new underlying array is allocated and the data is copied over.">
+<meta property="og:description" content="The append function appends elements to the end of a slice: if there is enough capacity, the underlying array is reused; if not, a new underlying array is allocated and the data is copied over.">
 <meta property="og:url" content="https://yourbasic.org/golang/append-explained/">
 <meta property="og:image" content="https://yourbasic.org/golang/toddler-fiat-with-trailer.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="How to use the append function">
-<meta name="twitter:description" content="The built-in append function appends elements to the end of a slice: if there is enough capacity, the underlying array is reused; if not, a new underlying array is allocated and the data is copied over.">
+<meta name="twitter:description" content="The append function appends elements to the end of a slice: if there is enough capacity, the underlying array is reused; if not, a new underlying array is allocated and the data is copied over.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/toddler-fiat-with-trailer.jpg">
 
@@ -90,48 +90,37 @@
 
 <div style="margin-top:1em;"><img src="/golang/toddler-fiat-with-trailer.jpg"></div>
 
-<p>The built-in append function appends elements to the end of a slice:</p>
+<ul class="toc">
+  <li><a href="#basics">Basics</a></li>
+  <li><a href="#slice-to-slice">Slice to slice</a></li>
+  <li><a href="#string-to-byte-slice">String to byte slice</a></li>
+  <li><a href="#time-complexity">Time complexity</a></li>
+</ul>
+
+<h2 id="basics">Basics</h2>
+
+<p>The built-in append function is appends any number of elements to the end of a&nbsp;slice:</p>
 
 <ul>
-<li>if there is enough capacity, the underlying array is reused;</li>
-<li>if not, a new underlying array is allocated and the data is copied over.</li>
+<li>if there is enough capacity, the underlying array is&nbsp;reused;</li>
+<li>if not, a new underlying array is allocated and the data is copied&nbsp;over.</li>
 </ul>
 
 <p>Append returns the updated slice.
 Therefore you need to store the result of an append,
-often in the variable holding the slice itself.</p>
+often in the variable holding the slice itself:</p>
 
-<pre><code>slice = append(slice, elem1, elem2)
-slice = append(slice, anotherSlice...)
-</code></pre>
+<pre><code>a := []int{1, 2}
+a = append(a, 3, 4) <span class="comment">// a == [1 2 3 4]</span></code></pre>
 
 <blockquote class="warning">
-See <a href="/golang/gotcha-append/">Why doesn’t append work every time?</a> for an example
+<b>Warning:</b> See <a href="/golang/gotcha-append/">Why doesn’t append work every time?</a> for an example
 of what can happen if your forget that <code>append</code> may reuse the underlying array.
 </blockquote>
 
-<h2 id="time-complexity">Time complexity</h2>
+<h2 id="slice-to-slice">Slice to slice</h2>
 
-<div><a href="/algorithms/amortized-time-complexity-analysis/"><img src="/algorithms/pink-coins-thumb.jpg" title="Amortized time complexity"></a></div>
-
-<p>Appending a single element takes constant amortized time.
-See <a href="/algorithms/amortized-time-complexity-analysis/">Amortized time complexity</a> for a detailed explanation.</p>
-
-<h2 id="special-case">Special case</h2>
-
-<p>As a special case, it&rsquo;s legal to append a string to a byte slice:</p>
-
-<pre><code>slice = append([]byte(&quot;hello &quot;), &quot;world&quot;...)
-</code></pre>
-
-<h2 id="examples">Examples</h2>
-
-<p>Append an element to a slice:</p>
-
-<pre><code>a := []int{1, 2}
-a = append(a, 3) <span class="comment">// a == [1 2 3]</span></code></pre>
-
-<p>Concatenate two slices:</p>
+<p>You can concatenate two slices using the <a href="/golang/variadic-function/">three dots notation</a>:</p>
 
 <pre><code>a := []int{1, 2}
 b := []int{11, 22}
@@ -141,6 +130,20 @@ a = append(a, b...) <span class="comment">// a == [1 2 11 22]</span></code></pre
 
 <pre><code>a := []int{1, 2}
 a = append(a, a...) <span class="comment">// a == [1 2 1 2]</span></code></pre>
+
+<h2 id="string-to-byte-slice">String to byte slice</h2>
+
+<p>As a special case, it&rsquo;s legal to append a string to a byte slice:</p>
+
+<pre><code>slice := append([]byte("Hello "), "world!"...)
+</code></pre>
+
+<h2 id="time-complexity">Time complexity</h2>
+
+<div><a href="/algorithms/amortized-time-complexity-analysis/"><img src="/algorithms/pink-coins-thumb.jpg" title="Amortized time complexity"></a></div>
+
+<p>Appending a single element takes constant amortized time.
+See <a href="/algorithms/amortized-time-complexity-analysis/">Amortized time complexity</a> for a detailed explanation.</p>
 
 <h3 id="further-reading">Further reading</h3>
 
