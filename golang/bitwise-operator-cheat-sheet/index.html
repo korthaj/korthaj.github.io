@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bitwise operators cheat sheet - yourbasic.org/golang </title>
-  <meta name="description" content="A complete list of bitwise operators and functions in Go.">
+  <meta name="description" content="To manipulate bits your can use operators (bitwise NOT, AND, OR, XOR, left and right shift) and functions in package math/bits (bitcount, rotate, reverse, leading and trailing zeros).">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/Leibniz-binary-system-1697.jpg"
    ],
   "datePublished": "2018-04-15T00:00:00&#43;0000",
-  "dateModified": "2018-05-15T00:00:00&#43;0000",
+  "dateModified": "2018-05-21T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "A complete list of bitwise operators and functions in Go."
+  "description": "To manipulate bits your can use operators (bitwise NOT, AND, OR, XOR, left and right shift) and functions in package math/bits (bitcount, rotate, reverse, leading and trailing zeros)."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Bitwise operators cheat sheet">
-<meta property="og:description" content="A complete list of bitwise operators and functions in Go.">
+<meta property="og:description" content="To manipulate bits your can use operators (bitwise NOT, AND, OR, XOR, left and right shift) and functions in package math/bits (bitcount, rotate, reverse, leading and trailing zeros).">
 <meta property="og:url" content="https://yourbasic.org/golang/bitwise-operator-cheat-sheet/">
 <meta property="og:image" content="https://yourbasic.org/golang/Leibniz-binary-system-1697.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Bitwise operators cheat sheet">
-<meta name="twitter:description" content="A complete list of bitwise operators and functions in Go.">
+<meta name="twitter:description" content="To manipulate bits your can use operators (bitwise NOT, AND, OR, XOR, left and right shift) and functions in package math/bits (bitcount, rotate, reverse, leading and trailing zeros).">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/Leibniz-binary-system-1697.jpg">
 
@@ -159,7 +159,7 @@
     <tr>
       <td style="padding-top: 0;"><code>^0101</code></td>
       <td style="padding-top: 0;">1010</td>
-      <td style="padding-top: 0;">Short for <code>1111&nbsp;^&nbsp;0101</code> (NOT)</td>
+      <td style="padding-top: 0;">Bitwise NOT (same as <code>1111&nbsp;^&nbsp;0101</code>)</td>
     </tr>
     <tr>
       <td><code>0011 &amp;^ 0101</code></td> 
