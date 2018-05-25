@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/fork-in-the-road.jpg"
    ],
   "datePublished": "2018-04-21T00:00:00&#43;0000",
-  "dateModified": "2018-04-21T00:00:00&#43;0000",
+  "dateModified": "2018-05-25T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -89,6 +89,12 @@
 <!-- CC BY 2.0: https://commons.wikimedia.org/wiki/File:The_fork_in_the_road_(2330044065).jpg -->
 
 <div style="margin-top:1em;"><img src="/golang/fork-in-the-road.jpg"></div>
+
+<blockquote>
+Binary search is faster than linear search, but only works if your data is in&nbsp;order.
+It's&nbsp;a&nbsp;sortcut.
+<a class="quote-source" href="https://twitter.com/dbentley/status/999031485096235008">Dan Bentley</a>
+</blockquote>
 
 <p>Use one of the <strong>binary search</strong> functions: <a href="https://golang.org/pkg/sort/#SearchInts"><code>sort.SearchInts</code></a>, <a href="https://golang.org/pkg/sort/#SearchFloat64s"><code>sort.SearchFloat64s</code></a> or  <a href="https://golang.org/pkg/sort/#SearchStrings"><code>sort.SearchStrings</code></a>.</p>
 
@@ -144,7 +150,7 @@ if i < len(a) && a[i] == x {
 
 <h2 id="time-complexity">Time complexity</h2>
 
-<p>Binary search runs in worst-case logarithmic time, making <em>O</em>(log&nbsp;<em>n</em>) comparisons, where <em>n</em> is the size of the&nbsp;array.</p>
+<p>Binary search runs in worst-case logarithmic time, making <em>O</em>(log&nbsp;<em>n</em>) comparisons, where <em>n</em> is the size of the&nbsp;slice.</p>
 
 <h2 id="further-reading">Further reading</h2>
 

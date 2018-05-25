@@ -170,11 +170,10 @@ m := make(map[string]float64) m[&#34;pi&#34;] = 3.1416  A new, empty map value i
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/binary-search/</guid>
-      <description>Use one of the binary search functions: sort.SearchInts, sort.SearchFloat64s or sort.SearchStrings.
+      <description>Binary search is faster than linear search, but only works if your data is in&amp;nbsp;order. It&#39;s&amp;nbsp;a&amp;nbsp;sortcut. Dan Bentley  Use one of the binary search functions: sort.SearchInts, sort.SearchFloat64s or sort.SearchStrings.
 They all have the signature
 func SearchType(a []Type, x Type) int and return
- the smallest index i at which x &amp;lt;= a[i], or len(a) if there is no such index.  The slice must be sorted in ascending order.
-a := []string{&#34;A&#34;, &#34;C&#34;, &#34;C&#34;} fmt.Println(sort.SearchStrings(a, &#34;A&#34;)) // 0 fmt.Println(sort.SearchStrings(a, &#34;B&#34;)) // 1 fmt.Println(sort.SearchStrings(a, &#34;C&#34;)) // 1 fmt.</description>
+ the smallest index i at which x &amp;lt;= a[i], or len(a) if there is no such index.  The slice must be sorted in ascending order.</description>
     </item>
     
     <item>
