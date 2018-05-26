@@ -375,6 +375,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/append-explained/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/detect-data-races/</loc>
   </url>
   
@@ -416,10 +420,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/defer/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/append-explained/</loc>
   </url>
   
   <url>

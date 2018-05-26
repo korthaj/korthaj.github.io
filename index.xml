@@ -1000,6 +1000,16 @@ Efficient string concatenationGo 1.10 The strings.Builder type is used to effici
     </item>
     
     <item>
+      <title>How to best use the append function</title>
+      <link>https://yourbasic.org/golang/append-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/append-explained/</guid>
+      <description>Basics Slice to slice String to byte slice Time complexity  Basics The built-in append function is appends any number of elements to the end of a&amp;nbsp;slice:
+ if there is enough capacity, the underlying array is&amp;nbsp;reused; if not, a new underlying array is allocated and the data is copied&amp;nbsp;over.  Append returns the updated slice. Therefore you need to store the result of an append, often in the variable holding the slice itself:</description>
+    </item>
+    
+    <item>
       <title>How to detect data races</title>
       <link>https://yourbasic.org/golang/detect-data-races/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1119,16 +1129,6 @@ s := strings.Fields(&amp;quot; a \t b \n&amp;quot;) fmt.Println(s) // Output: [a
 func main() { defer fmt.Println(&#34;World&#34;) fmt.Println(&#34;Hello&#34;) } Hello World Deferred calls are executed even when the function panics.
 func main() { defer fmt.Println(&#34;World&#34;) panic(&#34;Stop&#34;) fmt.Println(&#34;Hello&#34;) } World panic: Stop goroutine 1 [running]: main.main() ../main.go:3 +0xa0 Deferred function calls are executed in last-in-first-out order, and a deferred function&amp;rsquo;s arguments are evaluated when the defer statement executes.
 func main() { fmt.</description>
-    </item>
-    
-    <item>
-      <title>How to use the append function</title>
-      <link>https://yourbasic.org/golang/append-explained/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/append-explained/</guid>
-      <description>Basics Slice to slice String to byte slice Time complexity  Basics The built-in append function is appends any number of elements to the end of a&amp;nbsp;slice:
- if there is enough capacity, the underlying array is&amp;nbsp;reused; if not, a new underlying array is allocated and the data is copied&amp;nbsp;over.  Append returns the updated slice. Therefore you need to store the result of an append, often in the variable holding the slice itself:</description>
     </item>
     
     <item>
