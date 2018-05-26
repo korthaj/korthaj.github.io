@@ -1825,7 +1825,7 @@ m := map[string]int{&amp;quot;Alice&amp;quot;: 23, &amp;quot;Eve&amp;quot;: 2, &
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/string-functions-reference-cheat-sheet/</guid>
-      <description>String literals Concatenate, compare Length in bytes and runes Index, substring, iteratate Search Replace Split and join substrings Format and convert  String literals   Expression Result Note     &#34;&#34;  Empty string, zero value for string   &#34;Japan 日本&#34; Japan 日本 Go code is Unicode text encoded in UTF‑8   &#34;\xe6\x97\xa5&#34; 日 \xNN specifies a byte   &#34;\u65E5&#34; 日 \uNNNN specifies a Unicode value   `\xe6` \xe6 Raw string literal*    &amp;#42; In `` string literals, characters are interpreted literally: backslashes have no special meaning.</description>
+      <description>String literals (zero value) Concatenate Equal and compare (ignore case) Length in bytes and runes Index, substring, iteratate Search (contains, prefix/suffix, index) Replace (uppercase/lowercase, trim) Split and join substrings Format and convert Regular expressions  String literals (zero value)   Expression Result Note     &#34;&#34;  Zero value for type string   &#34;Japan 日本&#34; Japan 日本 Go code is Unicode text encoded in UTF‑8   &#34;</description>
     </item>
     
     <item>

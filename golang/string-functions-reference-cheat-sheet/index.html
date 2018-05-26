@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>String functions cheat sheet - yourbasic.org/golang </title>
-  <meta name="description" content="String essentials in one place: literals, concatenation, equality, ordering, indexing, UTF-8, search, join, replace, split, trim, strip, delete, lowercase/uppercase.">
+  <meta name="description" content="String essentials in one place: literals, concatenation, equality, ordering, indexing, UTF-8, search, join, replace, split, trim, strip, lowercase/uppercase.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/typewriter.png"
    ],
   "datePublished": "2018-03-15T00:00:00&#43;0000",
-  "dateModified": "2018-05-19T00:00:00&#43;0000",
+  "dateModified": "2018-05-26T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "String essentials in one place: literals, concatenation, equality, ordering, indexing, UTF-8, search, join, replace, split, trim, strip, delete, lowercase/uppercase."
+  "description": "String essentials in one place: literals, concatenation, equality, ordering, indexing, UTF-8, search, join, replace, split, trim, strip, lowercase/uppercase."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="String functions cheat sheet">
-<meta property="og:description" content="String essentials in one place: literals, concatenation, equality, ordering, indexing, UTF-8, search, join, replace, split, trim, strip, delete, lowercase/uppercase.">
+<meta property="og:description" content="String essentials in one place: literals, concatenation, equality, ordering, indexing, UTF-8, search, join, replace, split, trim, strip, lowercase/uppercase.">
 <meta property="og:url" content="https://yourbasic.org/golang/string-functions-reference-cheat-sheet/">
 <meta property="og:image" content="https://yourbasic.org/golang/typewriter.png">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="String functions cheat sheet">
-<meta name="twitter:description" content="String essentials in one place: literals, concatenation, equality, ordering, indexing, UTF-8, search, join, replace, split, trim, strip, delete, lowercase/uppercase.">
+<meta name="twitter:description" content="String essentials in one place: literals, concatenation, equality, ordering, indexing, UTF-8, search, join, replace, split, trim, strip, lowercase/uppercase.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/typewriter.png">
 
@@ -91,17 +91,19 @@
 <div><img src="/golang/typewriter.png" class="extra-content" style="float:right;margin-top:1em;"></div>
 
 <ul class="toc">
-  <li><a href="#string-literals">String literals</a></li>
-  <li><a href="#concatenate-compare">Concatenate, compare</a></li>
+  <li><a href="#string-literals-zero-value">String literals (zero value)</a></li>
+  <li><a href="#concatenate">Concatenate</a></li>
+  <li><a href="#equal-and-compare-ignore-case">Equal and compare (ignore case)</a></li>
   <li><a href="#length-in-bytes-and-runes">Length in bytes and runes</a></li>
   <li><a href="#index-substring-iteratate">Index, substring, iteratate</a></li>
-  <li><a href="#search">Search</a></li>
-  <li><a href="#replace">Replace</a></li>
+  <li><a href="#search-contains-prefix-suffix-index">Search (contains, prefix/suffix, index)</a></li>
+  <li><a href="#replace-uppercase-lowercase-trim">Replace (uppercase/lowercase, trim)</a></li>
   <li><a href="#split-and-join-substrings">Split and join substrings</a></li>
   <li><a href="#format-and-convert">Format and convert</a></li>
+  <li><a href="#regular-expressions">Regular expressions</a></li>
 </ul>
 
-<h2 id="string-literals">String literals</h2>
+<h2 id="string-literals-zero-value">String literals (zero value)</h2>
 
 <table class="white">
   <thead>
@@ -115,7 +117,7 @@
     <tr>
       <td style="border-bottom: 0;"><code>""</code></td>
       <td style="border-bottom: 0;"> </td>
-      <td style="border-bottom: 0;">Empty string, zero value for <code>string</code></td>
+      <td style="border-bottom: 0;">Zero value for type <code>string</code></td>
     </tr>
     <tr>
       <td style="padding-top: 0;"><code>"Japan 日本"</code></td>
@@ -144,7 +146,7 @@
 backslashes have no special meaning.
 See <a href="/golang/multiline-string/">Multiline strings</a> for more on raw strings.</p>
 
-<h2 id="concatenate-compare">Concatenate, compare</h2>
+<h2 id="concatenate">Concatenate</h2>
 
 <table class="white">
   <thead>
@@ -158,27 +160,41 @@ See <a href="/golang/multiline-string/">Multiline strings</a> for more on raw st
     <tr>
       <td><code>"Ja" + "pan"</code></td>
       <td>Japan</td>
-      <td>Concatenation*</td>
+      <td>Concatenation</td>
     </tr>
+  </tbody>
+</table>
+
+<p>See <a href="/golang/build-append-concatenate-strings-efficiently/">How to best use a string builder</a> for more efficient string concatenation without redundant copying.</p>
+
+<h2 id="equal-and-compare-ignore-case">Equal and compare (ignore case)</h2>
+
+<table class="white">
+  <thead>
+    <tr>
+      <th>Expression</th>
+      <th>Result</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
     <tr>
       <td style="border-bottom: 0;"><code>"Japan" == "Japan"</code></td>
       <td style="border-bottom: 0;">true</td>
       <td style="border-bottom: 0;">Equality</td>
     </tr>
     <tr>
-      <td style="padding-top: 0;"><code>strings.EqualFold("Japan", "JAPAN")</code></td>
-      <td style="padding-top: 0;">true</td>
-      <td style="padding-top: 0;">Unicode case-folding</td>
+      <td style="border-bottom: 0; padding-top: 0;"><code>strings.EqualFold("Japan", "JAPAN")</code></td>
+      <td style="border-bottom: 0; padding-top: 0;">true</td>
+      <td style="border-bottom: 0; padding-top: 0;">Unicode case folding</td>
     </tr>
     <tr>
-      <td><code>"Japan" &lt; "japan"</code></td>
-      <td>true</td>
-      <td>Lexical order</td>
+      <td style="padding-top: 0;"><code>"Japan" &lt; "japan"</code></td>
+      <td style="padding-top: 0;">true</td>
+      <td style="padding-top: 0;">Lexicographic order</td>
     </tr>
   </tbody>
 </table>
-
-<p>&#42; See <a href="/golang/build-append-concatenate-strings-efficiently/">How to best use a string builder</a> for more efficient string concatenation without redundant copying.</p>
 
 <h2 id="length-in-bytes-and-runes">Length in bytes and runes</h2>
 
@@ -257,7 +273,7 @@ for i := 0; i < len(s); i++ {
 }
 <span class="comment">// Output: 'J' 'a' 'p' 'a' 'n' ' ' 'æ' '\u0097' '¥' 'æ' '\u009c' '¬'</span></code></pre>
 
-<h2 id="search">Search</h2>
+<h2 id="search-contains-prefix-suffix-index">Search (contains, prefix/suffix, index)</h2>
 
 <table class="white">
   <thead>
@@ -316,7 +332,7 @@ for i := 0; i < len(s); i++ {
   </tbody>
 </table>
 
-<h2 id="replace">Replace</h2>
+<h2 id="replace-uppercase-lowercase-trim">Replace (uppercase/lowercase, trim)</h2>
 
 <table class="white">
   <thead>
