@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/typewriter.png"
    ],
   "datePublished": "2018-03-15T00:00:00&#43;0000",
-  "dateModified": "2018-05-26T00:00:00&#43;0000",
+  "dateModified": "2018-05-27T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -88,17 +88,18 @@
 
 <!-- CC0: https://pixabay.com/en/typewriter-old-letters-print-keys-1505997/ -->
 
-<div><img src="/golang/typewriter.png" class="extra-content" style="float:right;margin-top:1em;"></div>
+<div><img src="/golang/typewriter.png" class="extra-content" style="float:right;margin-top:2em;"></div>
 
 <ul class="toc">
   <li><a href="#string-literals-zero-value">String literals (zero value)</a></li>
   <li><a href="#concatenate">Concatenate</a></li>
   <li><a href="#equal-and-compare-ignore-case">Equal and compare (ignore case)</a></li>
-  <li><a href="#length-in-bytes-and-runes">Length in bytes and runes</a></li>
+  <li><a href="#length-in-bytes-or-runes">Length in bytes or runes</a></li>
   <li><a href="#index-substring-iteratate">Index, substring, iteratate</a></li>
   <li><a href="#search-contains-prefix-suffix-index">Search (contains, prefix/suffix, index)</a></li>
   <li><a href="#replace-uppercase-lowercase-trim">Replace (uppercase/lowercase, trim)</a></li>
-  <li><a href="#split-and-join-substrings">Split and join substrings</a></li>
+  <li><a href="#split-by-space-or-comma">Split by space or comma</a></li>
+  <li><a href="#join-strings-with-separator">Join strings with separator</a></li>
   <li><a href="#format-and-convert">Format and convert</a></li>
   <li><a href="#regular-expressions">Regular expressions</a></li>
 </ul>
@@ -196,7 +197,7 @@ See <a href="/golang/multiline-string/">Multiline strings</a> for more on raw st
   </tbody>
 </table>
 
-<h2 id="length-in-bytes-and-runes">Length in bytes and runes</h2>
+<h2 id="length-in-bytes-or-runes">Length in bytes or runes</h2>
 
 <table class="white">
   <thead>
@@ -401,7 +402,7 @@ for i := 0; i < len(s); i++ {
   </tbody>
 </table>
 
-<h2 id="split-and-join-substrings">Split and join substrings</h2>
+<h2 id="split-by-space-or-comma">Split by space or comma</h2>
 
 <table class="white">
   <thead>
@@ -413,24 +414,38 @@ for i := 0; i < len(s); i++ {
   </thead>
   <tbody>
     <tr>
-      <td style="border-bottom: 0;"><code>strings.Fields("&nbsp;a\t&nbsp;b\n")</code></td>
+      <td><code>strings.Fields("&nbsp;a\t&nbsp;b\n")</code></td>
+      <td><code>["a"&nbsp;"b"]</code></td>
+      <td>Remove white space</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>strings.Split("a,b",&nbsp;",")</code></td>
       <td style="border-bottom: 0;"><code>["a"&nbsp;"b"]</code></td>
-      <td style="border-bottom: 0;">Into substrings, remove white space</td>
+      <td style="border-bottom: 0;">Remove separator</td>
     </tr>
     <tr>
-      <td style="border-bottom: 0; padding-top: 0;"><code>strings.Split("a:b",&nbsp;":")</code></td>
-      <td style="border-bottom: 0; padding-top: 0;"><code>["a"&nbsp;"b"]</code></td>
-      <td style="border-bottom: 0; padding-top: 0;">remove separator</td>
+      <td style="padding-top: 0;"><code>strings.SplitAfter("a,b",&nbsp;",")</code></td>
+      <td style="padding-top: 0;"><code>["a,"&nbsp;"b"]</code></td>
+      <td style="padding-top: 0;">Keep separator</td>
     </tr>
+  </tbody>
+</table>
+
+<h2 id="join-strings-with-separator">Join strings with separator</h2>
+
+<table class="white">
+  <thead>
     <tr>
-      <td style="padding-top: 0;"><code>strings.SplitAfter("a:b",&nbsp;":")</code></td>
-      <td style="padding-top: 0;"><code>["a:"&nbsp;"b"]</code></td>
-      <td style="padding-top: 0;">keep separator</td>
+      <th>Expression</th>
+      <th>Result</th>
+      <th>Note</th>
     </tr>
+  </thead>
+  <tbody>
     <tr>
-      <td><code>arr := []string{"a",&nbsp;"b"}</code><br /><code>strings.Join(arr, ":")</code></td>
+      <td><code>strings.Join([]string{"a",&nbsp;"b"}, ":")</code></td>
       <td>a:b</td>
-      <td>Join strings, add separator</td>
+      <td>Add separator</td>
     </tr>
     <tr>
       <td><code>strings.Repeat("da", 2)</code></td>
@@ -473,7 +488,7 @@ is often your best friend when formatting data:</p>
 
 <div><a href="/golang/fmt-printf-reference-cheat-sheet/"><img src="/golang/format-thumb.jpg" title="fmt cheat sheet"></a></div>
 
-<p style="margin-top:0; margin-bottom:2em;">The <a href="/golang/fmt-printf-reference-cheat-sheet/">fmt cheat sheet</a>
+<p>The <a href="/golang/fmt-printf-reference-cheat-sheet/">fmt cheat sheet</a>
 covers the most common formatting flags.</p>
 
 <h2 id="regular-expressions">Regular expressions</h2>
