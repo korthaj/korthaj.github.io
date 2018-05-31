@@ -1722,14 +1722,14 @@ func main() { m := 0 m, n := 1, 2 fmt.Println(m, n) }   Unlike regular variable 
     </item>
     
     <item>
-      <title>Remove duplicate whitespace</title>
+      <title>Remove all duplicate whitespace</title>
       <link>https://yourbasic.org/golang/remove-duplicate-whitespace/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/remove-duplicate-whitespace/</guid>
       <description>space := regexp.MustCompile(`\s+`) s := space.ReplaceAllString(&#34;Hello \t \n world!&#34;, &#34; &#34;) fmt.Printf(&#34;%q&#34;, s) // &#34;Hello world!&#34; \s+ is a regular expression:
  the character class \s matches a space, tab, new line, carriage return or form feed, and + says “one or more of those”.  In other words, the code will replace each whitespace substring with a single space&amp;nbsp;character.
-Further reading  Regular expressions is a gentle introduction to the regexp package with cheat sheet and plenty of examples.</description>
+Trim leading and trailing space  To trim leading and trailing whitespace, use the strings.</description>
     </item>
     
     <item>
@@ -2011,8 +2011,7 @@ What would you require of this ideal, sole structure?</description>
       
       <guid>https://yourbasic.org/golang/trim-whitespace-from-string/</guid>
       <description>Use the strings.TrimSpace function to remove leading and trailing whitespace as defined by&amp;nbsp;Unicode.
-s := strings.TrimSpace(&#34;\t Goodbye hair!\n &#34;) fmt.Printf(&#34;%q&#34;, s) // &#34;Goodbye hair!&#34; To remove other leading and trailing characters, use strings.Trim. To remove only the leading or the trailing characters, use strings.TrimLeft or strings.TrimRight.
-Further reading 
+s := strings.TrimSpace(&#34;\t Goodbye hair!\n &#34;) fmt.Printf(&#34;%q&#34;, s) // &#34;Goodbye hair!&#34;  To remove other leading and trailing characters, use strings.Trim. To remove only the leading or the trailing characters, use strings.TrimLeft or strings.TrimRight.  Further reading 
 The String functions cheat sheet presents the top Go string functions.</description>
     </item>
     
