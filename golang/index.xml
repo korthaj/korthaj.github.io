@@ -1824,17 +1824,6 @@ The type assertion x.(T) asserts that the concrete value stored in&amp;nbsp;x is
     </item>
     
     <item>
-      <title>Type rune: a Unicode code point</title>
-      <link>https://yourbasic.org/golang/rune/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/rune/</guid>
-      <description>A rune is a type meant to repre&amp;shy;sent a Unicode code&amp;nbsp;point.
- The rune type is an alias for int32, and is used to emphasize than an integer represents a code&amp;nbsp;point.
- ASCII defines 128 characters, identified by the code points 0–127. It covers English letters, Latin numbers, and a few other characters. Unicode, which is a superset of ASCII, defines a codespace of 1,114,112 code points. Unicode version 10.</description>
-    </item>
-    
-    <item>
       <title>Unexpected newline</title>
       <link>https://yourbasic.org/golang/gotcha-missing-comma-slice-array-map-literal/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1949,6 +1938,17 @@ fmt.Println(strings.TrimRight(&#34;ABBA&#34;, &#34;BA&#34;)) // Output: &#34;&#3
 The Trim, TrimLeft and TrimRight functions strip all Unicode code points contained in a cutset. In this case, all trailing A:s and B:s are stripped from the string, leaving the empty string.
 To strip a trailing string, use strings.TrimSuffix.
 fmt.Println(strings.TrimSuffix(&#34;ABBA&#34;, &#34;BA&#34;)) // Output: &#34;AB&#34;  See String functions cheat sheet for more about strings in&amp;nbsp;Go.</description>
+    </item>
+    
+    <item>
+      <title>What is a Go rune?</title>
+      <link>https://yourbasic.org/golang/rune/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/rune/</guid>
+      <description>A rune is a type meant to repre&amp;shy;sent a Unicode code&amp;nbsp;point.
+ The rune type is an alias for int32, and is used to emphasize than an integer represents a code&amp;nbsp;point.
+ ASCII defines 128 characters, identified by the code points 0–127. It covers English letters, Latin numbers, and a few other characters. Unicode, which is a superset of ASCII, defines a codespace of 1,114,112 code points. Unicode version 10.</description>
     </item>
     
     <item>

@@ -756,10 +756,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/rune/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/golang/gotcha-missing-comma-slice-array-map-literal/</loc>
   </url>
   
@@ -797,6 +793,10 @@
   
   <url>
     <loc>https://yourbasic.org/golang/gotcha-trim-string/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/rune/</loc>
   </url>
   
   <url>
