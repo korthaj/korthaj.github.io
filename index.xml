@@ -43,6 +43,18 @@ func Sum(nums ...int) int { res := 0 for _, n := range nums { res += n } return 
     </item>
     
     <item>
+      <title>3 simple ways to create an error</title>
+      <link>https://yourbasic.org/golang/create-error/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/create-error/</guid>
+      <description>String-based errors The standard library offers two out-of-the-box options.
+// simple string-based error err1 := errors.New(&#34;math: square root of negative number&#34;) // with formatting err2 := fmt.Errorf(&#34;math: square root of negative number %g&#34;, x) Custom errors with data To define a custom error type, you must satisfy the predeclared error interface.
+type error interface { Error() string } Here are two examples.
+type SyntaxError struct { Line int Col int } func (e *SyntaxError) Error() string { return fmt.</description>
+    </item>
+    
+    <item>
       <title>3 ways to compare slices</title>
       <link>https://yourbasic.org/golang/compare-slices/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -501,18 +513,6 @@ b := []byte{&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;\xe6&#39;, &#39;\x97&#39
       <guid>https://yourbasic.org/golang/convert-string-to-rune-slice/</guid>
       <description>String to rune slice Converting a string to a slice of runes yields a slice whose elements are the Unicode code points of the&amp;nbsp;string.
 s := &#34;abc日&#34; r := []rune(s) fmt.Printf(&#34;%v\n&#34;, r) // [97 98 99 26085] fmt.Printf(&#34;%U\n&#34;, r) // [U+0061 U+0062 U+0063 U+65E5] Rune slice to string Converting a slice of runes to a string yields a string that is the concatenation of the runes converted to UTF-8 encoded strings.</description>
-    </item>
-    
-    <item>
-      <title>Create a custom error</title>
-      <link>https://yourbasic.org/golang/create-error/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/create-error/</guid>
-      <description>Simple errors The standard library offers two out-of-the-box options.
-// simple string-based error err1 := errors.New(&#34;math: square root of negative number&#34;) // with formatting err2 := fmt.Errorf(&#34;math: square root of negative number %g&#34;, x) Custom errors with data To define a custom error type, you must satisfy the predeclared error interface.
-type error interface { Error() string } Here are two examples.
-type SyntaxError struct { Line int Col int } func (e *SyntaxError) Error() string { return fmt.</description>
     </item>
     
     <item>

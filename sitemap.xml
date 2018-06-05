@@ -14,6 +14,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/create-error/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/compare-slices/</loc>
   </url>
   
@@ -188,10 +192,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/convert-string-to-rune-slice/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/create-error/</loc>
   </url>
   
   <url>
