@@ -751,17 +751,6 @@ s := fmt.Sprintf(&#34;Size: %d MB.&#34;, 85) // s == &#34;Size: 85 MB.&#34; Furt
     </item>
     
     <item>
-      <title>Format/parse a time or date</title>
-      <link>https://yourbasic.org/golang/format-parse-string-time-date-example/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/format-parse-string-time-date-example/</guid>
-      <description>The Format method formats a&amp;nbsp;time.Time. The time.Parse function parses a date&amp;nbsp;string.  func (t Time) Format(layout string) string func Parse(layout, value string) (Time, error) input := &#34;2017-08-31&#34; layout := &#34;2006-01-02&#34; t, _ := time.Parse(layout, input) fmt.Println(t) // 2017-08-31 00:00:00 +0000 UTC fmt.Println(t.Format(&#34;02-Jan-2006&#34;)) // 31-Aug-2017 The layout parameter should be the reference&amp;nbsp;date
-Mon Jan 2 15:04:05 MST 2006
-formatted the same way as the value should be formatted.</description>
-    </item>
-    
-    <item>
       <title>Function types and values</title>
       <link>https://yourbasic.org/golang/function-pointer-type-declaration/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1061,6 +1050,16 @@ now := time.Now() // current local time sec := now.Unix() // number of seconds s
 func (t Time) Weekday() Weekday  In use:
 weekday := time.Now().Weekday() fmt.Println(weekday) // &#34;Tuesday&#34; fmt.Println(int(weekday)) // &#34;2&#34; Type Weekday The time.Weekday type specifies a day of the week (Sunday = 0, …).
 type Weekday int const ( Sunday Weekday = iota Monday Tuesday Wednesday Thursday Friday Saturday )  </description>
+    </item>
+    
+    <item>
+      <title>How to format and parse a time/date</title>
+      <link>https://yourbasic.org/golang/format-parse-string-time-date-example/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/format-parse-string-time-date-example/</guid>
+      <description>Basics All time and date options Common time and date formats Corner cases  Basics  The Format method formats a&amp;nbsp;time.Time. The time.Parse function parses a date&amp;nbsp;string.  func (t Time) Format(layout string) string func Parse(layout, value string) (Time, error) input := &#34;2017-08-31&#34; layout := &#34;2006-01-02&#34; t, _ := time.Parse(layout, input) fmt.Println(t) // 2017-08-31 00:00:00 +0000 UTC fmt.Println(t.Format(&#34;02-Jan-2006&#34;)) // 31-Aug-2017 The layout parameter should be the reference&amp;nbsp;date
+Mon Jan 2 15:04:05 MST 2006</description>
     </item>
     
     <item>

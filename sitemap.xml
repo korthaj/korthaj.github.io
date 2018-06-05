@@ -283,10 +283,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/format-parse-string-time-date-example/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/golang/function-pointer-type-declaration/</loc>
   </url>
   
@@ -396,6 +392,10 @@
   
   <url>
     <loc>https://yourbasic.org/golang/day-of-week-int/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/format-parse-string-time-date-example/</loc>
   </url>
   
   <url>
