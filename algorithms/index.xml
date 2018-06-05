@@ -86,6 +86,16 @@ Neither arrays nor linked lists can achieve this:
     </item>
     
     <item>
+      <title>How to analyse time complexity: Count your steps</title>
+      <link>https://yourbasic.org/algorithms/time-complexity-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/algorithms/time-complexity-explained/</guid>
+      <description>Time complexity esti&amp;shy;mates the time to run an algo&amp;shy;rithm. It&#39;s calcu&amp;shy;lated by counting elemen&amp;shy;tary opera&amp;shy;tions.  Example Worst-case time Average-case time Linear vs. quadratic time  Example What&amp;rsquo;s the running time of the following algorithm?
+ // Compute the maximum element in the array a. Algorithm max(a): max ← a[0] for i = 1 to len(a)-1 if a[i] &amp;gt; max max ← a[i] return max  The answer depends on factors such as input, programming language and runtime, coding skill, compiler, operating system, and hardware.</description>
+    </item>
+    
+    <item>
       <title>How to avoid initializing memory</title>
       <link>https://yourbasic.org/algorithms/avoid-initializing-memory/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -146,16 +156,6 @@ In this text we&amp;rsquo;ll look at loop invariants, invariants placed at the b
       <guid>https://yourbasic.org/algorithms/fastest-sorting-algorithm/</guid>
       <description>Integer sorting in O(n&amp;nbsp;log&amp;nbsp;log&amp;nbsp;n) time
   Which sorting algorithm is the fastest? Ask this question to any group of programmers and you’ll get an animated discussion. Of course, there is no one answer. It depends not only on the algorithm, but also on the computer, data, and implementation. However, if you count the number of operations needed to sort integer numbers on a standard von Neumann computer, there is a clear winner – the algorithm presented in the paper “Sorting In Linear Time?</description>
-    </item>
-    
-    <item>
-      <title>Time complexity analysis: Count your steps</title>
-      <link>https://yourbasic.org/algorithms/time-complexity-explained/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/algorithms/time-complexity-explained/</guid>
-      <description>Time complexity esti&amp;shy;mates the time to run an algo&amp;shy;rithm. It&#39;s calcu&amp;shy;lated by counting elemen&amp;shy;tary opera&amp;shy;tions.  Example Worst-case time Average-case time Linear vs. quadratic time  Example What&amp;rsquo;s the running time of the following algorithm?
- // Compute the maximum element in the array a. Algorithm max(a): max ← a[0] for i = 1 to len(a)-1 if a[i] &amp;gt; max max ← a[i] return max  The answer depends on factors such as input, programming language and runtime, coding skill, compiler, operating system, and hardware.</description>
     </item>
     
     <item>
