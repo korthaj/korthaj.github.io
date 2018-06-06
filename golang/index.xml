@@ -1561,9 +1561,9 @@ Trim leading and trailing space  To trim leading and trailing whitespace, use th
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/round-float-2-decimal-places/</guid>
-      <description>String To display the value as a string, use the fmt.Sprintf method.
+      <description>Float to string To display the value as a string, use the fmt.Sprintf method.
 s := fmt.Sprintf(&#34;%.2f&#34;, 12.3456) // s == &#34;12.35&#34;  The fmt cheat sheet lists the most common formatting verbs and flags.
-Float To round to a floating-point value, use one of these techniques.
+Float to float To round to a floating-point value, use one of these techniques.
 x := 12.3456 fmt.Println(math.Floor(x*100)/100) // 12.34 (round down) fmt.Println(math.Round(x*100)/100) // 12.35 (round to nearest) fmt.Println(math.Ceil(x*100)/100) // 12.35 (round up)  Due to the quirks of floating point representation, these rounded values may be slightly&amp;nbsp;off.</description>
     </item>
     
