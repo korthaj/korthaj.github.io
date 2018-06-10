@@ -1804,7 +1804,7 @@ The String functions cheat sheet presents the top Go string functions.</descript
       <description>An alias declaration has the form
 type T1 = T2 as opposed to a standard type definition
 type T1 T2  An alias declaration doesn&amp;rsquo;t create a new distinct type different from the type it&amp;rsquo;s created from. It just introduces an alias name T1, an alternate spelling, for the type denoted by&amp;nbsp;T2.
-Type aliases are not meant for everyday use. They were introduced to support gradual code repair while movin a type between packages during large-scale refactoring.</description>
+Type aliases are not meant for everyday use. They were introduced to support gradual code repair while moving a type between packages during large-scale refactoring.</description>
     </item>
     
     <item>
