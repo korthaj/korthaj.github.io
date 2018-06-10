@@ -44,18 +44,23 @@
 
 <h2 id="string-to-byte-slice">String to byte slice</h2>
 
-<p>When you convert a string to a byte slice, you get a slice that contains the bytes of the string.</p>
+<p>When you convert a string to a byte slice, you get a new slice that contains the bytes of the string.</p>
 
 <pre><code>fmt.Println(<b>[]byte</b>("abc日")) <span class="comment">// [97 98 99 230 151 165]</span></code></pre>
 
 <h2 id="byte-slice-to-string">Byte slice to string</h2>
 
-<p>Converting a slice of bytes to a string yields a string whose bytes are the elements of the&nbsp;slice.</p>
+<p>Converting a slice of bytes to a string yields a new string whose bytes are the elements of the&nbsp;slice.</p>
 
 <pre><code>b := []byte{'a', 'b', 'c', '\xe6', '\x97', '\xa5'}
 s := string(b)
 fmt.Println(s)
 <span class="comment">// Output: abc日</span></code></pre>
+
+<h2 id="linear-time">Linear time</h2>
+
+<p>These convertions create a new slice or string,
+and hence have linear <a href="/algorithms/time-complexity-explained/">time&nbsp;complexity</a>.</p>
 
 <h3 id="further-reading">Further reading</h3>
 

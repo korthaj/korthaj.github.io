@@ -491,9 +491,9 @@ str := &#34;123&#34; n, err := strconv.ParseInt(str, 10, 64) if err == nil { fmt
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/convert-string-to-byte-slice/</guid>
-      <description>String to byte slice When you convert a string to a byte slice, you get a slice that contains the bytes of the string.
-fmt.Println([]byte(&#34;abc日&#34;)) // [97 98 99 230 151 165] Byte slice to string Converting a slice of bytes to a string yields a string whose bytes are the elements of the&amp;nbsp;slice.
-b := []byte{&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;\xe6&#39;, &#39;\x97&#39;, &#39;\xa5&#39;} s := string(b) fmt.Println(s) // Output: abc日 Further reading  String functions cheat sheet</description>
+      <description>String to byte slice When you convert a string to a byte slice, you get a new slice that contains the bytes of the string.
+fmt.Println([]byte(&#34;abc日&#34;)) // [97 98 99 230 151 165] Byte slice to string Converting a slice of bytes to a string yields a new string whose bytes are the elements of the&amp;nbsp;slice.
+b := []byte{&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;\xe6&#39;, &#39;\x97&#39;, &#39;\xa5&#39;} s := string(b) fmt.Println(s) // Output: abc日 Linear time These convertions create a new slice or string, and hence have linear time&amp;nbsp;complexity.</description>
     </item>
     
     <item>
