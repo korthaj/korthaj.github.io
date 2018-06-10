@@ -412,9 +412,7 @@ str := &#34;123&#34; n, err := strconv.ParseInt(str, 10, 64) if err == nil { fmt
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/convert-string-to-byte-slice/</guid>
-      <description>String to byte slice When you convert a string to a byte slice, you get a new slice that contains the bytes of the string.
-fmt.Println([]byte(&#34;abc日&#34;)) // [97 98 99 230 151 165] Byte slice to string Converting a slice of bytes to a string yields a new string whose bytes are the elements of the&amp;nbsp;slice.
-b := []byte{&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;\xe6&#39;, &#39;\x97&#39;, &#39;\xa5&#39;} s := string(b) fmt.Println(s) // Output: abc日 Linear time These convertions create a new slice or string, and hence have linear time&amp;nbsp;complexity.</description>
+      <description>Basics String to byte slice Byte slice to string Efficiency  Basics  A conversion between a string and a byte slice doesn&amp;rsquo;t change the data; the only difference is that strings are immutable, while byte slices can be modified.  If you need to manipulate the Unicode characters (as opposed to the individual bytes) of a string, you may want to convert the string to a rune slice.</description>
     </item>
     
     <item>
@@ -432,8 +430,7 @@ b := []byte{&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;\xe6&#39;, &#39;\x97&#39
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/convert-string-to-rune-slice/</guid>
-      <description>String to rune slice Converting a string to a slice of runes yields a slice whose elements are the Unicode code points of the&amp;nbsp;string.
-s := &#34;abc日&#34; r := []rune(s) fmt.Printf(&#34;%v\n&#34;, r) // [97 98 99 26085] fmt.Printf(&#34;%U\n&#34;, r) // [U+0061 U+0062 U+0063 U+65E5] Rune slice to string Converting a slice of runes to a string yields a string that is the concatenation of the runes converted to UTF-8 encoded strings.</description>
+      <description>String to rune slice Rune slice to string Efficiency  String to rune slice  Converting a string to a slice of runes yields a slice whose elements are the Unicode code points of the&amp;nbsp;string. For an invalid UTF-8 sequence, the rune value will be 0xFFFD for each invalid&amp;nbsp;byte.  s := &#34;abc日&#34; r := []rune(s) fmt.Printf(&#34;%v\n&#34;, r) // [97 98 99 26085] fmt.Printf(&#34;%U\n&#34;, r) // [U+0061 U+0062 U+0063 U+65E5]   You can also use a range loop to access the code points of a string.</description>
     </item>
     
     <item>

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Convert string to/from rune slice - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE How to convert between strings and rune slices (arrays) in Go.">
+  <meta name="description" content="CODE EXAMPLE When you convert a string to a rune slice, you get a slice that contains the Unicode code points of the string.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -42,27 +42,55 @@
 <div class="tagline">yourbasic.org/golang</div>
 
 
+<ul class="toc">
+  <li><a href="#string-to-rune-slice">String to rune slice</a></li>
+  <li><a href="#rune-slice-to-string">Rune slice to string</a></li>
+  <li><a href="#efficiency">Efficiency</a></li>
+</ul>
+
 <h2 id="string-to-rune-slice">String to rune slice</h2>
 
-<p>Converting a string to a slice of runes yields a slice whose elements
-are the Unicode code points of the&nbsp;string.</p>
+<ul>
+<li>Converting a string to a slice of runes yields a slice whose elements
+are the <a href="/golang/rune/">Unicode code points</a> of the&nbsp;string.</li>
+<li>For an invalid UTF-8 sequence,
+the rune value will be <code>0xFFFD</code> for each invalid&nbsp;byte.</li>
+</ul>
 
 <pre><code>s := "abc日"
 r := []rune(s)
 fmt.Printf("%v\n", r) <span class="comment">// [97 98 99 26085]</span>
-fmt.Printf("%U\n", r) <span class="comment">// [U+0061 U+0062 U+0063 U+65E5]</span></code></pre>
+fmt.Printf("%U\n", r) <span class="comment">// [U+0061 U+0062 U+0063 U+65E5]</span>
+</code></pre>
+
+<blockquote>
+<p>You can also use a <a href="/golang/for-loop-range-array-slice-map-channel/">range loop</a>
+to access the code points of a string.</p>
+</blockquote>
 
 <h2 id="rune-slice-to-string">Rune slice to string</h2>
 
-<p>Converting a slice of runes to a string yields a string that is the concatenation
-of the runes converted to UTF-8 encoded strings.</p>
+<ul>
+<li><p>Converting a slice of runes to a string yields a string that is the concatenation
+of the runes converted to UTF-8 encoded strings.</p></li>
 
-<p>Values outside the range of valid Unicode code points are converted to <code>\uFFFD</code>,
-the Unicode replacement character&nbsp;<code>�</code>.</p>
+<li><p>Values outside the range of valid Unicode code points are converted to <code>\uFFFD</code>,
+the Unicode replacement character&nbsp;<code>�</code>.</p></li>
+</ul>
 
 <pre><code>r := []rune{'\u0061', '\u0062', '\u0063', '\u65E5', -1}
 s := string(r)
-fmt.Println(s) <span class="comment">// abc日�</span></code></pre>
+fmt.Println(s) <span class="comment">// abc日�</span>
+</code></pre>
+
+<h2 id="efficiency">Efficiency</h2>
+
+<p>These conversions create a new slice or string,
+and therefore have <a href="/algorithms/time-complexity-explained/">time&nbsp;complexity</a>
+proportional to the number of bytes that are processed.</p>
+
+<p>A <strong>string builder</strong> can be used to efficiently concatenate strings without redundant copying.
+See <a href="/golang/build-append-concatenate-strings-efficiently/">How to best use a string builder</a>.</p>
 
 <h3 id="further-reading">Further reading</h3>
 
@@ -84,8 +112,8 @@ fmt.Println(s) <span class="comment">// abc日�</span></code></pre>
   <h2>Related</h2>
 
   <div class="reference">
-    <a href="/golang/conversions/">Conversions: complete list</a>
-    <div class="desc">All Go conversions (casts): interfaces, strings, integers, floats, byte slices, rune slices, underlying type, implicit conversions and pointers.</div>
+    <a href="/golang/rune/">What is a Go rune?</a>
+    <div class="desc">A rune is a type meant to represent a Unicode code point. Strings, however, are sequences of bytes (typically containing Unicode text encoded in UTF-8).</div>
     <div class="source">yourbasic.org</div>
   </div>
 
@@ -93,6 +121,18 @@ fmt.Println(s) <span class="comment">// abc日�</span></code></pre>
     <a href="https://blog.golang.org/strings">Strings, bytes, runes and characters in Go</a>
     <div class="source">The Go Blog</div>
     <div class="author"></div>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/build-append-concatenate-strings-efficiently/">How to best use a string builder</a>
+    <div class="desc">With a string builder you can concatenate strings efficiently without redundant copying.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/conversions/">Conversions: complete list</a>
+    <div class="desc">All Go conversions (casts): interfaces, strings, integers, floats, byte slices, rune slices, underlying type, implicit conversions and pointers.</div>
+    <div class="source">yourbasic.org</div>
   </div>
 
   <h2>Follow on Twitter</h2>
