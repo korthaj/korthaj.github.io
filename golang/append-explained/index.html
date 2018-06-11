@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How to best use the append function - yourbasic.org/golang </title>
+  <title>How to append anything (element, slice or string) to a slice - yourbasic.org/golang </title>
   <meta name="description" content="The append function appends elements to the end of a slice: if there is enough capacity, the underlying array is reused; if not, a new underlying array is allocated and the data is copied over.">
   
   <link rel="stylesheet" href="/style.css">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/append-explained/"
   },
-  "headline": "How to best use the append function",
+  "headline": "How to append anything (element, slice or string) to a slice",
   "image": [
     "https://yourbasic.org/golang/toddler-fiat-with-trailer.jpg"
    ],
   "datePublished": "2018-04-15T00:00:00&#43;0000",
-  "dateModified": "2018-05-26T00:00:00&#43;0000",
+  "dateModified": "2018-06-11T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -54,13 +54,13 @@
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to best use the append function">
+<meta property="og:title" content="How to append anything (element, slice or string) to a slice">
 <meta property="og:description" content="The append function appends elements to the end of a slice: if there is enough capacity, the underlying array is reused; if not, a new underlying array is allocated and the data is copied over.">
 <meta property="og:url" content="https://yourbasic.org/golang/append-explained/">
 <meta property="og:image" content="https://yourbasic.org/golang/toddler-fiat-with-trailer.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="How to best use the append function">
+<meta name="twitter:title" content="How to append anything (element, slice or string) to a slice">
 <meta name="twitter:description" content="The append function appends elements to the end of a slice: if there is enough capacity, the underlying array is reused; if not, a new underlying array is allocated and the data is copied over.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/toddler-fiat-with-trailer.jpg">
@@ -82,7 +82,7 @@
 
 <main>
 <article>
-<h1>How to best use the append function</h1>
+<h1>How to append anything (element, slice or string) to a slice</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
@@ -94,12 +94,12 @@
   <li><a href="#basics">Basics</a></li>
   <li><a href="#slice-to-slice">Slice to slice</a></li>
   <li><a href="#string-to-byte-slice">String to byte slice</a></li>
-  <li><a href="#time-complexity">Time complexity</a></li>
+  <li><a href="#constant-time">Constant time</a></li>
 </ul>
 
 <h2 id="basics">Basics</h2>
 
-<p>The built-in append function is appends any number of elements to the end of a&nbsp;slice:</p>
+<p>The built-in <a href="https://golang.org/pkg/builtin/#append">append function</a> appends any number of elements to the end of a&nbsp;slice:</p>
 
 <ul>
 <li>if there is enough capacity, the underlying array is&nbsp;reused;</li>
@@ -138,11 +138,11 @@ a = append(a, a...) <span class="comment">// a == [1 2 1 2]</span></code></pre>
 <pre><code>slice := append([]byte("Hello "), "world!"...)
 </code></pre>
 
-<h2 id="time-complexity">Time complexity</h2>
+<h2 id="constant-time">Constant time</h2>
 
 <div><a href="/algorithms/amortized-time-complexity-analysis/"><img src="/algorithms/pink-coins-thumb.jpg" title="Amortized time complexity"></a></div>
 
-<p>Appending a single element takes constant amortized time.
+<p>Appending a single element takes <strong>constant amortized time</strong>.
 See <a href="/algorithms/amortized-time-complexity-analysis/">Amortized time complexity</a> for a detailed explanation.</p>
 
 <h3 id="further-reading">Further reading</h3>
@@ -152,10 +152,10 @@ See <a href="/algorithms/amortized-time-complexity-analysis/">Amortized time com
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/slices-explained/">Slices in a&nbsp;nutshell</a></p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fappend-explained%2f&amp;text=How%20to%20best%20use%20the%20append%20function&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fappend-explained%2f&amp;text=How%20to%20append%20anything%20%28element,%20slice%20or%20string%29%20to%20a%20slice&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fappend-explained%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fappend-explained%2f&amp;title=How%20to%20best%20use%20the%20append%20function" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=How%20to%20best%20use%20the%20append%20function&body=https%3a%2f%2fyourbasic.org%2fgolang%2fappend-explained%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fappend-explained%2f&amp;title=How%20to%20append%20anything%20%28element,%20slice%20or%20string%29%20to%20a%20slice" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=How%20to%20append%20anything%20%28element,%20slice%20or%20string%29%20to%20a%20slice&body=https%3a%2f%2fyourbasic.org%2fgolang%2fappend-explained%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>

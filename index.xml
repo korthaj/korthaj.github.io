@@ -952,6 +952,16 @@ Neither arrays nor linked lists can achieve this:
     </item>
     
     <item>
+      <title>How to append anything (element, slice or string) to a slice</title>
+      <link>https://yourbasic.org/golang/append-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/append-explained/</guid>
+      <description>Basics Slice to slice String to byte slice Constant time  Basics The built-in append function appends any number of elements to the end of a&amp;nbsp;slice:
+ if there is enough capacity, the underlying array is&amp;nbsp;reused; if not, a new underlying array is allocated and the data is copied&amp;nbsp;over.  Append returns the updated slice. Therefore you need to store the result of an append, often in the variable holding the slice itself:</description>
+    </item>
+    
+    <item>
       <title>How to avoid initializing memory</title>
       <link>https://yourbasic.org/algorithms/avoid-initializing-memory/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -970,16 +980,6 @@ Neither arrays nor linked lists can achieve this:
 s := fmt.Sprintf(&#34;Size: %d MB.&#34;, 85) // s == &#34;Size: 85 MB.&#34; The fmt cheat sheet lists the most common formatting verbs and flags.
 Efficient string concatenationGo 1.10 The strings.Builder type is used to efficiently concatenate strings using write&amp;nbsp;methods.
  It offers a subset of the bytes.</description>
-    </item>
-    
-    <item>
-      <title>How to best use the append function</title>
-      <link>https://yourbasic.org/golang/append-explained/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/append-explained/</guid>
-      <description>Basics Slice to slice String to byte slice Time complexity  Basics The built-in append function is appends any number of elements to the end of a&amp;nbsp;slice:
- if there is enough capacity, the underlying array is&amp;nbsp;reused; if not, a new underlying array is allocated and the data is copied&amp;nbsp;over.  Append returns the updated slice. Therefore you need to store the result of an append, often in the variable holding the slice itself:</description>
     </item>
     
     <item>
