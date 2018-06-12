@@ -135,10 +135,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/write-command-line-application/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/golang/command-line-arguments/</loc>
   </url>
   
@@ -312,6 +308,10 @@
   
   <url>
     <loc>https://yourbasic.org/golang/gotcha-bitwise-operators/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/write-command-line-application/</loc>
   </url>
   
   <url>

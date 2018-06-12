@@ -279,16 +279,6 @@ Note that nil slices and empty slices are very similar:
     </item>
     
     <item>
-      <title>Command-line application (CLI)</title>
-      <link>https://yourbasic.org/golang/write-command-line-application/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/write-command-line-application/</guid>
-      <description>This example is a simplified version of the Unix grep command. The program searches the input file for lines containing the given pattern and prints these lines.
-func main() { log.SetPrefix(&#34;grep: &#34;) log.SetFlags(0) // no extra info in log messages if len(os.Args) != 3 { fmt.Printf(&#34;Usage: %v PATTERN FILE\n&#34;, os.Args[0]) return } pattern, err := regexp.Compile(os.Args[1]) if err != nil { log.Fatalln(err) } file, err := os.Open(os.Args[2]) if err !</description>
-    </item>
-    
-    <item>
       <title>Command-line arguments</title>
       <link>https://yourbasic.org/golang/command-line-arguments/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -745,6 +735,16 @@ fmt.Println(3^2+4^2 == 5^2) // true The triple (6,&amp;nbsp;8,&amp;nbsp;10) is a
 fmt.Println(6^2+8^2 == 10^2) // false Answer
 The circumflex&amp;nbsp;^ denotes bitwise&amp;nbsp;XOR in&amp;nbsp;Go. The computation written in base&amp;nbsp;2 looks like&amp;nbsp;this:
  0011 ^ 0010 == 0001 (3^2 == 1) 0100 ^ 0010 == 0110 (4^2 == 6) 0101 ^ 0010 == 0111 (5^2 == 7)  Of course, 1 + 6 == 7; Go and Pythagoras agree on that.</description>
+    </item>
+    
+    <item>
+      <title>Go as a scripting language: lightweight, safe and fast</title>
+      <link>https://yourbasic.org/golang/write-command-line-application/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/write-command-line-application/</guid>
+      <description>This example is a simplified version of the Unix grep command. The program searches the input file for lines containing the given pattern and prints these lines.
+func main() { log.SetPrefix(&#34;grep: &#34;) log.SetFlags(0) // no extra info in log messages if len(os.Args) != 3 { fmt.Printf(&#34;Usage: %v PATTERN FILE\n&#34;, os.Args[0]) return } pattern, err := regexp.Compile(os.Args[1]) if err != nil { log.Fatalln(err) } file, err := os.Open(os.Args[2]) if err !</description>
     </item>
     
     <item>
