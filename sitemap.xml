@@ -451,10 +451,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/inheritance-object-oriented/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/algorithms/insertion-sort/</loc>
   </url>
   
@@ -588,6 +584,10 @@
   
   <url>
     <loc>https://yourbasic.org/golang/packages-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/inheritance-object-oriented/</loc>
   </url>
   
   <url>

@@ -1077,17 +1077,6 @@ Loop from 0 to len(a)-1 instead.</description>
     </item>
     
     <item>
-      <title>Inheritance and OOP: Go one better</title>
-      <link>https://yourbasic.org/golang/inheritance-object-oriented/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/inheritance-object-oriented/</guid>
-      <description>Go doesn&#39;t have inheritance &amp;ndash; instead inter&amp;shy;faces and embed&amp;shy;ding support code reuse and poly&amp;shy;morphism.
- Inheritance in traditional object-oriented programming offers three features in&amp;nbsp;one. When a&amp;nbsp;Dog inherits from an&amp;nbsp;Animal
- the Dog class reuses code from the Animal&amp;nbsp;class, a variable x of type Animal can refer to either a Dog or an Animal, x.Eat() will choose an Eat method based on what type of object x refers&amp;nbsp;to.  In object-oriented lingo, these features are known as code reuse, poly&amp;shy;mor&amp;shy;phism and dynamic dispatch.</description>
-    </item>
-    
-    <item>
       <title>Interfaces in a nutshell</title>
       <link>https://yourbasic.org/golang/interfaces-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1432,6 +1421,17 @@ $ godoc -http=:6060 &amp;amp;   The documentation is tightly coupled with the co
       <description>Basics Declare a package Package name conflicts Dot imports Package download Package documentation  Basics Every Go program is made up of packages and each package has an&amp;nbsp;import&amp;nbsp;path:
  &amp;quot;fmt&amp;quot; &amp;quot;math/rand&amp;quot; &amp;quot;github.com/yourbasic/graph&amp;quot;  Packages in the standard library have short import paths, such&amp;nbsp;as &amp;quot;fmt&amp;quot; and &amp;quot;math/rand&amp;quot;. Third-party packages, such as &amp;quot;github.com/yourbasic/graph&amp;quot;, typically have an import path that includes a hosting service (github.com) and an organization name (yourbasic).
 By convention, the package name is the same as the last element of the import path:</description>
+    </item>
+    
+    <item>
+      <title>Painless object-oriented programming without inheritance</title>
+      <link>https://yourbasic.org/golang/inheritance-object-oriented/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/inheritance-object-oriented/</guid>
+      <description>Go doesn&#39;t have inheritance &amp;ndash; instead inter&amp;shy;faces and embed&amp;shy;ding support code reuse and poly&amp;shy;morphism.
+ Basics Code reuse by composition Code reuse by embedding Polymorphism and dynamic dispatch with interfaces  Basics Inheritance in traditional object-oriented programming offers three features in&amp;nbsp;one. When a&amp;nbsp;Dog inherits from an&amp;nbsp;Animal
+ the Dog class reuses code from the Animal&amp;nbsp;class, a variable x of type Animal can refer to either a Dog or an Animal, x.</description>
     </item>
     
     <item>
