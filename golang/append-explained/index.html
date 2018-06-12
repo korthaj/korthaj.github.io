@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/toddler-fiat-with-trailer.jpg"
    ],
   "datePublished": "2018-04-15T00:00:00&#43;0000",
-  "dateModified": "2018-06-11T00:00:00&#43;0000",
+  "dateModified": "2018-06-12T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -99,7 +99,7 @@
 
 <h2 id="basics">Basics</h2>
 
-<p>The built-in <a href="https://golang.org/pkg/builtin/#append">append function</a> appends any number of elements to the end of a&nbsp;slice:</p>
+<p>The built-in <a href="https://golang.org/ref/spec#Appending_and_copying_slices">append function</a> appends any number of elements to the end of a&nbsp;slice:</p>
 
 <ul>
 <li>if there is enough capacity, the underlying array is&nbsp;reused;</li>
@@ -166,7 +166,7 @@ See <a href="/algorithms/amortized-time-complexity-analysis/">Amortized time com
 
   <div class="reference">
     <a href="/golang/copy-explained/">How to use the copy function</a>
-    <div class="desc">The built-in copy function copies elements to and from a slice. It returns the number of elements copied, which will be the minimum of len(dst) and len(src).</div>
+    <div class="desc">The copy function copies elements to and from a slice. It returns the number of elements copied, which will be the minimum of len(dst) and len(src).</div>
     <div class="source">yourbasic.org</div>
   </div>
 

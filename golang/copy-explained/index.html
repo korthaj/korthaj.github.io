@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>How to use the copy function - yourbasic.org/golang </title>
-  <meta name="description" content="The built-in copy function copies elements to and from a slice. It returns the number of elements copied, which will be the minimum of len(dst) and len(src).">
+  <meta name="description" content="The copy function copies elements to and from a slice. It returns the number of elements copied, which will be the minimum of len(dst) and len(src).">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/letter-copying-machine.jpg"
    ],
   "datePublished": "2018-04-15T00:00:00&#43;0000",
-  "dateModified": "2018-04-23T00:00:00&#43;0000",
+  "dateModified": "2018-06-12T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "The built-in copy function copies elements to and from a slice. It returns the number of elements copied, which will be the minimum of len(dst) and len(src)."
+  "description": "The copy function copies elements to and from a slice. It returns the number of elements copied, which will be the minimum of len(dst) and len(src)."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to use the copy function">
-<meta property="og:description" content="The built-in copy function copies elements to and from a slice. It returns the number of elements copied, which will be the minimum of len(dst) and len(src).">
+<meta property="og:description" content="The copy function copies elements to and from a slice. It returns the number of elements copied, which will be the minimum of len(dst) and len(src).">
 <meta property="og:url" content="https://yourbasic.org/golang/copy-explained/">
 <meta property="og:image" content="https://yourbasic.org/golang/letter-copying-machine.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="How to use the copy function">
-<meta name="twitter:description" content="The built-in copy function copies elements to and from a slice. It returns the number of elements copied, which will be the minimum of len(dst) and len(src).">
+<meta name="twitter:description" content="The copy function copies elements to and from a slice. It returns the number of elements copied, which will be the minimum of len(dst) and len(src).">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/letter-copying-machine.jpg">
 
@@ -90,8 +90,8 @@
 
 <div style="margin-top:1em;"><img src="/golang/letter-copying-machine.jpg"></div>
 
-<p>The built-in <a href="https://golang.org/ref/spec#Appending_and_copying_slices"><code>copy</code></a>
-function copies elements into a destination slice <code>dst</code> from a source slice&nbsp;<code>src</code>.</p>
+<p>The built-in <a href="https://golang.org/ref/spec#Appending_and_copying_slices">copy function</a>
+copies elements into a destination slice <code>dst</code> from a source slice&nbsp;<code>src</code>.</p>
 
 <pre><code>func copy(dst, src []Type) int
 </code></pre>
@@ -100,26 +100,24 @@ function copies elements into a destination slice <code>dst</code> from a source
 which will be the <strong>minimum</strong> of <code>len(dst)</code> and <code>len(src)</code>.
 The result does not depend on whether the arguments overlap.</p>
 
-<h2 id="special-case">Special case</h2>
-
-<p>It is legal to copy bytes from a string to a slice of&nbsp;bytes.</p>
+<p>As a <strong>special case</strong>, it&rsquo;s legal to copy bytes from a string to a slice of&nbsp;bytes.</p>
 
 <pre><code>copy(dst []byte, src string) int
 </code></pre>
 
 <h2 id="examples">Examples</h2>
 
-<p>Copy from one slice to another:</p>
+<h3 id="copy-from-one-slice-to-another">Copy from one slice to another</h3>
 
 <pre><code>var s = make([]int, 3)
 n := copy(s, []int{0, 1, 2, 3}) <span class="comment">// n == 3, s == []int{0, 1, 2}</span></code></pre>
 
-<p>Copy from a slice to itself:</p>
+<h3 id="copy-from-a-slice-to-itself">Copy from a slice to itself</h3>
 
 <pre><code>s := []int{0, 1, 2}
 n := copy(s, s[1:]) <span class="comment">// n == 2, s == []int{1, 2, 2}</span></code></pre>
 
-<p>Copy from a string to a byte slice:</p>
+<h3 id="copy-from-a-string-to-a-byte-slice-special-nbsp-case">Copy from a string to a byte slice (special&nbsp;case)</h3>
 
 <pre><code>var b = make([]byte, 5)
 copy(b, "Hello, world!") <span class="comment">// b == []byte("Hello")</span></code></pre>
