@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How to format strings with fmt - yourbasic.org/golang </title>
-  <meta name="description" content="Cheat sheet: the most common formatting verbs and flags in package fmt at a glance.">
+  <title>How to format anything (string, number or arbitrary data) with fmt - yourbasic.org/golang </title>
+  <meta name="description" content="CHEAT SHEET With fmt verbs and flags your can format numbers and strings padded with spaces or zeroes, in different bases, and with optional quotes.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/"
   },
-  "headline": "How to format strings with fmt",
+  "headline": "How to format anything (string, number or arbitrary data) with fmt",
   "image": [
     "https://yourbasic.org/golang/format.jpg"
    ],
   "datePublished": "2018-03-15T00:00:00&#43;0000",
-  "dateModified": "2018-05-31T00:00:00&#43;0000",
+  "dateModified": "2018-06-13T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "Cheat sheet: the most common formatting verbs and flags in package fmt at a glance."
+  "description": "CHEAT SHEET With fmt verbs and flags your can format numbers and strings padded with spaces or zeroes, in different bases, and with optional quotes."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to format strings with fmt">
-<meta property="og:description" content="Cheat sheet: the most common formatting verbs and flags in package fmt at a glance.">
+<meta property="og:title" content="How to format anything (string, number or arbitrary data) with fmt">
+<meta property="og:description" content="CHEAT SHEET With fmt verbs and flags your can format numbers and strings padded with spaces or zeroes, in different bases, and with optional quotes.">
 <meta property="og:url" content="https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/">
 <meta property="og:image" content="https://yourbasic.org/golang/format.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="How to format strings with fmt">
-<meta name="twitter:description" content="Cheat sheet: the most common formatting verbs and flags in package fmt at a glance.">
+<meta name="twitter:title" content="How to format anything (string, number or arbitrary data) with fmt">
+<meta name="twitter:description" content="CHEAT SHEET With fmt verbs and flags your can format numbers and strings padded with spaces or zeroes, in different bases, and with optional quotes.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/format.jpg">
 
@@ -82,7 +82,7 @@
 
 <main>
 <article>
-<h1>How to format strings with fmt</h1>
+<h1>How to format anything (string, number or arbitrary data) with fmt</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
@@ -94,16 +94,17 @@
 <div style="float: left; min-width: 30%; margin-right: 2em;">
     <ul class="toc" style="margin: 0;">
   <li><a href="#basics">Basics</a></li>
-  <li><a href="#generic-formatting-int1-2">Generic formatting</a></li>
-  <li><a href="#integer-109">Integer</a></li>
-  <li><a href="#boolean">Boolean</a></li>
+  <li><a href="#default">Default formats and type</a></li>
+  <li><a href="#integer">Integer (base, padding and sign)</a></li>
+  <li><a href="#character">Character (quoted and Unicode)</a></li>
+  <li><a href="#boolean">Boolean (true/false)</a></li>
     </ul>
 </div>
 <div style="float: left;">
     <ul class="toc" style="margin: 0;">
-  <li><a href="#pointer">Pointer</a></li>
-  <li><a href="#float-123456">Float</a></li>
-  <li><a href="#string-or-byte-slice-caf">String or byte slice</a></li>
+  <li><a href="#pointer">Pointer (hex)</a></li>
+  <li><a href="#float">Float (padding, precision, scientific notation)</a></li>
+  <li><a href="#string-or-byte-slice">String or byte slice (quoted, padding and hex)</a></li>
   <li><a href="#special-values">Special values</a></li>
     </ul>
 </div>
@@ -114,11 +115,13 @@
 
 <p>A <strong>format specifier</strong> is a string that contains the text you want to format
 plus some placeholders, called <strong>verbs</strong>, that tell the functions in the
-<a href="https://golang.org/pkg/fmt"><code>fmt</code></a> package how to format your arguments.</p>
+<a href="https://golang.org/pkg/fmt"><code>fmt</code></a> package how to format your arguments.
+In this&nbsp;example</p>
 
-<p>In this example</p>
-
-<pre><code>fmt.Printf("Hex: %x.\n", 255) <span class="comment">// "Hex: ff."</span></code></pre>
+<pre><code>fmt.Printf("Hex: %x.\n", 255)
+<span class="comment">// Output:</span>
+<span class="comment">// Hex: ff.</span>
+</code></pre>
 
 <ul>
 <li>the <strong>format specifier</strong> is <code>&quot;Hex: %x.\n&quot;</code>,</li>
@@ -126,11 +129,20 @@ plus some placeholders, called <strong>verbs</strong>, that tell the functions i
 <li>the <strong>special value</strong> <code>\n</code> is a line feed.</li>
 </ul>
 
-<p>Use the special verb <code>%%</code>, which consumes no argument, to write a literal percent sign.</p>
+<h3 id="format-a-string-without-printing-it">Format a string without printing it</h3>
+
+<p>Use the <a href="https://golang.org/pkg/fmt/#Sprintf"><code>fmt.Sprintf</code></a> function
+to format a string without printing&nbsp;it.</p>
+
+<pre><code>s := fmt.Sprintf("Hex: %x.", 255) <span class="comment">// s == "Hex: ff."</span></code></pre>
+
+<h3 id="literal-percent-sign">Literal percent sign</h3>
+
+<p>Use the special verb <code>%%</code>, which consumes no argument, to write a literal percent&nbsp;sign.</p>
 
 <pre><code>fmt.Printf("%d %%", 50) <span class="comment">// "50 %"</span></code></pre>
 
-<h2 id="generic-formatting-int1-2">Generic formatting: <code style="font-size:smaller;background-color:white;">[]int{1, 2}</code></h2>
+<h2 id="default">Default formats and type: <code style="font-size:smaller;background-color:white;">[]int{1, 2}</code></h2>
 
 <table class="white">
   <thead>
@@ -159,7 +171,7 @@ plus some placeholders, called <strong>verbs</strong>, that tell the functions i
   </tbody>
 </table>
 
-<h2 id="integer-109">Integer: <code style="font-size:smaller;background-color:white;">109</code></h2>
+<h2 id="integer">Integer (base, padding and sign): <code style="font-size:smaller;background-color:white;">109</code></h2>
 
 <table class="white">
   <thead>
@@ -182,28 +194,18 @@ plus some placeholders, called <strong>verbs</strong>, that tell the functions i
     </tr>
     <tr>
       <td style="border-bottom: 0;">␣109</td>
-      <td style="border-bottom: 0;">Width 4, right justify</td>
+      <td style="border-bottom: 0;">Pad with space (width 4, right justified)</td>
       <td style="border-bottom: 0;"><code>%4d</code></td>
     </tr>
     <tr>
       <td style="border-bottom: 0; padding-top: 0;">109␣</td>
-      <td style="border-bottom: 0; padding-top: 0;">Width 4, left justify</td>
+      <td style="border-bottom: 0; padding-top: 0;">Pad with space (width 4, left justified)</td>
       <td style="border-bottom: 0; padding-top: 0;"><code>%-4d</code></td>
     </tr>
     <tr>
       <td style="padding-top: 0;">0109</td>
-      <td style="padding-top: 0;">Width 4, pad with zero</td>
+      <td style="padding-top: 0;">Pad with zero (width 4)</td>
       <td style="padding-top: 0;"><code>%04d</code></td>
-    </tr>
-    <tr>
-      <td style="border-bottom: 0;">m</td>
-      <td style="border-bottom: 0;">Character</td>
-      <td style="border-bottom: 0;"><code>%c</code></td>
-    </tr>
-    <tr>
-      <td style="padding-top: 0;">'m'</td>
-      <td style="padding-top: 0;">Quoted character</td>
-      <td style="padding-top: 0;"><code>%q</code></td>
     </tr>
     <tr>
       <td>1101101</td>
@@ -230,6 +232,30 @@ plus some placeholders, called <strong>verbs</strong>, that tell the functions i
       <td style="padding-top: 0;">Base 16, with leading 0x</td>
       <td style="padding-top: 0;"><code>%#x</code></td>
     </tr>
+  </tbody>
+</table>
+
+<h2 id="character">Character (quoted and Unicode): <code style="font-size:smaller;background-color:white;">109</code></h2>
+
+<table class="white">
+  <thead>
+    <tr>
+      <th>Formatting</th>
+      <th>Description</th>
+      <th>Verb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border-bottom: 0;">m</td>
+      <td style="border-bottom: 0;">Character</td>
+      <td style="border-bottom: 0;"><code>%c</code></td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;">'m'</td>
+      <td style="padding-top: 0;">Quoted character</td>
+      <td style="padding-top: 0;"><code>%q</code></td>
+    </tr>
     <tr>
       <td style="border-bottom: 0;">U+006D</td>
       <td style="border-bottom: 0;">Unicode</td>
@@ -243,15 +269,15 @@ plus some placeholders, called <strong>verbs</strong>, that tell the functions i
   </tbody>
 </table>
 
-<h2 id="boolean">Boolean</h2>
+<h2 id="boolean">Boolean (true/false)</h2>
 
 <p>Use <code>%t</code> to format a boolean as <code>true</code> or <code>false</code>.</p>
 
-<h2 id="pointer">Pointer</h2>
+<h2 id="pointer">Pointer (hex)</h2>
 
 <p>Use <code>%p</code> to format a pointer in base 16 notation with leading <code>0x</code>.</p>
 
-<h2 id="float-123456">Float: <code style="font-size:smaller;background-color:white;">123.456</code></h2>
+<h2 id="float">Float (padding, precision, scientific notation): <code style="font-size:smaller;background-color:white;">123.456</code></h2>
 
 <table class="white">
   <thead>
@@ -290,7 +316,7 @@ plus some placeholders, called <strong>verbs</strong>, that tell the functions i
   </tbody>
 </table>
 
-<h2 id="string-or-byte-slice-caf">String or byte slice: <code style="font-size:smaller;background-color:white;">"café"</code></h2>
+<h2 id="string-or-byte-slice">String or byte slice (quoted, padding and hex): <code style="font-size:smaller;background-color:white;">"café"</code></h2>
 
 <table class="white">
   <thead>
@@ -379,8 +405,10 @@ plus some placeholders, called <strong>verbs</strong>, that tell the functions i
   </tbody>
 </table>
 
-<p>Arbitrary values can be encoded with backslash escapes.
-There are four different formats:</p>
+<p>Arbitrary values can be encoded with backslash escapes and
+can be used in any <code>&quot;&quot;</code>&nbsp;string literal.</p>
+
+<p>There are four different formats:</p>
 
 <ul>
 <li><code>\x</code> followed by exactly two hexadecimal digits,</li>
@@ -389,24 +417,24 @@ There are four different formats:</p>
 <li><code>\U</code> followed by exactly eight hexadecimal digits.</li>
 </ul>
 
-<p>The escapes <code>\u</code> and <code>\U</code> represent Unicode code points.
-The special values can be used in any <code>&quot;&quot;</code> string literal.</p>
+<p>The escapes <code>\u</code> and <code>\U</code> represent Unicode code points.</p>
 
-<pre><code>fmt.Println("\\caf\u00e9")</code></pre>
-
-<pre>\café</pre>
+<pre><code>fmt.Println("\\caf\u00e9\n")
+<span class="comment">// Output:</span>
+<span class="comment">// \café</span>
+</code></pre>
 
 <h3 id="further-reading">Further reading</h3>
 
 <p><a href="/golang/string-functions-reference-cheat-sheet/"><img src="/golang/typewriter-thumb.png" title="String functions cheat sheet"></a></p>
 
-<p style="margin-top:0; margin-bottom:2em;">The <a href="/golang/string-functions-reference-cheat-sheet/">String functions cheat sheet</a> presents the top Go string functions.</p>
+<p style="margin-top:0; margin-bottom:2em;">See <a href="/golang/string-functions-reference-cheat-sheet/">String functions cheat sheet</a> for more string formatting functions.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2ffmt-printf-reference-cheat-sheet%2f&amp;text=How%20to%20format%20strings%20with%20fmt&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2ffmt-printf-reference-cheat-sheet%2f&amp;text=How%20to%20format%20anything%20%28string,%20number%20or%20arbitrary%20data%29%20with%20fmt&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2ffmt-printf-reference-cheat-sheet%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2ffmt-printf-reference-cheat-sheet%2f&amp;title=How%20to%20format%20strings%20with%20fmt" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=How%20to%20format%20strings%20with%20fmt&body=https%3a%2f%2fyourbasic.org%2fgolang%2ffmt-printf-reference-cheat-sheet%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2ffmt-printf-reference-cheat-sheet%2f&amp;title=How%20to%20format%20anything%20%28string,%20number%20or%20arbitrary%20data%29%20with%20fmt" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=How%20to%20format%20anything%20%28string,%20number%20or%20arbitrary%20data%29%20with%20fmt&body=https%3a%2f%2fyourbasic.org%2fgolang%2ffmt-printf-reference-cheat-sheet%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
@@ -416,21 +444,21 @@ The special values can be used in any <code>&quot;&quot;</code> string literal.<
   <h2>Related</h2>
 
   <div class="reference">
-    <a href="/golang/string-functions-reference-cheat-sheet/">String functions cheat sheet</a>
-    <div class="desc">String essentials in one place: literals, concatenation, equality, ordering, indexing, UTF-8, search, join, replace, split, trim, strip, lowercase/uppercase.</div>
-    <div class="source">yourbasic.org</div>
-  </div>
-
-  <div class="reference">
     <a href="https://golang.org/pkg/fmt">Package fmt</a>
     <div class="source">golang.org</div>
     <div class="author"></div>
   </div>
 
   <div class="reference">
-    <a href="https://blog.golang.org/strings">Strings, bytes, runes and characters in Go</a>
-    <div class="source">The Go Blog</div>
-    <div class="author"></div>
+    <a href="/golang/string-functions-reference-cheat-sheet/">String functions cheat sheet</a>
+    <div class="desc">String essentials in one place: literals, concatenation, equality, ordering, indexing, UTF-8, search, join, replace, split, trim, strip, lowercase/uppercase.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/rune/">What is a Go rune?</a>
+    <div class="desc">A rune is a type meant to represent a Unicode code point. Strings, however, are sequences of bytes (typically containing Unicode text encoded in UTF-8).</div>
+    <div class="source">yourbasic.org</div>
   </div>
 
   <h2>Follow on Twitter</h2>

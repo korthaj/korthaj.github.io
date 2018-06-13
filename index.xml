@@ -1058,14 +1058,12 @@ Mon Jan 2 15:04:05 MST 2006</description>
     </item>
     
     <item>
-      <title>How to format strings with fmt</title>
+      <title>How to format anything (string, number or arbitrary data) with fmt</title>
       <link>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</guid>
-      <description>Basics Generic formatting Integer Boolean   Pointer Float String or byte slice Special values     Basics A format specifier is a string that contains the text you want to format plus some placeholders, called verbs, that tell the functions in the fmt package how to format your arguments.
-In this example
-fmt.Printf(&#34;Hex: %x.\n&#34;, 255) // &#34;Hex: ff.&#34;  the format specifier is &amp;quot;Hex: %x.\n&amp;quot;, the verb %x formats 255 in base 16 notation, and the special value \n is a line feed.</description>
+      <description>Basics Default formats and type Integer (base, padding and sign) Character (quoted and Unicode) Boolean (true/false)   Pointer (hex) Float (padding, precision, scientific notation) String or byte slice (quoted, padding and hex) Special values     Basics A format specifier is a string that contains the text you want to format plus some placeholders, called verbs, that tell the functions in the fmt package how to format your arguments.</description>
     </item>
     
     <item>
