@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Convert string to/from byte slice - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE When you convert a string to a byte slice (array), you get a slice that contains the bytes of the string, and vice versa.">
+  <meta name="description" content="CODE EXAMPLE When you convert a string to a byte slice (array), you get a brand new slice that contains the same bytes as the string, and vice versa.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -62,13 +62,15 @@
 
 <h2 id="string-to-byte-slice">String to byte slice</h2>
 
-<p>When you convert a string to a byte slice, you get a new slice that contains the bytes of the string.</p>
+<p>When you convert a string to a byte slice,
+you get a brand new slice that contains the same bytes as the string.</p>
 
 <pre><code>fmt.Println(<b>[]byte</b>("abc日")) <span class="comment">// [97 98 99 230 151 165]</span></code></pre>
 
 <h2 id="byte-slice-to-string">Byte slice to string</h2>
 
-<p>Converting a slice of bytes to a string yields a new string whose bytes are the elements of the&nbsp;slice.</p>
+<p>When you convert a slice of bytes to a string,
+you get a new string that contains the same bytes as the&nbsp;slice.</p>
 
 <pre><code>b := []byte{'a', 'b', 'c', '\xe6', '\x97', '\xa5'}
 fmt.Println(<b>string</b>(b)) <span class="comment">// abc日</span>
