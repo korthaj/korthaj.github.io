@@ -1064,7 +1064,8 @@ Mon Jan 2 15:04:05 MST 2006</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</guid>
-      <description>Basics Default formats and type Integer (base, padding, sign) Character (quoted, Unicode) Boolean (true/false)   Pointer (hex) Float (padding, precision, scientific notation) String or byte slice (quoted, padding, hex) Special values     Basics A format specifier is a string that contains the text you want to format plus some placeholders, called verbs, that tell the functions in the fmt package how to format your arguments.</description>
+      <description>Basics Default formats and type Integer (base, padding, sign) Character (quoted, Unicode) Boolean (true/false)   Pointer (hex) Float (padding, precision, scientific notation) String or byte slice (quoted, padding, hex) Special values     Basics With the fmt package you can format numbers and strings padded with spaces or zeroes, in different bases, and with optional quotes.
+You submit a template string that contains the text you want to format plus some annotation verbs that tell the fmt functions how to format the trailing arguments.</description>
     </item>
     
     <item>

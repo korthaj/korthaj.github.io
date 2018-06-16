@@ -113,20 +113,24 @@
 
 <h2 id="basics">Basics</h2>
 
-<p>A <strong>format specifier</strong> is a string that contains the text you want to format
-plus some placeholders, called <strong>verbs</strong>, that tell the functions in the
-<a href="https://golang.org/pkg/fmt"><code>fmt</code></a> package how to format your arguments.
-In this&nbsp;example</p>
+<p>With the <a href="https://golang.org/pkg/fmt"><code>fmt</code></a> package
+you can format numbers and strings padded with spaces or zeroes,
+in different bases, and with optional quotes.</p>
 
-<pre><code>fmt.Printf("Hex: %x.\n", 255)
-<span class="comment">// Output:</span>
-<span class="comment">// Hex: ff.</span>
+<p>You submit a <strong>template string</strong> that contains the text you want to format
+plus some <strong>annotation verbs</strong> that tell the <code>fmt</code> functions
+how to format the trailing arguments.</p>
+
+<p>In this&nbsp;example</p>
+
+<pre><code>fmt.Printf("Binary: %b\\%b", 4, 5)
+<span class="comment">// Binary: 100\101 </span>
 </code></pre>
 
 <ul>
-<li>the <strong>format specifier</strong> is <code>&quot;Hex: %x.\n&quot;</code>,</li>
-<li>the <strong>verb</strong> <code>%x</code> formats <code>255</code> in base 16 notation, and</li>
-<li>the <strong>special value</strong> <code>\n</code> is a line feed.</li>
+<li>the <strong>template string</strong> is <code>&quot;Binary: %b\\%b&quot;</code>,</li>
+<li>the <strong>annotation verb</strong> <code>%b</code> formats a number in binary, and</li>
+<li>the <strong>special value</strong> <code>\\</code> is a backslash.</li>
 </ul>
 
 <h3 id="format-a-string-without-printing-it">Format a string without printing it</h3>
@@ -134,7 +138,7 @@ In this&nbsp;example</p>
 <p>Use the <a href="https://golang.org/pkg/fmt/#Sprintf"><code>fmt.Sprintf</code></a> function
 to format a string without printing&nbsp;it.</p>
 
-<pre><code>s := fmt.Sprintf("Hex: %x.", 255) <span class="comment">// s == "Hex: ff."</span></code></pre>
+<pre><code>s := fmt.Sprintf("Binary: %b\\%b", 4, 5) <span class="comment">// s == "Binary: 100\101"</span></code></pre>
 
 <h3 id="literal-percent-sign">Literal percent sign</h3>
 
@@ -142,7 +146,26 @@ to format a string without printing&nbsp;it.</p>
 
 <pre><code>fmt.Printf("%d %%", 50) <span class="comment">// "50 %"</span></code></pre>
 
-<h2 id="default">Default formats and type: <code style="font-size:smaller;background-color:white;">[]int{1, 2}</code></h2>
+<h3 id="find-incorrect-formatting-with-vet">Find incorrect formatting with vet</h3>
+
+<p>If your compile and run this code</p>
+
+<pre><code>fmt.Printf("Binary: %b\\%b", 4)
+</code></pre>
+
+<p>the program will print</p>
+
+<pre><code>Binary: 100\%!b(MISSING)</code></pre>
+
+<p>To catch these kinds of bugs, you can use
+the <a href="https://golang.org/cmd/vet/"><code>vet</code></a> command, which helps find
+calls whose arguments do not align with the format string.</p>
+
+<pre><code>$ go vet example.go
+example.go:8: missing argument for Printf("%b"): format reads arg 2, have only 1 args
+</code></pre>
+
+<h2 id="default">Default formats and type: <code style="font-size:smaller;background-color:white;">[]int64{0, 1}</code></h2>
 
 <table class="white">
   <thead>
@@ -154,24 +177,24 @@ to format a string without printing&nbsp;it.</p>
   </thead>
   <tbody>
     <tr>
-      <td style="border-bottom: 0;">[1 2]</td>
+      <td style="border-bottom: 0;">[0 1]</td>
       <td style="border-bottom: 0;">Default format</td>
       <td style="border-bottom: 0;"><code>%v</code></td>
     </tr>
     <tr>
-      <td style="padding-top: 0;">[]int{1, 2}</td>
+      <td style="padding-top: 0;">[]int64{0, 1}</td>
       <td style="padding-top: 0;">Go-syntax format</td>
       <td style="padding-top: 0;"><code>%#v</code></td>
     </tr>
     <tr>
-      <td>[]int</td>
+      <td>[]int64</td>
       <td>The type of the value</td>
       <td><code>%T</code></td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="integer">Integer (base, padding, sign): <code style="font-size:smaller;background-color:white;">109</code></h2>
+<h2 id="integer">Integer (base, padding, sign): <code style="font-size:smaller;background-color:white;">15</code></h2>
 
 <table class="white">
   <thead>
@@ -183,59 +206,59 @@ to format a string without printing&nbsp;it.</p>
   </thead>
   <tbody>
     <tr>
-      <td style="border-bottom: 0;">109</td>
+      <td style="border-bottom: 0;">15</td>
       <td style="border-bottom: 0;">Base 10</td>
       <td style="border-bottom: 0;"><code>%d</code></td>
     </tr>
     <tr>
-      <td style="padding-top: 0;">+109</td>
+      <td style="padding-top: 0;">+15</td>
       <td style="padding-top: 0;">Always show sign</td>
       <td style="padding-top: 0;"><code>%+d</code></td>
     </tr>
     <tr>
-      <td style="border-bottom: 0;">␣109</td>
+      <td style="border-bottom: 0;">␣␣15</td>
       <td style="border-bottom: 0;">Pad with space (width 4, right justified)</td>
       <td style="border-bottom: 0;"><code>%4d</code></td>
     </tr>
     <tr>
-      <td style="border-bottom: 0; padding-top: 0;">109␣</td>
+      <td style="border-bottom: 0; padding-top: 0;">15␣␣</td>
       <td style="border-bottom: 0; padding-top: 0;">Pad with space (width 4, left justified)</td>
       <td style="border-bottom: 0; padding-top: 0;"><code>%-4d</code></td>
     </tr>
     <tr>
-      <td style="padding-top: 0;">0109</td>
+      <td style="padding-top: 0;">0015</td>
       <td style="padding-top: 0;">Pad with zero (width 4)</td>
       <td style="padding-top: 0;"><code>%04d</code></td>
     </tr>
     <tr>
-      <td>1101101</td>
+      <td>1111</td>
       <td>Base 2</td>
       <td><code>%b</code></td>
     </tr>
     <tr>
-      <td>155</td>
+      <td>17</td>
       <td>Base 8</td>
       <td><code>%o</code></td>
     </tr>
     <tr>
-      <td style="border-bottom: 0;">6d</td>
+      <td style="border-bottom: 0;">f</td>
       <td style="border-bottom: 0;">Base 16, lowercase</td>
       <td style="border-bottom: 0;"><code>%x</code></td>
     </tr>
     <tr>
-      <td style="border-bottom: 0; padding-top: 0;">6D</td>
+      <td style="border-bottom: 0; padding-top: 0;">F</td>
       <td style="border-bottom: 0; padding-top: 0;">Base 16, uppercase</td>
       <td style="border-bottom: 0; padding-top: 0;"><code>%X</code></td>
     </tr>
     <tr>
-      <td style="padding-top: 0;">0x6d</td>
+      <td style="padding-top: 0;">0xf</td>
       <td style="padding-top: 0;">Base 16, with leading 0x</td>
       <td style="padding-top: 0;"><code>%#x</code></td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="character">Character (quoted, Unicode): <code style="font-size:smaller;background-color:white;">109</code></h2>
+<h2 id="character">Character (quoted, Unicode): <code style="font-size:smaller;background-color:white;">65</code></h2>
 
 <table class="white">
   <thead>
@@ -247,22 +270,22 @@ to format a string without printing&nbsp;it.</p>
   </thead>
   <tbody>
     <tr>
-      <td style="border-bottom: 0;">m</td>
+      <td style="border-bottom: 0;">A</td>
       <td style="border-bottom: 0;">Character</td>
       <td style="border-bottom: 0;"><code>%c</code></td>
     </tr>
     <tr>
-      <td style="padding-top: 0;">'m'</td>
+      <td style="padding-top: 0;">'A'</td>
       <td style="padding-top: 0;">Quoted character</td>
       <td style="padding-top: 0;"><code>%q</code></td>
     </tr>
     <tr>
-      <td style="border-bottom: 0;">U+006D</td>
+      <td style="border-bottom: 0;">U+0041</td>
       <td style="border-bottom: 0;">Unicode</td>
       <td style="border-bottom: 0;"><code>%U</code></td>
     </tr>
     <tr>
-      <td style="padding-top: 0;">U+006D 'm'</td>
+      <td style="padding-top: 0;">U+0041 'A'</td>
       <td style="padding-top: 0;">Unicode with character</td>
       <td style="padding-top: 0;"><code>%#U</code></td>
     </tr>
@@ -379,28 +402,28 @@ to format a string without printing&nbsp;it.</p>
       <td>U+0008 backspace</td>
     </tr>
     <tr>
-      <td><code>\f</code></td>
-      <td>U+000C form feed</td>
-    </tr>
-    <tr>
-      <td><code>\n</code></td>
-      <td>U+000A line feed or newline</td>
-    </tr>
-    <tr>
-      <td><code>\r</code></td>
-      <td>U+000D carriage return</td>
+      <td><code>\\</code></td>
+      <td>U+005c backslash</td>
     </tr>
     <tr>
       <td><code>\t</code></td>
       <td>U+0009 horizontal tab</td>
     </tr>
     <tr>
-      <td><code>\v</code></td>
-      <td>U+000b vertical tab</td>
+      <td><code>\n</code></td>
+      <td>U+000A line feed or newline</td>
     </tr>
     <tr>
-      <td><code>\\</code></td>
-      <td>U+005c backslash</td>
+      <td><code>\f</code></td>
+      <td>U+000C form feed</td>
+    </tr>
+    <tr>
+      <td><code>\r</code></td>
+      <td>U+000D carriage return</td>
+    </tr>
+    <tr>
+      <td><code>\v</code></td>
+      <td>U+000b vertical tab</td>
     </tr>
   </tbody>
 </table>
