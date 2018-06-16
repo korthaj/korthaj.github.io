@@ -51,7 +51,9 @@ s := a[len(a)-1] <span class="comment">// C</span></code></pre>
 
 <pre><code>a = a[:len(a)-1] <span class="comment">// [A B]</span></code></pre>
 
-<p>(Go doesn&rsquo;t have negative indexing like Python does.)</p>
+<p>(Go doesn&rsquo;t have negative indexing like Python does.
+This is a deliberate design decision —
+keeping the language simple can help save you from <a href="https://github.com/golang/go/issues/11245">subtle bugs</a>.)</p>
 
 <h2 id="watch-out-for-memory-leaks">Watch out for memory leaks</h2>
 

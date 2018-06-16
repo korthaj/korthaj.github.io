@@ -1307,9 +1307,8 @@ Monte Carlo simulations are a broad class of algorithms that use repeated random
       <guid>https://yourbasic.org/golang/last-item-in-slice/</guid>
       <description>To read the last element:
 a := []string{&#34;A&#34;, &#34;B&#34;, &#34;C&#34;} s := a[len(a)-1] // C To remove it:
-a = a[:len(a)-1] // [A B] (Go doesn&amp;rsquo;t have negative indexing like Python does.)
-Watch out for memory leaks If the slice is permanent and the element temporary, you may want to remove the reference before removing the element from the slice.
-a[len(a)-1] = &#34;&#34; // Erase element (write zero value) a = a[:len(a)-1] // [A B] Further reading  Slices in a&amp;nbsp;nutshell</description>
+a = a[:len(a)-1] // [A B] (Go doesn&amp;rsquo;t have negative indexing like Python does. This is a deliberate design decision — keeping the language simple can help save you from subtle bugs.)
+Watch out for memory leaks If the slice is permanent and the element temporary, you may want to remove the reference before removing the element from the slice.</description>
     </item>
     
     <item>
