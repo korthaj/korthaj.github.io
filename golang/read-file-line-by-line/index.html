@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/boy-reading-book.png"
    ],
   "datePublished": "2018-05-11T00:00:00&#43;0000",
-  "dateModified": "2018-05-13T00:00:00&#43;0000",
+  "dateModified": "2018-06-17T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -124,6 +124,14 @@ if err := scanner.Err(); err != nil {
 }
 </code></pre>
 
+<h2 id="from-arbitrary-stream">From arbitrary stream</h2>
+
+<div><a href="/golang/io-reader-interface-explained/"><img src="/golang/teddy-bear-reading-thumb.jpg" title="How to use the io.Reader interface"></a></div>
+
+<p>A bufio.Scanner can read from any stream of bytes, as long as it implements
+the <a href="https://golang.org/pkg/io/#Reader"><code>io.Reader</code></a> interface.
+See <a href="/golang/io-reader-interface-explained/">How to use the io.Reader interface</a>.</p>
+
 <h3 id="further-reading">Further reading</h3>
 
 <p>For more advanced scanning, see the examples in the <a href="https://golang.org/pkg/bufio/#Scanner"><code>bufio.Scanner</code></a> documentation.</p>
@@ -140,6 +148,12 @@ if err := scanner.Err(); err != nil {
 
     
   <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/io-reader-interface-explained/">How to use the io.Reader interface</a>
+    <div class="desc">An io.Reader is an entity from which you can read a stream of bytes. The standard library has many Reader implementations, including in-memory byte buffers, files and network connections. Readers are accepted as input by many utilities such as HTTP clients and server implementations.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
 
   <div class="reference">
     <a href="/golang/defer/">How to use a defer statement</a>
