@@ -434,6 +434,24 @@ x := 5.1 n := int(x) // convert float to int The conversion rules are extensive 
     </item>
     
     <item>
+      <title>Convert between byte slice and string</title>
+      <link>https://yourbasic.org/golang/convert-string-to-byte-slice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/convert-string-to-byte-slice/</guid>
+      <description>Basics String to byte slice Byte slice to string Efficiency  Basics  A conversion between a string and a byte slice doesn&amp;rsquo;t change the data; the only difference is that strings are immutable, while byte slices can be modified.  If you need to manipulate the Unicode characters (as opposed to the individual bytes) of a string, you may want to convert the string to a rune slice.</description>
+    </item>
+    
+    <item>
+      <title>Convert between float and string</title>
+      <link>https://yourbasic.org/golang/convert-string-to-float/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/convert-string-to-float/</guid>
+      <description>3.141592653589793238462643383279 5028841971693993751058209749445923 07816406286208998628034825342117067 9821 48086 5132 823 06647 09384 46 09550 58223 17 25359 4081 2848 1117 4502 8410 2701 9385 21105 55964 46229 48954 9303 81964 4288 10975 66593 34461 284756 48233 78678 31652 71 2019091 456485 66 9234603 48610454326648 2133936 0726024914127 3724587 00660631558 817488 152092096  String to float Use the strconv.ParseFloat function to convert a string to a floating-point number with the precision specified by bitSize: 32 for float32, or 64 for float64.</description>
+    </item>
+    
+    <item>
       <title>Convert between int/int64 and string</title>
       <link>https://yourbasic.org/golang/convert-int-to-string/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -441,6 +459,15 @@ x := 5.1 n := int(x) // convert float to int The conversion rules are extensive 
       <guid>https://yourbasic.org/golang/convert-int-to-string/</guid>
       <description>String to int String to int64 int to string int64 to string General formatting  String to int Use strconv.Atoi to convert/parse a string to an&amp;nbsp;int.
 str := &#34;123&#34; if n, err := strconv.Atoi(str); err == nil { fmt.Println(n+1) } else { fmt.Println(str, &#34;is not an integer.&#34;) } // Output: 124 String to int64 Use strconv.ParseInt to parse a decimal string (base&amp;nbsp;10) and check if it fits into a 64-bit signed integer.</description>
+    </item>
+    
+    <item>
+      <title>Convert between rune slice and string</title>
+      <link>https://yourbasic.org/golang/convert-string-to-rune-slice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/convert-string-to-rune-slice/</guid>
+      <description>String to rune slice Rune slice to string Efficiency  String to rune slice  When you convert a string to a rune slice, you get a new slice that contains the Unicode code points of the&amp;nbsp;string. For an invalid UTF-8 sequence, the rune value will be 0xFFFD for each invalid&amp;nbsp;byte.  s := &#34;abc日&#34; r := []rune(s) fmt.Printf(&#34;%v\n&#34;, r) // [97 98 99 26085] fmt.Printf(&#34;%U\n&#34;, r) // [U+0061 U+0062 U+0063 U+65E5]   You can also use a range loop to access the code points of a string.</description>
     </item>
     
     <item>
@@ -471,33 +498,6 @@ var x interface{} = []int{1, 2, 3} str := fmt.Sprintf(&#34;%v&#34;, x) fmt.Print
       
       <guid>https://yourbasic.org/golang/convert-string-to-int/</guid>
       <description>See Convert between int/int64 and string.</description>
-    </item>
-    
-    <item>
-      <title>Convert string to/from byte slice</title>
-      <link>https://yourbasic.org/golang/convert-string-to-byte-slice/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/convert-string-to-byte-slice/</guid>
-      <description>Basics String to byte slice Byte slice to string Efficiency  Basics  A conversion between a string and a byte slice doesn&amp;rsquo;t change the data; the only difference is that strings are immutable, while byte slices can be modified.  If you need to manipulate the Unicode characters (as opposed to the individual bytes) of a string, you may want to convert the string to a rune slice.</description>
-    </item>
-    
-    <item>
-      <title>Convert string to/from float</title>
-      <link>https://yourbasic.org/golang/convert-string-to-float/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/convert-string-to-float/</guid>
-      <description>3.141592653589793238462643383279 5028841971693993751058209749445923 07816406286208998628034825342117067 9821 48086 5132 823 06647 09384 46 09550 58223 17 25359 4081 2848 1117 4502 8410 2701 9385 21105 55964 46229 48954 9303 81964 4288 10975 66593 34461 284756 48233 78678 31652 71 2019091 456485 66 9234603 48610454326648 2133936 0726024914127 3724587 00660631558 817488 152092096  String to float Use the strconv.ParseFloat function to convert a string to a floating-point number with the precision specified by bitSize: 32 for float32, or 64 for float64.</description>
-    </item>
-    
-    <item>
-      <title>Convert string to/from rune slice</title>
-      <link>https://yourbasic.org/golang/convert-string-to-rune-slice/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/convert-string-to-rune-slice/</guid>
-      <description>String to rune slice Rune slice to string Efficiency  String to rune slice  When you convert a string to a rune slice, you get a new slice that contains the Unicode code points of the&amp;nbsp;string. For an invalid UTF-8 sequence, the rune value will be 0xFFFD for each invalid&amp;nbsp;byte.  s := &#34;abc日&#34; r := []rune(s) fmt.Printf(&#34;%v\n&#34;, r) // [97 98 99 26085] fmt.Printf(&#34;%U\n&#34;, r) // [U+0061 U+0062 U+0063 U+65E5]   You can also use a range loop to access the code points of a string.</description>
     </item>
     
     <item>
@@ -700,16 +700,6 @@ var x interface{} = 2.3 switch v := x.(type) { case int: fmt.Println(&#34;int:&#
       <guid>https://yourbasic.org/golang/for-loop/</guid>
       <description>Three-component loop While loop Infinite loop For-each loop Exit a loop  Three-component loop This version of the Go for loop works just as in C or&amp;nbsp;Java.
 sum := 0 for i := 1; i { sum += i } fmt.Println(sum) // 10 (1+2+3+4)  The init statement, i := 1, runs. The condition, i &amp;lt; 5, is computed.  If true, the loop body runs, otherwise the loop is done.</description>
-    </item>
-    
-    <item>
-      <title>Format a string without printing it</title>
-      <link>https://yourbasic.org/golang/format-string-without-printing/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/format-string-without-printing/</guid>
-      <description>The fmt.Sprintf function formats a string in the same way as fmt.Printf, but returns the string instead of printing&amp;nbsp;it.
-s := fmt.Sprintf(&#34;Size: %d MB.&#34;, 85) // s == &#34;Size: 85 MB.&#34; Further reading  fmt cheat sheet</description>
     </item>
     
     <item>
@@ -1061,8 +1051,7 @@ Mon Jan 2 15:04:05 MST 2006</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</guid>
-      <description>Basics Default formats and type Integer (base, padding, sign) Character (quoted, Unicode) Boolean (true/false)   Pointer (hex) Float (padding, precision, scientific notation) String or byte slice (quoted, padding, hex) Special values     Basics With the fmt package you can format numbers and strings padded with spaces or zeroes, in different bases, and with optional quotes.
-You submit a template string that contains the text you want to format plus some annotation verbs that tell the fmt functions how to format the trailing arguments.</description>
+      <description>Basics Format a string without printing it Default formats and type Integer (base, padding, sign) Character (quoted, Unicode) Boolean (true/false)   Pointer (hex) Float (padding, precision, scientific notation) String or byte slice (quoted, padding, hex) Special values Find incorrect formatting with vet     Basics With the fmt package you can format numbers and strings padded with spaces or zeroes, in different bases, and with optional quotes.</description>
     </item>
     
     <item>

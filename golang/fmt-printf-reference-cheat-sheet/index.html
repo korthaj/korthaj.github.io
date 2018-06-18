@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/format.jpg"
    ],
   "datePublished": "2018-03-15T00:00:00&#43;0000",
-  "dateModified": "2018-06-16T00:00:00&#43;0000",
+  "dateModified": "2018-06-18T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -94,6 +94,7 @@
 <div style="float: left; min-width: 30%; margin-right: 2em;">
     <ul class="toc" style="margin: 0;">
   <li><a href="#basics">Basics</a></li>
+  <li><a href="#format-a-string-without-printing-it">Format a string without printing it</a></li>
   <li><a href="#default">Default formats and type</a></li>
   <li><a href="#integer">Integer (base, padding, sign)</a></li>
   <li><a href="#character">Character (quoted, Unicode)</a></li>
@@ -106,6 +107,7 @@
   <li><a href="#float">Float (padding, precision, scientific notation)</a></li>
   <li><a href="#string-or-byte-slice">String or byte slice (quoted, padding, hex)</a></li>
   <li><a href="#special-values">Special values</a></li>
+  <li><a href="#find-incorrect-formatting-with-vet">Find incorrect formatting with vet</a></li>
     </ul>
 </div>
 </div>
@@ -133,37 +135,16 @@ how to format the trailing arguments.</p>
 <li>the <strong>special value</strong> <code>\\</code> is a backslash.</li>
 </ul>
 
-<h3 id="format-a-string-without-printing-it">Format a string without printing it</h3>
+<p>Use the special verb <code>%%</code>, which consumes no argument, to write a <strong>literal percent&nbsp;sign</strong>.</p>
+
+<pre><code>fmt.Printf("%d %%", 50) <span class="comment">// "50 %"</span></code></pre>
+
+<h2 id="format-a-string-without-printing-it">Format a string without printing it</h2>
 
 <p>Use the <a href="https://golang.org/pkg/fmt/#Sprintf"><code>fmt.Sprintf</code></a> function
 to format a string without printing&nbsp;it.</p>
 
 <pre><code>s := fmt.Sprintf("Binary: %b\\%b", 4, 5) <span class="comment">// s == "Binary: 100\101"</span></code></pre>
-
-<h3 id="literal-percent-sign">Literal percent sign</h3>
-
-<p>Use the special verb <code>%%</code>, which consumes no argument, to write a literal percent&nbsp;sign.</p>
-
-<pre><code>fmt.Printf("%d %%", 50) <span class="comment">// "50 %"</span></code></pre>
-
-<h3 id="find-incorrect-formatting-with-vet">Find incorrect formatting with vet</h3>
-
-<p>If your compile and run this code</p>
-
-<pre><code>fmt.Printf("Binary: %b\\%b", 4)
-</code></pre>
-
-<p>the program will print</p>
-
-<pre><code>Binary: 100\%!b(MISSING)</code></pre>
-
-<p>To catch these kinds of bugs, you can use
-the <a href="https://golang.org/cmd/vet/"><code>vet</code></a> command, which helps find
-calls whose arguments do not align with the format string.</p>
-
-<pre><code>$ go vet example.go
-example.go:8: missing argument for Printf("%b"): format reads arg 2, have only 1 args
-</code></pre>
 
 <h2 id="default">Default formats and type: <code style="font-size:smaller;background-color:white;">[]int64{0, 1}</code></h2>
 
@@ -447,6 +428,25 @@ can be used in any <code>&quot;&quot;</code>&nbsp;string literal.</p>
 <span class="comment">// \café</span>
 </code></pre>
 
+<h2 id="find-incorrect-formatting-with-vet">Find incorrect formatting with vet</h2>
+
+<p>If you compile and run this line of code</p>
+
+<pre><code>fmt.Printf("Binary: %b\\%b", 4)
+</code></pre>
+
+<p>the program will print</p>
+
+<pre><code>Binary: 100\%!b(MISSING)</code></pre>
+
+<p>To catch these kinds of bugs, you can use
+the <a href="https://golang.org/cmd/vet/">vet command</a> – it can find
+calls whose arguments do not align with the format string.</p>
+
+<pre><code>$ go vet example.go
+example.go:8: missing argument for Printf("%b"): format reads arg 2, have only 1 args
+</code></pre>
+
 <h3 id="further-reading">Further reading</h3>
 
 <p><a href="/golang/string-functions-reference-cheat-sheet/"><img src="/golang/typewriter-thumb.png" title="String functions cheat sheet"></a></p>
@@ -510,7 +510,7 @@ can be used in any <code>&quot;&quot;</code>&nbsp;string literal.</p>
 
   </ul>
   
-  <p><a href="/golang/"><strong>See all 183 Go articles</strong></a></p>
+  <p><a href="/golang/"><strong>See all 182 Go articles</strong></a></p>
 
 </aside>
 </main>

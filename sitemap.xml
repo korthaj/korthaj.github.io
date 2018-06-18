@@ -163,7 +163,19 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/convert-string-to-byte-slice/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/convert-string-to-float/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/convert-int-to-string/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/convert-string-to-rune-slice/</loc>
   </url>
   
   <url>
@@ -176,18 +188,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/convert-string-to-int/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/convert-string-to-byte-slice/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/convert-string-to-float/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/convert-string-to-rune-slice/</loc>
   </url>
   
   <url>
@@ -264,10 +264,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/for-loop/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/format-string-without-printing/</loc>
   </url>
   
   <url>
