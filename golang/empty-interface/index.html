@@ -22,48 +22,7 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
-  <script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Article",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://yourbasic.org/golang/empty-interface/"
-  },
-  "headline": "The empty interface",
-  "image": [
-    "https://yourbasic.org/golang/empty-room.png"
-   ],
-  "datePublished": "2018-05-01T00:00:00&#43;0000",
-  "dateModified": "2018-05-16T00:00:00&#43;0000",
-  "author": {
-    "@type": "Person",
-    "name": "Stefan Nilsson"
-  },
-   "publisher": {
-    "@type": "Organization",
-    "name": "yourbasic.org",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://yourbasic.org/res/favicon-96x96.png"
-    }
-  },
-  "description": "CODE EXAMPLE The empty interface in Go corresponds to a void pointer in C or an Object reference in Java."
-}
-</script>
-
-<meta property="og:locale" content="en_US">
-<meta property="og:type" content="article">
-<meta property="og:title" content="The empty interface">
-<meta property="og:description" content="CODE EXAMPLE The empty interface in Go corresponds to a void pointer in C or an Object reference in Java.">
-<meta property="og:url" content="https://yourbasic.org/golang/empty-interface/">
-<meta property="og:image" content="https://yourbasic.org/golang/empty-room.png">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The empty interface">
-<meta name="twitter:description" content="CODE EXAMPLE The empty interface in Go corresponds to a void pointer in C or an Object reference in Java.">
-<meta name="twitter:site" content="@yourbasic_org">
-<meta name="twitter:image" content="https://yourbasic.org/golang/empty-room.png">
+  <meta http-equiv="Refresh" content="0; url=/golang/interfaces-explained/" />
 
 
 </head>
@@ -84,79 +43,12 @@
 <article>
 <h1>The empty interface</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
-<!-- CC0: https://pixabay.com/en/room-empty-interior-ground-2133173/ -->
-
-<div style="margin-top:1em;"><img src="/golang/empty-room.png"></div>
-
-<p>The <strong>empty interface</strong> in Go corresponds to a void pointer in&nbsp;C or an Object reference in&nbsp;Java.
-It specifies zero&nbsp;methods.</p>
-
-<pre><code>interface{}
-</code></pre>
-
-<p>A variable of empty interface type can hold values of any type
-since every type implements at least&nbsp;zero methods.</p>
-
-<pre><code>var a interface{}
-
-a = 24
-fmt.Printf(&quot;[%v, %T]\n&quot;, a, a) // &quot;[24, int]&quot;
-
-a = &amp;Point{1, 2}
-fmt.Printf(&quot;[%v, %T]\n&quot;, a, a) // &quot;[(1,2), *main.Point]&quot;
-</code></pre>
-
-<p>The <a href="https://golang.org/pkg/fmt/#Println"><code>fmt.Println</code></a> function is a chief example from the standard library.
-It takes any number of arguments of any type.</p>
-
-<pre><code>func Println(a ...interface{}) (n int, err error)
-</code></pre>
-
-<h3 id="further-reading">Further reading</h3>
-
-<div><a href="/golang/interfaces-explained/"><img src="/golang/connection-thumb.jpg" title="Interfaces in a nutshell"></a></div>
-
-<div><a href="/golang/interfaces-explained/">Interfaces in a nutshell</a></div>
-
-<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fempty-interface%2f&amp;text=The%20empty%20interface&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fempty-interface%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fempty-interface%2f&amp;title=The%20empty%20interface" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=The%20empty%20interface&body=https%3a%2f%2fyourbasic.org%2fgolang%2fempty-interface%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<p>See <a href="/golang/convert-int-to-string/">Interfaces in a nutshell</a>.</p>
 
 
 </article>
 <aside>
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">One useful golang fact per&nbsp;day</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
-  <a href="/golang/gotcha/" title="Go gotcha: newbie or ninja?"><img src="/golang/surprise-mini.jpg"></a>
-  <ul class="none">
-  
-    <li><a href="/golang/gotcha/">Go gotcha: newbie or ninja?</a></li>
-
-    <li><a href="/golang/string-functions-reference-cheat-sheet/">String functions cheat sheet</a></li>
-
-    <li><a href="/golang/format-parse-string-time-date-example/">How to format and parse a time/date</a></li>
-
-    <li><a href="/golang/json-example/">JSON in-depth tutorial</a></li>
-
-    <li><a href="/golang/inheritance-object-oriented/">Painless object-oriented programming without inheritance</a></li>
-
-    <li><a href="/golang/concurrent-programming/">Step-by-step guide to concurrency</a></li>
-
-  </ul>
-  
-  <p><a href="/golang/"><strong>See all 182 Go articles</strong></a></p>
-
+<p></p>
 </aside>
 </main>
 

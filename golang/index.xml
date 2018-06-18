@@ -1717,9 +1717,7 @@ Sort a slice of ints, float64s or strings Use one of the functions
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/empty-interface/</guid>
-      <description>The empty interface in Go corresponds to a void pointer in&amp;nbsp;C or an Object reference in&amp;nbsp;Java. It specifies zero&amp;nbsp;methods.
-interface{}  A variable of empty interface type can hold values of any type since every type implements at least&amp;nbsp;zero methods.
-var a interface{} a = 24 fmt.Printf(&amp;quot;[%v, %T]\n&amp;quot;, a, a) // &amp;quot;[24, int]&amp;quot; a = &amp;amp;Point{1, 2} fmt.Printf(&amp;quot;[%v, %T]\n&amp;quot;, a, a) // &amp;quot;[(1,2), *main.Point]&amp;quot;  The fmt.Println function is a chief example from the standard library.</description>
+      <description>See Interfaces in a nutshell.</description>
     </item>
     
     <item>
