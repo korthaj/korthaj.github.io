@@ -22,48 +22,7 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
-  <script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Article",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://yourbasic.org/golang/convert-string-to-int/"
-  },
-  "headline": "Convert string to int/int64",
-  "image": [
-    "https://yourbasic.org/golang/wood-letters.jpg"
-   ],
-  "datePublished": "2018-05-16T00:00:00&#43;0000",
-  "dateModified": "2018-06-15T00:00:00&#43;0000",
-  "author": {
-    "@type": "Person",
-    "name": "Stefan Nilsson"
-  },
-   "publisher": {
-    "@type": "Organization",
-    "name": "yourbasic.org",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://yourbasic.org/res/favicon-96x96.png"
-    }
-  },
-  "description": "CODE EXAMPLE string to int: strconv.Atoi converts/parses a string to an int, strconv.ParseInt parses a string in a given base to an 8/16/32/64-bit integer."
-}
-</script>
-
-<meta property="og:locale" content="en_US">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Convert string to int/int64">
-<meta property="og:description" content="CODE EXAMPLE string to int: strconv.Atoi converts/parses a string to an int, strconv.ParseInt parses a string in a given base to an 8/16/32/64-bit integer.">
-<meta property="og:url" content="https://yourbasic.org/golang/convert-string-to-int/">
-<meta property="og:image" content="https://yourbasic.org/golang/wood-letters.jpg">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Convert string to int/int64">
-<meta name="twitter:description" content="CODE EXAMPLE string to int: strconv.Atoi converts/parses a string to an int, strconv.ParseInt parses a string in a given base to an 8/16/32/64-bit integer.">
-<meta name="twitter:site" content="@yourbasic_org">
-<meta name="twitter:image" content="https://yourbasic.org/golang/wood-letters.jpg">
+  <meta http-equiv="Refresh" content="0; url=https://yourbasic.org/golang/convert-int-to-string/" />
 
 
 </head>
@@ -84,94 +43,12 @@
 <article>
 <h1>Convert string to int/int64</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
-<h2 id="string-to-int">String to int</h2>
-
-<p>Use <a href="https://golang.org/pkg/strconv/#Atoi"><code>strconv.Atoi</code></a> to convert/parse a string to an&nbsp;int.</p>
-
-<pre><code>str := "123"
-if n, err := strconv.Atoi(str); err == nil {
-    fmt.Println(n+1)
-} else {
-    fmt.Println(str, "is not an integer.")
-}
-<span class="comment">// Output: 124</span></code></pre>
-
-<h2 id="string-to-int64">String to int64</h2>
-
-<p>Use <a href="https://golang.org/pkg/strconv/#ParseInt"><code>strconv.ParseInt</code></a>
-to parse a decimal string (base&nbsp;<code>10</code>) and check if it fits into a <code>64</code>-bit signed integer.</p>
-
-<pre><code>str := "123"
-n, err := strconv.ParseInt(str, 10, 64)
-if err == nil {
-    fmt.Printf("%d of type %T", n, n)
-}
-<span class="comment">// Output: 123 of type int64</span></code></pre>
-
-<p>The two numeric arguments represent a  base (0, 2 to 36) and a bit size (0&nbsp;to&nbsp;64).</p>
-
-<p>If the first argument is 0, the base is implied by the string&rsquo;s prefix:
-base 16 for <code>&#34;0x&#34;</code>, base 8 for <code>&#34;0&#34;</code>, and base&nbsp;10 otherwise.</p>
-
-<p>The second argument specifies the integer type that the result must fit into.
-Bit sizes 0, 8, 16, 32, and 64 correspond to <code>int</code>, <code>int8</code>,
-<code>int16</code>, <code>int32</code>, and&nbsp;<code>int64</code>.</p>
-
-<h3 id="further-reading">Further reading</h3>
-
-<div><a href="/golang/string-functions-reference-cheat-sheet/"><img src="/golang/typewriter-thumb.png" title="String functions cheat sheet"></a></div>
-
-<p style="margin-top:0; margin-bottom:2em;"><a href="/golang/string-functions-reference-cheat-sheet/">String functions cheat sheet</a></p>
-
-<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fconvert-string-to-int%2f&amp;text=Convert%20string%20to%20int/int64&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fconvert-string-to-int%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fconvert-string-to-int%2f&amp;title=Convert%20string%20to%20int/int64" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Convert%20string%20to%20int/int64&body=https%3a%2f%2fyourbasic.org%2fgolang%2fconvert-string-to-int%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<p>See <a href="/golang/convert-int-to-string/">Convert between int/int64 and string</a>.</p>
 
 
 </article>
 <aside>
-
-    
-  <h2>Related</h2>
-
-  <div class="reference">
-    <a href="/golang/convert-int-to-string/">Convert int/int64 to string</a>
-    <div class="desc">int to string: strconv.Itoa converts an int to a decimal string, strconf.FormatInt converts an int64 to a decimal or hexadecimal string.</div>
-    <div class="source">yourbasic.org</div>
-  </div>
-
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">One useful golang fact per&nbsp;day</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
-  <a href="/golang/gotcha/" title="Go gotcha: newbie or ninja?"><img src="/golang/surprise-mini.jpg"></a>
-  <ul class="none">
-  
-    <li><a href="/golang/gotcha/">Go gotcha: newbie or ninja?</a></li>
-
-    <li><a href="/golang/string-functions-reference-cheat-sheet/">String functions cheat sheet</a></li>
-
-    <li><a href="/golang/format-parse-string-time-date-example/">How to format and parse a time/date</a></li>
-
-    <li><a href="/golang/json-example/">JSON in-depth tutorial</a></li>
-
-    <li><a href="/golang/inheritance-object-oriented/">Painless object-oriented programming without inheritance</a></li>
-
-    <li><a href="/golang/concurrent-programming/">Step-by-step guide to concurrency</a></li>
-
-  </ul>
-  
-  <p><a href="/golang/"><strong>See all 183 Go articles</strong></a></p>
-
+<p></p>
 </aside>
 </main>
 

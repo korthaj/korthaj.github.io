@@ -354,6 +354,16 @@ x := 5.1 n := int(x) // convert float to int The conversion rules are extensive 
     </item>
     
     <item>
+      <title>Convert between int/int64 and string</title>
+      <link>https://yourbasic.org/golang/convert-int-to-string/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/convert-int-to-string/</guid>
+      <description>String to int String to int64 int to string int64 to string General formatting  String to int Use strconv.Atoi to convert/parse a string to an&amp;nbsp;int.
+str := &#34;123&#34; if n, err := strconv.Atoi(str); err == nil { fmt.Println(n+1) } else { fmt.Println(str, &#34;is not an integer.&#34;) } // Output: 124 String to int64 Use strconv.ParseInt to parse a decimal string (base&amp;nbsp;10) and check if it fits into a 64-bit signed integer.</description>
+    </item>
+    
+    <item>
       <title>Convert byte size to human readable format</title>
       <link>https://yourbasic.org/golang/formatting-byte-size-to-human-readable-format/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -361,17 +371,6 @@ x := 5.1 n := int(x) // convert float to int The conversion rules are extensive 
       <guid>https://yourbasic.org/golang/formatting-byte-size-to-human-readable-format/</guid>
       <description>These utility functions convert 1000 to &amp;quot;1 kB&amp;quot;, 1000000 to &amp;quot;1 MB&amp;quot;, etc.
 func ByteCountDecimal(b int64) string { const unit = 1000 if b = unit; n /= unit { div *= unit exp++ } return fmt.Sprintf(&#34;%.1f %cB&#34;, float64(b)/float64(div), &#34;kMGTPE&#34;[exp]) } func ByteCountBinary(b int64) string { const unit = 1024 if b = unit; n /= unit { div *= unit exp++ } return fmt.Sprintf(&#34;%.1f %ciB&#34;, float64(b)/float64(div), &#34;KMGTPE&#34;[exp]) } Example input/output:</description>
-    </item>
-    
-    <item>
-      <title>Convert int/int64 to string</title>
-      <link>https://yourbasic.org/golang/convert-int-to-string/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/convert-int-to-string/</guid>
-      <description>int to string int64 to string General formatting  int to string Use the strconv.Itoa function to convert an int to a decimal string.
-s := strconv.Itoa(109) // s == &#34;109&#34; int64 to string Use strconv.FormatInt to format an integer in a given base.
-var n int64 = 109 s := strconv.FormatInt(n, 10) // decimal fmt.Println(s) // 109  var n int64 = 109 s = strconv.FormatInt(n, 16) // hexadecimal fmt.</description>
     </item>
     
     <item>
@@ -391,9 +390,7 @@ var x interface{} = []int{1, 2, 3} str := fmt.Sprintf(&#34;%v&#34;, x) fmt.Print
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/convert-string-to-int/</guid>
-      <description>String to int Use strconv.Atoi to convert/parse a string to an&amp;nbsp;int.
-str := &#34;123&#34; if n, err := strconv.Atoi(str); err == nil { fmt.Println(n+1) } else { fmt.Println(str, &#34;is not an integer.&#34;) } // Output: 124 String to int64 Use strconv.ParseInt to parse a decimal string (base&amp;nbsp;10) and check if it fits into a 64-bit signed integer.
-str := &#34;123&#34; n, err := strconv.ParseInt(str, 10, 64) if err == nil { fmt.</description>
+      <description>See Convert between int/int64 and string.</description>
     </item>
     
     <item>
