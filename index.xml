@@ -1588,8 +1588,7 @@ By convention, the package name is the same as the last element of the import pa
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/pass-slice-to-variadic-function/</guid>
-      <description>You can pass a slice s directly to a variadic funtion using the s... notation.
-func main() { primes := []int{2, 3, 5, 7} fmt.Println(Sum(primes...)) // 17 } func Sum(nums ...int) int { res := 0 for _, n := range nums { res += n } return res } Further reading  Slices in a&amp;nbsp;nutshell</description>
+      <description>See Variadic functions (&amp;hellip;T).</description>
     </item>
     
     <item>
@@ -2106,9 +2105,8 @@ package main var n = 1 func main() {} This is a trade-off in the design of the G
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/variadic-function/</guid>
-      <description>If the last parameter of a function has type ...T it can be called with any number of trailing arguments of type&amp;nbsp;T.
-func Sum(nums ...int) int { res := 0 for _, n := range nums { res += n } return res } func main() fmt.Println(Sum()) // 0 fmt.Println(Sum(1, 2, 3)) // 6 } The actual type of ...T inside the function is []T.
-You can pass a slice s directly to a variadic funtion using the s.</description>
+      <description>Basics Pass slice elements to a variadic function Append is variadic  Basics If the last parameter of a function has type ...T it can be called with any number of trailing arguments of type&amp;nbsp;T.
+func Sum(nums ...int) int { res := 0 for _, n := range nums { res += n } return res } func main() fmt.Println(Sum()) // 0 fmt.Println(Sum(1, 2, 3)) // 6 } The actual type of .</description>
     </item>
     
     <item>
