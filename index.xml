@@ -1072,7 +1072,7 @@ Basic iterator pattern // Iterate calls the f function with n = 1, 2, and 3. fun
       
       <guid>https://yourbasic.org/golang/stop-goroutine/</guid>
       <description>One&amp;nbsp;goroutine can&#39;t forcibly stop another.
-To make a goroutine stoppable, let it listen for a stop signal on a channel.
+ To make a goroutine stoppable, let it listen for a stop signal on a channel.
 quit := make(chan struct{}) go func() { for { select { case // … } } }() // … close(quit) Sometimes it&amp;rsquo;s convenient to use a single channel for both data and signalling.
 // Generator returns a channel that produces the numbers 1, 2, 3,… // To stop the underlying goroutine, close the channel.</description>
     </item>
