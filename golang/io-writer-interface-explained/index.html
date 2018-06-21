@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/caligraphy-training.jpg"
    ],
   "datePublished": "2018-05-07T00:00:00&#43;0000",
-  "dateModified": "2018-06-19T00:00:00&#43;0000",
+  "dateModified": "2018-06-21T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -129,14 +129,15 @@ fmt.Fprintf(&buf, "Size: %d MB.", 85)
 s := buf.String()) <span class="comment">// s == "Size: 85 MB."</span></code></pre>
 
 <p>Similarly, you can write directly into files or other streams, such as http connections.
-See the <a href="/golang/http-server-example/">HTTP server example</a> article for complete&nbsp;code.</p>
+See the <a href="/golang/http-server-example/">HTTP server example</a> article for
+a complete code&nbsp;example.</p>
 
 <p>This is a very common pattern in Go.
 As yet another example, you can compute the hash value of a file
 by copying the file into the <code>io.Writer</code> function
 of a suitable <a href="https://golang.org/pkg/hash/#Hash"><code>hash.Hash</code></a> object.
 See <a href="/golang/hash-md5-sha256-string-file/#file">Hash checksums</a>
-for a code&nbsp;example.</p>
+for&nbsp;code.</p>
 
 <h2 id="optimize-string-writes">Optimize string writes</h2>
 
