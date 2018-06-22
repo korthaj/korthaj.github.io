@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/Schlagwortkatalog.jpg"
    ],
   "datePublished": "2018-03-28T00:00:00&#43;0000",
-  "dateModified": "2018-05-10T00:00:00&#43;0000",
+  "dateModified": "2018-06-22T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -130,13 +130,13 @@ the number of key-value&nbsp;pairs.</li>
 m["pi"] = 3.1416 <span class="comment">// <b>Add a new key-value pair.</b></span>
 fmt.Println(m)   <span class="comment">// map[pi:3.1416]</span>
 
-v1 := m["pi"]  <span class="comment">// v1 == 3.1416</span>
-v2 := m["foo"] <span class="comment">// v2 == 0 (zero value)</span>
+v := m["pi"] <span class="comment">// v == 3.1416</span>
+v = m["pie"] <span class="comment">// v == 0 (zero value)</span>
 
-_, exists := m["pi"] <span class="comment">// exists == true</span>
-_, exists = m["foo"] <span class="comment">// exists == false</span>
+_, found := m["pi"] <span class="comment">// found == true</span>
+_, found = m["pie"] <span class="comment">// found == false</span>
 
-if x, ok := m["pi"]; ok { <span class="comment">// Prints 3.1416.</span>
+if x, found := m["pi"]; found { <span class="comment">// Prints 3.1416.</span>
     fmt.Println(x)
 }
 
