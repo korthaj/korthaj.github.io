@@ -31,6 +31,17 @@ set := make(map[string]bool) // New empty set set[&#34;Foo&#34;] = true // Add f
     </item>
     
     <item>
+      <title>2 patterns for a do-while loop in Go</title>
+      <link>https://yourbasic.org/golang/do-while-loop/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/do-while-loop/</guid>
+      <description>There is no do-while loop in Go. To emulate the C/Java code
+do { work(); } while (condition); you may use one of these two alternatives:
+for ok := true; ok; ok = condition { work() } for { work() if !condition { break } } Further reading  5 patterns for looping in&amp;nbsp;Go</description>
+    </item>
+    
+    <item>
       <title>3 dots in 4 places</title>
       <link>https://yourbasic.org/golang/three-dots-ellipsis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -613,17 +624,6 @@ type T struct { n int f float64 next *T } fmt.Println([2]T{}) // [{0 0 &amp;lt;n
       <guid>https://yourbasic.org/golang/delete-element-slice/</guid>
       <description>Fast version (changes order) a := []string{&#34;A&#34;, &#34;B&#34;, &#34;C&#34;, &#34;D&#34;, &#34;E&#34;} i := 2 // Remove the element at index i from a. a[i] = a[len(a)-1] // Copy last element to index i. a[len(a)-1] = &#34;&#34; // Erase last element (write zero value). a = a[:len(a)-1] // Truncate slice. fmt.Println(a) // [A B E D] The code copies a single element and runs in constant time.
 Slow version (maintains order) a := []string{&#34;</description>
-    </item>
-    
-    <item>
-      <title>Do-while loop in 2 different ways</title>
-      <link>https://yourbasic.org/golang/do-while-loop/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/do-while-loop/</guid>
-      <description>There is no do-while loop in Go. To emulate the C/Java code
-do { work(); } while (condition); you may use one of these two alternatives:
-for ok := true; ok; ok = condition { work() } for { work() if !condition { break } } Further reading  5 patterns for looping in&amp;nbsp;Go</description>
     </item>
     
     <item>
