@@ -55,6 +55,17 @@ type SyntaxError struct { Line int Col int } func (e *SyntaxError) Error() strin
     </item>
     
     <item>
+      <title>3 simple ways to find a key in a map</title>
+      <link>https://yourbasic.org/golang/check-map-contains-key/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/check-map-contains-key/</guid>
+      <description>Basics When you index a map in Go you get two return values; the&amp;nbsp;second one (which is optional) is a boolean that indicates if the key&amp;nbsp;exists.
+If the key doesn&amp;rsquo;t exist, the first value will be the default zero&amp;nbsp;value.
+Check second return value m := map[string]float64{&#34;pi&#34;: 3.14} _, exists := m[&#34;pi&#34;] // exists == true _, exists = m[&#34;pie&#34;] // exists == false  Use second return value directly in an if statement m := map[string]float64{&#34;</description>
+    </item>
+    
+    <item>
       <title>3 ways to compare slices</title>
       <link>https://yourbasic.org/golang/compare-slices/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -869,17 +880,6 @@ package main import &#34;fmt&#34; func main() { i := 0 go func() { i++ // write 
       <guid>https://yourbasic.org/golang/disable-logging-output/</guid>
       <description>To turn off all output from a log.Logger, set the output destination to ioutil.Discard, a writer on which all calls succeed without doing anything.
 log.SetOutput(ioutil.Discard)  </description>
-    </item>
-    
-    <item>
-      <title>How to find a key in a map</title>
-      <link>https://yourbasic.org/golang/check-map-contains-key/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/check-map-contains-key/</guid>
-      <description>When you index a map in Go you get two return values; the second one (which is&amp;nbsp;optional) indicates if the key&amp;nbsp;exists.
-If the key doesn&amp;rsquo;t exist, the first value will be the default zero&amp;nbsp;value.
-m := map[string]float64{&#34;pi&#34;: 3.14} v1 := m[&#34;pi&#34;] // v1 == 3.14 v2 := m[&#34;foo&#34;] // v2 == 0.0 _, exists := m[&#34;pi&#34;] // true if x, ok := m[&#34;pi&#34;]; ok { fmt.Println(x) // 3.14 } Count elements in a map The call len(m) returns the number of key-value pairs in&amp;nbsp;m.</description>
     </item>
     
     <item>
