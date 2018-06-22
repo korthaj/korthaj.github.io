@@ -22,6 +22,50 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/golang/select-explained/"
+  },
+  "headline": "Select waits on a group of channels",
+  "image": [
+    "https://yourbasic.org/golang/select-sushi.jpg"
+   ],
+  "datePublished": "2018-06-22T00:00:00&#43;0000",
+  "dateModified": "2018-06-22T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "A select statement allows you to wait for multiple send or receive operations simultaneously."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Select waits on a group of channels">
+<meta property="og:description" content="A select statement allows you to wait for multiple send or receive operations simultaneously.">
+<meta property="og:url" content="https://yourbasic.org/golang/select-explained/">
+<meta property="og:image" content="https://yourbasic.org/golang/select-sushi.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Select waits on a group of channels">
+<meta name="twitter:description" content="A select statement allows you to wait for multiple send or receive operations simultaneously.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="https://yourbasic.org/golang/select-sushi.jpg">
+
+
 </head>
 
 <body>
@@ -43,7 +87,16 @@
 
 
 
-<p class="lead">The select statement waits for multiple send or receive opera&shy;tions simul&shy;taneously.</p>
+<!-- CC BY-SA 3.0: https://commons.wikimedia.org/wiki/File:Bluewater3753.JPG -->
+
+<div style="margin-top:1em;"><img src="/golang/select-sushi.jpg"/></div>
+
+<p>The select statement waits for multiple send or receive opera&shy;tions simul&shy;taneously.</p>
+
+<ul>
+<li>The statement blocks as a whole until one of the operations becomes unblocked.</li>
+<li>If several cases can proceed, a single one of them will be chosen at random.</li>
+</ul>
 
 <pre><code><span class="comment">// blocks until there's data available on ch1 or ch2</span>
 select {
@@ -52,11 +105,6 @@ case <-ch1:
 case <-ch2:
     fmt.Println("Received from ch2")
 }</code></pre>
-
-<ul>
-<li>The statement blocks as a whole until one of the operations becomes unblocked.</li>
-<li>If several cases can proceed, a single one of them will be chosen at random.</li>
-</ul>
 
 <p>Send and receive operations on a <code>nil</code> channel block forever.
 This can be used to disable a channel in a select statement:</p>

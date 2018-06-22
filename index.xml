@@ -1752,7 +1752,7 @@ func main() { n := 0 if true { n = 1 n++ } fmt.Println(n) // 2 } Detecting shado
       
       <guid>https://yourbasic.org/golang/select-explained/</guid>
       <description>The select statement waits for multiple send or receive opera&amp;shy;tions simul&amp;shy;taneously.
-// blocks until there&#39;s data available on ch1 or ch2 select { case   The statement blocks as a whole until one of the operations becomes unblocked. If several cases can proceed, a single one of them will be chosen at random.  Send and receive operations on a nil channel block forever. This can be used to disable a channel in a select statement:</description>
+ The statement blocks as a whole until one of the operations becomes unblocked. If several cases can proceed, a single one of them will be chosen at random.  // blocks until there&#39;s data available on ch1 or ch2 select { case  Send and receive operations on a nil channel block forever. This can be used to disable a channel in a select statement:</description>
     </item>
     
     <item>
