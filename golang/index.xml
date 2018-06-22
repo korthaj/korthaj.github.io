@@ -350,17 +350,6 @@ func Abs(x int32) int32 { if x &amp;lt; 0 { return -x } return x }  Warning: The
     </item>
     
     <item>
-      <title>Concatenate slices</title>
-      <link>https://yourbasic.org/golang/concatenate-slices/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/concatenate-slices/</guid>
-      <description>Use the append functions with three dots after the second slice.
-a := []int{1, 2} b := []int{11, 22} a = append(a, b...) // a == [1 2 11 22] The ... unpacks b. Without the dots, the code would attempt to append the slice as a whole, which is&amp;nbsp;invalid.
-Further reading  Slices in a&amp;nbsp;nutshell</description>
-    </item>
-    
-    <item>
       <title>Constant overflows int</title>
       <link>https://yourbasic.org/golang/gotcha-constant-overflows-int/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -853,7 +842,7 @@ s := &#34;Foo&#34; md5 := md5.Sum([]byte(s)) sha1 := sha1.Sum([]byte(s)) sha256 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/append-explained/</guid>
-      <description>Basics Slice to slice String to byte slice Constant time  Basics The built-in append function appends any number of elements to the end of a&amp;nbsp;slice:
+      <description>Basics Concatenate slice to slice Concatenate string to byte slice Efficiency  Basics The built-in append function appends any number of elements to the end of a&amp;nbsp;slice:
  if there is enough capacity, the underlying array is&amp;nbsp;reused; if not, a new underlying array is allocated and the data is copied&amp;nbsp;over.  Append returns the updated slice. Therefore you need to store the result of an append, often in the variable holding the slice itself:</description>
     </item>
     

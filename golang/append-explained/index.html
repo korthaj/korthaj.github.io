@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/toddler-fiat-with-trailer.jpg"
    ],
   "datePublished": "2018-04-15T00:00:00&#43;0000",
-  "dateModified": "2018-06-12T00:00:00&#43;0000",
+  "dateModified": "2018-06-22T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -92,9 +92,9 @@
 
 <ul class="toc">
   <li><a href="#basics">Basics</a></li>
-  <li><a href="#slice-to-slice">Slice to slice</a></li>
-  <li><a href="#string-to-byte-slice">String to byte slice</a></li>
-  <li><a href="#constant-time">Constant time</a></li>
+  <li><a href="#concatenate-slice-to-slice">Concatenate slice to slice</a></li>
+  <li><a href="#concatenate-string-to-byte-slice">Concatenate string to byte slice</a></li>
+  <li><a href="#efficiency">Efficiency</a></li>
 </ul>
 
 <h2 id="basics">Basics</h2>
@@ -118,7 +118,7 @@ a = append(a, 3, 4) <span class="comment">// a == [1 2 3 4]</span></code></pre>
 of what can happen if your forget that <code>append</code> may reuse the underlying array.
 </blockquote>
 
-<h2 id="slice-to-slice">Slice to slice</h2>
+<h2 id="concatenate-slice-to-slice">Concatenate slice to slice</h2>
 
 <p>You can concatenate two slices using the <a href="/golang/variadic-function/">three dots notation</a>:</p>
 
@@ -126,19 +126,21 @@ of what can happen if your forget that <code>append</code> may reuse the underly
 b := []int{11, 22}
 a = append(a, b...) <span class="comment">// a == [1 2 11 22]</span></code></pre>
 
+<p>The <code>...</code> unpacks <code>b</code>. Without the dots, the code would attempt to append the slice as a whole, which is&nbsp;invalid.</p>
+
 <p>The result does not depend on whether the <em>arguments overlap</em>:</p>
 
 <pre><code>a := []int{1, 2}
 a = append(a, a...) <span class="comment">// a == [1 2 1 2]</span></code></pre>
 
-<h2 id="string-to-byte-slice">String to byte slice</h2>
+<h2 id="concatenate-string-to-byte-slice">Concatenate string to byte slice</h2>
 
 <p>As a special case, it&rsquo;s legal to append a string to a byte slice:</p>
 
 <pre><code>slice := append([]byte("Hello "), "world!"...)
 </code></pre>
 
-<h2 id="constant-time">Constant time</h2>
+<h2 id="efficiency">Efficiency</h2>
 
 <div><a href="/algorithms/amortized-time-complexity-analysis/"><img src="/algorithms/pink-coins-thumb.jpg" title="Amortized time complexity"></a></div>
 
@@ -202,7 +204,7 @@ See <a href="/algorithms/amortized-time-complexity-analysis/">Amortized time com
 
   </ul>
   
-  <p><a href="/golang/"><strong>See all 182 Go articles</strong></a></p>
+  <p><a href="/golang/"><strong>See all 181 Go articles</strong></a></p>
 
 </aside>
 </main>
