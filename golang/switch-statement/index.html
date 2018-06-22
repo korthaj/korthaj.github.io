@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Switch statements in a nutshell - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE A switch-case-default statement is a shorter and cleaner way to write a sequence of if-else statements: no condition, case lists, fallthrough, break and continue, execution order.">
+  <title>5 patterns for switching in Go - yourbasic.org/golang </title>
+  <meta name="description" content="CODE EXAMPLE A switch-case-default statement is a shorter and cleaner way to write a sequence of if-else statements.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -30,7 +30,7 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/switch-statement/"
   },
-  "headline": "Switch statements in a nutshell",
+  "headline": "5 patterns for switching in Go",
   "image": [
     "https://yourbasic.org/golang/switch.jpg"
    ],
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "CODE EXAMPLE A switch-case-default statement is a shorter and cleaner way to write a sequence of if-else statements: no condition, case lists, fallthrough, break and continue, execution order."
+  "description": "CODE EXAMPLE A switch-case-default statement is a shorter and cleaner way to write a sequence of if-else statements."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Switch statements in a nutshell">
-<meta property="og:description" content="CODE EXAMPLE A switch-case-default statement is a shorter and cleaner way to write a sequence of if-else statements: no condition, case lists, fallthrough, break and continue, execution order.">
+<meta property="og:title" content="5 patterns for switching in Go">
+<meta property="og:description" content="CODE EXAMPLE A switch-case-default statement is a shorter and cleaner way to write a sequence of if-else statements.">
 <meta property="og:url" content="https://yourbasic.org/golang/switch-statement/">
 <meta property="og:image" content="https://yourbasic.org/golang/switch.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Switch statements in a nutshell">
-<meta name="twitter:description" content="CODE EXAMPLE A switch-case-default statement is a shorter and cleaner way to write a sequence of if-else statements: no condition, case lists, fallthrough, break and continue, execution order.">
+<meta name="twitter:title" content="5 patterns for switching in Go">
+<meta name="twitter:description" content="CODE EXAMPLE A switch-case-default statement is a shorter and cleaner way to write a sequence of if-else statements.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/switch.jpg">
 
@@ -82,7 +82,7 @@
 
 <main>
 <article>
-<h1>Switch statements in a nutshell</h1>
+<h1>5 patterns for switching in Go</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
@@ -91,18 +91,21 @@
 
 <div style="float:right; margin-top:-50px;" class="extra-content"><img src="/golang/switch.jpg"></div>
 
-<p class="lead">A switch is a cleaner way to write a&nbsp;sequence of if&nbsp;statements.</p>
-
 <ul class="toc">
-  <li><a href="#basics">Basics</a></li>
+  <li><a href="#basic-switch-with-default">Basic switch with default</a></li>
   <li><a href="#no-condition">No condition</a></li>
-  <li><a href="#case-lists">Case lists</a></li>
+  <li><a href="#case-list">Case list</a></li>
   <li><a href="#fallthrough">Fallthrough</a></li>
   <li><a href="#exit-a-switch">Exit a switch</a></li>
   <li><a href="#execution-order">Execution order</a></li>
 </ul>
 
-<h2 id="basics">Basics</h2>
+<h2 id="basic-switch-with-default">Basic switch with default</h2>
+
+<ul>
+<li>A switch statement runs the first case equal to the condition expression.</li>
+<li>The cases are evaluated from top to bottom, stopping when a case succeeds.</li>
+</ul>
 
 <pre><code><b>switch</b> time.Now().Weekday() {
 <b>case</b> time.Saturday:
@@ -113,14 +116,11 @@
     fmt.Println("Today is a weekday.")
 }</code></pre>
 
-<ul>
-<li>A switch statement runs the first case equal to the condition expression.</li>
-<li>The cases are evaluated from top to bottom, stopping when a case succeeds.</li>
-</ul>
-
-<p>Unlike C and Java, the case expressions do not need to be constants.</p>
+<p>(Unlike C and Java, the case expressions do not need to be constants.)</p>
 
 <h2 id="no-condition">No condition</h2>
+
+<p>A switch without a condition is the same as switch&nbsp;true.</p>
 
 <pre><code>hour := time.Now().Hour()
 switch { <span class="comment">// Same as: switch true</span>
@@ -132,7 +132,7 @@ default:
     fmt.Println("Good evening!")
 }</code></pre>
 
-<h2 id="case-lists">Case lists</h2>
+<h2 id="case-list">Case list</h2>
 
 <pre><code>func whiteSpace(c rune) bool {
     switch c {
@@ -143,6 +143,11 @@ default:
 }</code></pre>
 
 <h2 id="fallthrough">Fallthrough</h2>
+
+<ul>
+<li>A <code>fallthrough</code> statement transfers control to the next case.</li>
+<li>It may be used only as the final statement in a clause.</li>
+</ul>
 
 <pre><code>switch 2 {
 case 1:
@@ -158,11 +163,6 @@ case 3:
 <pre><code>2
 3
 </code></pre>
-
-<ul>
-<li>A <code>fallthrough</code> statement transfers control to the next case.</li>
-<li>It may be used only as the final statement in a clause.</li>
-</ul>
 
 <h2 id="exit-a-switch">Exit a switch</h2>
 
@@ -190,6 +190,17 @@ b
 
 <h2 id="execution-order">Execution order</h2>
 
+<ul>
+<li>First the switch expression is evaluated once.</li>
+<li>Then case expressions are evaluated left-to-right and top-to-bottom:
+
+<ul>
+<li>the first one that equals the switch expression triggers execution
+of the statements of the associated&nbsp;case,</li>
+<li>the other cases are skipped.</li>
+</ul></li>
+</ul>
+
 <pre><code><span class="comment">// Foo prints and returns n.</span>
 func Foo(n int) int {
     fmt.Println(n)
@@ -213,17 +224,6 @@ First case
 Second case
 </code></pre>
 
-<ul>
-<li>First the switch expression is evaluated once.</li>
-<li>Then case expressions are evaluated left-to-right and top-to-bottom:
-
-<ul>
-<li>the first one that equals the switch expression triggers execution
-of the statements of the associated&nbsp;case,</li>
-<li>the other cases are skipped.</li>
-</ul></li>
-</ul>
-
 
 <h3>More nutshells</h3>
 
@@ -237,10 +237,10 @@ of the statements of the associated&nbsp;case,</li>
 <a href="/golang/switch-statement/">switch statements</a>,
 <a href="/golang/packages-explained/">packages</a>.</p>
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fswitch-statement%2f&amp;text=Switch%20statements%20in%20a%20nutshell&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fswitch-statement%2f&amp;text=5%20patterns%20for%20switching%20in%20Go&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fswitch-statement%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fswitch-statement%2f&amp;title=Switch%20statements%20in%20a%20nutshell" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Switch%20statements%20in%20a%20nutshell&body=https%3a%2f%2fyourbasic.org%2fgolang%2fswitch-statement%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fswitch-statement%2f&amp;title=5%20patterns%20for%20switching%20in%20Go" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=5%20patterns%20for%20switching%20in%20Go&body=https%3a%2f%2fyourbasic.org%2fgolang%2fswitch-statement%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
@@ -256,8 +256,8 @@ of the statements of the associated&nbsp;case,</li>
   </div>
 
   <div class="reference">
-    <a href="/golang/for-loop/">For loops in a nutshell</a>
-    <div class="desc">The for loop is the only looping construct in Go: three-component loop, while loop, infinite loop, for-each loop, break and continue.</div>
+    <a href="/golang/for-loop/">5 patterns for looping in Go</a>
+    <div class="desc">The for loop is the only looping construct in Go. It&#39;s used for three-component loops, while loops, infinite loops and for-each loops. You may exit a loop with break or continue.</div>
     <div class="source">yourbasic.org</div>
   </div>
 

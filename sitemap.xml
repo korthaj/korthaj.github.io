@@ -30,6 +30,14 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/for-loop/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/switch-statement/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/implement-stack/</loc>
   </url>
   
@@ -264,10 +272,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/find-type-of-object/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/for-loop/</loc>
   </url>
   
   <url>
@@ -680,10 +684,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/structs-explained/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/switch-statement/</loc>
   </url>
   
   <url>
