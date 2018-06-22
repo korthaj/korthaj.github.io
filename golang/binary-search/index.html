@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Binary search in Go - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE How to find an element efficiently in a sorted slice.">
+  <title>Binary search: take a sortcut [sic] - yourbasic.org/golang </title>
+  <meta name="description" content="CODE EXAMPLE For efficient searching in a sorted array, use one of the custom functions sort.SearchTs (where T is Int/String/Float64) or the generic sort.Search.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/binary-search/"
   },
-  "headline": "Binary search in Go",
+  "headline": "Binary search: take a sortcut [sic]",
   "image": [
     "https://yourbasic.org/golang/fork-in-the-road.jpg"
    ],
   "datePublished": "2018-04-21T00:00:00&#43;0000",
-  "dateModified": "2018-05-25T00:00:00&#43;0000",
+  "dateModified": "2018-06-22T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "CODE EXAMPLE How to find an element efficiently in a sorted slice."
+  "description": "CODE EXAMPLE For efficient searching in a sorted array, use one of the custom functions sort.SearchTs (where T is Int/String/Float64) or the generic sort.Search."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Binary search in Go">
-<meta property="og:description" content="CODE EXAMPLE How to find an element efficiently in a sorted slice.">
+<meta property="og:title" content="Binary search: take a sortcut [sic]">
+<meta property="og:description" content="CODE EXAMPLE For efficient searching in a sorted array, use one of the custom functions sort.SearchTs (where T is Int/String/Float64) or the generic sort.Search.">
 <meta property="og:url" content="https://yourbasic.org/golang/binary-search/">
 <meta property="og:image" content="https://yourbasic.org/golang/fork-in-the-road.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Binary search in Go">
-<meta name="twitter:description" content="CODE EXAMPLE How to find an element efficiently in a sorted slice.">
+<meta name="twitter:title" content="Binary search: take a sortcut [sic]">
+<meta name="twitter:description" content="CODE EXAMPLE For efficient searching in a sorted array, use one of the custom functions sort.SearchTs (where T is Int/String/Float64) or the generic sort.Search.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/fork-in-the-road.jpg">
 
@@ -82,7 +82,7 @@
 
 <main>
 <article>
-<h1>Binary search in Go</h1>
+<h1>Binary search: take a sortcut [sic]</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
@@ -96,7 +96,10 @@ It's&nbsp;a&nbsp;sortcut.
 <a class="quote-source" href="https://twitter.com/dbentley/status/999031485096235008">Dan Bentley</a>
 </blockquote>
 
-<p>Use one of the <strong>binary search</strong> functions: <a href="https://golang.org/pkg/sort/#SearchInts"><code>sort.SearchInts</code></a>, <a href="https://golang.org/pkg/sort/#SearchFloat64s"><code>sort.SearchFloat64s</code></a> or  <a href="https://golang.org/pkg/sort/#SearchStrings"><code>sort.SearchStrings</code></a>.</p>
+<p>You might be able to use one of the three custom <strong>binary search</strong> functions:
+<a href="https://golang.org/pkg/sort/#SearchInts"><code>sort.SearchInts</code></a>,
+<a href="https://golang.org/pkg/sort/#SearchStrings"><code>sort.SearchStrings</code></a> or
+<a href="https://golang.org/pkg/sort/#SearchFloat64s"><code>sort.SearchFloat64s</code></a>.</p>
 
 <p>They all have the signature</p>
 
@@ -120,7 +123,7 @@ fmt.Println(sort.SearchStrings(a, "D")) <span class="comment">// 3</span></code>
 
 <h2 id="generic-binary-search">Generic binary search</h2>
 
-<p>Use the <strong>generic binary search</strong> function <a href="https://golang.org/pkg/sort/#Search"><code>sort.Search</code></a>.</p>
+<p>There is also a <strong>generic binary search</strong> function <a href="https://golang.org/pkg/sort/#Search"><code>sort.Search</code></a>.</p>
 
 <pre><code>func Search(n int, f func(int) bool) int
 </code></pre>
@@ -159,10 +162,10 @@ if i < len(a) && a[i] == x {
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/how-to-sort-in-go/">The 3 ways to sort in Go</a></p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fbinary-search%2f&amp;text=Binary%20search%20in%20Go&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fbinary-search%2f&amp;text=Binary%20search:%20take%20a%20sortcut%20[sic]&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fbinary-search%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fbinary-search%2f&amp;title=Binary%20search%20in%20Go" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Binary%20search%20in%20Go&body=https%3a%2f%2fyourbasic.org%2fgolang%2fbinary-search%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fbinary-search%2f&amp;title=Binary%20search:%20take%20a%20sortcut%20[sic]" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Binary%20search:%20take%20a%20sortcut%20[sic]&body=https%3a%2f%2fyourbasic.org%2fgolang%2fbinary-search%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
@@ -170,6 +173,12 @@ if i < len(a) && a[i] == x {
 
     
   <h2>Related</h2>
+
+  <div class="reference">
+    <a href="https://en.wikipedia.org/wiki/Binary_search_algorithm">Binary search algorithm</a>
+    <div class="source">Wikipedia</div>
+    <div class="author"></div>
+  </div>
 
   <div class="reference">
     <a href="/algorithms/time-complexity-explained/">How to analyse time complexity: Count your steps</a>
@@ -180,12 +189,6 @@ if i < len(a) && a[i] == x {
   <div class="reference">
     <a href="/algorithms/big-o-notation-explained/">Big O notation: definition and examples</a>
     <div class="desc">Big O notation is a convenient way to describe how fast a function is growing. It is often used to describe time complexity.</div>
-    <div class="source">yourbasic.org</div>
-  </div>
-
-  <div class="reference">
-    <a href="/algorithms/time-complexity-recursive-functions/">Time complexity of recursive functions [Master theorem]</a>
-    <div class="desc">You can often compute the time complexity of a recursive function by solving a recurrence relation. The master theorem gives solutions to a class of common recurrences.</div>
     <div class="source">yourbasic.org</div>
   </div>
 

@@ -237,18 +237,6 @@ m := make(map[string]float64) m[&#34;pi&#34;] = 3.1416  A new, empty map value i
     </item>
     
     <item>
-      <title>Binary search in Go</title>
-      <link>https://yourbasic.org/golang/binary-search/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/binary-search/</guid>
-      <description>Binary search is faster than linear search, but only works if your data is in&amp;nbsp;order. It&#39;s&amp;nbsp;a&amp;nbsp;sortcut. Dan Bentley  Use one of the binary search functions: sort.SearchInts, sort.SearchFloat64s or sort.SearchStrings.
-They all have the signature
-func SearchType(a []Type, x Type) int and return
- the smallest index i at which x &amp;lt;= a[i], or len(a) if there is no such index.  The slice must be sorted in ascending order.</description>
-    </item>
-    
-    <item>
       <title>Binary search trees</title>
       <link>https://yourbasic.org/algorithms/binary-search-tree/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -256,6 +244,18 @@ func SearchType(a []Type, x Type) int and return
       <guid>https://yourbasic.org/algorithms/binary-search-tree/</guid>
       <description>Tree terminology Binary search trees Well-balanced trees Basic tree algorithms  Tree terminology A binary tree is a data structure most easily described by&amp;nbsp;recursion.
  A binary tree  is either empty,  or consists of a node (also known as the root of the tree) and two subtrees, the left and right subtree, which are also binary trees.   A node with two empty subtrees is called a&amp;nbsp;leaf.</description>
+    </item>
+    
+    <item>
+      <title>Binary search: take a sortcut [sic]</title>
+      <link>https://yourbasic.org/golang/binary-search/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/binary-search/</guid>
+      <description>Binary search is faster than linear search, but only works if your data is in&amp;nbsp;order. It&#39;s&amp;nbsp;a&amp;nbsp;sortcut. Dan Bentley  You might be able to use one of the three custom binary search functions: sort.SearchInts, sort.SearchStrings or sort.SearchFloat64s.
+They all have the signature
+func SearchType(a []Type, x Type) int and return
+ the smallest index i at which x &amp;lt;= a[i], or len(a) if there is no such index.</description>
     </item>
     
     <item>
