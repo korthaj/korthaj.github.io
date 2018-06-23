@@ -628,15 +628,6 @@ Here are some rules of&amp;nbsp;thumb.
     </item>
     
     <item>
-      <title>Empty slice vs. nil slice</title>
-      <link>https://yourbasic.org/golang/nil-slice-vs-empty-slice/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/nil-slice-vs-empty-slice/</guid>
-      <description>See Clear a slice.</description>
-    </item>
-    
-    <item>
       <title>Enum with String function</title>
       <link>https://yourbasic.org/golang/define-enumeration-string/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
