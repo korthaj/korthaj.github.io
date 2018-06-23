@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hash checksums: MD5, SHA-1, SHA-256 - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE To compute the checksum of a string or byte slice, use the Sum function from crypto package md5, sha1 or sha256. For a file or input stream you need to create a Hash object and write to its Writer function.">
+  <meta name="description" content="CODE EXAMPLE To compute the hash value of a string or byte slice, use the Sum function from crypto package md5, sha1 or sha256. For a file or input stream you need to create a Hash object and write to its Writer function.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/computer-monitoring.jpg"
    ],
   "datePublished": "2018-05-11T00:00:00&#43;0000",
-  "dateModified": "2018-05-11T00:00:00&#43;0000",
+  "dateModified": "2018-06-23T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "CODE EXAMPLE To compute the checksum of a string or byte slice, use the Sum function from crypto package md5, sha1 or sha256. For a file or input stream you need to create a Hash object and write to its Writer function."
+  "description": "CODE EXAMPLE To compute the hash value of a string or byte slice, use the Sum function from crypto package md5, sha1 or sha256. For a file or input stream you need to create a Hash object and write to its Writer function."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hash checksums: MD5, SHA-1, SHA-256">
-<meta property="og:description" content="CODE EXAMPLE To compute the checksum of a string or byte slice, use the Sum function from crypto package md5, sha1 or sha256. For a file or input stream you need to create a Hash object and write to its Writer function.">
+<meta property="og:description" content="CODE EXAMPLE To compute the hash value of a string or byte slice, use the Sum function from crypto package md5, sha1 or sha256. For a file or input stream you need to create a Hash object and write to its Writer function.">
 <meta property="og:url" content="https://yourbasic.org/golang/hash-md5-sha256-string-file/">
 <meta property="og:image" content="https://yourbasic.org/golang/computer-monitoring.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Hash checksums: MD5, SHA-1, SHA-256">
-<meta name="twitter:description" content="CODE EXAMPLE To compute the checksum of a string or byte slice, use the Sum function from crypto package md5, sha1 or sha256. For a file or input stream you need to create a Hash object and write to its Writer function.">
+<meta name="twitter:description" content="CODE EXAMPLE To compute the hash value of a string or byte slice, use the Sum function from crypto package md5, sha1 or sha256. For a file or input stream you need to create a Hash object and write to its Writer function.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/computer-monitoring.jpg">
 
@@ -91,9 +91,9 @@
 
 <div style="margin-top:1em;"><img src="/golang/computer-monitoring.jpg"></div>
 
-<h2 id="string">String</h2>
+<h2 id="string-checksum">String checksum</h2>
 
-<p>To compute the checksum of a <strong>string</strong> or <strong>byte slice</strong>,
+<p>To compute the hash value of a <strong>string</strong> or <strong>byte slice</strong>,
 use the <code>Sum</code> function from a crypto package such as
 <a href="https://golang.org/pkg/crypto/md5/"><code>crypto/md5</code></a>,
 <a href="https://golang.org/pkg/crypto/sha1/"><code>crypto/sha1</code></a>, or
@@ -114,9 +114,9 @@ fmt.Printf("%x\n", sha256)</code></pre>
 1cbec737f863e4922cee63cc2ebbfaafcd1cff8b790d8cfd2e6a5d550b648afa
 </code></pre>
 
-<h2 id="file">File</h2>
+<h2 id="file-checksum">File checksum</h2>
 
-<p>To compute the checksum of a <strong>file</strong> or other <strong>input stream</strong>:</p>
+<p>To compute the hash value of a <strong>file</strong> or other <strong>input stream</strong>:</p>
 
 <ul>
 <li>create a new <a href="https://golang.org/pkg/hash/#Hash"><code>hash.Hash</code></a>

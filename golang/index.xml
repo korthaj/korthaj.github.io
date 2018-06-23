@@ -808,8 +808,8 @@ package main import ( &amp;quot;fmt&amp;quot; &amp;quot;net/http&amp;quot; ) fun
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/hash-md5-sha256-string-file/</guid>
-      <description>String To compute the checksum of a string or byte slice, use the Sum function from a crypto package such as crypto/md5, crypto/sha1, or crypto/sha256.
-s := &#34;Foo&#34; md5 := md5.Sum([]byte(s)) sha1 := sha1.Sum([]byte(s)) sha256 := sha256.Sum256([]byte(s)) fmt.Printf(&#34;%x\n&#34;, md5) fmt.Printf(&#34;%x\n&#34;, sha1) fmt.Printf(&#34;%x\n&#34;, sha256) 1356c67d7ad1638d816bfb822dd2c25d 201a6b3053cc1422d2c3670b62616221d2290929 1cbec737f863e4922cee63cc2ebbfaafcd1cff8b790d8cfd2e6a5d550b648afa  File To compute the checksum of a file or other input stream:
+      <description>String checksum To compute the hash value of a string or byte slice, use the Sum function from a crypto package such as crypto/md5, crypto/sha1, or crypto/sha256.
+s := &#34;Foo&#34; md5 := md5.Sum([]byte(s)) sha1 := sha1.Sum([]byte(s)) sha256 := sha256.Sum256([]byte(s)) fmt.Printf(&#34;%x\n&#34;, md5) fmt.Printf(&#34;%x\n&#34;, sha1) fmt.Printf(&#34;%x\n&#34;, sha256) 1356c67d7ad1638d816bfb822dd2c25d 201a6b3053cc1422d2c3670b62616221d2290929 1cbec737f863e4922cee63cc2ebbfaafcd1cff8b790d8cfd2e6a5d550b648afa  File checksum To compute the hash value of a file or other input stream:
  create a new hash.Hash from a crypto package such as crypto/md5, crypto/sha1, or crypto/sha256, add data by writing to its io.</description>
     </item>
     
