@@ -308,18 +308,6 @@ const n = 1212121 if big.NewInt(n).ProbablyPrime(0) { fmt.Println(n, &#34;is pri
     </item>
     
     <item>
-      <title>Clear a slice</title>
-      <link>https://yourbasic.org/golang/clear-slice/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/clear-slice/</guid>
-      <description>To remove all elements, set the slice to nil.
-a := []string{&#34;A&#34;, &#34;B&#34;, &#34;C&#34;, &#34;D&#34;, &#34;E&#34;} a = nil fmt.Println(a, len(a), cap(a)) // [] 0 0 This will release the underlying array to the garbage collector (assuming there are no other references).
-Note that nil slices and empty slices are very similar:
- they look the same when printed, they have zero length and capacity, they can be used with the same effect in for loops and append functions.</description>
-    </item>
-    
-    <item>
       <title>Command-line arguments</title>
       <link>https://yourbasic.org/golang/command-line-arguments/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -565,9 +553,7 @@ Here are some rules of&amp;nbsp;thumb.
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/nil-slice-vs-empty-slice/</guid>
-      <description>In practice, nil slices and empty slices can often be treated in the same way:
- they have zero length and capacity, they can be used with the same effect in for loops and append functions, and they even look the same when printed.  var a []int = nil fmt.Println(len(a)) // 0 fmt.Println(cap(a)) // 0 fmt.Println(a) // [] However, if needed, you can tell the difference.
-var a []int = nil var a0 []int = make([]int, 0) fmt.</description>
+      <description>See Clear a slice.</description>
     </item>
     
     <item>
@@ -844,6 +830,17 @@ s := &#34;Foo&#34; md5 := md5.Sum([]byte(s)) sha1 := sha1.Sum([]byte(s)) sha256 
       <guid>https://yourbasic.org/golang/append-explained/</guid>
       <description>Basics Concatenate slice to slice Concatenate string to byte slice Efficiency  Basics The built-in append function appends any number of elements to the end of a&amp;nbsp;slice:
  if there is enough capacity, the underlying array is&amp;nbsp;reused; if not, a new underlying array is allocated and the data is copied&amp;nbsp;over.  Append returns the updated slice. Therefore you need to store the result of an append, often in the variable holding the slice itself:</description>
+    </item>
+    
+    <item>
+      <title>How to best clear a slice: empty vs. nil</title>
+      <link>https://yourbasic.org/golang/clear-slice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/clear-slice/</guid>
+      <description>Remove all elements Keep allocated memory Empty slice vs. nil slice  Remove all elements To remove all elements, simply set the slice to nil.
+a := []string{&#34;A&#34;, &#34;B&#34;, &#34;C&#34;, &#34;D&#34;, &#34;E&#34;} a = nil fmt.Println(a, len(a), cap(a)) // [] 0 0 This will release the underlying array to the garbage collector (assuming there are no other references).
+Keep allocated memory To keep the underlying array, slice the slice to zero length.</description>
     </item>
     
     <item>

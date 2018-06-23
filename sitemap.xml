@@ -147,10 +147,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/clear-slice/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/golang/command-line-arguments/</loc>
   </url>
   
@@ -364,6 +360,10 @@
   
   <url>
     <loc>https://yourbasic.org/algorithms/avoid-initializing-memory/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/clear-slice/</loc>
   </url>
   
   <url>

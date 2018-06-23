@@ -22,48 +22,7 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
-  <script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Article",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://yourbasic.org/golang/nil-slice-vs-empty-slice/"
-  },
-  "headline": "Empty slice vs. nil slice",
-  "image": [
-    "https://yourbasic.org/golang/empty-jar.jpg"
-   ],
-  "datePublished": "2018-04-12T00:00:00&#43;0000",
-  "dateModified": "2018-04-21T00:00:00&#43;0000",
-  "author": {
-    "@type": "Person",
-    "name": "Stefan Nilsson"
-  },
-   "publisher": {
-    "@type": "Organization",
-    "name": "yourbasic.org",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://yourbasic.org/res/favicon-96x96.png"
-    }
-  },
-  "description": "A nil slice behaves mostly like an empty slice. It has zero length and capacity and it can be used in for loops and the append function."
-}
-</script>
-
-<meta property="og:locale" content="en_US">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Empty slice vs. nil slice">
-<meta property="og:description" content="A nil slice behaves mostly like an empty slice. It has zero length and capacity and it can be used in for loops and the append function.">
-<meta property="og:url" content="https://yourbasic.org/golang/nil-slice-vs-empty-slice/">
-<meta property="og:image" content="https://yourbasic.org/golang/empty-jar.jpg">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Empty slice vs. nil slice">
-<meta name="twitter:description" content="A nil slice behaves mostly like an empty slice. It has zero length and capacity and it can be used in for loops and the append function.">
-<meta name="twitter:site" content="@yourbasic_org">
-<meta name="twitter:image" content="https://yourbasic.org/golang/empty-jar.jpg">
+  <meta http-equiv="Refresh" content="0; url=/golang/clear-slice/" />
 
 
 </head>
@@ -84,102 +43,12 @@
 <article>
 <h1>Empty slice vs. nil slice</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
-<div style="margin-top=1em;"><img src="/golang/empty-jar.jpg"></div>
-
-<p>In practice, <strong>nil slices</strong> and <strong>empty slices</strong> can
-often be treated in the same way:</p>
-
-<ul>
-<li>they have zero length and capacity,</li>
-<li>they can be used with the same effect in for loops and append functions,</li>
-<li>and they even look the same when printed.</li>
-</ul>
-
-<pre><code>var a []int = nil
-fmt.Println(len(a)) <span class="comment">// 0</span>
-fmt.Println(cap(a)) <span class="comment">// 0</span>
-fmt.Println(a)      <span class="comment">// []</span></code></pre>
-
-<p>However, if needed, you can tell the difference.</p>
-
-<pre><code>var a []int = nil
-var a0 []int = make([]int, 0)
-
-fmt.Println(a == nil)  <span class="comment">// true</span>
-fmt.Println(a0 == nil) <span class="comment">// false</span>
-
-fmt.Printf("%#v\n", a)  <span class="comment">// []int(nil)</span>
-fmt.Printf("%#v\n", a0) <span class="comment">// []int{}</span></code></pre>
-
-<p>The official Go wiki recommends using nil slices over empty&nbsp;slices.</p>
-
-<blockquote>
-<p>[…] the nil slice is the preferred style.</p>
-
-<p>Note that there are limited circumstances where a non-nil but zero-length
-slice is preferred, such as when encoding JSON objects
-(a nil slice encodes to null, while []string{} encodes to the JSON array []).</p>
-
-<p>When designing interfaces, avoid making a distinction between a nil slice
-and a non-nil, zero-length slice, as this can lead to subtle programming errors.
-<a class="quote-source" href="https://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices">The Go wiki: Declaring empty slices</a></p>
-</blockquote>
-
-<h3 id="further-reading">Further reading</h3>
-
-<div><a href="/golang/slices-explained/"><img src="/golang/orange-thumb.jpg" title="Slices in a nutshell"></a></div>
-
-<p style="margin-top:0; margin-bottom:2em;"><a href="/golang/slices-explained/">Slices in a&nbsp;nutshell</a></p>
-
-<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fnil-slice-vs-empty-slice%2f&amp;text=Empty%20slice%20vs.%20nil%20slice&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fnil-slice-vs-empty-slice%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fnil-slice-vs-empty-slice%2f&amp;title=Empty%20slice%20vs.%20nil%20slice" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Empty%20slice%20vs.%20nil%20slice&body=https%3a%2f%2fyourbasic.org%2fgolang%2fnil-slice-vs-empty-slice%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<p>See <a href="/golang/clear-slice/">Clear a slice</a>.</p>
 
 
 </article>
 <aside>
-
-    
-  <h2>Related</h2>
-
-  <div class="reference">
-    <a href="/golang/clear-slice/">Clear a slice</a>
-    <div class="desc">You can clear a slice in Go either by setting it to nil and releasing the underlying memory, or by slicing it to zero length and thereby keeping the memory.</div>
-    <div class="source">yourbasic.org</div>
-  </div>
-
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">One useful golang fact per&nbsp;day</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
-  <a href="/golang/gotcha/" title="Go gotcha: newbie or ninja?"><img src="/golang/surprise-mini.jpg"></a>
-  <ul class="none">
-  
-    <li><a href="/golang/gotcha/">Go gotcha: newbie or ninja?</a></li>
-
-    <li><a href="/golang/string-functions-reference-cheat-sheet/">String functions cheat sheet</a></li>
-
-    <li><a href="/golang/format-parse-string-time-date-example/">How to format and parse a time/date</a></li>
-
-    <li><a href="/golang/json-example/">JSON in-depth tutorial</a></li>
-
-    <li><a href="/golang/inheritance-object-oriented/">Painless object-oriented programming without inheritance</a></li>
-
-    <li><a href="/golang/concurrent-programming/">Step-by-step guide to concurrency</a></li>
-
-  </ul>
-  
-  <p><a href="/golang/"><strong>See all 181 Go articles</strong></a></p>
-
+<p></p>
 </aside>
 </main>
 

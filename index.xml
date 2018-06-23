@@ -388,18 +388,6 @@ const n = 1212121 if big.NewInt(n).ProbablyPrime(0) { fmt.Println(n, &#34;is pri
     </item>
     
     <item>
-      <title>Clear a slice</title>
-      <link>https://yourbasic.org/golang/clear-slice/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/clear-slice/</guid>
-      <description>To remove all elements, set the slice to nil.
-a := []string{&#34;A&#34;, &#34;B&#34;, &#34;C&#34;, &#34;D&#34;, &#34;E&#34;} a = nil fmt.Println(a, len(a), cap(a)) // [] 0 0 This will release the underlying array to the garbage collector (assuming there are no other references).
-Note that nil slices and empty slices are very similar:
- they look the same when printed, they have zero length and capacity, they can be used with the same effect in for loops and append functions.</description>
-    </item>
-    
-    <item>
       <title>Command-line arguments</title>
       <link>https://yourbasic.org/golang/command-line-arguments/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -645,9 +633,7 @@ Here are some rules of&amp;nbsp;thumb.
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/nil-slice-vs-empty-slice/</guid>
-      <description>In practice, nil slices and empty slices can often be treated in the same way:
- they have zero length and capacity, they can be used with the same effect in for loops and append functions, and they even look the same when printed.  var a []int = nil fmt.Println(len(a)) // 0 fmt.Println(cap(a)) // 0 fmt.Println(a) // [] However, if needed, you can tell the difference.
-var a []int = nil var a0 []int = make([]int, 0) fmt.</description>
+      <description>See Clear a slice.</description>
     </item>
     
     <item>
@@ -965,6 +951,17 @@ Neither arrays nor linked lists can achieve this:
       
       <guid>https://yourbasic.org/algorithms/avoid-initializing-memory/</guid>
       <description>Consider an algorithm that uses a large memory area. If the running time of the algorithm is smaller than the size of the memory, initializing the memory will take longer than running the algorithm. However, using a shrewd trick, it’s possible to refrain from initializing the&amp;nbsp;memory. This mysterious trick is used quite frequently in research articles, often without explanation and a reference to Exercise 2.12 in The Design and Analysis of Computer Algorithms by Aho, Hopcroft, and Ullman, 1974.</description>
+    </item>
+    
+    <item>
+      <title>How to best clear a slice: empty vs. nil</title>
+      <link>https://yourbasic.org/golang/clear-slice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/clear-slice/</guid>
+      <description>Remove all elements Keep allocated memory Empty slice vs. nil slice  Remove all elements To remove all elements, simply set the slice to nil.
+a := []string{&#34;A&#34;, &#34;B&#34;, &#34;C&#34;, &#34;D&#34;, &#34;E&#34;} a = nil fmt.Println(a, len(a), cap(a)) // [] 0 0 This will release the underlying array to the garbage collector (assuming there are no other references).
+Keep allocated memory To keep the underlying array, slice the slice to zero length.</description>
     </item>
     
     <item>
