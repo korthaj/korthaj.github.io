@@ -112,7 +112,7 @@ sum := 0 for i := 1; i { sum += i } fmt.Println(sum) // 10 (1+2+3+4)  The init s
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/switch-statement/</guid>
-      <description>Basic switch with default No condition Case list Fallthrough Exit a switch Execution order  Basic switch with default  A switch statement runs the first case equal to the condition expression. The cases are evaluated from top to bottom, stopping when a case succeeds.  switch time.Now().Weekday() { case time.Saturday: fmt.Println(&#34;Today is Saturday.&#34;) case time.Sunday: fmt.Println(&#34;Today is Sunday.&#34;) default: fmt.Println(&#34;Today is a weekday.&#34;) } (Unlike C and Java, the case expressions do not need to be constants.</description>
+      <description>Basic switch with default No condition Case list Fallthrough Exit with break Execution order  Basic switch with default  A switch statement runs the first case equal to the condition expression. The cases are evaluated from top to bottom, stopping when a case succeeds.  switch time.Now().Weekday() { case time.Saturday: fmt.Println(&#34;Today is Saturday.&#34;) case time.Sunday: fmt.Println(&#34;Today is Sunday.&#34;) default: fmt.Println(&#34;Today is a weekday.&#34;) } (Unlike C and Java, the case expressions do not need to be constants.</description>
     </item>
     
     <item>

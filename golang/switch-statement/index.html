@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/switch.jpg"
    ],
   "datePublished": "2018-03-18T00:00:00&#43;0000",
-  "dateModified": "2018-06-22T00:00:00&#43;0000",
+  "dateModified": "2018-06-24T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -96,7 +96,7 @@
   <li><a href="#no-condition">No condition</a></li>
   <li><a href="#case-list">Case list</a></li>
   <li><a href="#fallthrough">Fallthrough</a></li>
-  <li><a href="#exit-a-switch">Exit a switch</a></li>
+  <li><a href="#exit-with-break">Exit with break</a></li>
   <li><a href="#execution-order">Execution order</a></li>
 </ul>
 
@@ -122,8 +122,7 @@
 
 <p>A switch without a condition is the same as switch&nbsp;true.</p>
 
-<pre><code>hour := time.Now().Hour()
-switch { <span class="comment">// Same as: switch true</span>
+<pre><code>switch hour := time.Now().Hour(); { <span class="comment">// missing expression means "true"</span>
 case hour < 12:
     fmt.Println("Good morning!")
 case hour < 17:
@@ -134,7 +133,7 @@ default:
 
 <h2 id="case-list">Case list</h2>
 
-<pre><code>func whiteSpace(c rune) bool {
+<pre><code>func WhiteSpace(c rune) bool {
     switch c {
     <b>case ' ', '\t', '\n', '\f', '\r':</b>
         return true
@@ -164,11 +163,11 @@ case 3:
 3
 </code></pre>
 
-<h2 id="exit-a-switch">Exit a switch</h2>
+<h2 id="exit-with-break">Exit with break</h2>
 
 <p>A <code>break</code> statement terminates execution of the <strong>innermost</strong> <code>for</code>, <code>switch</code>, or <code>select</code> statement.</p>
 
-<p>If you need to break out of a surrounding loop, not the switch, you can put a label
+<p>If you need to break out of a surrounding loop, not the switch, you can put a <strong>label</strong>
 on the loop and break to that label. This example shows both uses.</p>
 
 <pre><code>Loop:
