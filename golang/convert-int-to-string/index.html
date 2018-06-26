@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/numbers-1-2-3.jpg"
    ],
   "datePublished": "2018-05-16T00:00:00&#43;0000",
-  "dateModified": "2018-06-18T00:00:00&#43;0000",
+  "dateModified": "2018-06-26T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -95,6 +95,7 @@
   <li><a href="#string-to-int64">String to int64</a></li>
   <li><a href="#int-to-string">int to string</a></li>
   <li><a href="#int64-to-string">int64 to string</a></li>
+  <li><a href="#int-to-int64-and-back">int to int64 (and back)</a></li>
   <li><a href="#general-formatting">General formatting</a></li>
 </ul>
 
@@ -151,6 +152,27 @@ fmt.Println(s)                <span class="comment">// 109</span>
 s = strconv.FormatInt(n, 16) <span class="comment">// hexadecimal</span>
 fmt.Println(s)                <span class="comment">// 6d</span>
 </code></pre>
+
+<h2 id="int-to-int64-and-back">int to int64 (and back)</h2>
+
+<p>The size of an <code>int</code> is implementation-specific,
+it&rsquo;s either 32 or 64&nbsp;bits, and hence you won&rsquo;t loose any
+information when converting from <code>int</code> to &nbsp;<code>int64</code>.</p>
+
+<pre><code>var n int = 101
+m := <b>int64(n)</b> <span class="comment">// safe</span>
+</code></pre>
+
+<p>However, when converting to a shorter integer type,
+the value is <strong>truncated</strong> to fit in the result type&rsquo;s size.</p>
+
+<pre><code>var m int64 = 2 << 32
+n := <b>int(m)</b>    <span class="comment">// truncated on machines with 32-bit ints</span>
+fmt.Println(n) <span class="comment">// either 0 or 4,294,967,296</span>
+</code></pre>
+
+<p>See <a href="/golang/max-min-int-uint/">Maximum value of an int</a> for code
+to compute the size of an&nbsp;<code>int</code>.</p>
 
 <h2 id="general-formatting">General formatting</h2>
 
