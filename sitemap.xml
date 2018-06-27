@@ -379,10 +379,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/current-time/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/golang/day-of-week-int/</loc>
   </url>
   
@@ -392,6 +388,10 @@
   
   <url>
     <loc>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/current-time/</loc>
   </url>
   
   <url>
