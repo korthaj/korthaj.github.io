@@ -1417,9 +1417,9 @@ By convention, the package name is the same as the last element of the import pa
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/int-vs-int64/</guid>
-      <description>An index, length or capacity should normally be an int. The int type is either 32 or 64&amp;nbsp;bits, and always big enough to hold the maximum possible length of an&amp;nbsp;array.
- The types int8, int16, int32, and int64 (and their unsigned counterparts) are best suited for data. An int64 is the typical choice when memory isn&amp;rsquo;t an&amp;nbsp;issue.
-  Examples In this code, the slice elements and the max variable have type&amp;nbsp;int64, while the index and the length of the slice have type&amp;nbsp;int.</description>
+      <description>int An index, length or capacity should normally be an int. The int type is either 32 or 64&amp;nbsp;bits, and always big enough to hold the maximum possible length of an&amp;nbsp;array.
+int64 and friends The types int8, int16, int32, and int64 (and their unsigned counterparts) are best suited for data. An int64 is the typical choice when memory isn&amp;rsquo;t an&amp;nbsp;issue.
+In particular, you can use a byte, which is an alias for uint8, to be extra clear about your intent.</description>
     </item>
     
     <item>

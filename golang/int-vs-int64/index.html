@@ -90,15 +90,22 @@
 
 <div style="margin-top:1em;"><img src="/golang/spot-difference.png"></div>
 
-<ul>
-<li><p>An <strong>index</strong>, <strong>length</strong> or <strong>capacity</strong> should normally be an <code>int</code>.
-The <code>int</code> type is either 32 or 64&nbsp;bits, and always big enough
-to hold the maximum possible length of an&nbsp;array.</p></li>
+<h2 id="int">int</h2>
 
-<li><p>The types <code>int8</code>, <code>int16</code>, <code>int32</code>, and <code>int64</code> (and their
+<p>An <strong>index</strong>, <strong>length</strong> or <strong>capacity</strong> should normally be an <code>int</code>.
+The <code>int</code> type is either 32 or 64&nbsp;bits, and always big enough
+to hold the maximum possible length of an&nbsp;array.</p>
+
+<h2 id="int64-and-friends">int64 and friends</h2>
+
+<p>The types <code>int8</code>, <code>int16</code>, <code>int32</code>, and <code>int64</code> (and their
 unsigned counterparts) are best suited for <strong>data</strong>.
-An <code>int64</code> is the typical choice when memory isn&rsquo;t an&nbsp;issue.</p></li>
-</ul>
+An <code>int64</code> is the typical choice when memory isn&rsquo;t an&nbsp;issue.</p>
+
+<p>In particular, you can use a <strong><code>byte</code></strong>, which is an alias for <code>uint8</code>,
+to be extra clear about your intent.
+Similary, you can use a <strong><code>rune</code></strong>, which is an alias for <code>int32</code>,
+to emphasize than an integer represents a <a href="/golang/rune/">code&nbsp;point</a>.</p>
 
 <h2 id="examples">Examples</h2>
 
@@ -147,6 +154,12 @@ shows how to compute the size and limit values of an <code>int</code> as untyped
   <div class="reference">
     <a href="/golang/max-min-int-uint/">Maximum value of an int</a>
     <div class="desc">The max and min values of an int can be computed as untyped constants.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/rune/">What is a Go rune?</a>
+    <div class="desc">A rune is a type meant to represent a Unicode code point. Strings, however, are sequences of bytes (typically containing Unicode text encoded in UTF-8).</div>
     <div class="source">yourbasic.org</div>
   </div>
 
