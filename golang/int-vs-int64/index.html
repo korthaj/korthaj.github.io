@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>int vs. int64: Which one should I use? - yourbasic.org/golang </title>
+  <title>Pick the right one: int vs. int64 - yourbasic.org/golang </title>
   <meta name="description" content="An index, a length or a capacity should normally be an int. The types int8, int16, int32, and int64 are best suited for data.">
   
   <link rel="stylesheet" href="/style.css">
@@ -22,6 +22,50 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/golang/int-vs-int64/"
+  },
+  "headline": "Pick the right one: int vs. int64",
+  "image": [
+    "https://yourbasic.org/golang/spot-difference.png"
+   ],
+  "datePublished": "2018-06-28T00:00:00&#43;0000",
+  "dateModified": "2018-06-28T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "An index, a length or a capacity should normally be an int. The types int8, int16, int32, and int64 are best suited for data."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pick the right one: int vs. int64">
+<meta property="og:description" content="An index, a length or a capacity should normally be an int. The types int8, int16, int32, and int64 are best suited for data.">
+<meta property="og:url" content="https://yourbasic.org/golang/int-vs-int64/">
+<meta property="og:image" content="https://yourbasic.org/golang/spot-difference.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pick the right one: int vs. int64">
+<meta name="twitter:description" content="An index, a length or a capacity should normally be an int. The types int8, int16, int32, and int64 are best suited for data.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="https://yourbasic.org/golang/spot-difference.png">
+
+
 </head>
 
 <body>
@@ -38,38 +82,60 @@
 
 <main>
 <article>
-<h1>int vs. int64: Which one should I use?</h1>
+<h1>Pick the right one: int vs. int64</h1>
 <div class="tagline">yourbasic.org/golang</div>
-<p>An <code>int</code> is either 32 or 64 bits depending on the platform.
-The length of an array can always be represented by an&nbsp;<code>int</code>.</p>
+
+
+<!-- CC0: https://pixabay.com/en/house-houses-spot-the-difference-3208132/ -->
+
+<div style="margin-top:1em;"><img src="/golang/spot-difference.png"></div>
 
 <ul>
-<li>An <strong>index</strong>, a <strong>length</strong> or a <strong>capacity</strong> should normally be an <code>int</code>.</li>
-<li>The types <code>int8</code>, <code>int16</code>, <code>int32</code>, and <code>int64</code> are best suited for <strong>data</strong>.<br />
-When memory isn&rsquo;t an issue, <code>int64</code> is often the natural choice.</li>
+<li><p>An <strong>index</strong>, <strong>length</strong> or <strong>capacity</strong> should normally be an <code>int</code>.
+The <code>int</code> type is either 32 or 64&nbsp;bits, and always big enough
+to hold the maximum possible length of an&nbsp;array.</p></li>
+
+<li><p>The types <code>int8</code>, <code>int16</code>, <code>int32</code>, and <code>int64</code> (and their
+unsigned counterparts) are best suited for <strong>data</strong>.
+An <code>int64</code> is the typical choice when memory isn&rsquo;t an&nbsp;issue.</p></li>
 </ul>
 
-<p>In this example the data has type <code>int64</code>,
-while the index and the length of the slice has type&nbsp;<code>int</code>.</p>
+<h2 id="examples">Examples</h2>
 
-<pre><code>func Reverse(a []int64) {
-	n := len(a)
-	for i := 0; i &lt; n/2; i++ {
-		a[i], a[n-i-1] = a[n-i-1], a[i]
+<p>In this code, the slice elements and the <code>max</code> variable have type&nbsp;<code>int64</code>,
+while the index and the length of the slice have type&nbsp;<code>int</code>.</p>
+
+<pre><code>func Max(a []int64) int64 {
+	max := a[0]
+	for i := 1; i &lt; len(a); i++ {
+		if max &lt; a[i] {
+			max = a[i]
+		}
 	}
+	return max
 }
 </code></pre>
 
-<p>Here is an example from the <a href="https://golang.org/pkg/time/"><code>time</code></a> package.</p>
+<p>The implementation of <a href="https://golang.org/pkg/time/#Duration"><code>time.Duration</code></a>
+is a typical example from the standard library:</p>
 
-<pre><code>// A Duration represents the elapsed time between two instants
-// as an int64 nanosecond count. The representation limits the
-// largest representable duration to approximately 290 years.
-type Duration int64
+<pre><code>type Duration int64
 </code></pre>
+
+<p>A <code>Duration</code> represents the time between two instants
+as a nanosecond count. This limits the
+largest possible duration to about 290&nbsp;years.</p>
+
+<h3 id="further-reading">Further reading</h3>
 
 <p>The <a href="/golang/max-min-int-uint/">Maximum value of an int</a> article
 shows how to compute the size and limit values of an <code>int</code> as untyped constants.</p>
+
+<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fint-vs-int64%2f&amp;text=Pick%20the%20right%20one:%20int%20vs.%20int64&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fint-vs-int64%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fint-vs-int64%2f&amp;title=Pick%20the%20right%20one:%20int%20vs.%20int64" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Pick%20the%20right%20one:%20int%20vs.%20int64&body=https%3a%2f%2fyourbasic.org%2fgolang%2fint-vs-int64%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>

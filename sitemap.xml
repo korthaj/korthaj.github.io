@@ -587,6 +587,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/int-vs-int64/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/pointer-vs-value-receiver/</loc>
   </url>
   
@@ -829,10 +833,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/zero-knowledge/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/int-vs-int64/</loc>
   </url>
   
   <url>
