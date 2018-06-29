@@ -153,9 +153,9 @@ for _, s := range os.Environ() { kv := strings.SplitN(s, &#34;=&#34;, 2) // unpa
       
       <guid>https://yourbasic.org/golang/access-private-field-reflection/</guid>
       <description>With reflection it&#39;s possible to read, but not write, unexported fields of a struct defined in another package.
-In this example, we access the unexported field len in the List struct in package container/list:
+ In this example, we access the unexported field len in the List struct in package container/list:
 package list type List struct { root Element len int } This code reads the value of len with reflection.
-package main import ( &#34;container/list&#34; &#34;fmt&#34; &#34;reflect&#34; ) func main() { l := list.New() l.PushFront(&#34;foo&#34;) l.PushFront(&#34;bar&#34;) // Get a reflect.</description>
+package main import ( &#34;container/list&#34; &#34;fmt&#34; &#34;reflect&#34; ) func main() { l := list.New() l.PushFront(&#34;foo&#34;) l.</description>
     </item>
     
     <item>
