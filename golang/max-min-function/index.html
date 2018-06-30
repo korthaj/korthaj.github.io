@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Compute min and max - yourbasic.org/golang </title>
+  <title>Compute max of two ints/floats - yourbasic.org/golang </title>
   <meta name="description" content="CODE EXAMPLE Write your own code to compute the minimum and maximum of integers, but use math.Min and math.Max for floating point numbers.">
   
   <link rel="stylesheet" href="/style.css">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/max-min-function/"
   },
-  "headline": "Compute min and max",
+  "headline": "Compute max of two ints/floats",
   "image": [
     "https://yourbasic.org/golang/big-horse-and-little-horse.jpg"
    ],
   "datePublished": "2018-04-15T00:00:00&#43;0000",
-  "dateModified": "2018-05-16T00:00:00&#43;0000",
+  "dateModified": "2018-06-30T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -54,13 +54,13 @@
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Compute min and max">
+<meta property="og:title" content="Compute max of two ints/floats">
 <meta property="og:description" content="CODE EXAMPLE Write your own code to compute the minimum and maximum of integers, but use math.Min and math.Max for floating point numbers.">
 <meta property="og:url" content="https://yourbasic.org/golang/max-min-function/">
 <meta property="og:image" content="https://yourbasic.org/golang/big-horse-and-little-horse.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Compute min and max">
+<meta name="twitter:title" content="Compute max of two ints/floats">
 <meta name="twitter:description" content="CODE EXAMPLE Write your own code to compute the minimum and maximum of integers, but use math.Min and math.Max for floating point numbers.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/big-horse-and-little-horse.jpg">
@@ -82,7 +82,7 @@
 
 <main>
 <article>
-<h1>Compute min and max</h1>
+<h1>Compute max of two ints/floats</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
@@ -91,53 +91,49 @@
 
 <div style="margin-top:1em;"><img src="/golang/big-horse-and-little-horse.jpg"></div>
 
-<ul class="toc">
-  <li><a href="#integers">Integers</a></li>
-  <li><a href="#floats">Floats</a></li>
-</ul>
-
 <h2 id="integers">Integers</h2>
 
-<p>Go has no built-in min or max library functions for integers.
-It is simple to write your&nbsp;own.</p>
+<p>There is no built-in max or min function for integers,
+but it&rsquo;s simple to write your&nbsp;own.</p>
 
-<pre><code>// Min returns the smaller of x or y.
-func Min(x, y int) int {
-    if x > y {
+<pre><code>// Max returns the larger of x or y.
+func Max(x, y int64) int64 {
+    if x < y {
         return y
     }
     return x
 }
 
-// Max returns the larger of x or y.
-func Max(x, y int) int {
-    if x < y {
+// Min returns the smaller of x or y.
+func Min(x, y int64) int64 {
+    if x > y {
         return y
     }
     return x
-}</code></pre>
+}
+</code></pre>
 
 <h2 id="floats">Floats</h2>
 
-<p>For floats, use <a href="https://golang.org/pkg/math/#Min"><code>math.Min</code></a> and <a href="https://golang.org/pkg/math/#Max"><code>math.Max</code></a> from the standard library.</p>
+<p>For floats, use <a href="https://golang.org/pkg/math/#Max"><code>math.Max</code></a> and <a href="https://golang.org/pkg/math/#Min"><code>math.Min</code></a>.</p>
 
-<pre><code>// Min returns the smaller of x or y.
-func Min(x, y float64) float64
-
-// Max returns the larger of x or y. 
+<pre><code>// Max returns the larger of x or y. 
 func Max(x, y float64) float64
+
+// Min returns the smaller of x or y.
+func Min(x, y float64) float64
 </code></pre>
 
-<p>Note the special cases.</p>
+<p>Special cases:</p>
 
-<pre><code>Min(x, -Inf) = Min(-Inf, x) = -Inf
-Min(x, NaN) = Min(NaN, x) = NaN
-Min(-0, ±0) = Min(±0, -0) = -0
-
-Max(x, +Inf) = Max(+Inf, x) = +Inf
+<pre><code>Max(x, +Inf) = Max(+Inf, x) = +Inf
 Max(x, NaN) = Max(NaN, x) = NaN
 Max(+0, ±0) = Max(±0, +0) = +0
 Max(-0, -0) = -0
+
+Min(x, -Inf) = Min(-Inf, x) = -Inf
+Min(x, NaN) = Min(NaN, x) = NaN
+Min(-0, ±0) = Min(±0, -0) = -0
 </code></pre>
 
 
@@ -150,10 +146,10 @@ Max(-0, -0) = -0
 <div style="clear:both;"></div>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fmax-min-function%2f&amp;text=Compute%20min%20and%20max&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fmax-min-function%2f&amp;text=Compute%20max%20of%20two%20ints/floats&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fmax-min-function%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fmax-min-function%2f&amp;title=Compute%20min%20and%20max" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Compute%20min%20and%20max&body=https%3a%2f%2fyourbasic.org%2fgolang%2fmax-min-function%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fmax-min-function%2f&amp;title=Compute%20max%20of%20two%20ints/floats" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Compute%20max%20of%20two%20ints/floats&body=https%3a%2f%2fyourbasic.org%2fgolang%2fmax-min-function%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 
@@ -164,7 +160,7 @@ Max(-0, -0) = -0
   <h2>Related</h2>
 
   <div class="reference">
-    <a href="/golang/absolute-value-int-float/">Compute absolute values</a>
+    <a href="/golang/absolute-value-int-float/">Compute absolute value of an int/float</a>
     <div class="desc">Write your own code to compute the absolute value of an integer, but use math.Abs for floating point numbers.</div>
     <div class="source">yourbasic.org</div>
   </div>

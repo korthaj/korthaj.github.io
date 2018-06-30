@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Compute absolute values - yourbasic.org/golang </title>
+  <title>Compute absolute value of an int/float - yourbasic.org/golang </title>
   <meta name="description" content="CODE EXAMPLE Write your own code to compute the absolute value of an integer, but use math.Abs for floating point numbers.">
   
   <link rel="stylesheet" href="/style.css">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/absolute-value-int-float/"
   },
-  "headline": "Compute absolute values",
+  "headline": "Compute absolute value of an int/float",
   "image": [
     "https://yourbasic.org/golang/metal-numbers.jpg"
    ],
   "datePublished": "2018-05-16T00:00:00&#43;0000",
-  "dateModified": "2018-05-16T00:00:00&#43;0000",
+  "dateModified": "2018-06-30T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -54,13 +54,13 @@
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Compute absolute values">
+<meta property="og:title" content="Compute absolute value of an int/float">
 <meta property="og:description" content="CODE EXAMPLE Write your own code to compute the absolute value of an integer, but use math.Abs for floating point numbers.">
 <meta property="og:url" content="https://yourbasic.org/golang/absolute-value-int-float/">
 <meta property="og:image" content="https://yourbasic.org/golang/metal-numbers.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Compute absolute values">
+<meta name="twitter:title" content="Compute absolute value of an int/float">
 <meta name="twitter:description" content="CODE EXAMPLE Write your own code to compute the absolute value of an integer, but use math.Abs for floating point numbers.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/metal-numbers.jpg">
@@ -82,7 +82,7 @@
 
 <main>
 <article>
-<h1>Compute absolute values</h1>
+<h1>Compute absolute value of an int/float</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
@@ -91,17 +91,13 @@
 
 <div style="margin-top:1em;"><img src="/golang/metal-numbers.jpg"></div>
 
-<ul class="toc">
-  <li><a href="#integers">Integers</a></li>
-  <li><a href="#floats">Floats</a></li>
-</ul>
-
 <h2 id="integers">Integers</h2>
 
-<p>Go has no built-in library function for computing the absolute value of an integer.
-It&rsquo;s simple to write your&nbsp;own.</p>
+<p>There is no built-in abs function for integers,
+but it&rsquo;s simple to write your&nbsp;own.</p>
 
-<pre><code>func Abs(x int32) int32 {
+<pre><code>// Abs returns the absolute value of x.
+func Abs(x int64) int64 {
 	if x &lt; 0 {
 		return -x
 	}
@@ -110,30 +106,31 @@ It&rsquo;s simple to write your&nbsp;own.</p>
 </code></pre>
 
 <blockquote class="warning">
-<b>Warning:</b> The smallest value of a signed integer type doesn’t have a corresponding positive value. For&nbsp;example
+<b>Warning:</b> The smallest value of a signed integer doesn’t have a matching positive value.
 
 <ul>
-<li><code>math.MinInt32</code> equals -214748364<b>8</b>, while</li>
-<li><code>math.MaxInt32</code> equals 214748364<b>7</b>.</li>
+<li><a href="https://golang.org/pkg/math/#pkg-constants"><code>math.MinInt64</code></a> is -922337203685477580<b>8</b>, but</li>
+<li><a href="https://golang.org/pkg/math/#pkg-constants"><code>math.MaxInt64</code></a> is 922337203685477580<b>7</b>.</li>
 </ul>
 
-There’s no good way to deal with this.
-In fact, <code>Abs</code> returns a <b>negative value</b> in this case.
+Unfortunately, our <code>Abs</code> function returns a <b>negative</b> value in this case.
 
-<pre><code>fmt.Println(Abs(math.MinInt32)) <span class="comment">// Output: -2147483648</span></code></pre>
+<pre><code>fmt.Println(Abs(math.MinInt64))
+<span class="comment">// Output: -9223372036854775808</span>
+</code></pre>
 
-The C and Java standard libraries also behave like this.
+(The Java and C libraries behave like this as well.)
 </blockquote>
 
 <h2 id="floats">Floats</h2>
 
-<p>Use <a href="https://golang.org/pkg/math/#Abs"><code>math.Abs</code></a>
-to compute the absolute value of a floating-point number.</p>
+<p>The <a href="https://golang.org/pkg/math/#Abs"><code>math.Abs</code></a> function
+returns the absolute value of&nbsp;<code>x</code>.</p>
 
 <pre><code>func Abs(x float64) float64
 </code></pre>
 
-<p>Note the special cases.</p>
+<p>Special cases:</p>
 
 <pre><code>Abs(±Inf) = +Inf
 Abs(NaN) = NaN
@@ -149,10 +146,10 @@ Abs(NaN) = NaN
 <div style="clear:both;"></div>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fabsolute-value-int-float%2f&amp;text=Compute%20absolute%20values&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fabsolute-value-int-float%2f&amp;text=Compute%20absolute%20value%20of%20an%20int/float&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fabsolute-value-int-float%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fabsolute-value-int-float%2f&amp;title=Compute%20absolute%20values" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Compute%20absolute%20values&body=https%3a%2f%2fyourbasic.org%2fgolang%2fabsolute-value-int-float%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fabsolute-value-int-float%2f&amp;title=Compute%20absolute%20value%20of%20an%20int/float" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Compute%20absolute%20value%20of%20an%20int/float&body=https%3a%2f%2fyourbasic.org%2fgolang%2fabsolute-value-int-float%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 
@@ -163,7 +160,7 @@ Abs(NaN) = NaN
   <h2>Related</h2>
 
   <div class="reference">
-    <a href="/golang/max-min-function/">Compute min and max</a>
+    <a href="/golang/max-min-function/">Compute max of two ints/floats</a>
     <div class="desc">Write your own code to compute the minimum and maximum of integers, but use math.Min and math.Max for floating point numbers.</div>
     <div class="source">yourbasic.org</div>
   </div>
