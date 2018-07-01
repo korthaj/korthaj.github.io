@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/bouncing-balls.jpg"
    ],
   "datePublished": "2018-06-12T00:00:00&#43;0000",
-  "dateModified": "2018-06-12T00:00:00&#43;0000",
+  "dateModified": "2018-07-01T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -124,7 +124,7 @@ its message before the program ends.</p>
     go fmt.Println("Hello from another goroutine")
     fmt.Println("Hello from main goroutine")
 
-    time.Sleep(time.Second) <span class="comment">// wait for other goroutine to finish</span>
+    time.Sleep(time.Second) <span class="comment">// give the other goroutine time to finish</span>
 }</code></pre>
 
 <p>Here is a somewhat more realistic example, where we define a function that
