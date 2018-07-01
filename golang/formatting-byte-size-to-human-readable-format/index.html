@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Convert byte size to human readable format - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE How to format 1000 to 1 kB, 1000000 to 1 MB etc. in Go. The code supports both SI and IEC formats.">
+  <title>Convert byte size to kilobytes, megabytes, gigabytes, ... - yourbasic.org/golang </title>
+  <meta name="description" content="CODE EXAMPLE Utility functions for converting byte size to human-readable format. The code supports both SI and IEC formats.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -22,6 +22,50 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/golang/formatting-byte-size-to-human-readable-format/"
+  },
+  "headline": "Convert byte size to kilobytes, megabytes, gigabytes, ...",
+  "image": [
+    "https://yourbasic.org/golang/flash-memory-cards.png"
+   ],
+  "datePublished": "2018-07-01T00:00:00&#43;0000",
+  "dateModified": "2018-07-01T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "CODE EXAMPLE Utility functions for converting byte size to human-readable format. The code supports both SI and IEC formats."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Convert byte size to kilobytes, megabytes, gigabytes, ...">
+<meta property="og:description" content="CODE EXAMPLE Utility functions for converting byte size to human-readable format. The code supports both SI and IEC formats.">
+<meta property="og:url" content="https://yourbasic.org/golang/formatting-byte-size-to-human-readable-format/">
+<meta property="og:image" content="https://yourbasic.org/golang/flash-memory-cards.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Convert byte size to kilobytes, megabytes, gigabytes, ...">
+<meta name="twitter:description" content="CODE EXAMPLE Utility functions for converting byte size to human-readable format. The code supports both SI and IEC formats.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="https://yourbasic.org/golang/flash-memory-cards.png">
+
+
 </head>
 
 <body>
@@ -38,12 +82,61 @@
 
 <main>
 <article>
-<h1>Convert byte size to human readable format</h1>
+<h1>Convert byte size to kilobytes, megabytes, gigabytes, ...</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-<p>These utility functions convert <code>1000</code> to <code>&quot;1 kB&quot;</code>, <code>1000000</code> to <code>&quot;1 MB&quot;</code>, etc.</p>
+<!-- CC BY-SA 3.0: https://commons.wikimedia.org/wiki/File:Flash_memory_cards_size_comparison_(composite).svg -->
 
-<pre><code>func ByteCountDecimal(b int64) string {
+<div style="margin-top:1em;"><img src="/golang/flash-memory-cards.png"></div>
+
+<p>These utility functions convert a size in bytes to a human-readable string
+in either SI&nbsp;(decimal) or IEC&nbsp;(binary) format.</p>
+
+<table class="white">
+  <thead>
+    <tr>
+      <th style="text-align:right">Input</th>
+      <th style="text-align:right">ByteCountSI</th>
+      <th style="text-align:right">ByteCountIEC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="right">999</td>
+      <td align="right"><code>"999&nbsp;B"</code></td>
+      <td align="right"><code>"999&nbsp;B"</code></td>
+    </tr>
+    <tr>
+      <td align="right">1000</td>
+      <td align="right"><code>"1.0&nbsp;kB"</code></td>
+      <td align="right"><code>"1000&nbsp;B"</code></td>
+    </tr>
+    <tr>
+      <td align="right">1023</td>
+      <td align="right"><code>"1.0&nbsp;kB"</code></td>
+      <td align="right"><code>"1023&nbsp;B"</code></td>
+    </tr>
+    <tr>
+      <td align="right">1024</td>
+      <td align="right"><code>"1.0&nbsp;kB"</code></td>
+      <td align="right"><code>"1.0&nbsp;KiB"</code></td>
+    </tr>
+    <tr>
+      <td align="right">987,654,321</td>
+      <td align="right"><code>"987.7&nbsp;MB"</code></td>
+      <td align="right"><code>"941.9&nbsp;MiB"</code></td>
+    </tr>
+    <tr>
+      <td align="right"><code>math.MaxInt64</code></td>
+      <td align="right"><code><code>"9.2&nbsp;EB"</code></td>
+      <td align="right"><code>"8.0&nbsp;EiB"</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br></p>
+
+<pre><code>func ByteCountSI(b int64) string {
     const unit = 1000
     if b < unit {
         return fmt.Sprintf("%d B", b)
@@ -57,7 +150,7 @@
         float64(b)/float64(div), "kMGTPE"[exp])
 }
 
-func ByteCountBinary(b int64) string {
+func ByteCountIEC(b int64) string {
     const unit = 1024
     if b < unit {
         return fmt.Sprintf("%d B", b)
@@ -71,20 +164,6 @@ func ByteCountBinary(b int64) string {
         float64(b)/float64(div), "KMGTPE"[exp])
 }</code></pre>
 
-<p>Example input/output:</p>
-
-<pre><code>           Input     Decimal (SI)     Binary (IEC)
-               0            &quot;0 B&quot;            &quot;0 B&quot;
-              27           &quot;27 B&quot;           &quot;27 B&quot;
-             999          &quot;999 B&quot;          &quot;999 B&quot;
-            1000         &quot;1.0 kB&quot;         &quot;1000 B&quot;
-            1023         &quot;1.0 kB&quot;         &quot;1023 B&quot;
-            1024         &quot;1.0 kB&quot;        &quot;1.0 KiB&quot;
-            1728         &quot;1.7 kB&quot;        &quot;1.7 KiB&quot;
-   1855425871872         &quot;1.9 TB&quot;        &quot;1.7 TiB&quot;
-   math.MaxInt64         &quot;9.2 EB&quot;        &quot;8.0 EiB
-</code></pre>
-
 <p><a href="/golang/byte-count.go">byte-count.go</a></p>
 
 
@@ -97,10 +176,10 @@ func ByteCountBinary(b int64) string {
 <div style="clear:both;"></div>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fformatting-byte-size-to-human-readable-format%2f&amp;text=Convert%20byte%20size%20to%20human%20readable%20format&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fformatting-byte-size-to-human-readable-format%2f&amp;text=Convert%20byte%20size%20to%20kilobytes,%20megabytes,%20gigabytes,%20...&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fformatting-byte-size-to-human-readable-format%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fformatting-byte-size-to-human-readable-format%2f&amp;title=Convert%20byte%20size%20to%20human%20readable%20format" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Convert%20byte%20size%20to%20human%20readable%20format&body=https%3a%2f%2fyourbasic.org%2fgolang%2fformatting-byte-size-to-human-readable-format%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fformatting-byte-size-to-human-readable-format%2f&amp;title=Convert%20byte%20size%20to%20kilobytes,%20megabytes,%20gigabytes,%20..." title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Convert%20byte%20size%20to%20kilobytes,%20megabytes,%20gigabytes,%20...&body=https%3a%2f%2fyourbasic.org%2fgolang%2fformatting-byte-size-to-human-readable-format%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 

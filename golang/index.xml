@@ -410,13 +410,14 @@ s := &#34;97&#34; if n, err := strconv.Atoi(s); err == nil { fmt.Println(n+1) } 
     </item>
     
     <item>
-      <title>Convert byte size to human readable format</title>
+      <title>Convert byte size to kilobytes, megabytes, gigabytes, ...</title>
       <link>https://yourbasic.org/golang/formatting-byte-size-to-human-readable-format/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/formatting-byte-size-to-human-readable-format/</guid>
-      <description>These utility functions convert 1000 to &amp;quot;1 kB&amp;quot;, 1000000 to &amp;quot;1 MB&amp;quot;, etc.
-func ByteCountDecimal(b int64) string { const unit = 1000 if b = unit; n /= unit { div *= unit exp++ } return fmt.Sprintf(&#34;%.1f %cB&#34;, float64(b)/float64(div), &#34;kMGTPE&#34;[exp]) } func ByteCountBinary(b int64) string { const unit = 1024 if b = unit; n /= unit { div *= unit exp++ } return fmt.Sprintf(&#34;%.1f %ciB&#34;, float64(b)/float64(div), &#34;KMGTPE&#34;[exp]) } Example input/output:</description>
+      <description>These utility functions convert a size in bytes to a human-readable string in either SI&amp;nbsp;(decimal) or IEC&amp;nbsp;(binary) format.
+  Input ByteCountSI ByteCountIEC     999 &#34;999&amp;nbsp;B&#34; &#34;999&amp;nbsp;B&#34;   1000 &#34;1.0&amp;nbsp;kB&#34; &#34;1000&amp;nbsp;B&#34;   1023 &#34;1.0&amp;nbsp;kB&#34; &#34;1023&amp;nbsp;B&#34;   1024 &#34;1.0&amp;nbsp;kB&#34; &#34;1.0&amp;nbsp;KiB&#34;   987,654,321 &#34;987.7&amp;nbsp;MB&#34; &#34;941.9&amp;nbsp;MiB&#34;   math.MaxInt64 &#34;9.2&amp;nbsp;EB&#34; &#34;8.0&amp;nbsp;EiB&#34;    
+func ByteCountSI(b int64) string { const unit = 1000 if b = unit; n /= unit { div *= unit exp++ } return fmt.</description>
     </item>
     
     <item>

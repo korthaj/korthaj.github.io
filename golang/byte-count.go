@@ -1,7 +1,9 @@
 /*
-	Convert byte size to human readable format
+	Convert byte size to bytes, kilobytes, megabytes, gigabytes, ...
 
-	These utility functions convert 1000 to "1 kB", 1000000 to "1 MB", etc.
+	These utility functions convert a byte size to a human-readable string
+	in either SI (decimal) or IEC (binary) format.
+
 
 	Source: https://yourbasic.org/golang/formatting-byte-size-to-human-readable-format/
 */
@@ -12,7 +14,7 @@ import (
 	"math"
 )
 
-func ByteCountDecimal(b int64) string {
+func ByteCountSI(b int64) string {
 	const unit = 1000
 	if b < unit {
 		return fmt.Sprintf("%d B", b)
@@ -26,7 +28,7 @@ func ByteCountDecimal(b int64) string {
 		float64(b)/float64(div), "kMGTPE"[exp])
 }
 
-func ByteCountBinary(b int64) string {
+func ByteCountIEC(b int64) string {
 	const unit = 1024
 	if b < unit {
 		return fmt.Sprintf("%d B", b)
@@ -41,14 +43,14 @@ func ByteCountBinary(b int64) string {
 }
 
 func main() {
-	fmt.Printf("%20s %16s %16s\n", "Input", "Decimal (SI)", "Binary (IEC)")
+	fmt.Printf("%20s %16s %16s\n", "Input", "BytecountSI", "BytecountIEC")
 	for _, b := range []int64{
-		0, 27, 999, 1000, 1023, 1024,
-		1728, 1855425871872, math.MaxInt64,
+		999, 1000, 1023, 1024,
+		987654321, math.MaxInt64,
 	} {
 		fmt.Printf("%20d %16q %16q\n",
 			b,
-			ByteCountDecimal(b),
-			ByteCountBinary(b))
+			ByteCountSI(b),
+			ByteCountIEC(b))
 	}
 }
