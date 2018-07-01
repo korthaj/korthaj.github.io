@@ -187,10 +187,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/formatting-byte-size-to-human-readable-format/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/golang/interface-to-string/</loc>
   </url>
   
@@ -260,6 +256,10 @@
   
   <url>
     <loc>https://yourbasic.org/golang/find-type-of-object/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/formatting-byte-size-to-human-readable-format/</loc>
   </url>
   
   <url>

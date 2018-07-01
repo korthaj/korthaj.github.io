@@ -490,17 +490,6 @@ s := &#34;97&#34; if n, err := strconv.Atoi(s); err == nil { fmt.Println(n+1) } 
     </item>
     
     <item>
-      <title>Convert byte size to kilobytes, megabytes, gigabytes, ...</title>
-      <link>https://yourbasic.org/golang/formatting-byte-size-to-human-readable-format/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/formatting-byte-size-to-human-readable-format/</guid>
-      <description>These utility functions convert a size in bytes to a human-readable string in either SI&amp;nbsp;(decimal) or IEC&amp;nbsp;(binary) format.
-  Input ByteCountSI ByteCountIEC     999 &#34;999&amp;nbsp;B&#34; &#34;999&amp;nbsp;B&#34;   1000 &#34;1.0&amp;nbsp;kB&#34; &#34;1000&amp;nbsp;B&#34;   1023 &#34;1.0&amp;nbsp;kB&#34; &#34;1023&amp;nbsp;B&#34;   1024 &#34;1.0&amp;nbsp;kB&#34; &#34;1.0&amp;nbsp;KiB&#34;   987,654,321 &#34;987.7&amp;nbsp;MB&#34; &#34;941.9&amp;nbsp;MiB&#34;   math.MaxInt64 &#34;9.2&amp;nbsp;EB&#34; &#34;8.0&amp;nbsp;EiB&#34;    
-func ByteCountSI(b int64) string { const unit = 1000 if b = unit; n /= unit { div *= unit exp++ } return fmt.</description>
-    </item>
-    
-    <item>
       <title>Convert interface to string</title>
       <link>https://yourbasic.org/golang/interface-to-string/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -688,6 +677,17 @@ type error interface { Error() string }  Example The os.Open function returns a 
       <description>A simple string Use the %T flag in the fmt package to get a Go-syntax representation of the&amp;nbsp;type.
 var x interface{} = []int{1, 2, 3} xType := fmt.Sprintf(&#34;%T&#34;, x) fmt.Println(xType) // &#34;[]int&#34; A simple choice Use a type switch to do several type assertions in series.
 var x interface{} = 2.3 switch v := x.(type) { case int: fmt.Println(&#34;int:&#34;, v) case float64: fmt.Println(&#34;float64:&#34;, v) default: fmt.Println(&#34;unknown&#34;) } // Output: float64: 2.</description>
+    </item>
+    
+    <item>
+      <title>Format byte size as kilobytes, megabytes, gigabytes, ...</title>
+      <link>https://yourbasic.org/golang/formatting-byte-size-to-human-readable-format/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/formatting-byte-size-to-human-readable-format/</guid>
+      <description>These utility functions convert a size in bytes to a human-readable string in either SI&amp;nbsp;(decimal) or IEC&amp;nbsp;(binary) format.
+  Input ByteCountSI ByteCountIEC     999 &#34;999&amp;nbsp;B&#34; &#34;999&amp;nbsp;B&#34;   1000 &#34;1.0&amp;nbsp;kB&#34; &#34;1000&amp;nbsp;B&#34;   1023 &#34;1.0&amp;nbsp;kB&#34; &#34;1023&amp;nbsp;B&#34;   1024 &#34;1.0&amp;nbsp;kB&#34; &#34;1.0&amp;nbsp;KiB&#34;   987,654,321 &#34;987.7&amp;nbsp;MB&#34; &#34;941.9&amp;nbsp;MiB&#34;   math.MaxInt64 &#34;9.2&amp;nbsp;EB&#34; &#34;8.0&amp;nbsp;EiB&#34;    
+func ByteCountSI(b int64) string { const unit = 1000 if b = unit; n /= unit { div *= unit exp++ } return fmt.</description>
     </item>
     
     <item>
