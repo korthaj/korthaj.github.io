@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/numbers-1-2-3.jpg"
    ],
   "datePublished": "2018-05-16T00:00:00&#43;0000",
-  "dateModified": "2018-06-26T00:00:00&#43;0000",
+  "dateModified": "2018-07-01T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -103,13 +103,22 @@
 
 <p>Use <a href="https://golang.org/pkg/strconv/#Atoi"><code>strconv.Atoi</code></a> to convert/parse a string to an&nbsp;int.</p>
 
-<pre><code>str := "123"
+<pre><code>str := "97"
 if n, err := strconv.Atoi(str); err == nil {
     fmt.Println(n+1)
 } else {
     fmt.Println(str, "is not an integer.")
 }
-<span class="comment">// Output: 124</span></code></pre>
+<span class="comment">// Output: 98</span></code></pre>
+
+<blockquote class="warning">
+<b>Warning:</b> In a plain <a href="/golang/conversions/">conversion</a>
+the value is interpreted as a Unicode code point,
+and the resulting string will contain the character represented by that code point, encoded in UTF-8.
+
+<pre><code>fmt.Println(string(97)) <span class="comment">// Output: a</span>
+</code></pre>
+</blockquote>
 
 <h2 id="string-to-int64">String to int64</h2>
 
