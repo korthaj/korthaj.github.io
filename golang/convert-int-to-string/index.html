@@ -103,34 +103,25 @@
 
 <p>Use <a href="https://golang.org/pkg/strconv/#Atoi"><code>strconv.Atoi</code></a> to convert/parse a string to an&nbsp;int.</p>
 
-<pre><code>str := "97"
-if n, err := strconv.Atoi(str); err == nil {
+<pre><code>s := "97"
+if n, err := strconv.Atoi(s); err == nil {
     fmt.Println(n+1)
 } else {
-    fmt.Println(str, "is not an integer.")
+    fmt.Println(s, "is not an integer.")
 }
 <span class="comment">// Output: 98</span></code></pre>
-
-<blockquote class="warning">
-<b>Warning:</b> In a plain <a href="/golang/conversions/">conversion</a>
-the value is interpreted as a Unicode code point,
-and the resulting string will contain the character represented by that code point, encoded in UTF-8.
-
-<pre><code>fmt.Println(string(97)) <span class="comment">// Output: a</span>
-</code></pre>
-</blockquote>
 
 <h2 id="string-to-int64">String to int64</h2>
 
 <p>Use <a href="https://golang.org/pkg/strconv/#ParseInt"><code>strconv.ParseInt</code></a>
 to parse a decimal string (base&nbsp;<code>10</code>) and check if it fits into a <code>64</code>-bit signed integer.</p>
 
-<pre><code>str := "123"
-n, err := strconv.ParseInt(str, 10, 64)
+<pre><code>s := "97"
+n, err := strconv.ParseInt(s, 10, 64)
 if err == nil {
     fmt.Printf("%d of type %T", n, n)
 }
-<span class="comment">// Output: 123 of type int64</span></code></pre>
+<span class="comment">// Output: 97 of type int64</span></code></pre>
 
 <p>The two numeric arguments represent a  base (0, 2 to 36) and a bit size (0&nbsp;to&nbsp;64).</p>
 
@@ -145,21 +136,28 @@ Bit sizes 0, 8, 16, 32, and 64 correspond to <code>int</code>, <code>int8</code>
 
 <p>Use the <a href="https://golang.org/pkg/strconv/#Itoa"><code>strconv.Itoa</code></a> function to convert an int to a decimal string.</p>
 
-<pre><code>s := strconv.Itoa(109) <span class="comment">// s == "109"</span></code></pre>
+<pre><code>s := strconv.Itoa(97) <span class="comment">// s == "97"</span></code></pre>
+
+<blockquote class="warning">
+<b>Warning:</b> In a plain <a href="/golang/conversions/">conversion</a>
+the value is interpreted as a Unicode code point,
+and the resulting string will contain the character represented by that code point, encoded in UTF-8.
+
+<pre><code>s := string(97) <span class="comment">// s == "a"</span>
+</code></pre>
+</blockquote>
 
 <h2 id="int64-to-string">int64 to string</h2>
 
 <p>Use <a href="https://golang.org/pkg/strconv/#FormatInt"><code>strconv.FormatInt</code></a>
 to format an integer in a given base.</p>
 
-<pre><code>var n int64 = 109
-s := strconv.FormatInt(n, 10) <span class="comment">// decimal</span>
-fmt.Println(s)                <span class="comment">// 109</span>
+<pre><code>var n int64 = 97
+s := strconv.FormatInt(n, 10) <span class="comment">// s == "97" (decimal)</span>
 </code></pre>
 
-<pre><code>var n int64 = 109
-s = strconv.FormatInt(n, 16) <span class="comment">// hexadecimal</span>
-fmt.Println(s)                <span class="comment">// 6d</span>
+<pre><code>var n int64 = 97
+s := strconv.FormatInt(n, 16) <span class="comment">// s == "61" (hexadecimal)</span>
 </code></pre>
 
 <h2 id="int-to-int64-and-back">int to int64 (and back)</h2>
@@ -168,12 +166,14 @@ fmt.Println(s)                <span class="comment">// 6d</span>
 it&rsquo;s either 32 or 64&nbsp;bits, and hence you won&rsquo;t loose any
 information when converting from <code>int</code> to &nbsp;<code>int64</code>.</p>
 
-<pre><code>var n int = 101
+<pre><code>var n int = 97
 m := <b>int64(n)</b> <span class="comment">// safe</span>
 </code></pre>
 
-<p>However, when converting to a shorter integer type,
-the value is <strong>truncated</strong> to fit in the result type&rsquo;s size.</p>
+<blockquote class="warning">
+However, when converting to a shorter integer type,
+the value is <b>truncated</b> to fit in the result type's size.
+</blockquote>
 
 <pre><code>var m int64 = 2 << 32
 n := <b>int(m)</b>    <span class="comment">// truncated on machines with 32-bit ints</span>
@@ -192,7 +192,7 @@ for best practices.</li>
 <p>The <a href="https://golang.org/pkg/fmt/#Sprintf"><code>fmt.Sprintf</code></a> function
 is a useful general tool for converting data to&nbsp;string:</p>
 
-<pre><code>s := fmt.Sprintf("%4d", 109) <span class="comment">// s == " 109" (width 4, right justify)</span></code></pre>
+<pre><code>s := fmt.Sprintf("%4d", 97) <span class="comment">// s == "  97" (width 4, right justify)</span></code></pre>
 
 <h3 id="further-reading">Further reading</h3>
 

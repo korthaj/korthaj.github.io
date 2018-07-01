@@ -477,7 +477,7 @@ x := 5.1 n := int(x) // convert float to int The conversion rules are extensive 
       
       <guid>https://yourbasic.org/golang/convert-int-to-string/</guid>
       <description>String to int String to int64 int to string int64 to string int to int64 (and back) General formatting  String to int Use strconv.Atoi to convert/parse a string to an&amp;nbsp;int.
-str := &#34;97&#34; if n, err := strconv.Atoi(str); err == nil { fmt.Println(n+1) } else { fmt.Println(str, &#34;is not an integer.&#34;) } // Output: 98 Warning: In a plain conversion the value is interpreted as a Unicode code point, and the resulting string will contain the character represented by that code point, encoded in UTF-8.</description>
+s := &#34;97&#34; if n, err := strconv.Atoi(s); err == nil { fmt.Println(n+1) } else { fmt.Println(s, &#34;is not an integer.&#34;) } // Output: 98 String to int64 Use strconv.ParseInt to parse a decimal string (base&amp;nbsp;10) and check if it fits into a 64-bit signed integer.</description>
     </item>
     
     <item>
