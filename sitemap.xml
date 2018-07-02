@@ -563,6 +563,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/quicksort-optimizations/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/overload-overwrite-optional-parameter/</loc>
   </url>
   
@@ -721,10 +725,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/time-reset-wait-stop-timeout-cancel-interval/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/quicksort-optimizations/</loc>
   </url>
   
   <url>
