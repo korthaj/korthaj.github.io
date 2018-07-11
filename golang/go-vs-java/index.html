@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Go vs. Java: 14 main differences - yourbasic.org/golang </title>
+  <title>Go vs. Java: 15 main differences - yourbasic.org/golang </title>
   <meta name="description" content="Code example that shows some main differences between Go and Java.">
   
   <link rel="stylesheet" href="/style.css">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/go-vs-java/"
   },
-  "headline": "Go vs. Java: 14 main differences",
+  "headline": "Go vs. Java: 15 main differences",
   "image": [
     "https://yourbasic.org/golang/java-go.png"
    ],
   "datePublished": "2018-02-27T00:00:00&#43;0000",
-  "dateModified": "2018-04-25T00:00:00&#43;0000",
+  "dateModified": "2018-07-11T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -54,13 +54,13 @@
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go vs. Java: 14 main differences">
+<meta property="og:title" content="Go vs. Java: 15 main differences">
 <meta property="og:description" content="Code example that shows some main differences between Go and Java.">
 <meta property="og:url" content="https://yourbasic.org/golang/go-vs-java/">
 <meta property="og:image" content="https://yourbasic.org/golang/java-go.png">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Go vs. Java: 14 main differences">
+<meta name="twitter:title" content="Go vs. Java: 15 main differences">
 <meta name="twitter:description" content="Code example that shows some main differences between Go and Java.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/java-go.png">
@@ -82,7 +82,7 @@
 
 <main>
 <article>
-<h1>Go vs. Java: 14 main differences</h1>
+<h1>Go vs. Java: 15 main differences</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
@@ -194,82 +194,91 @@ equality for structs with comparable fields.</p>
 
 <h2 id="main-differences">Main differences</h2>
 
-<ol>
-  <li>
-    <p>Go does not have classes with constructors.
-Instead of instance methods, a class inheritance hierarchy,
-and dynamic method lookup, Go provides
-<a href="/golang/structs-explained/">structs</a> and <a href="/golang/interfaces-explained/">interfaces</a>.</p>
-  </li>
-  <li>
-    <p>Go offers <a href="/golang/pointers-explained/">pointers</a> to values of all types,
-not just objects and arrays.
-For any type <code>T</code>, there is a corresponding pointer type
-<code>*T</code>, denoting pointers to values of type <code>T</code>.</p>
-  </li>
-  <li>
-    <p>Go allows <a href="/golang/methods-explained/">methods</a> on any type; no boxing is required.
-The method receiver, which corresponds to <code>this</code> in Java,
-can be a direct value or a pointer.</p>
-  </li>
-  <li>
-    <p>Arrays in Go are values. When an array is used as a
-function parameter, the function receives a copy of the array,
-not a pointer to it. However, in practice functions often use 
-<a href="/golang/slices-explained/">slices</a> for parameters;
-slices are references to underlying arrays.</p>
-  </li>
-  <li>
-    <p>Strings are provided by the language;
+<h3 id="built-in-types">Built-in types</h3>
+
+<ul>
+<li>Strings are provided by the language;
 a <a href="/golang/string-functions-reference-cheat-sheet/">string</a> behaves like a
-slice of bytes, but is immutable.</p>
-  </li>
-  <li>
-    <p>Hash tables are provided by the language.
-They are called <a href="/golang/maps-explained/">maps</a>.</p>
-  </li>
-  <li>
-    <p>Separate threads of execution, <a href="/golang/goroutines-explained/">goroutines</a>,
-and communication channels between them, <a href="/golang/channels-explained/">channels</a>,
-are provided by the language.</p>
-  </li>
-  <li>
-    <p>Certain types (maps, slices, and channels) are passed by reference,
+slice of bytes, but is immutable.</li>
+<li>Hash tables are provided by the language.
+They are called <a href="/golang/maps-explained/">maps</a>.</li>
+</ul>
+
+<h3 id="pointers-and-references">Pointers and references</h3>
+
+<ul>
+<li>Go offers <a href="/golang/pointers-explained/">pointers</a> to values of all types,
+not just objects and arrays.
+For any type&nbsp;<code>T</code>, there is a corresponding pointer type&nbsp;<code>*T</code>,
+denoting pointers to values of type&nbsp;<code>T</code>.</li>
+<li>Arrays in Go are values. When an array is used as a
+function parameter, the function receives a copy of the array,
+not a pointer to it. However, in practice functions often use
+<a href="/golang/slices-explained/">slices</a> for parameters;
+slices are references to underlying arrays.</li>
+<li>Certain types (maps, slices, and channels) are passed by reference,
 not by value. That is, passing a map to a function does not copy the map;
 if the function changes the map, the change will be seen by the caller.
-In Java terms, one can think of this as being a reference to the map.</p>
-  </li>
-  <li>
-    <p>Go provides <a href="/golang/public-private/">two access levels</a>,
-analogous to Java’s public and package-private. Top-level declarations
-are public if their names start with an upper-case letter,
-otherwise they are package-private.</p>
-  </li>
-  <li>
-    <p>Instead of exceptions, Go uses <a href="/golang/errors-explained/">errors</a>
+In Java terms, one can think of this as being a reference to the map.</li>
+</ul>
+
+<h3 id="error-handling">Error handling</h3>
+
+<ul>
+<li>Instead of exceptions, Go uses <a href="/golang/errors-explained/">errors</a>
 to signify events such as end-of-file,
 and run-time <a href="/golang/panic-explained/">panics</a> for run-time errors
-such as attempting to index an array out of bounds.</p>
-  </li>
-  <li>
-    <p>Go does not support implicit type conversion. Operations that mix
-different types require an explicit conversion.
-Instead Go offers <a href="/golang/untyped-constants/">untyped numeric constants</a>.</p>
-  </li>
-  <li>
-    <p>Go does not support
-<a href="/golang/overload-overwrite-optional-parameter/">function overloading</a>.
-Functions and methods in the same scope must have unique names.</p>
-  </li>
-  <li>
-    <p>Go does not have final variables.</p>
-  </li>
-  <li>
-    <p>Go does not have parametric polymorphism (generics).</p>
-  </li>
-</ol>
+such as attempting to index an array out of bounds.</li>
+</ul>
 
-<h2 id="bits-and-pieces">Bits and pieces</h2>
+<h3 id="object-oriented-programming">Object-oriented programming</h3>
+
+<ul>
+<li>Go does not have classes with constructors.
+Instead of instance methods, a class inheritance hierarchy,
+and dynamic method lookup, Go provides
+<a href="/golang/structs-explained/">structs</a> and <a href="/golang/interfaces-explained/">interfaces</a>.</li>
+<li>Go allows <a href="/golang/methods-explained/">methods</a> on any type; no boxing is required.
+The method <em>receiver</em>, which corresponds to&nbsp;<code>this</code> in&nbsp;Java,
+can be a direct value or a pointer.</li>
+<li>Go provides <a href="/golang/public-private/">two&nbsp;access&nbsp;levels</a>,
+analogous to Java’s public and package-private. Top-level declarations
+are public if their names start with an upper-case letter,
+otherwise they are package-private.</li>
+</ul>
+
+<h3 id="functional-programming">Functional programming</h3>
+
+<ul>
+<li>Functions in Go are first class citizens.
+<a href="/golang/function-pointer-type-declaration/">Function values</a> can be used and passed around
+just like other values and <a href="/golang/anonymous-function-literal-lambda-closure/">function literals</a>
+may refer to variables defined in a enclosing function.</li>
+</ul>
+
+<h3 id="concurrency">Concurrency</h3>
+
+<ul>
+<li>Separate threads of execution, <a href="/golang/goroutines-explained/">goroutines</a>,
+and communication channels between them, <a href="/golang/channels-explained/">channels</a>,
+are provided by the language.</li>
+</ul>
+
+<h3 id="omitted-features">Omitted features</h3>
+
+<ul>
+<li>Go does not support implicit type conversion. Operations that mix
+different types require an explicit conversion.
+Instead Go offers <a href="/golang/untyped-constants/">Untyped numeric constants with no limits</a>.</li>
+<li>Go does not support function overloading. Functions and methods in the same scope must have unique names.
+For alternatives, see <a href="/golang/overload-overwrite-optional-parameter/">Optional parameters and method overloading</a>.</li>
+<li>Go has some built-in generic data types, such as slices and maps,
+and generic functions, such as append and copy.
+However, there is no mechanism for writing your own generic functions.
+For alternatives, see <a href="/golang/generics/">Generics (alternatives and workarounds)</a>.</li>
+</ul>
+
+<h3 id="complex-numbers">Complex numbers</h3>
 
 <p>Strangely enough, Go has built-in support for complex numbers.</p>
 
@@ -286,15 +295,11 @@ fmt.Println(z + z)
 <div>This <a href="/golang/go-java-tutorial/">Java to Go in-depth tutorial</a>
 is in­tended to help Java deve­lopers come up to speed quickly with&nbsp;Go.</div>
 
-<div style="margin-top:1.5em;"><a href="/golang/generics/"><img src="/golang/bland-face.png" title="Generics (alternatives and workarounds)"></a></div>
-
-<div><a href="/golang/generics/">Generics (alternatives and workarounds)</a></div>
-
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fgo-vs-java%2f&amp;text=Go%20vs.%20Java:%2014%20main%20differences&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fgo-vs-java%2f&amp;text=Go%20vs.%20Java:%2015%20main%20differences&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fgo-vs-java%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fgo-vs-java%2f&amp;title=Go%20vs.%20Java:%2014%20main%20differences" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Go%20vs.%20Java:%2014%20main%20differences&body=https%3a%2f%2fyourbasic.org%2fgolang%2fgo-vs-java%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fgo-vs-java%2f&amp;title=Go%20vs.%20Java:%2015%20main%20differences" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Go%20vs.%20Java:%2015%20main%20differences&body=https%3a%2f%2fyourbasic.org%2fgolang%2fgo-vs-java%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
