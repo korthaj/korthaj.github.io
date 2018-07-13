@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/temporary-mailbox.jpg"
    ],
   "datePublished": "2018-05-13T00:00:00&#43;0000",
-  "dateModified": "2018-05-13T00:00:00&#43;0000",
+  "dateModified": "2018-07-13T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -93,7 +93,9 @@
 <h2 id="file">File</h2>
 
 <p>Use <a href="https://golang.org/pkg/io/ioutil/#TempFile"><code>ioutil.TempFile</code></a> in package
-<a href="https://golang.org/pkg/io/ioutil/"><code>io/ioutil</code></a> to create a temporary file.</p>
+<a href="https://golang.org/pkg/io/ioutil/"><code>io/ioutil</code></a> to create a
+<strong>globally unique temporary file</strong>.
+It’s your own job to remove the file when it’s no longer needed.</p>
 
 <pre><code>file, err := ioutil.TempFile("dir", "prefix")
 if err != nil {
@@ -119,7 +121,8 @@ with an empty directory string.</p>
 <h2 id="directory">Directory</h2>
 
 <p>Use <a href="https://golang.org/pkg/io/ioutil/#TempDir"><code>ioutil.TempDir</code></a> in package
-<a href="https://golang.org/pkg/io/ioutil/"><code>io/ioutil</code></a> to create a temporary directory.</p>
+<a href="https://golang.org/pkg/io/ioutil/"><code>io/ioutil</code></a> to create a
+<strong>globally unique temporary directory</strong>.</p>
 
 <pre><code>dir, err := ioutil.TempDir(&quot;dir&quot;, &quot;prefix&quot;)
 if err != nil {
