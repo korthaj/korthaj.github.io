@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Create a temporary file or directory - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE Use ioutil.TempFile to create a temporary file, and ioutio.TempDir to create a temporary directory.">
+  <meta name="description" content="CODE EXAMPLE Use ioutil.TempFile to create a temporary file, and ioutio.TempDir to create a temporary directory. Starting with Go 1.11, it&#39;s possible to add a suffix to the randomly generated file name.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/temporary-mailbox.jpg"
    ],
   "datePublished": "2018-05-13T00:00:00&#43;0000",
-  "dateModified": "2018-07-13T00:00:00&#43;0000",
+  "dateModified": "2018-07-14T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "CODE EXAMPLE Use ioutil.TempFile to create a temporary file, and ioutio.TempDir to create a temporary directory."
+  "description": "CODE EXAMPLE Use ioutil.TempFile to create a temporary file, and ioutio.TempDir to create a temporary directory. Starting with Go 1.11, it&#39;s possible to add a suffix to the randomly generated file name."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Create a temporary file or directory">
-<meta property="og:description" content="CODE EXAMPLE Use ioutil.TempFile to create a temporary file, and ioutio.TempDir to create a temporary directory.">
+<meta property="og:description" content="CODE EXAMPLE Use ioutil.TempFile to create a temporary file, and ioutio.TempDir to create a temporary directory. Starting with Go 1.11, it&#39;s possible to add a suffix to the randomly generated file name.">
 <meta property="og:url" content="https://yourbasic.org/golang/temporary-file-directory/">
 <meta property="og:image" content="https://yourbasic.org/golang/temporary-mailbox.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Create a temporary file or directory">
-<meta name="twitter:description" content="CODE EXAMPLE Use ioutil.TempFile to create a temporary file, and ioutio.TempDir to create a temporary directory.">
+<meta name="twitter:description" content="CODE EXAMPLE Use ioutil.TempFile to create a temporary file, and ioutio.TempDir to create a temporary directory. Starting with Go 1.11, it&#39;s possible to add a suffix to the randomly generated file name.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/temporary-mailbox.jpg">
 
@@ -118,6 +118,22 @@ the default directory for temporary files,
 call <a href="https://golang.org/pkg/io/ioutil/#TempFile"><code>ioutil.TempFile</code></a>
 with an empty directory string.</p>
 
+<p><h3 id="add-suffix">Add a suffix to the temporary file name<span class="quicklink"><a href="https://tip.golang.org/doc/go1.11" title="Go 1.11 Release Notes">Go&nbsp;1.11</a></span></h2></p>
+
+<p>Starting with Go 1.11, if the second string given to <code>TempFile</code> includes a&nbsp;<code>&quot;*&quot;</code>,
+the random string replaces this&nbsp;<code>&quot;*&quot;</code>.</p>
+
+<pre><code>file, err := ioutil.TempFile("dir", "myname.*.bat")
+if err != nil {
+    log.Fatal(err)
+}
+defer os.Remove(file.Name())
+
+fmt.Println(file.Name()) <span class="comment">// For example "dir/myname.054003078.bat"</span></code></pre>
+
+<p>If no <code>&quot;*&quot;</code> is included the old behavior is retained,
+and the random digits are appended to the&nbsp;end.</p>
+
 <h2 id="directory">Directory</h2>
 
 <p>Use <a href="https://golang.org/pkg/io/ioutil/#TempDir"><code>ioutil.TempDir</code></a> in package
@@ -160,6 +176,12 @@ with an empty directory string.</p>
     <a href="/golang/defer/">How to use a defer statement</a>
     <div class="desc">A deferred method call in Go is executed just before leaving the surrounding function.</div>
     <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="https://go-review.googlesource.com/c/go/&#43;/105675">io/ioutil: change TempFile prefix to a pattern</a>
+    <div class="source">go-review.googlesource.com</div>
+    <div class="author"></div>
   </div>
 
   <h2>Follow on Twitter</h2>
