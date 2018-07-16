@@ -1943,8 +1943,8 @@ Here is a convenience function that changes the location associated with a&amp;n
       
       <guid>https://yourbasic.org/golang/time-reset-wait-stop-timeout-cancel-interval/</guid>
       <description>Timers and Tickers let you execute code in the future, once or repeatedly.
-Timeout (Timer) time.After waits for a specified duration and then sends the current time on the returned channel:
-select { case news := &amp;lt;-AFP: fmt.Println(news) case &amp;lt;-time.After(time.Hour): fmt.Println(&amp;quot;No news in an hour.&amp;quot;) }  The underlying time.Timer will not be recovered by the garbage collector until the timer fires. If this is a concern, use time.NewTimer instead and call its Stop method when the timer is no longer needed:</description>
+ Timeout (Timer) Repeat (Ticker) Wait, act and cancel  Timeout (Timer) time.After waits for a specified duration and then sends the current time on the returned channel:
+select { case news := &amp;lt;-AFP: fmt.Println(news) case &amp;lt;-time.After(time.Hour): fmt.Println(&amp;quot;No news in an hour.&amp;quot;) }  The underlying time.Timer will not be recovered by the garbage collector until the timer fires.</description>
     </item>
     
     <item>
