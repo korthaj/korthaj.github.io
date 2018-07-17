@@ -1152,16 +1152,6 @@ dev etc tmp usr  Visit all files and folders in a directory tree Use the filepat
     </item>
     
     <item>
-      <title>Make a goroutine block or sleep forever</title>
-      <link>https://yourbasic.org/golang/goroutine-block-sleep-forever/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/goroutine-block-sleep-forever/</guid>
-      <description>An empty select statement blocks forever.
-select {} // block forever </description>
-    </item>
-    
-    <item>
       <title>Make slices, maps and channels</title>
       <link>https://yourbasic.org/golang/make-slice-map-channel/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
