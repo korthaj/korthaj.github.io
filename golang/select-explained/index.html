@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/select-sushi.jpg"
    ],
   "datePublished": "2018-06-22T00:00:00&#43;0000",
-  "dateModified": "2018-06-22T00:00:00&#43;0000",
+  "dateModified": "2018-07-22T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -133,6 +133,8 @@ default:
 
 <h3 id="an-infinite-random-binary-sequence">An infinite random binary sequence</h3>
 
+<p>If several cases can proceed, a single one is <em>chosen at&nbsp;random</em>.</p>
+
 <pre><code>rand := make(chan int)
 for {
     select {
@@ -143,6 +145,9 @@ for {
 
 <h3 id="a-blocking-operation-with-a-timeout">A blocking operation with a timeout</h3>
 
+<p>The function <a href="https://golang.org/pkg/time#After"><code>time.After</code></a> is part of the standard library;
+it waits for a specified time to elapse and then sends the current time on the returned channel.</p>
+
 <pre><code>select {
 case news := <-AFP:
     fmt.Println(news)
@@ -150,15 +155,15 @@ case <-time.After(time.Minute):
     fmt.Println("Time out: No news in one minute")
 }</code></pre>
 
-<p>The function <a href="https://golang.org/pkg/time#After"><code>time.After</code></a> is part of the standard library;
-it waits for a specified time to elapse and then sends the current time on the returned channel.</p>
-
 <h3 id="a-statement-that-blocks-forever">A statement that blocks forever</h3>
-
-<pre><code>select {}</code></pre>
 
 <p>A select statement blocks until <em>at least one</em> of it&rsquo;s cases can proceed.
 With zero cases this will never happen.</p>
+
+<pre><code>select {}</code></pre>
+
+<p>A typical use would be at the end of the main function in some multithreaded programs.
+When main returns, the program exits and it does not wait for other goroutines to complete.</p>
 
 <ul class="pagina">
   
