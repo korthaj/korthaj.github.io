@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/switch.jpg"
    ],
   "datePublished": "2018-03-18T00:00:00&#43;0000",
-  "dateModified": "2018-06-25T00:00:00&#43;0000",
+  "dateModified": "2018-07-22T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -105,6 +105,8 @@
 <ul>
 <li>A switch statement runs the first case equal to the condition expression.</li>
 <li>The cases are evaluated from top to bottom, stopping when a case succeeds.</li>
+<li>If no case matches and there is a default case,
+its statements are executed.</li>
 </ul>
 
 <pre><code><b>switch</b> time.Now().Weekday() {
