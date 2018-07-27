@@ -1964,15 +1964,14 @@ To avoid this, we need to use two separate byte&amp;nbsp;arrays.</description>
     </item>
     
     <item>
-      <title>iota: miminalist constants</title>
+      <title>iota enum examples</title>
       <link>https://yourbasic.org/golang/iota/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/iota/</guid>
-      <description>The iota identifier is a tool for enumerating constants.
-Basics Start at one Skip value Enumeration  Basics The predeclared iota identifier resets to 0 whenever the word const appears in the source code and increments after each const specification.
+      <description>Basics Start from one Skip value Enumeration  Basics The predeclared iota identifier resets to 0 whenever the word const appears in the source code and increments after each const specification.
 const ( C0 = iota C1 = iota C2 = iota ) fmt.Println(C0, C1, C2) // &#34;0 1 2&#34; This can be simplified to
-const ( C0 = iota C1 C2 )  In a parenthesized const declaration expressions can be implicitly repeated—this indicates a repetition of the preceding expression.</description>
+const ( C0 = iota C1 C2 )  In a parenthesized const declaration expressions can be implicitly repeated – this indicates a repetition of the preceding expression.</description>
     </item>
     
   </channel>
