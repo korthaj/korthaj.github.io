@@ -60,6 +60,7 @@ To make a full copy, you must allocate a big enough destination slice.
 </p>
 
 <pre><code>var src, dst []int
+src = []int{1, 2, 3}
 <b>dst = make([]int, len(src))</b>
 n := copy(dst, src)
 fmt.Println("dst:", dst, "(copied", n, "numbers)")
@@ -73,6 +74,7 @@ fmt.Println("dst:", dst, "(copied", n, "numbers)")
 by appending to a nil&nbsp;slice.</p>
 
 <pre><code>var src, dst []int
+src = []int{1, 2, 3}
 <b>dst = append([]int(nil), src...)</b>
 fmt.Println("dst:", dst)
 </code></pre>

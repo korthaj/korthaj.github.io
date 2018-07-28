@@ -1924,7 +1924,7 @@ x = q*y + r and |r| &amp;lt; |y|  where x / y is truncated towards zero.</descri
       <guid>https://yourbasic.org/golang/gotcha-copy-missing/</guid>
       <description>Why does the copy disappear?
 var src, dst []int src = []int{1, 2, 3} copy(dst, src) // Copy elements to dst from src. fmt.Println(&#34;dst:&#34;, dst) dst: []  Answer
-The number of elements copied by the copy function is the minimum of len(dst) and len(src). To make a full copy, you must allocate a big enough destination slice. var src, dst []int dst = make([]int, len(src)) n := copy(dst, src) fmt.</description>
+The number of elements copied by the copy function is the minimum of len(dst) and len(src). To make a full copy, you must allocate a big enough destination slice. var src, dst []int src = []int{1, 2, 3} dst = make([]int, len(src)) n := copy(dst, src) fmt.</description>
     </item>
     
     <item>
