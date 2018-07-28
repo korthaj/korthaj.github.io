@@ -68,21 +68,26 @@ fmt.Println("dst:", dst, "(copied", n, "numbers)")
 
 <pre>dst: [1 2 3] (copied 3 numbers)</pre>
 
-<p>The return value of the <code>copy</code> function is the number of elements copied.</p>
+<p>The return value of the <code>copy</code> function is the number of elements copied.
+See <a href="/golang/copy-explained/">Copy function</a> for more about
+the built-in <code>copy</code> function in&nbsp;Go.</p>
+
+<h3>Using append</h3>
 
 <p>You could also use the <code>append</code> function to make a copy
 by appending to a nil&nbsp;slice.</p>
 
 <pre><code>var src, dst []int
 src = []int{1, 2, 3}
-<b>dst = append([]int(nil), src...)</b>
+<b>dst = append(dst, src...)</b>
 fmt.Println("dst:", dst)
 </code></pre>
 
 <pre>dst: [1 2 3]</pre>
 
-<p>See <a href="/golang/copy-explained/">Copy function</a> for more about
-the built-in <code>copy</code> function in&nbsp;Go.</p>
+<p>Note that the memory allocated by <code>append</code> may be a bit larger than <code>src</code>,
+which may or may not be a good thing.
+</p>
 
 <p></details></p>
 
