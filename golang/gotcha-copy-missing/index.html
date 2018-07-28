@@ -85,8 +85,8 @@ fmt.Println("dst:", dst)
 
 <pre>dst: [1 2 3]</pre>
 
-<p>Note that the memory allocated by <code>append</code> may be a bit larger than <code>src</code>,
-which may or may not be a good thing.
+<p>Note that the capacity of the slice allocated by <code>append</code>
+may be a bit larger than <code>len(src)</code>.
 </p>
 
 <p></details></p>
