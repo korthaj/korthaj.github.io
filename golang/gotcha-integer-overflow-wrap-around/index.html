@@ -22,6 +22,50 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/golang/gotcha-integer-overflow-wrap-around/"
+  },
+  "headline": "No end in sight",
+  "image": [
+    "https://yourbasic.org/golang/1-infinite-loop.jpg"
+   ],
+  "datePublished": "2018-07-30T00:00:00&#43;0000",
+  "dateModified": "2018-07-30T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "An integer overflow occurs when an arithmetic operation tries to create a value that is outside the range that can be represented."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No end in sight">
+<meta property="og:description" content="An integer overflow occurs when an arithmetic operation tries to create a value that is outside the range that can be represented.">
+<meta property="og:url" content="https://yourbasic.org/golang/gotcha-integer-overflow-wrap-around/">
+<meta property="og:image" content="https://yourbasic.org/golang/1-infinite-loop.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="No end in sight">
+<meta name="twitter:description" content="An integer overflow occurs when an arithmetic operation tries to create a value that is outside the range that can be represented.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="https://yourbasic.org/golang/1-infinite-loop.jpg">
+
+
 </head>
 
 <body>
@@ -40,6 +84,10 @@
 <article>
 <h1>No end in sight</h1>
 <div class="tagline">yourbasic.org/golang</div>
+
+<!-- CC BY 2.0: https://www.flickr.com/photos/nanpalmero/4348149625 -->
+
+<div style="margin-top:1em;"><img src="/golang/1-infinite-loop.jpg"></div>
 
 <p>Why does this loop run forever?</p>
 
