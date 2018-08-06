@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Slices in a nutshell - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE A slice refers to a section of an underlying array. It can grow and shrink within the bounds of this array: construction, slicing, iteration, append and copy, stacks and queues.">
+  <meta name="description" content="CODE EXAMPLE A slice refers to a section of an underlying array. It can grow and shrink within the bounds of this array.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -34,8 +34,8 @@
   "image": [
     "https://yourbasic.org/golang/orange.jpg"
    ],
-  "datePublished": "2018-03-28T00:00:00&#43;0000",
-  "dateModified": "2018-04-14T00:00:00&#43;0000",
+  "datePublished": "2018-08-06T00:00:00&#43;0000",
+  "dateModified": "2018-08-06T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "CODE EXAMPLE A slice refers to a section of an underlying array. It can grow and shrink within the bounds of this array: construction, slicing, iteration, append and copy, stacks and queues."
+  "description": "CODE EXAMPLE A slice refers to a section of an underlying array. It can grow and shrink within the bounds of this array."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Slices in a nutshell">
-<meta property="og:description" content="CODE EXAMPLE A slice refers to a section of an underlying array. It can grow and shrink within the bounds of this array: construction, slicing, iteration, append and copy, stacks and queues.">
+<meta property="og:description" content="CODE EXAMPLE A slice refers to a section of an underlying array. It can grow and shrink within the bounds of this array.">
 <meta property="og:url" content="https://yourbasic.org/golang/slices-explained/">
 <meta property="og:image" content="https://yourbasic.org/golang/orange.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Slices in a nutshell">
-<meta name="twitter:description" content="CODE EXAMPLE A slice refers to a section of an underlying array. It can grow and shrink within the bounds of this array: construction, slicing, iteration, append and copy, stacks and queues.">
+<meta name="twitter:description" content="CODE EXAMPLE A slice refers to a section of an underlying array. It can grow and shrink within the bounds of this array.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/orange.jpg">
 
@@ -91,13 +91,22 @@
 
 <div style="margin-top:1em;"><img src="/golang/orange.jpg" alt="A sliced orange"></div>
 
-<ul class="toc">
-  <li><a href="#basics">Basics</a></li>
-  <li><a href="#construction">Construction</a></li>
-  <li><a href="#iteration">Iteration</a></li>
-  <li><a href="#append-and-copy">Append and copy</a></li>
-  <li><a href="#stacks-and-queues">Stacks and queues</a></li>
-</ul>
+<div style="margin-top: 1em"></div>
+<div style="float: left; min-width: 20%; margin-right: 2em;">
+  <ul class="toc" style="margin: 0;">
+    <li><a href="#basics">Basics</a></li>
+    <li><a href="#construction">Construction</a></li>
+    <li><a href="#slicing">Slicing</a></li>
+  </ul>
+</div>
+<div style="float: left;">
+  <ul class="toc" style="margin: 0;">
+    <li><a href="#iteration">Iteration</a></li>
+    <li><a href="#append-and-copy">Append and copy</a></li>
+    <li><a href="#stacks-and-queues">Stacks and queues</a></li>
+  </ul>
+</div>
+<div style="clear: both"></div>
 
 <h2 id="basics">Basics</h2>
 
