@@ -339,6 +339,18 @@ func main() { if len(os.Args) != 3 { fmt.Println(&#34;Usage:&#34;, os.Args[0], &
     </item>
     
     <item>
+      <title>Concatenate strings efficiently with a string builder</title>
+      <link>https://yourbasic.org/golang/build-append-concatenate-strings-efficiently/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/build-append-concatenate-strings-efficiently/</guid>
+      <description>Clean and simple Efficient string concatenation Before Go 1.10  Clean and simple For simple cases where performance is a non-issue, fmt.Sprintf is your friend.
+s := fmt.Sprintf(&#34;Size: %d MB.&#34;, 85) // s == &#34;Size: 85 MB.&#34; The fmt cheat sheet lists the most common formatting verbs and flags.
+Efficient string concatenationGo 1.10 The strings.Builder type is used to efficiently append strings using write&amp;nbsp;methods.
+ It offers a subset of the bytes.</description>
+    </item>
+    
+    <item>
       <title>Constant overflows int</title>
       <link>https://yourbasic.org/golang/gotcha-constant-overflows-int/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -833,18 +845,6 @@ s := &#34;Foo&#34; md5 := md5.Sum([]byte(s)) sha1 := sha1.Sum([]byte(s)) sha256 
       <description>Remove all elements Keep allocated memory Empty slice vs. nil slice  Remove all elements To remove all elements, simply set the slice to nil.
 a := []string{&#34;A&#34;, &#34;B&#34;, &#34;C&#34;, &#34;D&#34;, &#34;E&#34;} a = nil fmt.Println(a, len(a), cap(a)) // [] 0 0 This will release the underlying array to the garbage collector (assuming there are no other references).
 Keep allocated memory To keep the underlying array, slice the slice to zero length.</description>
-    </item>
-    
-    <item>
-      <title>How to best use a string builder</title>
-      <link>https://yourbasic.org/golang/build-append-concatenate-strings-efficiently/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/build-append-concatenate-strings-efficiently/</guid>
-      <description>Clean and simple Efficient string concatenation Before Go 1.10  Clean and simple For simple cases where performance is a non-issue, fmt.Sprintf is your friend.
-s := fmt.Sprintf(&#34;Size: %d MB.&#34;, 85) // s == &#34;Size: 85 MB.&#34; The fmt cheat sheet lists the most common formatting verbs and flags.
-Efficient string concatenationGo 1.10 The strings.Builder type is used to efficiently concatenate strings using write&amp;nbsp;methods.
- It offers a subset of the bytes.</description>
     </item>
     
     <item>

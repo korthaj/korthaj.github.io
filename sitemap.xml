@@ -159,6 +159,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/build-append-concatenate-strings-efficiently/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/gotcha-constant-overflows-int/</loc>
   </url>
   
@@ -360,10 +364,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/clear-slice/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/build-append-concatenate-strings-efficiently/</loc>
   </url>
   
   <url>
