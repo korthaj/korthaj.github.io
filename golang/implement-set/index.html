@@ -106,7 +106,7 @@ exists := set["Foo"]  <span class="comment">// Membership</span></code></pre>
 
 <p>If the memory used by the booleans is an issue, which seems unlikely,
 you could replace them with empty&nbsp;structs. In Go, an empty struct
-typically doesn&rsquo;t require any&nbsp;memory.</p>
+typically doesn&rsquo;t use any&nbsp;memory.</p>
 
 <pre><code>type void struct{}
 var member void
