@@ -30,6 +30,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/split-string-into-slice/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/getting-started-hello-world/</loc>
   </url>
   
@@ -404,10 +408,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/reverse-utf8-string/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/split-string-into-slice/</loc>
   </url>
   
   <url>

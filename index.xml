@@ -87,6 +87,18 @@ Check second return value m := map[string]float64{&#34;pi&#34;: 3.14} _, found :
     </item>
     
     <item>
+      <title>3 ways to split a string into a slice</title>
+      <link>https://yourbasic.org/golang/split-string-into-slice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/split-string-into-slice/</guid>
+      <description>Comma Use the strings.Split function to split a string into its comma separated values.
+s := strings.Split(&amp;quot;a,b,c&amp;quot;, &amp;quot;,&amp;quot;) fmt.Println(s) // Output: [a b c]  To include the separators, use strings.SplitAfter. To split only the first n values, use strings.SplitN and strings.SplitAfterN.
+White space Use the strings.Fields function to split a string into substrings removing white space.
+s := strings.Fields(&amp;quot; a \t b \n&amp;quot;) fmt.Println(s) // Output: [a b]  General case In more complicated situations, the Regexp.</description>
+    </item>
+    
+    <item>
       <title>4 key Go resources to get you started</title>
       <link>https://yourbasic.org/golang/getting-started-hello-world/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1071,18 +1083,6 @@ quit := make(chan struct{}) go func() { for { select { case // â€¦ } } }() // â€
       <guid>https://yourbasic.org/golang/reverse-utf8-string/</guid>
       <description>Byte by byte It&amp;rsquo;s pretty straightforward to reverse a string one byte at a time.
 // Reverse returns a string with the bytes of s in reverse order. func Reverse(s string) string { var b strings.Builder for i := len(s) - 1; i = 0; i-- { b.WriteByte(s[i]) } return b.String() }  Rune by rune To reverse a string by UTF-8 encoded characters is a bit trickier.</description>
-    </item>
-    
-    <item>
-      <title>How to split a string into a slice</title>
-      <link>https://yourbasic.org/golang/split-string-into-slice/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/split-string-into-slice/</guid>
-      <description>Comma Use the strings.Split function to split a string into its comma separated values.
-s := strings.Split(&amp;quot;a,b,c&amp;quot;, &amp;quot;,&amp;quot;) fmt.Println(s) // Output: [a b c]  To include the separators, use strings.SplitAfter. To split only the first n values, use strings.SplitN and strings.SplitAfterN.
-White space Use the strings.Fields function to split a string into substrings removing white space.
-s := strings.Fields(&amp;quot; a \t b \n&amp;quot;) fmt.Println(s) // Output: [a b]  General case In more complicated situations, the Regexp.</description>
     </item>
     
     <item>
