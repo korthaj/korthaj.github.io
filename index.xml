@@ -1531,10 +1531,9 @@ func main() { fmt.Println(&amp;quot;Hello&amp;quot;) }  This is a trade-off in t
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/package-documentation/</guid>
-      <description>The GoDoc website hosts docu&amp;shy;men&amp;shy;tation for all public Go packages on Bitbucket, GitHub, Google Project Hosting and&amp;nbsp;Launchpad.
-Godoc command The godoc command extracts and generates documentation for all locally installed Go programs, both your own code and the standard libraries.
-The following command starts a web server that presents the documentation at http://localhost:6060/.
-$ godoc -http=:6060 &amp;amp;   The documentation is tightly coupled with the code. For example, you can navigate from a function&amp;rsquo;s documentation to its implementation with a single click.</description>
+      <description>godoc.org website local godoc server go doc command-line tool Create documentation Runnable documentation examples  godoc.org website The GoDoc website hosts docu&amp;shy;men&amp;shy;tation for all public Go packages on Bitbucket, GitHub, Google Project Hosting and&amp;nbsp;Launchpad.
+local godoc server The godoc command extracts and generates documentation for all locally installed Go programs, both your own code and the standard libraries.
+The following command starts a web server that presents the documentation at http://localhost:6060/.</description>
     </item>
     
     <item>
