@@ -34,8 +34,8 @@
   "image": [
     "https://yourbasic.org/golang/hello-server.png"
    ],
-  "datePublished": "2018-06-30T00:00:00&#43;0000",
-  "dateModified": "2018-06-30T00:00:00&#43;0000",
+  "datePublished": "2018-09-05T00:00:00&#43;0000",
+  "dateModified": "2018-09-05T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -88,7 +88,7 @@
 
 
 <p>If you run the program below and access the URL <code>http://localhost:8080/world</code>,
-you&nbsp;will&nbsp;be&nbsp;greated by&nbsp;this&nbsp;page.</p>
+you&nbsp;will&nbsp;be&nbsp;greeted by&nbsp;this&nbsp;page.</p>
 
 <p><img src="/golang/hello-server.png" alt="Web browser localhost:8080" style="border:1px solid grey;" /></p>
 
@@ -112,7 +112,7 @@ func HelloServer(w http.ResponseWriter, r *http.Request) {
 <ul>
 <li>The call to <a href="https://golang.org/pkg/net/http/#HandleFunc"><code>http.HandleFunc</code></a>
 tells the <a href="https://golang.org/pkg/net/http/"><code>net.http</code></a> package
-to handle all requests to the web root with <code>HelloServer</code>.</li>
+to handle all requests to the web root with the <code>HelloServer</code> function.</li>
 <li>The call to <a href="https://golang.org/pkg/net/http/#ListenAndServe"><code>http.ListenAndServe</code></a>
 tells the server to listen on the TCP network address <code>:8080</code>.
 This function blocks until the program is terminated.</li>
@@ -120,11 +120,11 @@ This function blocks until the program is terminated.</li>
 sends data to the HTTP client.</li>
 <li>An <a href="https://golang.org/pkg/net/http/#Request"><code>http.Request</code></a> is a data structure
 that represents a client HTTP request.</li>
-<li><code>r.URL.Path</code> is the path component of the request URL;
-the path component of <code>http://localhost:8080/world</code> is&nbsp;<code>/world</code>.</li>
+<li><code>r.URL.Path</code> is the path component of the requested URL. In this case, <code>&quot;/world&quot;</code> is
+the path component of <code>&quot;http://localhost:8080/world&quot;</code>.</li>
 </ul>
 
-<h2 id="related">Related</h2>
+<h2 id="further-reading">Further reading</h2>
 
 <p>The <a href="https://golang.org/doc/articles/wiki/">Writing Web Applications</a> tutorial
 shows how to extend this small example into a complete&nbsp;wiki.</p>
@@ -135,7 +135,7 @@ shows how to extend this small example into a complete&nbsp;wiki.</p>
 <li>create a data structure with load and save methods,</li>
 <li>use the <a href="https://golang.org/pkg/net/http/"><code>net/http</code></a> package to build web applications,</li>
 <li>use the <a href="https://golang.org/pkg/html/template/"><code>html/template</code></a> package to process HTML templates,</li>
-<li>use the <a href="https://golang.org/pkg/regexp/"><code>regexp</code></a> package to validate user input.</li>
+<li>use the <a href="/golang/regexp-cheat-sheet/"><code>regexp</code></a> package to validate user input.</li>
 </ul>
 
 
