@@ -477,7 +477,7 @@ x := 5.1 n := int(x) // convert float to int The conversion rules are extensive 
     </item>
     
     <item>
-      <title>Convert byte array/slice to string and back</title>
+      <title>Convert byte array/slice to string (and back)</title>
       <link>https://yourbasic.org/golang/convert-string-to-byte-slice/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -486,7 +486,7 @@ x := 5.1 n := int(x) // convert float to int The conversion rules are extensive 
     </item>
     
     <item>
-      <title>Convert float to string and back</title>
+      <title>Convert float to string (and back)</title>
       <link>https://yourbasic.org/golang/convert-string-to-float/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -495,7 +495,7 @@ x := 5.1 n := int(x) // convert float to int The conversion rules are extensive 
     </item>
     
     <item>
-      <title>Convert int/int64 to string and back</title>
+      <title>Convert int/int64 to string (and back)</title>
       <link>https://yourbasic.org/golang/convert-int-to-string/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -516,7 +516,7 @@ var x interface{} = []int{1, 2, 3} str := fmt.Sprintf(&#34;%v&#34;, x) fmt.Print
     </item>
     
     <item>
-      <title>Convert rune array/slice to string and back</title>
+      <title>Convert rune array/slice to string (and back)</title>
       <link>https://yourbasic.org/golang/convert-string-to-rune-slice/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
