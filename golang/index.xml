@@ -77,12 +77,12 @@ Check second return value m := map[string]float64{&#34;pi&#34;: 3.14} _, found :
     </item>
     
     <item>
-      <title>3 ways to compare slices</title>
+      <title>3 ways to compare slices/arrays</title>
       <link>https://yourbasic.org/golang/compare-slices/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/compare-slices/</guid>
-      <description>Basic case In most cases, you will want to write your own code to compare slices.
+      <description>Basic case In most cases, you will want to write your own code to compare slices and arrays.
 // Equal tells whether a and b contain the same elements. // A nil argument is equivalent to an empty slice. func Equal(a, b []int) bool { if len(a) != len(b) { return false } for i, v := range a { if v != b[i] { return false } } return true } Optimzed code for byte slices To compare byte slices, use the optimized bytes.</description>
     </item>
     
@@ -397,7 +397,7 @@ x := 5.1 n := int(x) // convert float to int The conversion rules are extensive 
     </item>
     
     <item>
-      <title>Convert between byte slice and string</title>
+      <title>Convert byte array/slice to string and back</title>
       <link>https://yourbasic.org/golang/convert-string-to-byte-slice/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -406,7 +406,7 @@ x := 5.1 n := int(x) // convert float to int The conversion rules are extensive 
     </item>
     
     <item>
-      <title>Convert between float and string</title>
+      <title>Convert float to string and back</title>
       <link>https://yourbasic.org/golang/convert-string-to-float/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -415,22 +415,13 @@ x := 5.1 n := int(x) // convert float to int The conversion rules are extensive 
     </item>
     
     <item>
-      <title>Convert between int/int64 and string</title>
+      <title>Convert int/int64 to string and back</title>
       <link>https://yourbasic.org/golang/convert-int-to-string/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/convert-int-to-string/</guid>
       <description>String to int String to int64 int to string int64 to string int to int64 (and back) General formatting  String to int Use strconv.Atoi to convert/parse a string to an&amp;nbsp;int.
 s := &#34;97&#34; if n, err := strconv.Atoi(s); err == nil { fmt.Println(n+1) } else { fmt.Println(s, &#34;is not an integer.&#34;) } // Output: 98 String to int64 Use strconv.ParseInt to parse a decimal string (base&amp;nbsp;10) and check if it fits into a 64-bit signed integer.</description>
-    </item>
-    
-    <item>
-      <title>Convert between rune slice and string</title>
-      <link>https://yourbasic.org/golang/convert-string-to-rune-slice/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/convert-string-to-rune-slice/</guid>
-      <description>String to rune slice Rune slice to string Efficiency  String to rune slice  When you convert a string to a rune slice, you get a new slice that contains the Unicode code points of the&amp;nbsp;string. For an invalid UTF-8 sequence, the rune value will be 0xFFFD for each invalid&amp;nbsp;byte.  s := &#34;abc日&#34; r := []rune(s) fmt.Printf(&#34;%v\n&#34;, r) // [97 98 99 26085] fmt.Printf(&#34;%U\n&#34;, r) // [U+0061 U+0062 U+0063 U+65E5]   You can also use a range loop to access the code points of a string.</description>
     </item>
     
     <item>
@@ -442,6 +433,15 @@ s := &#34;97&#34; if n, err := strconv.Atoi(s); err == nil { fmt.Println(n+1) } 
       <description>Use fmt.Sprintf to convert an interface value to a string.
 var x interface{} = &amp;quot;abc&amp;quot; str := fmt.Sprintf(&amp;quot;%v&amp;quot;, x)  In fact, the same technique can be used to get a string representation of any data structure.
 var x interface{} = []int{1, 2, 3} str := fmt.Sprintf(&#34;%v&#34;, x) fmt.Println(str) // &#34;[1 2 3]&#34; </description>
+    </item>
+    
+    <item>
+      <title>Convert rune array/slice to string and back</title>
+      <link>https://yourbasic.org/golang/convert-string-to-rune-slice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/convert-string-to-rune-slice/</guid>
+      <description>String to rune slice Rune slice to string Efficiency  String to rune slice  When you convert a string to a rune slice, you get a new slice that contains the Unicode code points of the&amp;nbsp;string. For an invalid UTF-8 sequence, the rune value will be 0xFFFD for each invalid&amp;nbsp;byte.  s := &#34;abc日&#34; r := []rune(s) fmt.Printf(&#34;%v\n&#34;, r) // [97 98 99 26085] fmt.Printf(&#34;%U\n&#34;, r) // [U+0061 U+0062 U+0063 U+65E5]   You can also use a range loop to access the code points of a string.</description>
     </item>
     
     <item>
@@ -622,6 +622,15 @@ var x interface{} = 2.3 switch v := x.(type) { case int: fmt.Println(&#34;int:&#
       <description>These utility functions convert a size in bytes to a human-readable string in either SI&amp;nbsp;(decimal) or IEC&amp;nbsp;(binary) format.
   Input ByteCountSI ByteCountIEC     999 &#34;999&amp;nbsp;B&#34; &#34;999&amp;nbsp;B&#34;   1000 &#34;1.0&amp;nbsp;kB&#34; &#34;1000&amp;nbsp;B&#34;   1023 &#34;1.0&amp;nbsp;kB&#34; &#34;1023&amp;nbsp;B&#34;   1024 &#34;1.0&amp;nbsp;kB&#34; &#34;1.0&amp;nbsp;KiB&#34;   987,654,321 &#34;987.7&amp;nbsp;MB&#34; &#34;941.9&amp;nbsp;MiB&#34;   math.MaxInt64 &#34;9.2&amp;nbsp;EB&#34; &#34;8.0&amp;nbsp;EiB&#34;    
 func ByteCountSI(b int64) string { const unit = 1000 if b = unit; n /= unit { div *= unit exp++ } return fmt.</description>
+    </item>
+    
+    <item>
+      <title>Format with fmt (string, number or arbitrary data)</title>
+      <link>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</guid>
+      <description>Basics Format a string without printing it Default formats and type Integer (base, padding, sign) Character (quoted, Unicode) Boolean (true/false)   Pointer (hex) Float (padding, precision, scientific notation) String or byte slice (quoted, padding, hex) Special values Find incorrect formatting with vet     Basics With the fmt package you can format numbers and strings padded with spaces or zeroes, in different bases, and with optional quotes.</description>
     </item>
     
     <item>
@@ -882,12 +891,12 @@ log.SetOutput(ioutil.Discard)  </description>
     </item>
     
     <item>
-      <title>How to find an element in a slice</title>
+      <title>How to find an element in a slice/array</title>
       <link>https://yourbasic.org/golang/find-search-contains-slice/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/find-search-contains-slice/</guid>
-      <description>Go doesn&amp;rsquo;t have an out-of-the-box search function for slices. Here are two example linear&amp;nbsp;search implemen&amp;shy;tations, which you can use as templates.
+      <description>Go doesn&amp;rsquo;t have an out-of-the-box linear search function for slices and arrays. Here are two example linear&amp;nbsp;search implemen&amp;shy;tations, which you can use as templates.
 // Find returns the smallest index i at which x == a[i], // or len(a) if there is no such index. func Find(a []string, x string) int { for i, n := range a { if x == n { return i } } return len(a) } // Contains tells whether a contains x.</description>
     </item>
     
@@ -910,15 +919,6 @@ type Weekday int const ( Sunday Weekday = iota Monday Tuesday Wednesday Thursday
       
       <guid>https://yourbasic.org/golang/format-parse-string-time-date-example/</guid>
       <description>Basics All time and date options Common time and date formats Predefined date and timestamp layouts Corner cases  Basics  The Format method formats a&amp;nbsp;time.Time. The time.Parse function parses a date&amp;nbsp;string.  func (t Time) Format(layout string) string func Parse(layout, value string) (Time, error) input := &#34;2017-08-31&#34; layout := &#34;2006-01-02&#34; t, _ := time.Parse(layout, input) fmt.Println(t) // 2017-08-31 00:00:00 +0000 UTC fmt.Println(t.Format(&#34;02-Jan-2006&#34;)) // 31-Aug-2017 The layout parameter should be the reference&amp;nbsp;date</description>
-    </item>
-    
-    <item>
-      <title>How to format anything (string, number or arbitrary data) with fmt</title>
-      <link>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</guid>
-      <description>Basics Format a string without printing it Default formats and type Integer (base, padding, sign) Character (quoted, Unicode) Boolean (true/false)   Pointer (hex) Float (padding, precision, scientific notation) String or byte slice (quoted, padding, hex) Special values Find incorrect formatting with vet     Basics With the fmt package you can format numbers and strings padded with spaces or zeroes, in different bases, and with optional quotes.</description>
     </item>
     
     <item>
@@ -1117,15 +1117,13 @@ There is a data race: the variable i is shared by six&amp;nbsp;(6) goroutines.
     </item>
     
     <item>
-      <title>Last item in a slice</title>
+      <title>Last item in a slice/array</title>
       <link>https://yourbasic.org/golang/last-item-in-slice/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/last-item-in-slice/</guid>
-      <description>To read the last element:
-a := []string{&#34;A&#34;, &#34;B&#34;, &#34;C&#34;} s := a[len(a)-1] // C To remove it:
-a = a[:len(a)-1] // [A B] (Go doesn&amp;rsquo;t have negative indexing like Python does. This is a deliberate design decision — keeping the language simple can help save you from subtle bugs.)
-Watch out for memory leaks If the slice is permanent and the element temporary, you may want to remove the reference before removing the element from the slice.</description>
+      <description>Read last element Use the index len(a)-1 to access the last element of a slice or array&amp;nbsp;a.
+a := []string{&#34;A&#34;, &#34;B&#34;, &#34;C&#34;} s := a[len(a)-1] // C  Go doesn&#39;t have negative indexing like Python does. This is a deliberate design decision — keeping the language simple can help save you from subtle bugs.  Remove last element a = a[:len(a)-1] // [A B] Watch out for memory leaks Warning: If the slice is permanent and the element temporary, you may want to remove the reference to the element before slicing it off.</description>
     </item>
     
     <item>
@@ -1587,7 +1585,7 @@ a := []int{1, 2, 3, 4, 5, 6, 7, 8} rand.Seed(time.Now().UnixNano()) rand.Shuffle
     </item>
     
     <item>
-      <title>Slices in a nutshell</title>
+      <title>Slices and arrays in a nutshell</title>
       <link>https://yourbasic.org/golang/slices-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
