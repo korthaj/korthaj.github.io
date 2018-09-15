@@ -287,10 +287,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/generate-uuid-guid/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/golang/generate-number-random-range/</loc>
   </url>
   
@@ -656,6 +652,10 @@
   
   <url>
     <loc>https://yourbasic.org/golang/shuffle-slice-array/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/generate-uuid-guid/</loc>
   </url>
   
   <url>

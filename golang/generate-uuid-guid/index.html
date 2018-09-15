@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Generate a random UUID/GUID - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE You can use the rand.Read function from package crypto/rand to generate a universally unique identifier.">
+  <title>Simple code to generate a unique id (UUID/GUID) - yourbasic.org/golang </title>
+  <meta name="description" content="CODE EXAMPLE You can use the rand.Read function from package crypto/rand to generate a basic UUID/GUID.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -22,6 +22,50 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/golang/generate-uuid-guid/"
+  },
+  "headline": "Simple code to generate a unique id (UUID/GUID)",
+  "image": [
+    "https://yourbasic.org/golang/fingerprint-keyboard.jpg"
+   ],
+  "datePublished": "2018-09-15T00:00:00&#43;0000",
+  "dateModified": "2018-09-15T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "CODE EXAMPLE You can use the rand.Read function from package crypto/rand to generate a basic UUID/GUID."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Simple code to generate a unique id (UUID/GUID)">
+<meta property="og:description" content="CODE EXAMPLE You can use the rand.Read function from package crypto/rand to generate a basic UUID/GUID.">
+<meta property="og:url" content="https://yourbasic.org/golang/generate-uuid-guid/">
+<meta property="og:image" content="https://yourbasic.org/golang/fingerprint-keyboard.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Simple code to generate a unique id (UUID/GUID)">
+<meta name="twitter:description" content="CODE EXAMPLE You can use the rand.Read function from package crypto/rand to generate a basic UUID/GUID.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="https://yourbasic.org/golang/fingerprint-keyboard.jpg">
+
+
 </head>
 
 <body>
@@ -38,11 +82,17 @@
 
 <main>
 <article>
-<h1>Generate a random UUID/GUID</h1>
+<h1>Simple code to generate a unique id (UUID/GUID)</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
-<p>Use the <a href="https://golang.org/pkg/crypto/rand/#Read"><code>rand.Read</code></a> function from  package <a href="https://golang.org/pkg/crypto/rand/"><code>crypto/rand</code></a> to generate a <a href="https://en.wikipedia.org/wiki/Universally_unique_identifier">universally unique identifier</a>.</p>
+<!-- CC0: https://www.pexels.com/photo/finger-print-on-enter-key-of-keyboard-163017/ -->
+
+<div style="margin-top:1em;"><img src="/golang/fingerprint-keyboard.jpg"></div>
+
+<p>A <a href="https://en.wikipedia.org/wiki/Universally_unique_identifier">universally unique identifier</a> (UUID), or globally unique identifier (GUID), is a 128-bit number used to identify information.</p>
+
+<p>Use the <a href="https://golang.org/pkg/crypto/rand/#Read"><code>rand.Read</code></a> function from  package <a href="https://golang.org/pkg/crypto/rand/"><code>crypto/rand</code></a> to generate a&nbsp;basic&nbsp;UUID.</p>
 
 <pre><code>b := make([]byte, 16)
 _, err := rand.Read(b)
@@ -70,10 +120,10 @@ fails on a Windows system.
 </blockquote>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fgenerate-uuid-guid%2f&amp;text=Generate%20a%20random%20UUID/GUID&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fgenerate-uuid-guid%2f&amp;text=Simple%20code%20to%20generate%20a%20unique%20id%20%28UUID/GUID%29&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fgenerate-uuid-guid%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fgenerate-uuid-guid%2f&amp;title=Generate%20a%20random%20UUID/GUID" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Generate%20a%20random%20UUID/GUID&body=https%3a%2f%2fyourbasic.org%2fgolang%2fgenerate-uuid-guid%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fgenerate-uuid-guid%2f&amp;title=Simple%20code%20to%20generate%20a%20unique%20id%20%28UUID/GUID%29" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Simple%20code%20to%20generate%20a%20unique%20id%20%28UUID/GUID%29&body=https%3a%2f%2fyourbasic.org%2fgolang%2fgenerate-uuid-guid%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
