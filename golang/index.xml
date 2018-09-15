@@ -636,15 +636,6 @@ func ByteCountSI(b int64) string { const unit = 1000 if b = unit; n /= unit { di
     </item>
     
     <item>
-      <title>Format with fmt (string, number or arbitrary data)</title>
-      <link>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</guid>
-      <description>Basics Format a string without printing it Default formats and type Integer (base, padding, sign) Character (quoted, Unicode) Boolean (true/false)   Pointer (hex) Float (padding, precision, scientific notation) String or byte slice (quoted, padding, hex) Special values Find incorrect formatting with vet     Basics With the fmt package you can format numbers and strings padded with spaces or zeroes, in different bases, and with optional quotes.</description>
-    </item>
-    
-    <item>
       <title>Function types and values</title>
       <link>https://yourbasic.org/golang/function-pointer-type-declaration/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -919,6 +910,15 @@ type Weekday int const ( Sunday Weekday = iota Monday Tuesday Wednesday Thursday
       
       <guid>https://yourbasic.org/golang/format-parse-string-time-date-example/</guid>
       <description>Basics All time and date options Common time and date formats Predefined date and timestamp layouts Corner cases  Basics  The Format method formats a&amp;nbsp;time.Time. The time.Parse function parses a date&amp;nbsp;string.  func (t Time) Format(layout string) string func Parse(layout, value string) (Time, error) input := &#34;2017-08-31&#34; layout := &#34;2006-01-02&#34; t, _ := time.Parse(layout, input) fmt.Println(t) // 2017-08-31 00:00:00 +0000 UTC fmt.Println(t.Format(&#34;02-Jan-2006&#34;)) // 31-Aug-2017 The layout parameter should be the reference&amp;nbsp;date</description>
+    </item>
+    
+    <item>
+      <title>How to format with fmt (string, number or arbitrary data)</title>
+      <link>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</guid>
+      <description>Basics Format a string without printing it Default formats and type Integer (base, padding, sign) Character (quoted, Unicode) Boolean (true/false)   Pointer (hex) Float (padding, precision, scientific notation) String or byte slice (quoted, padding, hex) Special values Find incorrect formatting with vet     Basics With the fmt package you can format numbers and strings padded with spaces or zeroes, in different bases, and with optional quotes.</description>
     </item>
     
     <item>
