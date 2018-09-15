@@ -34,6 +34,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/trim-whitespace-from-string/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/getting-started-hello-world/</loc>
   </url>
   
@@ -729,10 +733,6 @@
   
   <url>
     <loc>https://yourbasic.org/algorithms/treap/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/trim-whitespace-from-string/</loc>
   </url>
   
   <url>

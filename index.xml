@@ -99,6 +99,17 @@ s := strings.Fields(&amp;quot; a \t b \n&amp;quot;) fmt.Println(s) // Output: [a
     </item>
     
     <item>
+      <title>3 ways to trim whitespace (or other characters) from a string</title>
+      <link>https://yourbasic.org/golang/trim-whitespace-from-string/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/trim-whitespace-from-string/</guid>
+      <description>Use the strings.TrimSpace function to remove leading and trailing whitespace as defined by&amp;nbsp;Unicode.
+s := strings.TrimSpace(&#34;\t Goodbye hair!\n &#34;) fmt.Printf(&#34;%q&#34;, s) // &#34;Goodbye hair!&#34;  To remove other leading and trailing characters, use strings.Trim. To remove only the leading or the trailing characters, use strings.TrimLeft or strings.TrimRight.  Further reading 
+The String functions cheat sheet presents the top Go string functions.</description>
+    </item>
+    
+    <item>
       <title>4 key Go resources to get you started</title>
       <link>https://yourbasic.org/golang/getting-started-hello-world/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1953,17 +1964,6 @@ select { case news := &amp;lt;-AFP: fmt.Println(news) case &amp;lt;-time.After(t
       <description>A treap stores items in sorted order and offers effi&amp;shy;cient lookup, addi&amp;shy;tion and remo&amp;shy;val of items.
 If you could use only one data structure, which one would you choose? A&amp;nbsp;hash table? While it supports the basic lookup, addition and removal operations, it&amp;nbsp;doesn’t keep the elements sorted. Therefore it can’t efficiently perform some common tasks, such as finding the minimum element or producing an ordered list of all&amp;nbsp;elements.
 What would you require of this ideal, sole structure?</description>
-    </item>
-    
-    <item>
-      <title>Trim leading and trailing whitespace (or other characters)</title>
-      <link>https://yourbasic.org/golang/trim-whitespace-from-string/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/trim-whitespace-from-string/</guid>
-      <description>Use the strings.TrimSpace function to remove leading and trailing whitespace as defined by&amp;nbsp;Unicode.
-s := strings.TrimSpace(&#34;\t Goodbye hair!\n &#34;) fmt.Printf(&#34;%q&#34;, s) // &#34;Goodbye hair!&#34;  To remove other leading and trailing characters, use strings.Trim. To remove only the leading or the trailing characters, use strings.TrimLeft or strings.TrimRight.  Further reading 
-The String functions cheat sheet presents the top Go string functions.</description>
     </item>
     
     <item>
