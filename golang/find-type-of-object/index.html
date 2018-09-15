@@ -51,6 +51,11 @@ to get a Go-syntax representation of the&nbsp;type.</p>
 xType := fmt.Sprintf("%T", x)
 fmt.Println(xType) <span class="comment">// "[]int"</span></code></pre>
 
+<blockquote>
+The <a href="/golang/interfaces-explained/#the-empty-interface">empty interface</a> denoted by <code>interface{}</code>
+can hold values of any type.
+</blockquote>
+
 <h2 id="a-simple-choice">A simple choice</h2>
 
 <p>Use a type switch to do several type assertions in series.</p>

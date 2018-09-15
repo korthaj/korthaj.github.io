@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/sorted-ring-binders.jpg"
    ],
   "datePublished": "2018-04-15T00:00:00&#43;0000",
-  "dateModified": "2018-05-01T00:00:00&#43;0000",
+  "dateModified": "2018-09-15T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -139,8 +139,9 @@ fmt.Println(family) <span class="comment">// [{David 2} {Eve 2} {Alice 23} {Bob 
 <ul>
 <li>Use the generic <a href="https://golang.org/pkg/sort/#Sort"><code>sort.Sort</code></a> and
 <a href="https://golang.org/pkg/sort/#Stable"><code>sort.Stable</code></a> functions.</li>
-<li>They sort any collection that implements
-<a href="https://golang.org/pkg/sort/#Interface"><code>sort.Interface</code></a>.</li>
+<li>They sort any collection that implements the
+<a href="https://golang.org/pkg/sort/#Interface"><code>sort.Interface</code></a>
+<a href="/golang/interfaces-explained/">interface</a>.</li>
 </ul>
 
 <pre><code>type Interface interface {

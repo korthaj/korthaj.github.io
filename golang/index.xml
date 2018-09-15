@@ -609,8 +609,8 @@ type error interface { Error() string }  Example The os.Open function returns a 
       
       <guid>https://yourbasic.org/golang/find-type-of-object/</guid>
       <description>A simple string Use the %T flag in the fmt package to get a Go-syntax representation of the&amp;nbsp;type.
-var x interface{} = []int{1, 2, 3} xType := fmt.Sprintf(&#34;%T&#34;, x) fmt.Println(xType) // &#34;[]int&#34; A simple choice Use a type switch to do several type assertions in series.
-var x interface{} = 2.3 switch v := x.(type) { case int: fmt.Println(&#34;int:&#34;, v) case float64: fmt.Println(&#34;float64:&#34;, v) default: fmt.Println(&#34;unknown&#34;) } // Output: float64: 2.</description>
+var x interface{} = []int{1, 2, 3} xType := fmt.Sprintf(&#34;%T&#34;, x) fmt.Println(xType) // &#34;[]int&#34;  The empty interface denoted by interface{} can hold values of any type.  A simple choice Use a type switch to do several type assertions in series.
+var x interface{} = 2.3 switch v := x.(type) { case int: fmt.</description>
     </item>
     
     <item>
