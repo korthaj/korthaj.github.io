@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Command-line arguments - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE You can access command-line arguments passed to a Go program through the os.Args variable.">
+  <title>Command-line arguments and flags - yourbasic.org/golang </title>
+  <meta name="description" content="CODE EXAMPLE You can access command-line arguments, including the program name and flags, through the os.Args variable.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -22,6 +22,50 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/golang/command-line-arguments/"
+  },
+  "headline": "Command-line arguments and flags",
+  "image": [
+    "https://yourbasic.org/golang/tibetan-prayer-flags.jpg"
+   ],
+  "datePublished": "2018-09-15T00:00:00&#43;0000",
+  "dateModified": "2018-09-15T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "CODE EXAMPLE You can access command-line arguments, including the program name and flags, through the os.Args variable."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Command-line arguments and flags">
+<meta property="og:description" content="CODE EXAMPLE You can access command-line arguments, including the program name and flags, through the os.Args variable.">
+<meta property="og:url" content="https://yourbasic.org/golang/command-line-arguments/">
+<meta property="og:image" content="https://yourbasic.org/golang/tibetan-prayer-flags.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Command-line arguments and flags">
+<meta name="twitter:description" content="CODE EXAMPLE You can access command-line arguments, including the program name and flags, through the os.Args variable.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="https://yourbasic.org/golang/tibetan-prayer-flags.jpg">
+
+
 </head>
 
 <body>
@@ -38,11 +82,18 @@
 
 <main>
 <article>
-<h1>Command-line arguments</h1>
+<h1>Command-line arguments and flags</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
+
+
+<!-- CC0: https://pixabay.com/en/tibetan-prayer-flags-flags-color-1384193/ -->
+
+<div style="margin-top:1em;"><img src="/golang/tibetan-prayer-flags.jpg"></div>
+
 <p>The <a href="https://golang.org/pkg/os/#pkg-variables"><code>os.Args</code></a> variable
-holds the command-line arguments, starting with the program name.</p>
+holds the command-line arguments – starting with the program name –
+which are passed to a Go program.</p>
 
 <pre><code>func main() {
     if len(os.Args) != 3 {
@@ -59,6 +110,10 @@ $ ./grep
 Usage: ./grep PATTERN FILE
 </code></pre>
 
+<h3 id="flag-parsing">Flag parsing</h3>
+
+<p>The <a href="https://golang.org/pkg/flag/">flag</a> package implements basic command-line flag parsing.</p>
+
 
 <h3>More code examples</h3>
 
@@ -69,10 +124,10 @@ Usage: ./grep PATTERN FILE
 <div style="clear:both;"></div>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fcommand-line-arguments%2f&amp;text=Command-line%20arguments&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fcommand-line-arguments%2f&amp;text=Command-line%20arguments%20and%20flags&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fcommand-line-arguments%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fcommand-line-arguments%2f&amp;title=Command-line%20arguments" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Command-line%20arguments&body=https%3a%2f%2fyourbasic.org%2fgolang%2fcommand-line-arguments%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fcommand-line-arguments%2f&amp;title=Command-line%20arguments%20and%20flags" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Command-line%20arguments%20and%20flags&body=https%3a%2f%2fyourbasic.org%2fgolang%2fcommand-line-arguments%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 

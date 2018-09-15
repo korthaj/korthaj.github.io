@@ -411,13 +411,13 @@ const n = 1212121 if big.NewInt(n).ProbablyPrime(0) { fmt.Println(n, &#34;is pri
     </item>
     
     <item>
-      <title>Command-line arguments</title>
+      <title>Command-line arguments and flags</title>
       <link>https://yourbasic.org/golang/command-line-arguments/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/command-line-arguments/</guid>
-      <description>The os.Args variable holds the command-line arguments, starting with the program name.
-func main() { if len(os.Args) != 3 { fmt.Println(&#34;Usage:&#34;, os.Args[0], &#34;PATTERN&#34;, &#34;FILE&#34;) return } pattern := os.Args[1] file := os.Args[2] // ... } $ go build grep.go $ ./grep Usage: ./grep PATTERN FILE  </description>
+      <description>The os.Args variable holds the command-line arguments – starting with the program name – which are passed to a Go program.
+func main() { if len(os.Args) != 3 { fmt.Println(&#34;Usage:&#34;, os.Args[0], &#34;PATTERN&#34;, &#34;FILE&#34;) return } pattern := os.Args[1] file := os.Args[2] // ... } $ go build grep.go $ ./grep Usage: ./grep PATTERN FILE  Flag parsing The flag package implements basic command-line flag parsing.</description>
     </item>
     
     <item>
