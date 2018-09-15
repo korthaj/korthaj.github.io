@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unused imports - yourbasic.org/golang </title>
+  <title>Unused package imports - yourbasic.org/golang </title>
   <meta name="description" content="How to avoid the imported and not used compiler error in Go.">
   
   <link rel="stylesheet" href="/style.css">
@@ -38,11 +38,11 @@
 
 <main>
 <article>
-<h1>Unused imports</h1>
+<h1>Unused package imports</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
-<p>As you may have noticed, programs with unused imports do not compile.</p>
+<p>As you may have noticed, programs with unused <a href="/golang/packages-explained/">package</a> imports do not compile.</p>
 
 <pre><code>package main
 
@@ -69,7 +69,7 @@ trading short-term convenience for long-term build speed and program clarity.
 
 <h2 id="workaround">Workaround</h2>
 
-<p>There&rsquo;s no compiler option to allow unused imports. If you don&rsquo;t want to remove/comment out the import, you can for instance use it in a dummy assignment:</p>
+<p>There&rsquo;s no compiler option to allow unused package imports. If you don&rsquo;t want to remove/comment out the import, you can for instance use it in a dummy assignment:</p>
 
 <pre><code class="skiphl">package main
 
@@ -87,6 +87,12 @@ func main() {
 <h2 id="a-better-solution">A better solution</h2>
 
 <p>Use the <a href="https://godoc.org/golang.org/x/tools/cmd/goimports">goimports</a> tool, which rewrites a Go source file to have the correct imports. Many Go editors and IDEs run this tool automatically whenever a source file is written.</p>
+
+<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2funused-imports%2f&amp;text=Unused%20package%20imports&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2funused-imports%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2funused-imports%2f&amp;title=Unused%20package%20imports" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Unused%20package%20imports&body=https%3a%2f%2fyourbasic.org%2fgolang%2funused-imports%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>

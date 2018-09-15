@@ -2029,17 +2029,6 @@ const big = 10000000000 // Ok, even thought it&#39;s too big for an int. const b
     </item>
     
     <item>
-      <title>Unused imports</title>
-      <link>https://yourbasic.org/golang/unused-imports/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/unused-imports/</guid>
-      <description>As you may have noticed, programs with unused imports do not compile.
-package main import ( &#34;fmt&#34; &#34;log&#34; // &#34;imported and not used: log&#34; ) func main() { fmt.Println(&#34;Hello&#34;) } ../main.go:5:2: imported and not used: &amp;quot;log&amp;quot;  This is a deliberate feature of the Go language.
- The presence of an unused variable may indicate a bug [&amp;hellip;] Go refuses to compile programs with unused variables or imports, trading short-term convenience for long-term build speed and program clarity.</description>
-    </item>
-    
-    <item>
       <title>Unused local variables</title>
       <link>https://yourbasic.org/golang/unused-local-variables/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -2047,6 +2036,17 @@ package main import ( &#34;fmt&#34; &#34;log&#34; // &#34;imported and not used:
       <guid>https://yourbasic.org/golang/unused-local-variables/</guid>
       <description>As you may have noticed, programs with unused local variables do not compile. func main() { var n int // &amp;ldquo;n declared and not used&amp;rdquo; n = 5 // this doesn&amp;rsquo;t help }
 ../main.go:2:6: n declared and not used  This is a deliberate feature of the Go language.
+ The presence of an unused variable may indicate a bug [&amp;hellip;] Go refuses to compile programs with unused variables or imports, trading short-term convenience for long-term build speed and program clarity.</description>
+    </item>
+    
+    <item>
+      <title>Unused package imports</title>
+      <link>https://yourbasic.org/golang/unused-imports/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/unused-imports/</guid>
+      <description>As you may have noticed, programs with unused package imports do not compile.
+package main import ( &#34;fmt&#34; &#34;log&#34; // &#34;imported and not used: log&#34; ) func main() { fmt.Println(&#34;Hello&#34;) } ../main.go:5:2: imported and not used: &amp;quot;log&amp;quot;  This is a deliberate feature of the Go language.
  The presence of an unused variable may indicate a bug [&amp;hellip;] Go refuses to compile programs with unused variables or imports, trading short-term convenience for long-term build speed and program clarity.</description>
     </item>
     
