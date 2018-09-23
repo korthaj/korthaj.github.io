@@ -91,7 +91,12 @@
 
 <div style="margin-top:1em;"><img src="/golang/sorted-ring-binders.jpg"></div>
 
-<p>All algorithms in the Go sort package make <em>O</em>(<em>n</em>&nbsp;log&nbsp;<em>n</em>) comparisons in the worst case, where <em>n</em> is the number of elements to be sorted.</p>
+<ul class="toc">
+  <li><a href="#sort-a-slice-of-ints-float64s-or-strings">Slice of ints, float64s or strings</a></li>
+  <li><a href="#sort-with-custom-compare-function">Custom compare function</a></li>
+  <li><a href="#sort-custom-data-structures">Custom data structures</a></li>
+  <li><a href="#performance">Performance</a></li>
+</ul>
 
 <h2 id="sort-a-slice-of-ints-float64s-or-strings">Sort a slice of ints, float64s or strings</h2>
 
@@ -108,9 +113,9 @@ sort.Ints(s)
 fmt.Println(s) // <span class="comment">[1 2 3 4]</span></code></pre>
 
 <blockquote>
-<p>Package <a href="https://godoc.org/github.com/yourbasic/radix">radix</a> is
-a drop-in replacement for sort.Strings;
-it can be more than twice as fast in some settings.</p>
+<p>Package <a href="https://godoc.org/github.com/yourbasic/radix">radix</a> contains
+a drop-in replacement for sort.Strings, which can be
+more than twice as fast in some settings.</p>
 </blockquote>
 
 <h2 id="sort-with-custom-compare-function">Sort with custom compare function</h2>
@@ -158,7 +163,7 @@ fmt.Println(family) <span class="comment">// [{David 2} {Eve 2} {Alice 23} {Bob 
         Swap(i, j int)
 }</code></pre>
 
-<p>Here is an example.</p>
+<p>Here&rsquo;s an example.</p>
 
 <pre><code>type Person struct {
     Name string
@@ -181,6 +186,10 @@ func main() {
     sort.Sort(ByAge(family))
     fmt.Println(family) <span class="comment">// [{Eve 2} {Alice 23} {Bob 25}]</span>
 }</code></pre>
+
+<h2 id="performance">Performance</h2>
+
+<p>All algorithms in the Go sort package make <em>O</em>(<em>n</em>&nbsp;log&nbsp;<em>n</em>) comparisons in the worst case, where <em>n</em> is the number of elements to be sorted.</p>
 
 
 <h3>More code examples</h3>

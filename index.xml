@@ -1874,9 +1874,9 @@ Your basic API is an introduction to API design with examples in Go and&amp;nbsp
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/how-to-sort-in-go/</guid>
-      <description>All algorithms in the Go sort package make O(n&amp;nbsp;log&amp;nbsp;n) comparisons in the worst case, where n is the number of elements to be sorted.
-Sort a slice of ints, float64s or strings Use one of the functions
- sort.Ints sort.Float64s sort.Strings  s := []int{4, 2, 3, 1} sort.Ints(s) fmt.Println(s) // [1 2 3 4]  Package radix is a drop-in replacement for sort.Strings; it can be more than twice as fast in some settings.</description>
+      <description>Slice of ints, float64s or strings Custom compare function Custom data structures Performance  Sort a slice of ints, float64s or strings Use one of the functions
+ sort.Ints sort.Float64s sort.Strings  s := []int{4, 2, 3, 1} sort.Ints(s) fmt.Println(s) // [1 2 3 4]  Package radix contains a drop-in replacement for sort.Strings, which can be more than twice as fast in some settings.
+ Sort with custom compare function  Use the function sort.</description>
     </item>
     
     <item>
