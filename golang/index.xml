@@ -76,6 +76,17 @@ func Sum(nums ...int) int { res := 0 for _, n := range nums { res += n } return 
     </item>
     
     <item>
+      <title>3 rules for efficient parallel computation</title>
+      <link>https://yourbasic.org/golang/efficient-parallel-computation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/efficient-parallel-computation/</guid>
+      <description>Dividing a large compu&amp;shy;tation into work units for parallel pro&amp;shy;cessing is more of an art than a&amp;nbsp;science.
+Here are three rules of&amp;nbsp;thumb.
+ Divide the work into units that take about 100μs to 1ms to&amp;nbsp;compute.   If&amp;nbsp;the work units are too small, the adminis&amp;shy;trative over&amp;shy;head of divi&amp;shy;ding the problem and sched&amp;shy;uling sub-problems might be too large.  If the units are too big, the whole computation may have to wait for a single slow work item to finish.</description>
+    </item>
+    
+    <item>
       <title>3 simple ways to create an error</title>
       <link>https://yourbasic.org/golang/create-error/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -572,17 +583,6 @@ n := 43210 // time in seconds fmt.Println(n/60*60, &#34;hours and&#34;, n%60*60,
 The *, /, and % operators have the same precedence and are evaluated left to right: n/60*60 is the same as (n/60)*60.
 Insert a pair of parantheses to force the correct evaluation order.
 fmt.Println(n/(60*60), &#34;hours and&#34;, n%(60*60), &#34;seconds&#34;)  12 hours and 10 seconds  Or better yet, use a constant.</description>
-    </item>
-    
-    <item>
-      <title>Efficient parallel computation</title>
-      <link>https://yourbasic.org/golang/efficient-parallel-computation/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/efficient-parallel-computation/</guid>
-      <description>Dividing&amp;nbsp;a&amp;nbsp;large compu&amp;shy;tation into work units for parallel pro&amp;shy;cessing is more of an art than a&amp;nbsp;science.
-Here are some rules of&amp;nbsp;thumb.
- Each work unit should take about 100μs to 1ms to compute. If&amp;nbsp;the units are too small, the adminis&amp;shy;trative over&amp;shy;head of divi&amp;shy;ding the problem and sched&amp;shy;uling sub-problems might be too large. If the units are too big, the whole computation may have to wait for a single slow work item to finish.</description>
     </item>
     
     <item>

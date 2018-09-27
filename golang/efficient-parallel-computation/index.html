@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Efficient parallel computation - yourbasic.org/golang </title>
+  <title>3 rules for efficient parallel computation - yourbasic.org/golang </title>
   <meta name="description" content="To efficiently schedule parallel computation on separate CPUs is more of an art than a science. This article gives some rules of thumb.">
   
   <link rel="stylesheet" href="/style.css">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/efficient-parallel-computation/"
   },
-  "headline": "Efficient parallel computation",
+  "headline": "3 rules for efficient parallel computation",
   "image": [
     "https://yourbasic.org/golang/cpu.jpg"
    ],
   "datePublished": "2018-06-12T00:00:00&#43;0000",
-  "dateModified": "2018-06-12T00:00:00&#43;0000",
+  "dateModified": "2018-09-27T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -54,13 +54,13 @@
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Efficient parallel computation">
+<meta property="og:title" content="3 rules for efficient parallel computation">
 <meta property="og:description" content="To efficiently schedule parallel computation on separate CPUs is more of an art than a science. This article gives some rules of thumb.">
 <meta property="og:url" content="https://yourbasic.org/golang/efficient-parallel-computation/">
 <meta property="og:image" content="https://yourbasic.org/golang/cpu.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Efficient parallel computation">
+<meta name="twitter:title" content="3 rules for efficient parallel computation">
 <meta name="twitter:description" content="To efficiently schedule parallel computation on separate CPUs is more of an art than a science. This article gives some rules of thumb.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/cpu.jpg">
@@ -82,7 +82,7 @@
 
 <main>
 <article>
-<h1>Efficient parallel computation</h1>
+<h1>3 rules for efficient parallel computation</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
@@ -91,27 +91,34 @@
 
 <div><img src="/golang/gopher-barbell.jpg" style="float: right; margin:16px 0 0 10px;"></div>
 
-<p class="lead">Dividing&nbsp;a&nbsp;large compu&shy;tation into work units for parallel pro&shy;cessing is more of an art than a&nbsp;science.</p>
+<p class="lead">Dividing a large compu&shy;tation into work units for parallel pro&shy;cessing is more of an art than a&nbsp;science.</p>
 
-<p>Here are some rules of&nbsp;thumb.</p>
+<p>Here are three rules of&nbsp;thumb.</p>
 
 <ul>
-<li>Each work unit should take about 100μs to 1ms to compute.
-If&nbsp;the units are too small, the adminis&shy;trative over&shy;head of divi&shy;ding
-the problem and sched&shy;uling sub-problems might be too large.
-If the units are too big, the whole computation may have to wait
-for a single slow work item to finish. This slowdown can happen
-for many reasons, such as scheduling, interrupts from other processes,
-and unfortunate memory layout. (Note that the number of work units
-is independent of the number of&nbsp;CPUs.)</li>
-<li>Try to minimize the amount of data sharing.
-Concurrent writes can be very costly, particularly so if goroutines
-execute on separate CPUs. Sharing data for reading is often much less
-of a problem.</li>
-<li>Strive for good locality when accessing data.
-If data can be kept in cache memory, data loading and storing
-will be dramatically faster.
-Once again, this is particularly important for writing.</li>
+<li><em>Divide the work into units that take about 100μs to 1ms to&nbsp;compute.</em>
+<ul>
+<li> If&nbsp;the work units are too small, the adminis&shy;trative over&shy;head
+of divi&shy;ding the problem and sched&shy;uling sub-problems might be too large.</li>
+<li> If the units are too big, the whole computation may have to wait for a single
+slow work item to finish.
+This slowdown can happen for many reasons, such as scheduling,
+interrupts from other processes, and unfortunate memory layout.
+</li>
+</ul>
+Note that the number of work units is independent of the number of&nbsp;CPUs.</li>
+<li><em>Try to minimize the amount of data sharing.</em>
+<ul>
+<li>Concurrent writes can be very costly, particularly so if goroutines
+execute on separate CPUs.</li>
+<li>Sharing data for reading is often much less of a problem.</li>
+</ul></li>
+<li><em>Strive for good locality when accessing data.</em>
+<ul>
+<li>If data can be kept in cache memory, data loading and storing
+will be dramatically faster.</li>
+<li>Once again, this is particularly important for writing.</li>
+</ul></li>
 </ul>
 
 <p>Whatever strategies you are using, don&rsquo;t forget to
@@ -198,10 +205,10 @@ you want executing code simultaneously.</p>
 </ul>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fefficient-parallel-computation%2f&amp;text=Efficient%20parallel%20computation&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fefficient-parallel-computation%2f&amp;text=3%20rules%20for%20efficient%20parallel%20computation&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fefficient-parallel-computation%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fefficient-parallel-computation%2f&amp;title=Efficient%20parallel%20computation" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Efficient%20parallel%20computation&body=https%3a%2f%2fyourbasic.org%2fgolang%2fefficient-parallel-computation%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fefficient-parallel-computation%2f&amp;title=3%20rules%20for%20efficient%20parallel%20computation" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=3%20rules%20for%20efficient%20parallel%20computation&body=https%3a%2f%2fyourbasic.org%2fgolang%2fefficient-parallel-computation%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
@@ -232,7 +239,7 @@ you want executing code simultaneously.</p>
 
       <li><a href="/golang/mutex-explained/">Mutual exclusion lock (mutex)</a></li>
 
-      <li><b>»&nbsp;</b>Efficient parallel computation</li>
+      <li><b>»&nbsp;</b>3 rules for efficient parallel computation</li>
 
   </ul>
 

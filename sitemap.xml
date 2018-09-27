@@ -26,6 +26,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/efficient-parallel-computation/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/create-error/</loc>
   </url>
   
@@ -244,10 +248,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/gotcha-operator-precedence/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/efficient-parallel-computation/</loc>
   </url>
   
   <url>
