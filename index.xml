@@ -556,7 +556,7 @@ s := &#34;97&#34; if n, err := strconv.Atoi(s); err == nil { fmt.Println(n+1) } 
       <guid>https://yourbasic.org/golang/interface-to-string/</guid>
       <description>Use fmt.Sprintf to convert an interface value to a string.
 var x interface{} = &amp;quot;abc&amp;quot; str := fmt.Sprintf(&amp;quot;%v&amp;quot;, x)  In fact, the same technique can be used to get a string representation of any data structure.
-var x interface{} = []int{1, 2, 3} str := fmt.Sprintf(&#34;%v&#34;, x) fmt.Println(str) // &#34;[1 2 3]&#34; Fmt cheat sheet  How to format strings with fmt</description>
+var x interface{} = []int{1, 2, 3} str := fmt.Sprintf(&#34;%v&#34;, x) fmt.Println(str) // &#34;[1 2 3]&#34; Fmt cheat sheet  How to format with fmt</description>
     </item>
     
     <item>
