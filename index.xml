@@ -993,6 +993,18 @@ Keep allocated memory To keep the underlying array, slice the slice to zero leng
     </item>
     
     <item>
+      <title>How to defer a function call</title>
+      <link>https://yourbasic.org/golang/defer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/defer/</guid>
+      <description>A deferred function is executed when the surrounding function&amp;nbsp;returns.
+Basics Execution order Return values Clean-up (example) Recover from panic (example)  Basics A defer statement postpones the execution of a function until the surrounding function returns.
+func main() { defer fmt.Println(&#34;World&#34;) fmt.Println(&#34;Hello&#34;) } Hello World Deferred calls are executed even when the function panics.
+func main() { defer fmt.Println(&#34;World&#34;) panic(&#34;Stop&#34;) fmt.Println(&#34;Hello&#34;) } World panic: Stop goroutine 1 [running]: main.main() .</description>
+    </item>
+    
+    <item>
       <title>How to detect data races</title>
       <link>https://yourbasic.org/golang/detect-data-races/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1095,18 +1107,6 @@ quit := make(chan struct{}) go func() { for { select { case // â€¦ } } }() // â€
       <guid>https://yourbasic.org/golang/reverse-utf8-string/</guid>
       <description>Byte by byte It&amp;rsquo;s pretty straightforward to reverse a string one byte at a time.
 // Reverse returns a string with the bytes of s in reverse order. func Reverse(s string) string { var b strings.Builder for i := len(s) - 1; i = 0; i-- { b.WriteByte(s[i]) } return b.String() }  Rune by rune To reverse a string by UTF-8 encoded characters is a bit trickier.</description>
-    </item>
-    
-    <item>
-      <title>How to use a defer statement</title>
-      <link>https://yourbasic.org/golang/defer/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/defer/</guid>
-      <description>A deferred method call is executed just before leaving the surrounding function.
-func main() { defer fmt.Println(&#34;World&#34;) fmt.Println(&#34;Hello&#34;) } Hello World Deferred calls are executed even when the function panics.
-func main() { defer fmt.Println(&#34;World&#34;) panic(&#34;Stop&#34;) fmt.Println(&#34;Hello&#34;) } World panic: Stop goroutine 1 [running]: main.main() ../main.go:3 +0xa0 Deferred function calls are executed in last-in-first-out order, and a deferred function&amp;rsquo;s arguments are evaluated when the defer statement executes.
-func main() { fmt.</description>
     </item>
     
     <item>
