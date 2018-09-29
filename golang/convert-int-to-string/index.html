@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Convert int/int64 to string (and back) - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE strconv.Itoa converts an int to a decimal string, while strconv.Atoi converts/parses a string to an int.">
+  <meta name="description" content="CODE EXAMPLE Use strconv.Itoa to convert an int to a decimal string, and strconv.Atoi to parse a string to an int.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/numbers-1-2-3.jpg"
    ],
   "datePublished": "2018-05-16T00:00:00&#43;0000",
-  "dateModified": "2018-09-14T00:00:00&#43;0000",
+  "dateModified": "2018-09-29T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "CODE EXAMPLE strconv.Itoa converts an int to a decimal string, while strconv.Atoi converts/parses a string to an int."
+  "description": "CODE EXAMPLE Use strconv.Itoa to convert an int to a decimal string, and strconv.Atoi to parse a string to an int."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Convert int/int64 to string (and back)">
-<meta property="og:description" content="CODE EXAMPLE strconv.Itoa converts an int to a decimal string, while strconv.Atoi converts/parses a string to an int.">
+<meta property="og:description" content="CODE EXAMPLE Use strconv.Itoa to convert an int to a decimal string, and strconv.Atoi to parse a string to an int.">
 <meta property="og:url" content="https://yourbasic.org/golang/convert-int-to-string/">
 <meta property="og:image" content="https://yourbasic.org/golang/numbers-1-2-3.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Convert int/int64 to string (and back)">
-<meta name="twitter:description" content="CODE EXAMPLE strconv.Itoa converts an int to a decimal string, while strconv.Atoi converts/parses a string to an int.">
+<meta name="twitter:description" content="CODE EXAMPLE Use strconv.Itoa to convert an int to a decimal string, and strconv.Atoi to parse a string to an int.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/numbers-1-2-3.jpg">
 
@@ -91,46 +91,13 @@
 <div style="margin-top:1em"><img src="/golang/numbers-1-2-3.jpg"></div>
 
 <ul class="toc">
-  <li><a href="#string-to-int">String to int</a></li>
-  <li><a href="#string-to-int64">String to int64</a></li>
   <li><a href="#int-to-string">int to string</a></li>
   <li><a href="#int64-to-string">int64 to string</a></li>
+  <li><a href="#string-to-int">string to int</a></li>
+  <li><a href="#string-to-int64">string to int64</a></li>
   <li><a href="#int-to-int64-and-back">int to int64 (and back)</a></li>
   <li><a href="#general-formatting">General formatting</a></li>
 </ul>
-
-<h2 id="string-to-int">String to int</h2>
-
-<p>Use <a href="https://golang.org/pkg/strconv/#Atoi"><code>strconv.Atoi</code></a> to convert/parse a string to an&nbsp;int.</p>
-
-<pre><code>s := "97"
-if n, err := strconv.Atoi(s); err == nil {
-    fmt.Println(n+1)
-} else {
-    fmt.Println(s, "is not an integer.")
-}
-<span class="comment">// Output: 98</span></code></pre>
-
-<h2 id="string-to-int64">String to int64</h2>
-
-<p>Use <a href="https://golang.org/pkg/strconv/#ParseInt"><code>strconv.ParseInt</code></a>
-to parse a decimal string (base&nbsp;<code>10</code>) and check if it fits into a <code>64</code>-bit signed integer.</p>
-
-<pre><code>s := "97"
-n, err := strconv.ParseInt(s, 10, 64)
-if err == nil {
-    fmt.Printf("%d of type %T", n, n)
-}
-<span class="comment">// Output: 97 of type int64</span></code></pre>
-
-<p>The two numeric arguments represent a  base (0, 2 to 36) and a bit size (0&nbsp;to&nbsp;64).</p>
-
-<p>If the first argument is 0, the base is implied by the string&rsquo;s prefix:
-base 16 for <code>&#34;0x&#34;</code>, base 8 for <code>&#34;0&#34;</code>, and base&nbsp;10 otherwise.</p>
-
-<p>The second argument specifies the integer type that the result must fit into.
-Bit sizes 0, 8, 16, 32, and 64 correspond to <code>int</code>, <code>int8</code>,
-<code>int16</code>, <code>int32</code>, and&nbsp;<code>int64</code>.</p>
 
 <h2 id="int-to-string">int to string</h2>
 
@@ -159,6 +126,39 @@ s := strconv.FormatInt(n, 10) <span class="comment">// s == "97" (decimal)</span
 <pre><code>var n int64 = 97
 s := strconv.FormatInt(n, 16) <span class="comment">// s == "61" (hexadecimal)</span>
 </code></pre>
+
+<h2 id="string-to-int">string to int</h2>
+
+<p>Use <a href="https://golang.org/pkg/strconv/#Atoi"><code>strconv.Atoi</code></a> to convert/parse a string to an&nbsp;int.</p>
+
+<pre><code>s := "97"
+if n, err := strconv.Atoi(s); err == nil {
+    fmt.Println(n+1)
+} else {
+    fmt.Println(s, "is not an integer.")
+}
+<span class="comment">// Output: 98</span></code></pre>
+
+<h2 id="string-to-int64">string to int64</h2>
+
+<p>Use <a href="https://golang.org/pkg/strconv/#ParseInt"><code>strconv.ParseInt</code></a>
+to parse a decimal string (base&nbsp;<code>10</code>) and check if it fits into a <code>64</code>-bit signed integer.</p>
+
+<pre><code>s := "97"
+n, err := strconv.ParseInt(s, 10, 64)
+if err == nil {
+    fmt.Printf("%d of type %T", n, n)
+}
+<span class="comment">// Output: 97 of type int64</span></code></pre>
+
+<p>The two numeric arguments represent a  base (0, 2 to 36) and a bit size (0&nbsp;to&nbsp;64).</p>
+
+<p>If the first argument is 0, the base is implied by the string&rsquo;s prefix:
+base 16 for <code>&#34;0x&#34;</code>, base 8 for <code>&#34;0&#34;</code>, and base&nbsp;10 otherwise.</p>
+
+<p>The second argument specifies the integer type that the result must fit into.
+Bit sizes 0, 8, 16, 32, and 64 correspond to <code>int</code>, <code>int8</code>,
+<code>int16</code>, <code>int32</code>, and&nbsp;<code>int64</code>.</p>
 
 <h2 id="int-to-int64-and-back">int to int64 (and back)</h2>
 
