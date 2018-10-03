@@ -35,7 +35,7 @@
     "https://yourbasic.org/algorithms/zener-cards.png"
    ],
   "datePublished": "2018-04-19T00:00:00&#43;0000",
-  "dateModified": "2018-05-10T00:00:00&#43;0000",
+  "dateModified": "2018-10-03T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -107,6 +107,8 @@ with a certain, typically small, probability.</li>
 
 <h2 id="random-point-in-circle-las-nbsp-vegas">Random point in circle (Las&nbsp;Vegas)</h2>
 
+<div><img style="float:right; margin-left:1em;" src="/algorithms/circle.png"></div>
+
 <p>It&rsquo;s easy and convenient to compute a random point in a circle with a Las Vegas algorithm.</p>
 
 <p>The idea is to first generate a point (x,&nbsp;y), with
@@ -129,6 +131,19 @@ func Point() (x, y float64) {
 }</code></pre>
 
 <div><a href="/algorithms/las-vegas.go">las-vegas.go</a></div>
+
+<div><img style="float:right; margin:0.5em 0 0 2em;" src="/algorithms/circle2.png"></div>
+
+<blockquote class="warning">
+<b>Warning:</b> Note that the following function gives an uneven distri&shy;bution.
+It’s more likely to produce a point close to the middle of the&nbsp;circle.
+
+<pre><code>func Point() (x, y float64) {
+    r := rand.Float64()
+    θ := 2 * math.Pi * rand.Float64()
+    return r * math.Cos(θ), r * math.Sin(θ)
+}</code></pre>
+</blockquote>
 
 <h2 id="approximate-value-of-π-monte-carlo">Approximate value of π (Monte Carlo)</h2>
 
