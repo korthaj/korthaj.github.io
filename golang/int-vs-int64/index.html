@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/spot-difference.png"
    ],
   "datePublished": "2018-06-28T00:00:00&#43;0000",
-  "dateModified": "2018-06-28T00:00:00&#43;0000",
+  "dateModified": "2018-10-04T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -96,6 +96,9 @@
 The <code>int</code> type is either 32 or 64&nbsp;bits, and always big enough
 to hold the maximum possible length of an&nbsp;array.</p>
 
+<p>See <a href="/golang/max-min-int-uint/">Maximum value of an int</a> for code
+to compute the maximum value of an&nbsp;<code>int</code>.</p>
+
 <h2 id="int64-and-friends">int64 and friends</h2>
 
 <p>The types <code>int8</code>, <code>int16</code>, <code>int32</code>, and <code>int64</code> (and their
@@ -124,7 +127,8 @@ while the index and the length of the slice have type&nbsp;<code>int</code>.</p>
 </code></pre>
 
 <p>The implementation of <a href="https://golang.org/pkg/time/#Duration"><code>time.Duration</code></a>
-is a typical example from the standard library:</p>
+is a typical example from the standard library where an&nbsp;<code>int64</code> is
+used to store data:</p>
 
 <pre><code>type Duration int64
 </code></pre>
