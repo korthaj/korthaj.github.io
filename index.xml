@@ -16,7 +16,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/implement-fifo-queue/</guid>
-      <description>A simple way to implement a temporary queue in Go is to use a slice:
+      <description>A simple way to implement a temporary queue data structure in Go is to use a slice:
  to enqueue you use the built-in append function, and to dequeue you slice off the first element.  var queue []string queue = append(queue, &#34;Hello &#34;) // Enqueue queue = append(queue, &#34;world!&#34;) for len(queue)  0 { fmt.Print(queue[0]) // First element queue = queue[1:] // Dequeue } Hello world! Watch out for memory leaks You may want to remove the first element before dequeuing.</description>
     </item>
     
@@ -172,12 +172,12 @@ sum := 0 for i := 1; i { sum += i } fmt.Println(sum) // 10 (1+2+3+4)  The init s
     </item>
     
     <item>
-      <title>A basic stack (LIFO) implementation</title>
+      <title>A basic stack (LIFO) data structure</title>
       <link>https://yourbasic.org/golang/implement-stack/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/implement-stack/</guid>
-      <description>The idiomatic way to implement a stack in Go is to use a slice:
+      <description>The idiomatic way to implement a stack data structure in Go is to use a slice:
  to push you use the built-in append function, and to pop you slice off the top element.  var stack []string stack = append(stack, &#34;world!&#34;) // Push stack = append(stack, &#34;Hello &#34;) for len(stack)  0 { n := len(stack) - 1 // Top element fmt.Print(stack[n]) stack = stack[:n] // Pop } Hello world!</description>
     </item>
     

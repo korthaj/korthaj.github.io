@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A basic stack (LIFO) implementation - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE How to implement a stack or LIFO queue in Go using a slice and the append function.">
+  <title>A basic stack (LIFO) data structure - yourbasic.org/golang </title>
+  <meta name="description" content="CODE EXAMPLE You can implement a stack (LIFO queue) data structure in Go with a slice and the append function.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/implement-stack/"
   },
-  "headline": "A basic stack (LIFO) implementation",
+  "headline": "A basic stack (LIFO) data structure",
   "image": [
     "https://yourbasic.org/golang/stack-of-apples.jpg"
    ],
   "datePublished": "2018-04-11T00:00:00&#43;0000",
-  "dateModified": "2018-09-14T00:00:00&#43;0000",
+  "dateModified": "2018-10-10T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "CODE EXAMPLE How to implement a stack or LIFO queue in Go using a slice and the append function."
+  "description": "CODE EXAMPLE You can implement a stack (LIFO queue) data structure in Go with a slice and the append function."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="A basic stack (LIFO) implementation">
-<meta property="og:description" content="CODE EXAMPLE How to implement a stack or LIFO queue in Go using a slice and the append function.">
+<meta property="og:title" content="A basic stack (LIFO) data structure">
+<meta property="og:description" content="CODE EXAMPLE You can implement a stack (LIFO queue) data structure in Go with a slice and the append function.">
 <meta property="og:url" content="https://yourbasic.org/golang/implement-stack/">
 <meta property="og:image" content="https://yourbasic.org/golang/stack-of-apples.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="A basic stack (LIFO) implementation">
-<meta name="twitter:description" content="CODE EXAMPLE How to implement a stack or LIFO queue in Go using a slice and the append function.">
+<meta name="twitter:title" content="A basic stack (LIFO) data structure">
+<meta name="twitter:description" content="CODE EXAMPLE You can implement a stack (LIFO queue) data structure in Go with a slice and the append function.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/stack-of-apples.jpg">
 
@@ -82,7 +82,7 @@
 
 <main>
 <article>
-<h1>A basic stack (LIFO) implementation</h1>
+<h1>A basic stack (LIFO) data structure</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
@@ -91,7 +91,7 @@
 
 <div style="margin-top:1em;"><img src="/golang/stack-of-apples.jpg"></div>
 
-<p>The idiomatic way to implement a stack in Go is to use a <a href="/golang/slices-explained/">slice</a>:</p>
+<p>The idiomatic way to implement a stack data structure in Go is to use a <a href="/golang/slices-explained/">slice</a>:</p>
 
 <ul>
 <li>to push you use the built-in <code>append</code> function, and</li>
@@ -131,10 +131,10 @@ stack = stack[:n]
 <div style="clear:both;"></div>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fimplement-stack%2f&amp;text=A%20basic%20stack%20%28LIFO%29%20implementation&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fimplement-stack%2f&amp;text=A%20basic%20stack%20%28LIFO%29%20data%20structure&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fimplement-stack%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fimplement-stack%2f&amp;title=A%20basic%20stack%20%28LIFO%29%20implementation" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=A%20basic%20stack%20%28LIFO%29%20implementation&body=https%3a%2f%2fyourbasic.org%2fgolang%2fimplement-stack%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fimplement-stack%2f&amp;title=A%20basic%20stack%20%28LIFO%29%20data%20structure" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=A%20basic%20stack%20%28LIFO%29%20data%20structure&body=https%3a%2f%2fyourbasic.org%2fgolang%2fimplement-stack%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 
@@ -152,7 +152,7 @@ stack = stack[:n]
 
   <div class="reference">
     <a href="/golang/implement-fifo-queue/">2 basic FIFO queue implementations</a>
-    <div class="desc">How to implement a FIFO queue in Go. Use a slice for a temporary queue. For a long-living queue you should probably use a dynamic data structure, such as a linked list.</div>
+    <div class="desc">Use a slice for a temporary queue. For a long-living queue you should probably use a dynamic data structure, such as a linked list.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
