@@ -1054,10 +1054,10 @@ type Weekday int const ( Sunday Weekday = iota Monday Tuesday Wednesday Thursday
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/format-parse-string-time-date-example/</guid>
-      <description>Basics All time and date options Common time and date formats Predefined date and timestamp layouts Corner cases  Basics Instead of yyyy-mm-dd formatting, you format the layout parameter
+      <description>Basics All time and date options Common time and date formats Predefined date and timestamp layouts Corner cases  Basics Instead of yyyy-mm-dd formatting, you format a special layout parameter
 Mon Jan 2 15:04:05 MST 2006
-the same way as the value should be formatted. (Written as 01/02&amp;nbsp;03:04:05PM&amp;nbsp;&amp;lsquo;06&amp;nbsp;-0700 it makes a bit more sense.)
-input := &#34;2017-08-31&#34; layout := &#34;2006-01-02&#34; t, _ := time.Parse(layout, input) fmt.Println(t) // 2017-08-31 00:00:00 +0000 UTC fmt.</description>
+the same way as the value should be formatted. (This date is easier to remember when written as 01/02&amp;nbsp;03:04:05PM&amp;nbsp;&amp;lsquo;06&amp;nbsp;-0700.) Here&amp;rsquo;s an example:
+input := &#34;2017-08-31&#34; layout := &#34;2006-01-02&#34; t, _ := time.Parse(layout, input) fmt.</description>
     </item>
     
     <item>

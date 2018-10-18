@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/stopwatch.png"
    ],
   "datePublished": "2018-04-25T00:00:00&#43;0000",
-  "dateModified": "2018-10-10T00:00:00&#43;0000",
+  "dateModified": "2018-10-18T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -103,13 +103,12 @@
 <h2 id="basics">Basics</h2>
 
 <p>Instead of yyyy-mm-dd formatting,
-you format the <strong>layout parameter</strong></p>
+you format a special <strong>layout parameter</strong></p>
 
 <p><code style="margin-left:2em;"><span style="color: green">Mon Jan 2 15:04:05 MST 2006</span></code></p>
 
 <p>the same way as the value should be formatted.
-(Written as <code><span style="color: green">01/02&nbsp;03:04:05PM&nbsp;&lsquo;06&nbsp;-0700</span></code>
-it makes a bit more sense.)</p>
+(This date is easier to remember when written as <code><span style="color: green">01/02&nbsp;03:04:05PM&nbsp;&lsquo;06&nbsp;-0700</span></code>.) Here&rsquo;s an example:</p>
 
 <pre><code>input := "2017-08-31"
 <span style="color: green"><b>layout := "2006-01-02"</b></span>
@@ -117,8 +116,14 @@ t, _ := <b>time.Parse</b>(<span style="color: green"><b>layout</b></span>, input
 fmt.Println(t)                       <span class="comment">// 2017-08-31 00:00:00 +0000 UTC</span>
 fmt.Println(t.<b>Format</b>(<span style="color: green"><b>"02-Jan-2006"</b></span>)) <span class="comment">// 31-Aug-2017</span></code></pre>
 
-<p>The <a href="https://golang.org/pkg/time/#Parse"><code>time.Parse</code></a> function parses a date&nbsp;string,
-and the <a href="https://golang.org/pkg/time/#Time.Format"><code>Format</code></a> method formats a&nbsp;<a href="https://golang.org/pkg/time/#Time"><code>time.Time</code></a>.</p>
+<p>The function</p>
+
+<ul>
+<li><a href="https://golang.org/pkg/time/#Parse"><code>time.Parse</code></a> parses a date&nbsp;string, and</li>
+<li><a href="https://golang.org/pkg/time/#Time.Format"><code>Format</code></a> formats a&nbsp;<a href="https://golang.org/pkg/time/#Time"><code>time.Time</code></a>.</li>
+</ul>
+
+<p>They have the following signatures:</p>
 
 <pre><code>func Parse(<span style="color: green"><b>layout</b></span>, value string) (Time, error)
 func (t Time) Format(<span style="color: green"><b>layout</b></span> string) string
