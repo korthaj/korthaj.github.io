@@ -988,7 +988,7 @@ quit := make(chan struct{}) go func() { for { select { case // â€¦ } } }() // â€
       
       <guid>https://yourbasic.org/golang/reverse-utf8-string/</guid>
       <description>Byte by byte It&amp;rsquo;s pretty straightforward to reverse a string one byte at a time.
-// Reverse returns a string with the bytes of s in reverse order. func Reverse(s string) string { var b strings.Builder for i := len(s) - 1; i = 0; i-- { b.WriteByte(s[i]) } return b.String() }  Rune by rune To reverse a string by UTF-8 encoded characters is a bit trickier.</description>
+// Reverse returns a string with the bytes of s in reverse order. func Reverse(s string) string { var b strings.Builder b.Grow(len(s)) for i := len(s) - 1; i = 0; i-- { b.WriteByte(s[i]) } return b.String() }  Rune by rune To reverse a string by UTF-8 encoded characters is a bit trickier.</description>
     </item>
     
     <item>

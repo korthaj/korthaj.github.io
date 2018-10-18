@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/ambiguity-ambigram.png"
    ],
   "datePublished": "2018-04-28T00:00:00&#43;0000",
-  "dateModified": "2018-05-19T00:00:00&#43;0000",
+  "dateModified": "2018-10-18T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -97,6 +97,7 @@
 <pre><code>// Reverse returns a string with the bytes of s in reverse order.
 func Reverse(s string) string {
     var b strings.Builder
+    b.Grow(len(s))
     for i := len(s) - 1; i >= 0; i-- {
         b.WriteByte(s[i])
     }
