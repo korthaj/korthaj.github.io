@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic programming with memoization - yourbasic.org </title>
+  <meta name="description" content="CODE EXAMPLE Dynamic programming solves a complex problem by dividing it into simpler subproblems, solving each of those just once, and storing their solutions.">
+  
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-113104149-1');
+  </script>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/algorithms/dynamic-programming-explained/"
+  },
+  "headline": "Dynamic programming with memoization",
+  "image": [
+    "https://yourbasic.org/algorithms/suburbs-subdivision.jpg"
+   ],
+  "datePublished": "2018-10-19T00:00:00&#43;0000",
+  "dateModified": "2018-10-19T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "CODE EXAMPLE Dynamic programming solves a complex problem by dividing it into simpler subproblems, solving each of those just once, and storing their solutions."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dynamic programming with memoization">
+<meta property="og:description" content="CODE EXAMPLE Dynamic programming solves a complex problem by dividing it into simpler subproblems, solving each of those just once, and storing their solutions.">
+<meta property="og:url" content="https://yourbasic.org/algorithms/dynamic-programming-explained/">
+<meta property="og:image" content="https://yourbasic.org/algorithms/suburbs-subdivision.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dynamic programming with memoization">
+<meta name="twitter:description" content="CODE EXAMPLE Dynamic programming solves a complex problem by dividing it into simpler subproblems, solving each of those just once, and storing their solutions.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="https://yourbasic.org/algorithms/suburbs-subdivision.jpg">
+
+
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li class="here"><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Dynamic programming with memoization</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<!-- CC BY-SA 2.5:  https://en.wikipedia.org/wiki/File:Markham-suburbs_aerial-edit2.jpg -->
+
+<div style="margin-top:1em;"><img src="/algorithms/suburbs-subdivision.jpg"></div>
+
+<p>This text contains a detailed example showing how to solve a tricky problem efficiently with dynamic programming and memoization.</p>
+
+<ul>
+<li><strong>Dynamic programming</strong> is a method for solving a complex problem by dividing it into subproblems,
+solving each of those just once, and storing their solutions.</li>
+<li><strong>Memoization</strong>  is an optimization technique used to speed up programs by storing
+the results of expensive function calls and returning the cached result when
+the same inputs occur&nbsp;again.</li>
+</ul>
+
+<h2 id="chocolate-feast-problem">Chocolate feast problem</h2>
+
+<p>You&rsquo;ve just got a tube of delicious chocolates and plan to eat one piece a&nbsp;day –
+either by picking the one on the left or the&nbsp;right.</p>
+
+<div><img src="/algorithms/chocolate-tube.jpg"></div>
+<div style="font-size:smaller;">Problem partly solved</div>
+
+<p>Each piece has a positive integer that indicates how tasty it is.
+Since taste is subjective, there is also an expectancy factor.
+A piece will taste better if you eat it later: if the taste is <i>m</i>
+(as in <i>hmm</i>) on the first day, it will be <i>km</i> on day number&nbsp;<i>k</i>.</p>
+
+<p>Your task is to design an efficient algorithm that computes an optimal chocolate eating
+strategy and tells you how much pleasure to expect.</p>
+
+<h3 id="recursive-solution">Recursive solution</h3>
+
+<pre><code>// Joy returns the total pleasure if you eat the chocolates
+// in an optimal order starting at the given day.
+func Joy(choco []int, day int) int {
+    n := len(choco)
+    if n == 1 {
+        return day * choco[0]
+    }
+    left := day*choco[0] + Joy(choco[1:], day+1)
+    right := day*choco[n-1] + Joy(choco[:n-1], day+1)
+    return max(left, right)
+}</code></pre>
+
+<p>Note that the function solve a slightly <strong>more general problem</strong> than the one stated.
+It computes the total pleasure if you start eating at a given day.
+This is a common strategy when writing recursive code.</p>
+
+<p>It&rsquo;s easy to see that the code gives the correct result.</p>
+
+<ul>
+<li>In the base case, where <code>choco</code> contains only one element,
+the function returns the correct value.</li>
+<li>When <code>choco</code> contains <code>n</code>&nbsp;elements, <code>n</code>&nbsp;&gt;&nbsp;1,
+we have to start with either <code>choco[0]</code> or <code>choco[n-1]</code>.
+The code computes the pleasure for each of these cases with recursion,
+and returns the&nbsp;maximum.
+<br /></li>
+</ul>
+
+<h3 id="dynamic-programming-with-memoization">Dynamic programming with memoization</h3>
+
+<p>The code above is simple but terribly inefficient –
+it has <strong>exponential time complexity</strong>.</p>
+
+<p>However, many or the recursive calls perform the very same computation.
+In fact, the only values that need to be computed are</p>
+
+<blockquote>
+<code>joy(choco[i:j], day)</code>
+</blockquote>
+
+<p>where 0 &leq; <code>i</code> &lt; <code>j</code> &leq; <code>n</code>,
+<code>day</code> = 1 + <code>n</code> - (<code>j</code>&nbsp;-&nbsp;<code>i</code>)
+and <code>n</code> = <code>len(choco)</code>.</p>
+
+<p>The joy of <code>choco[i:j]</code>
+is either computed directly (the base case), or it can be computed in constant
+time from the already known joy of
+<code>choco[i+1:j]</code> and <code>choco[i:j-1]</code>.
+If we use <strong>dynamic programming</strong> and memorize all of these subresults,
+we will get an algorithm with <b><i>O</i>(<i>n</i><sup>2</sup>) time complexity</b>.</p>
+
+<p>To implement this strategy using <strong>memoization</strong> we need to include
+the two indexes in the function call.
+To help record an optimal solution, we also keep track of which choices
+(left or right) that gives optimal pleasure.</p>
+
+<pre><code>type result struct {
+    joy      int
+    pickLeft bool
+}
+
+// JoyMemo returns the joy if you eat the chocolates choco[i:j]
+// in an optimal order starting at day 1 + len(choco) - (j - i).
+func JoyMemo(choco []int, i, j int, memo [][]result) int {
+    // Reuse previous result, if available.
+    if res := memo[i][j].joy; res != 0 {
+        return res
+    }
+
+    day := 1 + len(choco) - (j - i)
+    if j-i == 1 {
+        return day * choco[i]
+    }
+    left := day*choco[i] + JoyMemo(choco, i+1, j, memo)
+    right := day*choco[j-1] + JoyMemo(choco, i, j-1, memo)
+    res := max(left, right)
+
+    // Save the result.
+    memo[i][j].joy = res
+    memo[i][j].pickLeft = left > right
+    return res
+}
+</code></pre>
+
+<p>Given the <code>memo</code> table, it&rsquo;s a simple matter to print an optimal eating order:</p>
+
+<pre><code>for i, j := 0, n; i < j; {
+    if memo[i][j].pickLeft {
+        fmt.Print("left ")
+        i++
+    } else {
+        fmt.Print("right ")
+        j--
+    }
+}
+</code></pre>
+
+<p>Complete code: <a href="/algorithms/chocolate.go">chocolate.go</a></p>
+
+<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fdynamic-programming-explained%2f&amp;text=Dynamic%20programming%20with%20memoization&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2falgorithms%2fdynamic-programming-explained%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fdynamic-programming-explained%2f&amp;title=Dynamic%20programming%20with%20memoization" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Dynamic%20programming%20with%20memoization&body=https%3a%2f%2fyourbasic.org%2falgorithms%2fdynamic-programming-explained%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+
+
+</article>
+<aside>
+
+    
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/algorithms/time-complexity-explained/">How to analyse time complexity: Count your steps</a>
+    <div class="desc">Time complexity analysis esti­mates the time to run an algo­rithm. It&#39;s calcu­lated by counting elemen­tary opera­tions.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="/algorithms/induction-recursive-functions/">Induction and recursive functions</a>
+    <div class="desc">Mathematical induction can help you understand recursive functions better.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="https://medium.com/@codingfreak/top-50-dynamic-programming-practice-problems-4208fed71aa3">Top 50 dynamic programming practice problems</a>
+    <div class="source">medium.com</div>
+    <div class="author"></div>
+  </div>
+
+  <div class="reference">
+    <a href="https://www.geeksforgeeks.org/dynamic-programming/">Dynamic programming</a>
+    <div class="source">GeeksforGeeks</div>
+    <div class="author"></div>
+  </div>
+
+<h2>Most Read</h2>
+  
+    <a href="/algorithms/your-basic-api/" title="Your basic API: guidelines and best practices"><img src="/algorithms/go-mini.jpg"></a>
+  
+  <ul class="none">
+  
+    <li><a href="/algorithms/your-basic-api/">Your basic API: guidelines and best practices</a></li>
+
+    <li><a href="/algorithms/fastest-sorting-algorithm/">The fastest sorting algorithm?</a></li>
+
+    <li><a href="/algorithms/time-complexity-explained/">How to analyse time complexity: Count your steps</a></li>
+
+    <li><a href="/algorithms/loop-invariants-explained/">Loop invariants can give you coding superpowers</a></li>
+
+    <li><a href="/top-programming-languages/">Top programming languages in use 2000-2018</a></li>
+
+  </ul>
+  <p><a href="/algorithms/"><b>See all 21 algorithm articles</b></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>
