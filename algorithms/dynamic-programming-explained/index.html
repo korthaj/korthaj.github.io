@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dynamic programming with memoization - yourbasic.org </title>
-  <meta name="description" content="CODE EXAMPLE Dynamic programming solves a complex problem by dividing it into simpler subproblems, solving each of those just once, and storing their solutions.">
+  <title>Demystifying dynamic programming and memoization - yourbasic.org </title>
+  <meta name="description" content="CODE EXAMPLE Dynamic programming solves a complex problem by dividing it into subproblems, solving each of those just once, and storing their solutions.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/algorithms/dynamic-programming-explained/"
   },
-  "headline": "Dynamic programming with memoization",
+  "headline": "Demystifying dynamic programming and memoization",
   "image": [
     "https://yourbasic.org/algorithms/suburbs-subdivision.jpg"
    ],
   "datePublished": "2018-10-19T00:00:00&#43;0000",
-  "dateModified": "2018-10-19T00:00:00&#43;0000",
+  "dateModified": "2018-10-21T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "CODE EXAMPLE Dynamic programming solves a complex problem by dividing it into simpler subproblems, solving each of those just once, and storing their solutions."
+  "description": "CODE EXAMPLE Dynamic programming solves a complex problem by dividing it into subproblems, solving each of those just once, and storing their solutions."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Dynamic programming with memoization">
-<meta property="og:description" content="CODE EXAMPLE Dynamic programming solves a complex problem by dividing it into simpler subproblems, solving each of those just once, and storing their solutions.">
+<meta property="og:title" content="Demystifying dynamic programming and memoization">
+<meta property="og:description" content="CODE EXAMPLE Dynamic programming solves a complex problem by dividing it into subproblems, solving each of those just once, and storing their solutions.">
 <meta property="og:url" content="https://yourbasic.org/algorithms/dynamic-programming-explained/">
 <meta property="og:image" content="https://yourbasic.org/algorithms/suburbs-subdivision.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Dynamic programming with memoization">
-<meta name="twitter:description" content="CODE EXAMPLE Dynamic programming solves a complex problem by dividing it into simpler subproblems, solving each of those just once, and storing their solutions.">
+<meta name="twitter:title" content="Demystifying dynamic programming and memoization">
+<meta name="twitter:description" content="CODE EXAMPLE Dynamic programming solves a complex problem by dividing it into subproblems, solving each of those just once, and storing their solutions.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/algorithms/suburbs-subdivision.jpg">
 
@@ -82,18 +82,19 @@
 
 <main>
 <article>
-<h1>Dynamic programming with memoization</h1>
+<h1>Demystifying dynamic programming and memoization</h1>
 <div class="tagline">yourbasic.org</div>
 
 
-<!-- CC BY-SA 2.5:  https://en.wikipedia.org/wiki/File:Markham-suburbs_aerial-edit2.jpg -->
+<!-- CC BY-SA 2.0:  https://www.flickr.com/photos/gadl/604512604 -->
 
-<div style="margin-top:1em;"><img src="/algorithms/suburbs-subdivision.jpg"></div>
+<div style="margin-top:1em;"><img src="/algorithms/recursive-photography.jpg"></div>
 
-<p>This text contains a detailed example showing how to solve a tricky problem efficiently with dynamic programming and memoization.</p>
+<p>This text contains a detailed example showing how to solve
+a tricky problem efficiently with recursion, dynamic programming and memoization.</p>
 
 <ul>
-<li><strong>Dynamic programming</strong> is a method for solving a complex problem by dividing it into subproblems,
+<li><strong>Dynamic programming</strong> is a method for solving a complex problem by dividing it into simpler subproblems,
 solving each of those just once, and storing their solutions.</li>
 <li><strong>Memoization</strong>  is an optimization technique used to speed up programs by storing
 the results of expensive function calls and returning the cached result when
@@ -218,10 +219,10 @@ func JoyMemo(choco []int, i, j int, memo [][]result) int {
 <p>Complete code: <a href="/algorithms/chocolate.go">chocolate.go</a></p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fdynamic-programming-explained%2f&amp;text=Dynamic%20programming%20with%20memoization&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fdynamic-programming-explained%2f&amp;text=Demystifying%20dynamic%20programming%20and%20memoization&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2falgorithms%2fdynamic-programming-explained%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fdynamic-programming-explained%2f&amp;title=Dynamic%20programming%20with%20memoization" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Dynamic%20programming%20with%20memoization&body=https%3a%2f%2fyourbasic.org%2falgorithms%2fdynamic-programming-explained%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fdynamic-programming-explained%2f&amp;title=Demystifying%20dynamic%20programming%20and%20memoization" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Demystifying%20dynamic%20programming%20and%20memoization&body=https%3a%2f%2fyourbasic.org%2falgorithms%2fdynamic-programming-explained%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>

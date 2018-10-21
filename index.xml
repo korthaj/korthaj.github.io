@@ -653,6 +653,16 @@ type T struct { n int f float64 next *T } fmt.Println([2]T{}) // [{0 0 &amp;lt;n
     </item>
     
     <item>
+      <title>Demystifying dynamic programming and memoization</title>
+      <link>https://yourbasic.org/algorithms/dynamic-programming-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/algorithms/dynamic-programming-explained/</guid>
+      <description>This text contains a detailed example showing how to solve a tricky problem efficiently with recursion, dynamic programming and memoization.
+ Dynamic programming is a method for solving a complex problem by dividing it into simpler subproblems, solving each of those just once, and storing their solutions. Memoization is an optimization technique used to speed up programs by storing the results of expensive function calls and returning the cached result when the same inputs occur&amp;nbsp;again.</description>
+    </item>
+    
+    <item>
       <title>Does not compute</title>
       <link>https://yourbasic.org/golang/gotcha-operator-precedence/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -663,16 +673,6 @@ n := 43210 // time in seconds fmt.Println(n/60*60, &#34;hours and&#34;, n%60*60,
 The *, /, and % operators have the same precedence and are evaluated left to right: n/60*60 is the same as (n/60)*60.
 Insert a pair of parantheses to force the correct evaluation order.
 fmt.Println(n/(60*60), &#34;hours and&#34;, n%(60*60), &#34;seconds&#34;)  12 hours and 10 seconds  Or better yet, use a constant.</description>
-    </item>
-    
-    <item>
-      <title>Dynamic programming with memoization</title>
-      <link>https://yourbasic.org/algorithms/dynamic-programming-explained/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/algorithms/dynamic-programming-explained/</guid>
-      <description>This text contains a detailed example showing how to solve a tricky problem efficiently with dynamic programming and memoization.
- Dynamic programming is a method for solving a complex problem by dividing it into subproblems, solving each of those just once, and storing their solutions. Memoization is an optimization technique used to speed up programs by storing the results of expensive function calls and returning the cached result when the same inputs occur&amp;nbsp;again.</description>
     </item>
     
     <item>
