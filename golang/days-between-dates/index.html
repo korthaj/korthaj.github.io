@@ -22,6 +22,50 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/golang/days-between-dates/"
+  },
+  "headline": "Days between two dates",
+  "image": [
+    "https://yourbasic.org/golang/time-between-dates.png"
+   ],
+  "datePublished": "2018-10-25T00:00:00&#43;0000",
+  "dateModified": "2018-10-25T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "CODE EXAMPLE How to calculate the number of days between two dates in Go."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Days between two dates">
+<meta property="og:description" content="CODE EXAMPLE How to calculate the number of days between two dates in Go.">
+<meta property="og:url" content="https://yourbasic.org/golang/days-between-dates/">
+<meta property="og:image" content="https://yourbasic.org/golang/time-between-dates.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Days between two dates">
+<meta name="twitter:description" content="CODE EXAMPLE How to calculate the number of days between two dates in Go.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="https://yourbasic.org/golang/time-between-dates.png">
+
+
 </head>
 
 <body>
@@ -40,10 +84,14 @@
 <article>
 <h1>Days between two dates</h1>
 <div class="tagline">yourbasic.org/golang</div>
+<!-- CC0: https://svgsilh.com/image/1927555.html -->
+
+<div style="margin-top:1em;"><img src="/golang/time-between-dates.png"></div>
+
 <pre><code>func main() {
-    <span class="comment">// The leap year 2000 had 366 days.</span>
-    t1 := Date(2000, 1, 1)
-    t2 := Date(2001, 1, 1)
+    <span class="comment">// The leap year 2016 had 366 days.</span>
+    t1 := Date(2016, 1, 1)
+    t2 := Date(2017, 1, 1)
     days := t2.Sub(t1).Hours() / 24
     fmt.Println(days) <span class="comment">// 366</span>
 }
@@ -51,6 +99,12 @@
 func Date(year, month, day int) time.Time {
     return time.Date(year, time.Month(month), day, 0, 0, 0, 0, time.UTC)
 }</code></pre>
+
+<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fdays-between-dates%2f&amp;text=Days%20between%20two%20dates&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fdays-between-dates%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fdays-between-dates%2f&amp;title=Days%20between%20two%20dates" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Days%20between%20two%20dates&body=https%3a%2f%2fyourbasic.org%2fgolang%2fdays-between-dates%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>

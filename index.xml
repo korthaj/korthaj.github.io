@@ -616,7 +616,7 @@ func race() { wait := make(chan struct{}) n := 0 go func() { n++ // read, increm
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/days-between-dates/</guid>
-      <description>func main() { // The leap year 2000 had 366 days. t1 := Date(2000, 1, 1) t2 := Date(2001, 1, 1) days := t2.Sub(t1).Hours() / 24 fmt.Println(days) // 366 } func Date(year, month, day int) time.Time { return time.Date(year, time.Month(month), day, 0, 0, 0, 0, time.UTC) } </description>
+      <description> func main() { // The leap year 2016 had 366 days. t1 := Date(2016, 1, 1) t2 := Date(2017, 1, 1) days := t2.Sub(t1).Hours() / 24 fmt.Println(days) // 366 } func Date(year, month, day int) time.Time { return time.Date(year, time.Month(month), day, 0, 0, 0, 0, time.UTC) } </description>
     </item>
     
     <item>
