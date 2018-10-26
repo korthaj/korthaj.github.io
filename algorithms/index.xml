@@ -74,16 +74,6 @@ Bloom filters are both fast and space-efficient. However, elements can only be a
     </item>
     
     <item>
-      <title>Demystifying dynamic programming and memoization</title>
-      <link>https://yourbasic.org/algorithms/dynamic-programming-explained/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/algorithms/dynamic-programming-explained/</guid>
-      <description>This text contains a detailed example showing how to solve a tricky problem efficiently with recursion, dynamic programming and memoization.
- Dynamic programming is a method for solving a complex problem by dividing it into simpler subproblems, solving each of those just once, and storing their solutions. Memoization is an optimization technique used to speed up programs by storing the results of expensive function calls and returning the cached result when the same inputs occur&amp;nbsp;again.</description>
-    </item>
-    
-    <item>
       <title>Hash tables</title>
       <link>https://yourbasic.org/algorithms/hash-tables-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -188,6 +178,16 @@ Basic example Binary search Master theorem  Basic example As an introduction we 
       <description>A treap stores items in sorted order and offers effi&amp;shy;cient lookup, addi&amp;shy;tion and remo&amp;shy;val of items.
 If you could use only one data structure, which one would you choose? A&amp;nbsp;hash table? While it supports the basic lookup, addition and removal operations, it&amp;nbsp;doesn’t keep the elements sorted. Therefore it can’t efficiently perform some common tasks, such as finding the minimum element or producing an ordered list of all&amp;nbsp;elements.
 What would you require of this ideal, sole structure?</description>
+    </item>
+    
+    <item>
+      <title>Understanding dynamic programming and memoization</title>
+      <link>https://yourbasic.org/algorithms/dynamic-programming-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/algorithms/dynamic-programming-explained/</guid>
+      <description>This text contains a detailed example showing how to solve a tricky problem efficiently with recursion, dynamic programming and memoization.
+ Dynamic programming is a method for solving a complex problem by dividing it into simpler subproblems, solving each of those just once, and storing their solutions. Memoization is an optimization technique used to speed up programs by storing the results of expensive function calls and returning the cached result when the same inputs occur&amp;nbsp;again.</description>
     </item>
     
     <item>
