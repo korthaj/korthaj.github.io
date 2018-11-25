@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/spot-difference.png"
    ],
   "datePublished": "2018-06-28T00:00:00&#43;0000",
-  "dateModified": "2018-10-04T00:00:00&#43;0000",
+  "dateModified": "2018-11-25T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -90,7 +90,7 @@
 
 <div style="margin-top:1em;"><img src="/golang/spot-difference.png"></div>
 
-<h2 id="int">int</h2>
+<h2 id="use-int-for-index">Use int for index</h2>
 
 <p>An <strong>index</strong>, <strong>length</strong> or <strong>capacity</strong> should normally be an <code>int</code>.
 The <code>int</code> type is either 32 or 64&nbsp;bits, and always big enough
@@ -99,7 +99,7 @@ to hold the maximum possible length of an&nbsp;array.</p>
 <p>See <a href="/golang/max-min-int-uint/">Maximum value of an int</a> for code
 to compute the maximum value of an&nbsp;<code>int</code>.</p>
 
-<h2 id="int64-and-friends">int64 and friends</h2>
+<h2 id="use-int64-and-friends-for-data">Use int64 and friends for data</h2>
 
 <p>The types <code>int8</code>, <code>int16</code>, <code>int32</code>, and <code>int64</code> (and their
 unsigned counterparts) are best suited for <strong>data</strong>.
@@ -109,6 +109,13 @@ An <code>int64</code> is the typical choice when memory isn&rsquo;t an&nbsp;issu
 to be extra clear about your intent.
 Similary, you can use a <strong><code>rune</code></strong>, which is an alias for <code>int32</code>,
 to emphasize than an integer represents a <a href="/golang/rune/">code&nbsp;point</a>.</p>
+
+<blockquote>
+<p>Sometimes it makes little or no difference if you use 32 or 64 bits for data,
+and then it&rsquo;s quite common to simply use an int.
+However, I prefer to be explicit.
+It forces you to spend a moment thinking about the choice and also makes the code a bit clearer.</p>
+</blockquote>
 
 <h2 id="examples">Examples</h2>
 
