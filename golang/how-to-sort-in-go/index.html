@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/sorted-ring-binders.jpg"
    ],
   "datePublished": "2018-04-15T00:00:00&#43;0000",
-  "dateModified": "2018-09-23T00:00:00&#43;0000",
+  "dateModified": "2018-12-01T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -93,8 +93,9 @@
 
 <ul class="toc">
   <li><a href="#sort-a-slice-of-ints-float64s-or-strings">Slice of ints, float64s or strings</a></li>
-  <li><a href="#sort-with-custom-compare-function">Custom compare function</a></li>
+  <li><a href="#sort-with-custom-compare-function">Custom comparator</a></li>
   <li><a href="#sort-custom-data-structures">Custom data structures</a></li>
+  <li><a href="#sort-map-by-key-or-value">Sort map by key or value</a></li>
   <li><a href="#performance">Performance</a></li>
 </ul>
 
@@ -118,7 +119,7 @@ a drop-in replacement for sort.Strings, which can be
 more than twice as fast in some settings.</p>
 </blockquote>
 
-<h2 id="sort-with-custom-compare-function">Sort with custom compare function</h2>
+<h2 id="sort-with-custom-comparator">Sort with custom comparator</h2>
 
 <ul>
 <li>Use the function <a href="https://golang.org/pkg/sort/#Slice"><code>sort.Slice</code></a>.
@@ -186,6 +187,30 @@ func main() {
     sort.Sort(ByAge(family))
     fmt.Println(family) <span class="comment">// [{Eve 2} {Alice 23} {Bob 25}]</span>
 }</code></pre>
+
+<h2 id="sort-map-by-key-or-value">Sort map by key or value</h2>
+
+<p>A <a href="/golang/maps-explained/">map</a> is an <strong>unordered</strong> collection of key-value pairs. If you need a stable iteration order,
+you must maintain a separate data structure.</p>
+
+<p>This code example uses a slice of keys to print a map in key order.</p>
+
+<pre><code>m := map[string]int{&quot;Alice&quot;: 2, &quot;Cecil&quot;: 1, &quot;Bob&quot;: 3}
+
+keys := make([]string, 0, len(m))
+for k := range m {
+    keys = append(keys, k)
+}
+sort.Strings(keys)
+
+for _, k := range keys {
+    fmt.Println(k, m[k])
+}
+<span class="comment">// Output:</span>
+<span class="comment">// Alice 2</span>
+<span class="comment">// Bob 3</span>
+<span class="comment">// Cecil 1</span>
+</code></pre>
 
 <h2 id="performance">Performance</h2>
 
