@@ -50,13 +50,18 @@
 
 <p>This code computes the limit values as <strong>untyped constants</strong>.</p>
 
-<pre><code>const BitsPerWord = 32 << (^uint(0) >> 63) <span class="comment">// either 32 or 64</span>
+<pre><code>const UintSize = 32 << (^uint(0) >> 32 & 1) <span class="comment">// 32 or 64</span>
 
 const (
-    MaxInt  = 1&lt;&lt;(BitsPerWord-1) - 1 <span class="comment">// either 1<<31 - 1 or 1<<63 - 1</span>
-    MinInt  = -MaxInt - 1            <span class="comment">// either -1 << 31 or -1 << 63</span>
-    MaxUint = 1&lt;&lt;BitsPerWord - 1     <span class="comment">// either 1<<32 - 1 or 1<<64 - 1</span>
+    MaxInt  = 1&lt;&lt;(UintSize-1) - 1 <span class="comment">// 1<<31 - 1 or 1<<63 - 1</span>
+    MinInt  = -MaxInt - 1         <span class="comment">// -1 << 31 or -1 << 63</span>
+    MaxUint = 1&lt;&lt;UintSize - 1     <span class="comment">// 1<<32 - 1 or 1<<64 - 1</span>
 )</code></pre>
+
+<blockquote>
+<p>The <a href="https://golang.org/pkg/math/bits/#pkg-constants"><code>UintSize</code></a> constant
+is also available in package <a href="https://golang.org/pkg/math/bits/"><code>math/bits</code></a>.</p>
+</blockquote>
 
 
 <h3>More code examples</h3>
