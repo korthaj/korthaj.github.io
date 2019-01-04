@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Regexp in-depth tutorial - yourbasic.org/golang </title>
+  <title>Regexp tutorial and cheat sheet - yourbasic.org/golang </title>
   <meta name="description" content="Regular expressions in Go: introduction, cheat sheet and plenty of code examples.">
   
   <link rel="stylesheet" href="/style.css">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/regexp-cheat-sheet/"
   },
-  "headline": "Regexp in-depth tutorial",
+  "headline": "Regexp tutorial and cheat sheet",
   "image": [
     "https://yourbasic.org/golang/cog-wheels.jpg"
    ],
   "datePublished": "2018-02-27T00:00:00&#43;0000",
-  "dateModified": "2018-04-22T00:00:00&#43;0000",
+  "dateModified": "2019-01-04T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -54,13 +54,13 @@
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Regexp in-depth tutorial">
+<meta property="og:title" content="Regexp tutorial and cheat sheet">
 <meta property="og:description" content="Regular expressions in Go: introduction, cheat sheet and plenty of code examples.">
 <meta property="og:url" content="https://yourbasic.org/golang/regexp-cheat-sheet/">
 <meta property="og:image" content="https://yourbasic.org/golang/cog-wheels.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Regexp in-depth tutorial">
+<meta name="twitter:title" content="Regexp tutorial and cheat sheet">
 <meta name="twitter:description" content="Regular expressions in Go: introduction, cheat sheet and plenty of code examples.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/cog-wheels.jpg">
@@ -82,7 +82,7 @@
 
 <main>
 <article>
-<h1>Regexp in-depth tutorial</h1>
+<h1>Regexp tutorial and cheat sheet</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
@@ -104,10 +104,11 @@
   <li><a href="#cheat-sheet">Cheat sheet</a>
     <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
       <li><a href="#choice-and-grouping">Choice and grouping</a></li>
-      <li><a href="#repetition">Repetition</a></li>
+      <li><a href="#repetition-greedy-and-non-greedy">Repetition (greedy and non-greedy)</a></li>
       <li><a href="#character-classes">Character classes</a></li>
       <li><a href="#special-characters">Special characters</a></li>
       <li><a href="#text-boundary-anchors">Text boundary anchors</a></li>
+      <li><a href="#case-insensitive-and-multiline-matches">Case-insensitive and multiline matches</a></li>
     </ul>
   </li>
 </ul>
@@ -200,7 +201,7 @@ both ordinary string literals and regular expressions use backslashes for specia
   </tbody>
 </table>
 
-<h3 id="repetition">Repetition</h3>
+<h3 id="repetition-greedy-and-non-greedy">Repetition (greedy and non-greedy)</h3>
 
 <table class="white">
   <thead>
@@ -216,7 +217,7 @@ both ordinary string literals and regular expressions use backslashes for specia
     </tr>
     <tr>
       <td style="padding-top: 0;"><code>x*?</code></td>
-      <td style="padding-top: 0;">prefer fewer</td>
+      <td style="padding-top: 0;">prefer fewer (non-greedy)</td>
     </tr>
     <tr>
       <td style="border-bottom: 0;"><code>x+</code></td>
@@ -224,7 +225,7 @@ both ordinary string literals and regular expressions use backslashes for specia
     </tr>
     <tr>
       <td style="padding-top: 0;"><code>x+?</code></td>
-      <td style="padding-top: 0;">prefer fewer</td>
+      <td style="padding-top: 0;">prefer fewer (non-greedy)</td>
     </tr>
     <tr>
       <td style="border-bottom: 0;"><code>x?</code></td>
@@ -398,6 +399,38 @@ both ordinary string literals and regular expressions use backslashes for specia
   </tbody>
 </table>
 
+<h3 id="case-insensitive-and-multiline-matches">Case-insensitive and multiline matches</h3>
+
+<p>To change the default matching behavior, you can add a set of flags
+to the beginning of a&nbsp;regular expression.</p>
+
+<p>For example, the prefix <code>&quot;(?is)&quot;</code> makes the matching
+case-insensitive and lets <code>.</code>&nbsp;match&nbsp;<code>\n</code>.
+(The default matching is case-sensitive and <code>.</code>&nbsp;doesn&rsquo;t match&nbsp;<code>\n</code>.)</p>
+
+<table class="white">
+  <thead>
+    <tr>
+      <th>Flag</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>i</code></td>
+      <td>case-insensitive</td>
+    </tr>
+    <tr>
+      <td><code>m</code></td>
+      <td>let <code>^</code> and <code>$</code> match begin/end line in addition to begin/end text (multi-line&nbsp;mode)</td>
+    </tr>
+    <tr>
+      <td><code>s</code></td>
+      <td>let <code>.</code> match <code>\n</code></code> (single-line&nbsp;mode)</td>
+    </tr>
+  </tbody>
+</table>
+
 <h2 id="code-examples">Code examples</h2>
 
 <h3 id="first-match">First match</h3>
@@ -490,10 +523,10 @@ fmt.Printf("%q\n", zp.Split("pizza", 2))  <span class="comment">// ["pi" "a"]</s
 <p><a href="https://swtch.com/~rsc/regexp/regexp1.html">Regular expression matching can be simple and fast (but is slow in Java, Perl, PHP, Python, Ruby,&nbsp;…)</a>.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fregexp-cheat-sheet%2f&amp;text=Regexp%20in-depth%20tutorial&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fregexp-cheat-sheet%2f&amp;text=Regexp%20tutorial%20and%20cheat%20sheet&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fregexp-cheat-sheet%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fregexp-cheat-sheet%2f&amp;title=Regexp%20in-depth%20tutorial" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Regexp%20in-depth%20tutorial&body=https%3a%2f%2fyourbasic.org%2fgolang%2fregexp-cheat-sheet%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fregexp-cheat-sheet%2f&amp;title=Regexp%20tutorial%20and%20cheat%20sheet" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Regexp%20tutorial%20and%20cheat%20sheet&body=https%3a%2f%2fyourbasic.org%2fgolang%2fregexp-cheat-sheet%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
