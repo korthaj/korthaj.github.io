@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit cost vs. bit cost time complexity - yourbasic.org </title>
+  <meta name="description" content="Unit cost is used in a simplified model where a number fits in a memory cell and standard arithmetic operations take constant time. With bit cost we take into account that computations with bigger numbers can be more expensive.">
+  
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-113104149-1');
+  </script>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/algorithms/unit-cost-vs-bit-cost/"
+  },
+  "headline": "Unit cost vs. bit cost time complexity",
+  "image": [
+    "https://yourbasic.org/algorithms/unit-cost-multiplication.jpg"
+   ],
+  "datePublished": "2019-04-05T00:00:00&#43;0000",
+  "dateModified": "2019-04-05T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "Unit cost is used in a simplified model where a number fits in a memory cell and standard arithmetic operations take constant time. With bit cost we take into account that computations with bigger numbers can be more expensive."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unit cost vs. bit cost time complexity">
+<meta property="og:description" content="Unit cost is used in a simplified model where a number fits in a memory cell and standard arithmetic operations take constant time. With bit cost we take into account that computations with bigger numbers can be more expensive.">
+<meta property="og:url" content="https://yourbasic.org/algorithms/unit-cost-vs-bit-cost/">
+<meta property="og:image" content="https://yourbasic.org/algorithms/unit-cost-multiplication.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Unit cost vs. bit cost time complexity">
+<meta name="twitter:description" content="Unit cost is used in a simplified model where a number fits in a memory cell and standard arithmetic operations take constant time. With bit cost we take into account that computations with bigger numbers can be more expensive.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="https://yourbasic.org/algorithms/unit-cost-multiplication.jpg">
+
+
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li class="here"><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Unit cost vs. bit cost time complexity</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<!-- CC BY 2.0: https://www.flickr.com/photos/illuminated_photography/3153988939 -->
+
+<div style="margin-top:1em;"><img src="/algorithms/unit-cost-multiplication.jpg" alt="Unit-cost multiplication devise."></div>
+<div><i>Unit-cost multiplication</i></div>
+
+<p>Unit cost and bit cost are two different cost functions used to compute
+space and time <a href="/algorithms/time-complexity-explained/">complexity</a>.</p>
+
+<ul>
+<li><strong>Unit cost</strong> is used in a simplified model where a number,
+of any size, fits within a memory cell, and where standard arithmetic operations
+take constant&nbsp;time.</li>
+<li>With <strong>bit cost</strong> we take into account that computations with bigger numbers
+can be more&nbsp;expensive.</li>
+</ul>
+
+<blockquote>
+<p>Unit cost often works well in practice as modern processors can perform
+arithmetics on 64-bit integer and floating point numbers
+in <a href="/algorithms/big-o-notation-explained/#constant-time">constant time</a>.</p>
+</blockquote>
+
+<h2 id="unit-cost-example">Unit cost example</h2>
+
+<pre><code>func Add(x, y int64) int64 {
+    return x + y
+}
+</code></pre>
+
+<p>In this simple example it&rsquo;s sensible to use <strong>unit cost</strong> and say
+that the function runs in constant&nbsp;time.</p>
+
+<h2 id="bit-cost-example">Bit cost example</h2>
+
+<pre><code>func Concatenate(x, y string) string {
+    return x + y
+}
+</code></pre>
+
+<p>Here it would be a mistake to use unit cost for the <code>+</code>&nbsp;operation:
+to concatenate two strings, we must allocate new memory and copy the&nbsp;characters.</p>
+
+<p>In this case it&rsquo;s better to use <strong>bit cost</strong> for the <code>+</code>&nbsp;operation:</p>
+
+<ul>
+<li>the length of the strings is used to measure the input size,</li>
+<li>and we say that the function runs in &Theta;(len(x)&nbsp;+&nbsp;len(y))&nbsp;time.</li>
+</ul>
+
+<blockquote>
+Note that we still use unit cost for character operations.
+This makes perfect sense as characters can be represented by small fixed-sized integers.
+</blockquote>
+
+<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2falgorithms%2funit-cost-vs-bit-cost%2f&amp;text=Unit%20cost%20vs.%20bit%20cost%20time%20complexity&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2falgorithms%2funit-cost-vs-bit-cost%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2falgorithms%2funit-cost-vs-bit-cost%2f&amp;title=Unit%20cost%20vs.%20bit%20cost%20time%20complexity" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Unit%20cost%20vs.%20bit%20cost%20time%20complexity&body=https%3a%2f%2fyourbasic.org%2falgorithms%2funit-cost-vs-bit-cost%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+
+
+</article>
+<aside>
+
+    
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/algorithms/time-complexity-explained/">How to analyse time complexity: Count your steps</a>
+    <div class="desc">Time complexity analysis esti­mates the time to run an algo­rithm. It&#39;s calcu­lated by counting elemen­tary opera­tions.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="https://en.wikipedia.org/wiki/Analysis_of_algorithms">Analysis of algorithms</a>
+    <div class="source">Wikipedia</div>
+    <div class="author"></div>
+  </div>
+
+<h2>Most Read</h2>
+  
+    <a href="/algorithms/your-basic-api/" title="Your basic API: guidelines and best practices"><img src="/algorithms/go-mini.jpg"></a>
+  
+  <ul class="none">
+  
+    <li><a href="/algorithms/time-complexity-explained/">How to analyse time complexity: Count your steps</a></li>
+
+    <li><a href="/algorithms/big-o-notation-explained/">Big O notation: definition and examples</a></li>
+
+    <li><a href="/algorithms/dynamic-programming-explained/">Understanding dynamic programming and memoization</a></li>
+
+    <li><a href="/algorithms/loop-invariants-explained/">Loop invariants can give you coding superpowers</a></li>
+
+    <li><a href="/algorithms/your-basic-api/">Your basic API: guidelines and best practices</a></li>
+
+    <li><a href="/algorithms/fastest-sorting-algorithm/">The fastest sorting algorithm?</a></li>
+
+  </ul>
+  <p><a href="/algorithms/"><b>See all 22 algorithm articles</b></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

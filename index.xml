@@ -2030,6 +2030,16 @@ primes := []int{2, 3, 5, 7} for _, p := range primes { fmt.</description>
     </item>
     
     <item>
+      <title>Unit cost vs. bit cost time complexity</title>
+      <link>https://yourbasic.org/algorithms/unit-cost-vs-bit-cost/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/algorithms/unit-cost-vs-bit-cost/</guid>
+      <description>Unit-cost multiplication Unit cost and bit cost are two different cost functions used to compute space and time complexity.
+ Unit cost is used in a simplified model where a number, of any size, fits within a memory cell, and where standard arithmetic operations take constant&amp;nbsp;time. With bit cost we take into account that computations with bigger numbers can be more&amp;nbsp;expensive.   Unit cost often works well in practice as modern processors can perform arithmetics on 64-bit integer and floating point numbers in constant time.</description>
+    </item>
+    
+    <item>
       <title>Untyped numeric constants with no limits</title>
       <link>https://yourbasic.org/golang/untyped-constants/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
