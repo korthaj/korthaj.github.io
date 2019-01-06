@@ -1624,16 +1624,6 @@ Warning: Unexported identifiers is not a security measure and it does not hide o
     </item>
     
     <item>
-      <title>Range loops (for-each loops)</title>
-      <link>https://yourbasic.org/golang/for-loop-range-array-slice-map-channel/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/for-loop-range-array-slice-map-channel/</guid>
-      <description>Range statements iterate over slices, arrays, strings, maps or&amp;nbsp;channels.
- Basics Strings Maps Channels Gotchas  Basics a := []string{&#34;Foo&#34;, &#34;Bar&#34;} for i, s := range a { fmt.Println(i, s) } 0 Foo 1 Bar   The range expression, a, is evaluated once before beginning the loop. The iteration values are assigned to the respective iteration variables, i and s, as in an assignment statement. The second iteration variable is optional.</description>
-    </item>
-    
-    <item>
       <title>Read a file (stdin) line by line</title>
       <link>https://yourbasic.org/golang/read-file-line-by-line/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1870,6 +1860,16 @@ Your basic API is an introduction to API design with examples in Go and&amp;nbsp
       <guid>https://yourbasic.org/golang/how-to-sort-in-go/</guid>
       <description>Slice of ints, float64s or strings Custom comparator Custom data structures Sort map by key or value Performance  Sort a slice of ints, float64s or strings Use one of the functions
  sort.Ints sort.Float64s sort.Strings  s := []int{4, 2, 3, 1} sort.Ints(s) fmt.Println(s) // [1 2 3 4]  Package radix contains a drop-in replacement for sort.Strings, which can be more than twice as fast in some settings.</description>
+    </item>
+    
+    <item>
+      <title>The 4 ways to write a range (foreach) loop</title>
+      <link>https://yourbasic.org/golang/for-loop-range-array-slice-map-channel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/for-loop-range-array-slice-map-channel/</guid>
+      <description>Range statements iterate over slices, arrays, strings, maps or&amp;nbsp;channels.
+ Basics Strings Maps Channels Gotchas  Basics a := []string{&#34;Foo&#34;, &#34;Bar&#34;} for i, s := range a { fmt.Println(i, s) } 0 Foo 1 Bar   The range expression, a, is evaluated once before beginning the loop. The iteration values are assigned to the respective iteration variables, i and s, as in an assignment statement. The second iteration variable is optional.</description>
     </item>
     
     <item>

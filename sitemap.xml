@@ -603,10 +603,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/for-loop-range-array-slice-map-channel/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/golang/read-file-line-by-line/</loc>
   </url>
   
@@ -697,6 +693,10 @@
   
   <url>
     <loc>https://yourbasic.org/golang/how-to-sort-in-go/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/for-loop-range-array-slice-map-channel/</loc>
   </url>
   
   <url>
