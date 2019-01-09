@@ -128,7 +128,7 @@ Check second return value m := map[string]float64{&#34;pi&#34;: 3.14} _, found :
       <description>Comma Use the strings.Split function to split a string into its comma separated values.
 s := strings.Split(&amp;quot;a,b,c&amp;quot;, &amp;quot;,&amp;quot;) fmt.Println(s) // Output: [a b c]  To include the separators, use strings.SplitAfter. To split only the first n values, use strings.SplitN and strings.SplitAfterN.
 White space Use the strings.Fields function to split a string into substrings removing white space.
-s := strings.Fields(&amp;quot; a \t b \n&amp;quot;) fmt.Println(s) // Output: [a b]  General case In more complicated situations, the Regexp.</description>
+s := strings.Fields(&amp;quot; a \t b \n&amp;quot;) fmt.Println(s) // Output: [a b]  General case In more complicated situations, the regexp Split method might do the trick.</description>
     </item>
     
     <item>
