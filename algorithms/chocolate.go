@@ -28,15 +28,15 @@ func JoyMemo(choco []int, i, j int, memo [][]result) int {
 	if res := memo[i][j].joy; res != 0 {
 		return res
 	}
-
-	day := 1 + len(choco) - (j - i)
+	// base case
 	if j-i == 1 {
-		return day * choco[i]
+		return len(choco) * choco[i]
 	}
+	// recursion
+	day := 1 + len(choco) - (j - i)
 	left := day*choco[i] + JoyMemo(choco, i+1, j, memo)
 	right := day*choco[j-1] + JoyMemo(choco, i, j-1, memo)
 	res := max(left, right)
-
 	// Save the result.
 	memo[i][j].joy = res
 	memo[i][j].pickLeft = left > right
@@ -59,7 +59,7 @@ func main() {
 		memo[i] = make([]result, n+1)
 	}
 	JoyMemo(choco, 0, n, memo)
-	for i, j := 0, n; i < j; {
+	for i, j := 0, len(choco); i < j; {
 		if memo[i][j].pickLeft {
 			fmt.Print("left ")
 			i++

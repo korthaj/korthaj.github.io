@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Understanding dynamic programming and memoization - yourbasic.org </title>
+  <title>Understanding dynamic programming with memoization or tabulation - yourbasic.org </title>
   <meta name="description" content="CODE EXAMPLE Dynamic programming solves a complex problem by dividing it into subproblems, solving each of those just once, and storing their solutions.">
   
   <link rel="stylesheet" href="/style.css">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/algorithms/dynamic-programming-explained/"
   },
-  "headline": "Understanding dynamic programming and memoization",
+  "headline": "Understanding dynamic programming with memoization or tabulation",
   "image": [
     "https://yourbasic.org/algorithms/recursive-photography.jpg"
    ],
   "datePublished": "2018-10-19T00:00:00&#43;0000",
-  "dateModified": "2018-10-26T00:00:00&#43;0000",
+  "dateModified": "2019-01-15T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -54,13 +54,13 @@
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Understanding dynamic programming and memoization">
+<meta property="og:title" content="Understanding dynamic programming with memoization or tabulation">
 <meta property="og:description" content="CODE EXAMPLE Dynamic programming solves a complex problem by dividing it into subproblems, solving each of those just once, and storing their solutions.">
 <meta property="og:url" content="https://yourbasic.org/algorithms/dynamic-programming-explained/">
 <meta property="og:image" content="https://yourbasic.org/algorithms/recursive-photography.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Understanding dynamic programming and memoization">
+<meta name="twitter:title" content="Understanding dynamic programming with memoization or tabulation">
 <meta name="twitter:description" content="CODE EXAMPLE Dynamic programming solves a complex problem by dividing it into subproblems, solving each of those just once, and storing their solutions.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/algorithms/recursive-photography.jpg">
@@ -82,7 +82,7 @@
 
 <main>
 <article>
-<h1>Understanding dynamic programming and memoization</h1>
+<h1>Understanding dynamic programming with memoization or tabulation</h1>
 <div class="tagline">yourbasic.org</div>
 
 
@@ -91,7 +91,8 @@
 <div style="margin-top:1em;"><img src="/algorithms/recursive-photography.jpg"></div>
 
 <p>This text contains a detailed example showing how to solve
-a tricky problem efficiently with recursion, dynamic programming and memoization.</p>
+a tricky problem efficiently with recursion and
+dynamic programming – either with memoization or tabulation.</p>
 
 <ul>
 <li><strong>Dynamic programming</strong> is a method for solving a complex problem by dividing it into simpler subproblems,
@@ -99,6 +100,9 @@ solving each of those just once, and storing their solutions.</li>
 <li><strong>Memoization</strong>  is an optimization technique used to speed up programs by storing
 the results of expensive function calls and returning the cached result when
 the same inputs occur&nbsp;again.</li>
+<li><strong>Tabulation</strong> is an approach where you solve a dynamic programming problem
+by first filling up a table, and then compute the solution to the original problem
+based on the results in this table.</li>
 </ul>
 
 <h2 id="chocolate-feast-problem">Chocolate feast problem</h2>
@@ -187,15 +191,15 @@ func JoyMemo(choco []int, i, j int, memo [][]result) int {
     if res := memo[i][j].joy; res != 0 {
         return res
     }
-
-    day := 1 + len(choco) - (j - i)
+    // base case
     if j-i == 1 {
-        return day * choco[i]
+        return len(choco) * choco[i]
     }
+    // recursion
+    day := 1 + len(choco) - (j - i)
     left := day*choco[i] + JoyMemo(choco, i+1, j, memo)
     right := day*choco[j-1] + JoyMemo(choco, i, j-1, memo)
     res := max(left, right)
-
     // Save the result.
     memo[i][j].joy = res
     memo[i][j].pickLeft = left > right
@@ -218,11 +222,53 @@ func JoyMemo(choco []int, i, j int, memo [][]result) int {
 
 <p>Complete code: <a href="/algorithms/chocolate.go">chocolate.go</a></p>
 
+<h3 id="dynamic-programming-with-tabulation">Dynamic programming with tabulation</h3>
+
+<p>As an alternative, we can use <strong>tabulation</strong> and start by filling up the <code>memo</code>&nbsp;table.
+Note that the order of computation matters:
+to compute the value <code>memo[i][j]</code>, the values of
+<code>memo[i+1][j]</code> and <code>memo[i][j-1]</code> must first be&nbsp;known.</p>
+
+<pre><code>// JoyTab returns a table containing the joys memo[i,j] that
+// you get if you eat the chocolates choco[i:j] in an optimal
+// order starting at day 1 + len(choco) - (j - i).
+func JoyTab(choco []int) (memo [][]result) {
+    n := len(choco)
+    memo = make([][]result, n)
+    for i := range memo {
+        memo[i] = make([]result, n+1)
+    }
+    for i := range memo { // base cases
+        memo[i][i+1].joy = n * choco[i]
+    }
+    for i := n - 1; i >= 0; i-- {
+        for j := i + 2; j <= n; j++ {
+            day := 1 + n - (j - i)
+            left := day*choco[i] + memo[i+1][j].joy
+            right := day*choco[j-1] + memo[i][j-1].joy
+            memo[i][j].joy = max(left, right)
+            memo[i][j].pickLeft = left > right
+        }
+    }
+    return
+}
+</code></pre>
+
+<p>Given this table, the optimal eating order can be computed exactly as before.</p>
+
+<p>Complete code: <a href="/algorithms/chocolatetab.go">chocolatetab.go</a></p>
+
+<h2 id="memoization-vs-tabulation">Memoization vs. tabulation</h2>
+
+<p>The choice between memoization and tabulation is mostly a matter of taste.
+However, if some subproblems need not be solved at all,
+memoization may be more efficient since only the computations needed are carried&nbsp;out.</p>
+
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fdynamic-programming-explained%2f&amp;text=Understanding%20dynamic%20programming%20and%20memoization&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fdynamic-programming-explained%2f&amp;text=Understanding%20dynamic%20programming%20with%20memoization%20or%20tabulation&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2falgorithms%2fdynamic-programming-explained%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fdynamic-programming-explained%2f&amp;title=Understanding%20dynamic%20programming%20and%20memoization" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Understanding%20dynamic%20programming%20and%20memoization&body=https%3a%2f%2fyourbasic.org%2falgorithms%2fdynamic-programming-explained%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fdynamic-programming-explained%2f&amp;title=Understanding%20dynamic%20programming%20with%20memoization%20or%20tabulation" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Understanding%20dynamic%20programming%20with%20memoization%20or%20tabulation&body=https%3a%2f%2fyourbasic.org%2falgorithms%2fdynamic-programming-explained%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
@@ -265,7 +311,7 @@ func JoyMemo(choco []int, i, j int, memo [][]result) int {
 
     <li><a href="/algorithms/big-o-notation-explained/">Big O notation: definition and examples</a></li>
 
-    <li><a href="/algorithms/dynamic-programming-explained/">Understanding dynamic programming and memoization</a></li>
+    <li><a href="/algorithms/dynamic-programming-explained/">Understanding dynamic programming with memoization or tabulation</a></li>
 
     <li><a href="/algorithms/loop-invariants-explained/">Loop invariants can give you coding superpowers</a></li>
 
