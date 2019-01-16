@@ -143,6 +143,15 @@ The String functions cheat sheet presents the top Go string functions.</descript
     </item>
     
     <item>
+      <title>4 iota enum examples</title>
+      <link>https://yourbasic.org/golang/iota/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/iota/</guid>
+      <description>Iota basics Start from one Skip value Complete enumeration type  Iota basics  The iota keyword represents successive integer constants 0, 1, 2,… It resets to 0 whenever the word const appears in the source code, and increments after each const specification.  const ( C0 = iota C1 = iota C2 = iota ) fmt.Println(C0, C1, C2) // &#34;0 1 2&#34; This can be simplified to</description>
+    </item>
+    
+    <item>
       <title>4 key Go resources to get you started</title>
       <link>https://yourbasic.org/golang/getting-started-hello-world/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1959,15 +1968,6 @@ To avoid this, we need to use two separate byte&amp;nbsp;arrays.</description>
       
       <guid>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</guid>
       <description>Basics Format a string without printing it Default formats and type Integer (base, padding, sign) Character (quoted, Unicode) Boolean (true/false)   Pointer (hex) Float (padding, precision, scientific notation) String or byte slice (quoted, padding, hex) Special values Find incorrect formatting with vet     Basics With the fmt package you can format numbers and strings padded with spaces or zeroes, in different bases, and with optional quotes.</description>
-    </item>
-    
-    <item>
-      <title>iota enum examples</title>
-      <link>https://yourbasic.org/golang/iota/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/iota/</guid>
-      <description>Iota basics Start from one Skip value Complete enumeration type  Iota basics  The iota keyword represents successive integer constants 0, 1, 2,… It resets to 0 whenever the word const appears in the source code, and increments after each const specification.  const ( C0 = iota C1 = iota C2 = iota ) fmt.Println(C0, C1, C2) // &#34;0 1 2&#34; This can be simplified to</description>
     </item>
     
   </channel>

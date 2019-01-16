@@ -50,6 +50,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/iota/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/getting-started-hello-world/</loc>
   </url>
   
@@ -837,10 +841,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/iota/</loc>
   </url>
   
 </urlset>
