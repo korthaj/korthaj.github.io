@@ -671,8 +671,7 @@ fmt.Println(n/(60*60), &#34;hours and&#34;, n%(60*60), &#34;seconds&#34;)  12 ho
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/define-enumeration-string/</guid>
-      <description>Basic solution A group of constants enumerated with iota might do the job.
-const ( Sunday int = iota // Sunday == 0 Monday // Monday == 1 Tuesday // Tuesday == 2 Wednesday // … Thursday Friday Saturday )  The iota keyword represents successive integer constants 0, 1, 2,… It resets to 0 whenever the word const appears in the source code, and increments after each const specification.</description>
+      <description>See iota enum examples.</description>
     </item>
     
     <item>
@@ -2250,9 +2249,7 @@ An int or []int is a bit pattern that can represent any digital data. Furthermor
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/iota/</guid>
-      <description>Basics Start from one Skip value Enumeration  Basics The predeclared iota identifier resets to 0 whenever the word const appears in the source code and increments after each const specification.
-const ( C0 = iota C1 = iota C2 = iota ) fmt.Println(C0, C1, C2) // &#34;0 1 2&#34; This can be simplified to
-const ( C0 = iota C1 C2 )  In a parenthesized const declaration expressions can be implicitly repeated – this indicates a repetition of the preceding expression.</description>
+      <description>Iota basics Start from one Skip value Complete enumeration type  Iota basics  The iota keyword represents successive integer constants 0, 1, 2,… It resets to 0 whenever the word const appears in the source code, and increments after each const specification.  const ( C0 = iota C1 = iota C2 = iota ) fmt.Println(C0, C1, C2) // &#34;0 1 2&#34; This can be simplified to</description>
     </item>
     
   </channel>

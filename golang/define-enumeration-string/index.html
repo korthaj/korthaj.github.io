@@ -22,48 +22,7 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
-  <script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Article",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://yourbasic.org/golang/define-enumeration-string/"
-  },
-  "headline": "Enum with String function",
-  "image": [
-    "https://yourbasic.org/golang/lane-numbers.jpg"
-   ],
-  "datePublished": "2018-04-22T00:00:00&#43;0000",
-  "dateModified": "2018-04-22T00:00:00&#43;0000",
-  "author": {
-    "@type": "Person",
-    "name": "Stefan Nilsson"
-  },
-   "publisher": {
-    "@type": "Organization",
-    "name": "yourbasic.org",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://yourbasic.org/res/favicon-96x96.png"
-    }
-  },
-  "description": "CODE EXAMPLE How to declare an enumeration and give it a string representation."
-}
-</script>
-
-<meta property="og:locale" content="en_US">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Enum with String function">
-<meta property="og:description" content="CODE EXAMPLE How to declare an enumeration and give it a string representation.">
-<meta property="og:url" content="https://yourbasic.org/golang/define-enumeration-string/">
-<meta property="og:image" content="https://yourbasic.org/golang/lane-numbers.jpg">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Enum with String function">
-<meta name="twitter:description" content="CODE EXAMPLE How to declare an enumeration and give it a string representation.">
-<meta name="twitter:site" content="@yourbasic_org">
-<meta name="twitter:image" content="https://yourbasic.org/golang/lane-numbers.jpg">
+  <meta http-equiv="Refresh" content="0; url=/golang/iota/" />
 
 
 </head>
@@ -84,131 +43,12 @@
 <article>
 <h1>Enum with String function</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
-
-<!-- CC BY-SA 2.0: https://www.flickr.com/photos/teosaurio/3392883329 -->
-
-<div style="margin-top:1em;"><img src="/golang/lane-numbers.jpg"></div>
-
-<h2 id="basic-solution">Basic solution</h2>
-
-<p>A group of constants enumerated with <code>iota</code> might do the job.</p>
-
-<pre><code>const (
-    Sunday    int = iota <span class="comment">// Sunday == 0</span>
-    Monday               <span class="comment">// Monday == 1</span>
-    Tuesday              <span class="comment">// Tuesday == 2</span>
-    Wednesday            <span class="comment">// …</span>
-    Thursday
-    Friday
-    Saturday
-)</code></pre>
-
-<ul>
-<li>The <a href="/golang/iota/"><code>iota</code></a> keyword represents successive integer constants 0, 1, 2,…</li>
-<li>It resets to 0 whenever the word <code>const</code> appears in the source code,</li>
-<li>and increments after each const specification.</li>
-</ul>
-
-<p>In the example, we also rely on the fact that expressions are implicitly repeated
-in a paren&shy;thesized const declaration &ndash; this indicates a repetition
-of the preceding expression and its&nbsp;type.</p>
-
-<h2 id="add-a-string-representation">Add a string representation</h2>
-
-<p>You could also introduce a new type…</p>
-
-<pre><code>type Suite int
-
-const (
-    Spades Suite = iota
-    Hearts
-    Diamonds
-    Clubs
-)</code></pre>
-
-<p>…and give it a <code>String</code> function:</p>
-
-<pre><code>func (s Suite) String() string {
-	return [...]string{&quot;Spades&quot;, &quot;Hearts&quot;, &quot;Diamonds&quot;, &quot;Clubs&quot;}[s]
-}
-</code></pre>
-
-<p>Here is the new type in action.</p>
-
-<pre><code>var s Suite = Hearts
-fmt.Print(s)
-switch s {
-case Spades:
-	fmt.Println(&quot; are best.&quot;)
-case Hearts:
-	fmt.Println(&quot; are second best.&quot;)
-default:
-	fmt.Println(&quot; aren't very good.&quot;)
-}
-</code></pre>
-
-<pre><code>Hearts are second best.
-</code></pre>
-
-
-<h3>More code examples</h3>
-
-<p>
-<a href="/golang/blueprint/"><img src="/golang/blueprint-tiny.jpg" title="Go blueprints: code for common tasks" style="float:left; margin-right:1em;"></a>
-<a href="/golang/blueprint/">Go blueprints: code for com&shy;mon tasks</a> is a collection of handy code&nbsp;examples.</p>
-
-<div style="clear:both;"></div>
-
-<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fdefine-enumeration-string%2f&amp;text=Enum%20with%20String%20function&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fdefine-enumeration-string%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fdefine-enumeration-string%2f&amp;title=Enum%20with%20String%20function" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Enum%20with%20String%20function&body=https%3a%2f%2fyourbasic.org%2fgolang%2fdefine-enumeration-string%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
-
+<p>See <a href="/golang/iota/">iota enum examples</a>.</p>
 
 
 </article>
 <aside>
-
-    
-  <h2>Related</h2>
-
-  <div class="reference">
-    <a href="/golang/iota/">iota enum examples</a>
-    <div class="desc">The iota identifier is used to enumerate constants. It resets to 0 whenever the word const appears and increments after each const specification.</div>
-    <div class="source">yourbasic.org</div>
-  </div>
-
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Useful golang facts</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
-  <a href="/golang/gotcha/" title="Go gotcha: newbie or ninja?"><img src="/golang/surprise-mini.jpg"></a>
-  <ul class="none">
-  
-    <li><a href="/golang/gotcha/">Go gotcha: newbie or ninja?</a></li>
-
-    <li><a href="/golang/string-functions-reference-cheat-sheet/">String functions cheat sheet</a></li>
-
-    <li><a href="/golang/interfaces-explained/">Interfaces in a nutshell</a></li>
-
-    <li><a href="/golang/json-example/">JSON in-depth tutorial</a></li>
-
-    <li><a href="/golang/inheritance-object-oriented/">Painless object-oriented programming without inheritance</a></li>
-
-    <li><a href="/golang/concurrent-programming/">Step-by-step guide to concurrency</a></li>
-
-  </ul>
-  
-  <p><a href="/golang/"><strong>See all 179 Go articles</strong></a></p>
-
+<p></p>
 </aside>
 </main>
 

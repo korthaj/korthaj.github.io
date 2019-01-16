@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/iota.png"
    ],
   "datePublished": "2018-07-27T00:00:00&#43;0000",
-  "dateModified": "2018-07-27T00:00:00&#43;0000",
+  "dateModified": "2019-01-16T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -86,21 +86,24 @@
 <div class="tagline">yourbasic.org/golang</div>
 
 
-<!-- CC0: https://commons.wikimedia.org/wiki/File:Greek_alphabet_iota.svg -->
+<!-- CC BY-SA 2.0: https://www.flickr.com/photos/teosaurio/3392883329 -->
 
-<div><img src="/golang/iota.png"></div>
+<div><img src="/golang/lane-numbers.jpg"></div>
 
 <ul class="toc" style="margin-top:0">
-  <li><a href="#basics">Basics</a></li>
+  <li><a href="#iota-basics">Iota basics</a></li>
   <li><a href="#start-from-one">Start from one</a></li>
   <li><a href="#skip-value">Skip value</a></li>
-  <li><a href="#enumeration">Enumeration</a></li>
+  <li><a href="#complete-enumeration-type">Complete enumeration type</a></li>
 </ul>
 
-<h2 id="basics">Basics</h2>
+<h2 id="iota-basics">Iota basics</h2>
 
-<p>The predeclared <code>iota</code> identifier resets to 0 whenever the word <code>const</code>
-appears in the source code and increments after each const specification.</p>
+<ul>
+<li>The <a href="/golang/iota/"><code>iota</code></a> keyword represents successive integer constants 0, 1, 2,…</li>
+<li>It resets to 0 whenever the word <code>const</code> appears in the source code,</li>
+<li>and increments after each const specification.</li>
+</ul>
 
 <pre><code>const (
     C0 = iota
@@ -118,8 +121,9 @@ fmt.Println(C0, C1, C2) <span class="comment">// "0 1 2"</span></code></pre>
 )
 </code></pre>
 
-<p>In a parenthesized const declaration expressions can be implicitly repeated – this indicates
-a repetition of the preceding expression.</p>
+<p>Here we rely on the fact that expressions are implicitly repeated
+in a paren&shy;thesized const declaration &ndash; this indicates a repetition
+of the preceding expression and its&nbsp;type.</p>
 
 <h2 id="start-from-one">Start from one</h2>
 
@@ -140,24 +144,54 @@ fmt.Println(C1, C2, C3) <span class="comment">// "1 2 3"</span></code></pre>
 )
 fmt.Println(C1, C3, C4) <span class="comment">// "1 3 4"</span></code></pre>
 
-<h2 id="enumeration">Enumeration</h2>
+<h2 id="complete-enumeration-type">Complete enumeration type</h2>
+
+<p>A group of constants enumerated with <code>iota</code> might do the job.</p>
+
+<pre><code>const (
+    Sunday    int = iota <span class="comment">// Sunday == 0</span>
+    Monday               <span class="comment">// Monday == 1</span>
+    Tuesday              <span class="comment">// Tuesday == 2</span>
+    Wednesday            <span class="comment">// …</span>
+    Thursday
+    Friday
+    Saturday
+)</code></pre>
+
+<p>You could also introduce a new type…</p>
 
 <pre><code>type Suite int
 
 const (
-	Spades Suite = iota
-	Hearts
-	Diamonds
-	Clubs
-)
+    Spades Suite = iota
+    Hearts
+    Diamonds
+    Clubs
+)</code></pre>
 
-func (s Suite) String() string {
+<p>…and give it a <code>String</code> function:</p>
+
+<pre><code>func (s Suite) String() string {
 	return [...]string{&quot;Spades&quot;, &quot;Hearts&quot;, &quot;Diamonds&quot;, &quot;Clubs&quot;}[s]
 }
 </code></pre>
 
-<p>See <a href="/golang/define-enumeration-string/">Define an enumeration with a string representation</a>
-for more details on how to create and use enumerations in Go.</p>
+<p>Here is the new type in action.</p>
+
+<pre><code>var s Suite = Hearts
+fmt.Print(s)
+switch s {
+case Spades:
+	fmt.Println(&quot; are best.&quot;)
+case Hearts:
+	fmt.Println(&quot; are second best.&quot;)
+default:
+	fmt.Println(&quot; aren't very good.&quot;)
+}
+</code></pre>
+
+<pre><code>Hearts are second best.
+</code></pre>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
 <a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fiota%2f&amp;text=iota%20enum%20examples&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
@@ -168,16 +202,6 @@ for more details on how to create and use enumerations in Go.</p>
 
 </article>
 <aside>
-
-    
-  <h2>Related</h2>
-
-  <div class="reference">
-    <a href="/golang/define-enumeration-string/">Enum with String function</a>
-    <div class="desc">How to declare an enumeration and give it a string representation.</div>
-    <div class="source">yourbasic.org</div>
-  </div>
-
   <h2>Follow on Twitter</h2>
   <ul class="none">
     <li><span><a href="https://twitter.com/yourbasic_org">
