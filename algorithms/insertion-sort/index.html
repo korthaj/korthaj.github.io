@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Insertion sort - yourbasic.org </title>
+  <title>Insertion sort vs. selection sort [code and efficiency] - yourbasic.org </title>
   <meta name="description" content="CODE EXAMPLE Insertion sort is a simple algorithm with quadratic worst-case running time. It can outperform more complicated algorithms for short lists and lists that are almost sorted.">
   
   <link rel="stylesheet" href="/style.css">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/algorithms/insertion-sort/"
   },
-  "headline": "Insertion sort",
+  "headline": "Insertion sort vs. selection sort [code and efficiency]",
   "image": [
-    "https://yourbasic.org/algorithms/maze.jpg"
+    "https://yourbasic.org/algorithms/sort-playing-cards.jpg"
    ],
   "datePublished": "2018-04-19T00:00:00&#43;0000",
-  "dateModified": "2018-04-19T00:00:00&#43;0000",
+  "dateModified": "2019-01-17T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -54,16 +54,16 @@
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Insertion sort">
+<meta property="og:title" content="Insertion sort vs. selection sort [code and efficiency]">
 <meta property="og:description" content="CODE EXAMPLE Insertion sort is a simple algorithm with quadratic worst-case running time. It can outperform more complicated algorithms for short lists and lists that are almost sorted.">
 <meta property="og:url" content="https://yourbasic.org/algorithms/insertion-sort/">
-<meta property="og:image" content="https://yourbasic.org/algorithms/maze.jpg">
+<meta property="og:image" content="https://yourbasic.org/algorithms/sort-playing-cards.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Insertion sort">
+<meta name="twitter:title" content="Insertion sort vs. selection sort [code and efficiency]">
 <meta name="twitter:description" content="CODE EXAMPLE Insertion sort is a simple algorithm with quadratic worst-case running time. It can outperform more complicated algorithms for short lists and lists that are almost sorted.">
 <meta name="twitter:site" content="@yourbasic_org">
-<meta name="twitter:image" content="https://yourbasic.org/algorithms/maze.jpg">
+<meta name="twitter:image" content="https://yourbasic.org/algorithms/sort-playing-cards.jpg">
 
 
 </head>
@@ -82,7 +82,7 @@
 
 <main>
 <article>
-<h1>Insertion sort</h1>
+<h1>Insertion sort vs. selection sort [code and efficiency]</h1>
 <div class="tagline">yourbasic.org</div>
 
 
@@ -93,11 +93,13 @@ for short lists and lists that are almost sorted.</p>
 
 <div><img src="/algorithms/sort-playing-cards.jpg"></div>
 
+<h2 id="insertion-sort">Insertion sort</h2>
+
 <p>Insertion sort is a simple sorting algorithm with <strong>quadratic</strong> worst-case running time,
 but in some cases it&rsquo;s still the algorithm of choice.</p>
 
 <ul>
-<li>It&rsquo;s efficient for <strong>really small data sets</strong>.
+<li>It&rsquo;s efficient for <strong>small data sets</strong>.
 It typically outperforms other simple quadratic algorithms,
 such as selection sort or bubble sort.</li>
 <li>It&rsquo;s <strong>adaptive</strong>: it sorts data sets that are already substantially sorted efficiently.
@@ -122,7 +124,31 @@ func InsertionSort(a []int) {
     }
 }</code></pre>
 
-<h3 id="further-reading">Further reading</h3>
+<h2 id="selection-sort">Selection sort</h2>
+
+<p>In practice, selection sort generally performs worse than insertion&nbsp;sort.</p>
+
+<ul>
+<li>It doesn&rsquo;t adapt to data and always performs a quadratic number of comparisons.</li>
+<li>However, it <strong>moves each element only once</strong>.</li>
+</ul>
+
+<pre><code>// SelectionSort sorts the elements of a in ascending order.
+func SelectionSort(a []int) {
+    for j := 0; j < len(a)-1; j++ {
+        <span class="comment">// Invariant: a[:j] contains the first j elements</span>
+        <span class="comment">// of the final sorted slice.</span>
+        minPos := j
+        for i := j + 1; i < len(a); i++ {
+            if a[i] < a[minPos] {
+                minPos = i
+            }
+        }
+        a[j], a[minPos] = a[minPos], a[j]
+    }
+}</code></pre>
+
+<h2 id="further-reading">Further reading</h2>
 
 <div><a href="/golang/quicksort-optimizations/"><img src="/golang/divide-conquer.jpg" width="200px" title="Top 3 Quicksort optimizations"></a></div>
 
@@ -130,10 +156,10 @@ func InsertionSort(a []int) {
 for a fast Quicksort implementation that uses Insertion sort to improve performance.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2falgorithms%2finsertion-sort%2f&amp;text=Insertion%20sort&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2falgorithms%2finsertion-sort%2f&amp;text=Insertion%20sort%20vs.%20selection%20sort%20[code%20and%20efficiency]&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2falgorithms%2finsertion-sort%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2falgorithms%2finsertion-sort%2f&amp;title=Insertion%20sort" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Insertion%20sort&body=https%3a%2f%2fyourbasic.org%2falgorithms%2finsertion-sort%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2falgorithms%2finsertion-sort%2f&amp;title=Insertion%20sort%20vs.%20selection%20sort%20[code%20and%20efficiency]" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Insertion%20sort%20vs.%20selection%20sort%20[code%20and%20efficiency]&body=https%3a%2f%2fyourbasic.org%2falgorithms%2finsertion-sort%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
