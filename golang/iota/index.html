@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>4 iota enum examples - yourbasic.org/golang </title>
-  <meta name="description" content="The iota identifier is used to enumerate constants. It resets to 0 whenever the word const appears and increments after each const specification.">
+  <meta name="description" content="The iota identifier is used to enumerate constants. For a complete enum implementation, introduce a new type and give it a String function.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/iota.png"
    ],
   "datePublished": "2018-07-27T00:00:00&#43;0000",
-  "dateModified": "2019-01-16T00:00:00&#43;0000",
+  "dateModified": "2019-01-17T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "The iota identifier is used to enumerate constants. It resets to 0 whenever the word const appears and increments after each const specification."
+  "description": "The iota identifier is used to enumerate constants. For a complete enum implementation, introduce a new type and give it a String function."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="4 iota enum examples">
-<meta property="og:description" content="The iota identifier is used to enumerate constants. It resets to 0 whenever the word const appears and increments after each const specification.">
+<meta property="og:description" content="The iota identifier is used to enumerate constants. For a complete enum implementation, introduce a new type and give it a String function.">
 <meta property="og:url" content="https://yourbasic.org/golang/iota/">
 <meta property="og:image" content="https://yourbasic.org/golang/iota.png">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="4 iota enum examples">
-<meta name="twitter:description" content="The iota identifier is used to enumerate constants. It resets to 0 whenever the word const appears and increments after each const specification.">
+<meta name="twitter:description" content="The iota identifier is used to enumerate constants. For a complete enum implementation, introduce a new type and give it a String function.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/iota.png">
 
@@ -94,7 +94,7 @@
   <li><a href="#iota-basics">Iota basics</a></li>
   <li><a href="#start-from-one">Start from one</a></li>
   <li><a href="#skip-value">Skip value</a></li>
-  <li><a href="#complete-enumeration-type">Complete enumeration type</a></li>
+  <li><a href="#enum-type-with-srtings">Enum type with strings</a></li>
 </ul>
 
 <h2 id="iota-basics">Iota basics</h2>
@@ -144,21 +144,10 @@ fmt.Println(C1, C2, C3) <span class="comment">// "1 2 3"</span></code></pre>
 )
 fmt.Println(C1, C3, C4) <span class="comment">// "1 3 4"</span></code></pre>
 
-<h2 id="complete-enumeration-type">Complete enumeration type</h2>
+<h2 id="enum-type-with-strings">Enum type with strings</h2>
 
-<p>A group of constants enumerated with <code>iota</code> might do the job.</p>
-
-<pre><code>const (
-    Sunday    int = iota <span class="comment">// Sunday == 0</span>
-    Monday               <span class="comment">// Monday == 1</span>
-    Tuesday              <span class="comment">// Tuesday == 2</span>
-    Wednesday            <span class="comment">// …</span>
-    Thursday
-    Friday
-    Saturday
-)</code></pre>
-
-<p>You could also introduce a new type…</p>
+<p>To implement an enumeration with a string representation,
+introduce a new&nbsp;type…</p>
 
 <pre><code>type Suite int
 
