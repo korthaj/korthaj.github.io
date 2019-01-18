@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/iota.png"
    ],
   "datePublished": "2018-07-27T00:00:00&#43;0000",
-  "dateModified": "2019-01-17T00:00:00&#43;0000",
+  "dateModified": "2019-01-18T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -90,11 +90,13 @@
 
 <div style="margin-top:1em;"><img src="/golang/lane-numbers.jpg"></div>
 
-<ul class="toc" style="margin-top:0">
+<ul class="toc" style="font-weight: bold;">
   <li><a href="#iota-basics">Iota basics</a></li>
-  <li><a href="#start-from-one">Start from one</a></li>
-  <li><a href="#skip-value">Skip value</a></li>
-  <li><a href="#enum-type-with-strings">Enum type with strings</a></li>
+  <ul style="list-style: none; font-weight: normal;">
+    <li><a href="#start-from-one">Start from one</a></li>
+    <li><a href="#skip-value">Skip value</a></li>
+  </ul>
+  <li style=""><a href="#enum-type-with-strings">Enum type with strings</a></li>
 </ul>
 
 <h2 id="iota-basics">Iota basics</h2>
@@ -125,7 +127,7 @@ fmt.Println(C0, C1, C2) <span class="comment">// "0 1 2"</span></code></pre>
 in a paren&shy;thesized const declaration &ndash; this indicates a repetition
 of the preceding expression and its&nbsp;type.</p>
 
-<h2 id="start-from-one">Start from one</h2>
+<h3 id="start-from-one">Start from one</h3>
 
 <pre><code>const (
     C1 = iota + 1
@@ -134,7 +136,7 @@ of the preceding expression and its&nbsp;type.</p>
 )
 fmt.Println(C1, C2, C3) <span class="comment">// "1 2 3"</span></code></pre>
 
-<h2 id="skip-value">Skip value</h2>
+<h3 id="skip-value">Skip value</h3>
 
 <pre><code>const (
     C1 = iota + 1
