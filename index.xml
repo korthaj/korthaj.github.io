@@ -531,7 +531,7 @@ x := 5.1 n := int(x) // convert float to int The conversion rules are extensive 
     </item>
     
     <item>
-      <title>Convert byte array/slice to string (and back)</title>
+      <title>Convert between byte array/slice and string</title>
       <link>https://yourbasic.org/golang/convert-string-to-byte-slice/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -540,7 +540,7 @@ x := 5.1 n := int(x) // convert float to int The conversion rules are extensive 
     </item>
     
     <item>
-      <title>Convert float to string (and back)</title>
+      <title>Convert between float and string</title>
       <link>https://yourbasic.org/golang/convert-string-to-float/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -549,13 +549,22 @@ x := 5.1 n := int(x) // convert float to int The conversion rules are extensive 
     </item>
     
     <item>
-      <title>Convert int/int64 to string (and back)</title>
+      <title>Convert between int, int64 and string</title>
       <link>https://yourbasic.org/golang/convert-int-to-string/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/convert-int-to-string/</guid>
       <description>int to string int64 to string string to int string to int64 int to int64 (and back) General formatting  int to string Use the strconv.Itoa function to convert an int to a decimal string.
 s := strconv.Itoa(97) // s == &#34;97&#34; Warning: In a plain conversion the value is interpreted as a Unicode code point, and the resulting string will contain the character represented by that code point, encoded in UTF-8.</description>
+    </item>
+    
+    <item>
+      <title>Convert between rune array/slice and string</title>
+      <link>https://yourbasic.org/golang/convert-string-to-rune-slice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/convert-string-to-rune-slice/</guid>
+      <description>String to rune slice Rune slice to string Efficiency  String to rune slice  When you convert a string to a rune slice, you get a new slice that contains the Unicode code points of the&amp;nbsp;string. For an invalid UTF-8 sequence, the rune value will be 0xFFFD for each invalid&amp;nbsp;byte.  s := &#34;abc日&#34; r := []rune(s) fmt.Printf(&#34;%v\n&#34;, r) // [97 98 99 26085] fmt.Printf(&#34;%U\n&#34;, r) // [U+0061 U+0062 U+0063 U+65E5]   You can also use a range loop to access the code points of a string.</description>
     </item>
     
     <item>
@@ -567,15 +576,6 @@ s := strconv.Itoa(97) // s == &#34;97&#34; Warning: In a plain conversion the va
       <description>Use fmt.Sprintf to convert an interface value to a string.
 var x interface{} = &amp;quot;abc&amp;quot; str := fmt.Sprintf(&amp;quot;%v&amp;quot;, x)  In fact, the same technique can be used to get a string representation of any data structure.
 var x interface{} = []int{1, 2, 3} str := fmt.Sprintf(&#34;%v&#34;, x) fmt.Println(str) // &#34;[1 2 3]&#34; Fmt cheat sheet  How to format with fmt</description>
-    </item>
-    
-    <item>
-      <title>Convert rune array/slice to string (and back)</title>
-      <link>https://yourbasic.org/golang/convert-string-to-rune-slice/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/convert-string-to-rune-slice/</guid>
-      <description>String to rune slice Rune slice to string Efficiency  String to rune slice  When you convert a string to a rune slice, you get a new slice that contains the Unicode code points of the&amp;nbsp;string. For an invalid UTF-8 sequence, the rune value will be 0xFFFD for each invalid&amp;nbsp;byte.  s := &#34;abc日&#34; r := []rune(s) fmt.Printf(&#34;%v\n&#34;, r) // [97 98 99 26085] fmt.Printf(&#34;%U\n&#34;, r) // [U+0061 U+0062 U+0063 U+65E5]   You can also use a range loop to access the code points of a string.</description>
     </item>
     
     <item>
