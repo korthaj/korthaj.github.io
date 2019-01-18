@@ -38,7 +38,8 @@ set := make(map[string]bool) // New empty set set[&#34;Foo&#34;] = true // Add f
       <guid>https://yourbasic.org/golang/do-while-loop/</guid>
       <description>There is no do-while loop in Go. To emulate the C/Java code
 do { work(); } while (condition); you may use a for loop in one of these two&amp;nbsp;ways:
-for ok := true; ok; ok = condition { work() } for { work() if !condition { break } } Further reading  5 patterns for looping in&amp;nbsp;Go</description>
+for ok := true; ok; ok = condition { work() } for { work() if !condition { break } } Repeat-until loop To write a repeat-until loop
+repeat work(); until condition; simply change the condition in the code above to its complement:</description>
     </item>
     
     <item>
