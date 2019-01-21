@@ -111,6 +111,18 @@ Check second return value m := map[string]float64{&#34;pi&#34;: 3.14} _, found :
     </item>
     
     <item>
+      <title>3 tips for efficient string concatenation</title>
+      <link>https://yourbasic.org/golang/build-append-concatenate-strings-efficiently/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/build-append-concatenate-strings-efficiently/</guid>
+      <description>A strings.Builder concatenates strings efficiently with no extra copying.
+ Clean and simple Efficient string concatenation Before Go 1.10  Clean and simple For simple cases where performance is a non-issue, fmt.Sprintf is your friend. It&amp;rsquo;s clean, simple and fairly efficient.
+s := fmt.Sprintf(&#34;Size: %d MB.&#34;, 85) // s == &#34;Size: 85 MB.&#34; The fmt cheat sheet lists the most common formatting verbs and flags.
+Efficient string concatenationGo 1.10 A strings.</description>
+    </item>
+    
+    <item>
       <title>3 ways to compare slices/arrays</title>
       <link>https://yourbasic.org/golang/compare-slices/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -402,18 +414,6 @@ func main() { if len(os.Args) != 3 { fmt.Println(&#34;Usage:&#34;, os.Args[0], &
       <description>Integers There is no built-in max or min function for integers, but it&amp;rsquo;s simple to write your&amp;nbsp;own.
 // Max returns the larger of x or y. func Max(x, y int64) int64 { if x y { return y } return x }  Floats For floats, use math.Max and math.Min.
 // Max returns the larger of x or y. func Max(x, y float64) float64 // Min returns the smaller of x or y.</description>
-    </item>
-    
-    <item>
-      <title>Concatenate strings efficiently with a string builder</title>
-      <link>https://yourbasic.org/golang/build-append-concatenate-strings-efficiently/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/build-append-concatenate-strings-efficiently/</guid>
-      <description>Clean and simple Efficient string concatenation Before Go 1.10  Clean and simple For simple cases where performance is a non-issue, fmt.Sprintf is your friend.
-s := fmt.Sprintf(&#34;Size: %d MB.&#34;, 85) // s == &#34;Size: 85 MB.&#34; The fmt cheat sheet lists the most common formatting verbs and flags.
-Efficient string concatenationGo 1.10 The strings.Builder type is used to efficiently append strings using write&amp;nbsp;methods.
- It offers a subset of the bytes.</description>
     </item>
     
     <item>

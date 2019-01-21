@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Concatenate strings efficiently with a string builder - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE With a string builder you can append and concatenate strings efficiently without redundant copying.">
+  <title>3 tips for efficient string concatenation - yourbasic.org/golang </title>
+  <meta name="description" content="CODE EXAMPLE With a strings.Builder you can append and concatenate strings efficiently with no extra copying.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/build-append-concatenate-strings-efficiently/"
   },
-  "headline": "Concatenate strings efficiently with a string builder",
+  "headline": "3 tips for efficient string concatenation",
   "image": [
     "https://yourbasic.org/golang/bricklayer.jpg"
    ],
   "datePublished": "2018-08-07T00:00:00&#43;0000",
-  "dateModified": "2018-08-07T00:00:00&#43;0000",
+  "dateModified": "2019-01-21T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "CODE EXAMPLE With a string builder you can append and concatenate strings efficiently without redundant copying."
+  "description": "CODE EXAMPLE With a strings.Builder you can append and concatenate strings efficiently with no extra copying."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Concatenate strings efficiently with a string builder">
-<meta property="og:description" content="CODE EXAMPLE With a string builder you can append and concatenate strings efficiently without redundant copying.">
+<meta property="og:title" content="3 tips for efficient string concatenation">
+<meta property="og:description" content="CODE EXAMPLE With a strings.Builder you can append and concatenate strings efficiently with no extra copying.">
 <meta property="og:url" content="https://yourbasic.org/golang/build-append-concatenate-strings-efficiently/">
 <meta property="og:image" content="https://yourbasic.org/golang/bricklayer.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Concatenate strings efficiently with a string builder">
-<meta name="twitter:description" content="CODE EXAMPLE With a string builder you can append and concatenate strings efficiently without redundant copying.">
+<meta name="twitter:title" content="3 tips for efficient string concatenation">
+<meta name="twitter:description" content="CODE EXAMPLE With a strings.Builder you can append and concatenate strings efficiently with no extra copying.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/bricklayer.jpg">
 
@@ -82,9 +82,11 @@
 
 <main>
 <article>
-<h1>Concatenate strings efficiently with a string builder</h1>
+<h1>3 tips for efficient string concatenation</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
+
+<p class="lead">A strings.Builder concatenates strings efficiently with no extra copying.</p>
 
 <!-- CC0: http://maxpixel.freegreatpicture.com/Hardhat-Clouds-Construction-Sky-Brick-Layer-Man-78113 -->
 
@@ -99,7 +101,8 @@
 <h2 id="clean-and-simple">Clean and simple</h2>
 
 <p>For simple cases where performance is a non-issue,
-<a href="https://golang.org/pkg/fmt/#Sprintf"><code>fmt.Sprintf</code></a> is your friend.</p>
+<a href="https://golang.org/pkg/fmt/#Sprintf"><code>fmt.Sprintf</code></a> is your friend.
+It&rsquo;s clean, simple and fairly efficient.</p>
 
 <pre><code>s := fmt.Sprintf("Size: %d MB.", 85) <span class="comment">// s == "Size: 85 MB."</span></code></pre>
 
@@ -108,12 +111,14 @@ lists the most common formatting verbs and flags.</p>
 
 <h2 id="efficient-string-concatenation">Efficient string concatenation<span class="quicklink"><a href="https://golang.org/doc/go1.10" title="Go 1.10 Release Notes">Go 1.10</a></span></h2>
 
-<p>The <a href="https://golang.org/pkg/strings/#Builder"><code>strings.Builder</code></a> type
+<p>A <a href="https://golang.org/pkg/strings/#Builder"><code>strings.Builder</code></a>
 is used to efficiently append strings using write&nbsp;methods.</p>
 
 <ul>
 <li>It offers a subset of the <a href="https://golang.org/pkg/bytes/#Buffer"><code>bytes.Buffer</code></a> methods
-that allows it to safely avoid redundant copying.</li>
+that allows it to safely avoid extra copying when converting a builder to a&nbsp;string.</li>
+<li>You can use the <a href="https://golang.org/pkg/fmt/"><code>fmt</code></a> package for formatting
+since the builder implements the <a href="/golang/io-writer-interface-explained/"><code>io.Writer</code></a> interface.</li>
 <li>The <a href="https://golang.org/pkg/strings/#Builder.Grow"><code>Grow</code></a>&nbsp;method
 can be used to preallocate memory when the maximum size of the&nbsp;string is&nbsp;known.</li>
 </ul>
@@ -174,10 +179,10 @@ s := string(buf)
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/string-functions-reference-cheat-sheet/">String functions cheat sheet</a></p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fbuild-append-concatenate-strings-efficiently%2f&amp;text=Concatenate%20strings%20efficiently%20with%20a%20string%20builder&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fbuild-append-concatenate-strings-efficiently%2f&amp;text=3%20tips%20for%20efficient%20string%20concatenation&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fbuild-append-concatenate-strings-efficiently%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fbuild-append-concatenate-strings-efficiently%2f&amp;title=Concatenate%20strings%20efficiently%20with%20a%20string%20builder" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Concatenate%20strings%20efficiently%20with%20a%20string%20builder&body=https%3a%2f%2fyourbasic.org%2fgolang%2fbuild-append-concatenate-strings-efficiently%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fbuild-append-concatenate-strings-efficiently%2f&amp;title=3%20tips%20for%20efficient%20string%20concatenation" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=3%20tips%20for%20efficient%20string%20concatenation&body=https%3a%2f%2fyourbasic.org%2fgolang%2fbuild-append-concatenate-strings-efficiently%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
@@ -195,6 +200,12 @@ s := string(buf)
   <div class="reference">
     <a href="/golang/fmt-printf-reference-cheat-sheet/">fmt formatting cheat sheet</a>
     <div class="desc">With fmt verbs and flags your can format numbers and strings padded with spaces or zeroes, in different bases, and with optional quotes.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/io-writer-interface-explained/">How to use the io.Writer interface</a>
+    <div class="desc">An io.Writer is an entity to which you can write a stream of bytes. The standard library contains many Writers, and Writers are accepted as input by many utilities.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
