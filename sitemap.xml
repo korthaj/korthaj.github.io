@@ -78,6 +78,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/algorithms/your-basic-api/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/about/</loc>
   </url>
   
@@ -813,10 +817,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/gotcha-append/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/algorithms/your-basic-api/</loc>
   </url>
   
   <url>

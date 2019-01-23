@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your basic API: guidelines and best practices - yourbasic.org </title>
-  <meta name="description" content="Basic tools of software engineering: documentation, software licenses, compatability policies, semantic versioning, simplicity, dogfooding, tutorials, naming, and proper interfaces.">
+  <title>API design: principles and best practices - yourbasic.org </title>
+  <meta name="description" content="This tutorial on API design covers documentation, software licenses, compatability policies, semantic versioning, simplicity, dogfooding, tutorials, naming, and proper interfaces.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/algorithms/your-basic-api/"
   },
-  "headline": "Your basic API: guidelines and best practices",
+  "headline": "API design: principles and best practices",
   "image": [
     "https://yourbasic.org/algorithms/go.jpg"
    ],
   "datePublished": "2018-01-26T00:00:00&#43;0000",
-  "dateModified": "2018-04-26T00:00:00&#43;0000",
+  "dateModified": "2019-01-23T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "Basic tools of software engineering: documentation, software licenses, compatability policies, semantic versioning, simplicity, dogfooding, tutorials, naming, and proper interfaces."
+  "description": "This tutorial on API design covers documentation, software licenses, compatability policies, semantic versioning, simplicity, dogfooding, tutorials, naming, and proper interfaces."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Your basic API: guidelines and best practices">
-<meta property="og:description" content="Basic tools of software engineering: documentation, software licenses, compatability policies, semantic versioning, simplicity, dogfooding, tutorials, naming, and proper interfaces.">
+<meta property="og:title" content="API design: principles and best practices">
+<meta property="og:description" content="This tutorial on API design covers documentation, software licenses, compatability policies, semantic versioning, simplicity, dogfooding, tutorials, naming, and proper interfaces.">
 <meta property="og:url" content="https://yourbasic.org/algorithms/your-basic-api/">
 <meta property="og:image" content="https://yourbasic.org/algorithms/go.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Your basic API: guidelines and best practices">
-<meta name="twitter:description" content="Basic tools of software engineering: documentation, software licenses, compatability policies, semantic versioning, simplicity, dogfooding, tutorials, naming, and proper interfaces.">
+<meta name="twitter:title" content="API design: principles and best practices">
+<meta name="twitter:description" content="This tutorial on API design covers documentation, software licenses, compatability policies, semantic versioning, simplicity, dogfooding, tutorials, naming, and proper interfaces.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/algorithms/go.jpg">
 
@@ -82,13 +82,11 @@
 
 <main>
 <article>
-<h1>Your basic API: guidelines and best practices</h1>
+<h1>API design: principles and best practices</h1>
 <div class="tagline">yourbasic.org</div>
 
 
-<p class="lead">Thoughts on effective API design</p>
-
-<div><img src="/algorithms/go.jpg" alt="Finger pushing a go button"></div>
+<div style="margin-top:1em;"><img src="/algorithms/go.jpg" alt="Finger pushing a go button"></div>
 
 <!-- CC0: https://pixabay.com/en/hand-finger-button-switch-start-944307/ -->
 
@@ -765,10 +763,10 @@ a good choice here.</p>
 to see how Go uses interfaces and embedding to support code reuse and polymorphism.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fyour-basic-api%2f&amp;text=Your%20basic%20API:%20guidelines%20and%20best%20practices&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fyour-basic-api%2f&amp;text=API%20design:%20principles%20and%20best%20practices&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2falgorithms%2fyour-basic-api%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fyour-basic-api%2f&amp;title=Your%20basic%20API:%20guidelines%20and%20best%20practices" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Your%20basic%20API:%20guidelines%20and%20best%20practices&body=https%3a%2f%2fyourbasic.org%2falgorithms%2fyour-basic-api%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fyour-basic-api%2f&amp;title=API%20design:%20principles%20and%20best%20practices" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=API%20design:%20principles%20and%20best%20practices&body=https%3a%2f%2fyourbasic.org%2falgorithms%2fyour-basic-api%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
@@ -785,7 +783,7 @@ to see how Go uses interfaces and embedding to support code reuse and polymorphi
 
     <li><a href="/algorithms/loop-invariants-explained/">Loop invariants can give you coding superpowers</a></li>
 
-    <li><a href="/algorithms/your-basic-api/">Your basic API: guidelines and best practices</a></li>
+    <li><a href="/algorithms/your-basic-api/">API design: principles and best practices</a></li>
 
     <li><a href="/algorithms/fastest-sorting-algorithm/">The fastest sorting algorithm?</a></li>
 
