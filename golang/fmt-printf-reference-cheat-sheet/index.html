@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/format.jpg"
    ],
   "datePublished": "2018-03-15T00:00:00&#43;0000",
-  "dateModified": "2019-01-06T00:00:00&#43;0000",
+  "dateModified": "2019-01-25T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -146,7 +146,11 @@ to format a string without printing&nbsp;it.</p>
 
 <pre><code>s := fmt.Sprintf("Binary: %b\\%b", 4, 5) <span class="comment">// s == "Binary: 100\101"</span></code></pre>
 
-<h2 id="default">Default formats and type: <code style="font-size:smaller;background-color:white;">[]int64{0, 1}</code></h2>
+<h2 id="default">Default formats and type</h2>
+
+<ul>
+<li><strong>Value:</strong> <code>[]int64{0, 1}</code></li>
+</ul>
 
 <table class="white">
   <thead>
@@ -175,7 +179,11 @@ to format a string without printing&nbsp;it.</p>
   </tbody>
 </table>
 
-<h2 id="integer">Integer (base, padding, sign): <code style="font-size:smaller;background-color:white;">15</code></h2>
+<h2 id="integer">Integer (base, padding, sign)</h2>
+
+<ul>
+<li><strong>Value:</strong> <code>15</code></li>
+</ul>
 
 <table class="white">
   <thead>
@@ -239,7 +247,11 @@ to format a string without printing&nbsp;it.</p>
   </tbody>
 </table>
 
-<h2 id="character">Character (quoted, Unicode): <code style="font-size:smaller;background-color:white;">65</code></h2>
+<h2 id="character">Character (quoted, Unicode)</h2>
+
+<ul>
+<li><strong>Value:</strong> <code>65</code> &nbsp; (Unicode letter A)</li>
+</ul>
 
 <table class="white">
   <thead>
@@ -281,7 +293,11 @@ to format a string without printing&nbsp;it.</p>
 
 <p>Use <code>%p</code> to format a pointer in base 16 notation with leading <code>0x</code>.</p>
 
-<h2 id="float">Float (padding, precision, scientific notation): <code style="font-size:smaller;background-color:white;">123.456</code></h2>
+<h2 id="float">Float (padding, precision, scientific notation)</h2>
+
+<ul>
+<li><strong>Value:</strong> <code>123.456</code></li>
+</ul>
 
 <table class="white">
   <thead>
@@ -320,7 +336,11 @@ to format a string without printing&nbsp;it.</p>
   </tbody>
 </table>
 
-<h2 id="string-or-byte-slice">String or byte slice (quoted, padding, hex): <code style="font-size:smaller;background-color:white;">"café"</code></h2>
+<h2 id="string-or-byte-slice">String or byte slice (quoted, padding, hex)</h2>
+
+<ul>
+<li><strong>Value:</strong> <code>&quot;café&quot;</code></li>
+</ul>
 
 <table class="white">
   <thead>
