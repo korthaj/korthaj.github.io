@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/eggs-in-basket.jpg"
    ],
   "datePublished": "2018-04-16T00:00:00&#43;0000",
-  "dateModified": "2018-08-21T00:00:00&#43;0000",
+  "dateModified": "2019-01-25T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -91,6 +91,8 @@
 
 <div style="margin-top:1em;"><img src="/golang/eggs-in-basket.jpg"></div>
 
+<h2 id="map-implementation">Map implementation</h2>
+
 <p>The idiomatic way to implement a set in Go is to use
 a&nbsp;<a href="/golang/maps-explained/">map</a>.</p>
 
@@ -103,7 +105,7 @@ delete(set, "Foo")    <span class="comment">// Delete</span>
 size := len(set)      <span class="comment">// Size</span>
 exists := set["Foo"]  <span class="comment">// Membership</span></code></pre>
 
-<h2 id="alternative">Alternative</h2>
+<h3 id="alternative">Alternative</h3>
 
 <p>If the memory used by the booleans is an issue, which seems unlikely,
 you could replace them with empty&nbsp;structs. In Go, an empty struct
@@ -120,6 +122,15 @@ for k := range set {         <span class="comment">// Loop</span>
 delete(set, "Foo")      <span class="comment">// Delete</span>
 size := len(set)        <span class="comment">// Size</span>
 _, exists := set["Foo"] <span class="comment">// Membership</span></code></pre>
+
+<h2 id="bitset-implementation">Bitset implementation</h2>
+
+<div><a href="/golang/bitmask-flag-set-clear/"><img src="/golang/bits-thumb.jpg" title="Bitmasks and flags"></a></div>
+
+<p>For small sets of integers, you may want to consider a <strong>bitset</strong>,
+a small set of booleans, often called flags, represented by the bits in a single number.</p>
+
+<p>See <a href="/golang/bitmask-flag-set-clear/">Bitmasks and flags</a> for a complete example.</p>
 
 
 <h3>More code examples</h3>
@@ -147,6 +158,12 @@ _, exists := set["Foo"] <span class="comment">// Membership</span></code></pre>
   <div class="reference">
     <a href="/golang/maps-explained/">Maps in a nutshell</a>
     <div class="desc">A map is an unordered collection of key-value pairs.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/bitmask-flag-set-clear/">Bitmasks and flags</a>
+    <div class="desc">A bitmask is a small set of booleans, often called flags, represented by the bits in a single number.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
