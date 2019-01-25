@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/empty-hands.jpg"
    ],
   "datePublished": "2018-01-26T00:00:00&#43;0000",
-  "dateModified": "2018-05-10T00:00:00&#43;0000",
+  "dateModified": "2019-01-25T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -92,14 +92,15 @@
 <a href="https://golang.org/ref/spec#The_zero_value">zero&nbsp;values</a>:</p>
 
 <ul>
-<li><code>0</code> for all integer types,</li>
-<li><code>0.0</code> for floating point numbers,</li>
-<li><code>false</code> for booleans,</li>
-<li><code>&quot;&quot;</code> for strings,</li>
-<li><code>nil</code> for interfaces, slices, channels, maps, pointers and functions.</li>
+<li><code>0</code> for all <strong>integer</strong> types,</li>
+<li><code>0.0</code> for <strong>floating point</strong> numbers,</li>
+<li><code>false</code> for <strong>booleans</strong>,</li>
+<li><code>&quot;&quot;</code> for <strong>strings</strong>,</li>
+<li><code>nil</code> for <strong>interfaces</strong>, <strong>slices</strong>, <strong>channels</strong>, <strong>maps</strong>, <strong>pointers</strong> and <strong>functions</strong>.</li>
 </ul>
 
-<p>The initialization is done recursively.</p>
+<p>The elements of an <strong>array</strong> or <strong>struct</strong> will have its fields zeroed if no value is specified.
+This initialization is done recursively:</p>
 
 <pre><code>type T struct {
     n int

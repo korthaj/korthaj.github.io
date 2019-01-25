@@ -666,9 +666,9 @@ func main() { ch := make(chan int) ch &amp;lt;- 1 fmt.Println(&amp;lt;-ch) }  Th
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/default-zero-value/</guid>
-      <description> Variables declared without an initial value are set to their zero&amp;nbsp;values:
- 0 for all integer types, 0.0 for floating point numbers, false for booleans, &amp;quot;&amp;quot; for strings, nil for interfaces, slices, channels, maps, pointers and functions.  The initialization is done recursively.
-type T struct { n int f float64 next *T } fmt.Println([2]T{}) // [{0 0 &amp;lt;nil&amp;gt;} {0 0 &amp;lt;nil&amp;gt;}] </description>
+      <description>Variables declared without an initial value are set to their zero&amp;nbsp;values:
+ 0 for all integer types, 0.0 for floating point numbers, false for booleans, &amp;quot;&amp;quot; for strings, nil for interfaces, slices, channels, maps, pointers and functions.  The elements of an array or struct will have its fields zeroed if no value is specified. This initialization is done recursively:
+type T struct { n int f float64 next *T } fmt.</description>
     </item>
     
     <item>
