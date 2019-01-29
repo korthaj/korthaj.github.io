@@ -1352,13 +1352,13 @@ func main() { fmt.Println(&amp;quot;Hello&amp;quot;) }  This is a trade-off in t
     </item>
     
     <item>
-      <title>Optional parameters and method overloading</title>
+      <title>Optional parameters, default parameter values and method overloading</title>
       <link>https://yourbasic.org/golang/overload-overwrite-optional-parameter/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/overload-overwrite-optional-parameter/</guid>
-      <description>Go does not have optional parameters, nor does it support method overloading.
- Method dispatch is simplified if it doesn&amp;rsquo;t need to do type matching as well. Experience with other languages told us that having a variety of methods with the same name but different signatures was occasionally useful but that it could also be confusing and fragile in practice. Matching only by name and requiring consistency in the types was a major simplifying decision in Go&amp;rsquo;s type system.</description>
+      <description>By design, Go does not support
+ optional parameters, default parameter values, or method overloading.   Method dispatch is simplified if it doesn&amp;rsquo;t need to do type matching as well. Experience with other languages told us that having a variety of methods with the same name but different signatures was occasionally useful but that it could also be confusing and fragile in practice. Matching only by name and requiring consistency in the types was a major simplifying decision in Go&amp;rsquo;s type system.</description>
     </item>
     
     <item>

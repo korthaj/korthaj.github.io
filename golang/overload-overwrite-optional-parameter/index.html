@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Optional parameters and method overloading - yourbasic.org/golang </title>
-  <meta name="description" content="Go does not have optional parameters, nor does it support method overloading. Method overloading is emulated by writing several methods with different names.">
+  <title>Optional parameters, default parameter values and method overloading - yourbasic.org/golang </title>
+  <meta name="description" content="Go does not have optional parameters or default parameter values, nor does it support method overloading. Method overloading is emulated by writing several methods with different names.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -22,6 +22,50 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/golang/overload-overwrite-optional-parameter/"
+  },
+  "headline": "Optional parameters, default parameter values and method overloading",
+  "image": [
+    "https://yourbasic.org/golang/decision-fork-in-the-road.jpg"
+   ],
+  "datePublished": "2019-01-29T00:00:00&#43;0000",
+  "dateModified": "2019-01-29T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "Go does not have optional parameters or default parameter values, nor does it support method overloading. Method overloading is emulated by writing several methods with different names."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Optional parameters, default parameter values and method overloading">
+<meta property="og:description" content="Go does not have optional parameters or default parameter values, nor does it support method overloading. Method overloading is emulated by writing several methods with different names.">
+<meta property="og:url" content="https://yourbasic.org/golang/overload-overwrite-optional-parameter/">
+<meta property="og:image" content="https://yourbasic.org/golang/decision-fork-in-the-road.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Optional parameters, default parameter values and method overloading">
+<meta name="twitter:description" content="Go does not have optional parameters or default parameter values, nor does it support method overloading. Method overloading is emulated by writing several methods with different names.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="https://yourbasic.org/golang/decision-fork-in-the-road.jpg">
+
+
 </head>
 
 <body>
@@ -38,9 +82,19 @@
 
 <main>
 <article>
-<h1>Optional parameters and method overloading</h1>
+<h1>Optional parameters, default parameter values and method overloading</h1>
 <div class="tagline">yourbasic.org/golang</div>
-<p>Go does not have optional parameters, nor does it support method overloading.</p>
+<!-- CC0: https://www.maxpixel.net/Junction-Away-Decision-Direction-Fork-In-The-Road-1020088 -->
+
+<div><img src="/golang/decision-fork-in-the-road.jpg"></div>
+
+<p>By design, Go does <strong>not</strong> support</p>
+
+<ul>
+<li><strong>optional parameters</strong>,</li>
+<li><strong>default parameter values</strong>,</li>
+<li>or <strong>method overloading</strong>.</li>
+</ul>
 
 <blockquote>
 <p>Method dispatch is simplified if it doesn&rsquo;t need to do type matching as well.
@@ -52,7 +106,14 @@ was a major simplifying decision in Go&rsquo;s type system.
 <a class="quote-source" href="https://golang.org/doc/faq#overloading">Go FAQ: Why does Go not support overloading of methods and operators?</a></p>
 </blockquote>
 
-<p>However, there are <a href="/golang/variadic-function/">variadic functions</a> (functions that accept a variable number of arguments), and dynamic method dispatch is supported through interfaces. See the <a href="/golang/interfaces-explained/">Interfaces</a>&nbsp;article.</p>
+<p>However, there are</p>
+
+<ul>
+<li><a href="/golang/variadic-function/"><strong>variadic functions</strong></a> (functions that accept a variable number of arguments),</li>
+<li>and <strong>dynamic method dispatch</strong> is supported through <a href="/golang/interfaces-explained/">interfaces</a>.</li>
+</ul>
+
+<p>For more on this, see the <a href="/golang/interfaces-explained/">Interfaces in a nutshell</a>&nbsp;article.</p>
 
 <p>The idiomatic way to emulate optional parameters and method overloading in Go
 is to write several methods with different names.
@@ -66,6 +127,12 @@ For example, the <a href="https://golang.org/pkg/sort/"><code>sort</code></a> pa
 <a href="https://golang.org/pkg/sort/#Ints"><code>sort.Ints</code></a>, and
 <a href="https://golang.org/pkg/sort/#Strings"><code>sort.Strings</code></a>.</li>
 </ul>
+
+<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2foverload-overwrite-optional-parameter%2f&amp;text=Optional%20parameters,%20default%20parameter%20values%20and%20method%20overloading&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2foverload-overwrite-optional-parameter%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2foverload-overwrite-optional-parameter%2f&amp;title=Optional%20parameters,%20default%20parameter%20values%20and%20method%20overloading" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Optional%20parameters,%20default%20parameter%20values%20and%20method%20overloading&body=https%3a%2f%2fyourbasic.org%2fgolang%2foverload-overwrite-optional-parameter%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
