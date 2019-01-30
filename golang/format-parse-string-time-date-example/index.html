@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How to format and parse a time/date - yourbasic.org/golang </title>
+  <title>How to format and parse a time or date - yourbasic.org/golang </title>
   <meta name="description" content="CODE EXAMPLE Instead of yyyy-mm-dd formatting, you format a special layout parameter (Mon Jan 2 15:04:05 MST 2006) the same way as the value should be formatted.">
   
   <link rel="stylesheet" href="/style.css">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/format-parse-string-time-date-example/"
   },
-  "headline": "How to format and parse a time/date",
+  "headline": "How to format and parse a time or date",
   "image": [
     "https://yourbasic.org/golang/stopwatch.png"
    ],
   "datePublished": "2018-04-25T00:00:00&#43;0000",
-  "dateModified": "2018-10-18T00:00:00&#43;0000",
+  "dateModified": "2019-01-30T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -54,13 +54,13 @@
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to format and parse a time/date">
+<meta property="og:title" content="How to format and parse a time or date">
 <meta property="og:description" content="CODE EXAMPLE Instead of yyyy-mm-dd formatting, you format a special layout parameter (Mon Jan 2 15:04:05 MST 2006) the same way as the value should be formatted.">
 <meta property="og:url" content="https://yourbasic.org/golang/format-parse-string-time-date-example/">
 <meta property="og:image" content="https://yourbasic.org/golang/stopwatch.png">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="How to format and parse a time/date">
+<meta name="twitter:title" content="How to format and parse a time or date">
 <meta name="twitter:description" content="CODE EXAMPLE Instead of yyyy-mm-dd formatting, you format a special layout parameter (Mon Jan 2 15:04:05 MST 2006) the same way as the value should be formatted.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/stopwatch.png">
@@ -82,7 +82,7 @@
 
 <main>
 <article>
-<h1>How to format and parse a time/date</h1>
+<h1>How to format and parse a time or date</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
@@ -93,14 +93,14 @@
 </div>
 
 <ul class="toc">
-  <li><a href="#basics">Basics</a></li>
-  <li><a href="#all-time-and-date-options">All time and date options</a></li>
+  <li><a href="#basic-example">Basic example</a></li>
   <li><a href="#common-time-and-date-formats">Common time and date formats</a></li>
   <li><a href="#predefined-date-and-timestamp-layouts">Predefined date and timestamp layouts</a></li>
+  <li><a href="#all-time-and-date-options">All time and date options</a></li>
   <li><a href="#corner-cases">Corner cases</a></li>
 </ul>
 
-<h2 id="basics">Basics</h2>
+<h2 id="basic-example">Basic example</h2>
 
 <p>Instead of yyyy-mm-dd formatting,
 you format a special <strong>layout parameter</strong></p>
@@ -108,7 +108,7 @@ you format a special <strong>layout parameter</strong></p>
 <p><code style="margin-left:2em;"><span style="color: green">Mon Jan 2 15:04:05 MST 2006</span></code></p>
 
 <p>the same way as the value should be formatted.
-(This date is easier to remember when written as <code><span style="color: green">01/02&nbsp;03:04:05PM&nbsp;&lsquo;06&nbsp;-0700</span></code>.) Here&rsquo;s an example:</p>
+(This date is easier to remember when written as <code><span style="color: green">01/02&nbsp;03:04:05PM&nbsp;&lsquo;06&nbsp;-0700</span></code>.)</p>
 
 <pre><code>input := "2017-08-31"
 <span style="color: green"><b>layout := "2006-01-02"</b></span>
@@ -128,67 +128,6 @@ fmt.Println(t.<b>Format</b>(<span style="color: green"><b>"02-Jan-2006"</b></spa
 <pre><code>func Parse(<span style="color: green"><b>layout</b></span>, value string) (Time, error)
 func (t Time) Format(<span style="color: green"><b>layout</b></span> string) string
 </code></pre>
-
-<h2 id="all-time-and-date-options">All time and date options</h2>
-
-<table class="white">
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Options</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="border-bottom: 0;">Year</td>
-      <td style="border-bottom: 0;"><code>06</code> &nbsp; <code>2006</code></td>
-    </tr>
-    <tr>
-      <td style="border-bottom: 0; padding-top: 0;">Month</td>
-      <td style="border-bottom: 0; padding-top: 0;"><code>01</code> &nbsp; <code>1</code> &nbsp; <code>Jan</code> &nbsp; <code>January</code></td>
-    </tr>
-    <tr>
-      <td style="border-bottom: 0; padding-top: 0;">Day</td>
-      <td style="border-bottom: 0; padding-top: 0;"><code>02</code> &nbsp; <code>2</code> &nbsp; <code>_2</code> <span style="font-size:90%;">  &nbsp; (width two, right justified)</span></td>
-    </tr>
-    <tr>
-      <td style="padding-top: 0;">Weekday</td>
-      <td style="padding-top: 0;"><code>Mon</code> &nbsp; <code>Monday</code></td>
-    </tr>
-    <tr>
-      <td style="border-bottom: 0;">Hours</td>
-      <td style="border-bottom: 0;"><code>03</code> &nbsp; <code>3</code> &nbsp; <code>15</code></td>
-    </tr>
-    <tr>
-      <td style="border-bottom: 0; padding-top: 0;">Minutes</td>
-      <td style="border-bottom: 0; padding-top: 0;"><code>04</code> &nbsp; <code>4</code></td>
-    </tr>
-    <tr>
-      <td style="border-bottom: 0; padding-top: 0;">Seconds</td>
-      <td style="border-bottom: 0; padding-top: 0;"><code>05</code> &nbsp; <code>5</code></td>
-    </tr>
-    <tr>
-      <td style="border-bottom: 0; padding-top: 0;">ms μs ns</td>
-      <td style="border-bottom: 0; padding-top: 0;"><code>.000</code> &nbsp; <code>.000000</code> &nbsp; <code>.000000000</code></td>
-    </tr>
-    <tr>
-      <td style="padding-top: 0;">ms μs ns</td>
-      <td style="padding-top: 0;"><code>.999</code> &nbsp; <code>.999999</code> &nbsp; <code>.999999999</code><span style="font-size:90%;">  &nbsp; (trailing zeros removed)</span></td>
-    </tr>
-    <tr>
-      <td>am/pm</td>
-      <td><code>PM</code> &nbsp; <code>pm</code></td>
-    </tr>
-    <tr>
-      <td style="border-bottom: 0;">Timezone</td>
-      <td style="border-bottom: 0;"><code>MST</code></td>
-    </tr>
-    <tr>
-      <td style="padding-top: 0;">Offset</td>
-      <td style="padding-top: 0;"><code>-0700</code> &nbsp; <code>-07</code> &nbsp; <code>-07:00</code> &nbsp; <code>Z0700</code> &nbsp; <code>Z07:00</code></td>
-    </tr>
-  </tbody>
-</table>
 
 <h2 id="common-time-and-date-formats">Common time and date formats</h2>
 
@@ -283,6 +222,67 @@ StampMicro = "Jan _2 15:04:05.000000"
 StampNano  = "Jan _2 15:04:05.000000000"
 </pre>
 
+<h2 id="all-time-and-date-options">All time and date options</h2>
+
+<table class="white">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border-bottom: 0;">Year</td>
+      <td style="border-bottom: 0;"><code>06</code> &nbsp; <code>2006</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;">Month</td>
+      <td style="border-bottom: 0; padding-top: 0;"><code>01</code> &nbsp; <code>1</code> &nbsp; <code>Jan</code> &nbsp; <code>January</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;">Day</td>
+      <td style="border-bottom: 0; padding-top: 0;"><code>02</code> &nbsp; <code>2</code> &nbsp; <code>_2</code> <span style="font-size:90%;">  &nbsp; (width two, right justified)</span></td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;">Weekday</td>
+      <td style="padding-top: 0;"><code>Mon</code> &nbsp; <code>Monday</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;">Hours</td>
+      <td style="border-bottom: 0;"><code>03</code> &nbsp; <code>3</code> &nbsp; <code>15</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;">Minutes</td>
+      <td style="border-bottom: 0; padding-top: 0;"><code>04</code> &nbsp; <code>4</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;">Seconds</td>
+      <td style="border-bottom: 0; padding-top: 0;"><code>05</code> &nbsp; <code>5</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;">ms μs ns</td>
+      <td style="border-bottom: 0; padding-top: 0;"><code>.000</code> &nbsp; <code>.000000</code> &nbsp; <code>.000000000</code></td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;">ms μs ns</td>
+      <td style="padding-top: 0;"><code>.999</code> &nbsp; <code>.999999</code> &nbsp; <code>.999999999</code><span style="font-size:90%;">  &nbsp; (trailing zeros removed)</span></td>
+    </tr>
+    <tr>
+      <td>am/pm</td>
+      <td><code>PM</code> &nbsp; <code>pm</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;">Timezone</td>
+      <td style="border-bottom: 0;"><code>MST</code></td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;">Offset</td>
+      <td style="padding-top: 0;"><code>-0700</code> &nbsp; <code>-07</code> &nbsp; <code>-07:00</code> &nbsp; <code>Z0700</code> &nbsp; <code>Z07:00</code></td>
+    </tr>
+  </tbody>
+</table>
+
 <h2 id="corner-cases">Corner cases</h2>
 
 <p>It&rsquo;s not possible to specify that an hour should be rendered without a leading zero in a 24-hour time&nbsp;format.</p>
@@ -294,10 +294,10 @@ A typical usage for this would be giving opening hours ending at midnight, such&
 In fact, the time package assumes a Gregorian calendar with no leap&nbsp;seconds.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fformat-parse-string-time-date-example%2f&amp;text=How%20to%20format%20and%20parse%20a%20time/date&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fformat-parse-string-time-date-example%2f&amp;text=How%20to%20format%20and%20parse%20a%20time%20or%20date&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fformat-parse-string-time-date-example%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fformat-parse-string-time-date-example%2f&amp;title=How%20to%20format%20and%20parse%20a%20time/date" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=How%20to%20format%20and%20parse%20a%20time/date&body=https%3a%2f%2fyourbasic.org%2fgolang%2fformat-parse-string-time-date-example%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fformat-parse-string-time-date-example%2f&amp;title=How%20to%20format%20and%20parse%20a%20time%20or%20date" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=How%20to%20format%20and%20parse%20a%20time%20or%20date&body=https%3a%2f%2fyourbasic.org%2fgolang%2fformat-parse-string-time-date-example%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
