@@ -964,7 +964,7 @@ now := time.Now() // current local time sec := now.Unix() // number of seconds s
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/iterator-generator-pattern/</guid>
-      <description>Go has a built-in range loop for iterating over slices, arrays, strings, maps and channels. See Range loops (for-each loops).
+      <description>Go has a built-in range loop for iterating over slices, arrays, strings, maps and channels. See The 4 ways to write a range for loop.
 To iterate over other types of data, an iterator function with callbacks is a clean and fairly efficient abstraction.
 Basic iterator pattern // Iterate calls the f function with n = 1, 2, and 3. func Iterate(f func(n int)) { for i := 1; i  In use:</description>
     </item>
@@ -1697,13 +1697,13 @@ Your basic API is an introduction to API design with examples in Go and&amp;nbsp
     </item>
     
     <item>
-      <title>The 4 ways to write a range (foreach) loop</title>
+      <title>The 4 ways to write a range for loop</title>
       <link>https://yourbasic.org/golang/for-loop-range-array-slice-map-channel/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/for-loop-range-array-slice-map-channel/</guid>
-      <description>Range statements iterate over slices, arrays, strings, maps or&amp;nbsp;channels.
- Basics Strings Maps Channels Gotchas  Basics a := []string{&#34;Foo&#34;, &#34;Bar&#34;} for i, s := range a { fmt.Println(i, s) } 0 Foo 1 Bar   The range expression, a, is evaluated once before beginning the loop. The iteration values are assigned to the respective iteration variables, i and s, as in an assignment statement. The second iteration variable is optional.</description>
+      <description>Go offers foreach loops for slices, arrays, strings, maps and&amp;nbsp;channels.
+ Basic range loop iteration Loop over string indexes and runes Loop over map keys and values Loop over channels Range loop gotchas  Basic range loop iteration a := []string{&#34;Foo&#34;, &#34;Bar&#34;} for i, s := range a { fmt.Println(i, s) } 0 Foo 1 Bar   The range expression, a, is evaluated once before beginning the loop. The iteration values are assigned to the respective iteration variables, i and s, as in an assignment statement.</description>
     </item>
     
     <item>
