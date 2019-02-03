@@ -519,6 +519,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/opening-brace-separate-line/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/gotcha-multiple-value-sinlge-value-context/</loc>
   </url>
   
@@ -551,11 +555,11 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/gotcha-octal-decimal-hexadecimal-literal/</loc>
+    <loc>https://yourbasic.org/golang/short-variable-declaration-outside-function/</loc>
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/opening-brace-separate-line/</loc>
+    <loc>https://yourbasic.org/golang/gotcha-octal-decimal-hexadecimal-literal/</loc>
   </url>
   
   <url>
@@ -777,10 +781,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/crypto-rand-int/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/short-variable-declaration-outside-function/</loc>
   </url>
   
   <url>

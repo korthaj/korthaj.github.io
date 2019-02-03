@@ -1147,9 +1147,9 @@ a := []string{&#34;A&#34;, &#34;B&#34;, &#34;C&#34;} s := a[len(a)-1] // C  Go d
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/compiler-error-messages/</guid>
-      <description>The Go compiler often confuses and sometimes annoys developers who are new to&amp;nbsp;Go.
- This is a list of articles with strategies and workarounds for fresh Go programmers. Click the links for tips that will help you love &amp;ndash; or at least understand &amp;ndash; the Go compiler.
-The most misunderstood Go error messages  imported and not used Programs with unused imports won&#39;t compile.   declared and not used You must use all local variables.</description>
+      <description>The Go compiler sometimes confuses and annoys developers who are new to the&amp;nbsp;language.
+ This is a list of short articles with strategies and workarounds for common compiler error messages that tend to confuse fresh Go programmers.
+ imported and not used Programs with unused imports won&#39;t compile.   declared and not used You must use all local variables.   multiple-value in single-value context When a function returns multiple values, you must use all of them.</description>
     </item>
     
     <item>
@@ -1214,6 +1214,18 @@ func foo() { defer duration(track(&#34;foo&#34;)) // Code to measure } func trac
       <description>Any type declared in a type definition can have methods attached.
  A method is a function with a receiver&amp;nbsp;argument. The receiver appears between the func keyword and the method&amp;nbsp;name. You can define methods on any type declared in a type definition.  In this example, the Value method is associated with&amp;nbsp;MyType. The method receiver is called&amp;nbsp;p.
 type MyType struct { n int } func (p *MyType) Value() int { return p.</description>
+    </item>
+    
+    <item>
+      <title>Missing function body</title>
+      <link>https://yourbasic.org/golang/opening-brace-separate-line/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/opening-brace-separate-line/</guid>
+      <description>As you may have noticed, programs with an opening brace on separate line do not compile.
+func main() { fmt.Println(&amp;quot;Hello&amp;quot;) }  ../main.go:1:6: missing function body for &amp;quot;main&amp;quot; ../main.go:2:1: syntax error: unexpected semicolon or newline before {  You must write:
+func main() { fmt.Println(&amp;quot;Hello&amp;quot;) }  This is a trade-off in the design of the Go language.
+ Some have argued that the lexer should do lookahead to permit the brace to live on the next line.</description>
     </item>
     
     <item>
@@ -1309,6 +1321,18 @@ After the b == 255 iteration, b++ is executed. This overflows (since the maximum
     </item>
     
     <item>
+      <title>Non-declaration statement outside function body</title>
+      <link>https://yourbasic.org/golang/short-variable-declaration-outside-function/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/short-variable-declaration-outside-function/</guid>
+      <description>As you may have noticed, a program with short variable declarations outside a function doesn&amp;rsquo;t&amp;nbsp;compile.
+package main n := 1 // illegal func main() {} ../main.go:3:1: syntax error: non-declaration statement outside function body  Short variable declarations can only be used inside functions. You have to write
+package main var n = 1 func main() {} This is a trade-off in the design of the Go language.
+ At the top level, every declaration begins with a keyword.</description>
+    </item>
+    
+    <item>
       <title>Numbers that start with zero</title>
       <link>https://yourbasic.org/golang/gotcha-octal-decimal-hexadecimal-literal/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1318,18 +1342,6 @@ After the b == 255 iteration, b++ is executed. This overflows (since the maximum
 const ( Century = 100 Decade = 010 Year = 001 ) // The world&#39;s oldest person, Emma Morano, lived for a century, // two decades and two years. fmt.Println(&#34;She was&#34;, Century+2*Decade+2*Year, &#34;years old.&#34;) She was 118 years old. Answer
 010 is a number in base&amp;nbsp;8, therefore it means&amp;nbsp;8, not&amp;nbsp;10.
 Integer literals in Go are specified in octal, decimal or hexadecimal. The number 16 can be written as 020, 16 or 0x10.</description>
-    </item>
-    
-    <item>
-      <title>Opening brace on separate line</title>
-      <link>https://yourbasic.org/golang/opening-brace-separate-line/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/opening-brace-separate-line/</guid>
-      <description>As you may have noticed, programs with an opening brace on separate line do not compile.
-func main() { fmt.Println(&amp;quot;Hello&amp;quot;) }  ../main.go:1:6: missing function body for &amp;quot;main&amp;quot; ../main.go:2:1: syntax error: unexpected semicolon or newline before {  You must write:
-func main() { fmt.Println(&amp;quot;Hello&amp;quot;) }  This is a trade-off in the design of the Go language.
- Some have argued that the lexer should do lookahead to permit the brace to live on the next line.</description>
     </item>
     
     <item>
@@ -1844,18 +1856,6 @@ package main import ( &#34;fmt&#34; &#34;log&#34; // &#34;imported and not used:
       <description>Go has two packages for random numbers:
  math/rand implements a large selection of pseudo-random number generators. crypto/rand implements a cryptographically secure pseudo-random number generator with a limited interface.  The two packages can be combined by calling rand.New in package math/rand with a source that gets its data from crypto/rand.
 import ( crand &#34;crypto/rand&#34; rand &#34;math/rand&#34; &#34;encoding/binary&#34; &#34;fmt&#34; &#34;log&#34; ) func main() { var src cryptoSource rnd := rand.</description>
-    </item>
-    
-    <item>
-      <title>Variable declaration outside of function body</title>
-      <link>https://yourbasic.org/golang/short-variable-declaration-outside-function/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/short-variable-declaration-outside-function/</guid>
-      <description>As you may have noticed, a program with short variable declarations outside a function doesn&amp;rsquo;t&amp;nbsp;compile.
-package main n := 1 // illegal func main() {} ../main.go:3:1: syntax error: non-declaration statement outside function body  Short variable declarations can only be used inside functions. You have to write
-package main var n = 1 func main() {} This is a trade-off in the design of the Go language.
- At the top level, every declaration begins with a keyword.</description>
     </item>
     
     <item>
