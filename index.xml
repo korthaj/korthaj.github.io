@@ -123,13 +123,13 @@ Efficient string concatenationGo 1.10 A strings.</description>
     </item>
     
     <item>
-      <title>3 ways to compare slices/arrays</title>
+      <title>3 ways to compare slices (arrays)</title>
       <link>https://yourbasic.org/golang/compare-slices/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/compare-slices/</guid>
-      <description>Basic case In most cases, you will want to write your own code to compare slices and arrays.
-// Equal tells whether a and b contain the same elements. // A nil argument is equivalent to an empty slice. func Equal(a, b []int) bool { if len(a) != len(b) { return false } for i, v := range a { if v != b[i] { return false } } return true } Optimzed code for byte slices To compare byte slices, use the optimized bytes.</description>
+      <description>Basic case In most cases, you will want to write your own code to compare the elements of two&amp;nbsp;slices.
+// Equal tells whether a and b contain the same elements. // A nil argument is equivalent to an empty slice. func Equal(a, b []int) bool { if len(a) != len(b) { return false } for i, v := range a { if v != b[i] { return false } } return true } For arrays, however, you can often use the built-in comparison operators == and&amp;nbsp;!</description>
     </item>
     
     <item>
