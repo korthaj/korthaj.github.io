@@ -129,7 +129,7 @@ Efficient string concatenationGo 1.10 A strings.</description>
       
       <guid>https://yourbasic.org/golang/compare-slices/</guid>
       <description>Basic case In most cases, you will want to write your own code to compare the elements of two&amp;nbsp;slices.
-// Equal tells whether a and b contain the same elements. // A nil argument is equivalent to an empty slice. func Equal(a, b []int) bool { if len(a) != len(b) { return false } for i, v := range a { if v != b[i] { return false } } return true } For arrays, however, you can often use the built-in comparison operators == and&amp;nbsp;!</description>
+// Equal tells whether a and b contain the same elements. // A nil argument is equivalent to an empty slice. func Equal(a, b []int) bool { if len(a) != len(b) { return false } for i, v := range a { if v != b[i] { return false } } return true } For arrays, however, you can use the comparison operators == and&amp;nbsp;!</description>
     </item>
     
     <item>
