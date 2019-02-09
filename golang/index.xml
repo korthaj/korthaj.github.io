@@ -534,8 +534,8 @@ file, err := ioutil.TempFile(&#34;dir&#34;, &#34;prefix&#34;) if err != nil { lo
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/structs-explained/</guid>
-      <description>Struct types A struct is a typed collection of fields, useful for grouping data into records.
-type Student struct { Name string Age int } var a Student // a == Student{&#34;&#34;, 0} a.Name = &#34;Alice&#34; // a == Student{&#34;Alice&#34;, 0}   To define a new struct type, you list the names and types of each field. The default zero value of a struct has all its fields zeroed.</description>
+      <description>Struct types 2 ways to create and initialize a new struct Compare structs  Struct types A struct is a typed collection of fields, useful for grouping data into records.
+type Student struct { Name string Age int } var a Student // a == Student{&#34;&#34;, 0} a.Name = &#34;Alice&#34; // a == Student{&#34;Alice&#34;, 0}   To define a new struct type, you list the names and types of each field.</description>
     </item>
     
     <item>
