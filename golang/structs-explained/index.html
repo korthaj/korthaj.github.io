@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Struct initialization code example - yourbasic.org/golang </title>
-  <meta name="description" content="A struct is a typed collection of fields, useful for grouping data into records.">
+  <title>Create, initialize and compare structs - yourbasic.org/golang </title>
+  <meta name="description" content="CODE EXAMPLE A struct is a typed collection of fields, useful for grouping data into records.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/structs-explained/"
   },
-  "headline": "Struct initialization code example",
+  "headline": "Create, initialize and compare structs",
   "image": [
     "https://yourbasic.org/golang/catalog-card.jpg"
    ],
   "datePublished": "2018-04-23T00:00:00&#43;0000",
-  "dateModified": "2018-04-24T00:00:00&#43;0000",
+  "dateModified": "2019-02-09T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "A struct is a typed collection of fields, useful for grouping data into records."
+  "description": "CODE EXAMPLE A struct is a typed collection of fields, useful for grouping data into records."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Struct initialization code example">
-<meta property="og:description" content="A struct is a typed collection of fields, useful for grouping data into records.">
+<meta property="og:title" content="Create, initialize and compare structs">
+<meta property="og:description" content="CODE EXAMPLE A struct is a typed collection of fields, useful for grouping data into records.">
 <meta property="og:url" content="https://yourbasic.org/golang/structs-explained/">
 <meta property="og:image" content="https://yourbasic.org/golang/catalog-card.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Struct initialization code example">
-<meta name="twitter:description" content="A struct is a typed collection of fields, useful for grouping data into records.">
+<meta name="twitter:title" content="Create, initialize and compare structs">
+<meta name="twitter:description" content="CODE EXAMPLE A struct is a typed collection of fields, useful for grouping data into records.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/catalog-card.jpg">
 
@@ -82,13 +82,17 @@
 
 <main>
 <article>
-<h1>Struct initialization code example</h1>
+<h1>Create, initialize and compare structs</h1>
 <div class="tagline">yourbasic.org/golang</div>
+
+
 <!-- CC BY 2.0: https://commons.wikimedia.org/wiki/File:The_first_card_written_west_of_Cambridge_(4350624388).jpg -->
 
-<p class="lead">A struct is a typed collection of fields, useful for grouping data into records.</p>
+<div style="margin-top:1em;"><img src="/golang/catalog-card.jpg"></div>
 
-<div><img src="/golang/catalog-card.jpg"></div>
+<h2 id="struct-types">Struct types</h2>
+
+<p>A struct is a typed collection of fields, useful for grouping data into records.</p>
 
 <pre><code>type Student struct {
     Name string
@@ -97,12 +101,27 @@
 
 var a Student    <span class="comment">// a == Student{"", 0}</span>
 a.Name = "Alice" <span class="comment">// a == Student{"Alice", 0}</span>
+</code></pre>
 
-var pa *Student   <span class="comment">// pa == nil</span>
+<ul>
+<li>To define a new <strong>struct type</strong>, you list the names and types of each field.</li>
+<li>The default <strong>zero value</strong> of a struct has all its fields zeroed.</li>
+<li>You can acess individual fields with <strong>dot notation</strong>.</li>
+</ul>
+
+<h2 id="2-ways-to-create-and-initialize-a-new-struct">2 ways to create and initialize a new struct</h2>
+
+<p>The <b><code>new</code></b> keyword can be used to create a new struct.
+It returns a pointer to the newly created struct.</p>
+
+<pre><code>var pa *Student   <span class="comment">// pa == nil</span>
 pa = new(Student) <span class="comment">// pa == &Student{"", 0}</span>
 pa.Name = "Alice" <span class="comment">// pa == &Student{"Alice", 0}</span>
-    
-b := Student{ <span class="comment">// b == Student{"Bob", 0}</span>
+</code></pre>
+
+<p>You can also create and initialize a struct with a <strong>struct literal</strong>.</p>
+
+<pre><code>b := Student{ <span class="comment">// b == Student{"Bob", 0}</span>
     Name: "Bob",
 }
     
@@ -112,13 +131,32 @@ pb := &Student{ <span class="comment">// pb == &Student{"Bob", 8}</span>
 }
 
 c := Student{"Cecilia", 5} <span class="comment">// c == Student{"Cecilia", 5}</span>
+d := Student{} <span class="comment">            // d == Student{"", 0}</span>
+</code></pre>
+
+<ul>
+<li>An element list that contains keys does not need to have an element for each struct field. Omitted fields get the zero value for that field.</li>
+<li>An element list that does not contain any keys must list an element for each struct field in the order in which the fields are declared.</li>
+<li>A literal may omit the element list; such a literal evaluates to the zero value for its&nbsp;type.</li>
+</ul>
+
+<p>For further details, see <a href="https://golang.org/ref/spec#Composite_literals">The Language Specification: Composite literals</a></p>
+
+<h2 id="compare-structs">Compare structs</h2>
+
+<p>You can compare struct values with the comparison operators <code>==</code> and&nbsp;<code>!=</code>.
+Two values are equal if their corresponding fields are equal.</p>
+
+<pre><code>d1 := Student{"David", 1}
+d2 := Student{"David", 2}
+fmt.Println(d1 == d2) <span class="comment">// false</span>
 </code></pre>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fstructs-explained%2f&amp;text=Struct%20initialization%20code%20example&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fstructs-explained%2f&amp;text=Create,%20initialize%20and%20compare%20structs&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fstructs-explained%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fstructs-explained%2f&amp;title=Struct%20initialization%20code%20example" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Struct%20initialization%20code%20example&body=https%3a%2f%2fyourbasic.org%2fgolang%2fstructs-explained%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fstructs-explained%2f&amp;title=Create,%20initialize%20and%20compare%20structs" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Create,%20initialize%20and%20compare%20structs&body=https%3a%2f%2fyourbasic.org%2fgolang%2fstructs-explained%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>

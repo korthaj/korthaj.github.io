@@ -235,6 +235,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/structs-explained/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/data-races-explained/</loc>
   </url>
   
@@ -684,10 +688,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/gotcha-strings-are-immutable/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/structs-explained/</loc>
   </url>
   
   <url>

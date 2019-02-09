@@ -529,6 +529,16 @@ file, err := ioutil.TempFile(&#34;dir&#34;, &#34;prefix&#34;) if err != nil { lo
     </item>
     
     <item>
+      <title>Create, initialize and compare structs</title>
+      <link>https://yourbasic.org/golang/structs-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/structs-explained/</guid>
+      <description>Struct types A struct is a typed collection of fields, useful for grouping data into records.
+type Student struct { Name string Age int } var a Student // a == Student{&#34;&#34;, 0} a.Name = &#34;Alice&#34; // a == Student{&#34;Alice&#34;, 0}   To define a new struct type, you list the names and types of each field. The default zero value of a struct has all its fields zeroed.</description>
+    </item>
+    
+    <item>
       <title>Data races explained</title>
       <link>https://yourbasic.org/golang/data-races-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1664,16 +1674,6 @@ Go strings are immutable and behave like read-only byte slices (with a few extra
 To update the data, use a rune slice instead.
 buf := []rune(&#34;hello&#34;) buf[0] = &#39;H&#39; s := string(buf) fmt.Println(s) // &#34;Hello&#34;  If the string only contains ASCII characters, you could also use a byte&amp;nbsp;slice.
 See String functions cheat sheet for an overview of strings in&amp;nbsp;Go.</description>
-    </item>
-    
-    <item>
-      <title>Struct initialization code example</title>
-      <link>https://yourbasic.org/golang/structs-explained/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/structs-explained/</guid>
-      <description>A struct is a typed collection of fields, useful for grouping data into records.
- type Student struct { Name string Age int } var a Student // a == Student{&#34;&#34;, 0} a.Name = &#34;Alice&#34; // a == Student{&#34;Alice&#34;, 0} var pa *Student // pa == nil pa = new(Student) // pa == &amp;Student{&#34;&#34;, 0} pa.Name = &#34;Alice&#34; // pa == &amp;Student{&#34;Alice&#34;, 0} b := Student{ // b == Student{&#34;Bob&#34;, 0} Name: &#34;</description>
     </item>
     
     <item>
