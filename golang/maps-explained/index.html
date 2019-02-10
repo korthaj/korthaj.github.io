@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maps in a nutshell - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE A map is an unordered collection of key-value pairs.">
+  <meta name="description" content="CODE EXAMPLE A map (or dictionary) is an unordered collection of key-value pairs.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/Schlagwortkatalog.jpg"
    ],
   "datePublished": "2018-03-28T00:00:00&#43;0000",
-  "dateModified": "2018-06-22T00:00:00&#43;0000",
+  "dateModified": "2019-02-10T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "CODE EXAMPLE A map is an unordered collection of key-value pairs."
+  "description": "CODE EXAMPLE A map (or dictionary) is an unordered collection of key-value pairs."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Maps in a nutshell">
-<meta property="og:description" content="CODE EXAMPLE A map is an unordered collection of key-value pairs.">
+<meta property="og:description" content="CODE EXAMPLE A map (or dictionary) is an unordered collection of key-value pairs.">
 <meta property="og:url" content="https://yourbasic.org/golang/maps-explained/">
 <meta property="og:image" content="https://yourbasic.org/golang/Schlagwortkatalog.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Maps in a nutshell">
-<meta name="twitter:description" content="CODE EXAMPLE A map is an unordered collection of key-value pairs.">
+<meta name="twitter:description" content="CODE EXAMPLE A map (or dictionary) is an unordered collection of key-value pairs.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/Schlagwortkatalog.jpg">
 
@@ -92,15 +92,15 @@
 <div style="margin-top:1em;"><img src="/golang/Schlagwortkatalog.jpg" alt="Subject catalog drawer"></div>
 
 <ul class="toc">
-  <li><a href="#basics">Basics</a></li>
+  <li><a href="#map-and-dictionary-basics">Map and dictionary basics</a></li>
   <li><a href="#add-find-and-delete">Add, find and delete</a></li>
   <li><a href="#iterate">Iterate</a></li>
   <li><a href="#implementation-details">Implementation details</a></li>
 </ul>
 
-<h2 id="basics">Basics</h2>
+<h2 id="map-and-dictionary-basics">Map and dictionary basics</h2>
 
-<p>A map is an <b>unordered</b> collection of <b>key-value</b> pairs, where each key is&nbsp;<b>unique</b>.</p>
+<p>A map (or dictionary) is an <b>unordered</b> collection of <b>key-value</b> pairs, where each key is&nbsp;<b>unique</b>.</p>
 
 <pre><code>var m map[string]int                <span class="comment">// m == nil, len(m) == 0</span>
 m1 := make(map[string]float64)      <span class="comment">// empty map of string-float64 pairs</span>
@@ -213,7 +213,7 @@ that entry may or may not be produced during the&nbsp;iteration.</li>
   </div>
 
   <div class="reference">
-    <a href="/algorithms/hash-tables-explained/">Hash tables</a>
+    <a href="/algorithms/hash-tables-explained/">Hash tables are used to implement dictionary and map data structures</a>
     <div class="desc">A hash table is an unordered collection of key-value pairs. It offers a combination of efficient lookup, insert and delete operations.</div>
     <div class="source">yourbasic.org</div>
   </div>
