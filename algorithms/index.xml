@@ -83,14 +83,14 @@ Bloom filters are both fast and space-efficient. However, elements can only be a
     </item>
     
     <item>
-      <title>Hash tables are used to implement dictionary and map data structures</title>
+      <title>Hash tables explained</title>
       <link>https://yourbasic.org/algorithms/hash-tables-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/algorithms/hash-tables-explained/</guid>
-      <description>A hash table is an unordered collection of key-value pairs, where each key is&amp;nbsp;unique.
- A hash table offers a combination of efficient lookup, insert and delete operations.
-Neither arrays nor linked lists can achieve this:
+      <description>Hash tables are used to implement dictionary and map data structures.
+ A hash table is an unordered collection of key-value pairs, where each key is&amp;nbsp;unique.
+Hash tables offer a combination of efficient lookup, insert and delete operations. Neither arrays nor linked lists can achieve this:
  a lookup in an unsorted array takes linear worst-case time; in a sorted array, a lookup using binary search is very fast, but insertions become inefficient; in a linked list an insertion can be efficient, but lookups take linear time.</description>
     </item>
     
