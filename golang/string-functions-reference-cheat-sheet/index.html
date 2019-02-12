@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/typewriter.png"
    ],
   "datePublished": "2018-03-15T00:00:00&#43;0000",
-  "dateModified": "2018-05-27T00:00:00&#43;0000",
+  "dateModified": "2019-02-12T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -345,9 +345,9 @@ for i := 0; i < len(s); i++ {
   </thead>
   <tbody>
     <tr>
-      <td><code>strings.Replace("foo", "o", ".")</code></td>
+      <td><code>strings.Replace("foo", "o", ".", 2)</code></td>
       <td>f..</td>
-      <td>Replace “o” with “.”</td>
+      <td>Replace first two “o” with “.” Use&nbsp;-1&nbsp;to&nbsp;replace&nbsp;all</td>
     </tr>
     <tr>
       <td><code>f := func(r rune) rune {<br />&nbsp;&nbsp;&nbsp;&nbsp;return r + 1<br />}<br />strings.Map(f, "ab")</code></td>
