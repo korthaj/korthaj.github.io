@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Read a file (stdin) line by line - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE Use a bufio.Scanner to read a file one line at a time in Go.">
+  <meta name="description" content="CODE EXAMPLE Use a bufio.Scanner to read a file one line at a time in Go. Use os.Stdin to read from the standard input stream.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/boy-reading-book.png"
    ],
   "datePublished": "2018-05-11T00:00:00&#43;0000",
-  "dateModified": "2018-06-17T00:00:00&#43;0000",
+  "dateModified": "2019-02-12T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "CODE EXAMPLE Use a bufio.Scanner to read a file one line at a time in Go."
+  "description": "CODE EXAMPLE Use a bufio.Scanner to read a file one line at a time in Go. Use os.Stdin to read from the standard input stream."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Read a file (stdin) line by line">
-<meta property="og:description" content="CODE EXAMPLE Use a bufio.Scanner to read a file one line at a time in Go.">
+<meta property="og:description" content="CODE EXAMPLE Use a bufio.Scanner to read a file one line at a time in Go. Use os.Stdin to read from the standard input stream.">
 <meta property="og:url" content="https://yourbasic.org/golang/read-file-line-by-line/">
 <meta property="og:image" content="https://yourbasic.org/golang/boy-reading-book.png">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Read a file (stdin) line by line">
-<meta name="twitter:description" content="CODE EXAMPLE Use a bufio.Scanner to read a file one line at a time in Go.">
+<meta name="twitter:description" content="CODE EXAMPLE Use a bufio.Scanner to read a file one line at a time in Go. Use os.Stdin to read from the standard input stream.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/boy-reading-book.png">
 
@@ -90,7 +90,13 @@
 
 <div style="margin-top:1em;"><img src="/golang/boy-reading-book.png"></div>
 
-<h2 id="from-file">From file</h2>
+<ul class="toc">
+  <li><a href="#read-from-file">Read from file</a></li>
+  <li><a href="#read-from-stdin">Read from stdin</a></li>
+  <li><a href="#read-from-any-stream">Read from any stream</a></li>
+</ul>
+
+<h2 id="read-from-file">Read from file</h2>
 
 <p>Use a <a href="https://golang.org/pkg/bufio/#Scanner"><code>bufio.Scanner</code></a> to read a file line by&nbsp;line.</p>
 
@@ -110,7 +116,7 @@ if err := scanner.Err(); err != nil {
 }
 </code></pre>
 
-<h2 id="from-stdin">From stdin</h2>
+<h2 id="read-from-stdin">Read from stdin</h2>
 
 <p>Use <a href="https://golang.org/pkg/os/#pkg-variables"><code>os.Stdin</code></a> to read from the standard input&nbsp;stream.</p>
 
@@ -124,7 +130,7 @@ if err := scanner.Err(); err != nil {
 }
 </code></pre>
 
-<h2 id="from-arbitrary-stream">From arbitrary stream</h2>
+<h2 id="read-from-any-stream">Read from any stream</h2>
 
 <div><a href="/golang/io-reader-interface-explained/"><img src="/golang/teddy-bear-reading-thumb.jpg" title="How to use the io.Reader interface"></a></div>
 

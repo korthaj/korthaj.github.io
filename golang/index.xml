@@ -1485,9 +1485,9 @@ Warning: Unexported identifiers is not a security measure and it does not hide o
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/read-file-line-by-line/</guid>
-      <description>From file Use a bufio.Scanner to read a file line by&amp;nbsp;line.
-file, err := os.Open(&#34;file.txt&#34;) if err != nil { log.Fatal(err) } defer file.Close() scanner := bufio.NewScanner(file) for scanner.Scan() { fmt.Println(scanner.Text()) } if err := scanner.Err(); err != nil { log.Fatal(err) }  From stdin Use os.Stdin to read from the standard input&amp;nbsp;stream.
-scanner := bufio.NewScanner(os.Stdin) for scanner.Scan() { fmt.Println(scanner.Text()) } if err := scanner.Err(); err != nil { log.</description>
+      <description>Read from file Read from stdin Read from any stream  Read from file Use a bufio.Scanner to read a file line by&amp;nbsp;line.
+file, err := os.Open(&#34;file.txt&#34;) if err != nil { log.Fatal(err) } defer file.Close() scanner := bufio.NewScanner(file) for scanner.Scan() { fmt.Println(scanner.Text()) } if err := scanner.Err(); err != nil { log.Fatal(err) }  Read from stdin Use os.Stdin to read from the standard input&amp;nbsp;stream.
+scanner := bufio.</description>
     </item>
     
     <item>
