@@ -75,6 +75,13 @@
 main.go:4: declaration of "n" shadows declaration at main.go:2
 </code></pre>
 
+<p><a href="https://tip.golang.org/doc/go1.12">Go 1.12</a> no longer supports this.
+Instead you may do</p>
+
+<pre><code>go install golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow
+go vet -vettool=$(which shadow)
+</code></pre>
+
 <p>Additionally, the Go compiler detects and disallows some cases of shadowing.</p>
 
 <pre><code class="language-go">func Foo() (n int, err error) {
