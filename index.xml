@@ -1293,6 +1293,16 @@ There is a data race: the variable i is shared by six&amp;nbsp;(6) goroutines.
     </item>
     
     <item>
+      <title>Key dynamic programming principles</title>
+      <link>https://yourbasic.org/algorithms/dynamic-programming-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/algorithms/dynamic-programming-explained/</guid>
+      <description>This text contains a detailed example showing how to solve a tricky problem efficiently with recursion and dynamic programming – either with memoization or tabulation.
+ Dynamic programming is a method for solving a complex problem by dividing it into simpler subproblems, solving each of those just once, and storing their solutions. Memoization is an optimization technique used to speed up programs by storing the results of expensive function calls and returning the cached result when the same inputs occur&amp;nbsp;again.</description>
+    </item>
+    
+    <item>
       <title>Las Vegas vs. Monte Carlo algorithms</title>
       <link>https://yourbasic.org/algorithms/las-vegas/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -2010,16 +2020,6 @@ Type aliases are not meant for everyday use. They were introduced to support gra
  Type assertions Type switches  Type assertions A type assertion doesn’t really convert an interface to another data type, but it provides access to an interface’s concrete value, which is typically what you&amp;nbsp;want.
 The type assertion x.(T) asserts that the concrete value stored in&amp;nbsp;x is of type&amp;nbsp;T, and that x is&amp;nbsp;not&amp;nbsp;nil.
  If T is not an interface, it asserts that the dynamic type of&amp;nbsp;x is identical to&amp;nbsp;T.</description>
-    </item>
-    
-    <item>
-      <title>Understanding dynamic programming with memoization or tabulation</title>
-      <link>https://yourbasic.org/algorithms/dynamic-programming-explained/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/algorithms/dynamic-programming-explained/</guid>
-      <description>This text contains a detailed example showing how to solve a tricky problem efficiently with recursion and dynamic programming – either with memoization or tabulation.
- Dynamic programming is a method for solving a complex problem by dividing it into simpler subproblems, solving each of those just once, and storing their solutions. Memoization is an optimization technique used to speed up programs by storing the results of expensive function calls and returning the cached result when the same inputs occur&amp;nbsp;again.</description>
     </item>
     
     <item>

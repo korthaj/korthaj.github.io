@@ -483,6 +483,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/algorithms/dynamic-programming-explained/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/algorithms/las-vegas/</loc>
   </url>
   
@@ -749,10 +753,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/type-assertion-switch/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/algorithms/dynamic-programming-explained/</loc>
   </url>
   
   <url>
