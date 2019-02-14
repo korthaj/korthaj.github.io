@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How to format and parse a time or date - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE Instead of yyyy-mm-dd formatting, you format a special layout parameter (Mon Jan 2 15:04:05 MST 2006) the same way as the value should be formatted.">
+  <title>How to format (and parse) a time or date - yourbasic.org/golang </title>
+  <meta name="description" content="CODE EXAMPLE To convert a time or date to string, your format a special layout parameter (Mon Jan 2 15:04:05 MST 2006) the same way as the time should be formatted. ">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/format-parse-string-time-date-example/"
   },
-  "headline": "How to format and parse a time or date",
+  "headline": "How to format (and parse) a time or date",
   "image": [
     "https://yourbasic.org/golang/stopwatch.png"
    ],
   "datePublished": "2018-04-25T00:00:00&#43;0000",
-  "dateModified": "2019-01-30T00:00:00&#43;0000",
+  "dateModified": "2019-02-14T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "CODE EXAMPLE Instead of yyyy-mm-dd formatting, you format a special layout parameter (Mon Jan 2 15:04:05 MST 2006) the same way as the value should be formatted."
+  "description": "CODE EXAMPLE To convert a time or date to string, your format a special layout parameter (Mon Jan 2 15:04:05 MST 2006) the same way as the time should be formatted. "
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to format and parse a time or date">
-<meta property="og:description" content="CODE EXAMPLE Instead of yyyy-mm-dd formatting, you format a special layout parameter (Mon Jan 2 15:04:05 MST 2006) the same way as the value should be formatted.">
+<meta property="og:title" content="How to format (and parse) a time or date">
+<meta property="og:description" content="CODE EXAMPLE To convert a time or date to string, your format a special layout parameter (Mon Jan 2 15:04:05 MST 2006) the same way as the time should be formatted. ">
 <meta property="og:url" content="https://yourbasic.org/golang/format-parse-string-time-date-example/">
 <meta property="og:image" content="https://yourbasic.org/golang/stopwatch.png">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="How to format and parse a time or date">
-<meta name="twitter:description" content="CODE EXAMPLE Instead of yyyy-mm-dd formatting, you format a special layout parameter (Mon Jan 2 15:04:05 MST 2006) the same way as the value should be formatted.">
+<meta name="twitter:title" content="How to format (and parse) a time or date">
+<meta name="twitter:description" content="CODE EXAMPLE To convert a time or date to string, your format a special layout parameter (Mon Jan 2 15:04:05 MST 2006) the same way as the time should be formatted. ">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/stopwatch.png">
 
@@ -82,7 +82,7 @@
 
 <main>
 <article>
-<h1>How to format and parse a time or date</h1>
+<h1>How to format (and parse) a time or date</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
@@ -93,28 +93,31 @@
 </div>
 
 <ul class="toc">
-  <li><a href="#basic-example">Basic example</a></li>
-  <li><a href="#common-time-and-date-formats">Common time and date formats</a></li>
+  <li><a href="#time-and-date-formatting-basics">Time and date formatting basics</a></li>
+  <li><a href="#common-time-and-date-layouts">Common time and date layouts</a></li>
   <li><a href="#predefined-date-and-timestamp-layouts">Predefined date and timestamp layouts</a></li>
-  <li><a href="#all-time-and-date-options">All time and date options</a></li>
+  <li><a href="#all-layout-options">All layout options</a></li>
   <li><a href="#corner-cases">Corner cases</a></li>
 </ul>
 
-<h2 id="basic-example">Basic example</h2>
+<h2 id="time-and-date-formatting-basics">Time and date formatting basics</h2>
 
-<p>Instead of yyyy-mm-dd formatting,
-you format a special <strong>layout parameter</strong></p>
+<p>Go doesn&rsquo;t use yyyy-mm-dd layout to format or parse a date.
+Instead, you format a special <strong>layout parameter</strong></p>
 
 <p><code style="margin-left:2em;"><span style="color: green">Mon Jan 2 15:04:05 MST 2006</span></code></p>
 
-<p>the same way as the value should be formatted.
+<p>the same way as the time or date should be formatted.
 (This date is easier to remember when written as <code><span style="color: green">01/02&nbsp;03:04:05PM&nbsp;&lsquo;06&nbsp;-0700</span></code>.)</p>
 
-<pre><code>input := "2017-08-31"
-<span style="color: green"><b>layout := "2006-01-02"</b></span>
-t, _ := <b>time.Parse</b>(<span style="color: green"><b>layout</b></span>, input)
-fmt.Println(t)                       <span class="comment">// 2017-08-31 00:00:00 +0000 UTC</span>
-fmt.Println(t.<b>Format</b>(<span style="color: green"><b>"02-Jan-2006"</b></span>)) <span class="comment">// 31-Aug-2017</span></code></pre>
+<pre><code>const (
+    <span style="color: green"><b>layoutISO = "2006-01-02"</b></span>
+    <span style="color: green"><b>layoutUS  = "January 2, 2006"</b></span>
+)
+date := "1999-12-31"
+t, _ := <b>time.Parse</b>(<span style="color: green"><b>layoutISO</b></span>, date)
+fmt.Println(t)                  // <span class="comment">1999-12-31 00:00:00 +0000 UTC</span>
+fmt.Println(t.<b>Format</b>(<span style="color: green"><b>layoutUS</b></span>)) // <span class="comment">December 31, 1999</span></code></pre>
 
 <p>The function</p>
 
@@ -129,7 +132,7 @@ fmt.Println(t.<b>Format</b>(<span style="color: green"><b>"02-Jan-2006"</b></spa
 func (t Time) Format(<span style="color: green"><b>layout</b></span> string) string
 </code></pre>
 
-<h2 id="common-time-and-date-formats">Common time and date formats</h2>
+<h2 id="common-time-and-date-layouts">Common time and date layouts</h2>
 
 <table class="white">
   <thead>
@@ -169,7 +172,7 @@ func (t Time) Format(<span style="color: green"><b>layout</b></span> string) str
     </tr>
     <tr>
       <td style="border-bottom: 0;"><code>2006-01-02T15:04:05-0700</code></td>
-      <td style="border-bottom: 0;">ISO 8601</td>
+      <td style="border-bottom: 0;"><a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> (<a href="https://www.ietf.org/rfc/rfc3339.txt">RFC&nbsp;3339</a>)</td>
     </tr>
     <tr>
       <td style="border-bottom: 0; padding-top: 0;"><code>2006-01-02</code></td>
@@ -181,7 +184,7 @@ func (t Time) Format(<span style="color: green"><b>layout</b></span> string) str
     </tr>
     <tr>
       <td style="border-bottom: 0;"><code>02 Jan 06 15:04 MST</code></td>
-      <td style="border-bottom: 0;">RFC&nbsp;822</td>
+      <td style="border-bottom: 0;"><a href="https://www.ietf.org/rfc/rfc822.txt">RFC&nbsp;822</a></td>
     </tr>
     <tr>
       <td style="padding-top: 0;"><code>02 Jan 06 15:04 -0700</code></td>
@@ -189,7 +192,7 @@ func (t Time) Format(<span style="color: green"><b>layout</b></span> string) str
     </tr>
     <tr>
       <td style="border-bottom: 0;"><code>Mon, 02 Jan 2006 15:04:05 MST</code></td>
-      <td style="border-bottom: 0;">RFC&nbsp;1123</td>
+      <td style="border-bottom: 0;"><a href="https://www.ietf.org/rfc/rfc1123.txt">RFC&nbsp;1123</a></td>
     </tr>
     <tr>
       <td style="padding-top: 0;"><code>Mon, 02 Jan 2006 15:04:05 -0700</code></td>
@@ -222,7 +225,7 @@ StampMicro = "Jan _2 15:04:05.000000"
 StampNano  = "Jan _2 15:04:05.000000000"
 </pre>
 
-<h2 id="all-time-and-date-options">All time and date options</h2>
+<h2 id="all-layout-options">All layout options</h2>
 
 <table class="white">
   <thead>
@@ -294,10 +297,10 @@ A typical usage for this would be giving opening hours ending at midnight, such&
 In fact, the time package assumes a Gregorian calendar with no leap&nbsp;seconds.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fformat-parse-string-time-date-example%2f&amp;text=How%20to%20format%20and%20parse%20a%20time%20or%20date&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fformat-parse-string-time-date-example%2f&amp;text=How%20to%20format%20%28and%20parse%29%20a%20time%20or%20date&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fformat-parse-string-time-date-example%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fformat-parse-string-time-date-example%2f&amp;title=How%20to%20format%20and%20parse%20a%20time%20or%20date" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=How%20to%20format%20and%20parse%20a%20time%20or%20date&body=https%3a%2f%2fyourbasic.org%2fgolang%2fformat-parse-string-time-date-example%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fformat-parse-string-time-date-example%2f&amp;title=How%20to%20format%20%28and%20parse%29%20a%20time%20or%20date" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=How%20to%20format%20%28and%20parse%29%20a%20time%20or%20date&body=https%3a%2f%2fyourbasic.org%2fgolang%2fformat-parse-string-time-date-example%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
