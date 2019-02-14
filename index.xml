@@ -2161,7 +2161,7 @@ x = q*y + r and |r| &amp;lt; |y|  where x / y is truncated towards zero.</descri
     </item>
     
     <item>
-      <title>What’s a seed: Random number generators</title>
+      <title>What’s a seed in a random number generator?</title>
       <link>https://yourbasic.org/algorithms/random-number-generator-seed/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
