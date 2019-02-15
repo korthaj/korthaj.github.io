@@ -1468,6 +1468,15 @@ A pointer has type *T. The keyword new allocates a new object and returns its&am
     </item>
     
     <item>
+      <title>Printf string formatting cheat sheet</title>
+      <link>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</guid>
+      <description>Package fmt basics Default formats and type Integer (base, padding, sign) Character (quoted, Unicode) Boolean (true/false)   Pointer (hex) Float (padding, precision, scientific notation) String or byte slice (quoted, padding, hex) Special values Find incorrect formatting with vet     Package fmt basics With the fmt package you can format numbers and strings padded with spaces or zeroes, in different bases, and with optional quotes.</description>
+    </item>
+    
+    <item>
       <title>Public vs. private</title>
       <link>https://yourbasic.org/golang/public-private/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1959,15 +1968,6 @@ To avoid this, we need to use two separate byte&amp;nbsp;arrays.</description>
       <description>0 isn’t a decimal number in Go – it’s an octal literal.
  An integer literal in Go (as well as in C and Java) is
  in base&amp;nbsp;16 if it starts with 0x or 0X, in base&amp;nbsp;8 if it starts with 0, otherwise it&#39;s a decimal&amp;nbsp;number.  In fact, there are many ways to write zero in base&amp;nbsp;8 in Go, including 0, 00 and&amp;nbsp;000. If&amp;nbsp;you prefer hexadecimal notation, you also have a smörgåsbord of options: such as 0x0, 0x00 and 0x000 (as well as 0X0, 0X00 and&amp;nbsp;0X000).</description>
-    </item>
-    
-    <item>
-      <title>fmt formatting cheat sheet</title>
-      <link>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</guid>
-      <description>Basics Format a string without printing it Default formats and type Integer (base, padding, sign) Character (quoted, Unicode) Boolean (true/false)   Pointer (hex) Float (padding, precision, scientific notation) String or byte slice (quoted, padding, hex) Special values Find incorrect formatting with vet     Basics With the fmt package you can format numbers and strings padded with spaces or zeroes, in different bases, and with optional quotes.</description>
     </item>
     
   </channel>

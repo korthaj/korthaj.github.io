@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>fmt formatting cheat sheet - yourbasic.org/golang </title>
-  <meta name="description" content="With fmt verbs and flags your can format numbers and strings padded with spaces or zeroes, in different bases, and with optional quotes.">
+  <title>Printf string formatting cheat sheet - yourbasic.org/golang </title>
+  <meta name="description" content="CODE EXAMPLE The fmt package formats numbers and strings padded with spaces or zeroes, in different bases, and with optional quotes.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/"
   },
-  "headline": "fmt formatting cheat sheet",
+  "headline": "Printf string formatting cheat sheet",
   "image": [
     "https://yourbasic.org/golang/format.jpg"
    ],
   "datePublished": "2018-03-15T00:00:00&#43;0000",
-  "dateModified": "2019-01-25T00:00:00&#43;0000",
+  "dateModified": "2019-02-15T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "With fmt verbs and flags your can format numbers and strings padded with spaces or zeroes, in different bases, and with optional quotes."
+  "description": "CODE EXAMPLE The fmt package formats numbers and strings padded with spaces or zeroes, in different bases, and with optional quotes."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="fmt formatting cheat sheet">
-<meta property="og:description" content="With fmt verbs and flags your can format numbers and strings padded with spaces or zeroes, in different bases, and with optional quotes.">
+<meta property="og:title" content="Printf string formatting cheat sheet">
+<meta property="og:description" content="CODE EXAMPLE The fmt package formats numbers and strings padded with spaces or zeroes, in different bases, and with optional quotes.">
 <meta property="og:url" content="https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/">
 <meta property="og:image" content="https://yourbasic.org/golang/format.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="fmt formatting cheat sheet">
-<meta name="twitter:description" content="With fmt verbs and flags your can format numbers and strings padded with spaces or zeroes, in different bases, and with optional quotes.">
+<meta name="twitter:title" content="Printf string formatting cheat sheet">
+<meta name="twitter:description" content="CODE EXAMPLE The fmt package formats numbers and strings padded with spaces or zeroes, in different bases, and with optional quotes.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/format.jpg">
 
@@ -82,7 +82,7 @@
 
 <main>
 <article>
-<h1>fmt formatting cheat sheet</h1>
+<h1>Printf string formatting cheat sheet</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
@@ -93,8 +93,7 @@
 <div style="margin-top: 1em;">
 <div style="float: left; min-width: 30%; margin-right: 2em;">
     <ul class="toc" style="margin: 0;">
-  <li><a href="#basics">Basics</a></li>
-  <li><a href="#format-a-string-without-printing-it">Format a string without printing it</a></li>
+  <li><a href="#package-fmt-basics">Package fmt basics</a></li>
   <li><a href="#default">Default formats and type</a></li>
   <li><a href="#integer">Integer (base, padding, sign)</a></li>
   <li><a href="#character">Character (quoted, Unicode)</a></li>
@@ -113,7 +112,7 @@
 </div>
 <div style="clear: both"></div>
 
-<h2 id="basics">Basics</h2>
+<h2 id="package-fmt-basics">Package fmt basics</h2>
 
 <p>With the <a href="https://golang.org/pkg/fmt"><code>fmt</code></a> package
 you can format numbers and strings padded with spaces or zeroes,
@@ -123,10 +122,9 @@ in different bases, and with optional quotes.</p>
 plus some <strong>annotation verbs</strong> that tell the <code>fmt</code> functions
 how to format the trailing arguments.</p>
 
-<p>In this&nbsp;example</p>
+<p>In this example, <a href="https://golang.org/pkg/fmt/#Printf"><code>fmt.printf</code></a> formats and writes to standard output:</p>
 
-<pre><code>fmt.Printf("Binary: %b\\%b", 4, 5)
-<span class="comment">// Binary: 100\101 </span>
+<pre><code>fmt.Printf("Binary: %b\\%b", 4, 5) <span class="comment">`Binary: 100\101`</span>
 </code></pre>
 
 <ul>
@@ -135,16 +133,18 @@ how to format the trailing arguments.</p>
 <li>the <strong>special value</strong> <code>\\</code> is a backslash.</li>
 </ul>
 
-<p>Use the special verb <code>%%</code>, which consumes no argument, to write a <strong>literal percent&nbsp;sign</strong>.</p>
+<h3 id="format-a-string-without-printing-it">Format a string without printing it</h3>
 
-<pre><code>fmt.Printf("%d %%", 50) <span class="comment">// "50 %"</span></code></pre>
+<pre><code>s := fmt.Sprintf("Binary: %b\\%b", 4, 5) <span class="comment">// s == `Binary: 100\101`</span></code></pre>
 
-<h2 id="format-a-string-without-printing-it">Format a string without printing it</h2>
+<p>The <a href="https://golang.org/pkg/fmt/#Sprintf"><code>fmt.Sprintf</code></a> function
+formats a string without printing&nbsp;it.</p>
 
-<p>Use the <a href="https://golang.org/pkg/fmt/#Sprintf"><code>fmt.Sprintf</code></a> function
-to format a string without printing&nbsp;it.</p>
+<h3 id="percent-sign">Percent sign</h3>
 
-<pre><code>s := fmt.Sprintf("Binary: %b\\%b", 4, 5) <span class="comment">// s == "Binary: 100\101"</span></code></pre>
+<pre><code>fmt.Printf("%d %%", 50) <span class="comment">// `50 %`</span></code></pre>
+
+<p>The special verb <code>%%</code>, which consumes no argument, produces a percent&nbsp;sign.</p>
 
 <h2 id="default">Default formats and type</h2>
 
@@ -155,26 +155,26 @@ to format a string without printing&nbsp;it.</p>
 <table class="white">
   <thead>
     <tr>
-      <th>Formatting</th>
-      <th>Description</th>
+      <th>Format</th>
       <th>Verb</th>
+      <th>Description</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td style="border-bottom: 0;">[0 1]</td>
-      <td style="border-bottom: 0;">Default format</td>
       <td style="border-bottom: 0;"><code>%v</code></td>
+      <td style="border-bottom: 0;">Default format</td>
     </tr>
     <tr>
       <td style="padding-top: 0;">[]int64{0, 1}</td>
-      <td style="padding-top: 0;">Go-syntax format</td>
       <td style="padding-top: 0;"><code>%#v</code></td>
+      <td style="padding-top: 0;">Go-syntax format</td>
     </tr>
     <tr>
       <td>[]int64</td>
-      <td>The type of the value</td>
       <td><code>%T</code></td>
+      <td>The type of the value</td>
     </tr>
   </tbody>
 </table>
@@ -188,61 +188,61 @@ to format a string without printing&nbsp;it.</p>
 <table class="white">
   <thead>
     <tr>
-      <th>Formatting</th>
-      <th>Description</th>
+      <th>Format</th>
       <th>Verb</th>
+      <th>Description</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td style="border-bottom: 0;">15</td>
-      <td style="border-bottom: 0;">Base 10</td>
       <td style="border-bottom: 0;"><code>%d</code></td>
+      <td style="border-bottom: 0;">Base 10</td>
     </tr>
     <tr>
       <td style="padding-top: 0;">+15</td>
-      <td style="padding-top: 0;">Always show sign</td>
       <td style="padding-top: 0;"><code>%+d</code></td>
+      <td style="padding-top: 0;">Always show sign</td>
     </tr>
     <tr>
       <td style="border-bottom: 0;">␣␣15</td>
-      <td style="border-bottom: 0;">Pad with space (width 4, right justified)</td>
       <td style="border-bottom: 0;"><code>%4d</code></td>
+      <td style="border-bottom: 0;">Pad with spaces (width 4, right justified)</td>
     </tr>
     <tr>
       <td style="border-bottom: 0; padding-top: 0;">15␣␣</td>
-      <td style="border-bottom: 0; padding-top: 0;">Pad with space (width 4, left justified)</td>
       <td style="border-bottom: 0; padding-top: 0;"><code>%-4d</code></td>
+      <td style="border-bottom: 0; padding-top: 0;">Pad with spaces (width 4, left justified)</td>
     </tr>
     <tr>
       <td style="padding-top: 0;">0015</td>
-      <td style="padding-top: 0;">Pad with zero (width 4)</td>
       <td style="padding-top: 0;"><code>%04d</code></td>
+      <td style="padding-top: 0;">Pad with zeroes (width 4)</td>
     </tr>
     <tr>
       <td>1111</td>
-      <td>Base 2</td>
       <td><code>%b</code></td>
+      <td>Base 2</td>
     </tr>
     <tr>
       <td>17</td>
-      <td>Base 8</td>
       <td><code>%o</code></td>
+      <td>Base 8</td>
     </tr>
     <tr>
       <td style="border-bottom: 0;">f</td>
-      <td style="border-bottom: 0;">Base 16, lowercase</td>
       <td style="border-bottom: 0;"><code>%x</code></td>
+      <td style="border-bottom: 0;">Base 16, lowercase</td>
     </tr>
     <tr>
       <td style="border-bottom: 0; padding-top: 0;">F</td>
-      <td style="border-bottom: 0; padding-top: 0;">Base 16, uppercase</td>
       <td style="border-bottom: 0; padding-top: 0;"><code>%X</code></td>
+      <td style="border-bottom: 0; padding-top: 0;">Base 16, uppercase</td>
     </tr>
     <tr>
       <td style="padding-top: 0;">0xf</td>
-      <td style="padding-top: 0;">Base 16, with leading 0x</td>
       <td style="padding-top: 0;"><code>%#x</code></td>
+      <td style="padding-top: 0;">Base 16, with leading 0x</td>
     </tr>
   </tbody>
 </table>
@@ -256,31 +256,31 @@ to format a string without printing&nbsp;it.</p>
 <table class="white">
   <thead>
     <tr>
-      <th>Formatting</th>
-      <th>Description</th>
+      <th>Format</th>
       <th>Verb</th>
+      <th>Description</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td style="border-bottom: 0;">A</td>
-      <td style="border-bottom: 0;">Character</td>
       <td style="border-bottom: 0;"><code>%c</code></td>
+      <td style="border-bottom: 0;">Character</td>
     </tr>
     <tr>
       <td style="padding-top: 0;">'A'</td>
-      <td style="padding-top: 0;">Quoted character</td>
       <td style="padding-top: 0;"><code>%q</code></td>
+      <td style="padding-top: 0;">Quoted character</td>
     </tr>
     <tr>
       <td style="border-bottom: 0;">U+0041</td>
-      <td style="border-bottom: 0;">Unicode</td>
       <td style="border-bottom: 0;"><code>%U</code></td>
+      <td style="border-bottom: 0;">Unicode</td>
     </tr>
     <tr>
       <td style="padding-top: 0;">U+0041 'A'</td>
-      <td style="padding-top: 0;">Unicode with character</td>
       <td style="padding-top: 0;"><code>%#U</code></td>
+      <td style="padding-top: 0;">Unicode with character</td>
     </tr>
   </tbody>
 </table>
@@ -302,36 +302,36 @@ to format a string without printing&nbsp;it.</p>
 <table class="white">
   <thead>
     <tr>
-      <th>Formatting</th>
-      <th>Description</th>
+      <th>Format</th>
       <th>Verb</th>
+      <th>Description</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>1.234560e+02</td>
-      <td>Scientific notation</td>
       <td><code>%e</code></td>
+      <td>Scientific notation</td>
     </tr>
     <tr>
       <td style="border-bottom: 0;">123.456000</td>
-      <td style="border-bottom: 0;">Decimal point, no exponent</td>
       <td style="border-bottom: 0;"><code>%f</code></td>
+      <td style="border-bottom: 0;">Decimal point, no exponent</td>
     </tr>
     <tr>
       <td style="border-bottom: 0; padding-top: 0;">123.46</td>
-      <td style="border-bottom: 0; padding-top: 0;">Default width, precision 2</td>
       <td style="border-bottom: 0; padding-top: 0;"><code>%.2f</code></td>
+      <td style="border-bottom: 0; padding-top: 0;">Default width, precision 2</td>
     </tr>
     <tr>
       <td style="padding-top: 0;">␣␣123.46</td>
-      <td style="padding-top: 0;">Width 8, precision 2</td>
       <td style="padding-top: 0;"><code>%8.2f</code></td>
+      <td style="padding-top: 0;">Width 8, precision 2</td>
     </tr>
     <tr>
       <td>123.456</td>
-      <td>Exponent as needed, necessary digits only</td>
       <td><code>%g</code></td>
+      <td>Exponent as needed, necessary digits only</td>
     </tr>
   </tbody>
 </table>
@@ -345,41 +345,41 @@ to format a string without printing&nbsp;it.</p>
 <table class="white">
   <thead>
     <tr>
-      <th>Formatting</th>
-      <th>Description</th>
+      <th>Format</th>
       <th>Verb</th>
+      <th>Description</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td style="border-bottom: 0;">café</td>
-      <td style="border-bottom: 0;">Plain string</td>
       <td style="border-bottom: 0;"><code>%s</code></td>
+      <td style="border-bottom: 0;">Plain string</td>
     </tr>
     <tr>
       <td style="border-bottom: 0; padding-top: 0;">␣␣café</td>
-      <td style="border-bottom: 0; padding-top: 0;">Width 6, right justify</td>
       <td style="border-bottom: 0; padding-top: 0;"><code>%6s</code></td>
+      <td style="border-bottom: 0; padding-top: 0;">Width 6, right justify</td>
     </tr>
     <tr>
       <td style="padding-top: 0;">café␣␣</td>
-      <td style="padding-top: 0;">Width 6, left justify</td>
       <td style="padding-top: 0;"><code>%-6s</code></td>
+      <td style="padding-top: 0;">Width 6, left justify</td>
     </tr>
     <tr>
       <td>"café"</td>
-      <td>Quoted string</td>
       <td><code>%q</code></td>
+      <td>Quoted string</td>
     </tr>
     <tr>
       <td style="border-bottom: 0;">636166c3a9</td>
-      <td style="border-bottom: 0;">Hex dump of byte values</td>
       <td style="border-bottom: 0;"><code>%x</code></td>
+      <td style="border-bottom: 0;">Hex dump of byte values</td>
     </tr>
     <tr>
       <td style="padding-top: 0;">63 61 66 c3 a9</td>
-      <td style="padding-top: 0;">Hex dump with spaces</td>
       <td style="padding-top: 0;"><code>% x</code></td>
+      <td style="padding-top: 0;">Hex dump with spaces</td>
     </tr>
   </tbody>
 </table>
@@ -474,10 +474,10 @@ example.go:8: missing argument for Printf("%b"): format reads arg 2, have only 1
 <p style="margin-top:0; margin-bottom:2em;">See <a href="/golang/string-functions-reference-cheat-sheet/">String functions cheat sheet</a> for more string formatting functions.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2ffmt-printf-reference-cheat-sheet%2f&amp;text=fmt%20formatting%20cheat%20sheet&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2ffmt-printf-reference-cheat-sheet%2f&amp;text=Printf%20string%20formatting%20cheat%20sheet&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2ffmt-printf-reference-cheat-sheet%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2ffmt-printf-reference-cheat-sheet%2f&amp;title=fmt%20formatting%20cheat%20sheet" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=fmt%20formatting%20cheat%20sheet&body=https%3a%2f%2fyourbasic.org%2fgolang%2ffmt-printf-reference-cheat-sheet%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2ffmt-printf-reference-cheat-sheet%2f&amp;title=Printf%20string%20formatting%20cheat%20sheet" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Printf%20string%20formatting%20cheat%20sheet&body=https%3a%2f%2fyourbasic.org%2fgolang%2ffmt-printf-reference-cheat-sheet%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>

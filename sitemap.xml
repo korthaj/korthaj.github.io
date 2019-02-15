@@ -619,6 +619,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/public-private/</loc>
   </url>
   
@@ -837,10 +841,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/zero-knowledge/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</loc>
   </url>
   
 </urlset>
