@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The 3 ways to sort in Go - yourbasic.org/golang </title>
+  <title>The 3.5 ways to sort in Go - yourbasic.org/golang </title>
   <meta name="description" content="CODE EXAMPLE How to sort any type of data in Go using the sort package. All algorithms in the package perform O(n log n) comparisons in the worst case.">
   
   <link rel="stylesheet" href="/style.css">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/how-to-sort-in-go/"
   },
-  "headline": "The 3 ways to sort in Go",
+  "headline": "The 3.5 ways to sort in Go",
   "image": [
     "https://yourbasic.org/golang/sorted-ring-binders.jpg"
    ],
   "datePublished": "2018-04-15T00:00:00&#43;0000",
-  "dateModified": "2018-12-01T00:00:00&#43;0000",
+  "dateModified": "2019-02-15T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -54,13 +54,13 @@
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="The 3 ways to sort in Go">
+<meta property="og:title" content="The 3.5 ways to sort in Go">
 <meta property="og:description" content="CODE EXAMPLE How to sort any type of data in Go using the sort package. All algorithms in the package perform O(n log n) comparisons in the worst case.">
 <meta property="og:url" content="https://yourbasic.org/golang/how-to-sort-in-go/">
 <meta property="og:image" content="https://yourbasic.org/golang/sorted-ring-binders.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The 3 ways to sort in Go">
+<meta name="twitter:title" content="The 3.5 ways to sort in Go">
 <meta name="twitter:description" content="CODE EXAMPLE How to sort any type of data in Go using the sort package. All algorithms in the package perform O(n log n) comparisons in the worst case.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/sorted-ring-binders.jpg">
@@ -82,7 +82,7 @@
 
 <main>
 <article>
-<h1>The 3 ways to sort in Go</h1>
+<h1>The 3.5 ways to sort in Go</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
@@ -93,9 +93,9 @@
 
 <ul class="toc">
   <li><a href="#sort-a-slice-of-ints-float64s-or-strings">Slice of ints, float64s or strings</a></li>
-  <li><a href="#sort-with-custom-compare-function">Custom comparator</a></li>
+  <li><a href="#sort-with-custom-comparator">Custom comparator</a></li>
   <li><a href="#sort-custom-data-structures">Custom data structures</a></li>
-  <li><a href="#sort-map-by-key-or-value">Sort map by key or value</a></li>
+  <li><a href="#bonus-sort-a-map-by-key-or-value">Bonus: Sort a map by key or value</a></li>
   <li><a href="#performance">Performance</a></li>
 </ul>
 
@@ -188,12 +188,13 @@ func main() {
     fmt.Println(family) <span class="comment">// [{Eve 2} {Alice 23} {Bob 25}]</span>
 }</code></pre>
 
-<h2 id="sort-map-by-key-or-value">Sort map by key or value</h2>
+<h2 id="bonus-sort-a-map-by-key-or-value">Bonus: Sort a map by key or value</h2>
 
-<p>A <a href="/golang/maps-explained/">map</a> is an <strong>unordered</strong> collection of key-value pairs. If you need a stable iteration order,
+<p>A <a href="/golang/maps-explained/">map</a> is an <strong>unordered</strong> collection of key-value pairs.
+If you need a stable iteration order,
 you must maintain a separate data structure.</p>
 
-<p>This code example uses a slice of keys to print a map in key order.</p>
+<p>This code example uses a slice of keys to sort a map in key order.</p>
 
 <pre><code>m := map[string]int{&quot;Alice&quot;: 2, &quot;Cecil&quot;: 1, &quot;Bob&quot;: 3}
 
@@ -212,6 +213,12 @@ for _, k := range keys {
 <span class="comment">// Cecil 1</span>
 </code></pre>
 
+<blockquote>
+<p>Also, starting with <a href="https://tip.golang.org/doc/go1.12">Go&nbsp;1.12</a>,
+the <a href="https://golang.org/pkg/fmt/"><code>fmt</code></a>
+package prints maps in key-sorted order to ease testing.</p>
+</blockquote>
+
 <h2 id="performance">Performance</h2>
 
 <p>All algorithms in the Go sort package make <em>O</em>(<em>n</em>&nbsp;log&nbsp;<em>n</em>) comparisons in the worst case, where <em>n</em> is the number of elements to be sorted.</p>
@@ -226,10 +233,10 @@ for _, k := range keys {
 <div style="clear:both;"></div>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fhow-to-sort-in-go%2f&amp;text=The%203%20ways%20to%20sort%20in%20Go&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fhow-to-sort-in-go%2f&amp;text=The%203.5%20ways%20to%20sort%20in%20Go&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fhow-to-sort-in-go%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fhow-to-sort-in-go%2f&amp;title=The%203%20ways%20to%20sort%20in%20Go" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=The%203%20ways%20to%20sort%20in%20Go&body=https%3a%2f%2fyourbasic.org%2fgolang%2fhow-to-sort-in-go%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fhow-to-sort-in-go%2f&amp;title=The%203.5%20ways%20to%20sort%20in%20Go" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=The%203.5%20ways%20to%20sort%20in%20Go&body=https%3a%2f%2fyourbasic.org%2fgolang%2fhow-to-sort-in-go%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 
