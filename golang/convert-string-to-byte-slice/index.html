@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Convert between byte array/slice and string - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE When you convert a string to a byte slice (array), you get a brand new slice that contains the same bytes as the string, and vice versa.">
+  <meta name="description" content="CODE EXAMPLE When you convert between a string and a byte slice (array), you get a brand new slice that contains the same bytes as the string, and vice versa.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/gopher-brown-left.jpg"
    ],
   "datePublished": "2019-01-26T00:00:00&#43;0000",
-  "dateModified": "2019-01-26T00:00:00&#43;0000",
+  "dateModified": "2019-02-18T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "CODE EXAMPLE When you convert a string to a byte slice (array), you get a brand new slice that contains the same bytes as the string, and vice versa."
+  "description": "CODE EXAMPLE When you convert between a string and a byte slice (array), you get a brand new slice that contains the same bytes as the string, and vice versa."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Convert between byte array/slice and string">
-<meta property="og:description" content="CODE EXAMPLE When you convert a string to a byte slice (array), you get a brand new slice that contains the same bytes as the string, and vice versa.">
+<meta property="og:description" content="CODE EXAMPLE When you convert between a string and a byte slice (array), you get a brand new slice that contains the same bytes as the string, and vice versa.">
 <meta property="og:url" content="https://yourbasic.org/golang/convert-string-to-byte-slice/">
 <meta property="og:image" content="https://yourbasic.org/golang/gopher-brown-left.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Convert between byte array/slice and string">
-<meta name="twitter:description" content="CODE EXAMPLE When you convert a string to a byte slice (array), you get a brand new slice that contains the same bytes as the string, and vice versa.">
+<meta name="twitter:description" content="CODE EXAMPLE When you convert between a string and a byte slice (array), you get a brand new slice that contains the same bytes as the string, and vice versa.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/gopher-brown-left.jpg">
 
@@ -94,26 +94,34 @@
   <li><a href="#basics">Basics</a></li>
   <li><a href="#string-to-byte-slice">String to byte slice</a></li>
   <li><a href="#byte-slice-to-string">Byte slice to string</a></li>
-  <li><a href="#efficiency">Efficiency</a></li>
+  <li><a href="#performance">Performance</a></li>
 </ul>
 
 <h2 id="basics">Basics</h2>
 
+<p>When you convert between a string and a byte slice (array),
+you get a brand new slice that contains the same bytes as the string, and vice versa.</p>
+
 <ul>
-<li>A conversion between a string and a byte <a href="/golang/slices-explained/">slice</a> doesn&rsquo;t change the data;</li>
+<li>The conversion doesn&rsquo;t change the data;</li>
 <li>the only difference is that strings are immutable, while byte slices can be modified.</li>
 </ul>
 
-<p>If you need to manipulate the <a href="/golang/rune/">Unicode characters</a>
-(as opposed to the individual bytes) of a string, you may want to
-<a href="/golang/convert-string-to-rune-slice/">convert the string to a rune slice</a>.</p>
+<blockquote>
+<p>If you need to manipulate the Unicode code points (runes) of a string, you may want to
+convert the string to a rune slice instead.
+See <a href="/golang/convert-string-to-rune-slice/">Convert between rune array/slice and string</a>.</p>
+</blockquote>
 
 <h2 id="string-to-byte-slice">String to byte slice</h2>
 
 <p>When you convert a string to a byte slice,
-you get a brand new slice that contains the same bytes as the string.</p>
+you get a new slice that contains the same bytes as the&nbsp;string.</p>
 
 <pre><code>fmt.Println(<b>[]byte</b>("abc日")) <span class="comment">// [97 98 99 230 151 165]</span></code></pre>
+
+<p>Note that the Unicode code point (rune) <code>日</code> is encoded in UTF-8 using 3&nbsp;bytes.
+See the <a href="/golang/rune/">Go rune article</a> for more on&nbsp;this.</p>
 
 <h2 id="byte-slice-to-string">Byte slice to string</h2>
 
@@ -128,16 +136,15 @@ fmt.Println(<b>string</b>(b)) <span class="comment">// abc日</span>
 
 <p>These conversions create a new slice or string,
 and therefore have <a href="/algorithms/time-complexity-explained/">time&nbsp;complexity</a>
-proportional to the number of bytes that are copied.</p>
+proportional to the number of bytes that are processed.</p>
 
-<p>A <strong>string builder</strong> can be used to efficiently concatenate strings without redundant copying.
-See <a href="/golang/build-append-concatenate-strings-efficiently/">How to best use a string builder</a>.</p>
+<h3 id="more-efficient-alternative">More efficient alternative</h3>
 
-<h3 id="further-reading">Further reading</h3>
+<p>In some cases, you might be able to use a <a href="/golang/build-append-concatenate-strings-efficiently/">string builder</a>, which can concatenate strings without redundant copying:</p>
 
-<div><a href="/golang/string-functions-reference-cheat-sheet/"><img src="/golang/typewriter-thumb.png" title="String functions cheat sheet"></a></div>
+<div><a href="/golang/build-append-concatenate-strings-efficiently/"><img src="/golang/bricklayer-thumb.jpg" title="3&nbsp;tips for efficient string concatenation"></a></div>
 
-<p style="margin-top:0; margin-bottom:2em;"><a href="/golang/string-functions-reference-cheat-sheet/">String functions cheat sheet</a></p>
+<p style="margin-top:0; margin-bottom:2em;"><a href="/golang/build-append-concatenate-strings-efficiently/">3&nbsp;tips for efficient string concatenation</a></p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
 <a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fconvert-string-to-byte-slice%2f&amp;text=Convert%20between%20byte%20array/slice%20and%20string&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;

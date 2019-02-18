@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/rune-stone-ballstorp-1900.jpg"
    ],
   "datePublished": "2018-04-17T00:00:00&#43;0000",
-  "dateModified": "2018-06-01T00:00:00&#43;0000",
+  "dateModified": "2019-02-18T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -109,8 +109,18 @@ as well as multiple symbol sets.</li>
 
 <p>However, strings often contain Unicode text encoded in <a href="https://research.swtch.com/utf8">UTF-8</a>,
 which encodes all Unicode code points using one to four&nbsp;bytes.
-Since Go source code itself is encoded as UTF-8, string literals
+(ASCII characters are encoded with one byte, while other code points use more.)</p>
+
+<p>Since Go source code itself is encoded as UTF-8, string literals
 will automatically get this encoding.</p>
+
+<p>In this example, the code point <code>日</code> is encoded using three&nbsp;bytes,
+while the ASCII characters <code>a</code>, <code>b</code> and <code>c</code> only use&nbsp;one:</p>
+
+<pre><code>fmt.Println(<b>[]byte</b>("日abc")) <span class="comment">// [230 151 165 97 98 99]</span></code></pre>
+
+<p>See <a href="/golang/convert-string-to-byte-slice/">Convert between byte array/slice and string</a> and
+<a href="/golang/convert-string-to-rune-slice/">Convert between rune array/slice and string</a> for more info.</p>
 
 <h3 id="further-reading">Further reading</h3>
 
