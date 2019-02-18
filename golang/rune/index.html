@@ -114,8 +114,9 @@ which encodes all Unicode code points using one to four&nbsp;bytes.
 <p>Since Go source code itself is encoded as UTF-8, string literals
 will automatically get this encoding.</p>
 
-<p>In this example, the code point <code>日</code> is encoded using three&nbsp;bytes,
-while the ASCII characters <code>a</code>, <code>b</code> and <code>c</code> only use&nbsp;one:</p>
+<p>In this example, the character <code>日</code> (code point 26085) is encoded using three&nbsp;bytes,
+while the ASCII characters <code>a</code>, <code>b</code> and <code>c</code>
+(code points 97, 98 and 99) only use&nbsp;one:</p>
 
 <pre><code>fmt.Println(<b>[]byte</b>("日abc")) <span class="comment">// [230 151 165 97 98 99]</span></code></pre>
 
