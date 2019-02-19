@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/rune-stone-ballstorp-1900.jpg"
    ],
   "datePublished": "2018-04-17T00:00:00&#43;0000",
-  "dateModified": "2019-02-18T00:00:00&#43;0000",
+  "dateModified": "2019-02-19T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -114,14 +114,16 @@ which encodes all Unicode code points using one to four&nbsp;bytes.
 <p>Since Go source code itself is encoded as UTF-8, string literals
 will automatically get this encoding.</p>
 
-<p>In this example, the character <code>日</code> (code point 26085) is encoded using three&nbsp;bytes,
+<p>For example, in the string <code>&quot;日abc&quot;</code> the character <code>日</code> (code point 26085) is encoded using three&nbsp;bytes,
 while the ASCII characters <code>a</code>, <code>b</code> and <code>c</code>
 (code points 97, 98 and 99) only use&nbsp;one:</p>
 
-<pre><code>fmt.Println(<b>[]byte</b>("日abc")) <span class="comment">// [230 151 165 97 98 99]</span></code></pre>
+<pre><code>fmt.Println(<b>[]byte</b>("日abc")) <span class="comment">// [230 151 165 97 98 99]</span>
+fmt.Println(<b>[]rune</b>("日abc")) <span class="comment">// [26085 97 98 99]</span>
+</code></pre>
 
 <p>See <a href="/golang/convert-string-to-byte-slice/">Convert between byte array/slice and string</a> and
-<a href="/golang/convert-string-to-rune-slice/">Convert between rune array/slice and string</a> for more info.</p>
+<a href="/golang/convert-string-to-rune-slice/">Convert between rune array/slice and string</a> for more on this.</p>
 
 <h3 id="further-reading">Further reading</h3>
 
