@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/lane-numbers.jpg"
    ],
   "datePublished": "2018-07-27T00:00:00&#43;0000",
-  "dateModified": "2019-01-25T00:00:00&#43;0000",
+  "dateModified": "2019-02-20T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -175,19 +175,17 @@ func (d Direction) String() string {
 
 <p>In use:</p>
 
-<pre><code>	var d Direction = North
-	fmt.Print(d)
-	switch d {
-	case North:
-		fmt.Println(&quot; goes up.&quot;)
-	case South:
-		fmt.Println(&quot; goes down.&quot;)
-	default:
-		fmt.Println(&quot; stays put.&quot;)
-	}
-</code></pre>
-
-<pre><code>North goes up.
+<pre><code>var d Direction = North
+fmt.Print(d)
+switch d {
+case North:
+    fmt.Println(" goes up.")
+case South:
+    fmt.Println(" goes down.")
+default:
+    fmt.Println(" stays put.")
+}
+<span class="comment">// Output: North goes up.</span>
 </code></pre>
 
 <h3 id="further-reading">Further reading</h3>
