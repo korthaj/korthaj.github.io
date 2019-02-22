@@ -417,6 +417,18 @@ func main() { if len(os.Args) != 3 { fmt.Println(&#34;Usage:&#34;, os.Args[0], &
     </item>
     
     <item>
+      <title>Concurrent programming</title>
+      <link>https://yourbasic.org/golang/concurrent-programming/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/concurrent-programming/</guid>
+      <description>This tutorial covers the funda&amp;shy;mentals of concurrent programming with examples in&amp;nbsp;Go.
+ Before you start, you need to know how to write basic Go programs. If you need a refresher, the&amp;nbsp;resources in Get started with Go will help you come up to speed quickly with&amp;nbsp;Go.
+Read tutorial
+Table of contents </description>
+    </item>
+    
+    <item>
       <title>Constant overflows int</title>
       <link>https://yourbasic.org/golang/gotcha-constant-overflows-int/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -738,7 +750,7 @@ The io.Reader interface, which represents the read end of a stream of data, is a
       
       <guid>https://yourbasic.org/golang/slice-of-keys-values-from-map/</guid>
       <description>You can use a range statement to extract slices of keys and values from a&amp;nbsp;map.
-keys := make([]keyType, 0, len(myMap)) values := make([]valueType, 0, len(myMap)) for k, v := range myMap { keys = append(keys, k) values = append(values, v) }  Further reading  Maps in a&amp;nbsp;nutshell</description>
+keys := make([]keyType, 0, len(myMap)) values := make([]valueType, 0, len(myMap)) for k, v := range myMap { keys = append(keys, k) values = append(values, v) }  Further reading  Map essentials in 4 easy steps</description>
     </item>
     
     <item>
@@ -797,16 +809,6 @@ func main() { log.SetPrefix(&#34;grep: &#34;) log.SetFlags(0) // no extra info i
 Some of the puzzles are pretty easy. To solve all 27, you have to be a&amp;nbsp;ninja.
 Take quiz
 Table of contents </description>
-    </item>
-    
-    <item>
-      <title>Go nutshells</title>
-      <link>https://yourbasic.org/golang/nutshells/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/nutshells/</guid>
-      <description> Concise descriptions of core Go concepts
- Table of contents </description>
     </item>
     
     <item>
@@ -1072,7 +1074,7 @@ Loop from 0 to len(a)-1 instead.</description>
     </item>
     
     <item>
-      <title>Interfaces in a nutshell</title>
+      <title>Interface essentials in 5 easy steps</title>
       <link>https://yourbasic.org/golang/interfaces-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1185,12 +1187,12 @@ dev etc tmp usr  Visit all files and folders in a directory tree Use the filepat
     </item>
     
     <item>
-      <title>Maps in a nutshell</title>
+      <title>Map essentials in 4 easy steps</title>
       <link>https://yourbasic.org/golang/maps-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/maps-explained/</guid>
-      <description>Map and dictionary basics Add, find and delete Iterate Implementation details  Map and dictionary basics A map (or dictionary) is an unordered collection of key-value pairs, where each key is&amp;nbsp;unique.
+      <description>Create a new map Add, find and delete Iterate Implementation details  Create a new map A map (or dictionary) is an unordered collection of key-value pairs, where each key is&amp;nbsp;unique.
 var m map[string]int // m == nil, len(m) == 0 m1 := make(map[string]float64) // empty map of string-float64 pairs m2 := make(map[string]float64, 100) // preallocate room for 100 entries m3 := map[string]float64{ &#34;e&#34;: 2.71828, &#34;pi&#34;: 3.1416, } fmt.</description>
     </item>
     
@@ -1404,7 +1406,7 @@ The following command starts a web server that presents the documentation at htt
     </item>
     
     <item>
-      <title>Packages in a nutshell</title>
+      <title>Packages in 6 easy steps</title>
       <link>https://yourbasic.org/golang/packages-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1620,7 +1622,7 @@ b := make([]byte, 16) _, err := rand.Read(b) if err != nil { log.Fatal(err) } uu
     </item>
     
     <item>
-      <title>Slices and arrays in a nutshell</title>
+      <title>Slices and arrays in 6 easy steps</title>
       <link>https://yourbasic.org/golang/slices-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1651,15 +1653,13 @@ m := map[string]int{&amp;quot;Alice&amp;quot;: 23, &amp;quot;Eve&amp;quot;: 2, &
     </item>
     
     <item>
-      <title>Step-by-step guide to concurrency</title>
-      <link>https://yourbasic.org/golang/concurrent-programming/</link>
+      <title>Step-by-step guides</title>
+      <link>https://yourbasic.org/golang/nutshells/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://yourbasic.org/golang/concurrent-programming/</guid>
-      <description>This tutorial covers the funda&amp;shy;mentals of concurrent programming with examples in&amp;nbsp;Go.
- Before you start, you need to know how to write basic Go programs. If you need a refresher, the&amp;nbsp;resources in Get started with Go will help you come up to speed quickly with&amp;nbsp;Go.
-Read tutorial
-Table of contents </description>
+      <guid>https://yourbasic.org/golang/nutshells/</guid>
+      <description> Detailed descriptions of core Go concepts
+ Table of contents </description>
     </item>
     
     <item>

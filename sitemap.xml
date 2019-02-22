@@ -191,6 +191,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/concurrent-programming/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/gotcha-constant-overflows-int/</loc>
   </url>
   
@@ -336,10 +340,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/gotcha/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/nutshells/</loc>
   </url>
   
   <url>
@@ -687,7 +687,7 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/concurrent-programming/</loc>
+    <loc>https://yourbasic.org/golang/nutshells/</loc>
   </url>
   
   <url>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Go nutshells - yourbasic.org/golang </title>
-  <meta name="description" content="Consise articles on core Go concepts: interfaces, slices, maps, for loops, switch statements, packages.">
+  <title>Step-by-step guides - yourbasic.org/golang </title>
+  <meta name="description" content="Detailed descriptions of core Go concepts: interfaces, slices, maps, for loops, switch statements, packages.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/nutshells/"
   },
-  "headline": "Go nutshells",
+  "headline": "Step-by-step guides",
   "image": [
     "https://yourbasic.org/golang/nutcracker.png"
    ],
   "datePublished": "2018-03-28T00:00:00&#43;0000",
-  "dateModified": "2018-04-14T00:00:00&#43;0000",
+  "dateModified": "2019-02-22T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "Consise articles on core Go concepts: interfaces, slices, maps, for loops, switch statements, packages."
+  "description": "Detailed descriptions of core Go concepts: interfaces, slices, maps, for loops, switch statements, packages."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go nutshells">
-<meta property="og:description" content="Consise articles on core Go concepts: interfaces, slices, maps, for loops, switch statements, packages.">
+<meta property="og:title" content="Step-by-step guides">
+<meta property="og:description" content="Detailed descriptions of core Go concepts: interfaces, slices, maps, for loops, switch statements, packages.">
 <meta property="og:url" content="https://yourbasic.org/golang/nutshells/">
 <meta property="og:image" content="https://yourbasic.org/golang/nutcracker.png">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Go nutshells">
-<meta name="twitter:description" content="Consise articles on core Go concepts: interfaces, slices, maps, for loops, switch statements, packages.">
+<meta name="twitter:title" content="Step-by-step guides">
+<meta name="twitter:description" content="Detailed descriptions of core Go concepts: interfaces, slices, maps, for loops, switch statements, packages.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/nutcracker.png">
 
@@ -82,30 +82,30 @@
 
 <main>
 <article>
-<h1>Go nutshells</h1>
+<h1>Step-by-step guides</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
-<p class="lead">Concise descriptions of core Go concepts</p>
+<p class="lead">Detailed descriptions of core Go concepts</p>
 
-<!-- CC0: https://pixabay.com/en/walnuts-nutcracker-crack-649721/ -->
+<!-- CC BY-NC-SA 2.0: https://www.flickr.com/photos/rosswebsdale/2510946638/ -->
 
-<div style="margin-top:1em; margin-bottom:1em;"><img src="/golang/nutcracker.jpg"></div>
+<div style="margin-top:1em; margin-bottom:1em;"><img src="/algorithms/dominoes.jpg"></div>
 
 <h2 id="table-of-contents">Table of contents</h2>
 
 
   <ul class="none">
   <li>
-  <a href="/golang/interfaces-explained/"><b>Interfaces in a nutshell</b></a>
+  <a href="/golang/interfaces-explained/"><b>Interface essentials in 5 easy steps</b></a>
   <div style="padding: 0.5em 0 1em 0">An interface type consists of a set of method signatures. A variable of interface type can hold any value that implements these methods.</div>
 </li>
 <li>
-  <a href="/golang/slices-explained/"><b>Slices and arrays in a nutshell</b></a>
+  <a href="/golang/slices-explained/"><b>Slices and arrays in 6 easy steps</b></a>
   <div style="padding: 0.5em 0 1em 0">A slice refers to a section of an underlying array. It can grow and shrink within the bounds of this array.</div>
 </li>
 <li>
-  <a href="/golang/maps-explained/"><b>Maps in a nutshell</b></a>
+  <a href="/golang/maps-explained/"><b>Map essentials in 4 easy steps</b></a>
   <div style="padding: 0.5em 0 1em 0">A map (or dictionary) is an unordered collection of key-value pairs.</div>
 </li>
 <li>
@@ -117,7 +117,7 @@
   <div style="padding: 0.5em 0 1em 0">A switch-case-default statement is a shorter and cleaner way to write a sequence of if-else statements.</div>
 </li>
 <li>
-  <a href="/golang/packages-explained/"><b>Packages in a nutshell</b></a>
+  <a href="/golang/packages-explained/"><b>Packages in 6 easy steps</b></a>
   <div style="padding: 0.5em 0 1em 0">Every Go program is made up of packages and each package has an import path.</div>
 </li>
 
@@ -126,7 +126,7 @@
 
 <div><a href="/golang/concurrent-programming/"><img src="/golang/bouncing-balls-thumb.jpg" title="Concurrent programming"></a></div>
 
-<p style="margin-top:0;">The <a href="/golang/concurrent-programming/">Concurrent programming</a> tutorial
+<p style="margin-top:0;">This <a href="/golang/concurrent-programming/">Concurrent programming</a> tutorial
 covers the fundamentals of concurrent programming with examples in&nbsp;Go.</p>
 
 <h3>Follow on Twitter</h3>
@@ -135,10 +135,10 @@ covers the fundamentals of concurrent programming with examples in&nbsp;Go.</p>
     <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
     <a href="https://twitter.com/yourbasic_org">One useful golang fact per&nbsp;day</a></p>
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fnutshells%2f&amp;text=Go%20nutshells&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fnutshells%2f&amp;text=Step-by-step%20guides&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fnutshells%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fnutshells%2f&amp;title=Go%20nutshells" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Go%20nutshells&body=https%3a%2f%2fyourbasic.org%2fgolang%2fnutshells%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fnutshells%2f&amp;title=Step-by-step%20guides" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Step-by-step%20guides&body=https%3a%2f%2fyourbasic.org%2fgolang%2fnutshells%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 
