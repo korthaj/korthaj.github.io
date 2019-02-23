@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/Schlagwortkatalog.jpg"
    ],
   "datePublished": "2018-03-28T00:00:00&#43;0000",
-  "dateModified": "2019-02-22T00:00:00&#43;0000",
+  "dateModified": "2019-02-23T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -102,7 +102,8 @@
 
 <p>A map (or dictionary) is an <b>unordered</b> collection of <b>key-value</b> pairs, where each key is&nbsp;<b>unique</b>.</p>
 
-<pre><code>var m map[string]int                <span class="comment">// m == nil, len(m) == 0</span>
+<pre><code>var m map[string]int <span class="comment">// nil map of string-int pairs, m == nil, len(m) == 0</span>
+
 m1 := make(map[string]float64)      <span class="comment">// empty map of string-float64 pairs</span>
 m2 := make(map[string]float64, 100) <span class="comment">// preallocate room for 100 entries</span>
 m3 := map[string]float64{
