@@ -396,7 +396,7 @@ Because a bit array uses bit-level parallelism, limits memory access, and effici
     </item>
     
     <item>
-      <title>Bitwise operators cheat sheet</title>
+      <title>Bitwise operators [cheat sheet]</title>
       <link>https://yourbasic.org/golang/bitwise-operator-cheat-sheet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -550,7 +550,7 @@ fmt.Println(a ...interface{}) When the type can’t be inferred from the context
     </item>
     
     <item>
-      <title>Conversions: complete list</title>
+      <title>Conversions [complete list]</title>
       <link>https://yourbasic.org/golang/conversions/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1674,12 +1674,12 @@ A pointer has type *T. The keyword new allocates a new object and returns its&am
     </item>
     
     <item>
-      <title>Printf string formatting cheat sheet</title>
+      <title>Printf string formatting [cheat sheet]</title>
       <link>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</guid>
-      <description>The fmt package provides formatted I/O similar to printf and scanf in&amp;nbsp;C.  Package fmt basics Default formats and type Integer (base, padding, sign) Character (quoted, Unicode) Boolean (true/false)   Pointer (hex) Float (padding, precision, scientific notation) String or byte slice (quoted, padding, hex) Special values Find incorrect formatting with vet     Package fmt basics With the fmt package you can format numbers and strings padded with spaces or zeroes, in different bases, and with optional quotes.</description>
+      <description>The fmt package provides formatted I/O similar to printf and scanf in&amp;nbsp;C.  Package fmt basics Default formats and type Integer (indent, base, sign) Character (quoted, Unicode) Boolean (true/false)   Pointer (hex) Float (indent, precision, scientific notation) String or byte slice (quote, indent, hex) Special values Find incorrect formatting with vet     Package fmt basics With the fmt package you can format numbers and strings padded with spaces or zeroes, in different bases, and with optional quotes.</description>
     </item>
     
     <item>
