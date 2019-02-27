@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/bits-man.jpg"
    ],
   "datePublished": "2018-01-26T00:00:00&#43;0000",
-  "dateModified": "2018-04-22T00:00:00&#43;0000",
+  "dateModified": "2019-02-27T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -94,17 +94,17 @@
 <div><img src="/golang/bits-man.jpg"></div>
 
 <ul class="toc">
-  <li><a href="#basic-types">Basic types</a></li>
-  <li><a href="#struct-to-json">Struct to JSON</a></li>
+  <li><a href="#default-values">Default values</a></li>
+  <li><a href="#encode-marshal-struct-to-json">Encode (marshal) struct to JSON</a></li>
   <li><a href="#pretty-print">Pretty print</a></li>
-  <li><a href="#json-to-struct">JSON to struct</a></li>
+  <li><a href="#decode-unmarshal-json-to-struct">Decode (unmarshal) JSON to struct</a></li>
   <li><a href="#arbitrary-objects-and-arrays">Arbitrary objects and arrays</a></li>
-  <li><a href="#files">Files</a></li>
+  <li><a href="#json-file-example">JSON file example</a></li>
 </ul>
 
-<h2 id="basic-types">Basic types</h2>
+<h2 id="default-values">Default values</h2>
 
-<p>The default Go types for coding and encoding JSON are</p>
+<p>The default Go types for decoding and encoding JSON are</p>
 
 <ul>
 <li><code>bool</code> for JSON booleans,</li>
@@ -115,7 +115,7 @@
 
 <p>Additionally, <a href="https://golang.org/pkg/time/#Time"><code>time.Time</code></a> and
 the numeric types in the  <a href="https://golang.org/pkg/math/big/"><code>math/big</code></a> package
-can be automatically coded and encoded as JSON strings.</p>
+can be automatically encoded as JSON strings.</p>
 
 <p>Note that JSON doesn&rsquo;t support basic integer types.
 They can often be approximated by floating-point numbers.</p>
@@ -131,7 +131,7 @@ sense that implementations will agree exactly on their numeric values.
 <a class="quote-source" href="https://tools.ietf.org/html/rfc7159#section-6">RFC 7159: The JSON Data Interchange Format</a></p>
 </blockquote>
 
-<h2 id="struct-to-json">Struct to JSON</h2>
+<h2 id="encode-marshal-struct-to-json">Encode (marshal) struct to JSON</h2>
 
 <p>The <a href="https://golang.org/pkg/encoding/json/#Marshal"><code>json.Marshal</code></a> function
 in package <a href="https://golang.org/pkg/encoding/json/"><code>encoding/json</code></a> generates JSON data.</p>
@@ -168,8 +168,9 @@ fmt.Println(string(jsonData))</code></pre>
 see <a href="https://golang.org/pkg/encoding/json/#Marshal"><code>json.Marshal</code></a> for the complete rules.</p>
 
 <ul>
-<li><strong>Only the exported (public) fields</strong> of a struct will be present in the JSON output.</li>
-<li>A field with a <code>json:</code> tag is stored with its tag name instead of its variable name.</li>
+<li>Only the exported (public) fields of a struct will be present in the JSON output.
+<strong>Other&nbsp;fields are&nbsp;ignored</strong>.</li>
+<li>A field with a <code>json:</code> <strong>struct tag</strong> is stored with its tag name instead of its variable name.</li>
 <li>Pointers will be encoded as the values they point to,
 or <code>null</code> if the pointer is <code>nil</code>.</li>
 </ul>
@@ -195,7 +196,7 @@ in the example above to indent the JSON output.</p>
 }
 </code></pre>
 
-<h2 id="json-to-struct">JSON to struct</h2>
+<h2 id="decode-unmarshal-json-to-struct">Decode (unmarshal) JSON to struct</h2>
 
 <p>The <a href="https://golang.org/pkg/encoding/json/#Unmarshal"><code>json.Unmarshal</code></a> function
 in package <a href="https://golang.org/pkg/encoding/json/"><code>encoding/json</code></a> parses JSON data.</p>
@@ -239,7 +240,7 @@ This is how unmarshaling works for slices, maps and pointers.</p>
 <p>For a given JSON key <code>Foo</code>, <code>Unmarshal</code> will attempt to match the struct fields in this order:</p>
 
 <ol>
-<li>an exported (public) field with a tag <code><code>json:&quot;Foo&quot;</code></code>,</li>
+<li>an exported (public) field with a struct tag <code><code>json:&quot;Foo&quot;</code></code>,</li>
 <li>an exported field named <code>Foo</code>, or</li>
 <li>an exported field named <code>FOO</code>, <code>FoO</code>, or some other case-insensitive match.</li>
 </ol>
@@ -320,7 +321,7 @@ Parents (array):
      1 Bob
 </code></pre>
 
-<h2 id="files">Files</h2>
+<h2 id="json-file-example">JSON file example</h2>
 
 <p>The <a href="https://golang.org/pkg/encoding/json/#Decoder"><code>json.Decoder</code></a> and
 <a href="https://golang.org/pkg/encoding/json/#Encoder"><code>json.Encoder</code></a> types
