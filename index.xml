@@ -403,7 +403,7 @@ Built-in operators   Operation Result Description     0011 &amp;amp; 0101 0001 B
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/algorithms/blackjack/</guid>
-      <description>It&#39;s possible to win at blackjack by counting cards, but most&amp;nbsp;fail. The mean is positive, but the variance is&amp;nbsp;mean.
+      <description>It’s possible to win at blackjack by counting cards, but most&amp;nbsp;fail. The mean is positive, but the variance is&amp;nbsp;mean.
  Always optimal strategy  Always use an optimal strategy adapted to the rules of your casino. Here is an example blackjack strategy. Every time you deviate from the optimal strategy – because of hunches or fear – it depletes your funds. Count cards  If you find a casino with good rules, and if you play with an optimal strategy, the odds are still against you – but the house edge can sometimes be as low as&amp;nbsp;0.</description>
     </item>
     
