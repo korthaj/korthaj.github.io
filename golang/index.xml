@@ -1138,7 +1138,7 @@ There is a data race: the variable i is shared by six&amp;nbsp;(6) goroutines.
       
       <guid>https://yourbasic.org/golang/json-example/</guid>
       <description>The JSON data-interchange format is easy for humans to read and write, and efficient for machines to parse and generate.
- Default values Encode (marshal) struct to JSON Pretty print Decode (unmarshal) JSON to struct Arbitrary objects and arrays JSON file example  Default values The default Go types for decoding and encoding JSON are
+ Default types Encode (marshal) struct to JSON Pretty print Decode (unmarshal) JSON to struct Arbitrary objects and arrays JSON file example  Default types The default Go types for decoding and encoding JSON are
  bool for JSON booleans, float64 for JSON numbers, string for JSON strings, and nil for JSON null.</description>
     </item>
     
