@@ -35,7 +35,7 @@
     "https://yourbasic.org/algorithms/recursive-soup.jpg"
    ],
   "datePublished": "2018-05-12T00:00:00&#43;0000",
-  "dateModified": "2018-05-12T00:00:00&#43;0000",
+  "dateModified": "2019-02-28T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -93,17 +93,21 @@ by formulating and solving a recurrence relation.</p>
 
 <div><img src="/algorithms/recursive-soup.jpg"></div>
 
+<ul class="toc">
+  <li><a href="#recurrence-relation">Recurrence relation (basic example)</a></li>
+  <li><a href="#binary-search">Binary search</a></li>
+  <li><a href="#master-theorem">Master theorem</a></li>
+  <li><a href="#analysis-without-recurrence">Analysis without recurrence</a></li>
+</ul>
+
 <p>This text contains a few examples and a formula, the &ldquo;master theorem&rdquo;,
 which gives the solution to a class of recurrence relations that
 often show up when analyzing recursive functions.</p>
 
-<ul class="toc">
-  <li><a href="#basic-example">Basic example</a></li>
-  <li><a href="#binary-search">Binary search</a></li>
-  <li><a href="#master-theorem">Master theorem</a></li>
-</ul>
+<p>We also show how to analys recursive algorithms that depend on the size
+and shape of a data structure.</p>
 
-<h2 id="basic-example">Basic example</h2>
+<h2 id="recurrence-relation">Recurrence relation</h2>
 
 <p>As an introduction we show that the following recursive function
 has linear time complexity.</p>
@@ -225,7 +229,7 @@ log&nbsp;n&nbsp;+&nbsp;T(<i>n</i>/2<sup>log&nbsp;<i>n</i></sup>)&nbsp;=&nbsp;log
 log&nbsp;n&nbsp;+&nbsp;1&nbsp;=&nbsp;&Theta;(log&nbsp;<i>n</i>).
 </blockquote>
 
-<h2>Master theorem</h2>
+<h2 id="master-theorem">Master theorem</h2>
 
 <p>The master theorem is a recipe that gives asymptotic estimates for a class of
 recurrence relations that often show up when analyzing recursive algorithms.</p>
@@ -268,6 +272,60 @@ T(<i>n</i>)&nbsp;=&nbsp;&Theta;(<i>n</i><sup>0</sup>log&nbsp;<i>n</i>),
 </blockquote></p>
 
 <p>which is correct.</p>
+
+<h2 id="analysis-without-recurrence">Analysis without recurrence</h2>
+
+<p>For algorithms that operate on a data structure, it&rsquo;s typically
+not possible to find a&nbsp;recurrence relation.
+Instead, we can count the work performed for each piece of the data structure
+visited by the algorithm.</p>
+
+<p>Consider this <a href="/algorithms/graph/">graph</a> with 36 (blue) vertices
+and 3&nbsp;disjoint connected components.</p>
+
+<!-- Wikimedia Commons, http://en.wikipedia.org/wiki/File:Pseudoforest.svg -->
+
+<p><img style="align:bottom;" src="/algorithms/forest.png"></p>
+
+<p style="clear: both;">
+Depth-first search is an algorithm
+that visits all edges in a graph&nbsp;<code>G</code> that belong to the
+same connected component as vertex&nbsp;<emcode>v</code>.
+</p>
+
+<pre>
+<b>Algorithm</b> DFS(G, v)
+    <b>if</b> v is already visited
+        <b>return</b>        
+    Mark v as visited.
+    // Perform some operation on v.
+    <b>for</b> all neighbors x of v
+        DFS(G, x)
+</pre>
+
+<p>The time complexity of this algorithm depends of the size and structure of the&nbsp;graph.
+For example, if we start at the top left corner of our example graph,
+the&nbsp;algorithm will visit only 4&nbsp;edges.</p>
+
+<p>To compute the time complexity, we can use the number of calls to <code>DFS</code>
+as an elementary operation: the if statement and the mark operation both
+run in constant time, and the for loop makes a single call to DFS for each iteration.</p>
+
+<ul>
+<li>Before running the algorithm, all |V| vertices must be marked as not visited.
+This takes &Theta;(|V|)&nbsp;time.</li>
+<li>Let E&apos; be the set of all edges in the connected component visited by the algorithm.
+The algorith makes two calls to <code>DFS</code> for each edge {<i>u</i>,&nbsp;<i>v</i>} in E&apos;:
+one time when the algorithm visits the neighbors of&nbsp;<i>u</i>,
+and one time when it visits the neighbors of&nbsp;<i>v</i>.</li>
+</ul>
+
+<p>Hence, the time complexity of the algorithm is &Theta;(|V|&nbsp;+&nbsp;|E&apos;|).</p>
+
+<h3 id="further-examples">Further examples</h3>
+
+<p>The <a href="/algorithms/graph/">Your basic graph</a> article has more examples, including Dijkstra’s algorithm,
+of this type of analysis.</p>
 
 <h3 id="previous">Previous</h3>
 
