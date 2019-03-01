@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/numbers-1-2-3.jpg"
    ],
   "datePublished": "2018-05-16T00:00:00&#43;0000",
-  "dateModified": "2019-01-19T00:00:00&#43;0000",
+  "dateModified": "2019-03-01T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -96,7 +96,7 @@
   <li><a href="#string-to-int">string to int</a></li>
   <li><a href="#string-to-int64">string to int64</a></li>
   <li><a href="#int-to-int64-and-back">int to int64 (and back)</a></li>
-  <li><a href="#general-formatting">General formatting</a></li>
+  <li><a href="#general-formatting-width-indent-sign">General formatting (width, indent, sign)</a></li>
 </ul>
 
 <h2 id="int-to-string">int to string</h2>
@@ -187,18 +187,19 @@ to compute the size of an&nbsp;<code>int</code>.</li>
 for best practices.</li>
 </ul>
 
-<h2 id="general-formatting">General formatting</h2>
+<h2 id="general-formatting-width-indent-sign">General formatting (width, indent, sign)</h2>
 
 <p>The <a href="https://golang.org/pkg/fmt/#Sprintf"><code>fmt.Sprintf</code></a> function
 is a useful general tool for converting data to&nbsp;string:</p>
 
-<pre><code>s := fmt.Sprintf("%4d", 97) <span class="comment">// s == "  97" (width 4, right justify)</span></code></pre>
+<pre><code>s := fmt.Sprintf("%+8d", 97)
+<span class="comment">// s == "     +97" (width 8, right justify, always show sign)</span></code></pre>
 
 <h3 id="further-reading">Further reading</h3>
 
 <div><a href="/golang/fmt-printf-reference-cheat-sheet/"><img src="/golang/format-thumb.jpg" title="fmt cheat sheet"></a></div>
 
-<p style="margin-top:0; margin-bottom:2em;"><a href="/golang/fmt-printf-reference-cheat-sheet/">Format with fmt (string, number or arbitrary data)</a></p>
+<p style="margin-top:0; margin-bottom:2em;">See this <a href="/golang/fmt-printf-reference-cheat-sheet/">fmt cheat sheet</a> for more about formatting with the fmt package.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
 <a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fconvert-int-to-string%2f&amp;text=Convert%20between%20int,%20int64%20and%20string&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
