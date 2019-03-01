@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/lane-numbers.jpg"
    ],
   "datePublished": "2018-07-27T00:00:00&#43;0000",
-  "dateModified": "2019-02-25T00:00:00&#43;0000",
+  "dateModified": "2019-03-01T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -91,15 +91,15 @@
 <div style="margin-top:1em;"><img src="/golang/lane-numbers.jpg"></div>
 
 <ul class="toc" style="font-weight: bold;">
-  <li><a href="#iota-basics">Iota basics</a></li>
+  <li><a href="#iota-basic-example">Iota basic example</a></li>
   <ul style="list-style: none; font-weight: normal;">
     <li><a href="#start-from-one">Start from one</a></li>
     <li><a href="#skip-value">Skip value</a></li>
   </ul>
-  <li style=""><a href="#complete-enum-type-with-strings">Complete enum type with strings</a></li>
+  <li style=""><a href="#complete-enum-type-with-strings-best-practice">Complete enum type with strings</a></li>
 </ul>
 
-<h2 id="iota-basics">Iota basics</h2>
+<h2 id="iota-basic-example">Iota basic example</h2>
 
 <ul>
 <li>The <a href="/golang/iota/"><code>iota</code></a> keyword represents successive integer constants 0, 1, 2,…</li>
@@ -150,7 +150,7 @@ fmt.Println(C1, C2, C3) <span class="comment">// "1 2 3"</span></code></pre>
 )
 fmt.Println(C1, C3, C4) <span class="comment">// "1 3 4"</span></code></pre>
 
-<h2 id="complete-enum-type-with-strings">Complete enum type with strings</h2>
+<h2 id="complete-enum-type-with-strings-best-practice">Complete enum type with strings [best practice]</h2>
 
 <p>To implement an enumerated type with a string representation:</p>
 
@@ -187,6 +187,11 @@ default:
 }
 <span class="comment">// Output: North goes up.</span>
 </code></pre>
+
+<blockquote>
+<p>The standard naming convention is to use mixed caps also for constants.
+For&nbsp;example, an exported constant is <code>NorthWest</code>, not <code>NORTH_WEST</code>.</p>
+</blockquote>
 
 <h3 id="further-reading">Further reading</h3>
 
