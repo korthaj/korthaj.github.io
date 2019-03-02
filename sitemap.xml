@@ -267,6 +267,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/gotcha/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/gotcha-operator-precedence/</loc>
   </url>
   
@@ -340,10 +344,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/blueprint/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/gotcha/</loc>
   </url>
   
   <url>

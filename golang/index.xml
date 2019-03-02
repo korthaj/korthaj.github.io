@@ -615,6 +615,18 @@ type T struct { n int f float64 next *T } fmt.</description>
     </item>
     
     <item>
+      <title>Do you make these Go coding mistakes?</title>
+      <link>https://yourbasic.org/golang/gotcha/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha/</guid>
+      <description> This collection of gotchas and pitfalls in Go is intended to help you find and fix similar problems in your own&amp;nbsp;code.
+Some of the puzzles are pretty easy. To solve all 27, you have to be a&amp;nbsp;ninja.
+Newbie or ninja? Take quiz to find out.
+Table of contents </description>
+    </item>
+    
+    <item>
       <title>Does not compute</title>
       <link>https://yourbasic.org/golang/gotcha-operator-precedence/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -805,19 +817,6 @@ func main() { log.SetPrefix(&#34;grep: &#34;) log.SetFlags(0) // no extra info i
       
       <guid>https://yourbasic.org/golang/blueprint/</guid>
       <description>These code examples are intended to help you quickly solve some common everyday tasks in&amp;nbsp;Go. There are also a few oddities that may be nice to have when writing more exotic&amp;nbsp;code.</description>
-    </item>
-    
-    <item>
-      <title>Go gotcha: newbie or ninja?</title>
-      <link>https://yourbasic.org/golang/gotcha/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/gotcha/</guid>
-      <description>27 sneaky traps and corner cases
- This collection of gotchas and pitfalls in Go is intended to help you find and fix similar problems in your own&amp;nbsp;code.
-Some of the puzzles are pretty easy. To solve all 27, you have to be a&amp;nbsp;ninja.
-Take quiz
-Table of contents </description>
     </item>
     
     <item>
