@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Painless object-oriented programming without inheritance - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE How to get the benefits of inheritance (code reuse, polymorphism and dynamic dispatch) in Go with composition, interfaces and embedding.">
+  <title>The secrets of OO in Go - yourbasic.org/golang </title>
+  <meta name="description" content="CODE EXAMPLE Go doesn’t have inheritance. Composition, embedding and interfaces support code reuse and polymorphism.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/inheritance-object-oriented/"
   },
-  "headline": "Painless object-oriented programming without inheritance",
+  "headline": "The secrets of OO in Go",
   "image": [
     "https://yourbasic.org/golang/improvement.png"
    ],
   "datePublished": "2018-02-08T00:00:00&#43;0000",
-  "dateModified": "2019-01-29T00:00:00&#43;0000",
+  "dateModified": "2019-03-02T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "CODE EXAMPLE How to get the benefits of inheritance (code reuse, polymorphism and dynamic dispatch) in Go with composition, interfaces and embedding."
+  "description": "CODE EXAMPLE Go doesn’t have inheritance. Composition, embedding and interfaces support code reuse and polymorphism."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Painless object-oriented programming without inheritance">
-<meta property="og:description" content="CODE EXAMPLE How to get the benefits of inheritance (code reuse, polymorphism and dynamic dispatch) in Go with composition, interfaces and embedding.">
+<meta property="og:title" content="The secrets of OO in Go">
+<meta property="og:description" content="CODE EXAMPLE Go doesn’t have inheritance. Composition, embedding and interfaces support code reuse and polymorphism.">
 <meta property="og:url" content="https://yourbasic.org/golang/inheritance-object-oriented/">
 <meta property="og:image" content="https://yourbasic.org/golang/improvement.png">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Painless object-oriented programming without inheritance">
-<meta name="twitter:description" content="CODE EXAMPLE How to get the benefits of inheritance (code reuse, polymorphism and dynamic dispatch) in Go with composition, interfaces and embedding.">
+<meta name="twitter:title" content="The secrets of OO in Go">
+<meta name="twitter:description" content="CODE EXAMPLE Go doesn’t have inheritance. Composition, embedding and interfaces support code reuse and polymorphism.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/improvement.png">
 
@@ -82,27 +82,27 @@
 
 <main>
 <article>
-<h1>Painless object-oriented programming without inheritance</h1>
+<h1>The secrets of OO in Go</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
-<p class="lead">Go doesn't have inheritance &ndash; instead
-inter&shy;faces and embed&shy;ding support code reuse and poly&shy;morphism.</p>
+<p class="lead">Go doesn’t have inheritance &ndash;
+instead composition, embed&shy;ding and inter&shy;faces support code reuse and poly&shy;morphism.</p>
 
 <!-- CC BY-SA 4.0: https://commons.wikimedia.org/wiki/File:Performance-Evaluation-Process-z.jpg -->
 
 <div><img src="/golang/improvement.jpg"></div>
 
 <ul class="toc">
-  <li><a href="#basics">Basics</a></li>
+  <li><a href="#object-oriented-programming-with-inheritance">Object-oriented programming with inheritance</a></li>
   <li><a href="#code-reuse-by-composition">Code reuse by composition</a></li>
   <li><a href="#code-reuse-by-embedding">Code reuse by embedding</a></li>
   <li><a href="#polymorphism-and-dynamic-dispatch-with-interfaces">Polymorphism and dynamic dispatch with interfaces</a></li>
 </ul>
 
-<h2 id="basics">Basics</h2>
+<h2 id="object-oriented-programming-with-inheritance">Object-oriented programming with inheritance</h2>
 
-<p>Inheritance in traditional object-oriented programming offers three features in&nbsp;one.
+<p>Inheritance in traditional object-oriented languages offers three features in&nbsp;one.
 When a&nbsp;<code>Dog</code> inherits from an&nbsp;<code>Animal</code></p>
 
 <ol>
@@ -207,15 +207,17 @@ may be treated as an imple&shy;mentation.</p>
 <p><em>When I see a bird that walks like a&nbsp;duck and swims like a&nbsp;duck and quacks like a&nbsp;duck, I&nbsp;call that&nbsp;bird a&nbsp;duck.</em><br>
 &ndash;James Whitcomb Riley</p>
 
-<h3 id="further-reading">Further reading</h3>
+<h2 id="what-about-constructors">What about constructors?</h2>
 
-<p>See <a href="/golang/constructor-best-practice/">Constructors</a> for best practices on how to set up new data structures in&nbsp;Go.</p>
+<div><a href="/golang/constructor-best-practice/"><img src="/golang/factory-conveyor-belt-thumb.jpg" title="Constructors deconstructed [best practice]"></a></div>
+
+<p>See <a href="/golang/constructor-best-practice/">Constructors deconstructed</a> for best practices on how to set up new data structures in&nbsp;Go.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2finheritance-object-oriented%2f&amp;text=Painless%20object-oriented%20programming%20without%20inheritance&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2finheritance-object-oriented%2f&amp;text=The%20secrets%20of%20OO%20in%20Go&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2finheritance-object-oriented%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2finheritance-object-oriented%2f&amp;title=Painless%20object-oriented%20programming%20without%20inheritance" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Painless%20object-oriented%20programming%20without%20inheritance&body=https%3a%2f%2fyourbasic.org%2fgolang%2finheritance-object-oriented%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2finheritance-object-oriented%2f&amp;title=The%20secrets%20of%20OO%20in%20Go" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=The%20secrets%20of%20OO%20in%20Go&body=https%3a%2f%2fyourbasic.org%2fgolang%2finheritance-object-oriented%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
@@ -225,7 +227,7 @@ may be treated as an imple&shy;mentation.</p>
   <h2>Related</h2>
 
   <div class="reference">
-    <a href="/golang/constructor-best-practice/">Constructors deconstructed</a>
+    <a href="/golang/constructor-best-practice/">Constructors deconstructed [best practice]</a>
     <div class="desc">Best practice in Go is to use suitable zero values and factories instead of constructors.</div>
     <div class="source">yourbasic.org</div>
   </div>
