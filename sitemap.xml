@@ -435,6 +435,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/json-example/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/copy-explained/</loc>
   </url>
   
@@ -480,10 +484,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/gotcha-data-race-closure/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/json-example/</loc>
   </url>
   
   <url>

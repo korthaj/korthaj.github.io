@@ -1023,6 +1023,17 @@ quit := make(chan struct{}) go func() { for { select { case // â€¦ } } }() // â€
     </item>
     
     <item>
+      <title>How to use JSON with Go [best practices]</title>
+      <link>https://yourbasic.org/golang/json-example/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/json-example/</guid>
+      <description>The JSON data-interchange format is easy for humans to read and write, and efficient for machines to parse and generate.
+ Default types Encode (marshal) struct to JSON Pretty print Decode (unmarshal) JSON to struct Arbitrary objects and arrays JSON file example  Default types The default Go types for decoding and encoding JSON are
+ bool for JSON booleans, float64 for JSON numbers, string for JSON strings, and nil for JSON null.</description>
+    </item>
+    
+    <item>
       <title>How to use the copy function</title>
       <link>https://yourbasic.org/golang/copy-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1139,17 +1150,6 @@ Answer
 There is a data race: the variable i is shared by six&amp;nbsp;(6) goroutines.
  A data race occurs when two goroutines access the same variable concurrently and at least one of the accesses is a write.
  To avoid this, use a local variable and pass the number as a parameter when starting the goroutine.</description>
-    </item>
-    
-    <item>
-      <title>JSON in-depth tutorial</title>
-      <link>https://yourbasic.org/golang/json-example/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/json-example/</guid>
-      <description>The JSON data-interchange format is easy for humans to read and write, and efficient for machines to parse and generate.
- Default types Encode (marshal) struct to JSON Pretty print Decode (unmarshal) JSON to struct Arbitrary objects and arrays JSON file example  Default types The default Go types for decoding and encoding JSON are
- bool for JSON booleans, float64 for JSON numbers, string for JSON strings, and nil for JSON null.</description>
     </item>
     
     <item>
