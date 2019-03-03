@@ -427,10 +427,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/iterator-generator-pattern/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/golang/stop-goroutine/</loc>
   </url>
   
@@ -456,6 +452,10 @@
   
   <url>
     <loc>https://yourbasic.org/golang/log-to-file/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/iterator-generator-pattern/</loc>
   </url>
   
   <url>
