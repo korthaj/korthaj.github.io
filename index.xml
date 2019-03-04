@@ -1042,6 +1042,17 @@ Keep allocated memory To keep the underlying array, slice the slice to zero leng
     </item>
     
     <item>
+      <title>How to best implement an iterator</title>
+      <link>https://yourbasic.org/golang/iterator-generator-pattern/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/iterator-generator-pattern/</guid>
+      <description>Go has a built-in range loop for iterating over slices, arrays, strings, maps and channels. See The 4 ways to write a range for loop.
+To iterate over other types of data, an iterator function with callbacks is a clean and fairly efficient abstraction.
+Basic iterator pattern // Iterate calls the f function with n = 1, 2, and 3. func Iterate(f func(n int)) { for i := 1; i  In use:</description>
+    </item>
+    
+    <item>
       <title>How to defer a function call</title>
       <link>https://yourbasic.org/golang/defer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1204,17 +1215,6 @@ type Writer interface { Write(p []byte) (n int, err error) }  Write writes up to
       <description>This code appends a log message to the file text.log. It creates the file if it doesn&amp;rsquo;t already exist.
 f, err := os.OpenFile(&amp;quot;text.log&amp;quot;, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644) if err != nil { log.Println(err) } defer f.Close() logger := log.New(f, &amp;quot;prefix&amp;quot;, log.LstdFlags) logger.Println(&amp;quot;text to append&amp;quot;) logger.Println(&amp;quot;more text to append&amp;quot;)  Contents of text.log:
 prefix: 2017/10/20 07:52:58 text to append prefix: 2017/10/20 07:52:58 more text to append   log.New creates a new log.</description>
-    </item>
-    
-    <item>
-      <title>How to write an iterator [best practice]</title>
-      <link>https://yourbasic.org/golang/iterator-generator-pattern/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/iterator-generator-pattern/</guid>
-      <description>Go has a built-in range loop for iterating over slices, arrays, strings, maps and channels. See The 4 ways to write a range for loop.
-To iterate over other types of data, an iterator function with callbacks is a clean and fairly efficient abstraction.
-Basic iterator pattern // Iterate calls the f function with n = 1, 2, and 3. func Iterate(f func(n int)) { for i := 1; i  In use:</description>
     </item>
     
     <item>

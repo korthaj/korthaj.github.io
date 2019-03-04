@@ -395,6 +395,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/iterator-generator-pattern/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/defer/</loc>
   </url>
   
@@ -452,10 +456,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/log-to-file/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/iterator-generator-pattern/</loc>
   </url>
   
   <url>
