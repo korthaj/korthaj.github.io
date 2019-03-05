@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bitmasks and flags - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE A bitmask is a small set of booleans, often called flags, represented by the bits in a single number.">
+  <title>Bitmasks, bitsets and flags - yourbasic.org/golang </title>
+  <meta name="description" content="CODE EXAMPLE A bitmask or bitset is a set of booleans, often called flags, represented by the bits in one or more numbers number.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/bitmask-flag-set-clear/"
   },
-  "headline": "Bitmasks and flags",
+  "headline": "Bitmasks, bitsets and flags",
   "image": [
     "https://yourbasic.org/golang/bits.jpg"
    ],
   "datePublished": "2018-04-30T00:00:00&#43;0000",
-  "dateModified": "2019-01-31T00:00:00&#43;0000",
+  "dateModified": "2019-03-05T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "CODE EXAMPLE A bitmask is a small set of booleans, often called flags, represented by the bits in a single number."
+  "description": "CODE EXAMPLE A bitmask or bitset is a set of booleans, often called flags, represented by the bits in one or more numbers number."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Bitmasks and flags">
-<meta property="og:description" content="CODE EXAMPLE A bitmask is a small set of booleans, often called flags, represented by the bits in a single number.">
+<meta property="og:title" content="Bitmasks, bitsets and flags">
+<meta property="og:description" content="CODE EXAMPLE A bitmask or bitset is a set of booleans, often called flags, represented by the bits in one or more numbers number.">
 <meta property="og:url" content="https://yourbasic.org/golang/bitmask-flag-set-clear/">
 <meta property="og:image" content="https://yourbasic.org/golang/bits.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Bitmasks and flags">
-<meta name="twitter:description" content="CODE EXAMPLE A bitmask is a small set of booleans, often called flags, represented by the bits in a single number.">
+<meta name="twitter:title" content="Bitmasks, bitsets and flags">
+<meta name="twitter:description" content="CODE EXAMPLE A bitmask or bitset is a set of booleans, often called flags, represented by the bits in one or more numbers number.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/bits.jpg">
 
@@ -82,16 +82,18 @@
 
 <main>
 <article>
-<h1>Bitmasks and flags</h1>
+<h1>Bitmasks, bitsets and flags</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
 
-<p class="lead">A bitmask is a small set of booleans, often called flags, represented by the bits in a single number.</p>
-
 <!-- CC BY-SA 2.0: https://www.flickr.com/photos/christiaancolen/20445410340 -->
 
-<div><img src="/golang/bits.jpg"></div>
+<div style="margin-top:1em;"><img src="/golang/bits.jpg"></div>
+
+<h2 id="bitmask">Bitmask</h2>
+
+<p>A bitmask is a small set of booleans, often called flags, represented by the bits in a single number.</p>
 
 <pre><code>type Bits uint8
 
@@ -120,7 +122,7 @@ func main() {
 2 true
 </code></pre>
 
-<h2 id="larger-bit-sets">Larger bit sets</h2>
+<h2 id="larger-bitsets">Larger bitsets</h2>
 
 <p>To represent larger sets of bits, you may want to use a custom data structure.
 The package <a href="https://godoc.org/github.com/yourbasic/bit"><code>github.com/yourbasic/bit</code></a>
@@ -162,10 +164,10 @@ fmt.Println(sieve)
 <div style="clear:both;"></div>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fbitmask-flag-set-clear%2f&amp;text=Bitmasks%20and%20flags&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fbitmask-flag-set-clear%2f&amp;text=Bitmasks,%20bitsets%20and%20flags&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fbitmask-flag-set-clear%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fbitmask-flag-set-clear%2f&amp;title=Bitmasks%20and%20flags" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Bitmasks%20and%20flags&body=https%3a%2f%2fyourbasic.org%2fgolang%2fbitmask-flag-set-clear%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fbitmask-flag-set-clear%2f&amp;title=Bitmasks,%20bitsets%20and%20flags" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Bitmasks,%20bitsets%20and%20flags&body=https%3a%2f%2fyourbasic.org%2fgolang%2fbitmask-flag-set-clear%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 
