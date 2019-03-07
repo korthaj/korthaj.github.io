@@ -711,7 +711,7 @@ type T struct { n int f float64 next *T } fmt.</description>
       <guid>https://yourbasic.org/golang/gotcha/</guid>
       <description> This collection of gotchas and pitfalls in Go is intended to help you find and fix similar problems in your own&amp;nbsp;code.
 Some of the puzzles are pretty easy. To solve all 27, you have to be a&amp;nbsp;ninja.
-Newbie or ninja? Take quiz to find out.
+Take quiz
 Table of contents </description>
     </item>
     
