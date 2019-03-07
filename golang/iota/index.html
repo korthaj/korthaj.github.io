@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>4 iota enum examples - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE The iota identifier is used to enumerate constants. For a complete enum implementation, introduce a new type and give it a String function.">
+  <meta name="description" content="CODE EXAMPLE The iota identifier is used to enumerate constants. For an idiomatic enum implementation, create a new type and give it a String function.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/lane-numbers.jpg"
    ],
   "datePublished": "2018-07-27T00:00:00&#43;0000",
-  "dateModified": "2019-03-01T00:00:00&#43;0000",
+  "dateModified": "2019-03-07T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "CODE EXAMPLE The iota identifier is used to enumerate constants. For a complete enum implementation, introduce a new type and give it a String function."
+  "description": "CODE EXAMPLE The iota identifier is used to enumerate constants. For an idiomatic enum implementation, create a new type and give it a String function."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="4 iota enum examples">
-<meta property="og:description" content="CODE EXAMPLE The iota identifier is used to enumerate constants. For a complete enum implementation, introduce a new type and give it a String function.">
+<meta property="og:description" content="CODE EXAMPLE The iota identifier is used to enumerate constants. For an idiomatic enum implementation, create a new type and give it a String function.">
 <meta property="og:url" content="https://yourbasic.org/golang/iota/">
 <meta property="og:image" content="https://yourbasic.org/golang/lane-numbers.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="4 iota enum examples">
-<meta name="twitter:description" content="CODE EXAMPLE The iota identifier is used to enumerate constants. For a complete enum implementation, introduce a new type and give it a String function.">
+<meta name="twitter:description" content="CODE EXAMPLE The iota identifier is used to enumerate constants. For an idiomatic enum implementation, create a new type and give it a String function.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/lane-numbers.jpg">
 
@@ -155,7 +155,7 @@ fmt.Println(C1, C3, C4) <span class="comment">// "1 3 4"</span></code></pre>
 
 <h2 id="complete-enum-type-with-strings-best-practice">Complete enum type with strings [best practice]</h2>
 
-<p>To implement an enumerated type with a string representation:</p>
+<p>Here&rsquo;s an idiomatic way to implement an enumerated type:</p>
 
 <ul>
 <li>create a new integer type,</li>
