@@ -237,12 +237,12 @@ A panic stops the normal execution of a goroutine. When a program panics, it imm
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/about/</guid>
-      <description>Christer Gummeson -- My name is Stefan.
+      <description>Christer Gummeson --  If some of these articles and code examples can help you become a better programmer, mission accomplished.
+ My name is Stefan Nilsson.
 I teach computer science at KTH.
 Here I&amp;nbsp;write about algo&amp;shy;rithms and Go.
-If some of these articles and code examples can help you become a better programmer, mission accomplished.
 &amp;nbsp;&amp;nbsp; trolleriprofessorn@gmail.com
-&amp;nbsp; Useful golang facts
+&amp;nbsp; My Twitter page
 &amp;nbsp; My open-source software
 Further reading Marc Femenia --  An article about this site from the KTH newsletter&amp;nbsp;Campi.
 Disclaimer  I&amp;rsquo;ve worked as a profes&amp;shy;sional magician, but I&amp;nbsp;only cheated a little&amp;nbsp;bit.</description>
