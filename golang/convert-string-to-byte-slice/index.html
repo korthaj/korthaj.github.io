@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/gopher-brown-left.jpg"
    ],
   "datePublished": "2019-01-26T00:00:00&#43;0000",
-  "dateModified": "2019-02-18T00:00:00&#43;0000",
+  "dateModified": "2019-03-09T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -92,8 +92,8 @@
 
 <ul class="toc">
   <li><a href="#basics">Basics</a></li>
-  <li><a href="#string-to-byte-slice">String to byte slice</a></li>
-  <li><a href="#byte-slice-to-string">Byte slice to string</a></li>
+  <li><a href="#convert-string-to-bytes">Convert string to bytes</a></li>
+  <li><a href="#convert-bytes-to-string">Convert bytes to string</a></li>
   <li><a href="#performance">Performance</a></li>
 </ul>
 
@@ -108,28 +108,30 @@ you get a brand new slice that contains the same bytes as the string, and vice v
 </ul>
 
 <blockquote>
-<p>If you need to manipulate the Unicode code points (runes) of a string, you may want to
+<p>If you need to manipulate the characters (runes) of a string, you may want to
 convert the string to a rune slice instead.
 See <a href="/golang/convert-string-to-rune-slice/">Convert between rune array/slice and string</a>.</p>
 </blockquote>
 
-<h2 id="string-to-byte-slice">String to byte slice</h2>
+<h2 id="convert-string-to-bytes">Convert string to bytes</h2>
 
 <p>When you convert a string to a byte slice,
 you get a new slice that contains the same bytes as the&nbsp;string.</p>
 
-<pre><code>fmt.Println(<b>[]byte</b>("abc日")) <span class="comment">// [97 98 99 230 151 165]</span></code></pre>
+<pre><code>b := <b>[]byte</b>("abc日")</span>
+fmt.Println(b) <span class="comment">// [97 98 99 230 151 165]</span>
+</code></pre>
 
-<p>Note that the Unicode code point (rune) <code>日</code> is encoded in UTF-8 using 3&nbsp;bytes.
-See the <a href="/golang/rune/">Go rune article</a> for more on&nbsp;this.</p>
+<p>Note that the character <code>日</code> is encoded in UTF-8 using 3&nbsp;bytes.
+See the <a href="/golang/rune/">Go rune article</a> for more on UTF-8 encoding of Unicode code points.</p>
 
-<h2 id="byte-slice-to-string">Byte slice to string</h2>
+<h2 id="convert-bytes-to-string">Convert bytes to string</h2>
 
 <p>When you convert a slice of bytes to a string,
 you get a new string that contains the same bytes as the&nbsp;slice.</p>
 
-<pre><code>b := []byte{'a', 'b', 'c', '\xe6', '\x97', '\xa5'}
-fmt.Println(<b>string</b>(b)) <span class="comment">// abc日</span>
+<pre><code>s := <b>string</b>([]byte{97, 98, 99, 230, 151, 165})
+fmt.Println(s) <span class="comment">// abc日</span>
 </code></pre>
 
 <h2 id="performance">Performance</h2>
