@@ -93,15 +93,14 @@ Bloom filters are both fast and space-efficient. However, elements can only be a
     </item>
     
     <item>
-      <title>Hash tables explained</title>
+      <title>Hash tables explained [step-by-step example]</title>
       <link>https://yourbasic.org/algorithms/hash-tables-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/algorithms/hash-tables-explained/</guid>
-      <description>Hash tables are used to implement dictionary and map data structures.
- A hash table is an unordered collection of key-value pairs, where each key is&amp;nbsp;unique.
-Hash tables offer a combination of efficient lookup, insert and delete operations. Neither arrays nor linked lists can achieve this:
- a lookup in an unsorted array takes linear worst-case time; in a sorted array, a lookup using binary search is very fast, but insertions become inefficient; in a linked list an insertion can be efficient, but lookups take linear time.</description>
+      <description>Basics Hashing with chaining (simplified example) Realistic hash function example Resizing in constant amortized time  Basics Hash tables are used to implement map and set data structures in most common programming languages. In C++ and Java they are part of the standard libraries, while Python and Go have builtin dictionaries and maps.
+A hash table is an unordered collection of key-value pairs, where each key is&amp;nbsp;unique.
+Hash tables offer a combination of efficient lookup, insert and delete operations.</description>
     </item>
     
     <item>

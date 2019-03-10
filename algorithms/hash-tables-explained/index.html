@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hash tables explained - yourbasic.org </title>
+  <title>Hash tables explained [step-by-step example] - yourbasic.org </title>
   <meta name="description" content="Hash tables are used to implement dictionary and map data structures. They offer a combination of efficient lookup, insert and delete operations.">
   
   <link rel="stylesheet" href="/style.css">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/algorithms/hash-tables-explained/"
   },
-  "headline": "Hash tables explained",
+  "headline": "Hash tables explained [step-by-step example]",
   "image": [
     "https://yourbasic.org/algorithms/file-cabinet.jpg"
    ],
   "datePublished": "2018-01-26T00:00:00&#43;0000",
-  "dateModified": "2019-02-10T00:00:00&#43;0000",
+  "dateModified": "2019-03-10T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -54,13 +54,13 @@
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hash tables explained">
+<meta property="og:title" content="Hash tables explained [step-by-step example]">
 <meta property="og:description" content="Hash tables are used to implement dictionary and map data structures. They offer a combination of efficient lookup, insert and delete operations.">
 <meta property="og:url" content="https://yourbasic.org/algorithms/hash-tables-explained/">
 <meta property="og:image" content="https://yourbasic.org/algorithms/file-cabinet.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Hash tables explained">
+<meta name="twitter:title" content="Hash tables explained [step-by-step example]">
 <meta name="twitter:description" content="Hash tables are used to implement dictionary and map data structures. They offer a combination of efficient lookup, insert and delete operations.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/algorithms/file-cabinet.jpg">
@@ -82,15 +82,25 @@
 
 <main>
 <article>
-<h1>Hash tables explained</h1>
+<h1>Hash tables explained [step-by-step example]</h1>
 <div class="tagline">yourbasic.org</div>
 
 
 <!-- Creative commons: http://www.flickr.com/photos/60in3/3059088647/ (missing) -->
 
-<p class="lead">Hash tables are used to implement dictionary and map data structures.</p>
+<div style="margin-top:1em;"><img src="/algorithms/file-cabinet.jpg" alt="file cabinet"></div>
 
-<div><img src="/algorithms/file-cabinet.jpg" alt="file cabinet"></div>
+<ul class="toc">
+  <li><a href="#basics">Basics</a></li>
+  <li><a href="#hashing-with-chaining-simplified-example">Hashing with chaining (simplified example)</a></li>
+  <li><a href="#realistic-hash-function-example">Realistic hash function example</a></li>
+  <li><a href="#resizing-in-constant-amortized-time">Resizing in constant amortized time</a></li>
+</ul>
+
+<h2 id="basics">Basics</h2>
+
+<p>Hash tables are used to implement map and set data structures in most common programming languages.
+In C++ and Java they are part of the standard libraries, while Python and Go have builtin dictionaries and maps.</p>
 
 <p>A hash table is an <b>unordered</b> collection of <b>key-value</b> pairs, where each key is&nbsp;<b>unique</b>.</p>
 
@@ -104,9 +114,10 @@ but insertions become inefficient;</li>
 <li>in a linked list an insertion can be efficient, but lookups take linear time.</li>
 </ul>
 
-<h2 id="basic-idea">Basic idea</h2>
+<h2 id="hashing-with-chaining-simplified-example">Hashing with chaining (simplified example)</h2>
 
-<p>Hash tables combine the best properties of arrays and linked lists.</p>
+<p>The most common hash table implementation uses chaining with linked lists to resolve collisions.
+This combines the best properties of arrays and linked lists.</p>
 
 <p>Let&rsquo;s start with a somewhat simplistic example:
 a data structure that can store 1000 elements with random integer keys.</p>
@@ -142,15 +153,17 @@ table[hash].AddFirst(key, value)
 
 <p>Since the numbers are random, there will be roughly the same number of elements in each list.
 Since there are 1000 lists and at most 1000 elements, there will likely be very few elements
-in the list <code>table[key%1000]</code> and therefore the <code>Find</code> operation will be fast.
-The expected time complexity is&nbsp;<i>O</i>(1).</p>
+in the list <code>table[key%1000]</code> and therefore the lookup operation will be fast.</p>
 
-<h2 id="complete-data-structure">Complete data structure</h2>
+<p>The <a href="/algorithms/time-complexity-explained/"><strong>average time complexity</strong></a> of both the lookup and insert operations are&nbsp;<i>O</i>(1).
+Using the same technique, deletion can also be implemented in constant average time.</p>
+
+<h2 id="realistic-hash-function-example">Realistic hash function example</h2>
 
 <p>We want to generalize this basic idea to more complicated keys that aren&rsquo;t evenly distributed.
 The number of elements in each list must remain small,
 and the elements must be evenly distributed over the lists.
-To achieve this we just need to change the <strong>hash function</strong>,
+To achieve this we just need to change the <a href="https://en.wikipedia.org/wiki/Hash_function"><strong>hash function</strong></a>,
 the function which selects the list where a key belongs.</p>
 
 <p>The hash function in the example above is <code>hash&nbsp;=&nbsp;key&nbsp;%&nbsp;1000</code>.
@@ -159,8 +172,6 @@ It takes a key (a positive integer) as input and produces a number in the interv
 <p>In general, a hash function is a function from <code>E</code> to <code>0..size-1</code>,
 where <code>E</code> is the set of all possible keys, and <code>size</code> is the number of entry points in the hash table.
 We want this function to be uniform: it should map the expected inputs as evenly as possible over its output range.</p>
-
-<h2 id="typical-hash-function">Typical hash function</h2>
 
 <p>Java&rsquo;s implementation of hash functions for strings is a good example.
 The <code>hashCode</code> method in the <code>String</code> class computes the&nbsp;value</p>
@@ -181,7 +192,7 @@ and n is the length of the&nbsp;string.</p>
 and that the value changes when we change the order of the characters.
 Two properties that should hold for a good hash function.</p>
 
-<h2 id="resizing">Resizing</h2>
+<h2 id="resizing-in-constant-amortized-time">Resizing in constant amortized time</h2>
 
 <p>The efficiency of a hash table depends on the fact that the table size is proportional to the number of elements.
 If the number of elements is not known in advance,
@@ -194,17 +205,17 @@ the table must be resized when the lists become too&nbsp;long:</p>
 </ul>
 
 <p>If the table size is increased by a constant factor for each resizing, i.e. by doubling its size,
-this strategy gives <strong>amortized constant time</strong> performance for lookups, insertions and deletions.</p>
+this strategy gives <a href="/algorithms/amortized-time-complexity-analysis/"><strong>amortized constant time</strong></a> performance for lookups, insertions and deletions.</p>
 
 <div><a href="/algorithms/amortized-time-complexity-analysis/"><img src="/algorithms/pink-coins-thumb.jpg" title="Amortized time complexity"></a></div>
 
 <p>For more on the performance of this strategy, see <a href="/algorithms/amortized-time-complexity-analysis/">Amortized time complexity</a>.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fhash-tables-explained%2f&amp;text=Hash%20tables%20explained&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fhash-tables-explained%2f&amp;text=Hash%20tables%20explained%20[step-by-step%20example]&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2falgorithms%2fhash-tables-explained%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fhash-tables-explained%2f&amp;title=Hash%20tables%20explained" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Hash%20tables%20explained&body=https%3a%2f%2fyourbasic.org%2falgorithms%2fhash-tables-explained%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fhash-tables-explained%2f&amp;title=Hash%20tables%20explained%20[step-by-step%20example]" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Hash%20tables%20explained%20[step-by-step%20example]&body=https%3a%2f%2fyourbasic.org%2falgorithms%2fhash-tables-explained%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
@@ -214,15 +225,15 @@ this strategy gives <strong>amortized constant time</strong> performance for loo
   <h2>Related</h2>
 
   <div class="reference">
-    <a href="/algorithms/amortized-time-complexity-analysis/">Amortized time complexity</a>
-    <div class="desc">Amortized analysis considers both the cheap and expensive operations performed by an algorithm. It is used for algorithms that have expensive operations that happen only rarely.</div>
+    <a href="/algorithms/time-complexity-explained/">How to analyse time complexity: Count your steps</a>
+    <div class="desc">Time complexity analysis esti­mates the time to run an algo­rithm. It&#39;s calcu­lated by counting elemen­tary opera­tions.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
   <div class="reference">
-    <a href="/algorithms/big-o-notation-explained/">Big O notation: definition and examples</a>
-    <div class="desc">Big O notation is a convenient way to describe how fast a function is growing. It is often used in computer science to describe time complexity.</div>
-    <div class="source">yourbasic.org</div>
+    <a href="https://en.wikipedia.org/wiki/Hash_function">Hash function</a>
+    <div class="source">Wikipedia</div>
+    <div class="author"></div>
   </div>
 
   <div class="reference">
