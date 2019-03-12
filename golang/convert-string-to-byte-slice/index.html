@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/gopher-brown-left.jpg"
    ],
   "datePublished": "2019-01-26T00:00:00&#43;0000",
-  "dateModified": "2019-03-09T00:00:00&#43;0000",
+  "dateModified": "2019-03-12T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -118,11 +118,11 @@ See <a href="/golang/convert-string-to-rune-slice/">Convert between rune array/s
 <p>When you convert a string to a byte slice,
 you get a new slice that contains the same bytes as the&nbsp;string.</p>
 
-<pre><code>b := <b>[]byte</b>("abc日")</span>
-fmt.Println(b) <span class="comment">// [97 98 99 230 151 165]</span>
+<pre><code>b := <b>[]byte</b>("ABC€")
+fmt.Println(b) <span class="comment">// [65 66 67 226 130 172]</span>
 </code></pre>
 
-<p>Note that the character <code>日</code> is encoded in UTF-8 using 3&nbsp;bytes.
+<p>Note that the character <code>€</code> is encoded in UTF-8 using 3&nbsp;bytes.
 See the <a href="/golang/rune/">Go rune article</a> for more on UTF-8 encoding of Unicode code points.</p>
 
 <h2 id="convert-bytes-to-string">Convert bytes to string</h2>
@@ -130,8 +130,8 @@ See the <a href="/golang/rune/">Go rune article</a> for more on UTF-8 encoding o
 <p>When you convert a slice of bytes to a string,
 you get a new string that contains the same bytes as the&nbsp;slice.</p>
 
-<pre><code>s := <b>string</b>([]byte{97, 98, 99, 230, 151, 165})
-fmt.Println(s) <span class="comment">// abc日</span>
+<pre><code>s := <b>string</b>([]byte{65, 66, 67, 226, 130, 172})
+fmt.Println(s) <span class="comment">// ABC€</span>
 </code></pre>
 
 <h2 id="performance">Performance</h2>

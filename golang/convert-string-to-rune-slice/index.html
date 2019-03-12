@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/gopher-brown-left.jpg"
    ],
   "datePublished": "2019-01-26T00:00:00&#43;0000",
-  "dateModified": "2019-03-09T00:00:00&#43;0000",
+  "dateModified": "2019-03-12T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -106,9 +106,9 @@ you get a new slice that contains the
 the rune value will be <code>0xFFFD</code> for each invalid&nbsp;byte.</li>
 </ul>
 
-<pre><code>r := <b>[]rune</b>("abc日")
-fmt.Println(r)        <span class="comment">// [97 98 99 26085]</span>
-fmt.Printf("%U\n", r) <span class="comment">// [U+0061 U+0062 U+0063 U+65E5]</span>
+<pre><code>r := <b>[]rune</b>("ABC€")
+fmt.Println(r)        <span class="comment">// [65 66 67 8364]</span>
+fmt.Printf("%U\n", r) <span class="comment">// [U+0041 U+0042 U+0043 U+20AC]</span>
 </code></pre>
 
 <blockquote>
@@ -126,8 +126,8 @@ that is the concatenation of the runes converted to UTF-8 encoded strings.</p></
 the Unicode replacement character&nbsp;<code>�</code>.</p></li>
 </ul>
 
-<pre><code>s := <b>string</b>([]rune{'\u0061', '\u0062', '\u0063', '\u65E5', -1})
-fmt.Println(s) <span class="comment">// abc日�</span>
+<pre><code>s := <b>string</b>([]rune{'\u0041', '\u0042', '\u0043', '\u20AC', -1})
+fmt.Println(s) <span class="comment">// ABC€�</span>
 </code></pre>
 
 <h2 id="performance">Performance</h2>
