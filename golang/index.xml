@@ -218,8 +218,7 @@ sum := 0 for i := 1; i { sum += i } fmt.Println(sum) // 10 (1+2+3+4)  The init s
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/panic-explained/</guid>
-      <description>Panics are similar to C++ and Java exceptions, but are only intended for run-time errors, such as following a nil pointer or attempting to index an array out of bounds. To signify events such as end-of-file, Go programs use the built-in error type.
-A panic stops the normal execution of a goroutine. When a program panics, it immediately starts to unwind the call stack. This continues until the program crashes and prints a stack trace, or until the built-in recover function is&amp;nbsp;called.</description>
+      <description>See Recover from a panic [best practices].</description>
     </item>
     
     <item>
@@ -649,14 +648,14 @@ fmt.Println(n/(60*60), &#34;hours and&#34;, n%(60*60), &#34;seconds&#34;)  12 ho
     </item>
     
     <item>
-      <title>Error handling explained</title>
+      <title>Error handling overview</title>
       <link>https://yourbasic.org/golang/errors-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/errors-explained/</guid>
       <description>Go has two different error-handling mechanisms:
- most functions return errors; only truly unrecovorable conditions, such as an out-of-range index, produce run-time exceptions.  Go’s multivalued return makes it easy to return a detailed error message alongside the normal return value. By convention, such messages have type error, a simple built-in interface.
-type error interface { Error() string }  Example The os.Open function returns a non-nil error value when it fails to open a file.</description>
+ most functions return errors; only a truly unrecovorable condition, such as an out-of-range index, produces a run-time exception, known as a panic.  Go’s multivalued return makes it easy to return a detailed error message alongside the normal return value. By convention, such messages have type error, a simple built-in interface:
+type error interface { Error() string }  Error handling example The os.</description>
     </item>
     
     <item>
@@ -1508,14 +1507,12 @@ b, err := ioutil.ReadFile(&#34;file.txt&#34;) // b has type []byte if err != nil
     </item>
     
     <item>
-      <title>Recover from a panic</title>
+      <title>Recover from a panic [best practices]</title>
       <link>https://yourbasic.org/golang/recover-from-panic/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/recover-from-panic/</guid>
-      <description>The built-in recover function can be used to regain control of a panicking goroutine and resume normal execution.
- A call to recover stops the unwinding and returns the argument passed to&amp;nbsp;panic. If the goroutine is not panicking, recover returns&amp;nbsp;nil.  Because the only code that runs while unwinding is inside deferred functions, recover is only useful inside deferred functions.
-Example func main() { n := foo() fmt.Println(&amp;quot;main received&amp;quot;, n) } func foo() int { defer func() { if err := recover(); err !</description>
+      <description>A panic is an exception in Go Recover and catch a panic Panic handler example Return a value   Stack traces Print a stack trace Level of detail   Test a panic (utility function)  A panic is an exception in Go Panics are similar to C++ and Java exceptions, but are only intended for run-time errors, such as following a nil pointer or attempting to index an array out of bounds.</description>
     </item>
     
     <item>
@@ -1643,9 +1640,7 @@ m := map[string]int{&amp;quot;Alice&amp;quot;: 23, &amp;quot;Eve&amp;quot;: 2, &
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/stack-trace/</guid>
-      <description>A stack trace is a list of active function calls at a certain point in&amp;nbsp;time.
- Stack traces are typically printed to the console when an unexpected error occurs. They can be very useful for&amp;nbsp;debugging:
- not only do you see where the error happened, but also how the program arrived in this place.  Example goroutine 11 [running]: testing.tRunner.func1(0xc420092690) /usr/local/go/src/testing/testing.go:711 +0x2d2 panic(0x53f820, 0x594da0) /usr/local/go/src/runtime/panic.go:491 +0x283 github.com/yourbasic/bit.(*Set).Max(0xc42000a940, 0x0) ../src/github.com/bit/set_math_bits.go:137 +0x89 github.</description>
+      <description>See Recover from a panic [best practices].</description>
     </item>
     
     <item>

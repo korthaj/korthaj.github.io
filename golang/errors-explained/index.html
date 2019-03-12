@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Error handling explained - yourbasic.org/golang </title>
+  <title>Error handling overview - yourbasic.org/golang </title>
   <meta name="description" content="Go uses return values that implement the error interface to indicate errors.">
   
   <link rel="stylesheet" href="/style.css">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/errors-explained/"
   },
-  "headline": "Error handling explained",
+  "headline": "Error handling overview",
   "image": [
     "https://yourbasic.org/golang/errors.png"
    ],
   "datePublished": "2018-08-23T00:00:00&#43;0000",
-  "dateModified": "2018-09-15T00:00:00&#43;0000",
+  "dateModified": "2019-03-12T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -54,13 +54,13 @@
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Error handling explained">
+<meta property="og:title" content="Error handling overview">
 <meta property="og:description" content="Go uses return values that implement the error interface to indicate errors.">
 <meta property="og:url" content="https://yourbasic.org/golang/errors-explained/">
 <meta property="og:image" content="https://yourbasic.org/golang/errors.png">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Error handling explained">
+<meta name="twitter:title" content="Error handling overview">
 <meta name="twitter:description" content="Go uses return values that implement the error interface to indicate errors.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/errors.png">
@@ -82,7 +82,7 @@
 
 <main>
 <article>
-<h1>Error handling explained</h1>
+<h1>Error handling overview</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
@@ -93,20 +93,21 @@
 <p>Go has two different error-handling mechanisms:</p>
 
 <ul>
-<li>most functions return errors;</li>
-<li>only truly unrecovorable conditions, such as an out-of-range index, produce run-time exceptions.</li>
+<li>most functions return <a href="/golang/create-error/"><strong>errors</strong></a>;</li>
+<li>only a truly unrecovorable condition, such as an out-of-range index, produces a run-time exception,
+known as a <a href="/golang/recover-from-panic/"><strong>panic</strong></a>.</li>
 </ul>
 
 <p>Go’s multivalued return makes it easy to return a detailed error message
 alongside the normal return value. By convention, such messages
-have type <code>error</code>, a simple built-in <a href="/golang/interfaces-explained/">interface</a>.</p>
+have type <code>error</code>, a simple built-in <a href="/golang/interfaces-explained/">interface</a>:</p>
 
 <pre><code>type error interface {
     Error() string
 }
 </code></pre>
 
-<h2 id="example">Example</h2>
+<h2 id="error-handling-example">Error handling example</h2>
 
 <p>The <code>os.Open</code> function returns a non-nil
 <code>error</code> value when it fails to open a file.</p>
@@ -126,25 +127,29 @@ if err != nil {
 
 <h2 id="custom-errors">Custom errors</h2>
 
-<p>To create a simple string-only <code>error</code> you can use <a href="https://golang.org/pkg/errors/#New"><code>errors.New</code></a>.</p>
+<p>To create a simple string-only <code>error</code> you can use <a href="https://golang.org/pkg/errors/#New"><code>errors.New</code></a>:</p>
 
 <pre><code>err := errors.New(&quot;Houston, we have a problem&quot;)
 </code></pre>
 
 <p>The <code>error</code> interface requires only an <code>Error</code> method,
 but specific <code>error</code> implementations often have additional methods,
-allowing callers to inspect the details of the error.
-See <a href="/golang/create-error/">Create a custom error</a> for more&nbsp;details.</p>
+allowing callers to inspect the details of the error.</p>
 
-<h2 id="run-time-exceptions">Run-time exceptions</h2>
+<p>See <a href="/golang/create-error/">3 simple ways to create an error</a> for more detailed examples.</p>
 
-<p>See <a href="/golang/panic-explained/">A Panic is an exception in Go</a> for more on runtime exceptions.</p>
+<h2 id="panic">Panic</h2>
+
+<p>Panics are similar to C++ and Java exceptions, but are only intended for run-time errors,
+such as following a nil pointer or attempting to index an array out of bounds.</p>
+
+<p>See <a href="/golang/recover-from-panic/">Recover from a panic</a> for a tutorial on how to recover from and test panics.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2ferrors-explained%2f&amp;text=Error%20handling%20explained&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2ferrors-explained%2f&amp;text=Error%20handling%20overview&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2ferrors-explained%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2ferrors-explained%2f&amp;title=Error%20handling%20explained" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Error%20handling%20explained&body=https%3a%2f%2fyourbasic.org%2fgolang%2ferrors-explained%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2ferrors-explained%2f&amp;title=Error%20handling%20overview" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Error%20handling%20overview&body=https%3a%2f%2fyourbasic.org%2fgolang%2ferrors-explained%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
@@ -160,14 +165,8 @@ See <a href="/golang/create-error/">Create a custom error</a> for more&nbsp;deta
   </div>
 
   <div class="reference">
-    <a href="/golang/panic-explained/">A panic is an exception in Go</a>
-    <div class="desc">Go uses panic for exceptional errors, such as following a nil pointer or attempting to index an array out of bounds.</div>
-    <div class="source">yourbasic.org</div>
-  </div>
-
-  <div class="reference">
-    <a href="/golang/recover-from-panic/">Recover from a panic</a>
-    <div class="desc">How to recover from a panic and update the return value.</div>
+    <a href="/golang/recover-from-panic/">Recover from a panic [best practices]</a>
+    <div class="desc">A panic stops the normal execution of a goroutine. The recover function is used to regain control and resume normal execution. Go uses panic only for exceptional errors, such as following a nil pointer.</div>
     <div class="source">yourbasic.org</div>
   </div>
 

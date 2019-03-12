@@ -266,7 +266,7 @@ They are called <a href="/golang/maps-explained/">maps</a>.</li>
 <ul>
 <li>Instead of exceptions, Go uses <a href="/golang/errors-explained/">errors</a>
 to signify events such as end-of-file,
-and run-time <a href="/golang/panic-explained/">panics</a> for run-time errors
+and run-time <a href="/golang/recover-from-panic/">panics</a> for run-time errors
 such as attempting to index an array out of bounds.</li>
 </ul>
 
@@ -1001,7 +1001,7 @@ allowing callers to inspect the details of the error.</p>
 
 <h2 id="panic-and-recover">Panic and recover</h2>
 
-<p>A <a href="/golang/panic-explained/">panic</a> is a run-time error
+<p>A <a href="/golang/recover-from-panic/">panic</a> is a run-time error
 that unwinds the stack of the goroutine,
 running any deferred functions along the way,
 and then stops the program.</p>
@@ -1295,7 +1295,7 @@ func main() {
   </div>
 
   <div class="reference">
-    <a href="/golang/errors-explained/">Error handling explained</a>
+    <a href="/golang/errors-explained/">Error handling overview</a>
     <div class="desc">Go uses return values that implement the error interface to indicate errors.</div>
     <div class="source">yourbasic.org</div>
   </div>

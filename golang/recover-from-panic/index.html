@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recover from a panic - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE How to recover from a panic and update the return value.">
+  <title>Recover from a panic [best practices] - yourbasic.org/golang </title>
+  <meta name="description" content="CODE EXAMPLE A panic stops the normal execution of a goroutine. The recover function is used to regain control and resume normal execution. Go uses panic only for exceptional errors, such as following a nil pointer.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/recover-from-panic/"
   },
-  "headline": "Recover from a panic",
+  "headline": "Recover from a panic [best practices]",
   "image": [
     "https://yourbasic.org/golang/extinguish-fire.jpg"
    ],
   "datePublished": "2018-08-23T00:00:00&#43;0000",
-  "dateModified": "2018-08-23T00:00:00&#43;0000",
+  "dateModified": "2019-03-12T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "CODE EXAMPLE How to recover from a panic and update the return value."
+  "description": "CODE EXAMPLE A panic stops the normal execution of a goroutine. The recover function is used to regain control and resume normal execution. Go uses panic only for exceptional errors, such as following a nil pointer."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Recover from a panic">
-<meta property="og:description" content="CODE EXAMPLE How to recover from a panic and update the return value.">
+<meta property="og:title" content="Recover from a panic [best practices]">
+<meta property="og:description" content="CODE EXAMPLE A panic stops the normal execution of a goroutine. The recover function is used to regain control and resume normal execution. Go uses panic only for exceptional errors, such as following a nil pointer.">
 <meta property="og:url" content="https://yourbasic.org/golang/recover-from-panic/">
 <meta property="og:image" content="https://yourbasic.org/golang/extinguish-fire.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Recover from a panic">
-<meta name="twitter:description" content="CODE EXAMPLE How to recover from a panic and update the return value.">
+<meta name="twitter:title" content="Recover from a panic [best practices]">
+<meta name="twitter:description" content="CODE EXAMPLE A panic stops the normal execution of a goroutine. The recover function is used to regain control and resume normal execution. Go uses panic only for exceptional errors, such as following a nil pointer.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/extinguish-fire.jpg">
 
@@ -82,13 +82,55 @@
 
 <main>
 <article>
-<h1>Recover from a panic</h1>
+<h1>Recover from a panic [best practices]</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
+<!-- CC0:  https://pixabay.com/en/terrorist-terror-happiness-positive-2481808/ -->
+
+<div style="margin-top:1em;"><img src="/golang/panic.jpg"></div>
+
+<ul class="toc" style="font-weight: bold; margin-top:1em;">
+  <li><a href="#a-panic-is-an-exception-in-go">A panic is an exception in Go</a></li>
+  <li><a href="#recover-and-catch-a-panic">Recover and catch a panic</a>
+    <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
+      <li><a href="#panic-handler-example">Panic handler example</a></li>
+      <li><a href="#return-a-value">Return a value</a></li>
+    </ul>
+  </li>
+  <li><a href="#stack-traces">Stack traces</a>
+    <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
+      <li><a href="#print-a-stack-trace">Print a stack trace</a></li>
+      <li><a href="#level-of-detail">Level of detail</a></li>
+    </ul>
+  </li>
+  <li><a href="#test-a-panic-utility-function">Test a panic (utility function)</a></li>
+</ul>
+
+<h2 id="a-panic-is-an-exception-in-go">A panic is an exception in Go</h2>
+
+<p>Panics are similar to C++ and Java exceptions,
+but are only intended for run-time errors,
+such as following a nil pointer or attempting to index an array out of bounds.
+To signify events such as end-of-file, Go programs use the built-in <code>error</code> type.
+See <a href="/golang/create-error/">3 simple ways to create an error</a> for more on errors.</p>
+
+<p>A panic stops the normal execution of a goroutine:</p>
+
+<ul>
+<li>When a program panics, it immediately starts to unwind the call stack.</li>
+<li>This continues until the program crashes and prints a stack trace,</li>
+<li>or until the built-in <code>recover</code> function is&nbsp;called.</li>
+</ul>
+
+<p>A panic is caused either by a runtime error,
+or an explicit call to the built-in <code>panic</code>&nbsp;function.</p>
+
+<h2 id="recover-and-catch-a-panic">Recover and catch a panic</h2>
+
 <!-- CC0: https://www.maxpixel.net/Extinguish-Fire-Extinction-Firefighter-484540 -->
 
-<div style="margin-top:1em;"><img src="/golang/extinguish-fire.jpg"></div>
+<div><img src="/golang/extinguish-fire.jpg"></div>
 
 <p>The built-in <code>recover</code> function can be used to regain
 control of a panicking goroutine and resume normal execution.</p>
@@ -100,10 +142,10 @@ the argument passed to&nbsp;<code>panic</code>.</li>
 <code>recover</code> returns&nbsp;<code>nil</code>.</li>
 </ul>
 
-<p>Because the only code that runs while unwinding is inside deferred functions,
-<code>recover</code> is only useful inside deferred functions.</p>
+<p>Because the only code that runs while unwinding is inside <a href="/golang/defer/">deferred functions</a>,
+<code>recover</code> is only useful inside such functions.</p>
 
-<h2 id="example">Example</h2>
+<h3 id="panic-handler-example">Panic handler example</h3>
 
 <pre><code>func main() {
 	n := foo()
@@ -157,11 +199,112 @@ func foo() (m int) {
 main received 2
 </code></pre>
 
+<h2 id="stack-traces">Stack traces</h2>
+
+<p>Stack traces are typically printed to the console when a panic occurs.
+They can be very useful for&nbsp;debugging:</p>
+
+<ul>
+<li>not only do you see <strong>where</strong> the error happened,</li>
+<li>but also <strong>how</strong> the program arrived in this place.</li>
+</ul>
+
+<p>Here&rsquo;s an example of a stack trace:</p>
+
+<pre><code>goroutine 11 [running]:
+testing.tRunner.func1(0xc420092690)
+    /usr/local/go/src/testing/testing.go:711 +0x2d2
+panic(0x53f820, 0x594da0)
+    /usr/local/go/src/runtime/panic.go:491 +0x283
+github.com/yourbasic/bit.(*Set).Max(0xc42000a940, 0x0)
+    ../src/github.com/bit/set_math_bits.go:137 +0x89
+github.com/yourbasic/bit.TestMax(0xc420092690)
+    ../src/github.com/bit/set_test.go:165 +0x337
+testing.tRunner(0xc420092690, 0x57f5e8)
+    /usr/local/go/src/testing/testing.go:746 +0xd0
+created by testing.(*T).Run
+    /usr/local/go/src/testing/testing.go:789 +0x2de
+</code></pre>
+
+<p>It can be read from the bottom up:</p>
+
+<ul>
+<li><code>testing.(*T).Run</code> has called <code>testing.tRunner</code>,</li>
+<li>which has called <code>bit.TestMax</code>,</li>
+<li>which has called <code>bit.(*Set).Max</code>,</li>
+<li>which has called <code>panic</code>,</li>
+<li>which has called <code>testing.tRunner.func1</code>.</li>
+</ul>
+
+<p>The indented lines show the source file and line number at which the function was called.
+The hexadecimal numbers refer to parameter values, including values of pointers and internal data structures.
+<a href="https://www.goinggo.net/2015/01/stack-traces-in-go.html">Stack Traces in Go</a> has more details.</p>
+
+<h3 id="print-a-stack-trace">Print a stack trace</h3>
+
+<p>To print the stack trace for the current goroutine, use <a href="https://golang.org/pkg/runtime/debug/#PrintStack"><code>debug.PrintStack</code></a> from package <a href="https://golang.org/pkg/runtime/debug/"><code>runtime/debug</code></a>.</p>
+
+<p>You can also examine the current stack trace programatically by calling <a href="https://golang.org/pkg/runtime/#Stack"><code>runtime.Stack</code></a>.</p>
+
+<h3 id="level-of-detail">Level of detail</h3>
+
+<p>The <a href="https://golang.org/pkg/runtime/#hdr-Environment_Variables"><code>GOTRACEBACK</code></a> variable
+controls the amount of output generated when a Go program&nbsp;fails.</p>
+
+<ul>
+<li><code>GOTRACEBACK=none</code> omits the goroutine stack traces entirely.</li>
+<li><code>GOTRACEBACK=single</code> (the default)  prints a stack trace for the current goroutine,
+eliding functions internal to the run-time system.
+The failure prints stack traces for all goroutines if there is no current goroutine
+or the failure is   internal to the run-time.</li>
+<li><code>GOTRACEBACK=all</code> adds stack traces for all user-created goroutines.</li>
+<li><code>GOTRACEBACK=system</code> is like <code>all</code> but adds stack frames for run-time functions
+and shows goroutines created internally by the run-time.</li>
+</ul>
+
+<h2 id="test-a-panic-utility-function">Test a panic (utility function)</h2>
+
+<!-- CC BY-SA 2.0: https://commons.wikimedia.org/wiki/File:Panic_button.jpg -->
+
+<div><img src="/golang/panic-button.jpg"></div>
+
+<p>In this example, we use reflection to check if a list of interface variables
+have types corre&shy;sponding to the para&shy;meters of a given function.
+If so, we call the function with those para&shy;meters to check if there is a&nbsp;panic.</p>
+
+<pre><code>// Panics tells if function f panics with parameters p.
+func Panics(f interface{}, p ...interface{}) bool {
+	fv := reflect.ValueOf(f)
+	ft := reflect.TypeOf(f)
+	if ft.NumIn() != len(p) {
+		panic(&quot;wrong argument count&quot;)
+	}
+	pv := make([]reflect.Value, len(p))
+	for i, v := range p {
+		if reflect.TypeOf(v) != ft.In(i) {
+			panic(&quot;wrong argument type&quot;)
+		}
+		pv[i] = reflect.ValueOf(v)
+	}
+	return call(fv, pv)
+}
+
+func call(fv reflect.Value, pv []reflect.Value) (b bool) {
+	defer func() {
+		if err := recover(); err != nil {
+			b = true
+		}
+	}()
+	fv.Call(pv)
+	return
+}
+</code></pre>
+
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2frecover-from-panic%2f&amp;text=Recover%20from%20a%20panic&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2frecover-from-panic%2f&amp;text=Recover%20from%20a%20panic%20[best%20practices]&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2frecover-from-panic%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2frecover-from-panic%2f&amp;title=Recover%20from%20a%20panic" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Recover%20from%20a%20panic&body=https%3a%2f%2fyourbasic.org%2fgolang%2frecover-from-panic%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2frecover-from-panic%2f&amp;title=Recover%20from%20a%20panic%20[best%20practices]" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Recover%20from%20a%20panic%20[best%20practices]&body=https%3a%2f%2fyourbasic.org%2fgolang%2frecover-from-panic%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
@@ -171,8 +314,8 @@ main received 2
   <h2>Related</h2>
 
   <div class="reference">
-    <a href="/golang/defer/">How to defer a function call</a>
-    <div class="desc">Deferred functions are commonly used for clean-up actions, such as closing a file or unlocking a mutex.</div>
+    <a href="/golang/errors-explained/">Error handling overview</a>
+    <div class="desc">Go uses return values that implement the error interface to indicate errors.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
@@ -180,6 +323,12 @@ main received 2
     <a href="https://blog.golang.org/defer-panic-and-recover">Defer, Panic, and Recover</a>
     <div class="source">The Go Blog</div>
     <div class="author"></div>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/defer/">How to defer a function call</a>
+    <div class="desc">Deferred functions are commonly used for clean-up actions, such as closing a file or unlocking a mutex.</div>
+    <div class="source">yourbasic.org</div>
   </div>
 
   <h2>Follow on Twitter</h2>

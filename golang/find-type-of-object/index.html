@@ -80,40 +80,6 @@ xType := reflect.TypeOf(x)
 xValue := reflect.ValueOf(x)
 fmt.Println(xType, xValue) <span class="comment">// "[]int [1 2 3]"</span></code></pre>
 
-<h3 id="advanced-example">Advanced example</h3>
-
-<p>In this example, we use reflection to check if a list of interface variables
-have types corre&shy;sponding to the para&shy;meters of a given function.
-If so, we call the function with those para&shy;meters to check if there is a&nbsp;panic.</p>
-
-<pre><code>// Panics tells if function f panics with parameters p.
-func Panics(f interface{}, p ...interface{}) bool {
-	fv := reflect.ValueOf(f)
-	ft := reflect.TypeOf(f)
-	if ft.NumIn() != len(p) {
-		panic(&quot;wrong argument count&quot;)
-	}
-	pv := make([]reflect.Value, len(p))
-	for i, v := range p {
-		if reflect.TypeOf(v) != ft.In(i) {
-			panic(&quot;wrong argument type&quot;)
-		}
-		pv[i] = reflect.ValueOf(v)
-	}
-	return call(fv, pv)
-}
-
-func call(fv reflect.Value, pv []reflect.Value) (b bool) {
-	defer func() {
-		if err := recover(); err != nil {
-			b = true
-		}
-	}()
-	fv.Call(pv)
-	return
-}
-</code></pre>
-
 
 </article>
 <aside>
@@ -134,8 +100,8 @@ func call(fv reflect.Value, pv []reflect.Value) (b bool) {
   </div>
 
   <div class="reference">
-    <a href="/golang/recover-from-panic/">Recover from a panic</a>
-    <div class="desc">How to recover from a panic and update the return value.</div>
+    <a href="/golang/recover-from-panic/">Recover from a panic [best practices]</a>
+    <div class="desc">A panic stops the normal execution of a goroutine. The recover function is used to regain control and resume normal execution. Go uses panic only for exceptional errors, such as following a nil pointer.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
