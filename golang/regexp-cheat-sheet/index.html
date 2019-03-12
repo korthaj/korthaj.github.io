@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/cog-wheels.jpg"
    ],
   "datePublished": "2018-02-27T00:00:00&#43;0000",
-  "dateModified": "2019-01-04T00:00:00&#43;0000",
+  "dateModified": "2019-03-12T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -506,6 +506,15 @@ fmt.Printf("%q\n", zp.Split("pizza", 2))  <span class="comment">// ["pi" "a"]</s
 <pre>Find(All)?(String)?(Submatch)?(Index)?</pre>
 
 <p>For example: <code>Find</code>, <code>FindAllString</code>, <code>FindStringIndex</code>, …</p>
+
+<ul>
+<li>If <code>All</code> is present, the function matches successive non-overlapping matches.</li>
+<li><code>String</code> indicates that the argument is a string; otherwise it&rsquo;s a byte&nbsp;slice.</li>
+<li>If <code>Submatch</code> is present, the return value is a slice of successive submatches.
+Submatches are matches of parenthesized subexpressions within the regular expression.
+See <a href="https://golang.org/pkg/regexp/#Regexp.FindSubmatch"><code>FindSubmatch</code></a> for an&nbsp;example.</li>
+<li>If <code>Index</code> is present, matches and submatches are identified by byte index&nbsp;pairs.</li>
+</ul>
 
 <h2 id="implementation">Implementation</h2>
 
