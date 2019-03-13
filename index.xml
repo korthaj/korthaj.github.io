@@ -1715,7 +1715,7 @@ b, err := ioutil.ReadFile(&#34;file.txt&#34;) // b has type []byte if err != nil
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/recover-from-panic/</guid>
-      <description>A panic is an exception in Go Recover and catch a panic Panic handler example Return a value   Stack traces Print a stack trace Level of detail   Test a panic (utility function)  A panic is an exception in Go Panics are similar to C++ and Java exceptions, but are only intended for run-time errors, such as following a nil pointer or attempting to index an array out of bounds.</description>
+      <description>A panic is an exception in Go Recover and catch a panic Panic handler example Return a value   Stack trace format Interpret a stack trace Print and log a stack trace Level of detail   Test a panic (utility function)  A panic is an exception in Go Panics are similar to C++ and Java exceptions, but are only intended for run-time errors, such as following a nil pointer or attempting to index an array out of bounds.</description>
     </item>
     
     <item>

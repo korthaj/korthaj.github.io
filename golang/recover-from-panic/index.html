@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/extinguish-fire.jpg"
    ],
   "datePublished": "2018-08-23T00:00:00&#43;0000",
-  "dateModified": "2019-03-12T00:00:00&#43;0000",
+  "dateModified": "2019-03-13T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -98,9 +98,10 @@
       <li><a href="#return-a-value">Return a value</a></li>
     </ul>
   </li>
-  <li><a href="#stack-traces">Stack traces</a>
+  <li><a href="#stack-trace-format">Stack trace format</a>
     <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
-      <li><a href="#print-a-stack-trace">Print a stack trace</a></li>
+      <li><a href="#interpret-a-stack-trace">Interpret a stack trace</a></li>
+      <li><a href="#print-and-log-a-stack-trace">Print and log a stack trace</a></li>
       <li><a href="#level-of-detail">Level of detail</a></li>
     </ul>
   </li>
@@ -199,7 +200,7 @@ func foo() (m int) {
 main received 2
 </code></pre>
 
-<h2 id="stack-traces">Stack traces</h2>
+<h2 id="stack-trace-format">Stack trace format</h2>
 
 <p>Stack traces are typically printed to the console when a panic occurs.
 They can be very useful for&nbsp;debugging:</p>
@@ -208,6 +209,8 @@ They can be very useful for&nbsp;debugging:</p>
 <li>not only do you see <strong>where</strong> the error happened,</li>
 <li>but also <strong>how</strong> the program arrived in this place.</li>
 </ul>
+
+<h3 id="interpret-a-stack-trace">Interpret a stack trace</h3>
 
 <p>Here&rsquo;s an example of a stack trace:</p>
 
@@ -240,7 +243,7 @@ created by testing.(*T).Run
 The hexadecimal numbers refer to parameter values, including values of pointers and internal data structures.
 <a href="https://www.goinggo.net/2015/01/stack-traces-in-go.html">Stack Traces in Go</a> has more details.</p>
 
-<h3 id="print-a-stack-trace">Print a stack trace</h3>
+<h3 id="print-and-log-a-stack-trace">Print and log a stack trace</h3>
 
 <p>To print the stack trace for the current goroutine, use <a href="https://golang.org/pkg/runtime/debug/#PrintStack"><code>debug.PrintStack</code></a> from package <a href="https://golang.org/pkg/runtime/debug/"><code>runtime/debug</code></a>.</p>
 
