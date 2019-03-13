@@ -850,6 +850,16 @@ rand.Seed(time.Now().UnixNano()) chars := []rune(&#34;ABCDEFGHIJKLMNOPQRSTUVWXYZ
     </item>
     
     <item>
+      <title>Generate a unique string (UUID/GUID)</title>
+      <link>https://yourbasic.org/golang/generate-uuid-guid/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/generate-uuid-guid/</guid>
+      <description>A universally unique identifier (UUID), or globally unique identifier (GUID), is a 128-bit number used to identify information.
+ A UUID is for practical purposes unique: the probability that it will be duplicated is very close to zero. UUIDs don&amp;rsquo;t depend on a central authority or on coordination between those generating them.  The string representation of a UUID consists of 32 hexadecimal digits displayed in 5&amp;nbsp;groups separated by hyphens.</description>
+    </item>
+    
+    <item>
       <title>Generate all permutations</title>
       <link>https://yourbasic.org/golang/generate-permutation-slice-string/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1804,17 +1814,6 @@ func main() { n := 0 if true { n = 1 n++ } fmt.Println(n) // 2 } Detecting shado
       <guid>https://yourbasic.org/golang/shuffle-slice-array/</guid>
       <description>The rand.Shuffle function in package math/rand shuffles an input sequence using a given swap function.
 a := []int{1, 2, 3, 4, 5, 6, 7, 8} rand.Seed(time.Now().UnixNano()) rand.Shuffle(len(a), func(i, j int) { a[i], a[j] = a[j], a[i] })  [5 8 6 4 3 7 2 1]  Warning: Without the call to rand.Seed you will get the same sequence of pseudo&amp;shy;random numbers each time you run the program.  Further reading  What’s a seed: Random number generators</description>
-    </item>
-    
-    <item>
-      <title>Simple code to generate a unique id (UUID/GUID)</title>
-      <link>https://yourbasic.org/golang/generate-uuid-guid/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/generate-uuid-guid/</guid>
-      <description>A universally unique identifier (UUID), or globally unique identifier (GUID), is a 128-bit number used to identify information.
-Use the rand.Read function from package crypto/rand to generate a&amp;nbsp;basic&amp;nbsp;UUID.
-b := make([]byte, 16) _, err := rand.Read(b) if err != nil { log.Fatal(err) } uuid := fmt.Sprintf(&#34;%x-%x-%x-%x-%x&#34;, b[0:4], b[4:6], b[6:8], b[8:10], b[10:]) fmt.Println(uuid)  46c6b063-c738-7fef-bc95-b31a13ca7989  Limitations This UUID doesn&amp;rsquo;t conform to RFC 4122. In particular, it doesn&amp;rsquo;t contain any version or variant numbers.</description>
     </item>
     
     <item>
