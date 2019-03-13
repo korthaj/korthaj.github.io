@@ -721,16 +721,6 @@ It&amp;rsquo;s a tool for building virtual graphs. In a virtual graph no vertice
     </item>
     
     <item>
-      <title>Generate a random number/character in a given range</title>
-      <link>https://yourbasic.org/golang/generate-number-random-range/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/generate-number-random-range/</guid>
-      <description>Use the rand.Seed and rand.Intn functions in package math/rand to generate a random number.
-Warning: Without an initial call to rand.Seed, you will get the same sequence of pseudo&amp;shy;random numbers each time you run the program.  Integer between a and b rand.Seed(time.Now().UnixNano()) n := a + rand.Intn(b-a+1) // a ≤ n ≤ b  Character between &amp;#39;a&amp;#39; and &amp;#39;z&amp;#39; c := &#39;a&#39; + rune(rand.Intn(&#39;z&#39;-&#39;a&#39;+1))  Character from arbitrary set chars := []rune(&amp;quot;ab⌘&amp;quot;) c := chars[rand.</description>
-    </item>
-    
-    <item>
       <title>Generate a random string (password)</title>
       <link>https://yourbasic.org/golang/generate-random-string/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -759,6 +749,16 @@ rand.Seed(time.Now().UnixNano()) chars := []rune(&#34;ABCDEFGHIJKLMNOPQRSTUVWXYZ
       <description> // Perm calls f with each permutation of a. func Perm(a []rune, f func([]rune)) { perm(a, f, 0) } // Permute the values at index i to len(a)-1. func perm(a []rune, f func([]rune), i int) { if i  len(a) { f(a) return } perm(a, f, i+1) for j := i + 1; j  Example usage:
 Perm([]rune(&amp;quot;abc&amp;quot;), func(a []rune) { fmt.Println(string(a)) })  Output:
 abc acb bac bca cba cab  </description>
+    </item>
+    
+    <item>
+      <title>Generate random numbers, characters and slice elements</title>
+      <link>https://yourbasic.org/golang/generate-number-random-range/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/generate-number-random-range/</guid>
+      <description>Go pseudo-random number basics Several random sources   Integers and characters in a given range Number between a and b Character between a and z   Random element from slice  Go pseudo-random number basics Use the rand.Seed and rand.Int63 functions in package math/rand to generate a non-negative pseudo-random number of type int64:
+rand.Seed(time.Now().UnixNano()) n := rand.Int63() // for example 4601851300195147788  Similarly, rand.Float64 generates a pseudo-random float x, where 0&amp;nbsp;≤&amp;nbsp;x&amp;nbsp;&amp;lt;&amp;nbsp;1:</description>
     </item>
     
     <item>
