@@ -138,10 +138,9 @@ Efficient string concatenationGo 1.10 A strings.</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/split-string-into-slice/</guid>
-      <description>Split on comma Use the strings.Split function to split a string into its comma separated values.
+      <description>Split on comma Split by whitespace and newline Split on any character or delimeter  Split on comma Use the strings.Split function to split a string into its comma separated values.
 s := strings.Split(&amp;quot;a,b,c&amp;quot;, &amp;quot;,&amp;quot;) fmt.Println(s) // Output: [a b c]  To include the separators, use strings.SplitAfter. To split only the first n values, use strings.SplitN and strings.SplitAfterN.
-Split by whitespace and newline Use the strings.Fields function to split a string into substrings removing any space characters, including newlines.
-s := strings.Fields(&amp;quot; a \t b \n&amp;quot;) fmt.</description>
+Split by whitespace and newline Use the strings.Fields function to split a string into substrings removing any space characters, including newlines.</description>
     </item>
     
     <item>
