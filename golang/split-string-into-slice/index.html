@@ -127,7 +127,7 @@ fmt.Printf("%q\n", a.Split("banana", 0))  <span class="comment">// [] (nil slice
 fmt.Printf("%q\n", a.Split("banana", 1))  <span class="comment">// ["banana"]</span>
 fmt.Printf("%q\n", a.Split("banana", 2))  <span class="comment">// ["b" "nana"]</span>
 
-zp := regexp.MustCompile(`z+`)            <span class="comment">// Delimter: one or more `z`:s</span>
+zp := regexp.MustCompile(`z+`)            <span class="comment">// Delimiter: one or more `z`:s</span>
 fmt.Printf("%q\n", zp.Split("pizza", -1)) <span class="comment">// ["pi" "a"]</span>
 fmt.Printf("%q\n", zp.Split("pizza", 0))  <span class="comment">// [] (nil slice)</span>
 fmt.Printf("%q\n", zp.Split("pizza", 1))  <span class="comment">// ["pizza"]</span>
