@@ -797,7 +797,7 @@ var x interface{} = 2.3 switch v := x.(type) { case int: fmt.</description>
     </item>
     
     <item>
-      <title>Format (and parse) a time or date [complete guide]</title>
+      <title>Format and parse a time or date [complete guide]</title>
       <link>https://yourbasic.org/golang/format-parse-string-time-date-example/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
