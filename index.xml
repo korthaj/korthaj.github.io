@@ -797,6 +797,17 @@ var x interface{} = 2.3 switch v := x.(type) { case int: fmt.</description>
     </item>
     
     <item>
+      <title>Format (and parse) a time or date [complete guide]</title>
+      <link>https://yourbasic.org/golang/format-parse-string-time-date-example/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/format-parse-string-time-date-example/</guid>
+      <description>Basic time format example Common time and date layouts Predefined date and timestamp layouts All layout options Corner cases  Basic time format example Go doesn&amp;rsquo;t use yyyy-mm-dd layout to format or parse a time. Instead, you format a special layout parameter
+Mon Jan 2 15:04:05 MST 2006
+the same way as the time or date should be formatted. (This date is easier to remember when written as 01/02&amp;nbsp;03:04:05PM&amp;nbsp;&amp;lsquo;06&amp;nbsp;-0700.</description>
+    </item>
+    
+    <item>
       <title>Format byte size as kilobytes, megabytes, gigabytes, ...</title>
       <link>https://yourbasic.org/golang/formatting-byte-size-to-human-readable-format/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1124,17 +1135,6 @@ log.SetOutput(ioutil.Discard)  </description>
 func (t Time) Weekday() Weekday  In use:
 weekday := time.Now().Weekday() fmt.Println(weekday) // &#34;Tuesday&#34; fmt.Println(int(weekday)) // &#34;2&#34; Type Weekday The time.Weekday type specifies a day of the week (Sunday = 0, …).
 type Weekday int const ( Sunday Weekday = iota Monday Tuesday Wednesday Thursday Friday Saturday )  </description>
-    </item>
-    
-    <item>
-      <title>How to format (and parse) a time or date</title>
-      <link>https://yourbasic.org/golang/format-parse-string-time-date-example/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/format-parse-string-time-date-example/</guid>
-      <description>Time and date formatting basics Common time and date layouts Predefined date and timestamp layouts All layout options Corner cases  Time and date formatting basics Go doesn&amp;rsquo;t use yyyy-mm-dd layout to format or parse a date. Instead, you format a special layout parameter
-Mon Jan 2 15:04:05 MST 2006
-the same way as the time or date should be formatted. (This date is easier to remember when written as 01/02&amp;nbsp;03:04:05PM&amp;nbsp;&amp;lsquo;06&amp;nbsp;-0700.</description>
     </item>
     
     <item>
