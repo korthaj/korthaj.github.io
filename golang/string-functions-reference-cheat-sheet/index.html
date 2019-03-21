@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/typewriter.png"
    ],
   "datePublished": "2018-03-15T00:00:00&#43;0000",
-  "dateModified": "2019-03-16T00:00:00&#43;0000",
+  "dateModified": "2019-03-21T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -128,7 +128,7 @@
     <tr>
       <td style="border-bottom: 0;"><code>"\xe6\x97\xa5"</code></td>
       <td style="border-bottom: 0;">日</td>
-      <td style="border-bottom: 0;"><code>\xNN</code> specifies a byte</td>
+      <td style="border-bottom: 0;"><code>\xNN</code> specifies a byte*</td>
     </tr>
     <tr>
       <td style="padding-top: 0;"><code>"\u65E5"</code></td>
@@ -138,12 +138,15 @@
     <tr>
       <td><code>`\xe6`</code></td>
       <td>\xe6</td>
-      <td>Raw string literal*</td>
+      <td>Raw string literal**</td>
     </tr>
   </tbody>
 </table>
 
-<p>&#42; In <code>``</code> string literals, characters are interpreted literally:
+<p>&#42; See <a href="/golang/rune/#special-escape-characters">Runes and character encoding</a> for
+a complete list of special escape characters.</p>
+
+<p>&#42;&#42; In <code>``</code> string literals, text is interpreted literally and
 backslashes have no special meaning.
 See <a href="/golang/multiline-string/">2 ways to write multiline strings</a> for more on raw strings.</p>
 
