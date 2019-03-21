@@ -663,6 +663,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/rune/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/gotcha-shadowing-variables/</loc>
   </url>
   
@@ -793,10 +797,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/gotcha-trim-string/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/rune/</loc>
   </url>
   
   <url>

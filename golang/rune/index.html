@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>What is a Go rune? - yourbasic.org/golang </title>
-  <meta name="description" content="A rune is a type meant to represent a Unicode code point. Strings, however, are sequences of bytes (typically containing Unicode text encoded in UTF-8).">
+  <title>Runes and character encoding - yourbasic.org/golang </title>
+  <meta name="description" content="A rune is a type meant to represent a Unicode code point. Strings, however, are sequences of bytes (typically containing Unicode text encoded in UTF-8). ">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/rune/"
   },
-  "headline": "What is a Go rune?",
+  "headline": "Runes and character encoding",
   "image": [
     "https://yourbasic.org/golang/rune-stone-ballstorp-1900.jpg"
    ],
   "datePublished": "2018-04-17T00:00:00&#43;0000",
-  "dateModified": "2019-03-12T00:00:00&#43;0000",
+  "dateModified": "2019-03-21T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "A rune is a type meant to represent a Unicode code point. Strings, however, are sequences of bytes (typically containing Unicode text encoded in UTF-8)."
+  "description": "A rune is a type meant to represent a Unicode code point. Strings, however, are sequences of bytes (typically containing Unicode text encoded in UTF-8). "
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="What is a Go rune?">
-<meta property="og:description" content="A rune is a type meant to represent a Unicode code point. Strings, however, are sequences of bytes (typically containing Unicode text encoded in UTF-8).">
+<meta property="og:title" content="Runes and character encoding">
+<meta property="og:description" content="A rune is a type meant to represent a Unicode code point. Strings, however, are sequences of bytes (typically containing Unicode text encoded in UTF-8). ">
 <meta property="og:url" content="https://yourbasic.org/golang/rune/">
 <meta property="og:image" content="https://yourbasic.org/golang/rune-stone-ballstorp-1900.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="What is a Go rune?">
-<meta name="twitter:description" content="A rune is a type meant to represent a Unicode code point. Strings, however, are sequences of bytes (typically containing Unicode text encoded in UTF-8).">
+<meta name="twitter:title" content="Runes and character encoding">
+<meta name="twitter:description" content="A rune is a type meant to represent a Unicode code point. Strings, however, are sequences of bytes (typically containing Unicode text encoded in UTF-8). ">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/rune-stone-ballstorp-1900.jpg">
 
@@ -82,30 +82,40 @@
 
 <main>
 <article>
-<h1>What is a Go rune?</h1>
+<h1>Runes and character encoding</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
-<p class="lead">A rune is a type meant to repre&shy;sent a Unicode code&nbsp;point.</p>
-
 <!-- No copyright: https://www.flickr.com/photos/34419668@N08/5435942992 -->
 
-<div><img src="/golang/rune-stone-ballstorp-1900.jpg"></div>
+<div style="margin-top:1em;"><img src="/golang/rune-stone-ballstorp-1900.jpg" alt="Runic letters encoded in stone"></div>
+<div style="font-size:smaller;">Runic letters encoded in stone, Ballstorp 1900</div>
 
-<p>The <code>rune</code> type is an alias for <code>int32</code>, and is used to emphasize
-than an integer represents a code&nbsp;point.</p>
-
-<ul>
-<li><strong>ASCII</strong> defines 128 characters, identified by the <strong>code points</strong> 0–127.
-It covers English letters, Latin numbers, and a few other characters.</li>
-<li><strong>Unicode</strong>, which is a superset of ASCII, defines a codespace of 1,114,112 code points.
-Unicode version 10.0 covers 139 modern and historic scripts (including runes, but not Klingon)
-as well as multiple symbol sets.</li>
+<ul class="toc" style="margin-top: 1em;">
+  <li><a href="#characters-ascii-and-unicode">Characters, ASCII and Unicode</a></li>
+  <li><a href="#strings-and-utf-8-encoding">Strings and UTF-8 encoding</a></li>
+  <li><a href="#special-escape-characters">Special escape characters</a></li>
 </ul>
 
-<h2 id="strings-and-utf-8">Strings and UTF-8</h2>
+<h2 id="characters-ascii-and-unicode">Characters, ASCII and Unicode</h2>
 
-<p>Note that a <code>string</code> is a sequence of bytes, not&nbsp;runes.</p>
+<blockquote>
+<p>The <code>rune</code> type is an alias for <code>int32</code>, and is used to emphasize
+than an integer represents a code&nbsp;point.</p>
+</blockquote>
+
+<p><strong>ASCII</strong> defines 128 characters, identified by the <strong>code points</strong> 0–127.
+It covers English letters, Latin numbers, and a few other characters.</p>
+
+<p><strong>Unicode</strong>, which is a superset of ASCII, defines a codespace of 1,114,112 code points.
+Unicode version 10.0 covers 139 modern and historic scripts (including the runic alphabet, but not Klingon)
+as well as multiple symbol sets.</p>
+
+<h2 id="strings-and-utf-8-encoding">Strings and UTF-8 encoding</h2>
+
+<blockquote>
+<p>A <code>string</code> is a sequence of bytes, not&nbsp;runes.</p>
+</blockquote>
 
 <p>However, strings often contain Unicode text encoded in <a href="https://research.swtch.com/utf8">UTF-8</a>,
 which encodes all Unicode code points using one to four&nbsp;bytes.
@@ -114,28 +124,90 @@ which encodes all Unicode code points using one to four&nbsp;bytes.
 <p>Since Go source code itself is encoded as UTF-8, string literals
 will automatically get this encoding.</p>
 
-<p>For example, in the string <code>&quot;ABC€&quot;</code> the character <code>€</code> (code point 8364) is encoded using three&nbsp;bytes,
-while the ASCII characters <code>A</code>, <code>B</code> and <code>C</code>
-(code points 65, 66 and 67) only use&nbsp;one:</p>
+<p>For example, in the string <code>&quot;café&quot;</code> the character <code>é</code> (code point 233) is encoded using two&nbsp;bytes,
+while the ASCII characters <code>c</code>, <code>a</code> and <code>f</code>
+(code points 99, 97 and 102) only use&nbsp;one:</p>
 
-<pre><code>fmt.Println(<b>[]byte</b>("ABC€")) <span class="comment">// [65 66 67 226 130 172]</span>
-fmt.Println(<b>[]rune</b>("ABC€")) <span class="comment">// [65 66 67 8364]</span>
+<pre><code>fmt.Println(<b>[]byte</b>("café")) <span class="comment">// [99 97 102 195 169]</span>
+fmt.Println(<b>[]rune</b>("café")) <span class="comment">// [99 97 102 233]</span>
 </code></pre>
 
 <p>See <a href="/golang/convert-string-to-byte-slice/">Convert between byte array/slice and string</a> and
-<a href="/golang/convert-string-to-rune-slice/">Convert between rune array/slice and string</a> for more on this.</p>
+<a href="/golang/convert-string-to-rune-slice/">Convert between rune array/slice and string</a>.</p>
 
-<h3 id="further-reading">Further reading</h3>
+<h2 id="special-escape-characters">Special escape characters</h2>
 
-<div><a href="/golang/string-functions-reference-cheat-sheet/"><img src="/golang/typewriter-thumb.png" title="String functions cheat sheet"></a></div>
+<p>Arbitrary character values can be encoded with backslash escapes and
+be used in any <code>&quot;&quot;</code>&nbsp;string
+or <code>&#39;&#39;</code>&nbsp;character literal.
+There are four different formats:</p>
 
-<p style="margin-top:0; margin-bottom:2em;"><a href="/golang/string-functions-reference-cheat-sheet/">String functions cheat sheet</a></p>
+<ul>
+<li><code>\x</code> followed by exactly two hexadecimal digits,</li>
+<li><code>\</code> followed by exactly three octal digits,</li>
+<li><code>\u</code> followed by exactly four hexadecimal digits,</li>
+<li><code>\U</code> followed by exactly eight hexadecimal digits,</li>
+</ul>
+
+<p>where the escapes <code>\u</code> and <code>\U</code> represent Unicode code points.</p>
+
+<p>The following predefined special values are also available.</p>
+
+<table class="white">
+  <thead>
+    <tr>
+      <th>Value</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>\a</code></td>
+      <td>U+0007 alert or bell</td>
+    </tr>
+    <tr>
+      <td><code>\b</code></td>
+      <td>U+0008 backspace</td>
+    </tr>
+    <tr>
+      <td><code>\\</code></td>
+      <td>U+005c backslash</td>
+    </tr>
+    <tr>
+      <td><code>\t</code></td>
+      <td>U+0009 horizontal tab</td>
+    </tr>
+    <tr>
+      <td><code>\n</code></td>
+      <td>U+000A line feed or newline</td>
+    </tr>
+    <tr>
+      <td><code>\f</code></td>
+      <td>U+000C form feed</td>
+    </tr>
+    <tr>
+      <td><code>\r</code></td>
+      <td>U+000D carriage return</td>
+    </tr>
+    <tr>
+      <td><code>\v</code></td>
+      <td>U+000b vertical tab</td>
+    </tr>
+  </tbody>
+</table>
+
+<pre><code>fmt.Println("\\caf\u00e9") <span class="comment">// Prints: \café</span>
+fmt.Printf("%c", '\u00e9') <span class="comment">// Prints: é</span>
+</code></pre>
+
+<p>However, in raw string literals, delimited by back quotes, text is interpreted literally and backslashes have no special meaning.
+See <a href="/golang/multiline-string/">2 ways to write multiline strings</a>.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2frune%2f&amp;text=What%20is%20a%20Go%20rune?&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2frune%2f&amp;text=Runes%20and%20character%20encoding&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2frune%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2frune%2f&amp;title=What%20is%20a%20Go%20rune?" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=What%20is%20a%20Go%20rune?&body=https%3a%2f%2fyourbasic.org%2fgolang%2frune%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2frune%2f&amp;title=Runes%20and%20character%20encoding" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Runes%20and%20character%20encoding&body=https%3a%2f%2fyourbasic.org%2fgolang%2frune%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
