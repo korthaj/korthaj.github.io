@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Printf string formatting [cheat sheet] - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE The fmt package formats numbers and strings indented with spaces or zeroes, in different bases, and with optional quotes.">
+  <title>Top fmt formatting tips [cheat sheet] - yourbasic.org/golang </title>
+  <meta name="description" content="CODE EXAMPLE The functions fmt.Printf and fmt.Sprintf format numbers and strings indented with spaces or zeroes, in different bases, and with optional quotes.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/"
   },
-  "headline": "Printf string formatting [cheat sheet]",
+  "headline": "Top fmt formatting tips [cheat sheet]",
   "image": [
     "https://yourbasic.org/golang/format.jpg"
    ],
   "datePublished": "2018-03-15T00:00:00&#43;0000",
-  "dateModified": "2019-02-27T00:00:00&#43;0000",
+  "dateModified": "2019-03-21T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "CODE EXAMPLE The fmt package formats numbers and strings indented with spaces or zeroes, in different bases, and with optional quotes."
+  "description": "CODE EXAMPLE The functions fmt.Printf and fmt.Sprintf format numbers and strings indented with spaces or zeroes, in different bases, and with optional quotes."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Printf string formatting [cheat sheet]">
-<meta property="og:description" content="CODE EXAMPLE The fmt package formats numbers and strings indented with spaces or zeroes, in different bases, and with optional quotes.">
+<meta property="og:title" content="Top fmt formatting tips [cheat sheet]">
+<meta property="og:description" content="CODE EXAMPLE The functions fmt.Printf and fmt.Sprintf format numbers and strings indented with spaces or zeroes, in different bases, and with optional quotes.">
 <meta property="og:url" content="https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/">
 <meta property="og:image" content="https://yourbasic.org/golang/format.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Printf string formatting [cheat sheet]">
-<meta name="twitter:description" content="CODE EXAMPLE The fmt package formats numbers and strings indented with spaces or zeroes, in different bases, and with optional quotes.">
+<meta name="twitter:title" content="Top fmt formatting tips [cheat sheet]">
+<meta name="twitter:description" content="CODE EXAMPLE The functions fmt.Printf and fmt.Sprintf format numbers and strings indented with spaces or zeroes, in different bases, and with optional quotes.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/format.jpg">
 
@@ -82,41 +82,39 @@
 
 <main>
 <article>
-<h1>Printf string formatting [cheat sheet]</h1>
+<h1>Top fmt formatting tips [cheat sheet]</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
-<p class="lead">The fmt package provides formatted I/O similar to printf and scanf in&nbsp;C. </p>
-
 <!-- CC BY-SA 3.0: http://www.thebluediamondgallery.com/wooden-tile/f/format.html -->
 
-<div style="margin-top:1em;"><img src="/golang/format.jpg"></div>
+<div style="margin-top:1em;"><img src="/golang/format.jpg" alt="Letter tiles forming the word format"></div>
 
-<div style="margin-top: 1em;">
-<div style="float: left; min-width: 30%; margin-right: 2em;">
-    <ul class="toc" style="margin: 0;">
-  <li><a href="#package-fmt-basics">Package fmt basics</a></li>
-  <li><a href="#default">Default formats and type</a></li>
-  <li><a href="#integer">Integer (indent, base, sign)</a></li>
-  <li><a href="#character">Character (quoted, Unicode)</a></li>
-  <li><a href="#boolean">Boolean (true/false)</a></li>
+<ul class="toc" style="margin-top: 1em;">
+  <li><a href="#basics">Basics</a>
+    <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
+      <li><a href="#printf">Printf</a></li>
+      <li><a href="#sprintf-format-without-printing">Sprintf (format without printing)</a></li>
+      <li><a href="#find-fmt-errors-with-vet">Find fmt errors with vet</a></li>
     </ul>
-</div>
-<div style="float: left;">
-    <ul class="toc" style="margin: 0;">
-  <li><a href="#pointer">Pointer (hex)</a></li>
-  <li><a href="#float">Float (indent, precision, scientific notation)</a></li>
-  <li><a href="#string-or-byte-slice">String or byte slice (quote, indent, hex)</a></li>
-  <li><a href="#special-values">Special values</a></li>
-  <li><a href="#find-incorrect-formatting-with-vet">Find incorrect formatting with vet</a></li>
+  </li>
+  <li><a href="#cheat-sheet">Cheat sheet</a>
+    <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
+      <li><a href="#default">Default formats and type</a></li>
+      <li><a href="#integer">Integer (indent, base, sign)</a></li>
+      <li><a href="#character">Character (quoted, Unicode)</a></li>
+      <li><a href="#boolean">Boolean (true/false)</a></li>
+      <li><a href="#pointer">Pointer (hex)</a></li>
+      <li><a href="#float">Float (indent, precision, scientific notation)</a></li>
+      <li><a href="#string-or-byte-slice">String or byte slice (quote, indent, hex)</a></li>
+      <li><a href="#special-values">Special values</a></li>
     </ul>
-</div>
-</div>
-<div style="clear: both"></div>
+  </li>
+</ul>
 
-<h2 id="package-fmt-basics">Package fmt basics</h2>
+<h2 id="basics">Basics</h2>
 
-<p>With the <a href="https://golang.org/pkg/fmt"><code>fmt</code></a> package
+<p>With the Go <a href="https://golang.org/pkg/fmt"><code>fmt</code></a> package
 you can format numbers and strings padded with spaces or zeroes,
 in different bases, and with optional quotes.</p>
 
@@ -124,9 +122,11 @@ in different bases, and with optional quotes.</p>
 plus some <strong>annotation verbs</strong> that tell the <code>fmt</code> functions
 how to format the trailing arguments.</p>
 
-<p>In this example, <a href="https://golang.org/pkg/fmt/#Printf"><code>fmt.printf</code></a> formats and writes to standard output:</p>
+<h3 id="printf">Printf</h3>
 
-<pre><code>fmt.Printf("Binary: %b\\%b", 4, 5) <span class="comment">`Binary: 100\101`</span>
+<p>In this example, <a href="https://golang.org/pkg/fmt/#Printf"><code>fmt.Printf</code></a> formats and writes to standard output:</p>
+
+<pre><code>fmt.Printf("Binary: %b\\%b", 4, 5) <span class="comment">// Prints `Binary: 100\101`</span>
 </code></pre>
 
 <ul>
@@ -135,20 +135,39 @@ how to format the trailing arguments.</p>
 <li>the <strong>special value</strong> <code>\\</code> is a backslash.</li>
 </ul>
 
-<h3 id="sprintf-formats-a-string-without-printing-it">Sprintf formats a string without printing it</h3>
+<p>As a special case, the verb <code>%%</code>, which consumes no argument, produces a percent&nbsp;sign:</p>
+
+<pre><code>fmt.Printf("%d %%", 50) <span class="comment">// Prints `50 %`</span></code></pre>
+
+<h3 id="sprintf-format-without-printing">Sprintf (format without printing)</h3>
 
 <p>Use <a href="https://golang.org/pkg/fmt/#Sprintf"><code>fmt.Sprintf</code></a>
 to format a string without printing&nbsp;it:</p>
 
 <pre><code>s := fmt.Sprintf("Binary: %b\\%b", 4, 5) <span class="comment">// s == `Binary: 100\101`</span></code></pre>
 
-<h3 id="percent-sign">Percent sign</h3>
+<h3 id="find-fmt-errors-with-vet">Find fmt errors with vet</h3>
 
-<p>The special verb <code>%%</code>, which consumes no argument, produces a percent&nbsp;sign:</p>
+<p>If you try to compile and run this incorrect line of code</p>
 
-<pre><code>fmt.Printf("%d %%", 50) <span class="comment">// `50 %`</span></code></pre>
+<pre><code>fmt.Printf("Binary: %b\\%b", 4) <span class="comment">// An argument to Printf is missing.
+</code></pre>
 
-<h2 id="default">Default formats and type</h2>
+<p>you&rsquo;ll find that the program will compile, and then print</p>
+
+<pre><code>Binary: 100\%!b(MISSING)</code></pre>
+
+<p>To catch this type of errors early, you can use
+the <a href="https://golang.org/cmd/vet/">vet command</a> – it can find
+calls whose arguments do not align with the format string.</p>
+
+<pre><code>$ go vet example.go
+example.go:8: missing argument for Printf("%b"): format reads arg 2, have only 1 args
+</code></pre>
+
+<h2 id="cheat-sheet">Cheat sheet</h2>
+
+<h3 id="default">Default formats and type</h3>
 
 <ul>
 <li><strong>Value:</strong> <code>[]int64{0, 1}</code></li>
@@ -181,7 +200,7 @@ to format a string without printing&nbsp;it:</p>
   </tbody>
 </table>
 
-<h2 id="integer">Integer (indent, base, sign)</h2>
+<h3 id="integer">Integer (indent, base, sign)</h3>
 
 <ul>
 <li><strong>Value:</strong> <code>15</code></li>
@@ -249,7 +268,7 @@ to format a string without printing&nbsp;it:</p>
   </tbody>
 </table>
 
-<h2 id="character">Character (quoted, Unicode)</h2>
+<h3 id="character">Character (quoted, Unicode)</h3>
 
 <ul>
 <li><strong>Value:</strong> <code>65</code> &nbsp; (Unicode letter A)</li>
@@ -287,15 +306,15 @@ to format a string without printing&nbsp;it:</p>
   </tbody>
 </table>
 
-<h2 id="boolean">Boolean (true/false)</h2>
+<h3 id="boolean">Boolean (true/false)</h3>
 
 <p>Use <code>%t</code> to format a boolean as <code>true</code> or <code>false</code>.</p>
 
-<h2 id="pointer">Pointer (hex)</h2>
+<h3 id="pointer">Pointer (hex)</h3>
 
 <p>Use <code>%p</code> to format a pointer in base 16 notation with leading <code>0x</code>.</p>
 
-<h2 id="float">Float (indent, precision, scientific notation)</h2>
+<h3 id="float">Float (indent, precision, scientific notation)</h3>
 
 <ul>
 <li><strong>Value:</strong> <code>123.456</code></li>
@@ -338,7 +357,7 @@ to format a string without printing&nbsp;it:</p>
   </tbody>
 </table>
 
-<h2 id="string-or-byte-slice">String or byte slice (quote, indent, hex)</h2>
+<h3 id="string-or-byte-slice">String or byte slice (quote, indent, hex)</h3>
 
 <ul>
 <li><strong>Value:</strong> <code>&quot;café&quot;</code></li>
@@ -386,7 +405,7 @@ to format a string without printing&nbsp;it:</p>
   </tbody>
 </table>
 
-<h2 id="special-values">Special values</h2>
+<h3 id="special-values">Special values</h3>
 
 <table class="white">
   <thead>
@@ -445,41 +464,14 @@ can be used in any <code>&quot;&quot;</code>&nbsp;string literal.</p>
 
 <p>The escapes <code>\u</code> and <code>\U</code> represent Unicode code points.</p>
 
-<pre><code>fmt.Println("\\caf\u00e9\n")
-<span class="comment">// Output:</span>
-<span class="comment">// \café</span>
+<pre><code>fmt.Println("\\caf\u00e9") <span class="comment">// Prints \café</span>
 </code></pre>
-
-<h2 id="find-incorrect-formatting-with-vet">Find incorrect formatting with vet</h2>
-
-<p>If you compile and run this line of code</p>
-
-<pre><code>fmt.Printf("Binary: %b\\%b", 4)
-</code></pre>
-
-<p>the program will print</p>
-
-<pre><code>Binary: 100\%!b(MISSING)</code></pre>
-
-<p>To catch these kinds of bugs, you can use
-the <a href="https://golang.org/cmd/vet/">vet command</a> – it can find
-calls whose arguments do not align with the format string.</p>
-
-<pre><code>$ go vet example.go
-example.go:8: missing argument for Printf("%b"): format reads arg 2, have only 1 args
-</code></pre>
-
-<h3 id="further-reading">Further reading</h3>
-
-<p><a href="/golang/string-functions-reference-cheat-sheet/"><img src="/golang/typewriter-thumb.png" title="String functions cheat sheet"></a></p>
-
-<p style="margin-top:0; margin-bottom:2em;">See this <a href="/golang/string-functions-reference-cheat-sheet/">String functions cheat sheet</a> for more string formatting functions.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2ffmt-printf-reference-cheat-sheet%2f&amp;text=Printf%20string%20formatting%20[cheat%20sheet]&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2ffmt-printf-reference-cheat-sheet%2f&amp;text=Top%20fmt%20formatting%20tips%20[cheat%20sheet]&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2ffmt-printf-reference-cheat-sheet%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2ffmt-printf-reference-cheat-sheet%2f&amp;title=Printf%20string%20formatting%20[cheat%20sheet]" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Printf%20string%20formatting%20[cheat%20sheet]&body=https%3a%2f%2fyourbasic.org%2fgolang%2ffmt-printf-reference-cheat-sheet%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2ffmt-printf-reference-cheat-sheet%2f&amp;title=Top%20fmt%20formatting%20tips%20[cheat%20sheet]" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Top%20fmt%20formatting%20tips%20[cheat%20sheet]&body=https%3a%2f%2fyourbasic.org%2fgolang%2ffmt-printf-reference-cheat-sheet%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
@@ -487,12 +479,6 @@ example.go:8: missing argument for Printf("%b"): format reads arg 2, have only 1
 
     
   <h2>Related</h2>
-
-  <div class="reference">
-    <a href="https://golang.org/pkg/fmt">Package fmt</a>
-    <div class="source">golang.org</div>
-    <div class="author"></div>
-  </div>
 
   <div class="reference">
     <a href="/golang/string-functions-reference-cheat-sheet/">40&#43; practical string tips [cheat sheet]</a>

@@ -1668,15 +1668,6 @@ A pointer has type *T. The keyword new allocates a new object and returns its&am
     </item>
     
     <item>
-      <title>Printf string formatting [cheat sheet]</title>
-      <link>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</guid>
-      <description>The fmt package provides formatted I/O similar to printf and scanf in&amp;nbsp;C.  Package fmt basics Default formats and type Integer (indent, base, sign) Character (quoted, Unicode) Boolean (true/false)   Pointer (hex) Float (indent, precision, scientific notation) String or byte slice (quote, indent, hex) Special values Find incorrect formatting with vet     Package fmt basics With the fmt package you can format numbers and strings padded with spaces or zeroes, in different bases, and with optional quotes.</description>
-    </item>
-    
-    <item>
       <title>Programming languages in use 2000-2019</title>
       <link>https://yourbasic.org/top-programming-languages/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1974,6 +1965,15 @@ Here is a convenience function that changes the location associated with a&amp;n
       <description>Timers and Tickers let you execute code in the future, once or repeatedly.
  Timeout (Timer) Repeat (Ticker) Wait, act and cancel  Timeout (Timer) time.After waits for a specified duration and then sends the current time on the returned channel:
 select { case news := &amp;lt;-AFP: fmt.Println(news) case &amp;lt;-time.After(time.Hour): fmt.Println(&amp;quot;No news in an hour.&amp;quot;) }  The underlying time.Timer will not be recovered by the garbage collector until the timer fires.</description>
+    </item>
+    
+    <item>
+      <title>Top fmt formatting tips [cheat sheet]</title>
+      <link>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</guid>
+      <description>Basics Printf Sprintf (format without printing) Find fmt errors with vet   Cheat sheet Default formats and type Integer (indent, base, sign) Character (quoted, Unicode) Boolean (true/false) Pointer (hex) Float (indent, precision, scientific notation) String or byte slice (quote, indent, hex) Special values    Basics With the Go fmt package you can format numbers and strings padded with spaces or zeroes, in different bases, and with optional quotes.</description>
     </item>
     
     <item>
