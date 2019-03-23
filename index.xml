@@ -1779,9 +1779,9 @@ Round(±0) = ±0 Round(±Inf) = ±Inf Round(NaN) = NaN  Round to even numberGo&a
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/rune/</guid>
-      <description>Runic letters encoded in stone, Ballstorp 1900 Characters, ASCII and Unicode Strings and UTF-8 encoding Special escape characters  Characters, ASCII and Unicode  The rune type is an alias for int32, and is used to emphasize than an integer represents a code&amp;nbsp;point.
+      <description>Runic letters encoded in stone, Ballstorp 1900 Characters, ASCII and Unicode  The rune type is an alias for int32, and is used to emphasize than an integer represents a code&amp;nbsp;point.
  ASCII defines 128 characters, identified by the code points 0–127. It covers English letters, Latin numbers, and a few other characters.
-Unicode, which is a superset of ASCII, defines a codespace of 1,114,112 code points.</description>
+Unicode, which is a superset of ASCII, defines a codespace of 1,114,112 code points. Unicode version 10.</description>
     </item>
     
     <item>
