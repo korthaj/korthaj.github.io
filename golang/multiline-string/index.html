@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Escape characters and multiline strings - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE Raw string literals, delimited by backticks, can contain line breaks. To insert escape characters, use interpreted string literals delimited by double quotes.">
+  <title>Escapes and multiline strings - yourbasic.org/golang </title>
+  <meta name="description" content="CODE EXAMPLE Essential Go string encodings in one place: raw strings, interpreted strings, escape characters, HTML and URL encoding.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -30,7 +30,7 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/multiline-string/"
   },
-  "headline": "Escape characters and multiline strings",
+  "headline": "Escapes and multiline strings",
   "image": [
     "https://yourbasic.org/golang/ascii-art.png"
    ],
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "CODE EXAMPLE Raw string literals, delimited by backticks, can contain line breaks. To insert escape characters, use interpreted string literals delimited by double quotes."
+  "description": "CODE EXAMPLE Essential Go string encodings in one place: raw strings, interpreted strings, escape characters, HTML and URL encoding."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Escape characters and multiline strings">
-<meta property="og:description" content="CODE EXAMPLE Raw string literals, delimited by backticks, can contain line breaks. To insert escape characters, use interpreted string literals delimited by double quotes.">
+<meta property="og:title" content="Escapes and multiline strings">
+<meta property="og:description" content="CODE EXAMPLE Essential Go string encodings in one place: raw strings, interpreted strings, escape characters, HTML and URL encoding.">
 <meta property="og:url" content="https://yourbasic.org/golang/multiline-string/">
 <meta property="og:image" content="https://yourbasic.org/golang/ascii-art.png">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Escape characters and multiline strings">
-<meta name="twitter:description" content="CODE EXAMPLE Raw string literals, delimited by backticks, can contain line breaks. To insert escape characters, use interpreted string literals delimited by double quotes.">
+<meta name="twitter:title" content="Escapes and multiline strings">
+<meta name="twitter:description" content="CODE EXAMPLE Essential Go string encodings in one place: raw strings, interpreted strings, escape characters, HTML and URL encoding.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/ascii-art.png">
 
@@ -82,7 +82,7 @@
 
 <main>
 <article>
-<h1>Escape characters and multiline strings</h1>
+<h1>Escapes and multiline strings</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
@@ -101,6 +101,8 @@
       <li><a href="#double-quote-escape">Double quote escape</a></li>
     </ul>
   </li>
+  <li><a href="#escape-html">Escape HTML</a></li>
+  <li><a href="#escape-url">Escape URL</a></li>
   <li><a href="#all-escape-characters">All escape characters</a></li>
 </ul>
 
@@ -110,9 +112,9 @@
 are interpreted literally.
 They can contain line breaks, and backslashes have no special meaning.</p>
 
-<pre><code>str := `First line
+<pre><code>const s = `First line
 Second line`
-fmt.Println(str)</code></pre>
+fmt.Println(s)</code></pre>
 
 <pre>First line
 Second line</pre>
@@ -129,9 +131,9 @@ but you can do</p>
 
 <p>To insert escape characters, use interpreted string literals delimited by <b>double&nbsp;quotes</b>.</p>
 
-<pre><code>str := "\tFirst line\n" +
+<pre><code>const s = "\tFirst line\n" +
 "Second line"
-fmt.Println(str)</code></pre>
+fmt.Println(s)</code></pre>
 
 <pre>   First line
 Second line</pre>
@@ -144,6 +146,33 @@ Second line</pre>
 
 <pre><code>fmt.Println("\"foo\"") <span class="comment">// Prints: "foo"</span>
 </code></pre>
+
+<h2 id="escape-html">Escape HTML</h2>
+
+<p>Use <a href="https://golang.org/pkg/html/#EscapeString"><code>html.EscpapeString</code></a>
+to encode a string so that it can be safely placed inside HTML&nbsp;text.
+The function escapes the five characters <code>&lt;</code>, <code>&gt;</code>, <code>&amp;</code>, <code>'</code> and&nbsp;<code>&quot;</code>.</p>
+
+<pre><code>const s = `"Foo's Bar" &lt;foobar@example.com&gt;`
+fmt.Println(html.EscapeString(s))</code></pre>
+
+<pre>&amp;#34;Foo&amp;#39;s Bar&amp;#34; &amp;lt;foobar@example.com&amp;gt;</pre>
+
+<p><a href="https://golang.org/pkg/html/#UnescapeString"><code>html.UnescapeString</code></a> does the inverse transformation.</p>
+
+<h2 id="escape-url">Escape URL</h2>
+
+<p>Use <a href="https://golang.org/pkg/net/url/#PathEscape"><code>url.PathEscape</code></a>
+in package <a href="https://golang.org/pkg/net/url/"><code>net/url</code></a>
+to encode a string so it can be safely placed inside a&nbsp;URL.
+The function uses <a href="https://en.wikipedia.org/wiki/Percent-encoding">percent-encoding</a>.</p>
+
+<pre><code>const s = `Foo's Bar?`
+fmt.Println(url.PathEscape(s))</code></pre>
+
+<pre>Foo%27s%20Bar%3F</pre>
+
+<p><a href="https://golang.org/pkg/net/url/#PathUnescape"><code>url.PathUnescape</code></a> does the inverse transformation.</p>
 
 <h2 id="all-escape-characters">All escape characters</h2>
 
@@ -218,10 +247,10 @@ fmt.Printf("%c", '\u00e9') <span class="comment">// Prints character: é</span>
 </code></pre>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fmultiline-string%2f&amp;text=Escape%20characters%20and%20multiline%20strings&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fmultiline-string%2f&amp;text=Escapes%20and%20multiline%20strings&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fmultiline-string%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fmultiline-string%2f&amp;title=Escape%20characters%20and%20multiline%20strings" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Escape%20characters%20and%20multiline%20strings&body=https%3a%2f%2fyourbasic.org%2fgolang%2fmultiline-string%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fmultiline-string%2f&amp;title=Escapes%20and%20multiline%20strings" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Escapes%20and%20multiline%20strings&body=https%3a%2f%2fyourbasic.org%2fgolang%2fmultiline-string%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
