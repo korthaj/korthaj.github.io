@@ -139,8 +139,8 @@ Second line</pre>
 
 <h2 id="escape-characters">Escape characters</h2>
 
-<p>Arbitrary character values (<a href="https://golang.org/ref/spec#Rune_literals">rune literals</a>)
-can be encoded with backslash escapes and used in any string or character literal.
+<p>Arbitrary character values can be encoded with backslash escapes and
+used in string or <a href="https://golang.org/ref/spec#Rune_literals">rune literals</a>.
 There are four different formats:</p>
 
 <ul>
@@ -194,11 +194,19 @@ There are four different formats:</p>
       <td><code>\v</code></td>
       <td>Vertical tab</td>
     </tr>
+    <tr>
+      <td><code>\'</code></td>
+      <td>Single quote (only in rune literals)</td>
+    </tr>
+    <tr>
+      <td><code>\"</code></td>
+      <td>Double quote (only in interpreted string literals)</td>
+    </tr>
   </tbody>
 </table>
 
-<pre><code>fmt.Println("\\caf\u00e9") <span class="comment">// Prints: \café</span>
-fmt.Printf("%c", '\u00e9') <span class="comment">// Prints: é</span>
+<pre><code>fmt.Println("\\caf\u00e9") <span class="comment">// Prints the string \café</span>
+fmt.Printf("%c", '\u00e9') <span class="comment">// Prints the character é</span>
 </code></pre>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
