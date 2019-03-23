@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/typewriter.png"
    ],
   "datePublished": "2018-03-15T00:00:00&#43;0000",
-  "dateModified": "2019-03-21T00:00:00&#43;0000",
+  "dateModified": "2019-03-23T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -91,7 +91,7 @@
 <div><img src="/golang/typewriter.png" class="extra-content" style="float:right;margin-top:2em;"></div>
 
 <ul class="toc">
-  <li><a href="#string-literals-zero-value">String literals (zero value)</a></li>
+  <li><a href="#string-literals-escape-characters">String literals (escape characters)</a></li>
   <li><a href="#concatenate">Concatenate</a></li>
   <li><a href="#equal-and-compare-ignore-case">Equal and compare (ignore case)</a></li>
   <li><a href="#length-in-bytes-or-runes">Length in bytes or runes</a></li>
@@ -104,7 +104,7 @@
   <li><a href="#regular-expressions">Regular expressions</a></li>
 </ul>
 
-<h2 id="string-literals-zero-value">String literals (zero value)</h2>
+<h2 id="string-literals-escape-characters">String literals (escape characters)</h2>
 
 <table class="white">
   <thead>
@@ -128,25 +128,42 @@
     <tr>
       <td style="border-bottom: 0;"><code>"\xe6\x97\xa5"</code></td>
       <td style="border-bottom: 0;">日</td>
-      <td style="border-bottom: 0;"><code>\xNN</code> specifies a byte*</td>
+      <td style="border-bottom: 0;"><code>\xNN</code> specifies a byte</td>
     </tr>
     <tr>
-      <td style="padding-top: 0;"><code>"\u65E5"</code></td>
-      <td style="padding-top: 0;">日</td>
-      <td style="padding-top: 0;"><code>\uNNNN</code> specifies a Unicode value</td>
+      <td style="border-bottom: 0; padding-top: 0;"><code>"\u65E5"</code></td>
+      <td style="border-bottom: 0; padding-top: 0;">日</td>
+      <td style="border-bottom: 0; padding-top: 0;"><code>\uNNNN</code> specifies a Unicode value</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;"><code>"\\"</code></td>
+      <td style="border-bottom: 0; padding-top: 0;">\</td>
+      <td style="border-bottom: 0; padding-top: 0;">Backslash</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;"><code>"\""</code></td>
+      <td style="border-bottom: 0; padding-top: 0;">"</td>
+      <td style="border-bottom: 0; padding-top: 0;">Double quotes</td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0; padding-top: 0;"><code>"\n"</code></td>
+      <td style="border-bottom: 0; padding-top: 0;"></td>
+      <td style="border-bottom: 0; padding-top: 0;">Newline</td>
+    </tr>
+    <tr>
+      <td style="padding-top: 0;"><code>"\t"</code></td>
+      <td style="padding-top: 0;"></td>
+      <td style="padding-top: 0;">Tab</td>
     </tr>
     <tr>
       <td><code>`\xe6`</code></td>
       <td>\xe6</td>
-      <td>Raw string literal**</td>
+      <td>Raw string literal*</td>
     </tr>
   </tbody>
 </table>
 
-<p>&#42; See <a href="/golang/rune/#special-escape-characters">Runes and character encoding</a> for
-a complete list of special escape characters.</p>
-
-<p>&#42;&#42; In <code>``</code> string literals, text is interpreted literally and
+<p>&#42; In <code>``</code> string literals, text is interpreted literally and
 backslashes have no special meaning.
 See <a href="/golang/multiline-string/">2 ways to write multiline strings</a> for more on raw strings.</p>
 

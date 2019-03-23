@@ -179,7 +179,7 @@ package main import &#34;fmt&#34; func main() { fmt.Println(&#34;Hello, world!&#
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/string-functions-reference-cheat-sheet/</guid>
-      <description>String literals (zero value) Concatenate Equal and compare (ignore case) Length in bytes or runes Index, substring, iteratate Search (contains, prefix/suffix, index) Replace (uppercase/lowercase, trim) Split by space or comma Join strings with separator Format and convert Regular expressions  String literals (zero value)   Expression Result Note     &#34;&#34;  Default zero value for type string   &#34;Japan 日本&#34; Japan 日本 Go code is Unicode text encoded in UTF‑8   &#34;</description>
+      <description>String literals (escape characters) Concatenate Equal and compare (ignore case) Length in bytes or runes Index, substring, iteratate Search (contains, prefix/suffix, index) Replace (uppercase/lowercase, trim) Split by space or comma Join strings with separator Format and convert Regular expressions  String literals (escape characters)   Expression Result Note     &#34;&#34;  Default zero value for type string   &#34;Japan 日本&#34; Japan 日本 Go code is Unicode text encoded in UTF‑8   &#34;</description>
     </item>
     
     <item>
