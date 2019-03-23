@@ -135,73 +135,11 @@ fmt.Println(<b>[]rune</b>("café")) <span class="comment">// [99 97 102 233]</sp
 <p>See <a href="/golang/convert-string-to-byte-slice/">Convert between byte array/slice and string</a> and
 <a href="/golang/convert-string-to-rune-slice/">Convert between rune array/slice and string</a>.</p>
 
-<h2 id="special-escape-characters">Special escape characters</h2>
+<h3 id="further-reading">Further reading</h3>
 
-<p>Arbitrary character values can be encoded with backslash escapes and
-be used in any <code>&quot;&quot;</code>&nbsp;string
-or <code>&#39;&#39;</code>&nbsp;character literal.
-There are four different formats:</p>
+<div><a href="/golang/multiline-string/" title="Multiline strings with escape characters"><img src="/golang/ascii-art.png"></a></div>
 
-<ul>
-<li><code>\x</code> followed by exactly two hexadecimal digits,</li>
-<li><code>\</code> followed by exactly three octal digits,</li>
-<li><code>\u</code> followed by exactly four hexadecimal digits,</li>
-<li><code>\U</code> followed by exactly eight hexadecimal digits,</li>
-</ul>
-
-<p>where the escapes <code>\u</code> and <code>\U</code> represent Unicode code points.</p>
-
-<p>The following predefined special values are also available.</p>
-
-<table class="white">
-  <thead>
-    <tr>
-      <th>Value</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>\a</code></td>
-      <td>U+0007 alert or bell</td>
-    </tr>
-    <tr>
-      <td><code>\b</code></td>
-      <td>U+0008 backspace</td>
-    </tr>
-    <tr>
-      <td><code>\\</code></td>
-      <td>U+005c backslash</td>
-    </tr>
-    <tr>
-      <td><code>\t</code></td>
-      <td>U+0009 horizontal tab</td>
-    </tr>
-    <tr>
-      <td><code>\n</code></td>
-      <td>U+000A line feed or newline</td>
-    </tr>
-    <tr>
-      <td><code>\f</code></td>
-      <td>U+000C form feed</td>
-    </tr>
-    <tr>
-      <td><code>\r</code></td>
-      <td>U+000D carriage return</td>
-    </tr>
-    <tr>
-      <td><code>\v</code></td>
-      <td>U+000b vertical tab</td>
-    </tr>
-  </tbody>
-</table>
-
-<pre><code>fmt.Println("\\caf\u00e9") <span class="comment">// Prints: \café</span>
-fmt.Printf("%c", '\u00e9') <span class="comment">// Prints: é</span>
-</code></pre>
-
-<p>However, in raw string literals, delimited by back quotes, text is interpreted literally and backslashes have no special meaning.
-See <a href="/golang/multiline-string/">Multiline strings with escape characters</a>.</p>
+<p style="margin-top:0em;"><a href="/golang/multiline-string/">Multiline strings with escape characters</a></p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
 <a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2frune%2f&amp;text=Runes%20and%20character%20encoding&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;

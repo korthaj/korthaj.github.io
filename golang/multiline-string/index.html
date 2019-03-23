@@ -90,6 +90,12 @@
 
 <div style="margin-top:1em;"><img src="/golang/ascii-art.png" alt="Amiga style ASCII art"></div>
 
+<ul class="toc">
+  <li><a href="#raw-string-literals">Raw string literals</a></li>
+  <li><a href="#interpreted-string-literals">Interpreted string literals</a></li>
+  <li><a href="#escape-characters">Escape characters</a></li>
+</ul>
+
 <h2 id="raw-string-literals">Raw string literals</h2>
 
 <p>Raw string literals, delimited by <b>backticks</b> (back quotes) can contain line&nbsp;breaks.</p>
@@ -130,8 +136,70 @@ Second line</pre>
 <pre><code>fmt.Println("\"foo\"") <span class="comment">// Prints: "foo"</span>
 </code></pre>
 
-<p>The <a href="/golang/rune/#special-escape-characters">runes and character encoding</a> article
-lists escape characters and special values that can be used in interpreted string literals.</p>
+<h2 id="escape-characters">Escape characters</h2>
+
+<p>Arbitrary character values can be encoded with backslash escapes and
+be used in any <code>&quot;&quot;</code>&nbsp;string
+or <code>&#39;&#39;</code>&nbsp;character literal.
+There are four different formats:</p>
+
+<ul>
+<li><code>\x</code> followed by exactly two hexadecimal digits,</li>
+<li><code>\</code> followed by exactly three octal digits,</li>
+<li><code>\u</code> followed by exactly four hexadecimal digits,</li>
+<li><code>\U</code> followed by exactly eight hexadecimal digits,</li>
+</ul>
+
+<p>where the escapes <code>\u</code> and <code>\U</code> represent Unicode code points.</p>
+
+<p>The following special escape values are also available.</p>
+
+<table class="white">
+  <thead>
+    <tr>
+      <th>Value</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>\a</code></td>
+      <td>Alert or bell</td>
+    </tr>
+    <tr>
+      <td><code>\b</code></td>
+      <td>Backspace</td>
+    </tr>
+    <tr>
+      <td><code>\\</code></td>
+      <td>Backslash</td>
+    </tr>
+    <tr>
+      <td><code>\t</code></td>
+      <td>Horizontal tab</td>
+    </tr>
+    <tr>
+      <td><code>\n</code></td>
+      <td>Newline</td>
+    </tr>
+    <tr>
+      <td><code>\f</code></td>
+      <td>Form feed</td>
+    </tr>
+    <tr>
+      <td><code>\r</code></td>
+      <td>Carriage return</td>
+    </tr>
+    <tr>
+      <td><code>\v</code></td>
+      <td>Vertical tab</td>
+    </tr>
+  </tbody>
+</table>
+
+<pre><code>fmt.Println("\\caf\u00e9") <span class="comment">// Prints: \café</span>
+fmt.Printf("%c", '\u00e9') <span class="comment">// Prints: é</span>
+</code></pre>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
 <a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fmultiline-string%2f&amp;text=Multiline%20strings%20with%20escape%20characters&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;

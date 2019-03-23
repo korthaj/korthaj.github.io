@@ -1444,10 +1444,10 @@ func main() { fmt.Println(&amp;quot;Hello&amp;quot;) }  This is a trade-off in t
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/multiline-string/</guid>
-      <description>Raw string literals Raw string literals, delimited by backticks (back quotes) can contain line&amp;nbsp;breaks.
+      <description>Raw string literals Interpreted string literals Escape characters  Raw string literals Raw string literals, delimited by backticks (back quotes) can contain line&amp;nbsp;breaks.
 str := `First line Second line` fmt.Println(str) First line Second line Raw strings literals are interpreted literally and backslashes have no special meaning.
 Escape backticks It&amp;rsquo;s not possible to use a backtick in a raw string literal, but you can do
-fmt.Println(&#34;`&#34; + &#34;foo&#34; + &#34;`&#34;) // Prints: `foo`  Interpreted string literals To insert escape characters, use interpreted string literals delimited by double&amp;nbsp;quotes.</description>
+fmt.Println(&#34;`&#34; + &#34;foo&#34; + &#34;</description>
     </item>
     
     <item>
