@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Multiline strings with escape characters - yourbasic.org/golang </title>
+  <title>Escape characters and multiline strings - yourbasic.org/golang </title>
   <meta name="description" content="CODE EXAMPLE Raw string literals, delimited by backticks, can contain line breaks. To insert escape characters, use interpreted string literals delimited by double quotes.">
   
   <link rel="stylesheet" href="/style.css">
@@ -30,7 +30,7 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/multiline-string/"
   },
-  "headline": "Multiline strings with escape characters",
+  "headline": "Escape characters and multiline strings",
   "image": [
     "https://yourbasic.org/golang/ascii-art.png"
    ],
@@ -54,13 +54,13 @@
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Multiline strings with escape characters">
+<meta property="og:title" content="Escape characters and multiline strings">
 <meta property="og:description" content="CODE EXAMPLE Raw string literals, delimited by backticks, can contain line breaks. To insert escape characters, use interpreted string literals delimited by double quotes.">
 <meta property="og:url" content="https://yourbasic.org/golang/multiline-string/">
 <meta property="og:image" content="https://yourbasic.org/golang/ascii-art.png">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Multiline strings with escape characters">
+<meta name="twitter:title" content="Escape characters and multiline strings">
 <meta name="twitter:description" content="CODE EXAMPLE Raw string literals, delimited by backticks, can contain line breaks. To insert escape characters, use interpreted string literals delimited by double quotes.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/ascii-art.png">
@@ -82,7 +82,7 @@
 
 <main>
 <article>
-<h1>Multiline strings with escape characters</h1>
+<h1>Escape characters and multiline strings</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
@@ -98,7 +98,9 @@
 
 <h2 id="raw-string-literals">Raw string literals</h2>
 
-<p>Raw string literals, delimited by <b>backticks</b> (back quotes) can contain line&nbsp;breaks.</p>
+<p>Raw strings literals, delimited by <b>backticks</b> (back quotes),
+are interpreted literally.
+They can contain line breaks and backslashes have no special meaning.</p>
 
 <pre><code>str := `First line
 Second line`
@@ -106,8 +108,6 @@ fmt.Println(str)</code></pre>
 
 <pre>First line
 Second line</pre>
-
-<p>Raw strings literals are interpreted literally and backslashes have no special meaning.</p>
 
 <h3 id="escape-backticks">Escape backticks</h3>
 
@@ -179,7 +179,7 @@ There are four different formats:</p>
     </tr>
     <tr>
       <td><code>\n</code></td>
-      <td>Newline</td>
+      <td>Line feed or newline</td>
     </tr>
     <tr>
       <td><code>\f</code></td>
@@ -201,10 +201,10 @@ fmt.Printf("%c", '\u00e9') <span class="comment">// Prints: é</span>
 </code></pre>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fmultiline-string%2f&amp;text=Multiline%20strings%20with%20escape%20characters&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fmultiline-string%2f&amp;text=Escape%20characters%20and%20multiline%20strings&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fmultiline-string%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fmultiline-string%2f&amp;title=Multiline%20strings%20with%20escape%20characters" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Multiline%20strings%20with%20escape%20characters&body=https%3a%2f%2fyourbasic.org%2fgolang%2fmultiline-string%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fmultiline-string%2f&amp;title=Escape%20characters%20and%20multiline%20strings" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Escape%20characters%20and%20multiline%20strings&body=https%3a%2f%2fyourbasic.org%2fgolang%2fmultiline-string%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>

@@ -283,6 +283,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/multiline-string/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/find-go-build-version/</loc>
   </url>
   
@@ -536,10 +540,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/opening-brace-separate-line/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/multiline-string/</loc>
   </url>
   
   <url>

@@ -646,6 +646,17 @@ type error interface { Error() string }  Error handling example The os.</descrip
     </item>
     
     <item>
+      <title>Escape characters and multiline strings</title>
+      <link>https://yourbasic.org/golang/multiline-string/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/multiline-string/</guid>
+      <description>Raw string literals Interpreted string literals Escape characters  Raw string literals Raw strings literals, delimited by backticks (back quotes), are interpreted literally. They can contain line breaks and backslashes have no special meaning.
+str := `First line Second line` fmt.Println(str) First line Second line Escape backticks It&amp;rsquo;s not possible to use a backtick in a raw string literal, but you can do
+fmt.Println(&#34;`&#34; + &#34;foo&#34; + &#34;`&#34;) // Prints: `foo`  Interpreted string literals To insert escape characters, use interpreted string literals delimited by double&amp;nbsp;quotes.</description>
+    </item>
+    
+    <item>
       <title>Find build version</title>
       <link>https://yourbasic.org/golang/find-go-build-version/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1253,18 +1264,6 @@ type MyType struct { n int } func (p *MyType) Value() int { return p.</descripti
 func main() { fmt.Println(&amp;quot;Hello&amp;quot;) }  ../main.go:1:6: missing function body for &amp;quot;main&amp;quot; ../main.go:2:1: syntax error: unexpected semicolon or newline before {  You must write:
 func main() { fmt.Println(&amp;quot;Hello&amp;quot;) }  This is a trade-off in the design of the Go language.
  Some have argued that the lexer should do lookahead to permit the brace to live on the next line.</description>
-    </item>
-    
-    <item>
-      <title>Multiline strings with escape characters</title>
-      <link>https://yourbasic.org/golang/multiline-string/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/multiline-string/</guid>
-      <description>Raw string literals Interpreted string literals Escape characters  Raw string literals Raw string literals, delimited by backticks (back quotes) can contain line&amp;nbsp;breaks.
-str := `First line Second line` fmt.Println(str) First line Second line Raw strings literals are interpreted literally and backslashes have no special meaning.
-Escape backticks It&amp;rsquo;s not possible to use a backtick in a raw string literal, but you can do
-fmt.Println(&#34;`&#34; + &#34;foo&#34; + &#34;</description>
     </item>
     
     <item>
