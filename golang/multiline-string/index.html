@@ -98,7 +98,7 @@
 
 <h2 id="raw-string-literals">Raw string literals</h2>
 
-<p>Raw strings literals, delimited by <b>backticks</b> (back quotes),
+<p>Raw <a href="https://golang.org/ref/spec#String_literals">string literals</a>, delimited by <b>backticks</b> (back quotes),
 are interpreted literally.
 They can contain line breaks and backslashes have no special meaning.</p>
 
@@ -111,7 +111,8 @@ Second line</pre>
 
 <h3 id="escape-backticks">Escape backticks</h3>
 
-<p>It&rsquo;s not possible to use a backtick in a raw string literal, but you can do</p>
+<p>It&rsquo;s <a href="https://github.com/golang/go/issues/24475">not possible</a> to include a backtick in a raw string literal,
+but you can do</p>
 
 <pre><code>fmt.Println("`" + "foo" + "`") <span class="comment">// Prints: `foo`</span>
 </code></pre>
@@ -138,8 +139,8 @@ Second line</pre>
 
 <h2 id="escape-characters">Escape characters</h2>
 
-<p>Arbitrary character values can be encoded with backslash escapes and
-be used in any string or character literal.
+<p>Arbitrary character values (<a href="https://golang.org/ref/spec#Rune_literals">rune literals</a>)
+can be encoded with backslash escapes and used in any string or character literal.
 There are four different formats:</p>
 
 <ul>
