@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2 ways to write multiline strings - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE Raw string literals, delimited by back quotes, can contain line breaks. To insert escape characters, use interpreted string literals delimited by double quotes.">
+  <title>Multiline strings with escape characters - yourbasic.org/golang </title>
+  <meta name="description" content="CODE EXAMPLE Raw string literals, delimited by backticks, can contain line breaks. To insert escape characters, use interpreted string literals delimited by double quotes.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/multiline-string/"
   },
-  "headline": "2 ways to write multiline strings",
+  "headline": "Multiline strings with escape characters",
   "image": [
     "https://yourbasic.org/golang/ascii-art.png"
    ],
   "datePublished": "2018-04-21T00:00:00&#43;0000",
-  "dateModified": "2019-03-21T00:00:00&#43;0000",
+  "dateModified": "2019-03-23T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "CODE EXAMPLE Raw string literals, delimited by back quotes, can contain line breaks. To insert escape characters, use interpreted string literals delimited by double quotes."
+  "description": "CODE EXAMPLE Raw string literals, delimited by backticks, can contain line breaks. To insert escape characters, use interpreted string literals delimited by double quotes."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2 ways to write multiline strings">
-<meta property="og:description" content="CODE EXAMPLE Raw string literals, delimited by back quotes, can contain line breaks. To insert escape characters, use interpreted string literals delimited by double quotes.">
+<meta property="og:title" content="Multiline strings with escape characters">
+<meta property="og:description" content="CODE EXAMPLE Raw string literals, delimited by backticks, can contain line breaks. To insert escape characters, use interpreted string literals delimited by double quotes.">
 <meta property="og:url" content="https://yourbasic.org/golang/multiline-string/">
 <meta property="og:image" content="https://yourbasic.org/golang/ascii-art.png">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="2 ways to write multiline strings">
-<meta name="twitter:description" content="CODE EXAMPLE Raw string literals, delimited by back quotes, can contain line breaks. To insert escape characters, use interpreted string literals delimited by double quotes.">
+<meta name="twitter:title" content="Multiline strings with escape characters">
+<meta name="twitter:description" content="CODE EXAMPLE Raw string literals, delimited by backticks, can contain line breaks. To insert escape characters, use interpreted string literals delimited by double quotes.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/ascii-art.png">
 
@@ -82,7 +82,7 @@
 
 <main>
 <article>
-<h1>2 ways to write multiline strings</h1>
+<h1>Multiline strings with escape characters</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
@@ -92,7 +92,7 @@
 
 <h2 id="raw-string-literals">Raw string literals</h2>
 
-<p>Raw string literals, delimited by <b>back quotes</b>, can contain line breaks.</p>
+<p>Raw string literals, delimited by <b>backticks</b> (back quotes) can contain line&nbsp;breaks.</p>
 
 <pre><code>str := `First line
 Second line`
@@ -103,9 +103,16 @@ Second line</pre>
 
 <p>Raw strings literals are interpreted literally and backslashes have no special meaning.</p>
 
+<h3 id="escape-backticks">Escape backticks</h3>
+
+<p>It&rsquo;s not possible to use a backtick in a raw string literal, but you can do</p>
+
+<pre><code>fmt.Println("`" + "foo" + "`") <span class="comment">// Prints: `foo`</span>
+</code></pre>
+
 <h2 id="interpreted-string-literals">Interpreted string literals</h2>
 
-<p>To insert escape characters, use interpreted string literals delimited by <b>double quotes</b>.</p>
+<p>To insert escape characters, use interpreted string literals delimited by <b>double&nbsp;quotes</b>.</p>
 
 <pre><code>str := "\tFirst line\n" +
 "Second line"
@@ -116,20 +123,21 @@ Second line</pre>
 
 <p>The escape character <code>\t</code> denotes a horizontal tab and <code>\n</code> is a line&nbsp;feed or newline.</p>
 
+<h3 id="escape-back-quotes">Escape back quotes</h3>
+
+<p>Use <code>\&quot;</code> to insert a back quote in an interpreted string literal:</p>
+
+<pre><code>fmt.Println("\"foo\"") <span class="comment">// Prints: "foo"</span>
+</code></pre>
+
 <p>The <a href="/golang/rune/#special-escape-characters">runes and character encoding</a> article
-has a complete list of escape characters and special values that can be used in interpreted string literals.</p>
-
-<h3 id="further-reading">Further reading</h3>
-
-<div><a href="/golang/string-functions-reference-cheat-sheet/"><img src="/golang/typewriter-thumb.png" title="String functions cheat sheet"></a></div>
-
-<p style="margin-top:0; margin-bottom:2em;"><a href="/golang/string-functions-reference-cheat-sheet/">String functions cheat sheet</a></p>
+lists escape characters and special values that can be used in interpreted string literals.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fmultiline-string%2f&amp;text=2%20ways%20to%20write%20multiline%20strings&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fmultiline-string%2f&amp;text=Multiline%20strings%20with%20escape%20characters&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fmultiline-string%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fmultiline-string%2f&amp;title=2%20ways%20to%20write%20multiline%20strings" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=2%20ways%20to%20write%20multiline%20strings&body=https%3a%2f%2fyourbasic.org%2fgolang%2fmultiline-string%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fmultiline-string%2f&amp;title=Multiline%20strings%20with%20escape%20characters" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Multiline%20strings%20with%20escape%20characters&body=https%3a%2f%2fyourbasic.org%2fgolang%2fmultiline-string%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
@@ -137,6 +145,12 @@ has a complete list of escape characters and special values that can be used in 
 
     
   <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/rune/">Runes and character encoding</a>
+    <div class="desc">A rune is a type meant to represent a Unicode code point. Strings, however, are sequences of bytes (typically containing Unicode text encoded in UTF-8). </div>
+    <div class="source">yourbasic.org</div>
+  </div>
 
   <div class="reference">
     <a href="/golang/string-functions-reference-cheat-sheet/">40&#43; practical string tips [cheat sheet]</a>
