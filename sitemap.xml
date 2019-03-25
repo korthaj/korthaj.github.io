@@ -263,6 +263,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/defer/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/gotcha/</loc>
   </url>
   
@@ -404,10 +408,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/iterator-generator-pattern/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/defer/</loc>
   </url>
   
   <url>

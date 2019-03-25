@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How to defer a function call - yourbasic.org/golang </title>
-  <meta name="description" content="Deferred functions are commonly used for clean-up actions, such as closing a file or unlocking a mutex.">
+  <title>Defer a function call and return a value - yourbasic.org/golang </title>
+  <meta name="description" content="CODE EXAMPLE A deferred function is executed when the surrounding function returns, either on exit or on error. Deferred functions are commonly used for clean-up actions, such as closing a file or unlocking a mutex.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/defer/"
   },
-  "headline": "How to defer a function call",
+  "headline": "Defer a function call and return a value",
   "image": [
     "https://yourbasic.org/golang/now-later-sign.jpg"
    ],
   "datePublished": "2018-09-28T00:00:00&#43;0000",
-  "dateModified": "2018-09-28T00:00:00&#43;0000",
+  "dateModified": "2019-03-25T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "Deferred functions are commonly used for clean-up actions, such as closing a file or unlocking a mutex."
+  "description": "CODE EXAMPLE A deferred function is executed when the surrounding function returns, either on exit or on error. Deferred functions are commonly used for clean-up actions, such as closing a file or unlocking a mutex."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to defer a function call">
-<meta property="og:description" content="Deferred functions are commonly used for clean-up actions, such as closing a file or unlocking a mutex.">
+<meta property="og:title" content="Defer a function call and return a value">
+<meta property="og:description" content="CODE EXAMPLE A deferred function is executed when the surrounding function returns, either on exit or on error. Deferred functions are commonly used for clean-up actions, such as closing a file or unlocking a mutex.">
 <meta property="og:url" content="https://yourbasic.org/golang/defer/">
 <meta property="og:image" content="https://yourbasic.org/golang/now-later-sign.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="How to defer a function call">
-<meta name="twitter:description" content="Deferred functions are commonly used for clean-up actions, such as closing a file or unlocking a mutex.">
+<meta name="twitter:title" content="Defer a function call and return a value">
+<meta name="twitter:description" content="CODE EXAMPLE A deferred function is executed when the surrounding function returns, either on exit or on error. Deferred functions are commonly used for clean-up actions, such as closing a file or unlocking a mutex.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/now-later-sign.jpg">
 
@@ -82,29 +82,33 @@
 
 <main>
 <article>
-<h1>How to defer a function call</h1>
+<h1>Defer a function call and return a value</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-<p class="lead">A deferred function is executed
-when the surrounding function&nbsp;returns.</p>
 
 <!-- CC0: https://pixabay.com/en/sign-direction-now-afterwards-1865303/ -->
 
 <p><img src="/golang/now-later-sign.jpg"></p>
 
 <ul class="toc">
-  <li><a href="#basics">Basics</a></li>
-  <li><a href="#execution-order">Execution order</a></li>
-  <li><a href="#return-values">Return values</a></li>
-  <li><a href="#clean-up-example">Clean-up (example)</a></li>
-  <li><a href="#recover-from-panic-example">Recover from panic (example)</a></li>
+  <li><a href="#defer-statement-basics">Defer statement basics</a>
+    <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
+      <li><a href="#order-of-execution">Order of execution</a></li>
+      <li><a href="#use-func-to-return-a-value">Use func to return a value</a></li>
+    </ul>
+  </li>
+  <li><a href="#common-applications">Common applications</a>
+    <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
+      <li><a href="#close-a-file">Close a file</a></li>
+  <li><a href="#error-handling-catch-a-panic">Error handling: catch a panic</a></li>
+    </ul>
+  </li>
 </ul>
 
-<h2 id="basics">Basics</h2>
+<h2 id="defer-statement-basics">Defer statement basics</h2>
 
 <p>A <code>defer</code> statement postpones the execution of a function
-until the surrounding function returns.</p>
+until the surrounding function returns, either normally or through a&nbsp;panic.</p>
 
 <pre><code>func main() {
     <b>defer</b> fmt.Println("World")
@@ -114,7 +118,7 @@ until the surrounding function returns.</p>
 <pre>Hello
 World</pre>
 
-<p>Deferred calls are executed even when the function panics.</p>
+<p>Deferred calls are executed even when the function panics:</p>
 
 <pre><code>func main() {
     <b>defer</b> fmt.Println("World")
@@ -129,7 +133,7 @@ goroutine 1 [running]:
 main.main()
     ../main.go:3 +0xa0</pre>
 
-<h2 id="execution-order">Execution order</h2>
+<h3 id="order-of-execution">Order of execution</h3>
 
 <p>The deferred call&rsquo;s <strong>arguments are evaluated immediately</strong>,
 even though the function call is not executed until the surrounding function returns.</p>
@@ -150,9 +154,9 @@ World
 2
 1</pre>
 
-<h2 id="return-values">Return values</h2>
+<h3 id="use-func-to-return-a-value">Use func to return a value</h3>
 
-<p>Deferred functions may access and modify the surrounding function&rsquo;s
+<p>Deferred anonymous functions may access and modify the surrounding function&rsquo;s
 named return parameters.</p>
 
 <p>In this example, the <code>foo</code> function returns &ldquo;Change World&rdquo;.</p>
@@ -164,11 +168,15 @@ named return parameters.</p>
     return "Hello World"
 }</code></pre>
 
-<h2 id="clean-up-example">Clean-up (example)</h2>
+<h2 id="common-applications">Common applications</h2>
 
-<p>Defer is commonly used to perform clean-up actions,
+<p>Defer is often used to perform clean-up actions,
 such as closing a file or unlocking a mutex.
-In this example defer statements are used to ensure that all files
+Such actions should be performed both when the function returns normally and when it panics.</p>
+
+<h3 id="close-a-file">Close a file</h3>
+
+<p>In this example, defer statements are used to ensure that all files
 are closed before leaving the <code>CopyFile</code> function, whichever way that happens.</p>
 
 <pre><code>func CopyFile(dstName, srcName string) (written int64, err error) {
@@ -187,22 +195,22 @@ are closed before leaving the <code>CopyFile</code> function, whichever way that
     return io.Copy(dst, src)
 }</code></pre>
 
-<h2 id="recover-from-panic-example">Recover from panic (example)</h2>
+<h3 id="error-handling-catch-a-panic">Error handling: catch a panic</h3>
 
 <!-- CC0: https://www.maxpixel.net/Extinguish-Fire-Extinction-Firefighter-484540 -->
 
-<div><a href="/golang/recover-from-panic/" title="Recover from a panic"><img src="/golang/extinguish-fire-
+<div><a href="/golang/recover-from-panic/#recover-and-catch-a-panic" title="Recover from a panic"><img src="/golang/extinguish-fire-
 thumb.jpg"></a></div>
 
 <p style="margin-top:0; margin-bottom:2em;">
-The <a href="/golang/recover-from-panic/">Recover from a panic</a> article
-demonstrates how to use a defer statement to recover from a&nbsp;panic and update the return value.</p>
+The <a href="/golang/recover-from-panic/#recover-and-catch-a-panic">Recover from a panic</a> code example
+shows how to use a defer statement to recover from a&nbsp;panic and update the return value.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fdefer%2f&amp;text=How%20to%20defer%20a%20function%20call&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fdefer%2f&amp;text=Defer%20a%20function%20call%20and%20return%20a%20value&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fdefer%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fdefer%2f&amp;title=How%20to%20defer%20a%20function%20call" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=How%20to%20defer%20a%20function%20call&body=https%3a%2f%2fyourbasic.org%2fgolang%2fdefer%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fdefer%2f&amp;title=Defer%20a%20function%20call%20and%20return%20a%20value" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Defer%20a%20function%20call%20and%20return%20a%20value&body=https%3a%2f%2fyourbasic.org%2fgolang%2fdefer%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>

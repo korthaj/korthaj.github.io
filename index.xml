@@ -689,6 +689,17 @@ type T struct { n int f float64 next *T } fmt.</description>
     </item>
     
     <item>
+      <title>Defer a function call and return a value</title>
+      <link>https://yourbasic.org/golang/defer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/defer/</guid>
+      <description>Defer statement basics Order of execution Use func to return a value   Common applications Close a file Error handling: catch a panic    Defer statement basics A defer statement postpones the execution of a function until the surrounding function returns, either normally or through a&amp;nbsp;panic.
+func main() { defer fmt.Println(&#34;World&#34;) fmt.Println(&#34;Hello&#34;) } Hello World Deferred calls are executed even when the function panics:
+func main() { defer fmt.</description>
+    </item>
+    
+    <item>
       <title>Do you make these Go coding mistakes?</title>
       <link>https://yourbasic.org/golang/gotcha/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1065,18 +1076,6 @@ Keep allocated memory To keep the underlying array, slice the slice to zero leng
       <description>Go has a built-in range loop for iterating over slices, arrays, strings, maps and channels. See The 4 ways to write a range for loop.
 To iterate over other types of data, an iterator function with callbacks is a clean and fairly efficient abstraction.
 Basic iterator pattern // Iterate calls the f function with n = 1, 2, and 3. func Iterate(f func(n int)) { for i := 1; i  In use:</description>
-    </item>
-    
-    <item>
-      <title>How to defer a function call</title>
-      <link>https://yourbasic.org/golang/defer/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/defer/</guid>
-      <description>A deferred function is executed when the surrounding function&amp;nbsp;returns.
-Basics Execution order Return values Clean-up (example) Recover from panic (example)  Basics A defer statement postpones the execution of a function until the surrounding function returns.
-func main() { defer fmt.Println(&#34;World&#34;) fmt.Println(&#34;Hello&#34;) } Hello World Deferred calls are executed even when the function panics.
-func main() { defer fmt.Println(&#34;World&#34;) panic(&#34;Stop&#34;) fmt.Println(&#34;Hello&#34;) } World panic: Stop goroutine 1 [running]: main.main() .</description>
     </item>
     
     <item>
