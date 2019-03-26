@@ -319,7 +319,7 @@ Because a bit array uses bit-level parallelism, limits memory access, and effici
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/bitwise-operator-cheat-sheet/</guid>
-      <description>Gottfried Wilhelm Leibniz, 1697 Number literals Built-in operators Package math/bits  Number literals The binary number 100002 can be written as 020, 16 or 0x10 in&amp;nbsp;Go.
+      <description>Gottfried Wilhelm Leibniz, 1697 Number literals Built-in operators Package math/bits Bit manipulation code example  Number literals The binary number 100002 can be written as 020, 16 or 0x10 in&amp;nbsp;Go.
   Literal Base Note     020 8 Starts with&amp;nbsp;0   16 10 Never starts with&amp;nbsp;0   0x10 16 Starts with&amp;nbsp;0x    &amp;nbsp;
 Built-in operators   Operation Result Description     0011 &amp;amp; 0101 0001 Bitwise AND   0011 | 0101 0111 Bitwise OR   0011 ^ 0101 0110 Bitwise XOR   ^0101 1010 Bitwise NOT (same as 1111&amp;nbsp;^&amp;nbsp;0101)   0011 &amp;amp;^ 0101 0010 Bitclear (AND&amp;nbsp;NOT)   00110101&amp;lt;&amp;lt;2 11010100 Left shift   00110101&amp;lt;&amp;lt;100 00000000 No upper limit on shift count   00110101&amp;gt;&amp;gt;2 00001101 Right shift     The binary numbers in the examples are for explanation only.</description>
     </item>
