@@ -1604,7 +1604,7 @@ func main() { n := 0 if true { n = 1 n++ } fmt.Println(n) // 2 } Detecting shado
       
       <guid>https://yourbasic.org/golang/shuffle-slice-array/</guid>
       <description>The rand.Shuffle function in package math/rand shuffles an input sequence using a given swap function.
-a := []int{1, 2, 3, 4, 5, 6, 7, 8} rand.Seed(time.Now().UnixNano()) rand.Shuffle(len(a), func(i, j int) { a[i], a[j] = a[j], a[i] })  [5 8 6 4 3 7 2 1]  Warning: Without the call to rand.Seed you will get the same sequence of pseudo&amp;shy;random numbers each time you run the program.  Further reading  What’s a seed: Random number generators</description>
+a := []int{1, 2, 3, 4, 5, 6, 7, 8} rand.Seed(time.Now().UnixNano()) rand.Shuffle(len(a), func(i, j int) { a[i], a[j] = a[j], a[i] })  [5 8 6 4 3 7 2 1]  Warning: Without the call to rand.Seed you will get the same sequence of pseudo&amp;shy;random numbers each time you run the program.  Further reading  Generate random numbers, characters and slice elements</description>
     </item>
     
     <item>
