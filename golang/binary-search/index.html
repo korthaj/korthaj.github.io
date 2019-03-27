@@ -22,48 +22,7 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
-  <script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Article",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://yourbasic.org/golang/binary-search/"
-  },
-  "headline": "Binary search: take a sortcut [sic]",
-  "image": [
-    "https://yourbasic.org/golang/fork-in-the-road.jpg"
-   ],
-  "datePublished": "2018-04-21T00:00:00&#43;0000",
-  "dateModified": "2019-03-23T00:00:00&#43;0000",
-  "author": {
-    "@type": "Person",
-    "name": "Stefan Nilsson"
-  },
-   "publisher": {
-    "@type": "Organization",
-    "name": "yourbasic.org",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://yourbasic.org/res/favicon-96x96.png"
-    }
-  },
-  "description": "CODE EXAMPLE For efficient searching in a sorted array, use one of the custom functions sort.SearchTs (where T is Int/String/Float64) or the generic sort.Search."
-}
-</script>
-
-<meta property="og:locale" content="en_US">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Binary search: take a sortcut [sic]">
-<meta property="og:description" content="CODE EXAMPLE For efficient searching in a sorted array, use one of the custom functions sort.SearchTs (where T is Int/String/Float64) or the generic sort.Search.">
-<meta property="og:url" content="https://yourbasic.org/golang/binary-search/">
-<meta property="og:image" content="https://yourbasic.org/golang/fork-in-the-road.jpg">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Binary search: take a sortcut [sic]">
-<meta name="twitter:description" content="CODE EXAMPLE For efficient searching in a sorted array, use one of the custom functions sort.SearchTs (where T is Int/String/Float64) or the generic sort.Search.">
-<meta name="twitter:site" content="@yourbasic_org">
-<meta name="twitter:image" content="https://yourbasic.org/golang/fork-in-the-road.jpg">
+  <meta http-equiv="Refresh" content="0; url=/golang/find-search-contains-slice/" />
 
 
 </head>
@@ -84,142 +43,12 @@
 <article>
 <h1>Binary search: take a sortcut [sic]</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
-<!-- CC BY 2.0: https://commons.wikimedia.org/wiki/File:The_fork_in_the_road_(2330044065).jpg -->
-
-<div style="margin-top:1em;"><img src="/golang/fork-in-the-road.jpg"></div>
-
-<blockquote>
-Binary search is faster than linear search, but only works if your data is in&nbsp;order.
-It's&nbsp;a&nbsp;sortcut.
-<a class="quote-source" href="https://twitter.com/dbentley/status/999031485096235008">Dan Bentley</a>
-</blockquote>
-
-<p>You might be able to use one of the three custom <strong>binary search</strong> functions:
-<a href="https://golang.org/pkg/sort/#SearchInts"><code>sort.SearchInts</code></a>,
-<a href="https://golang.org/pkg/sort/#SearchStrings"><code>sort.SearchStrings</code></a> or
-<a href="https://golang.org/pkg/sort/#SearchFloat64s"><code>sort.SearchFloat64s</code></a>.</p>
-
-<p>They all have the signature</p>
-
-<pre><code>func Search<b>Type</b>(a []<b>Type</b>, x <b>Type</b>) int</code></pre>
-
-<p>and return</p>
-
-<ul>
-<li>the smallest index <code>i</code> at which <code>x &lt;= a[i]</code>, or</li>
-<li><code>len(a)</code> if there is no such index.</li>
-</ul>
-
-<p>The slice must be sorted in <strong>ascending order</strong>.</p>
-
-<pre><code>a := []string{"A", "C", "C"}
-
-fmt.Println(sort.SearchStrings(a, "A")) <span class="comment">// 0</span>
-fmt.Println(sort.SearchStrings(a, "B")) <span class="comment">// 1</span>
-fmt.Println(sort.SearchStrings(a, "C")) <span class="comment">// 1</span>
-fmt.Println(sort.SearchStrings(a, "D")) <span class="comment">// 3</span></code></pre>
-
-<h2 id="generic-binary-search">Generic binary search</h2>
-
-<p>There is also a <strong>generic binary search</strong> function <a href="https://golang.org/pkg/sort/#Search"><code>sort.Search</code></a>.</p>
-
-<pre><code>func Search(n int, f func(int) bool) int
-</code></pre>
-
-<p>It returns</p>
-
-<ul>
-<li>the smallest index <code>i</code> at which <code>f(i)</code> is true,</li>
-<li>or <code>n</code> if there is no such index.</li>
-</ul>
-
-<p>It requires that <code>f</code> is false for some (possibly empty) prefix
-of the input range and then true for the remainder.</p>
-
-<p>This example mirrors the one above, but uses the generic <a href="https://golang.org/pkg/sort/#Search"><code>sort.Search</code></a> instead of <a href="https://golang.org/pkg/sort/#SearchInts"><code>sort.SearchInts</code></a>.</p>
-
-<pre><code>a := []string{"A", "C", "C"}
-x := "C"
-
-i := sort.Search(len(a), func(i int) bool { return x <= a[i] })
-if i < len(a) && a[i] == x {
-    fmt.Printf("Found %s at index %d in %v.\n", x, i, a)
-} else {
-    fmt.Printf("Did not find %s in %v.\n", x, a)
-}
-<span class="comment">// Output: Found C at index 1 in [A C C].</span></code></pre>
-
-<h2 id="time-complexity">Time complexity</h2>
-
-<p>Binary search runs in worst-case logarithmic time, making <em>O</em>(log&nbsp;<em>n</em>) comparisons, where <em>n</em> is the size of the&nbsp;slice.</p>
-
-<h2 id="further-reading">Further reading</h2>
-
-<div><a href="/golang/how-to-sort-in-go/"><img src="/golang/sorted-ring-binders-thumb.jpg" title="The 3 ways to sort in Go"></a></div>
-
-<p style="margin-top:0; margin-bottom:2em;"><a href="/golang/how-to-sort-in-go/">The 3 ways to sort in Go</a></p>
-
-<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fbinary-search%2f&amp;text=Binary%20search:%20take%20a%20sortcut%20[sic]&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fbinary-search%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fbinary-search%2f&amp;title=Binary%20search:%20take%20a%20sortcut%20[sic]" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Binary%20search:%20take%20a%20sortcut%20[sic]&body=https%3a%2f%2fyourbasic.org%2fgolang%2fbinary-search%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<p>See <a href="/golang/find-search-contains-slice/">How to find an element in a slice/array</a>.</p>
 
 
 </article>
 <aside>
-
-    
-  <h2>Related</h2>
-
-  <div class="reference">
-    <a href="https://en.wikipedia.org/wiki/Binary_search_algorithm">Binary search algorithm</a>
-    <div class="source">Wikipedia</div>
-    <div class="author"></div>
-  </div>
-
-  <div class="reference">
-    <a href="/algorithms/time-complexity-explained/">How to analyse time complexity: Count your steps</a>
-    <div class="desc">Time complexity analysis esti­mates the time to run an algo­rithm. It&#39;s calcu­lated by counting elemen­tary opera­tions.</div>
-    <div class="source">yourbasic.org</div>
-  </div>
-
-  <div class="reference">
-    <a href="/algorithms/big-o-notation-explained/">Big O notation: definition and examples</a>
-    <div class="desc">Big O notation is a convenient way to describe how fast a function is growing. It is often used in computer science to describe time complexity.</div>
-    <div class="source">yourbasic.org</div>
-  </div>
-
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
-  <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
-  <ul class="none">
-  
-    <li><a href="/golang/gotcha/">Do you make these Go coding mistakes?</a></li>
-
-    <li><a href="/golang/string-functions-reference-cheat-sheet/">40&#43; practical string tips [cheat sheet]</a></li>
-
-    <li><a href="/golang/interfaces-explained/">Interface essentials in 5 easy steps</a></li>
-
-    <li><a href="/golang/maps-explained/">Map essentials in 4 easy steps</a></li>
-
-    <li><a href="/golang/json-example/">How to use JSON with Go [best practices]</a></li>
-
-    <li><a href="/golang/concurrent-programming/">Concurrent programming</a></li>
-
-  </ul>
-  
-  <p><a href="/golang/"><strong>See all 178 Go articles</strong></a></p>
-
+<p></p>
 </aside>
 </main>
 

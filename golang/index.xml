@@ -296,10 +296,7 @@ m := make(map[string]float64) m[&#34;pi&#34;] = 3.1416  A new, empty map value i
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/binary-search/</guid>
-      <description>Binary search is faster than linear search, but only works if your data is in&amp;nbsp;order. It&#39;s&amp;nbsp;a&amp;nbsp;sortcut. Dan Bentley  You might be able to use one of the three custom binary search functions: sort.SearchInts, sort.SearchStrings or sort.SearchFloat64s.
-They all have the signature
-func SearchType(a []Type, x Type) int and return
- the smallest index i at which x &amp;lt;= a[i], or len(a) if there is no such index.</description>
+      <description>See How to find an element in a slice/array.</description>
     </item>
     
     <item>
@@ -978,7 +975,7 @@ log.SetOutput(ioutil.Discard)  </description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/find-search-contains-slice/</guid>
-      <description>Go doesn&amp;rsquo;t have an out-of-the-box linear search function for slices and arrays. Here are two example linear&amp;nbsp;search implemen&amp;shy;tations, which you can use as templates.
+      <description>Linear search Binary search The map option  Linear search Go doesn&amp;rsquo;t have an out-of-the-box linear search function for slices and arrays. Here are two example linear&amp;nbsp;search implemen&amp;shy;tations, which you can use as templates.
 // Find returns the smallest index i at which x == a[i], // or len(a) if there is no such index. func Find(a []string, x string) int { for i, n := range a { if x == n { return i } } return len(a) } // Contains tells whether a contains x.</description>
     </item>
     

@@ -32,10 +32,10 @@
   },
   "headline": "How to find an element in a slice/array",
   "image": [
-    "https://yourbasic.org/golang/man-with-magnifying-glass.jpg"
+    "https://yourbasic.org/golang/fork-in-the-road.jpg"
    ],
   "datePublished": "2018-05-13T00:00:00&#43;0000",
-  "dateModified": "2018-09-14T00:00:00&#43;0000",
+  "dateModified": "2019-03-27T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -57,13 +57,13 @@
 <meta property="og:title" content="How to find an element in a slice/array">
 <meta property="og:description" content="CODE EXAMPLE To check if a slice or array contains an element, you can either write your own linear search or use one of the provided binary search functions.">
 <meta property="og:url" content="https://yourbasic.org/golang/find-search-contains-slice/">
-<meta property="og:image" content="https://yourbasic.org/golang/man-with-magnifying-glass.jpg">
+<meta property="og:image" content="https://yourbasic.org/golang/fork-in-the-road.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="How to find an element in a slice/array">
 <meta name="twitter:description" content="CODE EXAMPLE To check if a slice or array contains an element, you can either write your own linear search or use one of the provided binary search functions.">
 <meta name="twitter:site" content="@yourbasic_org">
-<meta name="twitter:image" content="https://yourbasic.org/golang/man-with-magnifying-glass.jpg">
+<meta name="twitter:image" content="https://yourbasic.org/golang/fork-in-the-road.jpg">
 
 
 </head>
@@ -86,7 +86,15 @@
 <div class="tagline">yourbasic.org/golang</div>
 
 
-<div style="float:right;margin:-30px 0 0 10px;"><img width="90px;" src="/golang/man-with-magnifying-glass.jpg"></div>
+<div style="float:right;margin:0 0 0 10px;"><img width="90px;" src="/golang/man-with-magnifying-glass.jpg"></div>
+
+<ul class="toc">
+  <li><a href="#linear-search">Linear search</a></li>
+  <li><a href="#binary-search">Binary search</a></li>
+  <li><a href="#the-map-option">The map option</a></li>
+</ul>
+
+<h2 id="linear-search">Linear search</h2>
 
 <p>Go doesn&rsquo;t have an out-of-the-box linear search function for <a href="/golang/slices-explained/">slices and arrays</a>.
 Here are two example <strong>linear&nbsp;search</strong> implemen&shy;tations, which
@@ -114,18 +122,87 @@ func Contains(a []string, x string) bool {
 }
 </code></pre>
 
-<h2 id="faster-alternatives">Faster alternatives</h2>
+<h2 id="binary-search">Binary search</h2>
 
-<p>If the array is sorted, you can use a <a href="/golang/binary-search/">binary&nbsp;search</a> instead.
+<!-- CC BY 2.0: https://commons.wikimedia.org/wiki/File:The_fork_in_the_road_(2330044065).jpg -->
+
+<div style="margin-top:1em;"><img src="/golang/fork-in-the-road.jpg"></div>
+<div style="font-size:smaller;">Binary search is faster than linear search, but only works if your data is in&nbsp;order.
+It's&nbsp;a&nbsp;sortcut. –&nbsp;Dan&nbsp;Bentley</div>
+
+<p>If the array is sorted, you can use a binary&nbsp;search instead.
 This will be much more efficient, since binary search runs in worst-case logarithmic time,
 making <b><em>O</em>(log&nbsp;<em>n</em>)</b> comparisons, where <em>n</em> is the size of the&nbsp;slice.</p>
 
+<p>There are the three custom binary search functions:
+<a href="https://golang.org/pkg/sort/#SearchInts"><code>sort.SearchInts</code></a>,
+<a href="https://golang.org/pkg/sort/#SearchStrings"><code>sort.SearchStrings</code></a> or
+<a href="https://golang.org/pkg/sort/#SearchFloat64s"><code>sort.SearchFloat64s</code></a>.</p>
+
+<p>They all have the signature</p>
+
+<pre><code>func Search<b>Type</b>(a []<b>Type</b>, x <b>Type</b>) int</code></pre>
+
+<p>and return</p>
+
+<ul>
+<li>the smallest index <code>i</code> at which <code>x &lt;= a[i]</code>, or</li>
+<li><code>len(a)</code> if there is no such index.</li>
+</ul>
+
+<p>The slice must be sorted in <strong>ascending order</strong>.</p>
+
+<pre><code>a := []string{"A", "C", "C"}
+
+fmt.Println(sort.SearchStrings(a, "A")) <span class="comment">// 0</span>
+fmt.Println(sort.SearchStrings(a, "B")) <span class="comment">// 1</span>
+fmt.Println(sort.SearchStrings(a, "C")) <span class="comment">// 1</span>
+fmt.Println(sort.SearchStrings(a, "D")) <span class="comment">// 3</span></code></pre>
+
+<h3 id="generic-binary-search">Generic binary search</h3>
+
+<p>There is also a <strong>generic binary search</strong> function <a href="https://golang.org/pkg/sort/#Search"><code>sort.Search</code></a>.</p>
+
+<pre><code>func Search(n int, f func(int) bool) int
+</code></pre>
+
+<p>It returns</p>
+
+<ul>
+<li>the smallest index <code>i</code> at which <code>f(i)</code> is true,</li>
+<li>or <code>n</code> if there is no such index.</li>
+</ul>
+
+<p>It requires that <code>f</code> is false for some (possibly empty) prefix
+of the input range and then true for the remainder.</p>
+
+<p>This example mirrors the one above, but uses the generic <a href="https://golang.org/pkg/sort/#Search"><code>sort.Search</code></a> instead of <a href="https://golang.org/pkg/sort/#SearchInts"><code>sort.SearchInts</code></a>.</p>
+
+<pre><code>a := []string{"A", "C", "C"}
+x := "C"
+
+i := sort.Search(len(a), func(i int) bool { return x <= a[i] })
+if i < len(a) && a[i] == x {
+    fmt.Printf("Found %s at index %d in %v.\n", x, i, a)
+} else {
+    fmt.Printf("Did not find %s in %v.\n", x, a)
+}
+<span class="comment">// Output: Found C at index 1 in [A C C].</span></code></pre>
+
+<h3 id="further-reading">Further reading</h3>
+
+<div><a href="/golang/how-to-sort-in-go/"><img src="/golang/sorted-ring-binders-thumb.jpg" title="The 3 ways to sort in Go"></a></div>
+
+<p style="margin-top:0; margin-bottom:2em;"><a href="/golang/how-to-sort-in-go/">The 3 ways to sort in Go</a></p>
+
+<h2 id="the-map-option">The map option</h2>
+
 <p>If you are doing repeated searches and updates, you may want to use a <a href="/golang/maps-explained/">map</a>
-instead of an array.
+instead of a slice.
 A&nbsp;map provides lookup, insert, and delete operations in <strong><em>O</em>(1)</strong>
 <a href="/algorithms/amortized-time-complexity-analysis/">amortized time</a>.</p>
 
-<h3 id="further-reading">Further reading</h3>
+<h3 id="further-reading-1">Further reading</h3>
 
 <div><a href="/golang/maps-explained/"><img src="/golang/Schlagwortkatalog-thumb.jpg" title="Map essentials in 4 easy steps"></a></div>
 
@@ -151,8 +228,20 @@ A&nbsp;map provides lookup, insert, and delete operations in <strong><em>O</em>(
   </div>
 
   <div class="reference">
-    <a href="/golang/how-to-sort-in-go/">The 3 ways to sort in Go</a>
-    <div class="desc">How to sort any type of data in Go using the sort package. All algorithms in the package perform O(n log n) comparisons in the worst case.</div>
+    <a href="https://en.wikipedia.org/wiki/Binary_search_algorithm">Binary search algorithm</a>
+    <div class="source">Wikipedia</div>
+    <div class="author"></div>
+  </div>
+
+  <div class="reference">
+    <a href="/algorithms/time-complexity-explained/">How to analyse time complexity: Count your steps</a>
+    <div class="desc">Time complexity analysis esti­mates the time to run an algo­rithm. It&#39;s calcu­lated by counting elemen­tary opera­tions.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="/algorithms/big-o-notation-explained/">Big O notation: definition and examples</a>
+    <div class="desc">Big O notation is a convenient way to describe how fast a function is growing. It is often used in computer science to describe time complexity.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
