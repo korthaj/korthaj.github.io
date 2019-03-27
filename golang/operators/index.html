@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Operators: complete list - yourbasic.org/golang </title>
-  <meta name="description" content="List of arithmetic, equality, comparison, logical, bitwise and other operators in Go.">
+  <meta name="description" content="List of all Go operators (arithmetic, equality, comparison, logical, bitwise and other) with descriptions and operator priority.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/calculator-man.jpg"
    ],
   "datePublished": "2018-03-15T00:00:00&#43;0000",
-  "dateModified": "2019-02-27T00:00:00&#43;0000",
+  "dateModified": "2019-03-27T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "List of arithmetic, equality, comparison, logical, bitwise and other operators in Go."
+  "description": "List of all Go operators (arithmetic, equality, comparison, logical, bitwise and other) with descriptions and operator priority."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Operators: complete list">
-<meta property="og:description" content="List of arithmetic, equality, comparison, logical, bitwise and other operators in Go.">
+<meta property="og:description" content="List of all Go operators (arithmetic, equality, comparison, logical, bitwise and other) with descriptions and operator priority.">
 <meta property="og:url" content="https://yourbasic.org/golang/operators/">
 <meta property="og:image" content="https://yourbasic.org/golang/calculator-man.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Operators: complete list">
-<meta name="twitter:description" content="List of arithmetic, equality, comparison, logical, bitwise and other operators in Go.">
+<meta name="twitter:description" content="List of all Go operators (arithmetic, equality, comparison, logical, bitwise and other) with descriptions and operator priority.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/calculator-man.jpg">
 
@@ -95,6 +95,7 @@
   <li><a href="#comparison">Comparison</a></li>
   <li><a href="#logical">Logical</a></li>
   <li><a href="#others">Others</a></li>
+  <li><a href="#operator-precedence">Operator precedence</a></li>
 </ul>
 
 <h2 id="arithmetic">Arithmetic</h2>
@@ -289,6 +290,94 @@ The right operand is evaluated conditionally.</p>
   </tbody>
 </table>
 
+<h2 id="operator-precedence">Operator precedence</h2>
+
+<!-- CC BY 2.0: https://en.wikipedia.org/wiki/File:Macau_-_Skyline.jpg -->
+
+<div style="margin-top:1em;"><img src="/golang/macao-skyline.jpg"></div>
+<div style="font-size:smaller;">Go operator precedence spells MACAO</div>
+
+<h3 id="unary-operators">Unary operators</h3>
+
+<p>Unary operators have the highest priority and bind the strongest.</p>
+
+<h3 id="binary-operators-macao">Binary operators (MACAO)</h3>
+
+<table class="white">
+  <thead>
+    <tr>
+      <th>Priority</th>
+      <th>Operators</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><code>*</code>&nbsp; <code>/</code>&nbsp; <code>%</code>&nbsp; <code><<</code>&nbsp; <code>>></code>&nbsp; <code>&</code>&nbsp; <code>&^</code></td>
+      <td><b>M</b>ultiplicative</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><code>+</code>&nbsp; <code>-</code>&nbsp; <code>|</code>&nbsp; <code>^</code></td>
+      <td><b>A</b>dditive</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><code>==</code>&nbsp; <code>!=</code>&nbsp; <code><</code>&nbsp; <code><=</code>&nbsp; <code>></code>&nbsp; <code>>=</code></td>
+      <td><b>C</b>omparison</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><code>&&</code></td>
+      <td><b>A</b>nd</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><code>||</code></td>
+      <td><b>O</b>r</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Binary operators of the same priority associate from <strong>left to right</strong>.</p>
+
+<h3 id="statement-operators">Statement operators</h3>
+
+<p>The <code>++</code> and <code>-&#8202;-</code> operators <strong>form statements</strong> and fall outside the operator hierarchy.</p>
+
+<h3 id="examples">Examples</h3>
+
+<table class="white">
+  <thead>
+    <tr>
+      <th>Expression</th>
+      <th>Evaluation order</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>x&nbsp;/&nbsp;y&nbsp;*&nbsp;z</code></td>
+      <td><code>(x&nbsp;/&nbsp;y)&nbsp;*&nbsp;z</code></td>
+    </tr>
+    <tr>
+      <td><code>*p++</code></td>
+      <td><code>(*p)++</code></td>
+    </tr>
+    <tr>
+      <td><code>^a >> b</code></td>
+      <td><code>(^a)&nbsp;>>&nbsp;b</code></td>
+    </tr>
+    <tr>
+      <td><code>1 + 2*a[i]</code></td>
+      <td><code>1&nbsp;+&nbsp;(2*a[i])</code></td>
+    </tr>
+    <tr>
+      <td><code>m == n+1 && <-ch > 0</code></td>
+      <td><code>(m&nbsp;==&nbsp;(n+1))&nbsp;&&&nbsp;((<-ch)&nbsp;>&nbsp;0)</code></td>
+    </tr>
+</table>
+
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
 <a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2foperators%2f&amp;text=Operators:%20complete%20list&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2foperators%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
@@ -301,12 +390,6 @@ The right operand is evaluated conditionally.</p>
 
     
   <h2>Related</h2>
-
-  <div class="reference">
-    <a href="/golang/operator-priority/">Go operator precedence spells MACAO</a>
-    <div class="desc">Operator priority cheat sheet: Unary operators bind the strongest, followed by binary operators in MACAO order: Multiplicative, Additive, Comparison, And, Or.</div>
-    <div class="source">yourbasic.org</div>
-  </div>
 
   <div class="reference">
     <a href="https://golang.org/ref/spec#Operators">Operators</a>

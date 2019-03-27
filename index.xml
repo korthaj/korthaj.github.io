@@ -961,8 +961,7 @@ func main() { log.SetPrefix(&#34;grep: &#34;) log.SetFlags(0) // no extra info i
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/operator-priority/</guid>
-      <description>Unary operators Unary operators have the highest precedence and bind the strongest.
-Binary operators (MACAO)   Prio Operators Note     1 *&amp;nbsp; /&amp;nbsp; %&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;&amp;nbsp; &amp;^ Multiplicative   2 +&amp;nbsp; -&amp;nbsp; |&amp;nbsp; ^ Additive   3 ==&amp;nbsp; !=&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; = Comparison   4 &amp;&amp; And   5 || Or    Binary operators of the same precedence associate from left to right.</description>
+      <description>See Operators: complete list.</description>
     </item>
     
     <item>
@@ -1556,7 +1555,7 @@ Integer literals in Go are specified in octal, decimal or hexadecimal. The numbe
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/operators/</guid>
-      <description>Arithmetic Comparison Logical Others  Arithmetic   Operator Name Types     + sum integers, floats, complex values, strings   - difference integers, floats, complex values   * product    / quotient    % remainder integers   &amp; bitwise AND    | bitwise OR    ^ bitwise XOR    &amp;^ bit clear (AND&amp;nbsp;NOT)     left shift integer    right shift integer  unsigned integer    See Arithmetic operators in the Go language specification for complete definitions of the shift, quotient and remainder operators, integer overflow, and floating point behavior.</description>
+      <description>Arithmetic Comparison Logical Others Operator precedence  Arithmetic   Operator Name Types     + sum integers, floats, complex values, strings   - difference integers, floats, complex values   * product    / quotient    % remainder integers   &amp; bitwise AND    | bitwise OR    ^ bitwise XOR    &amp;^ bit clear (AND&amp;nbsp;NOT)     left shift integer    right shift integer  unsigned integer    See Arithmetic operators in the Go language specification for complete definitions of the shift, quotient and remainder operators, integer overflow, and floating point behavior.</description>
     </item>
     
     <item>
