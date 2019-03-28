@@ -101,8 +101,9 @@ the&nbsp;second one (which is optional) is a boolean that indicates if the key&n
 <h2 id="check-second-return-value">Check second return value</h2>
 
 <pre><code>m := map[string]float64{"pi": 3.14}
-_, found := m["pi"] <span class="comment">// found == true</span>
-_, found = m["pie"] <span class="comment">// found == false</span>
+v, found := m["pi"] <span class="comment">// v == 3.14  found == true</span>
+v, found = m["pie"] <span class="comment">// v == 0.0   found == false</span>
+_, found = m["pi"]  <span class="comment">// found == true</span>
 </code></pre>
 
 <h2 id="use-second-return-value-directly-in-an-if-statement">Use second return value directly in an if statement</h2>

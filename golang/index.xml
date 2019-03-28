@@ -95,7 +95,7 @@ type SyntaxError struct { Line int Col int } func (e *SyntaxError) Error() strin
       <guid>https://yourbasic.org/golang/check-map-contains-key/</guid>
       <description>Basics When you index a map in Go you get two return values; the&amp;nbsp;second one (which is optional) is a boolean that indicates if the key&amp;nbsp;exists.
 If the key doesn&amp;rsquo;t exist, the first value will be the default zero&amp;nbsp;value.
-Check second return value m := map[string]float64{&#34;pi&#34;: 3.14} _, found := m[&#34;pi&#34;] // found == true _, found = m[&#34;pie&#34;] // found == false  Use second return value directly in an if statement m := map[string]float64{&#34;</description>
+Check second return value m := map[string]float64{&#34;pi&#34;: 3.14} v, found := m[&#34;pi&#34;] // v == 3.14 found == true v, found = m[&#34;pie&#34;] // v == 0.0 found == false _, found = m[&#34;</description>
     </item>
     
     <item>
