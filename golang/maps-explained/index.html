@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Map essentials in 4 easy steps - yourbasic.org/golang </title>
-  <meta name="description" content="CODE EXAMPLE A map (or dictionary) is an unordered collection of key-value pairs.">
+  <meta name="description" content="CODE EXAMPLE A map (or dictionary) is an unordered collection of key-value pairs. Go maps are implemented by hash tables and provide lookup, insert, and delete operations in constant amortized time.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/Schlagwortkatalog.jpg"
    ],
   "datePublished": "2018-03-28T00:00:00&#43;0000",
-  "dateModified": "2019-02-23T00:00:00&#43;0000",
+  "dateModified": "2019-03-28T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "CODE EXAMPLE A map (or dictionary) is an unordered collection of key-value pairs."
+  "description": "CODE EXAMPLE A map (or dictionary) is an unordered collection of key-value pairs. Go maps are implemented by hash tables and provide lookup, insert, and delete operations in constant amortized time."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Map essentials in 4 easy steps">
-<meta property="og:description" content="CODE EXAMPLE A map (or dictionary) is an unordered collection of key-value pairs.">
+<meta property="og:description" content="CODE EXAMPLE A map (or dictionary) is an unordered collection of key-value pairs. Go maps are implemented by hash tables and provide lookup, insert, and delete operations in constant amortized time.">
 <meta property="og:url" content="https://yourbasic.org/golang/maps-explained/">
 <meta property="og:image" content="https://yourbasic.org/golang/Schlagwortkatalog.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Map essentials in 4 easy steps">
-<meta name="twitter:description" content="CODE EXAMPLE A map (or dictionary) is an unordered collection of key-value pairs.">
+<meta name="twitter:description" content="CODE EXAMPLE A map (or dictionary) is an unordered collection of key-value pairs. Go maps are implemented by hash tables and provide lookup, insert, and delete operations in constant amortized time.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/Schlagwortkatalog.jpg">
 
@@ -92,13 +92,13 @@
 <div style="margin-top:1em;"><img src="/golang/Schlagwortkatalog.jpg" alt="Subject catalog drawer"></div>
 
 <ul class="toc">
-  <li><a href="#create-a-new-map">Create a new map</a></li>
-  <li><a href="#add-find-and-delete">Add, find and delete</a></li>
-  <li><a href="#iterate">Iterate</a></li>
-  <li><a href="#implementation-details">Implementation details</a></li>
+  <li><a href="#create-new-maps-with-make-or-map-literals">Create new maps with make or map literals</a></li>
+  <li><a href="#add-find-and-delete-keys-values">Add, find and delete keys/values</a></li>
+  <li><a href="#map-iteration">Map iteration</a></li>
+  <li><a href="#performance-and-implementation">Performance and implementation</a></li>
 </ul>
 
-<h2 id="create-a-new-map">Create a new map</h2>
+<h2 id="create-new-maps-with-make-or-map-literals">Create new maps with make or map literals</h2>
 
 <p>A map (or dictionary) is an <b>unordered</b> collection of <b>key-value</b> pairs, where each key is&nbsp;<b>unique</b>.</p>
 
@@ -106,7 +106,7 @@
 
 m1 := make(map[string]float64)      <span class="comment">// empty map of string-float64 pairs</span>
 m2 := make(map[string]float64, 100) <span class="comment">// preallocate room for 100 entries</span>
-m3 := map[string]float64{
+m3 := map[string]float64{           <span class="comment">// map literal </span>
     "e":  2.71828,
     "pi": 3.1416,
 }
@@ -124,7 +124,7 @@ which takes an optional capacity as argument.</li>
 the number of key-value&nbsp;pairs.</li>
 </ul>
 
-<h2 id="add-find-and-delete">Add, find and delete</h2>
+<h2 id="add-find-and-delete-keys-values">Add, find and delete keys/values</h2>
 
 <pre><code>m := make(map[string]float64)
 
@@ -144,7 +144,7 @@ if x, found := m["pi"]; found { <span class="comment">// Prints 3.1416.</span>
 delete(m, "pi") <span class="comment">// <b>Delete a key-value pair.</b></span>
 fmt.Println(m)  <span class="comment">// map[]</span></code></pre>
 
-<h2 id="iterate">Iterate</h2>
+<h2 id="map-iteration">Map iteration</h2>
 
 <pre><code>m := map[string]float64{
     "e":  2.71828,
@@ -162,7 +162,7 @@ the corresponding iteration value will not be&nbsp;produced.</li>
 that entry may or may not be produced during the&nbsp;iteration.</li>
 </ul>
 
-<h2 id="implementation-details">Implementation details</h2>
+<h2 id="performance-and-implementation">Performance and implementation</h2>
 
 <ul>
 <li>Maps are backed by <a href="/algorithms/hash-tables-explained/">hash tables</a>.</li>
