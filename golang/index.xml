@@ -1374,16 +1374,6 @@ Integer literals in Go are specified in octal, decimal or hexadecimal. The numbe
     </item>
     
     <item>
-      <title>Optimized quicksort algorithm explained [complete code]</title>
-      <link>https://yourbasic.org/golang/quicksort-optimizations/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/quicksort-optimizations/</guid>
-      <description>Most Quicksort optimi&amp;shy;zations give only small improve&amp;shy;ments. Here&amp;nbsp;are three that can make a&amp;nbsp;real differ&amp;shy;ence.
- Choose a good pivot. Use 3-way partitioning. Switch to a simpler algorithm for short sublists.  Algorithm overview  Pick an element p, called a pivot, from the list. Partition the list so that  all elements less than p come first, all elements greater than p come last, elements equal to p go into the middle.</description>
-    </item>
-    
-    <item>
       <title>Optional parameters, default parameter values and method overloading</title>
       <link>https://yourbasic.org/golang/overload-overwrite-optional-parameter/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1476,6 +1466,16 @@ A pointer has type *T. The keyword new allocates a new object and returns its&am
       <description>A package is the smallest unit of private encap&amp;shy;sulation in&amp;nbsp;Go.
  All identifiers defined within a package are visible throughout that package. When importing a package you can access only its exported identifiers. An identifier is exported if it begins with a capital letter.  Exported and unexported identifiers are used to describe the public interface of a package and to guard against certain programming errors.
 Warning: Unexported identifiers is not a security measure and it does not hide or protect any information.</description>
+    </item>
+    
+    <item>
+      <title>Quicksort optimizations explained [complete code]</title>
+      <link>https://yourbasic.org/golang/quicksort-optimizations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/quicksort-optimizations/</guid>
+      <description>Most Quicksort optimi&amp;shy;zations give only small improve&amp;shy;ments. Here&amp;nbsp;are three that can make a&amp;nbsp;real differ&amp;shy;ence.
+ Choose a good pivot. Use 3-way partitioning. Switch to a simpler algorithm for short sublists.  Algorithm overview  Pick an element p, called a pivot, from the list. Partition the list so that  all elements less than p come first, all elements greater than p come last, elements equal to p go into the middle.</description>
     </item>
     
     <item>
