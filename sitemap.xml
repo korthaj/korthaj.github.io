@@ -98,6 +98,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/algorithms/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/</loc>
   </url>
   
@@ -348,6 +352,10 @@
   
   <url>
     <loc>https://yourbasic.org/golang/day-month-year-from-time/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/</loc>
   </url>
   
   <url>
@@ -817,14 +825,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/gotcha-append/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/algorithms/</loc>
   </url>
   
   <url>
