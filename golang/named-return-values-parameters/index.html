@@ -107,9 +107,11 @@ they are used as return&nbsp;values.</p>
 
 <p>This version of <a href="https://golang.org/pkg/io/#ReadFull"><code>io.ReadFull</code></a>,
 taken from <a href="https://golang.org/doc/effective_go.html#named-results">Effective Go</a>,
-uses them well.</p>
+uses them to good effect.</p>
 
-<pre><code>func ReadFull(r Reader, buf []byte) (n int, err error) {
+<p><code><pre><span class="comment">// ReadFull reads exactly len(buf) bytes from r into buf. It returns</span>
+<span class="comment">// the number of bytes copied and an error if fewer bytes were read.</span>
+func ReadFull(r Reader, buf []byte) (n int, err error) {
     for len(buf) &gt; 0 &amp;&amp; err == nil {
         var nr int
         nr, err = r.Read(buf)
@@ -118,7 +120,10 @@ uses them well.</p>
     }
     return
 }
-</code></pre>
+</pre></code></p>
+
+<p>The code is both simpler and clearer, with named return values
+that are properly initialized and tied to a plain return.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
 <a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fnamed-return-values-parameters%2f&amp;text=Named%20return%20values%20[best%20practice]&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
