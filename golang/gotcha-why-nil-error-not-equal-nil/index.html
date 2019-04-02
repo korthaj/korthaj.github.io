@@ -70,7 +70,7 @@ fmt.Println(err == <b>(*os.PathError)(nil)</b>) <span class="comment">// <b>true
 …</code></pre>
 
 <p><h2 id="a-better-approach">A better approach</h2>
-<p>To avoid this problem use a variable of type <code>error</code> instead, for example a named return value.</p></p>
+<p>To avoid this problem use a variable of type <code>error</code> instead, for example a <a href="/golang/named-return-values-parameters/">named return value</a>.</p></p>
 
 <pre><code class="skiphl">func Foo() (err error) {
     <span class="comment">// …</span>
