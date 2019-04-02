@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Do you make these Go coding mistakes? · YourBasic Go </title>
-  <meta name="description" content="Go gotcha: 27 gotchas and pitfalls in Go intended to help you find and fix similar problems in your own code.">
+  <meta name="description" content="27 Go gotchas and pitfalls intended to help you find and fix similar problems in your own code.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/angry-man-with-computer.png"
    ],
   "datePublished": "2018-01-26T00:00:00&#43;0000",
-  "dateModified": "2019-03-02T00:00:00&#43;0000",
+  "dateModified": "2019-04-02T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "Go gotcha: 27 gotchas and pitfalls in Go intended to help you find and fix similar problems in your own code."
+  "description": "27 Go gotchas and pitfalls intended to help you find and fix similar problems in your own code."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Do you make these Go coding mistakes?">
-<meta property="og:description" content="Go gotcha: 27 gotchas and pitfalls in Go intended to help you find and fix similar problems in your own code.">
+<meta property="og:description" content="27 Go gotchas and pitfalls intended to help you find and fix similar problems in your own code.">
 <meta property="og:url" content="https://yourbasic.org/golang/gotcha/">
 <meta property="og:image" content="https://yourbasic.org/golang/angry-man-with-computer.png">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Do you make these Go coding mistakes?">
-<meta name="twitter:description" content="Go gotcha: 27 gotchas and pitfalls in Go intended to help you find and fix similar problems in your own code.">
+<meta name="twitter:description" content="27 Go gotchas and pitfalls intended to help you find and fix similar problems in your own code.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/angry-man-with-computer.png">
 
@@ -88,25 +88,23 @@
 
 <div style="margin-top:1em;"><img src="/golang/angry-man-with-computer.png"></div>
 
-<p>This collection of gotchas and pitfalls in Go is intended to help you find and fix
-similar problems in your own&nbsp;code.</p>
+<p>This collection of Go gotchas and pitfalls will help you find and fix similar problems in your own&nbsp;code.</p>
 
-<p>Some of the puzzles are pretty easy.
-To solve all 27, you have to be a&nbsp;ninja.</p>
+<p>Some of the puzzles are pretty easy. To solve all 27, you have to be a&nbsp;ninja.</p>
 
 <p><a href="/golang/gotcha-assignment-entry-nil-map/" class="button">Take quiz</a></p>
 
-<h2 id="toc" style="font-size: 150%;">Table of contents</h2>
+<h2 id="toc">Go Gotchas</h2>
 
 
   <ul class="none">
   <li>
   <a href="/golang/gotcha-assignment-entry-nil-map/"><b>Assignment to entry in nil map</b></a>
-  <div style="padding: 0.5em 0 1em 0">You have to initialize the map before you can add any elements.</div>
+  <div style="padding: 0.5em 0 1em 0">You have to initialize a map using the make function before you can add any elements.</div>
 </li>
 <li>
-  <a href="/golang/gotcha-nil-pointer-dereference/"><b>Nil pointer dereference</b></a>
-  <div style="padding: 0.5em 0 1em 0">An uninitialized pointer is nil, and you can&#39;t follow the nil pointer.</div>
+  <a href="/golang/gotcha-nil-pointer-dereference/"><b>Invalid memory address or nil pointer dereference</b></a>
+  <div style="padding: 0.5em 0 1em 0">An uninitialized pointer is nil, and you can’t follow the nil pointer. If x is nil, an attempt to evaluate *x will cause a run-time panic.</div>
 </li>
 <li>
   <a href="/golang/gotcha-multiple-value-single-value-context/"><b>Multiple-value in single-value context</b></a>
@@ -114,31 +112,31 @@ To solve all 27, you have to be a&nbsp;ninja.</p>
 </li>
 <li>
   <a href="/golang/gotcha-function-doesnt-change-array/"><b>Array won’t change</b></a>
-  <div style="padding: 0.5em 0 1em 0">Arrays in Go are values: when you pass an array to a function it gets a copy of the original array data.</div>
+  <div style="padding: 0.5em 0 1em 0">Arrays in Go are values: when you pass an array to a function it gets a copy of the original array data. If you want a function to update its elements, use a slice that refers to the array.</div>
 </li>
 <li>
-  <a href="/golang/gotcha-shadowing-variables/"><b>Same name</b></a>
-  <div style="padding: 0.5em 0 1em 0">An identifier declared in a block may be redeclared in an inner block.</div>
+  <a href="/golang/gotcha-shadowing-variables/"><b>Shadowed variables</b></a>
+  <div style="padding: 0.5em 0 1em 0">An identifier declared in a block may be redeclared in an inner block. The new variable shadows the original throughout the scope of the inner block.</div>
 </li>
 <li>
   <a href="/golang/gotcha-missing-comma-slice-array-map-literal/"><b>Unexpected newline</b></a>
-  <div style="padding: 0.5em 0 1em 0">In a multi-line slice, array or map literal, every line must end with a comma.</div>
+  <div style="padding: 0.5em 0 1em 0">In a multi-line slice, array or map literal, every line must end with a comma. As a result, you can add and remove lines without modifying the surrounding code.</div>
 </li>
 <li>
-  <a href="/golang/gotcha-strings-are-immutable/"><b>String won’t change</b></a>
-  <div style="padding: 0.5em 0 1em 0">Go strings are read-only byte slices (with a few extra properties).</div>
+  <a href="/golang/gotcha-strings-are-immutable/"><b>Immutable strings</b></a>
+  <div style="padding: 0.5em 0 1em 0">Go strings are read-only byte slices (with a few extra properties). To update string data, consider using a rune slice instead.</div>
 </li>
 <li>
-  <a href="/golang/gotcha-concatenate-rune-string/"><b>Adding one character at a time</b></a>
-  <div style="padding: 0.5em 0 1em 0">Characters (rune literals) are integer values used to identify Unicode code points.</div>
+  <a href="/golang/gotcha-concatenate-rune-string/"><b>How does characters add up?</b></a>
+  <div style="padding: 0.5em 0 1em 0">Characters (rune literals) are integer values used to identify Unicode code points. You can turn a code point into a string with a conversion.</div>
 </li>
 <li>
   <a href="/golang/gotcha-trim-string/"><b>What happened to ABBA?</b></a>
-  <div style="padding: 0.5em 0 1em 0">The Trim functions strip all Unicode code points contained in a cutset.</div>
+  <div style="padding: 0.5em 0 1em 0">The Trim functions strip all Unicode code points contained in a cutset. To strip a trailing string, use TrimSuffix.</div>
 </li>
 <li>
   <a href="/golang/gotcha-copy-missing/"><b>Where is my copy?</b></a>
-  <div style="padding: 0.5em 0 1em 0">Copy copies the minimum number of elements in the destination and source slices.</div>
+  <div style="padding: 0.5em 0 1em 0">Copy copies the minimum number of elements in the destination and source slices. To make a full copy, you must allocate a big enough destination slice.</div>
 </li>
 <li>
   <a href="/golang/gotcha-append/"><b>Why doesn’t append work every time?</b></a>
@@ -149,12 +147,12 @@ To solve all 27, you have to be a&nbsp;ninja.</p>
   <div style="padding: 0.5em 0 1em 0">An untyped integer constant is converted to an int when the type can&#39;t be inferred from the context.</div>
 </li>
 <li>
-  <a href="/golang/gotcha-increment-decrement-statement/"><b>Increment, decrement</b></a>
-  <div style="padding: 0.5em 0 1em 0">In Go increment and decrement are statements written with postfix notation.</div>
+  <a href="/golang/gotcha-increment-decrement-statement/"><b>Unexpected &#43;&#43;, expecting expression</b></a>
+  <div style="padding: 0.5em 0 1em 0">In Go increment and decrement operations can’t be used as expressions, only as statements. Only postfix notation is available.</div>
 </li>
 <li>
-  <a href="/golang/gotcha-operator-precedence/"><b>Does not compute</b></a>
-  <div style="padding: 0.5em 0 1em 0">The multiplication, division, and remainder operators have the same precedence.</div>
+  <a href="/golang/gotcha-operator-precedence/"><b>Get your priorities right</b></a>
+  <div style="padding: 0.5em 0 1em 0">In Go the multiplication, division, and remainder operators have the same precedence.</div>
 </li>
 <li>
   <a href="/golang/gotcha-bitwise-operators/"><b>Go and Pythagoras</b></a>

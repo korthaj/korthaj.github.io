@@ -232,20 +232,6 @@ package main import ( &#34;container/list&#34; &#34;fmt&#34; &#34;reflect&#34; )
     </item>
     
     <item>
-      <title>Adding one character at a time</title>
-      <link>https://yourbasic.org/golang/gotcha-concatenate-rune-string/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/gotcha-concatenate-rune-string/</guid>
-      <description>Why doesn&amp;rsquo;t these print statements give the same result?
-fmt.Println(&amp;quot;H&amp;quot; + &amp;quot;i&amp;quot;) fmt.Println(&#39;H&#39; + &#39;i&#39;)  Hi 177  Answer
-The rune literals &#39;H&#39; and &#39;i&#39; are integer values identifying Unicode code points: &#39;H&#39; is 72 and &#39;i&#39; is&amp;nbsp;105.
-You can turn a code point into a string with a&amp;nbsp;conversion.
-fmt.Println(string(72) + string(&#39;i&#39;))// &#34;Hi&#34; You can also use the fmt.Sprintf function.
-s := fmt.Sprintf(&#34;%c%c, world!&#34;, 72, &#39;i&#39;) fmt.Println(s)// &#34;Hi, world!&#34; The fmt cheat sheet lists the most common formatting verbs and flags.</description>
-    </item>
-    
-    <item>
       <title>Anonymous functions and closures</title>
       <link>https://yourbasic.org/golang/anonymous-function-literal-lambda-closure/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -614,23 +600,10 @@ func main() { defer fmt.</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/gotcha/</guid>
-      <description> This collection of gotchas and pitfalls in Go is intended to help you find and fix similar problems in your own&amp;nbsp;code.
+      <description> This collection of Go gotchas and pitfalls will help you find and fix similar problems in your own&amp;nbsp;code.
 Some of the puzzles are pretty easy. To solve all 27, you have to be a&amp;nbsp;ninja.
 Take quiz
-Table of contents </description>
-    </item>
-    
-    <item>
-      <title>Does not compute</title>
-      <link>https://yourbasic.org/golang/gotcha-operator-precedence/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/gotcha-operator-precedence/</guid>
-      <description>Why doesn&amp;rsquo;t this code compute the number of hours and seconds?
-n := 43210 // time in seconds fmt.Println(n/60*60, &#34;hours and&#34;, n%60*60, &#34;seconds&#34;) 43200 hours and 600 seconds  Answer
-The *, /, and % operators have the same precedence and are evaluated left to right: n/60*60 is the same as (n/60)*60.
-Insert a pair of parantheses to force the correct evaluation order.
-fmt.Println(n/(60*60), &#34;hours and&#34;, n%(60*60), &#34;seconds&#34;)  12 hours and 10 seconds  Or better yet, use a constant.</description>
+Go Gotchas </description>
     </item>
     
     <item>
@@ -812,6 +785,19 @@ t := time.Now() year := t.Year() // type int month := t.Month() // type time.</d
     </item>
     
     <item>
+      <title>Get your priorities right</title>
+      <link>https://yourbasic.org/golang/gotcha-operator-precedence/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-operator-precedence/</guid>
+      <description>Why doesn&amp;rsquo;t this code compute the number of hours and seconds?
+n := 43210 // time in seconds fmt.Println(n/60*60, &#34;hours and&#34;, n%60*60, &#34;seconds&#34;) 43200 hours and 600 seconds  Answer
+The *, /, and % operators have the same precedence and are evaluated left to right: n/60*60 is the same as (n/60)*60.
+Insert a pair of parantheses to force the correct evaluation order.
+fmt.Println(n/(60*60), &#34;hours and&#34;, n%(60*60), &#34;seconds&#34;)  12 hours and 10 seconds  Or better yet, use a constant.</description>
+    </item>
+    
+    <item>
       <title>Go and Pythagoras</title>
       <link>https://yourbasic.org/golang/gotcha-bitwise-operators/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -902,6 +888,20 @@ package main import ( &amp;quot;fmt&amp;quot; &amp;quot;net/http&amp;quot; ) fun
       <description>String checksum To compute the hash value of a string or byte slice, use the Sum function from a crypto package such as crypto/md5, crypto/sha1, or crypto/sha256.
 s := &#34;Foo&#34; md5 := md5.Sum([]byte(s)) sha1 := sha1.Sum([]byte(s)) sha256 := sha256.Sum256([]byte(s)) fmt.Printf(&#34;%x\n&#34;, md5) fmt.Printf(&#34;%x\n&#34;, sha1) fmt.Printf(&#34;%x\n&#34;, sha256) 1356c67d7ad1638d816bfb822dd2c25d 201a6b3053cc1422d2c3670b62616221d2290929 1cbec737f863e4922cee63cc2ebbfaafcd1cff8b790d8cfd2e6a5d550b648afa  File checksum To compute the hash value of a file or other input stream:
  create a new hash.Hash from a crypto package such as crypto/md5, crypto/sha1, or crypto/sha256, add data by writing to its io.</description>
+    </item>
+    
+    <item>
+      <title>How does characters add up?</title>
+      <link>https://yourbasic.org/golang/gotcha-concatenate-rune-string/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-concatenate-rune-string/</guid>
+      <description>Why doesn&amp;rsquo;t these print statements give the same result?
+fmt.Println(&amp;quot;H&amp;quot; + &amp;quot;i&amp;quot;) fmt.Println(&#39;H&#39; + &#39;i&#39;)  Hi 177  Answer
+The rune literals &#39;H&#39; and &#39;i&#39; are integer values identifying Unicode code points: &#39;H&#39; is 72 and &#39;i&#39; is&amp;nbsp;105.
+You can turn a code point into a string with a&amp;nbsp;conversion.
+fmt.Println(string(72) + string(&#39;i&#39;))// &#34;Hi&#34; You can also use the fmt.Sprintf function.
+s := fmt.Sprintf(&#34;%c%c, world!&#34;, 72, &#39;i&#39;) fmt.Println(s)// &#34;Hi, world!&#34; This fmt cheat sheet lists the most common formatting verbs and flags.</description>
     </item>
     
     <item>
@@ -1079,16 +1079,17 @@ prefix: 2017/10/20 07:52:58 text to append prefix: 2017/10/20 07:52:58 more text
     </item>
     
     <item>
-      <title>Increment, decrement</title>
-      <link>https://yourbasic.org/golang/gotcha-increment-decrement-statement/</link>
+      <title>Immutable strings</title>
+      <link>https://yourbasic.org/golang/gotcha-strings-are-immutable/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://yourbasic.org/golang/gotcha-increment-decrement-statement/</guid>
-      <description>Why doesn&amp;rsquo;t these lines compile?
-i := 0 fmt.Println(++i) fmt.Println(i++) main.go:9:14: syntax error: unexpected ++, expecting expression main.go:10:15: syntax error: unexpected ++, expecting comma or )  Answer
-In Go increment and decrement operations can’t be used as expressions, only as statements. Also, only the postfix notation is&amp;nbsp;allowed.
-The above snippet needs to be written as:
-i := 0 i++ fmt.Println(i) fmt.Println(i) i++  Without pointer arithmetic, the convenience value of pre- and postfix increment operators drops.</description>
+      <guid>https://yourbasic.org/golang/gotcha-strings-are-immutable/</guid>
+      <description>Why doesn&amp;rsquo;t this code compile?
+s := &#34;hello&#34; s[0] = &#39;H&#39; fmt.Println(s) ../main.go:3:7: cannot assign to s[0]  Answer
+Go strings are immutable and behave like read-only byte slices (with a few extra properties).
+To update the data, use a rune slice instead.
+buf := []rune(&#34;hello&#34;) buf[0] = &#39;H&#39; s := string(buf) fmt.Println(s) // &#34;Hello&#34;  If the string only contains ASCII characters, you could also use a byte&amp;nbsp;slice.
+See String functions cheat sheet for an overview of strings in&amp;nbsp;Go.</description>
     </item>
     
     <item>
@@ -1113,6 +1114,17 @@ Loop from 0 to len(a)-1 instead.</description>
       <description>Basics Structural typing The empty interface Interface values Equality  Basics  An interface type consists of a set of method signatures. A variable of interface type can hold any value that implements these methods.
  In this example both Temp and *Point implement the MyStringer interface.
 type MyStringer interface { String() string }  type Temp int func (t Temp) String() string { return strconv.Itoa(int(t)) + &amp;quot; °C&amp;quot; } type Point struct { x, y int } func (p *Point) String() string { return fmt.</description>
+    </item>
+    
+    <item>
+      <title>Invalid memory address or nil pointer dereference</title>
+      <link>https://yourbasic.org/golang/gotcha-nil-pointer-dereference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-nil-pointer-dereference/</guid>
+      <description>Why does this program panic?
+type Point struct { X, Y float64 } func (p *Point) Abs() float64 { return math.Sqrt(p.X*p.X + p.Y*p.Y) } func main() { var p *Point fmt.Println(p.Abs()) } panic: runtime error: invalid memory address or nil pointer dereference [signal SIGSEGV: segmentation violation code=0xffffffff addr=0x0 pc=0xd2c5a] goroutine 1 [running]: main.(*Point).Abs(...) ../main.go:6 main.main() ../main.go:11 +0x1a  Answer
+The uninitialized pointer p in the main function is nil, and you can’t follow the nil pointer.</description>
     </item>
     
     <item>
@@ -1303,17 +1315,6 @@ The names are not mandatory but can make for good documentation. Correctly used,
       <description>Why is nil not equal to nil in this example?
 func Foo() error { var err *os.PathError = nil // … return err } func main() { err := Foo() fmt.Println(err) // &amp;lt;nil&amp;gt; fmt.Println(err == nil) // false } Answer
 An interface value is equal to nil only if both its value and dynamic type are nil. In the example above, Foo() returns [nil, *os.PathError] and we compare it with [nil,&amp;nbsp;nil].</description>
-    </item>
-    
-    <item>
-      <title>Nil pointer dereference</title>
-      <link>https://yourbasic.org/golang/gotcha-nil-pointer-dereference/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/gotcha-nil-pointer-dereference/</guid>
-      <description>Why does this program panic?
-type Point struct { X, Y float64 } func (p *Point) Abs() float64 { return math.Sqrt(p.X*p.X + p.Y*p.Y) } func main() { var p *Point fmt.Println(p.Abs()) } panic: runtime error: invalid memory address or nil pointer dereference [signal SIGSEGV: segmentation violation code=0xffffffff addr=0x0 pc=0xd2c5a] goroutine 1 [running]: main.(*Point).Abs(...) ../main.go:6 main.main() ../main.go:11 +0x1a  Answer
-The uninitialized pointer p in the main function is nil, and you can&#39;t follow the nil pointer.</description>
     </item>
     
     <item>
@@ -1575,7 +1576,17 @@ Unicode, which is a superset of ASCII, defines a codespace of 1,114,112 code poi
     </item>
     
     <item>
-      <title>Same name</title>
+      <title>Select waits on a group of channels</title>
+      <link>https://yourbasic.org/golang/select-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/select-explained/</guid>
+      <description>The select statement waits for multiple send or receive opera&amp;shy;tions simul&amp;shy;taneously.
+ The statement blocks as a whole until one of the operations becomes unblocked. If several cases can proceed, a single one of them will be chosen at random.  // blocks until there&#39;s data available on ch1 or ch2 select { case  Send and receive operations on a nil channel block forever. This can be used to disable a channel in a select statement:</description>
+    </item>
+    
+    <item>
+      <title>Shadowed variables</title>
       <link>https://yourbasic.org/golang/gotcha-shadowing-variables/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1585,16 +1596,6 @@ func main() { n := 0 if true { n := 1 n++ } fmt.Println(n) // 0 } Answer
 The statement n := 1 declares a new variable which shadows the original n throughout the scope of the if&amp;nbsp;statement.
 To reuse n from the outer block, write n = 1 instead.
 func main() { n := 0 if true { n = 1 n++ } fmt.Println(n) // 2 } Detecting shadowed variables To help detect shadowed variables, you may use the experimental -shadow feature provided by the vet tool.</description>
-    </item>
-    
-    <item>
-      <title>Select waits on a group of channels</title>
-      <link>https://yourbasic.org/golang/select-explained/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/select-explained/</guid>
-      <description>The select statement waits for multiple send or receive opera&amp;shy;tions simul&amp;shy;taneously.
- The statement blocks as a whole until one of the operations becomes unblocked. If several cases can proceed, a single one of them will be chosen at random.  // blocks until there&#39;s data available on ch1 or ch2 select { case  Send and receive operations on a nil channel block forever. This can be used to disable a channel in a select statement:</description>
     </item>
     
     <item>
@@ -1644,20 +1645,6 @@ m := map[string]int{&amp;quot;Alice&amp;quot;: 23, &amp;quot;Eve&amp;quot;: 2, &
       <guid>https://yourbasic.org/golang/nutshells/</guid>
       <description> Detailed descriptions of core Go concepts
  Table of contents </description>
-    </item>
-    
-    <item>
-      <title>String won’t change</title>
-      <link>https://yourbasic.org/golang/gotcha-strings-are-immutable/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/gotcha-strings-are-immutable/</guid>
-      <description>Why doesn&amp;rsquo;t this code compile?
-s := &#34;hello&#34; s[0] = &#39;H&#39; fmt.Println(s) ../main.go:3:7: cannot assign to s[0]  Answer
-Go strings are immutable and behave like read-only byte slices (with a few extra properties).
-To update the data, use a rune slice instead.
-buf := []rune(&#34;hello&#34;) buf[0] = &#39;H&#39; s := string(buf) fmt.Println(s) // &#34;Hello&#34;  If the string only contains ASCII characters, you could also use a byte&amp;nbsp;slice.
-See String functions cheat sheet for an overview of strings in&amp;nbsp;Go.</description>
     </item>
     
     <item>
@@ -1778,6 +1765,19 @@ Type aliases are not meant for everyday use. They were introduced to support gra
  Type assertions Type switches  Type assertions A type assertion doesn’t really convert an interface to another data type, but it provides access to an interface’s concrete value, which is typically what you&amp;nbsp;want.
 The type assertion x.(T) asserts that the concrete value stored in&amp;nbsp;x is of type&amp;nbsp;T, and that x is&amp;nbsp;not&amp;nbsp;nil.
  If T is not an interface, it asserts that the dynamic type of&amp;nbsp;x is identical to&amp;nbsp;T.</description>
+    </item>
+    
+    <item>
+      <title>Unexpected &#43;&#43;, expecting expression</title>
+      <link>https://yourbasic.org/golang/gotcha-increment-decrement-statement/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-increment-decrement-statement/</guid>
+      <description>Why doesn&amp;rsquo;t these lines compile?
+i := 0 fmt.Println(++i) fmt.Println(i++) main.go:9:14: syntax error: unexpected ++, expecting expression main.go:10:15: syntax error: unexpected ++, expecting comma or )  Answer
+In Go increment and decrement operations can’t be used as expressions, only as statements. Also, only the postfix notation is&amp;nbsp;allowed.
+The above snippet needs to be written as:
+i := 0 i++ fmt.Println(i) fmt.Println(i) i++  Without pointer arithmetic, the convenience value of pre- and postfix increment operators drops.</description>
     </item>
     
     <item>

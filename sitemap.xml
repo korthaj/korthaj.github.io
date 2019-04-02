@@ -94,10 +94,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/gotcha-concatenate-rune-string/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/algorithms/</loc>
   </url>
   
@@ -275,10 +271,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/gotcha-operator-precedence/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/algorithms/dynamic-programming-explained/</loc>
   </url>
   
@@ -355,6 +347,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/gotcha-operator-precedence/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/</loc>
   </url>
   
@@ -396,6 +392,10 @@
   
   <url>
     <loc>https://yourbasic.org/algorithms/hash-tables-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/gotcha-concatenate-rune-string/</loc>
   </url>
   
   <url>
@@ -471,7 +471,7 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/gotcha-increment-decrement-statement/</loc>
+    <loc>https://yourbasic.org/golang/gotcha-strings-are-immutable/</loc>
   </url>
   
   <url>
@@ -488,6 +488,10 @@
   
   <url>
     <loc>https://yourbasic.org/golang/interfaces-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/gotcha-nil-pointer-dereference/</loc>
   </url>
   
   <url>
@@ -564,10 +568,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/gotcha-why-nil-error-not-equal-nil/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/gotcha-nil-pointer-dereference/</loc>
   </url>
   
   <url>
@@ -675,11 +675,11 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/gotcha-shadowing-variables/</loc>
+    <loc>https://yourbasic.org/golang/select-explained/</loc>
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/select-explained/</loc>
+    <loc>https://yourbasic.org/golang/gotcha-shadowing-variables/</loc>
   </url>
   
   <url>
@@ -700,10 +700,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/nutshells/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/gotcha-strings-are-immutable/</loc>
   </url>
   
   <url>
@@ -765,6 +761,10 @@
   
   <url>
     <loc>https://yourbasic.org/golang/type-assertion-switch/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/gotcha-increment-decrement-statement/</loc>
   </url>
   
   <url>

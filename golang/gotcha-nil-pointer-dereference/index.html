@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nil pointer dereference · YourBasic Go </title>
-  <meta name="description" content="An uninitialized pointer is nil, and you can&#39;t follow the nil pointer.">
+  <title>Help: Invalid memory address or nil pointer dereference · YourBasic Go </title>
+  <meta name="description" content="CODE EXAMPLE An uninitialized pointer is nil, and you can’t follow the nil pointer. If x is nil, an attempt to evaluate *x will cause a run-time panic.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -38,7 +38,7 @@
 
 <main>
 <article>
-<h1>Nil pointer dereference</h1>
+<h1>Invalid memory address or nil pointer dereference</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 <p>Why does this program panic?</p>
@@ -70,7 +70,7 @@ main.main()
 <summary class="answer">Answer</summary></p>
 
 <p>The uninitialized pointer <code>p</code> in the <code>main</code> function is <code>nil</code>,
-and you can't follow the nil pointer.</p>
+and you can’t follow the nil pointer.</p>
 
 <blockquote>
 If <code>x</code> is nil, an attempt to evaluate <code>*x</code> will cause a run-time panic.
@@ -107,34 +107,34 @@ you could also skip the pointer altogether:</p>
 </ul>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fgotcha-nil-pointer-dereference%2f&amp;text=Nil%20pointer%20dereference&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fgotcha-nil-pointer-dereference%2f&amp;text=Invalid%20memory%20address%20or%20nil%20pointer%20dereference&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fgotcha-nil-pointer-dereference%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fgotcha-nil-pointer-dereference%2f&amp;title=Nil%20pointer%20dereference" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Nil%20pointer%20dereference&body=https%3a%2f%2fyourbasic.org%2fgolang%2fgotcha-nil-pointer-dereference%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fgotcha-nil-pointer-dereference%2f&amp;title=Invalid%20memory%20address%20or%20nil%20pointer%20dereference" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Invalid%20memory%20address%20or%20nil%20pointer%20dereference&body=https%3a%2f%2fyourbasic.org%2fgolang%2fgotcha-nil-pointer-dereference%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 
 </article>
 <aside>
 
-  <h2>Newbie or ninja?</h2>
+  <h2>Go Gotchas</h2>
   <ul class="none">
   
       <li><a href="/golang/gotcha-assignment-entry-nil-map/">Assignment to entry in nil map</a></li>
 
-      <li><b>»&nbsp;</b>Nil pointer dereference</li>
+      <li><b>»&nbsp;</b>Invalid memory address or nil pointer dereference</li>
 
       <li><a href="/golang/gotcha-multiple-value-single-value-context/">Multiple-value in single-value context</a></li>
 
       <li><a href="/golang/gotcha-function-doesnt-change-array/">Array won’t change</a></li>
 
-      <li><a href="/golang/gotcha-shadowing-variables/">Same name</a></li>
+      <li><a href="/golang/gotcha-shadowing-variables/">Shadowed variables</a></li>
 
       <li><a href="/golang/gotcha-missing-comma-slice-array-map-literal/">Unexpected newline</a></li>
 
-      <li><a href="/golang/gotcha-strings-are-immutable/">String won’t change</a></li>
+      <li><a href="/golang/gotcha-strings-are-immutable/">Immutable strings</a></li>
 
-      <li><a href="/golang/gotcha-concatenate-rune-string/">Adding one character at a time</a></li>
+      <li><a href="/golang/gotcha-concatenate-rune-string/">How does characters add up?</a></li>
 
       <li><a href="/golang/gotcha-trim-string/">What happened to ABBA?</a></li>
 
@@ -144,9 +144,9 @@ you could also skip the pointer altogether:</p>
 
       <li><a href="/golang/gotcha-constant-overflows-int/">Constant overflows int</a></li>
 
-      <li><a href="/golang/gotcha-increment-decrement-statement/">Increment, decrement</a></li>
+      <li><a href="/golang/gotcha-increment-decrement-statement/">Unexpected &#43;&#43;, expecting expression</a></li>
 
-      <li><a href="/golang/gotcha-operator-precedence/">Does not compute</a></li>
+      <li><a href="/golang/gotcha-operator-precedence/">Get your priorities right</a></li>
 
       <li><a href="/golang/gotcha-bitwise-operators/">Go and Pythagoras</a></li>
 

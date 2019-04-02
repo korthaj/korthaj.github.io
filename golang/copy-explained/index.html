@@ -143,7 +143,7 @@ copy(b, "Hello, world!") <span class="comment">// b == []byte("Hello")</span></c
 
   <div class="reference">
     <a href="/golang/gotcha-copy-missing/">Where is my copy?</a>
-    <div class="desc">Copy copies the minimum number of elements in the destination and source slices.</div>
+    <div class="desc">Copy copies the minimum number of elements in the destination and source slices. To make a full copy, you must allocate a big enough destination slice.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
