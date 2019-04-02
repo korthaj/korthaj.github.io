@@ -828,7 +828,7 @@ rand.Seed(time.Now().UnixNano()) chars := []rune(&#34;ABCDEFGHIJKLMNOPQRSTUVWXYZ
     </item>
     
     <item>
-      <title>Generate a unique string (UUID/GUID)</title>
+      <title>Generate a unique string (UUID, GUID)</title>
       <link>https://yourbasic.org/golang/generate-uuid-guid/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
