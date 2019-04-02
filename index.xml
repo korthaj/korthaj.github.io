@@ -948,6 +948,16 @@ func main() { log.SetPrefix(&#34;grep: &#34;) log.SetFlags(0) // no extra info i
     </item>
     
     <item>
+      <title>Go step-by-step</title>
+      <link>https://yourbasic.org/golang/nutshells/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/nutshells/</guid>
+      <description> Detailed descriptions of core Go concepts
+ Table of contents </description>
+    </item>
+    
+    <item>
       <title>Go tutorials</title>
       <link>https://yourbasic.org/golang/tutorials/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1837,16 +1847,6 @@ m := map[string]int{&amp;quot;Alice&amp;quot;: 23, &amp;quot;Eve&amp;quot;: 2, &
       
       <guid>https://yourbasic.org/golang/stack-trace/</guid>
       <description>See Recover from a panic [best practices].</description>
-    </item>
-    
-    <item>
-      <title>Step-by-step guides</title>
-      <link>https://yourbasic.org/golang/nutshells/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/nutshells/</guid>
-      <description> Detailed descriptions of core Go concepts
- Table of contents </description>
     </item>
     
     <item>

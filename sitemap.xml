@@ -371,6 +371,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/nutshells/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/tutorials/</loc>
   </url>
   
@@ -696,10 +700,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/stack-trace/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/nutshells/</loc>
   </url>
   
   <url>
