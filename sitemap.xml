@@ -287,10 +287,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/find-go-build-version/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/golang/current-directory/</loc>
   </url>
   
@@ -644,10 +640,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/read-file-line-by-line/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/read-file-to-string/</loc>
   </url>
   
   <url>

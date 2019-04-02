@@ -735,16 +735,6 @@ const s = `First line Second line` fmt.Println(s) First line Second line Backtic
     </item>
     
     <item>
-      <title>Find build version</title>
-      <link>https://yourbasic.org/golang/find-go-build-version/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/find-go-build-version/</guid>
-      <description>fmt.Println(runtime.Version())  The function runtime.Version returns the Go tree&amp;rsquo;s version string, which is
- either the commit hash and date at the time of the build, or, when possible, a release tag like go1.9.  $ go version  The command go version prints the version in the same format as runtime.Version.</description>
-    </item>
-    
-    <item>
       <title>Find current working directory</title>
       <link>https://yourbasic.org/golang/current-directory/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1700,16 +1690,6 @@ Warning: Unexported identifiers is not a security measure and it does not hide o
       <description>Read from file Read from stdin Read from any stream  Read from file Use a bufio.Scanner to read a file line by&amp;nbsp;line.
 file, err := os.Open(&#34;file.txt&#34;) if err != nil { log.Fatal(err) } defer file.Close() scanner := bufio.NewScanner(file) for scanner.Scan() { fmt.Println(scanner.Text()) } if err := scanner.Err(); err != nil { log.Fatal(err) }  Read from stdin Use os.Stdin to read from the standard input&amp;nbsp;stream.
 scanner := bufio.</description>
-    </item>
-    
-    <item>
-      <title>Read a whole file into a string (byte slice)</title>
-      <link>https://yourbasic.org/golang/read-file-to-string/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/read-file-to-string/</guid>
-      <description>Use ioutil.ReadFile in package io/ioutil to read a whole file into a byte slice.
-b, err := ioutil.ReadFile(&#34;file.txt&#34;) // b has type []byte if err != nil { log.Fatal(err) } s := string(b) </description>
     </item>
     
     <item>
