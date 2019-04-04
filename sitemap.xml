@@ -34,10 +34,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/build-append-concatenate-strings-efficiently/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/golang/compare-slices/</loc>
   </url>
   
@@ -272,6 +268,10 @@
   
   <url>
     <loc>https://yourbasic.org/algorithms/dynamic-programming-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/build-append-concatenate-strings-efficiently/</loc>
   </url>
   
   <url>
