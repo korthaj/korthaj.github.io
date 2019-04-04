@@ -693,7 +693,7 @@ Go Gotchas </description>
     </item>
     
     <item>
-      <title>Efficient string concatenation [full guide]</title>
+      <title>Efficient string concatenation with a stringbuilder [full guide]</title>
       <link>https://yourbasic.org/golang/build-append-concatenate-strings-efficiently/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
