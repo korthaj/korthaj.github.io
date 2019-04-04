@@ -595,14 +595,14 @@ Go Gotchas </description>
     </item>
     
     <item>
-      <title>Efficient string concatenation with a stringbuilder [full guide]</title>
+      <title>Efficient string concatenation [full guide]</title>
       <link>https://yourbasic.org/golang/build-append-concatenate-strings-efficiently/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/build-append-concatenate-strings-efficiently/</guid>
-      <description>Clean and simple string building High-performance string concatenation Before Go 1.10  Clean and simple string building For simple cases where performance is a non-issue, fmt.Sprintf is your friend. It&amp;rsquo;s clean, simple and fairly efficient.
+      <description>Clean and simple string building (fmt) High-performance string concatenation (stringbuilder) Before Go 1.10 (bytebuffer)  Clean and simple string building For simple cases where performance is a non-issue, fmt.Sprintf is your friend. It&amp;rsquo;s clean, simple and fairly efficient.
 s := fmt.Sprintf(&#34;Size: %d MB.&#34;, 85) // s == &#34;Size: 85 MB.&#34; The fmt cheat sheet lists the most common formatting verbs and flags.
-High-performance string concatenationGo 1.10 A strings.Builder is used to efficiently append strings using write&amp;nbsp;methods.</description>
+High-performance string concatenationGo&amp;nbsp;1.10 A strings.Builder is used to efficiently append strings using write&amp;nbsp;methods.</description>
     </item>
     
     <item>
