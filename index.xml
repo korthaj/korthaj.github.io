@@ -1254,14 +1254,13 @@ Induction is a proof method often used to prove statements about integers. We&am
     </item>
     
     <item>
-      <title>Insertion sort vs. selection sort [code and efficiency]</title>
+      <title>Insertion sort vs. selection sort (time complexity and actual performance)</title>
       <link>https://yourbasic.org/algorithms/insertion-sort/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/algorithms/insertion-sort/</guid>
-      <description>Insertion sort can outperform more complicated algorithms for short lists and lists that are almost sorted.
- Insertion sort Insertion sort is a simple sorting algorithm with quadratic worst-case running time, but in some cases it&amp;rsquo;s still the algorithm of choice.
- It&amp;rsquo;s efficient for small data sets. It typically outperforms other simple quadratic algorithms, such as selection sort or bubble sort. It&amp;rsquo;s adaptive: it sorts data sets that are already substantially sorted efficiently.</description>
+      <description>Insertion sort Insertion sort is a simple sorting algorithm with quadratic worst-case time complexity, but in some cases it&amp;rsquo;s still the algorithm of choice.
+ It&amp;rsquo;s efficient for small data sets. It typically outperforms other simple quadratic algorithms, such as selection sort or bubble sort. It&amp;rsquo;s adaptive: it sorts data sets that are already substantially sorted efficiently. The&amp;nbsp;time complexity is O(nk) when each element is at most k&amp;nbsp;places away from its sorted position.</description>
     </item>
     
     <item>
