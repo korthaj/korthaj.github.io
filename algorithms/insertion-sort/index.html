@@ -35,7 +35,7 @@
     "https://yourbasic.org/algorithms/sort-playing-cards.jpg"
    ],
   "datePublished": "2018-04-19T00:00:00&#43;0000",
-  "dateModified": "2019-01-31T00:00:00&#43;0000",
+  "dateModified": "2019-04-05T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -107,6 +107,8 @@ The&nbsp;time complexity is O(<i>nk</i>) when each element is at most <i>k</i>&n
 away from its sorted position.</li>
 <li>It&rsquo;s <strong>stable</strong>: it doesn&rsquo;t change the order of elements with equal keys.</li>
 <li>It&rsquo;s <strong>in-place</strong>: it only requires a constant amount of additional memory.</li>
+<li>It has <a href="https://dl.acm.org/citation.cfm?id=1370599">good branch prediction characteristics</a>,
+causing at most a single misprediction per key.</li>
 </ul>
 
 <pre><code>// InsertionSort sorts the elements of a in ascending order.
@@ -184,6 +186,12 @@ for a fast Quicksort implementation that uses Insertion sort to improve performa
     <a href="/golang/quicksort-optimizations/">Quicksort optimizations explained [complete code]</a>
     <div class="desc">For a fast implementation of Quicksort choose a good pivot, use 3-way partitioning, and switch to insertion sort.</div>
     <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="https://dl.acm.org/citation.cfm?id=1370599">An experimental study of sorting and branch prediction</a>
+    <div class="source">Journal of Experimental Algorithmics (JEA) Vol. 12, Article 1.8 (2008)</div>
+    <div class="author"></div>
   </div>
 
   <h2>Follow on Twitter</h2>
