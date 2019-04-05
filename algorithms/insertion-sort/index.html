@@ -108,7 +108,7 @@ away from its sorted position.</li>
 <li>It&rsquo;s <strong>stable</strong>: it doesn&rsquo;t change the order of elements with equal keys.</li>
 <li>It&rsquo;s <strong>in-place</strong>: it only requires a constant amount of additional memory.</li>
 <li>It has <a href="https://dl.acm.org/citation.cfm?id=1370599">good branch prediction characteristics</a>,
-causing at most a single misprediction per key.</li>
+typically limited to a single misprediction per key.</li>
 </ul>
 
 <pre><code>// InsertionSort sorts the elements of a in ascending order.
