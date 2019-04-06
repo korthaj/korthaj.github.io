@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Loop invariants can give you coding superpowers · YourBasic </title>
-  <meta name="description" content="Loop invariants are a simple yet powerful tool for designing, testing, modifying, documenting and proving code correct.">
+  <meta name="description" content="A loop invariant is a simple yet powerful tool for designing, testing, modifying, documenting and proving code correct.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -35,7 +35,7 @@
     "https://yourbasic.org/algorithms/vanishing-point.jpg"
    ],
   "datePublished": "2018-01-26T00:00:00&#43;0000",
-  "dateModified": "2019-04-05T00:00:00&#43;0000",
+  "dateModified": "2019-04-06T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "Loop invariants are a simple yet powerful tool for designing, testing, modifying, documenting and proving code correct."
+  "description": "A loop invariant is a simple yet powerful tool for designing, testing, modifying, documenting and proving code correct."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Loop invariants can give you coding superpowers">
-<meta property="og:description" content="Loop invariants are a simple yet powerful tool for designing, testing, modifying, documenting and proving code correct.">
+<meta property="og:description" content="A loop invariant is a simple yet powerful tool for designing, testing, modifying, documenting and proving code correct.">
 <meta property="og:url" content="https://yourbasic.org/algorithms/loop-invariants-explained/">
 <meta property="og:image" content="https://yourbasic.org/algorithms/vanishing-point.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Loop invariants can give you coding superpowers">
-<meta name="twitter:description" content="Loop invariants are a simple yet powerful tool for designing, testing, modifying, documenting and proving code correct.">
+<meta name="twitter:description" content="A loop invariant is a simple yet powerful tool for designing, testing, modifying, documenting and proving code correct.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/algorithms/vanishing-point.jpg">
 
@@ -94,10 +94,10 @@ which is true every time the execu&shy;tion of the program reaches the&nbsp;inva
 <div><img src="/algorithms/vanishing-point.jpg" alt="Repeating circular patterns"></div>
 
 <ul class="toc">
-<li><a href="#basic-example">Basic example</a></li>
+<li><a href="#loop-invariant-definition">Loop invariant definition (basic example)</a></li>
 <li><a href="#designing-with-invariants">Designing with invariants</a></li>
-<li><a href="#trickier-example">Trickier example</a></li>
-<li><a href="#3-way-partition">3-way partition</a></li>
+<li><a href="#sorting">Sorting (trickier example)</a></li>
+<li><a href="#3-way-partition">3-way partition (advanced example)</a></li>
 </ul>
 
 <p>When struggling with a tricky 3-way partion algorithm as a student,
@@ -112,7 +112,7 @@ They are a simple yet powerful tool to help understand iterative code.</p>
 and <em>modifying</em> code. It also serves as <em>documentation</em> and can be
 the foundation of a <em>correctness proof</em>.</p>
 
-<h2 id="basic-example">Basic example</h2>
+<h2 id="loop-invariant-definition">Loop invariant definition</h2>
 
 <p>Let&rsquo;s start with a simple piece of code.</p>
 
@@ -213,7 +213,7 @@ Here is the finished&nbsp;code.</p>
     <b>return</b> max
 </pre>
 
-<h2 id="trickier-example">Trickier example</h2>
+<h2 id="sorting">Sorting</h2>
 
 <pre>
 <b>Algorithm</b> sort(A)
