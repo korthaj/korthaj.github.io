@@ -123,17 +123,6 @@ Hash tables offer a combination of efficient lookup, insert and delete operation
     </item>
     
     <item>
-      <title>Induction and recursive functions</title>
-      <link>https://yourbasic.org/algorithms/induction-recursive-functions/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/algorithms/induction-recursive-functions/</guid>
-      <description>To make sense of recursive functions, you can use a way of thinking closely related to mathematical induction.
- This text introduces mathematical induction and explains how and why it works. It contains examples from both mathematics and programming.
-Induction is a proof method often used to prove statements about integers. We&amp;rsquo;ll use the notation P(n), where n&amp;nbsp;&amp;ge;&amp;nbsp;0, to denote such a&amp;nbsp;statement. To prove P(n) with induction is a two-step procedure.</description>
-    </item>
-    
-    <item>
       <title>Insertion sort vs. selection sort (time complexity and performance)</title>
       <link>https://yourbasic.org/algorithms/insertion-sort/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -162,6 +151,17 @@ Monte Carlo simulations are a broad class of algorithms that use repeated random
       <guid>https://yourbasic.org/algorithms/loop-invariants-explained/</guid>
       <description>An invariant is a state&amp;shy;ment about program vari&amp;shy;ables that is true every time the execu&amp;shy;tion of the program reaches the&amp;nbsp;invariant.
  Loop invariant definition (basic example) Designing with invariants Sorting (trickier example) 3-way partition (advanced example)  When struggling with a tricky 3-way partion algorithm as a student, a friend suggested a well-fitting invariant. It was like getting a secret superpower: suddenly I could write code that used to be impossible.</description>
+    </item>
+    
+    <item>
+      <title>On induction and recursive functions, with an application to binary search</title>
+      <link>https://yourbasic.org/algorithms/induction-recursive-functions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/algorithms/induction-recursive-functions/</guid>
+      <description>To make sense of recursive functions, you can use a way of thinking closely related to mathematical induction.
+ Mathematical induction Sum of an arithmetic series (basic example) The same sum in code Binary search correctness proof  Mathematical induction Mathematical induction is a proof method often used to prove statements about integers.
+We&amp;rsquo;ll use the notation P(n), where n&amp;nbsp;&amp;ge;&amp;nbsp;0, to denote such a&amp;nbsp;statement. To prove P(n) with induction is a two-step procedure.</description>
     </item>
     
     <item>

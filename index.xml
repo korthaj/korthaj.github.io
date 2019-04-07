@@ -1243,17 +1243,6 @@ Loop from 0 to len(a)-1 instead.</description>
     </item>
     
     <item>
-      <title>Induction and recursive functions</title>
-      <link>https://yourbasic.org/algorithms/induction-recursive-functions/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/algorithms/induction-recursive-functions/</guid>
-      <description>To make sense of recursive functions, you can use a way of thinking closely related to mathematical induction.
- This text introduces mathematical induction and explains how and why it works. It contains examples from both mathematics and programming.
-Induction is a proof method often used to prove statements about integers. We&amp;rsquo;ll use the notation P(n), where n&amp;nbsp;&amp;ge;&amp;nbsp;0, to denote such a&amp;nbsp;statement. To prove P(n) with induction is a two-step procedure.</description>
-    </item>
-    
-    <item>
       <title>Insertion sort vs. selection sort (time complexity and performance)</title>
       <link>https://yourbasic.org/algorithms/insertion-sort/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1542,6 +1531,17 @@ package main var n = 1 func main() {} This is a trade-off in the design of the G
 const ( Century = 100 Decade = 010 Year = 001 ) // The world&#39;s oldest person, Emma Morano, lived for a century, // two decades and two years. fmt.Println(&#34;She was&#34;, Century+2*Decade+2*Year, &#34;years old.&#34;) She was 118 years old. Answer
 010 is a number in base&amp;nbsp;8, therefore it means&amp;nbsp;8, not&amp;nbsp;10.
 Integer literals in Go are specified in octal, decimal or hexadecimal. The number 16 can be written as 020, 16 or 0x10.</description>
+    </item>
+    
+    <item>
+      <title>On induction and recursive functions, with an application to binary search</title>
+      <link>https://yourbasic.org/algorithms/induction-recursive-functions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/algorithms/induction-recursive-functions/</guid>
+      <description>To make sense of recursive functions, you can use a way of thinking closely related to mathematical induction.
+ Mathematical induction Sum of an arithmetic series (basic example) The same sum in code Binary search correctness proof  Mathematical induction Mathematical induction is a proof method often used to prove statements about integers.
+We&amp;rsquo;ll use the notation P(n), where n&amp;nbsp;&amp;ge;&amp;nbsp;0, to denote such a&amp;nbsp;statement. To prove P(n) with induction is a two-step procedure.</description>
     </item>
     
     <item>

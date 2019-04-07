@@ -479,10 +479,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/algorithms/induction-recursive-functions/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/algorithms/insertion-sort/</loc>
   </url>
   
@@ -584,6 +580,10 @@
   
   <url>
     <loc>https://yourbasic.org/golang/gotcha-octal-decimal-hexadecimal-literal/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/algorithms/induction-recursive-functions/</loc>
   </url>
   
   <url>

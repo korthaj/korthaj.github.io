@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Induction and recursive functions · YourBasic </title>
+  <title>On induction and recursive functions, with an application to binary search · YourBasic </title>
   <meta name="description" content="Mathematical induction can help you understand recursive functions better.">
   
   <link rel="stylesheet" href="/style.css">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/algorithms/induction-recursive-functions/"
   },
-  "headline": "Induction and recursive functions",
+  "headline": "On induction and recursive functions, with an application to binary search",
   "image": [
     "https://yourbasic.org/algorithms/recursive-flower.jpg"
    ],
   "datePublished": "2018-02-02T00:00:00&#43;0000",
-  "dateModified": "2018-02-02T00:00:00&#43;0000",
+  "dateModified": "2019-04-07T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -54,13 +54,13 @@
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Induction and recursive functions">
+<meta property="og:title" content="On induction and recursive functions, with an application to binary search">
 <meta property="og:description" content="Mathematical induction can help you understand recursive functions better.">
 <meta property="og:url" content="https://yourbasic.org/algorithms/induction-recursive-functions/">
 <meta property="og:image" content="https://yourbasic.org/algorithms/recursive-flower.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Induction and recursive functions">
+<meta name="twitter:title" content="On induction and recursive functions, with an application to binary search">
 <meta name="twitter:description" content="Mathematical induction can help you understand recursive functions better.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/algorithms/recursive-flower.jpg">
@@ -82,7 +82,7 @@
 
 <main>
 <article>
-<h1>Induction and recursive functions</h1>
+<h1>On induction and recursive functions, with an application to binary search</h1>
 <div class="tagline">yourbasic.org</div>
 
 
@@ -92,11 +92,18 @@
 
 <div><img src="/algorithms/recursive-flower.jpg" alt="Repeating circular patterns"></div>
 
-<p>This text introduces <b>mathematical induction</b> and explains how and why it works.
-It contains examples from both mathematics and programming.</p>
+<ul class="toc">
+  <li><a href="#mathematical-induction">Mathematical induction</a></li>
+  <li><a href="#sum-of-an-arithmetic-series">Sum of an arithmetic series (basic example)</a></li>
+  <li><a href="#the-same-sum-in-code">The same sum in code</a></li>
+  <li><a href="#binary-search-correctness-proof">Binary search correctness proof</a></li>
+</ul>
 
-<p>Induction is a proof method often used to prove statements about integers.
-We&rsquo;ll use the notation P(<i>n</i>), where <i>n</i>&nbsp;&ge;&nbsp;0,
+<h2 id="mathematical-induction">Mathematical induction</h2>
+
+<p>Mathematical induction is a proof method often used to prove statements about integers.</p>
+
+<p>We&rsquo;ll use the notation P(<i>n</i>), where <i>n</i>&nbsp;&ge;&nbsp;0,
 to denote such a&nbsp;statement.
 To prove P(<i>n</i>) with induction is a two-step procedure.</p>
 
@@ -186,7 +193,7 @@ for all <i>i</i>&nbsp;&lt;&nbsp;<i>k</i>,
 we can deduce that P(<i>n</i>) must be true for all positive integers&nbsp;<i>n</i>.
 <b>Q.E.D.</b></p>
 
-<h2 id="the-same-sum-in-nbsp-code">The same sum in&nbsp;code</h2>
+<h2 id="the-same-sum-in-code">The same sum in code</h2>
 
 <p>Induction works beautifully for proving statements about recursive functions,
 and for thinking about recursion in&nbsp;general.</p>
@@ -240,7 +247,7 @@ returns the value
 whenever&nbsp;<i>n</i>&nbsp;&ge;&nbsp;1.
 <b>Q.E.D.</b></p>
 
-<h2>Binary search</h2>
+<h2 id="binary-search-correctness-proof">Binary search correctness proof</h2>
 
 <p>Binary search is known as &rdquo;the simplest algorithm
 than no one can implement&rdquo;. This seems to be true:
@@ -341,10 +348,10 @@ has test code for this function.</p>
 <p style="margin-top:0;">See <a href="/algorithms/loop-invariants-explained/">Loop invariants can give you coding superpowers</a> for a simple yet powerful tool to help understand iterative code.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2falgorithms%2finduction-recursive-functions%2f&amp;text=Induction%20and%20recursive%20functions&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2falgorithms%2finduction-recursive-functions%2f&amp;text=On%20induction%20and%20recursive%20functions,%20with%20an%20application%20to%20binary%20search&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2falgorithms%2finduction-recursive-functions%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2falgorithms%2finduction-recursive-functions%2f&amp;title=Induction%20and%20recursive%20functions" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Induction%20and%20recursive%20functions&body=https%3a%2f%2fyourbasic.org%2falgorithms%2finduction-recursive-functions%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2falgorithms%2finduction-recursive-functions%2f&amp;title=On%20induction%20and%20recursive%20functions,%20with%20an%20application%20to%20binary%20search" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=On%20induction%20and%20recursive%20functions,%20with%20an%20application%20to%20binary%20search&body=https%3a%2f%2fyourbasic.org%2falgorithms%2finduction-recursive-functions%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
@@ -369,6 +376,12 @@ has test code for this function.</p>
     <a href="/algorithms/time-complexity-recursive-functions/">Time complexity of recursive functions [Master theorem]</a>
     <div class="desc">You can often compute the time complexity of a recursive function by solving a recurrence relation. The master theorem gives solutions to a class of common recurrences.</div>
     <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="https://www.uni-weimar.de/fileadmin/user/fak/medien/professuren/Mediensicherheit/Teaching/SS15/SSS/p190-pattis.pdf">Textbook errors in binary searching</a>
+    <div class="source">Richard E. Pattis</div>
+    <div class="author"></div>
   </div>
 
   <h2>Follow on Twitter</h2>
