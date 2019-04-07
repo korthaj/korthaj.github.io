@@ -1383,7 +1383,7 @@ dev etc tmp usr  Visit all files and folders in a directory tree Use the filepat
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/algorithms/loop-invariants-explained/</guid>
-      <description>An invariant is a state&amp;shy;ment about the vari&amp;shy;ables in a program, which is true every time the execu&amp;shy;tion of the program reaches the&amp;nbsp;invariant.
+      <description>An invariant is a state&amp;shy;ment about program vari&amp;shy;ables that is true every time the execu&amp;shy;tion of the program reaches the&amp;nbsp;invariant.
  Loop invariant definition (basic example) Designing with invariants Sorting (trickier example) 3-way partition (advanced example)  When struggling with a tricky 3-way partion algorithm as a student, a friend suggested a well-fitting invariant. It was like getting a secret superpower: suddenly I could write code that used to be impossible.</description>
     </item>
     
