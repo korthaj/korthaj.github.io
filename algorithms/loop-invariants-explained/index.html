@@ -35,7 +35,7 @@
     "https://yourbasic.org/algorithms/vanishing-point.jpg"
    ],
   "datePublished": "2018-01-26T00:00:00&#43;0000",
-  "dateModified": "2019-04-07T00:00:00&#43;0000",
+  "dateModified": "2019-04-09T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -261,35 +261,35 @@ that would be quite hard to implement without a well-chosen loop&nbsp;invariant.
 // - all elements in v[low:high] are equal to p,
 // - all elements in v[high:] are greater than p.
 func Partition(v []int, p int) (low, high int) {
-	low, high = 0, len(v)
-	for mid := 0; mid &lt; high; {
-		// Invariant:
-		//  - v[:low] &lt; p
-		//  - v[low:mid] = p
-		//  - v[mid:high] are unknown
-		//  - v[high:] &gt; p
-		//
-		//         &lt; p       = p        unknown       &gt; p
-		//     -----------------------------------------------
-		// v: |          |          |a            |           |
-		//     -----------------------------------------------
-		//                ^          ^             ^
-		//               low        mid           high
-		switch a := v[mid]; {
-		case a &lt; p:
-			v[mid] = v[low]
-			v[low] = a
-			low++
-			mid++
-		case a == p:
-			mid++
-		default: // a &gt; p
-			v[mid] = v[high-1]
-			v[high-1] = a
-			high--
-		}
-	}
-	return
+    low, high = 0, len(v)
+    for mid := 0; mid < high; {
+        <span style="color:green;">// Invariant:</span>
+        <span style="color:green;">//  - v[:low] < p</span>
+        <span style="color:green;">//  - v[low:mid] = p</span>
+        <span style="color:green;">//  - v[mid:high] are unknown</span>
+        <span style="color:green;">//  - v[high:] > p</span>
+        <span style="color:green;">//</span>
+        <span style="color:green;">//         < p       = p        unknown       > p</span>
+        <span style="color:green;">//     -----------------------------------------------</span>
+        <span style="color:green;">// v: |          |          |a            |           |</span>
+        <span style="color:green;">//     -----------------------------------------------</span>
+        <span style="color:green;">//                ^          ^             ^</span>
+        <span style="color:green;">//               low        mid           high</span>
+        switch a := v[mid]; {
+        case a < p:
+            v[mid] = v[low]
+            v[low] = a
+            low++
+            mid++
+        case a == p:
+            mid++
+        default: // a > p
+            v[mid] = v[high-1]
+            v[high-1] = a
+            high--
+        }
+    }
+    return
 }
 </code></pre>
 
