@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/numbers-1-2-3.jpg"
    ],
   "datePublished": "2018-05-16T00:00:00&#43;0000",
-  "dateModified": "2019-03-01T00:00:00&#43;0000",
+  "dateModified": "2019-04-09T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -93,7 +93,7 @@
 <ul class="toc">
   <li><a href="#int-to-string">int to string</a></li>
   <li><a href="#int64-to-string">int64 to string</a></li>
-  <li><a href="#string-to-int">string to int</a></li>
+  <li><a href="#string-to-int-parsing">string to int (parsing)</a></li>
   <li><a href="#string-to-int64">string to int64</a></li>
   <li><a href="#int-to-int64-and-back">int to int64 (and back)</a></li>
   <li><a href="#general-formatting-width-indent-sign">General formatting (width, indent, sign)</a></li>
@@ -127,9 +127,9 @@ s := strconv.FormatInt(n, 10) <span class="comment">// s == "97" (decimal)</span
 s := strconv.FormatInt(n, 16) <span class="comment">// s == "61" (hexadecimal)</span>
 </code></pre>
 
-<h2 id="string-to-int">string to int</h2>
+<h2 id="string-to-int-parsing">string to int (parsing)</h2>
 
-<p>Use <a href="https://golang.org/pkg/strconv/#Atoi"><code>strconv.Atoi</code></a> to convert/parse a string to an&nbsp;int.</p>
+<p>Use <a href="https://golang.org/pkg/strconv/#Atoi"><code>strconv.Atoi</code></a> to parse a decimal string to an&nbsp;int.</p>
 
 <pre><code>s := "97"
 if n, err := strconv.Atoi(s); err == nil {
@@ -138,6 +138,8 @@ if n, err := strconv.Atoi(s); err == nil {
     fmt.Println(s, "is not an integer.")
 }
 <span class="comment">// Output: 98</span></code></pre>
+
+<p>The call <code>strconv.Atoi(s)</code> is equivalent to <code><a href="https://golang.org/pkg/strconv/#ParseInt">strconv.ParseInt</a>(s, 10, 0)</code> converted to an&nbsp;<code>int</code>. See the next section for more details.</p>
 
 <h2 id="string-to-int64">string to int64</h2>
 
