@@ -78,8 +78,7 @@ Let T1, T2,&amp;nbsp;…, Tk be the complexities of a sequence of operations on 
       
       <guid>https://yourbasic.org/algorithms/bloom-filter/</guid>
       <description>A Bloom filter is a prob&amp;shy;abi&amp;shy;listic data struc&amp;shy;ture used to test set&amp;nbsp;member&amp;shy;ship.
-This data structure tells whether an element may be in a set, or definitely isn&amp;rsquo;t. The only possible errors are false positives: a search for a nonexistent element can give an incorrect answer. With more elements in the filter, the error rate increases.
-Bloom filters are both fast and space-efficient. However, elements can only be added, not removed.</description>
+ Bloom filter basics Example: A blacklist of shady websites Implementation Performance  Bloom filter basics The Bloom filter data structure tells whether an element may be in a set, or definitely isn&amp;rsquo;t. The only possible errors are false positives: a search for a nonexistent element can give an incorrect answer. With more elements in the filter, the error rate increases.</description>
     </item>
     
     <item>
