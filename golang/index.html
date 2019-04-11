@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/square-gopher.png"
    ],
   "datePublished": "2018-04-29T00:00:00&#43;0000",
-  "dateModified": "2019-03-30T00:00:00&#43;0000",
+  "dateModified": "2019-04-11T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -95,35 +95,33 @@ p{margin:0.8em 0 0 0;}
 </style>
 
 <div style="margin-top:1em;">
-<div style="float: left; min-width: 33%; margin-right: 2em; margin-top:0;">
+<div style="float: left; min-width: 40%; margin-right: 2em; margin-top:0;">
     <ul class="toc" style="margin: 0;">
         <li><a href="#step-by-step-guides"><b>Step-by-step guides</b></a></li>
         <li><a href="#tutorials">Tutorials</a></li>
         <li><a href="#cheat-sheets">Cheat sheets</a></li>
+        <li><a href="#code-for-common-tasks">Code for common tasks</a></li>
         <li style="margin-top: 0.2em;"></li>
 
-        <li><a href="#code-for-common-tasks"><b>Code for common tasks</b></a></li>
-        <li style="margin-top: 0.2em;"></li>
-
-        <li><a href="#language-basics"><b>Language basics</b></a></li>
-        <li><a href="#standard-library">Standard library</a></li>
-        <li style="margin-top: 0.2em;"></li>
-    </ul>
-</div>
-<div style="float: left;">
-    <ul class="toc" style="margin-top: 0;">
         <li><a href="#concurrent-programming"><b>Concurrent programming</b></a></li>
         <li><a href="#object-oriented-programming">Object-oriented programming</a></li>
         <li><a href="#functional-programming">Functional programming</a></li>
         <li><a href="#scripting">Scripting</a></li>
         <li style="margin-top: 0.2em;"></li>
-
+    </ul>
+</div>
+<div style="float: left;">
+    <ul class="toc" style="margin-top: 0;">
         <li><a href="#strings"><b>Strings</b></a></li>
-        <li><a href="#slices-and-arrays">Slices and arrays</a></li>
         <li><a href="#maps">Maps</a></li>
+        <li><a href="#slices-and-arrays">Slices and arrays</a></li>
         <li><a href="#files">Files</a></li>
         <li><a href="#time-and-date">Time and date</a></li>
         <li><a href="#random-numbers">Random numbers</a></li>
+        <li style="margin-top: 0.2em;"></li>
+
+        <li><a href="#language-basics"><b>Language basics</b></a></li>
+        <li><a href="#standard-library">Standard library</a></li>
     </ul>
 </div>
 <!-- CC BY 3.0: https://golang.org/doc/gopher/ -->
@@ -157,7 +155,7 @@ p{margin:0.8em 0 0 0;}
 
 
 
-<li><a href="/golang/maps-explained/" title="A map (or dictionary) is an unordered collection of key-value pairs. Go maps are implemented by hash tables and provide lookup, insert, and delete operations in constant amortized time.">Map essentials in 4 easy steps</a></li>
+<li><a href="/golang/maps-explained/" title="A map is an unordered collection of key-value pairs. Go maps are implemented by hash tables and hence offer constant time operation.">Map essentials in 4 easy steps</a></li>
 
 
 
@@ -345,6 +343,354 @@ p{margin:0.8em 0 0 0;}
 
 
 <li><a href="/golang/table-driven-unit-test/" title="How to write a table-driven unit test for binary search in Go.">Table-driven unit tests</a></li>
+
+</ul>
+
+<h3 id="concurrent-programming">Concurrent programming</h3>
+
+<p><a href="/golang/concurrent-programming/"><img src="/golang/bouncing-balls-thumb.jpg" title="Step-by-step guide to concurrency" alt="Step-by-step guide to concurrency"></a></p>
+
+<ul class="index">
+<b>
+
+<li><a href="/golang/concurrent-programming/" title="This tutorial covers concurrency patterns, goroutines, channels, deadlock, data race, timer, ticker, waitgroup, and efficient parallel computation.">Concurrent programming</a></li>
+</b>
+
+
+<li><a href="/golang/goroutines-explained/" title="A goroutine is a lightweight thread of execution. All goroutines in a single program share the same address space.">Goroutines are lightweight threads</a></li>
+
+
+
+<li><a href="/golang/channels-explained/" title="A channel is a mechanism for two goroutines to synchronize execution and communicate by passing values.">Channels offer synchronized communication</a></li>
+
+
+
+<li><a href="/golang/select-explained/" title="A select statement allows you to wait for multiple send or receive operations simultaneously.">Select waits on a group of channels</a></li>
+
+
+
+<li><a href="/golang/data-races-explained/" title="A data race is easily introduced by mistake and can lead to situations that are very hard to debug. This article explains how to avoid this headache.">Data races explained</a></li>
+
+
+
+<li><a href="/golang/detect-data-races/" title="By starting your application with the &#39;-race&#39; option, the Go runtime might be able to detect and inform you about data races.">How to detect data races</a></li>
+
+
+
+<li><a href="/golang/detect-deadlock/" title="The Go runtime can often detect when a program freezes because of a deadlock. This article explains how to debug and solve such issues.">Deadlock detection</a></li>
+
+
+
+<li><a href="/golang/wait-for-goroutines-waitgroup/" title="A sync.WaitGroup waits for a group of goroutines to finish.">Waiting for goroutines</a></li>
+
+
+
+<li><a href="/golang/broadcast-channel/" title="When you close a channel, all readers receive a zero value. This can be used to broadcast a signal to several goroutines on a single channel.">Broadcast a signal on a channel</a></li>
+
+
+
+<li><a href="/golang/stop-goroutine/" title="One goroutine can&#39;t forcibly stop another. To make a goroutine stoppable, let it listen for a stop signal on a channel.">How to kill a goroutine</a></li>
+
+
+
+<li><a href="/golang/time-reset-wait-stop-timeout-cancel-interval/" title="Timers and Tickers are used to wait for, repeat, and cancel events in the future.">Timer and Ticker: events in the future</a></li>
+
+
+
+<li><a href="/golang/mutex-explained/" title="A sync.Mutex is used to synchronize data by explicit locking in Go.">Mutual exclusion lock (mutex)</a></li>
+
+
+
+<li><a href="/golang/efficient-parallel-computation/" title="To efficiently schedule parallel computation on separate CPUs is more of an art than a science. This article gives some rules of thumb.">3 rules for efficient parallel computation</a></li>
+
+</ul>
+
+<h3 id="object-oriented-programming">Object-oriented programming</h3>
+
+<p><a href="/golang/inheritance-object-oriented/"><img src="/golang/improvement-thumb.jpg" title="Inheritance and OOP: Go one better" alt="Inheritance and OOP: Go one better"></a></p>
+
+<ul class="index">
+
+
+<li><a href="/golang/inheritance-object-oriented/" title="Go doesn’t have inheritance. Composition, embedding and interfaces support code reuse and polymorphism.">How to do OO in Go without inheritance</a></li>
+
+
+
+<li><a href="/golang/constructor-best-practice/" title="Best practice in Go is to use suitable zero values and factories instead of constructors.">Constructors deconstructed [best practice]</a></li>
+
+
+
+<li><a href="/golang/methods-explained/" title="Any Go type declared in a type definition can have methods attached.">Methods for all types</a></li>
+
+
+
+<li><a href="/golang/public-private/" title="All identifiers are visible throughout the package where they are defined; an identifier that begins with a capital letter is globally visible.">Public vs. private</a></li>
+
+
+
+<li><a href="/golang/pointer-vs-value-receiver/" title="Guidelines on how to choose between pointer and value receivers for Go methods.">Pointer vs. value receiver</a></li>
+
+</ul>
+
+<h3 id="functional-programming">Functional programming</h3>
+
+<p><a href="/golang/your-basic-func/"><img src="/golang/petersen-complement-thumb.png" title="Your basic func: Unexpected functional programming in Go" alt="Your basic func: Unexpected functional programming in Go"></a></p>
+
+<ul class="index">
+
+
+<li><a href="/golang/your-basic-func/" title="A graph implementation based entirely on functions: the API contains only immutable data types, and the code is built on top of a struct with five func fields.">Functional programming in Go [case study]</a></li>
+
+
+
+<li><a href="/golang/function-pointer-type-declaration/" title="Functions in Go are first class citizens: function types and function values can be used and passed around just like other values.">Function types and values</a></li>
+
+
+
+<li><a href="/golang/anonymous-function-literal-lambda-closure/" title="A function literal, or lambda, represents a function without a name. Function literals in Go are closures: they may refer to variables defined in a enclosing function.">Anonymous functions and closures</a></li>
+
+
+
+<li><a href="/golang/iterator-generator-pattern/" title="Use an iterator function with callbacks to implement a clean and efficient iterator in Go.">How to best implement an iterator</a></li>
+
+</ul>
+
+<h3 id="scripting">Scripting</h3>
+
+<p><a href="/golang/write-command-line-application/"><img src="/golang/hp-terminal-thumb.jpg" title="Go as a scripting language: lightweight, safe and fast" alt="Go as a scripting language: lightweight, safe and fast"></a></p>
+
+<ul class="index">
+
+
+<li><a href="/golang/write-command-line-application/" title="How to write a basic command-line (CLI) application in Go.">Go as a scripting language: lightweight, safe and fast</a></li>
+
+
+
+<li><a href="/golang/read-file-line-by-line/" title="Use a bufio.Scanner to read a file one line at a time in Go. Use os.Stdin to read from the standard input stream.">Read a file (stdin) line by line</a></li>
+
+
+
+<li><a href="/golang/command-line-arguments/" title="You can access command-line arguments, including the program name and flags, through the os.Args variable.">Command-line arguments and flags</a></li>
+
+
+
+<li><a href="/golang/environment-variables/" title="Use the Setenv, Getenv, Unsetenv and Environ functions to read and write environment variables.">Access environment variables</a></li>
+
+</ul>
+
+</div>
+<div style="float:left; max-width:320px;">
+
+<h3 id="strings">Strings<span class="quicklink"><a href="/golang/string-functions-reference-cheat-sheet/" title="String functions cheat sheet" alt="String functions cheat sheet">Cheat sheet</a></span></h3>
+
+<p><a href="/golang/string-functions-reference-cheat-sheet/"><img src="/golang/typewriter-thumb.png" title="String functions cheat sheet" alt="String functions cheat sheet"></a></p>
+
+<ul class="index">
+
+
+<li><a href="/golang/string-functions-reference-cheat-sheet/" title="Essential Go string functions in one place: literals, concatenation, equality, ordering, indexing, UTF-8, search, join, replace, split, trim, strip, lowercase/uppercase.">40&#43; practical string tips [cheat sheet]</a></li>
+
+
+
+<li><a href="/golang/fmt-printf-reference-cheat-sheet/" title="The functions fmt.Printf and fmt.Sprintf format numbers and strings indented with spaces or zeroes, in different bases, and with optional quotes.">Top fmt formatting tips [cheat sheet]</a></li>
+
+
+
+<li><a href="/golang/regexp-cheat-sheet/" title="Regular expressions in Go: introduction, cheat sheet and plenty of code examples.">Regexp tutorial and cheat sheet</a></li>
+
+
+
+<li><a href="/golang/rune/" title="A rune is a type meant to represent a Unicode code point. Strings, however, are sequences of bytes (typically containing Unicode text encoded in UTF-8). ">Runes and character encoding</a></li>
+
+
+
+<li><a href="/golang/build-append-concatenate-strings-efficiently/" title="Use a strings.Builder together with the fmt package for a clean and simple way to build strings efficiently without redundant copying.">Efficient string concatenation [full guide]</a></li>
+
+
+
+<li><a href="/golang/multiline-string/" title="Essential Go string encodings in one place: raw strings, interpreted strings, escape characters, HTML and URL encoding.">Escapes and multiline strings</a></li>
+
+
+
+<li><a href="/golang/split-string-into-slice/" title="strings.Split splits a string into its comma separated values, strings.Fields splits a string into substrings removing whitespace, regexp.Split splits into substrings separated by a regular expression.">3 ways to split a string into a slice</a></li>
+
+
+
+<li><a href="/golang/convert-string-to-byte-slice/" title="When you convert between a string and a byte slice (array), you get a brand new slice that contains the same bytes as the string, and vice versa.">Convert between byte array/slice and string</a></li>
+
+
+
+<li><a href="/golang/convert-string-to-rune-slice/" title="When you convert a string to a rune slice (array), you get a new slice that contains the Unicode code points (runes) of the string.">Convert between rune array/slice and string</a></li>
+
+
+
+<li><a href="/golang/convert-string-to-float/" title="Use strconv.ParseFloat to parse a floating point number from a string, and fmt.Sprintf to format a float as a string.">Convert between float and string</a></li>
+
+
+
+<li><a href="/golang/convert-int-to-string/" title="Use strconv.Itoa to convert an int to a decimal string, and strconv.Atoi to parse a string to an int.">Convert between int, int64 and string</a></li>
+
+
+
+<li><a href="/golang/interface-to-string/" title="To get a string representation of an interface value in Go, use the fmt.Sprintf function.">Convert interface to string</a></li>
+
+
+
+<li><a href="/golang/remove-duplicate-whitespace/" title="The regexp \s&#43; can be used to delete duplicate whitespace from a string.">Remove all duplicate whitespace</a></li>
+
+
+
+<li><a href="/golang/trim-whitespace-from-string/" title="Use the strings.TrimSpace function to strip leading and trailing whitespace from a string.">3 ways to trim whitespace (or other characters) from a string</a></li>
+
+
+
+<li><a href="/golang/reverse-utf8-string/" title="How to reverse a UTF-8 encoded string in Go.">How to reverse a string by byte or rune</a></li>
+
+</ul>
+
+<h3 id="maps">Maps<span class="quicklink"><a href="/golang/maps-explained/" title="Map essentials in 4 easy steps" alt="Map essentials in 4 easy steps">Step-by-step</a></span></h3>
+
+<p><a href="/golang/maps-explained/"><img src="/golang/15-men-in-16-slots-thumb.jpg" title="Map essentials in 4 easy steps"></a></p>
+
+<ul class="index">
+
+
+<li><a href="/golang/maps-explained/" title="A map is an unordered collection of key-value pairs. Go maps are implemented by hash tables and hence offer constant time operation.">Map essentials in 4 easy steps</a></li>
+
+
+
+<li><a href="/golang/check-map-contains-key/" title="To check if a map contains a key, use the second return value. It&#39;s a boolean that indicates if the key exists.">3 simple ways to find a key in a map</a></li>
+
+
+
+<li><a href="/golang/slice-of-keys-values-from-map/" title="You can use a range statement to extract slices of keys and values from a map in Go.">Get slices of keys and values from a map</a></li>
+
+
+
+<li><a href="/golang/sort-map-keys-values/" title="To sort a map (which is an unordered collection) you must maintain a separate data structure, typically a slice of keys or values.">Sort a map by key or value</a></li>
+
+</ul>
+
+
+<h3 id="slices-and-arrays">Slices and arrays<span class="quicklink"><a href="/golang/slices-explained/" title="Slices and arrays in 6 easy steps" alt="Slices and arrays in 6 easy steps">Step-by-step</a></span></h3>
+
+<p><a href="/golang/slices-explained/"><img src="/golang/orange-thumb.jpg" title="Slices and arrays in 6 easy steps"></a></p>
+
+<ul class="index">
+
+
+<li><a href="/golang/slices-explained/" title="A slice refers to a section of an underlying array. It can grow and shrink within the bounds of this array.">Slices and arrays in 6 easy steps</a></li>
+
+
+
+<li><a href="/golang/compare-slices/" title="You typically want to write your own code to compare slices. However, use the optimized bytes.Equal for byte slices, and for testing consider using reflect.DeepEqual.">3 ways to compare slices (arrays)</a></li>
+
+
+
+<li><a href="/golang/clear-slice/" title="You can clear a slice either by setting it to nil and releasing the underlying memory, or by slicing it to zero length and thereby keeping the memory.">How to best clear a slice: empty vs. nil</a></li>
+
+
+
+<li><a href="/golang/delete-element-slice/" title="How to remove an element from a slice: fast version (changes order), slow version (maintains order).">2 ways to delete an element from a slice</a></li>
+
+
+
+<li><a href="/golang/find-search-contains-slice/" title="To check if a slice or array contains an element, you can either write your own linear search or use one of the provided binary search functions.">How to find an element in a slice/array</a></li>
+
+
+
+<li><a href="/golang/last-item-in-slice/" title="Use a[len(a)-1] to access the last element of a.">Last item in a slice/array</a></li>
+
+</ul>
+
+<h3 id="files">Files</h3>
+
+<ul class="index">
+
+
+<li><a href="/golang/read-file-line-by-line/" title="Use a bufio.Scanner to read a file one line at a time in Go. Use os.Stdin to read from the standard input stream.">Read a file (stdin) line by line</a></li>
+
+
+
+<li><a href="/golang/append-to-file/" title="To open/create a file for writing and appending in Go: os.OpenFile(filename, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)">Append text to a file</a></li>
+
+
+
+<li><a href="/golang/current-directory/" title="Use os.Executable to find the path name for the executable that started the current process, and filepath.Dir to extract its directory.">Find current working directory</a></li>
+
+
+
+<li><a href="/golang/list-files-in-directory/" title="Use ioutil.ReadDir to get a sorted directory listing. To visit all files recursively, use filepath.Walk.">List all files (recursively) in a directory</a></li>
+
+
+
+<li><a href="/golang/temporary-file-directory/" title="Use ioutil.TempFile to create a temporary file, and ioutio.TempDir to create a temporary directory. Starting with Go 1.11, it&#39;s possible to add a suffix to the randomly generated file name.">Create a temporary file or directory</a></li>
+
+</ul>
+
+<h3 id="time-and-date">Time and date</h3>
+
+<p><a href="/golang/format-parse-string-time-date-example/"><img src="/golang/stopwatch-thumb.png" title="How to format and parse a time/date" alt="How to format and parse a time/date" style="margin-left:10px;"></a></p>
+
+<ul class="index">
+
+
+<li><a href="/golang/format-parse-string-time-date-example/" title="To convert a time or date to string, your format a special layout parameter (Mon Jan 2 15:04:05 MST 2006) the same way as the time should be formatted. ">Format and parse a time or date [complete guide]</a></li>
+
+
+
+<li><a href="/golang/time-change-convert-location-timezone/" title="How to get the time in a different time zone in Go.">Time zones</a></li>
+
+
+
+<li><a href="/golang/current-time/" title="To get a second/nanosecond timestamp use time.Now and time.Unix or time.UnixNano.">How to get current timestamp</a></li>
+
+
+
+<li><a href="/golang/day-month-year-from-time/" title="How to get the day/month/year as integers from a time.Time in Go.">Get year, month, day from time</a></li>
+
+
+
+<li><a href="/golang/day-of-week-int/" title="How to get the day of week as an integer from a time.Time in Go.">How to find the day of week</a></li>
+
+
+
+<li><a href="/golang/days-between-dates/" title="How to calculate the number of days between two dates in Go.">Days between two dates</a></li>
+
+
+
+<li><a href="/golang/last-day-month-date/" title="How to find the last day of a month in Go. The trick is that time.Date accepts values outside their usual ranges, and that these values are normalized during conversion.">Days in a month</a></li>
+
+
+
+<li><a href="/golang/measure-execution-time/" title="How to measure execution time for a piece of code or a function in Go.">Measure execution time</a></li>
+
+</ul>
+
+<h3 id="random-numbers">Random numbers</h3>
+
+<p><a href="/golang/generate-number-random-range/"><img src="/golang/dart-thumb.jpg" title="Generate random numbers, characters and slice elements"></a></p>
+
+<ul class="index">
+
+
+<li><a href="/golang/generate-number-random-range/" title="How to best use the math/rand package in Go to generate pseudo-random data.">Generate random numbers, characters and slice elements</a></li>
+
+
+
+<li><a href="/golang/generate-random-string/" title="How to generate a random string with restrictions (at least one special character, etc).">Generate a random string (password)</a></li>
+
+
+
+<li><a href="/golang/generate-uuid-guid/" title="You can use the rand.Read function from package crypto/rand to generate a basic UUID.">Generate a unique string (UUID, GUID)</a></li>
+
+
+
+<li><a href="/golang/shuffle-slice-array/" title="How to create a random permutation of a slice or array in Go.">Shuffle a slice or array</a></li>
+
+
+
+<li><a href="/golang/crypto-rand-int/" title="How to combine the convenient math/rand library with the secure crypto/rand source.">User-friendly access to crypto/rand</a></li>
 
 </ul>
 
@@ -597,353 +943,6 @@ p{margin:0.8em 0 0 0;}
 
 </ul>
 
-</div>
-<div style="float:left; max-width:320px;">
-
-<h3 id="concurrent-programming">Concurrent programming</h3>
-
-<p><a href="/golang/concurrent-programming/"><img src="/golang/bouncing-balls-thumb.jpg" title="Step-by-step guide to concurrency" alt="Step-by-step guide to concurrency"></a></p>
-
-<ul class="index">
-<b>
-
-<li><a href="/golang/concurrent-programming/" title="This tutorial covers concurrency patterns, goroutines, channels, deadlock, data race, timer, ticker, waitgroup, and efficient parallel computation.">Concurrent programming</a></li>
-</b>
-
-
-<li><a href="/golang/goroutines-explained/" title="A goroutine is a lightweight thread of execution. All goroutines in a single program share the same address space.">Goroutines are lightweight threads</a></li>
-
-
-
-<li><a href="/golang/channels-explained/" title="A channel is a mechanism for two goroutines to synchronize execution and communicate by passing values.">Channels offer synchronized communication</a></li>
-
-
-
-<li><a href="/golang/select-explained/" title="A select statement allows you to wait for multiple send or receive operations simultaneously.">Select waits on a group of channels</a></li>
-
-
-
-<li><a href="/golang/data-races-explained/" title="A data race is easily introduced by mistake and can lead to situations that are very hard to debug. This article explains how to avoid this headache.">Data races explained</a></li>
-
-
-
-<li><a href="/golang/detect-data-races/" title="By starting your application with the &#39;-race&#39; option, the Go runtime might be able to detect and inform you about data races.">How to detect data races</a></li>
-
-
-
-<li><a href="/golang/detect-deadlock/" title="The Go runtime can often detect when a program freezes because of a deadlock. This article explains how to debug and solve such issues.">Deadlock detection</a></li>
-
-
-
-<li><a href="/golang/wait-for-goroutines-waitgroup/" title="A sync.WaitGroup waits for a group of goroutines to finish.">Waiting for goroutines</a></li>
-
-
-
-<li><a href="/golang/broadcast-channel/" title="When you close a channel, all readers receive a zero value. This can be used to broadcast a signal to several goroutines on a single channel.">Broadcast a signal on a channel</a></li>
-
-
-
-<li><a href="/golang/stop-goroutine/" title="One goroutine can&#39;t forcibly stop another. To make a goroutine stoppable, let it listen for a stop signal on a channel.">How to kill a goroutine</a></li>
-
-
-
-<li><a href="/golang/time-reset-wait-stop-timeout-cancel-interval/" title="Timers and Tickers are used to wait for, repeat, and cancel events in the future.">Timer and Ticker: events in the future</a></li>
-
-
-
-<li><a href="/golang/mutex-explained/" title="A sync.Mutex is used to synchronize data by explicit locking in Go.">Mutual exclusion lock (mutex)</a></li>
-
-
-
-<li><a href="/golang/efficient-parallel-computation/" title="To efficiently schedule parallel computation on separate CPUs is more of an art than a science. This article gives some rules of thumb.">3 rules for efficient parallel computation</a></li>
-
-</ul>
-
-<h3 id="object-oriented-programming">Object-oriented programming</h3>
-
-<p><a href="/golang/inheritance-object-oriented/"><img src="/golang/improvement-thumb.jpg" title="Inheritance and OOP: Go one better" alt="Inheritance and OOP: Go one better"></a></p>
-
-<ul class="index">
-
-
-<li><a href="/golang/inheritance-object-oriented/" title="Go doesn’t have inheritance. Composition, embedding and interfaces support code reuse and polymorphism.">How to do OO in Go without inheritance</a></li>
-
-
-
-<li><a href="/golang/constructor-best-practice/" title="Best practice in Go is to use suitable zero values and factories instead of constructors.">Constructors deconstructed [best practice]</a></li>
-
-
-
-<li><a href="/golang/methods-explained/" title="Any Go type declared in a type definition can have methods attached.">Methods for all types</a></li>
-
-
-
-<li><a href="/golang/public-private/" title="All identifiers are visible throughout the package where they are defined; an identifier that begins with a capital letter is globally visible.">Public vs. private</a></li>
-
-
-
-<li><a href="/golang/pointer-vs-value-receiver/" title="Guidelines on how to choose between pointer and value receivers for Go methods.">Pointer vs. value receiver</a></li>
-
-</ul>
-
-<h3 id="functional-programming">Functional programming</h3>
-
-<p><a href="/golang/your-basic-func/"><img src="/golang/petersen-complement-thumb.png" title="Your basic func: Unexpected functional programming in Go" alt="Your basic func: Unexpected functional programming in Go"></a></p>
-
-<ul class="index">
-
-
-<li><a href="/golang/your-basic-func/" title="A graph implementation based entirely on functions: the API contains only immutable data types, and the code is built on top of a struct with five func fields.">Functional programming in Go [case study]</a></li>
-
-
-
-<li><a href="/golang/function-pointer-type-declaration/" title="Functions in Go are first class citizens: function types and function values can be used and passed around just like other values.">Function types and values</a></li>
-
-
-
-<li><a href="/golang/anonymous-function-literal-lambda-closure/" title="A function literal, or lambda, represents a function without a name. Function literals in Go are closures: they may refer to variables defined in a enclosing function.">Anonymous functions and closures</a></li>
-
-
-
-<li><a href="/golang/iterator-generator-pattern/" title="Use an iterator function with callbacks to implement a clean and efficient iterator in Go.">How to best implement an iterator</a></li>
-
-</ul>
-
-<h3 id="scripting">Scripting</h3>
-
-<p><a href="/golang/write-command-line-application/"><img src="/golang/hp-terminal-thumb.jpg" title="Go as a scripting language: lightweight, safe and fast" alt="Go as a scripting language: lightweight, safe and fast"></a></p>
-
-<ul class="index">
-
-
-<li><a href="/golang/write-command-line-application/" title="How to write a basic command-line (CLI) application in Go.">Go as a scripting language: lightweight, safe and fast</a></li>
-
-
-
-<li><a href="/golang/read-file-line-by-line/" title="Use a bufio.Scanner to read a file one line at a time in Go. Use os.Stdin to read from the standard input stream.">Read a file (stdin) line by line</a></li>
-
-
-
-<li><a href="/golang/command-line-arguments/" title="You can access command-line arguments, including the program name and flags, through the os.Args variable.">Command-line arguments and flags</a></li>
-
-
-
-<li><a href="/golang/environment-variables/" title="Use the Setenv, Getenv, Unsetenv and Environ functions to read and write environment variables.">Access environment variables</a></li>
-
-</ul>
-
-<h3 id="strings">Strings<span class="quicklink"><a href="/golang/string-functions-reference-cheat-sheet/" title="String functions cheat sheet" alt="String functions cheat sheet">Cheat sheet</a></span></h3>
-
-<p><a href="/golang/string-functions-reference-cheat-sheet/"><img src="/golang/typewriter-thumb.png" title="String functions cheat sheet" alt="String functions cheat sheet"></a></p>
-
-<ul class="index">
-
-
-<li><a href="/golang/string-functions-reference-cheat-sheet/" title="Essential Go string functions in one place: literals, concatenation, equality, ordering, indexing, UTF-8, search, join, replace, split, trim, strip, lowercase/uppercase.">40&#43; practical string tips [cheat sheet]</a></li>
-
-
-
-<li><a href="/golang/fmt-printf-reference-cheat-sheet/" title="The functions fmt.Printf and fmt.Sprintf format numbers and strings indented with spaces or zeroes, in different bases, and with optional quotes.">Top fmt formatting tips [cheat sheet]</a></li>
-
-
-
-<li><a href="/golang/regexp-cheat-sheet/" title="Regular expressions in Go: introduction, cheat sheet and plenty of code examples.">Regexp tutorial and cheat sheet</a></li>
-
-
-
-<li><a href="/golang/rune/" title="A rune is a type meant to represent a Unicode code point. Strings, however, are sequences of bytes (typically containing Unicode text encoded in UTF-8). ">Runes and character encoding</a></li>
-
-
-
-<li><a href="/golang/build-append-concatenate-strings-efficiently/" title="Use a strings.Builder together with the fmt package for a clean and simple way to build strings efficiently without redundant copying.">Efficient string concatenation [full guide]</a></li>
-
-
-
-<li><a href="/golang/multiline-string/" title="Essential Go string encodings in one place: raw strings, interpreted strings, escape characters, HTML and URL encoding.">Escapes and multiline strings</a></li>
-
-
-
-<li><a href="/golang/split-string-into-slice/" title="strings.Split splits a string into its comma separated values, strings.Fields splits a string into substrings removing whitespace, regexp.Split splits into substrings separated by a regular expression.">3 ways to split a string into a slice</a></li>
-
-
-
-<li><a href="/golang/convert-string-to-byte-slice/" title="When you convert between a string and a byte slice (array), you get a brand new slice that contains the same bytes as the string, and vice versa.">Convert between byte array/slice and string</a></li>
-
-
-
-<li><a href="/golang/convert-string-to-rune-slice/" title="When you convert a string to a rune slice (array), you get a new slice that contains the Unicode code points (runes) of the string.">Convert between rune array/slice and string</a></li>
-
-
-
-<li><a href="/golang/convert-string-to-float/" title="Use strconv.ParseFloat to parse a floating point number from a string, and fmt.Sprintf to format a float as a string.">Convert between float and string</a></li>
-
-
-
-<li><a href="/golang/convert-int-to-string/" title="Use strconv.Itoa to convert an int to a decimal string, and strconv.Atoi to parse a string to an int.">Convert between int, int64 and string</a></li>
-
-
-
-<li><a href="/golang/interface-to-string/" title="To get a string representation of an interface value in Go, use the fmt.Sprintf function.">Convert interface to string</a></li>
-
-
-
-<li><a href="/golang/remove-duplicate-whitespace/" title="The regexp \s&#43; can be used to delete duplicate whitespace from a string.">Remove all duplicate whitespace</a></li>
-
-
-
-<li><a href="/golang/trim-whitespace-from-string/" title="Use the strings.TrimSpace function to strip leading and trailing whitespace from a string.">3 ways to trim whitespace (or other characters) from a string</a></li>
-
-
-
-<li><a href="/golang/reverse-utf8-string/" title="How to reverse a UTF-8 encoded string in Go.">How to reverse a string by byte or rune</a></li>
-
-
-</ul>
-
-<h3 id="slices-and-arrays">Slices and arrays<span class="quicklink"><a href="/golang/slices-explained/" title="Slices and arrays in 6 easy steps" alt="Slices and arrays in 6 easy steps">Step-by-step</a></span></h3>
-
-<p><a href="/golang/slices-explained/"><img src="/golang/orange-thumb.jpg" title="Slices and arrays in 6 easy steps"></a></p>
-
-<ul class="index">
-
-
-<li><a href="/golang/slices-explained/" title="A slice refers to a section of an underlying array. It can grow and shrink within the bounds of this array.">Slices and arrays in 6 easy steps</a></li>
-
-
-
-<li><a href="/golang/compare-slices/" title="You typically want to write your own code to compare slices. However, use the optimized bytes.Equal for byte slices, and for testing consider using reflect.DeepEqual.">3 ways to compare slices (arrays)</a></li>
-
-
-
-<li><a href="/golang/clear-slice/" title="You can clear a slice either by setting it to nil and releasing the underlying memory, or by slicing it to zero length and thereby keeping the memory.">How to best clear a slice: empty vs. nil</a></li>
-
-
-
-<li><a href="/golang/delete-element-slice/" title="How to remove an element from a slice: fast version (changes order), slow version (maintains order).">2 ways to delete an element from a slice</a></li>
-
-
-
-<li><a href="/golang/find-search-contains-slice/" title="To check if a slice or array contains an element, you can either write your own linear search or use one of the provided binary search functions.">How to find an element in a slice/array</a></li>
-
-
-
-<li><a href="/golang/last-item-in-slice/" title="Use a[len(a)-1] to access the last element of a.">Last item in a slice/array</a></li>
-
-</ul>
-
-<h3 id="maps">Maps<span class="quicklink"><a href="/golang/maps-explained/" title="Map essentials in 4 easy steps" alt="Map essentials in 4 easy steps">Step-by-step</a></span></h3>
-
-<p><a href="/golang/maps-explained/"><img src="/golang/Schlagwortkatalog-thumb.jpg" title="Map essentials in 4 easy steps"></a></p>
-
-<ul class="index">
-
-
-<li><a href="/golang/maps-explained/" title="A map (or dictionary) is an unordered collection of key-value pairs. Go maps are implemented by hash tables and provide lookup, insert, and delete operations in constant amortized time.">Map essentials in 4 easy steps</a></li>
-
-
-
-<li><a href="/golang/check-map-contains-key/" title="To check if a map contains a key, use the second return value. It&#39;s a boolean that indicates if the key exists.">3 simple ways to find a key in a map</a></li>
-
-
-
-<li><a href="/golang/slice-of-keys-values-from-map/" title="You can use a range statement to extract slices of keys and values from a map in Go.">Get slices of keys and values from a map</a></li>
-
-
-
-<li><a href="/golang/sort-map-keys-values/" title="To sort a map (which is an unordered collection) you must maintain a separate data structure, typically a slice of keys or values.">Sort a map by key or value</a></li>
-
-</ul>
-
-<h3 id="files">Files</h3>
-
-<ul class="index">
-
-
-<li><a href="/golang/read-file-line-by-line/" title="Use a bufio.Scanner to read a file one line at a time in Go. Use os.Stdin to read from the standard input stream.">Read a file (stdin) line by line</a></li>
-
-
-
-<li><a href="/golang/append-to-file/" title="To open/create a file for writing and appending in Go: os.OpenFile(filename, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)">Append text to a file</a></li>
-
-
-
-<li><a href="/golang/current-directory/" title="Use os.Executable to find the path name for the executable that started the current process, and filepath.Dir to extract its directory.">Find current working directory</a></li>
-
-
-
-<li><a href="/golang/list-files-in-directory/" title="Use ioutil.ReadDir to get a sorted directory listing. To visit all files recursively, use filepath.Walk.">List all files (recursively) in a directory</a></li>
-
-
-
-<li><a href="/golang/temporary-file-directory/" title="Use ioutil.TempFile to create a temporary file, and ioutio.TempDir to create a temporary directory. Starting with Go 1.11, it&#39;s possible to add a suffix to the randomly generated file name.">Create a temporary file or directory</a></li>
-
-</ul>
-
-<h3 id="time-and-date">Time and date</h3>
-
-<p><a href="/golang/format-parse-string-time-date-example/"><img src="/golang/stopwatch-thumb.png" title="How to format and parse a time/date" alt="How to format and parse a time/date" style="margin-left:10px;"></a></p>
-
-<ul class="index">
-
-
-<li><a href="/golang/format-parse-string-time-date-example/" title="To convert a time or date to string, your format a special layout parameter (Mon Jan 2 15:04:05 MST 2006) the same way as the time should be formatted. ">Format and parse a time or date [complete guide]</a></li>
-
-
-
-<li><a href="/golang/time-change-convert-location-timezone/" title="How to get the time in a different time zone in Go.">Time zones</a></li>
-
-
-
-<li><a href="/golang/current-time/" title="To get a second/nanosecond timestamp use time.Now and time.Unix or time.UnixNano.">How to get current timestamp</a></li>
-
-
-
-<li><a href="/golang/day-month-year-from-time/" title="How to get the day/month/year as integers from a time.Time in Go.">Get year, month, day from time</a></li>
-
-
-
-<li><a href="/golang/day-of-week-int/" title="How to get the day of week as an integer from a time.Time in Go.">How to find the day of week</a></li>
-
-
-
-<li><a href="/golang/days-between-dates/" title="How to calculate the number of days between two dates in Go.">Days between two dates</a></li>
-
-
-
-<li><a href="/golang/last-day-month-date/" title="How to find the last day of a month in Go. The trick is that time.Date accepts values outside their usual ranges, and that these values are normalized during conversion.">Days in a month</a></li>
-
-
-
-<li><a href="/golang/measure-execution-time/" title="How to measure execution time for a piece of code or a function in Go.">Measure execution time</a></li>
-
-</ul>
-
-<h3 id="random-numbers">Random numbers</h3>
-
-<p><a href="/golang/generate-number-random-range/"><img src="/golang/dart-thumb.jpg" title="Generate random numbers, characters and slice elements"></a></p>
-
-<ul class="index">
-
-
-<li><a href="/golang/generate-number-random-range/" title="How to best use the math/rand package in Go to generate pseudo-random data.">Generate random numbers, characters and slice elements</a></li>
-
-
-
-<li><a href="/golang/generate-random-string/" title="How to generate a random string with restrictions (at least one special character, etc).">Generate a random string (password)</a></li>
-
-
-
-<li><a href="/golang/generate-uuid-guid/" title="You can use the rand.Read function from package crypto/rand to generate a basic UUID.">Generate a unique string (UUID, GUID)</a></li>
-
-
-
-<li><a href="/golang/shuffle-slice-array/" title="How to create a random permutation of a slice or array in Go.">Shuffle a slice or array</a></li>
-
-
-
-<li><a href="/golang/crypto-rand-int/" title="How to combine the convenient math/rand library with the secure crypto/rand source.">User-friendly access to crypto/rand</a></li>
-
-</ul>
 
 </div>
 <div style="clear: both"></div>
