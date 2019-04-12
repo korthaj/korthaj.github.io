@@ -49,10 +49,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/getting-started-hello-world/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/golang/string-functions-reference-cheat-sheet/</loc>
   </url>
   
@@ -358,6 +354,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/getting-started-hello-world/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/blueprint/</loc>
   </url>
   
@@ -382,15 +382,15 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/http-server-example/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/golang/hash-md5-sha256-string-file/</loc>
   </url>
   
   <url>
     <loc>https://yourbasic.org/algorithms/hash-tables-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/http-server-example/</loc>
   </url>
   
   <url>
@@ -479,6 +479,10 @@
   
   <url>
     <loc>https://yourbasic.org/golang/interfaces-explained/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/packages-explained/</loc>
   </url>
   
   <url>
@@ -598,10 +602,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/packages-explained/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/golang/pass-slice-to-variadic-function/</loc>
   </url>
   
@@ -690,16 +690,16 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/library-package-example-template/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/table-driven-unit-test/</loc>
   </url>
   
   <url>
     <loc>https://yourbasic.org/tags/</loc>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/library-package-example-template/</loc>
   </url>
   
   <url>

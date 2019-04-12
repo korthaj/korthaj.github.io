@@ -140,16 +140,6 @@ The String functions cheat sheet presents the top Go string functions.</descript
     </item>
     
     <item>
-      <title>4 key Go resources to get you started</title>
-      <link>https://yourbasic.org/golang/getting-started-hello-world/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/getting-started-hello-world/</guid>
-      <description>Try it out The Go Playground is an interactive web&amp;nbsp;service that lets you run small Go programs, such as this &amp;ldquo;Hello,&amp;nbsp;world!&amp;rdquo; program, inside a sandbox. Try&amp;nbsp;it&amp;nbsp;out!
-package main import &#34;fmt&#34; func main() { fmt.Println(&#34;Hello, world!&#34;) } Learn the basics A Tour of Go is an interactive tutorial with many example programs. It comes from the official golang site and teaches you the basics of Go programming directly in your browser.</description>
-    </item>
-    
-    <item>
       <title>40&#43; practical string tips [cheat sheet]</title>
       <link>https://yourbasic.org/golang/string-functions-reference-cheat-sheet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -811,6 +801,16 @@ func main() { log.SetPrefix(&#34;grep: &#34;) log.SetFlags(0) // no extra info i
     </item>
     
     <item>
+      <title>Go beginner’s guide: top 4 resources to get you started</title>
+      <link>https://yourbasic.org/golang/getting-started-hello-world/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/getting-started-hello-world/</guid>
+      <description>Code in Go (try it out) The Go Playground is an interactive web&amp;nbsp;service that lets you run small Go programs, such as this &amp;ldquo;Hello,&amp;nbsp;world!&amp;rdquo; program, inside a sandbox. Try&amp;nbsp;it&amp;nbsp;out!
+package main import &#34;fmt&#34; func main() { fmt.Println(&#34;Hello, world!&#34;) } Learn Go basics A Tour of Go is an interactive tutorial with many example programs. It comes from the official golang site and teaches you the basics of Go programming directly in your browser.</description>
+    </item>
+    
+    <item>
       <title>Go blueprints: code for common tasks</title>
       <link>https://yourbasic.org/golang/blueprint/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -869,16 +869,6 @@ go list.Sort() // Run list.Sort in parallel; don’t wait for it. The following 
     </item>
     
     <item>
-      <title>HTTP server example</title>
-      <link>https://yourbasic.org/golang/http-server-example/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/http-server-example/</guid>
-      <description>If you run the program below and access the URL http://localhost:8080/world, you&amp;nbsp;will&amp;nbsp;be&amp;nbsp;greeted by&amp;nbsp;this&amp;nbsp;page.
-package main import ( &amp;quot;fmt&amp;quot; &amp;quot;net/http&amp;quot; ) func main() { http.HandleFunc(&amp;quot;/&amp;quot;, HelloServer) http.ListenAndServe(&amp;quot;:8080&amp;quot;, nil) } func HelloServer(w http.ResponseWriter, r *http.Request) { fmt.Fprintf(w, &amp;quot;Hello, %s!&amp;quot;, r.URL.Path[1:]) }   The call to http.HandleFunc tells the net.http package to handle all requests to the web root with the HelloServer function. The call to http.ListenAndServe tells the server to listen on the TCP network address :8080.</description>
-    </item>
-    
-    <item>
       <title>Hash checksums: MD5, SHA-1, SHA-256</title>
       <link>https://yourbasic.org/golang/hash-md5-sha256-string-file/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -887,6 +877,16 @@ package main import ( &amp;quot;fmt&amp;quot; &amp;quot;net/http&amp;quot; ) fun
       <description>String checksum To compute the hash value of a string or byte slice, use the Sum function from a crypto package such as crypto/md5, crypto/sha1, or crypto/sha256.
 s := &#34;Foo&#34; md5 := md5.Sum([]byte(s)) sha1 := sha1.Sum([]byte(s)) sha256 := sha256.Sum256([]byte(s)) fmt.Printf(&#34;%x\n&#34;, md5) fmt.Printf(&#34;%x\n&#34;, sha1) fmt.Printf(&#34;%x\n&#34;, sha256) 1356c67d7ad1638d816bfb822dd2c25d 201a6b3053cc1422d2c3670b62616221d2290929 1cbec737f863e4922cee63cc2ebbfaafcd1cff8b790d8cfd2e6a5d550b648afa  File checksum To compute the hash value of a file or other input stream:
  create a new hash.Hash from a crypto package such as crypto/md5, crypto/sha1, or crypto/sha256, add data by writing to its io.</description>
+    </item>
+    
+    <item>
+      <title>Hello world HTTP server</title>
+      <link>https://yourbasic.org/golang/http-server-example/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/http-server-example/</guid>
+      <description>A basic web server If you run the program below and access the URL http://localhost:8080/world, you&amp;nbsp;will&amp;nbsp;be&amp;nbsp;greeted by&amp;nbsp;this&amp;nbsp;page.
+package main import ( &amp;quot;fmt&amp;quot; &amp;quot;net/http&amp;quot; ) func main() { http.HandleFunc(&amp;quot;/&amp;quot;, HelloServer) http.ListenAndServe(&amp;quot;:8080&amp;quot;, nil) } func HelloServer(w http.ResponseWriter, r *http.Request) { fmt.Fprintf(w, &amp;quot;Hello, %s!&amp;quot;, r.URL.Path[1:]) }   The call to http.HandleFunc tells the net.http package to handle all requests to the web root with the HelloServer function. The call to http.ListenAndServe tells the server to listen on the TCP network address :8080.</description>
     </item>
     
     <item>
@@ -1101,6 +1101,17 @@ Loop from 0 to len(a)-1 instead.</description>
       <description>Basics Structural typing The empty interface Interface values Equality  Basics  An interface type consists of a set of method signatures. A variable of interface type can hold any value that implements these methods.
  In this example both Temp and *Point implement the MyStringer interface.
 type MyStringer interface { String() string }  type Temp int func (t Temp) String() string { return strconv.Itoa(int(t)) + &amp;quot; °C&amp;quot; } type Point struct { x, y int } func (p *Point) String() string { return fmt.</description>
+    </item>
+    
+    <item>
+      <title>Introduction to packages in 6 easy steps</title>
+      <link>https://yourbasic.org/golang/packages-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/packages-explained/</guid>
+      <description>Basics Declare a package Package name conflicts Dot imports Package download Package documentation  Basics Every Go program is made up of packages and each package has an&amp;nbsp;import&amp;nbsp;path:
+ &amp;quot;fmt&amp;quot; &amp;quot;math/rand&amp;quot; &amp;quot;github.com/yourbasic/graph&amp;quot;  Packages in the standard library have short import paths, such&amp;nbsp;as &amp;quot;fmt&amp;quot; and &amp;quot;math/rand&amp;quot;. Third-party packages, such as &amp;quot;github.com/yourbasic/graph&amp;quot;, typically have an import path that includes a hosting service (github.com) and an organization name (yourbasic).
+By convention, the package name is the same as the last element of the import path:</description>
     </item>
     
     <item>
@@ -1393,17 +1404,6 @@ The following command starts a web server that presents the documentation at htt
     </item>
     
     <item>
-      <title>Packages in 6 easy steps</title>
-      <link>https://yourbasic.org/golang/packages-explained/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/packages-explained/</guid>
-      <description>Basics Declare a package Package name conflicts Dot imports Package download Package documentation  Basics Every Go program is made up of packages and each package has an&amp;nbsp;import&amp;nbsp;path:
- &amp;quot;fmt&amp;quot; &amp;quot;math/rand&amp;quot; &amp;quot;github.com/yourbasic/graph&amp;quot;  Packages in the standard library have short import paths, such&amp;nbsp;as &amp;quot;fmt&amp;quot; and &amp;quot;math/rand&amp;quot;. Third-party packages, such as &amp;quot;github.com/yourbasic/graph&amp;quot;, typically have an import path that includes a hosting service (github.com) and an organization name (yourbasic).
-By convention, the package name is the same as the last element of the import path:</description>
-    </item>
-    
-    <item>
       <title>Pass a slice to a variadic function</title>
       <link>https://yourbasic.org/golang/pass-slice-to-variadic-function/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1616,6 +1616,18 @@ m := map[string]int{&amp;quot;Alice&amp;quot;: 23, &amp;quot;Eve&amp;quot;: 2, &
     </item>
     
     <item>
+      <title>Start a Go new project [standard layout]</title>
+      <link>https://yourbasic.org/golang/library-package-example-template/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/library-package-example-template/</guid>
+      <description>The repository at github.com/yourbasic/fenwick is a small but complete Go library package. It shows the structure of a basic project and can be used as a template.
+In addition to source code and resources, it includes
+ a README file with sections on  installation, documentation and compatibility policy,  unit tests, benchmarks, godoc links, a testable doc example and a licence.  Further reading 
+Your basic API is an introduction to API design with examples in Go and&amp;nbsp;Java.</description>
+    </item>
+    
+    <item>
       <title>Table-driven unit tests</title>
       <link>https://yourbasic.org/golang/table-driven-unit-test/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1623,18 +1635,6 @@ m := map[string]int{&amp;quot;Alice&amp;quot;: 23, &amp;quot;Eve&amp;quot;: 2, &
       <guid>https://yourbasic.org/golang/table-driven-unit-test/</guid>
       <description>Here is the code we want to&amp;nbsp;test.
 package search // Find returns the smallest index i at which x   Put the test code in a file whose name ends with _test.go. Write a function TestXXX with a single argument of type *testing.T. The test framework runs each such function. To indicate a failed test, call a failure function such as t.Errorf.  package search import &#34;testing&#34; var tests = []struct { a []int x int exp int }{ {[]int{}, 1, 0}, {[]int{1, 2, 3, 3}, 0, 0}, {[]int{1, 2, 3, 3}, 1, 0}, {[]int{1, 2, 3, 3}, 2, 1}, {[]int{1, 2, 3, 3}, 3, 3}, // incorrect test case {[]int{1, 2, 3, 3}, 4, 4}, } func TestFind(t *testing.</description>
-    </item>
-    
-    <item>
-      <title>Template for library packages</title>
-      <link>https://yourbasic.org/golang/library-package-example-template/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/library-package-example-template/</guid>
-      <description>The repository at https://github.com/yourbasic/fenwick is a small but complete Go library package. It is intended to be used as a template for larger projects.
-In addition to source code and resources, it includes
- a README file with sections on  installation, documentation and compatibility policy,  unit tests, benchmarks, godoc links, a testable doc example and a licence.  Further reading 
-Your basic API is an introduction to API design with examples in Go and&amp;nbsp;Java.</description>
     </item>
     
     <item>
