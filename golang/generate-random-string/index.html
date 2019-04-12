@@ -139,7 +139,7 @@ str := string(buf) <span class="comment">// E.g. "3i[g0|)z"</span>
 <h3 id="before-go-1-10">Before Go 1.10</h3>
 
 <p>In code before Go 1.10, replace the call to <a href="https://golang.org/pkg/math/rand/#Shuffle">rand.Shuffle</a>
-with an explicit implentation:</p>
+with this code:</p>
 
 <pre><code>for i := len(buf) - 1; i > 0; i-- { <span class="comment">// Fisher–Yates shuffle</span>
     j := rand.Intn(i + 1)

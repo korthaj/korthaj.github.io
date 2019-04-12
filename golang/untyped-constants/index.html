@@ -50,7 +50,7 @@ const b = 55
 
 <p>An untyped constant has <strong>no limits</strong>. When it&rsquo;s used in a context that requires a type, a type will be inferred and a limit applied.</p>
 
-<pre><code>const big = 10000000000  <span class="comment">// Ok, even thought it's too big for an int.</span>
+<pre><code>const big = 10000000000  <span class="comment">// Ok, even though it's too big for an int.</span>
 const bigger = big * 100 <span class="comment">// Still ok.</span>
 var i int = big / 100    <span class="comment">// No problem: the new result fits in an int.</span>
 

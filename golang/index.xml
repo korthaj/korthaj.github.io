@@ -61,7 +61,7 @@ Slow version (maintains order) a := []string{&#34;</description>
       <description>Can you name four places where three&amp;nbsp;dots (...) are used in&amp;nbsp;Go?
  Variadic function parameters If the last parameter of a function has type ...T, it can be called with any number of trailing arguments of type&amp;nbsp;T. The actual type of ...T inside the function is&amp;nbsp;[]T.
 This example function can be called with, for instance, Sum(1, 2, 3) or&amp;nbsp;Sum().
-func Sum(nums ...int) int { res := 0 for _, n := range nums { res += n } return res } Arguments to variadic functions You can pass a slice s directly to a variadic funtion if you unpack it with the s.</description>
+func Sum(nums ...int) int { res := 0 for _, n := range nums { res += n } return res } Arguments to variadic functions You can pass a slice s directly to a variadic function if you unpack it with the s.</description>
     </item>
     
     <item>
@@ -155,7 +155,7 @@ package main import &#34;fmt&#34; func main() { fmt.Println(&#34;Hello, world!&#
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/string-functions-reference-cheat-sheet/</guid>
-      <description>String literals (escape characters) Concatenate Equal and compare (ignore case) Length in bytes or runes Index, substring, iteratate Search (contains, prefix/suffix, index) Replace (uppercase/lowercase, trim) Split by space or comma Join strings with separator Format and convert Regular expressions  String literals (escape characters)   Expression Result Note     &#34;&#34;  Default zero value for type string   &#34;Japan 日本&#34; Japan 日本 Go code is Unicode text encoded in UTF‑8   &#34;</description>
+      <description>String literals (escape characters) Concatenate Equal and compare (ignore case) Length in bytes or runes Index, substring, iterate Search (contains, prefix/suffix, index) Replace (uppercase/lowercase, trim) Split by space or comma Join strings with separator Format and convert Regular expressions  String literals (escape characters)   Expression Result Note     &#34;&#34;  Default zero value for type string   &#34;Japan 日本&#34; Japan 日本 Go code is Unicode text encoded in UTF‑8   &#34;</description>
     </item>
     
     <item>
@@ -621,7 +621,7 @@ High-performance string concatenationGo&amp;nbsp;1.10 A strings.Builder is used 
       
       <guid>https://yourbasic.org/golang/errors-explained/</guid>
       <description>Go has two different error-handling mechanisms:
- most functions return errors; only a truly unrecovorable condition, such as an out-of-range index, produces a run-time exception, known as a panic.  Go’s multivalued return makes it easy to return a detailed error message alongside the normal return value. By convention, such messages have type error, a simple built-in interface:
+ most functions return errors; only a truly unrecoverable condition, such as an out-of-range index, produces a run-time exception, known as a panic.  Go’s multivalued return makes it easy to return a detailed error message alongside the normal return value. By convention, such messages have type error, a simple built-in interface:
 type error interface { Error() string }  Error handling example The os.</description>
     </item>
     
@@ -1326,7 +1326,7 @@ type Person struct { Name string // Changed to capital N Age int // Changed to c
       <description>Why does this loop run forever?
 var b byte for b = 250; b  Answer
 After the b == 255 iteration, b++ is executed. This overflows (since the maximum value for a byte is 255) and results in b == 0. Therefore b &amp;lt;= 255 still holds and the loop restarts from&amp;nbsp;0.
-  For unsigned integer values, the operations +, -, *, and &amp;lt;&amp;lt; are computed modulo 2n, where n is the bit width of the unsigned integer&#39;s type.</description>
+  For unsigned integer values, the operations +, -, *, and &amp;lt;&amp;lt; are computed modulo 2n, where n is the bit width of the unsigned integer type.</description>
     </item>
     
     <item>
@@ -1633,7 +1633,7 @@ package search // Find returns the smallest index i at which x   Put the test co
       <guid>https://yourbasic.org/golang/library-package-example-template/</guid>
       <description>The repository at https://github.com/yourbasic/fenwick is a small but complete Go library package. It is intended to be used as a template for larger projects.
 In addition to source code and resources, it includes
- a README file with sections on  installation, documentation and compatability policy,  unit tests, benchmarks, godoc links, a testable doc example and a licence.  Further reading 
+ a README file with sections on  installation, documentation and compatibility policy,  unit tests, benchmarks, godoc links, a testable doc example and a licence.  Further reading 
 Your basic API is an introduction to API design with examples in Go and&amp;nbsp;Java.</description>
     </item>
     
@@ -1783,7 +1783,7 @@ primes := []int{2, 3, 5, 7} for _, p := range primes { fmt.</description>
       <guid>https://yourbasic.org/golang/untyped-constants/</guid>
       <description>Constants may be typed or untyped.
 const a uint = 17 const b = 55  An untyped constant has no limits. When it&amp;rsquo;s used in a context that requires a type, a type will be inferred and a limit applied.
-const big = 10000000000 // Ok, even thought it&#39;s too big for an int. const bigger = big * 100 // Still ok. var i int = big / 100 // No problem: the new result fits in an int.</description>
+const big = 10000000000 // Ok, even though it&#39;s too big for an int. const bigger = big * 100 // Still ok. var i int = big / 100 // No problem: the new result fits in an int.</description>
     </item>
     
     <item>
