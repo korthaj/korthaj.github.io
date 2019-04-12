@@ -263,7 +263,7 @@ package main import ( &#34;container/list&#34; &#34;fmt&#34; &#34;reflect&#34; )
       <guid>https://yourbasic.org/algorithms/amortized-time-complexity-analysis/</guid>
       <description>Amortized analysis is used for algo&amp;shy;rithms that have expensive opera&amp;shy;tions that happen only&amp;nbsp;rarely.
  Amortized complexity analysis is most commonly used with data structures that have state that persists between operations. The basic idea is that an expensive operation can alter the state so that the worst case cannot occur again for a long time, thus amortizing its cost.
-Let T1, T2,&amp;nbsp;…, Tk be the complexities of a sequence of operations on a data structuture.</description>
+Let T1, T2,&amp;nbsp;…, Tk be the complexities of a sequence of operations on a data structure.</description>
     </item>
     
     <item>
@@ -1022,7 +1022,7 @@ s := fmt.Sprintf(&#34;%c%c, world!&#34;, 72, &#39;i&#39;) fmt.Println(s)// &#34;
     </item>
     
     <item>
-      <title>How to analyse time complexity: Count your steps</title>
+      <title>How to analyze time complexity: Count your steps</title>
       <link>https://yourbasic.org/algorithms/time-complexity-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1372,7 +1372,7 @@ dev etc tmp usr  Visit all files and folders in a directory tree Use the filepat
       
       <guid>https://yourbasic.org/algorithms/loop-invariants-explained/</guid>
       <description>An invariant is a state&amp;shy;ment about program vari&amp;shy;ables that is true every time the execu&amp;shy;tion of the program reaches the&amp;nbsp;invariant.
- Loop invariant definition (basic example) Designing with invariants Sorting (trickier example) 3-way partition (advanced example)  When struggling with a tricky 3-way partion algorithm as a student, a friend suggested a well-fitting invariant. It was like getting a secret superpower: suddenly I could write code that used to be impossible.</description>
+ Loop invariant definition (basic example) Designing with invariants Sorting (trickier example) 3-way partition (advanced example)  When struggling with a tricky 3-way partition algorithm as a student, a friend suggested a well-fitting invariant. It was like getting a secret superpower: suddenly I could write code that used to be impossible.</description>
     </item>
     
     <item>
@@ -1644,7 +1644,7 @@ A pointer has type *T. The keyword new allocates a new object and returns its&am
       
       <guid>https://yourbasic.org/print-null-java/</guid>
       <description>What happens if you try to print null in&amp;nbsp;Java? It&amp;nbsp;depends.  What the compiler said The following line will not compile.
- System.out.println(null);   This is the message from my compiler.  reference to println is ambiguous, both method println(char[]) in java.io.PrintStream and method println(java.lang.String) in java.io.PrintStream match  In fact, println(java.lang.Object) in java.io.PrintStream is yet another match, but Java has a way of chosing between that one and each of the two methods above.</description>
+ System.out.println(null);   This is the message from my compiler.  reference to println is ambiguous, both method println(char[]) in java.io.PrintStream and method println(java.lang.String) in java.io.PrintStream match  In fact, println(java.lang.Object) in java.io.PrintStream is yet another match, but Java has a way of choosing between that one and each of the two methods above.</description>
     </item>
     
     <item>
@@ -1895,7 +1895,7 @@ Your basic API is an introduction to API design with examples in Go and&amp;nbsp
       <guid>https://yourbasic.org/algorithms/time-complexity-recursive-functions/</guid>
       <description>It&#39;s often possible to compute the time complexity of a recursive function by formulating and solving a recurrence relation.
  Recurrence relation (basic example) Binary search Master theorem Analysis without recurrence  This text contains a few examples and a formula, the &amp;ldquo;master theorem&amp;rdquo;, which gives the solution to a class of recurrence relations that often show up when analyzing recursive functions.
-We also show how to analys recursive algorithms that depend on the size and shape of a data structure.</description>
+We also show how to analyze recursive algorithms that depend on the size and shape of a data structure.</description>
     </item>
     
     <item>
