@@ -1090,8 +1090,7 @@ package main import &#34;fmt&#34; func main() { i := 0 go func() { i++ // write 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/disable-logging-output/</guid>
-      <description> To turn off all output from a log.Logger, set the output destination to ioutil.Discard, a writer on which all calls succeed without doing anything.
-log.SetOutput(ioutil.Discard)  </description>
+      <description>See Write log to file (or /dev/null).</description>
     </item>
     
     <item>
@@ -1201,17 +1200,6 @@ The standard library provides numerous Reader implementations (including in-memo
       <guid>https://yourbasic.org/golang/io-writer-interface-explained/</guid>
       <description>Basics How to use a built-in writer (3&amp;nbsp;examples) Optimize string writes  Basics The io.Writer interface represents an entity to which you can write a stream of&amp;nbsp;bytes.
 type Writer interface { Write(p []byte) (n int, err error) }  Write writes up to len(p) bytes from p to the underlying data stream &amp;ndash; it returns the number of bytes written and any error encountered that caused the write to stop&amp;nbsp;early.</description>
-    </item>
-    
-    <item>
-      <title>How to write a log message to file</title>
-      <link>https://yourbasic.org/golang/log-to-file/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/log-to-file/</guid>
-      <description>This code appends a log message to the file text.log. It creates the file if it doesn&amp;rsquo;t already exist.
-f, err := os.OpenFile(&amp;quot;text.log&amp;quot;, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644) if err != nil { log.Println(err) } defer f.Close() logger := log.New(f, &amp;quot;prefix&amp;quot;, log.LstdFlags) logger.Println(&amp;quot;text to append&amp;quot;) logger.Println(&amp;quot;more text to append&amp;quot;)  Contents of text.log:
-prefix: 2017/10/20 07:52:58 text to append prefix: 2017/10/20 07:52:58 more text to append   log.New creates a new log.</description>
     </item>
     
     <item>
@@ -2164,6 +2152,17 @@ a := []byte(&#34;ba&#34;) a1 := append(a, &#39;d&#39;) a2 := append(a, &#39;g&#3
 If there is room for more elements, append reuses the underlying array. Let&#39;s take a&amp;nbsp;look:
 a := []byte(&#34;ba&#34;) fmt.Println(len(a), cap(a)) // 2 32 This means that the slices a, a1 and a2 will refer to the same underlying array in our example.
 To avoid this, we need to use two separate byte&amp;nbsp;arrays.</description>
+    </item>
+    
+    <item>
+      <title>Write log to file (or /dev/null)</title>
+      <link>https://yourbasic.org/golang/log-to-file/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/log-to-file/</guid>
+      <description>This code appends a log message to the file text.log. It creates the file if it doesn&amp;rsquo;t already exist.
+f, err := os.OpenFile(&amp;quot;text.log&amp;quot;, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644) if err != nil { log.Println(err) } defer f.Close() logger := log.New(f, &amp;quot;prefix&amp;quot;, log.LstdFlags) logger.Println(&amp;quot;text to append&amp;quot;) logger.Println(&amp;quot;more text to append&amp;quot;)  Contents of text.log:
+prefix: 2017/10/20 07:52:58 text to append prefix: 2017/10/20 07:52:58 more text to append   log.New creates a new log.</description>
     </item>
     
     <item>

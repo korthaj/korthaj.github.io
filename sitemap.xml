@@ -466,10 +466,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/log-to-file/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/golang/gotcha-strings-are-immutable/</loc>
   </url>
   
@@ -816,6 +812,10 @@
   
   <url>
     <loc>https://yourbasic.org/golang/gotcha-append/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/log-to-file/</loc>
   </url>
   
   <url>

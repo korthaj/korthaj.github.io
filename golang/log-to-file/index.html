@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How to write a log message to file · YourBasic Go </title>
-  <meta name="description" content="CODE EXAMPLE Use os.OpenFile with arguments os.O_APPEND | os.O_CREATE | os.O_WRONLY and 0644 to create and open a log file.">
+  <title>Write log to file (or /dev/null) · YourBasic Go </title>
+  <meta name="description" content="CODE EXAMPLE Use os.OpenFile with arguments os.O_APPEND | os.O_CREATE | os.O_WRONLY and 0644 to create and open a log file. To disable all output from a logger set the output destination to ioutil.Discard.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/log-to-file/"
   },
-  "headline": "How to write a log message to file",
+  "headline": "Write log to file (or /dev/null)",
   "image": [
     "https://yourbasic.org/golang/transcription-using-cylinder-phonograph.png"
    ],
   "datePublished": "2018-06-23T00:00:00&#43;0000",
-  "dateModified": "2018-07-15T00:00:00&#43;0000",
+  "dateModified": "2019-04-12T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "CODE EXAMPLE Use os.OpenFile with arguments os.O_APPEND | os.O_CREATE | os.O_WRONLY and 0644 to create and open a log file."
+  "description": "CODE EXAMPLE Use os.OpenFile with arguments os.O_APPEND | os.O_CREATE | os.O_WRONLY and 0644 to create and open a log file. To disable all output from a logger set the output destination to ioutil.Discard."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to write a log message to file">
-<meta property="og:description" content="CODE EXAMPLE Use os.OpenFile with arguments os.O_APPEND | os.O_CREATE | os.O_WRONLY and 0644 to create and open a log file.">
+<meta property="og:title" content="Write log to file (or /dev/null)">
+<meta property="og:description" content="CODE EXAMPLE Use os.OpenFile with arguments os.O_APPEND | os.O_CREATE | os.O_WRONLY and 0644 to create and open a log file. To disable all output from a logger set the output destination to ioutil.Discard.">
 <meta property="og:url" content="https://yourbasic.org/golang/log-to-file/">
 <meta property="og:image" content="https://yourbasic.org/golang/transcription-using-cylinder-phonograph.png">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="How to write a log message to file">
-<meta name="twitter:description" content="CODE EXAMPLE Use os.OpenFile with arguments os.O_APPEND | os.O_CREATE | os.O_WRONLY and 0644 to create and open a log file.">
+<meta name="twitter:title" content="Write log to file (or /dev/null)">
+<meta name="twitter:description" content="CODE EXAMPLE Use os.OpenFile with arguments os.O_APPEND | os.O_CREATE | os.O_WRONLY and 0644 to create and open a log file. To disable all output from a logger set the output destination to ioutil.Discard.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/transcription-using-cylinder-phonograph.png">
 
@@ -82,8 +82,10 @@
 
 <main>
 <article>
-<h1>How to write a log message to file</h1>
+<h1>Write log to file (or /dev/null)</h1>
 <div class="tagline">yourbasic.org/golang</div>
+
+
 <!-- CC0: https://commons.wikimedia.org/wiki/File:Transcription_using_cylinder_phonograph.png -->
 
 <div style="margin-top:1em;"><img src="/golang/transcription-using-cylinder-phonograph.png"></div>
@@ -117,11 +119,24 @@ prefix: 2017/10/20 07:52:58 more text to append
 to prefix to each log entry.</li>
 </ul>
 
+<h2 id="disable-logging">Disable logging</h2>
+
+<!-- CC0: https://www.publicdomainpictures.net/en/view-image.php?image=212480&picture=blank-notebook -->
+
+<div style="margin-top:1em;"><img src="/golang/blank-notebook.jpg"></div>
+
+<p>To turn off all output from a <a href="https://golang.org/pkg/log/#Logger"><code>log.Logger</code></a>,
+set the output destination to <a href="https://golang.org/pkg/io/ioutil/#pkg-variables"><code>ioutil.Discard</code></a>,
+a writer on which all calls succeed without doing anything.</p>
+
+<pre><code>log.SetOutput(ioutil.Discard)
+</code></pre>
+
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2flog-to-file%2f&amp;text=How%20to%20write%20a%20log%20message%20to%20file&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2flog-to-file%2f&amp;text=Write%20log%20to%20file%20%28or%20/dev/null%29&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2flog-to-file%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2flog-to-file%2f&amp;title=How%20to%20write%20a%20log%20message%20to%20file" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=How%20to%20write%20a%20log%20message%20to%20file&body=https%3a%2f%2fyourbasic.org%2fgolang%2flog-to-file%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2flog-to-file%2f&amp;title=Write%20log%20to%20file%20%28or%20/dev/null%29" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Write%20log%20to%20file%20%28or%20/dev/null%29&body=https%3a%2f%2fyourbasic.org%2fgolang%2flog-to-file%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>

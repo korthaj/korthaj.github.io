@@ -110,7 +110,7 @@ in package <code>math/rand</code> with a source that gets its data from <code>cr
 func main() {
     var src cryptoSource
     rnd := rand.New(src)
-    fmt.Println(rnd.Intn(1000)) <span class="comment">// a truely random number 0 to 999</span>
+    fmt.Println(rnd.Intn(1000)) <span class="comment">// a truly random number 0 to 999</span>
 }
 
 type cryptoSource struct{}
