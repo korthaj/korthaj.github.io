@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Binary search trees · YourBasic </title>
+  <title>Binary search trees explained · YourBasic </title>
   <meta name="description" content="A binary search tree stores items in sorted order and offers efficient lookup, addition and removal of items.">
   
   <link rel="stylesheet" href="/style.css">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/algorithms/binary-search-tree/"
   },
-  "headline": "Binary search trees",
+  "headline": "Binary search trees explained",
   "image": [
     "https://yourbasic.org/algorithms/tree.png"
    ],
   "datePublished": "2018-04-19T00:00:00&#43;0000",
-  "dateModified": "2018-04-23T00:00:00&#43;0000",
+  "dateModified": "2019-04-13T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -54,13 +54,13 @@
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Binary search trees">
+<meta property="og:title" content="Binary search trees explained">
 <meta property="og:description" content="A binary search tree stores items in sorted order and offers efficient lookup, addition and removal of items.">
 <meta property="og:url" content="https://yourbasic.org/algorithms/binary-search-tree/">
 <meta property="og:image" content="https://yourbasic.org/algorithms/tree.png">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Binary search trees">
+<meta name="twitter:title" content="Binary search trees explained">
 <meta name="twitter:description" content="A binary search tree stores items in sorted order and offers efficient lookup, addition and removal of items.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/algorithms/tree.png">
@@ -82,20 +82,30 @@
 
 <main>
 <article>
-<h1>Binary search trees</h1>
+<h1>Binary search trees explained</h1>
 <div class="tagline">yourbasic.org</div>
 
 
-<div><img src="/algorithms/tree.png" class="extra-content" style="float:right; margin:-30px 30px 0 0;"></div>
+<div><img src="/algorithms/tree.png" class="extra-content" style="float:right; margin:10px 60px 0 0;"></div>
 
 <ul class="toc">
-  <li><a href="#tree-terminology">Tree terminology</a></li>
-  <li><a href="#binary-search-trees">Binary search trees</a></li>
-  <li><a href="#well-balanced-trees">Well-balanced trees</a></li>
-  <li><a href="#basic-tree-algorithms">Basic tree algorithms</a></li>
+  <li><a href="#binary-tree-definitions">Binary tree definitions</a></li>
+  <li><a href="#binary-search-tree">Binary search tree</a>
+    <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
+      <li><a href="#example">Example</a></li>
+    </ul>
+  </li>
+  <li><a href="#balanced-trees-with-o-log-n-time-complexity">Balanced trees with O(log n) time complexity</a></li>
+  <li><a href="#tree-algorithms">Tree algorithms</a>
+    <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
+      <li><a href="#inorder-traversal">Inorder traversal</a></li>
+      <li><a href="#search">Search</a></li>
+      <li><a href="#insert">Insert</a></li>
+    </ul>
+  </li>
 </ul>
 
-<h2 id="tree-terminology">Tree terminology</h2>
+<h2 id="binary-tree-definitions">Binary tree definitions</h2>
 
 <p>A <b>binary tree</b> is a data structure most easily described by&nbsp;recursion.</p>
 
@@ -139,7 +149,7 @@ the node to the&nbsp;root.</p>
 <p>The <b>depth of a tree</b> is defined to be the largest depth of any
 node in the tree. The empty tree has depth&nbsp;0.</p>
 
-<h2 id="binary-search-trees">Binary search trees</h2>
+<h2 id="binary-search-tree">Binary search tree</h2>
 
 <p>A <b>binary search tree</b> is a binary tree where each node contains
 a value from a well-ordered set.</p>
@@ -175,7 +185,7 @@ The leaf values are 1, 4, 7 and 13.</p>
 <p>In fact, this is a binary search tree, since
 the corresponding invariant holds for <b>each&nbsp;node</b> in the&nbsp;tree.</p>
 
-<h2 id="well-balanced-trees">Well-balanced trees</h2>
+<h2 id="balanced-trees-with-o-log-n-time-complexity">Balanced trees with O(log n) time complexity</h2>
 
 <p>We say that a tree is <b>well-balanced</b> if each node in the tree has
 two subtrees with roughly the same number of nodes.
@@ -184,7 +194,7 @@ has depth <i>O</i>(log&nbsp;<i>n</i>).</p>
 
 <p>If we can manage to keep a binary search tree well-balanced,
 we get an <b>ordered</b> data structure with
-excellent worst-case time complexity for all basic operations:
+<i>O</i>(log&nbsp;<i>n</i>) worst-case time complexity for all basic operations:
 lookup, addition and removal.</p>
 
 <div><a href="/algorithms/treap/" title="Treaps: randomized search trees"><img src="/algorithms/search-tree-thumb.png" class="extra-content" style="float:right; margin-right:20px;"></a></div>
@@ -213,7 +223,7 @@ In the most extreme case, for example when all left subtrees are empty,
 the tree degrades into a singly linked list.
 </blockquote>
 
-<h2 id="basic-tree-algorithms">Basic tree algorithms</h2>
+<h2 id="tree-algorithms">Tree algorithms</h2>
 
 <h3 id="inorder-traversal">Inorder traversal</h3>
 
@@ -230,9 +240,9 @@ the tree degrades into a singly linked list.
         inorder(root.right)
 </pre>
 
-<h3 id="find">Find</h3>
+<h3 id="search">Search</h3>
 
-<p>It&rsquo;s pretty straightforward to implement the lookup operation
+<p>It&rsquo;s pretty straightforward to implement the find operation
 in a binary search tree with iteration, but to
 keep things simple, here is a recursive version.</p>
 
@@ -270,10 +280,10 @@ as input, and returns the root of new updated tree.</p>
 </pre>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fbinary-search-tree%2f&amp;text=Binary%20search%20trees&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fbinary-search-tree%2f&amp;text=Binary%20search%20trees%20explained&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2falgorithms%2fbinary-search-tree%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fbinary-search-tree%2f&amp;title=Binary%20search%20trees" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Binary%20search%20trees&body=https%3a%2f%2fyourbasic.org%2falgorithms%2fbinary-search-tree%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fbinary-search-tree%2f&amp;title=Binary%20search%20trees%20explained" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Binary%20search%20trees%20explained&body=https%3a%2f%2fyourbasic.org%2falgorithms%2fbinary-search-tree%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
@@ -284,7 +294,7 @@ as input, and returns the root of new updated tree.</p>
 
   <div class="reference">
     <a href="/algorithms/treap/">Treaps: Randomized search trees</a>
-    <div class="desc">A treap stores items in sorted order and offers efficient lookup, addition and removal of items. It offers the functionality of a general-purpose sorting routine, priority queue, hash table, stack, or standard queue.</div>
+    <div class="desc">A treap stores items in sorted order and offers efficient lookup, addition and removal of items. It replicates the functionality of a general-purpose sorting routine, priority queue, hash table, stack, or standard queue.</div>
     <div class="source">yourbasic.org</div>
   </div>
 

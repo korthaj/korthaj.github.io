@@ -312,13 +312,13 @@ m := make(map[string]float64) m[&#34;pi&#34;] = 3.1416  A new, empty map value i
     </item>
     
     <item>
-      <title>Binary search trees</title>
+      <title>Binary search trees explained</title>
       <link>https://yourbasic.org/algorithms/binary-search-tree/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/algorithms/binary-search-tree/</guid>
-      <description>Tree terminology Binary search trees Well-balanced trees Basic tree algorithms  Tree terminology A binary tree is a data structure most easily described by&amp;nbsp;recursion.
- A binary tree  is either empty,  or consists of a node (also known as the root of the tree) and two subtrees, the left and right subtree, which are also binary trees.   A node with two empty subtrees is called a&amp;nbsp;leaf.</description>
+      <description>Binary tree definitions Binary search tree Example   Balanced trees with O(log n) time complexity Tree algorithms Inorder traversal Search Insert    Binary tree definitions A binary tree is a data structure most easily described by&amp;nbsp;recursion.
+ A binary tree  is either empty,  or consists of a node (also known as the root of the tree) and two subtrees, the left and right subtree, which are also binary trees.</description>
     </item>
     
     <item>
