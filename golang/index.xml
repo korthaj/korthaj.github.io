@@ -379,8 +379,8 @@ func main() { if len(os.Args) != 3 { fmt.Println(&#34;Usage:&#34;, os.Args[0], &
       
       <guid>https://yourbasic.org/golang/concurrent-programming/</guid>
       <description>This tutorial covers the funda&amp;shy;mentals of concurrent programming with examples in&amp;nbsp;Go.
- Before you start, you need to know how to write basic Go programs. If you need a refresher, the&amp;nbsp;resources in Get started with Go will help you come up to speed quickly with&amp;nbsp;Go.
-Read tutorial
+ Before you start, you need to know how to write basic Go programs. If you need a refresher, the&amp;nbsp;resources in this Go beginner’s guide will help you come up to speed quickly with&amp;nbsp;Go.
+Let’s start
 Table of contents </description>
     </item>
     
@@ -580,7 +580,7 @@ func main() { defer fmt.</description>
       <guid>https://yourbasic.org/golang/gotcha/</guid>
       <description> This collection of Go gotchas and pitfalls will help you find and fix similar problems in your own&amp;nbsp;code.
 Some of the puzzles are pretty easy. To solve all 27, you have to be a&amp;nbsp;ninja.
-Take quiz
+Let’s start
 Go Gotchas </description>
     </item>
     
