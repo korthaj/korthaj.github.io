@@ -732,16 +732,6 @@ const s = `First line Second line` fmt.Println(s) First line Second line Backtic
     </item>
     
     <item>
-      <title>Find the lady: 3-card monte</title>
-      <link>https://yourbasic.org/monte/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/monte/</guid>
-      <description>3-card monte is not a&amp;nbsp;game, it’s&amp;nbsp;robbery.
-  You’ll find the game on the streets of most big cities – if you find the black lady, or a little paper ball under a&amp;nbsp;match-box, you win. There are many variations of the game, but the secret is always the same. If you manage to choose the right card they will still take your money, and run with&amp;nbsp;it.  Everyone you see on the street belongs to the mob, except the single victim.</description>
-    </item>
-    
-    <item>
       <title>Find the type of an object</title>
       <link>https://yourbasic.org/golang/find-type-of-object/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
