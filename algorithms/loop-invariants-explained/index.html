@@ -35,7 +35,7 @@
     "https://yourbasic.org/algorithms/vanishing-point.jpg"
    ],
   "datePublished": "2018-01-26T00:00:00&#43;0000",
-  "dateModified": "2019-04-09T00:00:00&#43;0000",
+  "dateModified": "2019-04-13T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -121,8 +121,8 @@ the foundation of a <strong>correctness proof</strong>.</p>
 <p>A good loop invariant should satisfy three properties:</p>
 
 <ol>
-<li><strong>Initiation:</strong> The loop invariant must be true before the first execution of the&nbsp;loop.</li>
-<li><strong>Iteration:</strong> If the invariant is true before an iteration of the loop, it should be true
+<li><strong>Initialization:</strong> The loop invariant must be true before the first execution of the&nbsp;loop.</li>
+<li><strong>Maintenance:</strong> If the invariant is true before an iteration of the loop, it should be true
 also after the iteration.</li>
 <li><strong>Termination</strong>: When the loop is terminated the invariant should tell us something useful,
 something that helps us understand the algorithm.</li>
@@ -179,7 +179,7 @@ Let&rsquo;s start with this code skeleton.</p>
 <p>The invariant seems to be well chosen: it satisfies the <strong>termination</strong> property
 since the variable <code>max = max(A[0], A[1], …, A[n-1])</code> when the loop terminates.</p>
 
-<p>We can try to satisfy the <strong>initiation</strong> property by assigning a suitable start value to <code>max</code>.
+<p>We can try to satisfy the <strong>initialization</strong> property by assigning a suitable start value to <code>max</code>.
 However, it&rsquo;s not clear how to define the maximum value of an empty slice.
 We&rsquo;ve found a potential bug even before writing any code!
 One solution is to change the contract of the&nbsp;function.</p>
@@ -201,7 +201,7 @@ the invariant holds when we first enter the&nbsp;loop.</p>
 
 <p>Let&rsquo;s fill in the code. When doing so we can assume that
 the invariant holds at the beginning of the loop.
-The <strong>iteration</strong> property states: <em>if the invariant is true</em> before an iteration of the loop,
+The <strong>maintenance</strong> property states: <em>if the invariant is true</em> before an iteration of the loop,
 it should be true also after the iteration.
 Here is the finished&nbsp;code.</p>
 
@@ -237,14 +237,14 @@ Here is the finished&nbsp;code.</p>
 <p>To achieve the <strong>termination</strong> property, the invariant should state that
 the array is sorted when the for loop terminates. Check.</p>
 
-<p>Let&rsquo;s look at the <strong>initiation</strong> property. We can assume that the slice contains at
+<p>Let&rsquo;s look at the <strong>initialization</strong> property. We can assume that the slice contains at
 least two elements since the loop wouldn&rsquo;t execute otherwise.
 (Nor is this needed since a slice with at most one element is sorted already.)
 Before executing the loop, the invariant states
 &ldquo;<code>A[0..0]</code> contains the same elements as the original subarray <code>A[0..0]</code>,
 but in sorted order&rdquo;. This is clearly&nbsp;true.</p>
 
-<p>To verify the <strong>iteration</strong> property, we need to take a closer look at the code.
+<p>To verify the <strong>maintenance</strong> property, we need to take a closer look at the code.
 We can assume that the invariant holds before the loop, i.e. <code>A[0..j-1]</code> is sorted,
 and only need to check that the code inserts the element <code>A[j]</code> in the correct position.
 This is achieved by moving all elements <code>A[j-1], A[j-2],…</code> larger than <code>A[j]</code>
