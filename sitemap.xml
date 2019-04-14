@@ -422,10 +422,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/inheritance-object-oriented/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/golang/find-search-contains-slice/</loc>
   </url>
   
@@ -575,6 +571,10 @@
   
   <url>
     <loc>https://yourbasic.org/golang/gotcha-octal-decimal-hexadecimal-literal/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/inheritance-object-oriented/</loc>
   </url>
   
   <url>

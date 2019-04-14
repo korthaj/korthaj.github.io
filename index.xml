@@ -1084,17 +1084,6 @@ package main import &#34;fmt&#34; func main() { i := 0 go func() { i++ // write 
     </item>
     
     <item>
-      <title>How to do OO in Go without inheritance</title>
-      <link>https://yourbasic.org/golang/inheritance-object-oriented/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/inheritance-object-oriented/</guid>
-      <description>Go doesn’t have inheritance &amp;ndash; instead composition, embed&amp;shy;ding and inter&amp;shy;faces support code reuse and poly&amp;shy;morphism.
- Object-oriented programming with inheritance Code reuse by composition Code reuse by embedding Polymorphism and dynamic dispatch with interfaces  Object-oriented programming with inheritance Inheritance in traditional object-oriented languages offers three features in&amp;nbsp;one. When a&amp;nbsp;Dog inherits from an&amp;nbsp;Animal
- the Dog class reuses code from the Animal&amp;nbsp;class, a variable x of type Animal can refer to either a Dog or an Animal, x.</description>
-    </item>
-    
-    <item>
       <title>How to find an element in a slice/array</title>
       <link>https://yourbasic.org/golang/find-search-contains-slice/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1520,6 +1509,17 @@ package main var n = 1 func main() {} This is a trade-off in the design of the G
 const ( Century = 100 Decade = 010 Year = 001 ) // The world&#39;s oldest person, Emma Morano, lived for a century, // two decades and two years. fmt.Println(&#34;She was&#34;, Century+2*Decade+2*Year, &#34;years old.&#34;) She was 118 years old. Answer
 010 is a number in base&amp;nbsp;8, therefore it means&amp;nbsp;8, not&amp;nbsp;10.
 Integer literals in Go are specified in octal, decimal or hexadecimal. The number 16 can be written as 020, 16 or 0x10.</description>
+    </item>
+    
+    <item>
+      <title>OO in Go without inheritance</title>
+      <link>https://yourbasic.org/golang/inheritance-object-oriented/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/inheritance-object-oriented/</guid>
+      <description>Go doesn’t have inheritance &amp;ndash; instead composition, embed&amp;shy;ding and inter&amp;shy;faces support code reuse and poly&amp;shy;morphism.
+ Object-oriented programming with inheritance Code reuse by composition Code reuse by embedding Polymorphism and dynamic dispatch with interfaces  Object-oriented programming with inheritance Inheritance in traditional object-oriented languages offers three features in&amp;nbsp;one. When a&amp;nbsp;Dog inherits from an&amp;nbsp;Animal
+ the Dog class reuses code from the Animal&amp;nbsp;class, a variable x of type Animal can refer to either a Dog or an Animal, x.</description>
     </item>
     
     <item>
