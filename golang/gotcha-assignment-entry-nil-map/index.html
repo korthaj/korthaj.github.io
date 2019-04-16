@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Help: Assignment to entry in nil map · YourBasic Go </title>
-  <meta name="description" content="CODE EXAMPLE You have to initialize a map using the make function before you can add any elements.">
+  <meta name="description" content="CODE EXAMPLE You have to initialize a map using the make function (or a map literal) before you can add any elements.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -52,7 +52,7 @@ m["pi"] = 3.1416</code></pre>
 <p><details class="answer">
 <summary class="answer">Answer</summary></p>
 
-<p>You have to initialize the map using the <code>make</code> function before you can add any elements:</p>
+<p>You have to initialize the map using the make function (or a map literal) before you can add any elements:</p>
 
 <pre><code>m := make(map[string]float64)
 m["pi"] = 3.1416</code></pre>

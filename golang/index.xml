@@ -251,7 +251,7 @@ func Foo(a []int) { if len(a)  0 { a[0] = 8 } } func main() { a := []int{1, 2} F
       <guid>https://yourbasic.org/golang/gotcha-assignment-entry-nil-map/</guid>
       <description>Why does this program panic?
 var m map[string]float64 m[&#34;pi&#34;] = 3.1416 panic: assignment to entry in nil map  Answer
-You have to initialize the map using the make function before you can add any elements:
+You have to initialize the map using the make function (or a map literal) before you can add any elements:
 m := make(map[string]float64) m[&#34;pi&#34;] = 3.1416  A new, empty map value is made using the built-in function make, which takes the map type and an optional capacity hint as arguments: make(map[string]int) make(map[string]int, 100) The initial capacity does not bound its size: maps grow to accommodate the number of items stored in them, with the exception of nil maps.</description>
     </item>
     
