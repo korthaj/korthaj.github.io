@@ -1513,7 +1513,7 @@ Integer literals in Go are specified in octal, decimal or hexadecimal. The numbe
     </item>
     
     <item>
-      <title>OO in Go without inheritance</title>
+      <title>Object-oriented programming without inheritance</title>
       <link>https://yourbasic.org/golang/inheritance-object-oriented/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
