@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your basic graph · YourBasic </title>
-  <meta name="description" content="Graph terminology, data structures and search algorithms: vertex set and edge set, self-loops, multigraphs, simple graphs, degree, path, cycle, connected, tree, leaf, digraph, DAG; adjacency list and adjacency matrix; DFS, BFS and Dijkstra’s algorithm.">
+  <title>Introduction to graph algorithms: definitions and examples · YourBasic </title>
+  <meta name="description" content="Learn basic graph terminology, data structures (adjacency list, adjacency matrix) and search algorithms: depth-first search (DFS), breadth-first search (BFS) and Dijkstra’s algorithm.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/algorithms/graph/"
   },
-  "headline": "Your basic graph",
+  "headline": "Introduction to graph algorithms: definitions and examples",
   "image": [
     "https://yourbasic.org/algorithms/social-graph.png"
    ],
   "datePublished": "2018-04-19T00:00:00&#43;0000",
-  "dateModified": "2018-04-19T00:00:00&#43;0000",
+  "dateModified": "2019-04-20T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "Graph terminology, data structures and search algorithms: vertex set and edge set, self-loops, multigraphs, simple graphs, degree, path, cycle, connected, tree, leaf, digraph, DAG; adjacency list and adjacency matrix; DFS, BFS and Dijkstra’s algorithm."
+  "description": "Learn basic graph terminology, data structures (adjacency list, adjacency matrix) and search algorithms: depth-first search (DFS), breadth-first search (BFS) and Dijkstra’s algorithm."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Your basic graph">
-<meta property="og:description" content="Graph terminology, data structures and search algorithms: vertex set and edge set, self-loops, multigraphs, simple graphs, degree, path, cycle, connected, tree, leaf, digraph, DAG; adjacency list and adjacency matrix; DFS, BFS and Dijkstra’s algorithm.">
+<meta property="og:title" content="Introduction to graph algorithms: definitions and examples">
+<meta property="og:description" content="Learn basic graph terminology, data structures (adjacency list, adjacency matrix) and search algorithms: depth-first search (DFS), breadth-first search (BFS) and Dijkstra’s algorithm.">
 <meta property="og:url" content="https://yourbasic.org/algorithms/graph/">
 <meta property="og:image" content="https://yourbasic.org/algorithms/social-graph.png">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Your basic graph">
-<meta name="twitter:description" content="Graph terminology, data structures and search algorithms: vertex set and edge set, self-loops, multigraphs, simple graphs, degree, path, cycle, connected, tree, leaf, digraph, DAG; adjacency list and adjacency matrix; DFS, BFS and Dijkstra’s algorithm.">
+<meta name="twitter:title" content="Introduction to graph algorithms: definitions and examples">
+<meta name="twitter:description" content="Learn basic graph terminology, data structures (adjacency list, adjacency matrix) and search algorithms: depth-first search (DFS), breadth-first search (BFS) and Dijkstra’s algorithm.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/algorithms/social-graph.png">
 
@@ -82,7 +82,7 @@
 
 <main>
 <article>
-<h1>Your basic graph</h1>
+<h1>Introduction to graph algorithms: definitions and examples</h1>
 <div class="tagline">yourbasic.org</div>
 
 
@@ -90,11 +90,36 @@
 
 <div style="margin-top:1em;"><img src="/algorithms/social-graph.png"></div>
 
-<ul class="toc">
-  <li><a href="#terminology">Terminology</a></li>
-  <li><a href="#data-structures">Data structures</a></li>
-  <li><a href="#search-algorithms">Search algorithms</a></li>
+<div style="margin-top:1em;">
+<div style="float: left; min-width: 35%; margin-right: 2em;">
+<ul class="toc" style="font-weight: bold; margin:0;">
+  <li><a href="#terminology">Definitions</a>
+    <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
+      <li><a href="#trees">Trees</a></li>
+      <li><a href="#directed-graphs">Directed graphs</a></li>
+    </ul>
+  </li>
+  <li><a href="#data-structures">Data structures</a>
+    <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
+      <li><a href="#adjacency-matrix">Adjacency matrix</a></li>
+      <li><a href="#adjacency-list">Adjacency list</a></li>
+    </ul>
+  </li>
 </ul>
+</div>
+<div style="float: left;">
+<ul class="toc" style="font-weight: bold; margin:0;">
+  <li><a href="#search-algorithms">Search algorithms</a>
+    <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
+      <li><a href="#depth-first-search">Depth-first search (DFS)</a></li>
+      <li><a href="#breadth-first-search">Breadth-first search (BFS)</a></li>
+      <li><a href="#dijkstra-s-algorithm">Dijkstra’s algorithm</a></li>
+    </ul>
+  </li>
+</ul>
+</div>
+</div>
+<div style="clear: both"></div>
 
 <p>This text introduces basic graph terminology,
 standard graph data structures, and three fundamental
@@ -102,9 +127,9 @@ algorithms for traversing a graph in a systematic&nbsp;way.</p>
 
 <p>You may also want to take a look at the Github
 <a href="https://github.com/yourbasic/graph">yourbasic/graph</a> repository.
-It&rsquo;s a Go library with generic implementations of several basic graph algorithms.</p>
+It&rsquo;s a Go library with generic implementations of basic graph algorithms.</p>
 
-<h2 id="terminology">Terminology</h2>
+<h2 id="definitions">Definitions</h2>
 
 <p>A <b>graph</b> <i>G</i> consists of two types of elements:
 <b>vertices</b> and <b>edges</b>.
@@ -225,9 +250,9 @@ Hash tables, arrays or linked lists are common choices.</p>
 
 <h3 id="depth-first-search">Depth-first search</h3>
 
-<p>Depth-first search <code>DFS(G,&nbsp;v)</code> is an algorithm
-that visits all edges in the graph&nbsp;<code>G</code> that belong to the
-same connected component as vertex&nbsp;<emcode>v</code>.</p>
+<p>Depth-first search (DFS) is an algorithm
+that visits all edges in a graph&nbsp;<code>G</code> that belong to the
+same connected component as a vertex&nbsp;<emcode>v</code>.</p>
 
 <pre>
 <b>Algorithm</b> DFS(G, v)
@@ -241,7 +266,9 @@ same connected component as vertex&nbsp;<emcode>v</code>.</p>
 
 <p>Before running the algorithm, all |V| vertices must be marked as not visited.</p>
 
-<p>To compute the time complexity, we can use the number of calls to <code>DFS</code>
+<h4 id="time-complexity">Time complexity</h4>
+
+<p>To compute the <a href="/algorithms/time-complexity-explained/">time complexity</a>, we can use the number of calls to <code>DFS</code>
 as an elementary operation: the if statement and the mark operation both
 run in constant time, and the for loop makes a single call to DFS for each iteration.</p>
 
@@ -254,7 +281,7 @@ and one time when it visits the neighbors of&nbsp;<i>v</i>.</p>
 
 <h3 id="breadth-first-search">Breadth-first search</h3>
 
-<p>Breadth-first search <code>BFS(G,&nbsp;v)</code> also visits all vertices
+<p>Breadth-first search (BFS) also visits all vertices
 that belong to the same component as&nbsp;<i>v</i>.
 However, the vertices are visited in distance order: the algorithm first visits&nbsp;<i>v</i>,
 then all neighbors of&nbsp;<i>v</i>, then their neighbors, and so&nbsp;on.</p>
@@ -274,7 +301,9 @@ then all neighbors of&nbsp;<i>v</i>, then their neighbors, and so&nbsp;on.</p>
 
 <p>Before running the algorithm, all |V| vertices must be marked as not visited.</p>
 
-<p>The time complexity of <code>BFS</code> can be computed as the total
+<h4 id="time-complexity-1">Time complexity</h4>
+
+<p>The <a href="/algorithms/time-complexity-explained/">time complexity</a> of <code>BFS</code> can be computed as the total
 number of iterations performed by the for loop.</p>
 
 <p>Let E&apos; be the set of all edges in the connected component visited by the algorithm.
@@ -287,9 +316,9 @@ and one time when it visits the neighbors of&nbsp;<i>v</i>.</p>
 
 <h3 id="dijkstra-s-algorithm">Dijkstra’s algorithm</h3>
 
-<p>The algorithm <code>Dijkstra(G,&nbsp;s)</code> computes
+<p>Dijkstra’s algorithm computes
 the shortest path from a vertex <code>s</code>, the source,
-to all other vertices in a graph&nbsp;<code>G</code> with non-negative edge costs.</p>
+to all other vertices. The graph must have non-negative edge costs.</p>
 
 <p>The algorithms returns two arrays:</p>
 
@@ -326,21 +355,23 @@ from&nbsp;<code>s</code> to&nbsp;<code>k</code>.
     <b>return</b> dist[], prev[]
 </pre>
 
-<p>To compute the time complexity we can use the same type of argument
+<h4 id="time-complexity-2">Time complexity</h4>
+
+<p>To compute the <a href="/algorithms/time-complexity-explained/">time complexity</a> we can use the same type of argument
 as for&nbsp;<code>BFS</code>.</p>
 
 <p>The main difference is that we need to account
 for the cost of adding, updating and finding the minimum distances in the queue.
-If we  implement the queue with a heap, all of these operations can be performed
-in <i>O</i>(log&nbsp;|V|)&nbsp;time.</p>
+If we  implement the queue with a&nbsp;<a href="https://sv.wikipedia.org/wiki/Heap_(datastruktur)">heap</a>,
+all of these operations can be performed in <i>O</i>(log&nbsp;|V|)&nbsp;time.</p>
 
 <p>This gives the time complexity <i>O</i>((|E|&nbsp;+&nbsp;|V|)log|V|).</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fgraph%2f&amp;text=Your%20basic%20graph&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fgraph%2f&amp;text=Introduction%20to%20graph%20algorithms:%20definitions%20and%20examples&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2falgorithms%2fgraph%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fgraph%2f&amp;title=Your%20basic%20graph" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Your%20basic%20graph&body=https%3a%2f%2fyourbasic.org%2falgorithms%2fgraph%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fgraph%2f&amp;title=Introduction%20to%20graph%20algorithms:%20definitions%20and%20examples" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Introduction%20to%20graph%20algorithms:%20definitions%20and%20examples&body=https%3a%2f%2fyourbasic.org%2falgorithms%2fgraph%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>

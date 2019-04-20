@@ -474,6 +474,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/algorithms/graph/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/packages-explained/</loc>
   </url>
   
@@ -812,10 +816,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/log-to-file/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/algorithms/graph/</loc>
   </url>
   
   <url>

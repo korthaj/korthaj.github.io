@@ -1033,12 +1033,13 @@ s := fmt.Sprintf(&#34;%c%c, world!&#34;, 72, &#39;i&#39;) fmt.Println(s)// &#34;
     </item>
     
     <item>
-      <title>How to avoid initializing memory</title>
+      <title>How to avoid initializing memory [impractical]</title>
       <link>https://yourbasic.org/algorithms/avoid-initializing-memory/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/algorithms/avoid-initializing-memory/</guid>
-      <description>Consider an algorithm that uses a large memory area. If the running time of the algorithm is smaller than the size of the memory, initializing the memory will take longer than running the algorithm. However, using a shrewd trick, it’s possible to refrain from initializing the&amp;nbsp;memory. This mysterious trick is used quite frequently in research articles, often without explanation and a reference to Exercise 2.12 in The Design and Analysis of Computer Algorithms by Aho, Hopcroft, and Ullman, 1974.</description>
+      <description>Consider an algorithm that uses a large memory area. If the running time of the algorithm is smaller than the size of the memory, initializing the memory will take longer than running the algorithm. However, using a shrewd trick, it’s possible to refrain from initializing the&amp;nbsp;memory.
+This mysterious trick is used quite frequently in research articles, often without explanation and a reference to Exercise 2.12 in The Design and Analysis of Computer Algorithms by Aho, Hopcroft, and Ullman, 1974.</description>
     </item>
     
     <item>
@@ -1228,6 +1229,16 @@ Loop from 0 to len(a)-1 instead.</description>
       <description>Basics Structural typing The empty interface Interface values Equality  Basics  An interface type consists of a set of method signatures. A variable of interface type can hold any value that implements these methods.
  In this example both Temp and *Point implement the MyStringer interface.
 type MyStringer interface { String() string }  type Temp int func (t Temp) String() string { return strconv.Itoa(int(t)) + &amp;quot; °C&amp;quot; } type Point struct { x, y int } func (p *Point) String() string { return fmt.</description>
+    </item>
+    
+    <item>
+      <title>Introduction to graph algorithms: definitions and examples</title>
+      <link>https://yourbasic.org/algorithms/graph/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/algorithms/graph/</guid>
+      <description>Definitions Trees Directed graphs   Data structures Adjacency matrix Adjacency list     Search algorithms Depth-first search (DFS) Breadth-first search (BFS) Dijkstra’s algorithm       This text introduces basic graph terminology, standard graph data structures, and three fundamental algorithms for traversing a graph in a systematic&amp;nbsp;way.
+You may also want to take a look at the Github yourbasic/graph repository. It&amp;rsquo;s a Go library with generic implementations of basic graph algorithms.</description>
     </item>
     
     <item>
@@ -2154,17 +2165,6 @@ To avoid this, we need to use two separate byte&amp;nbsp;arrays.</description>
       <description>This code appends a log message to the file text.log. It creates the file if it doesn&amp;rsquo;t already exist.
 f, err := os.OpenFile(&amp;quot;text.log&amp;quot;, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644) if err != nil { log.Println(err) } defer f.Close() logger := log.New(f, &amp;quot;prefix&amp;quot;, log.LstdFlags) logger.Println(&amp;quot;text to append&amp;quot;) logger.Println(&amp;quot;more text to append&amp;quot;)  Contents of text.log:
 prefix: 2017/10/20 07:52:58 text to append prefix: 2017/10/20 07:52:58 more text to append   log.New creates a new log.</description>
-    </item>
-    
-    <item>
-      <title>Your basic graph</title>
-      <link>https://yourbasic.org/algorithms/graph/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/algorithms/graph/</guid>
-      <description>Terminology Data structures Search algorithms  This text introduces basic graph terminology, standard graph data structures, and three fundamental algorithms for traversing a graph in a systematic&amp;nbsp;way.
-You may also want to take a look at the Github yourbasic/graph repository. It&amp;rsquo;s a Go library with generic implementations of several basic graph algorithms.
-Terminology A graph G consists of two types of elements: vertices and edges. Each edge has two endpoints, which belong to the vertex set.</description>
     </item>
     
     <item>

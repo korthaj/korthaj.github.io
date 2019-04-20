@@ -113,12 +113,13 @@ Hash tables offer a combination of efficient lookup, insert and delete operation
     </item>
     
     <item>
-      <title>How to avoid initializing memory</title>
+      <title>How to avoid initializing memory [impractical]</title>
       <link>https://yourbasic.org/algorithms/avoid-initializing-memory/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/algorithms/avoid-initializing-memory/</guid>
-      <description>Consider an algorithm that uses a large memory area. If the running time of the algorithm is smaller than the size of the memory, initializing the memory will take longer than running the algorithm. However, using a shrewd trick, it’s possible to refrain from initializing the&amp;nbsp;memory. This mysterious trick is used quite frequently in research articles, often without explanation and a reference to Exercise 2.12 in The Design and Analysis of Computer Algorithms by Aho, Hopcroft, and Ullman, 1974.</description>
+      <description>Consider an algorithm that uses a large memory area. If the running time of the algorithm is smaller than the size of the memory, initializing the memory will take longer than running the algorithm. However, using a shrewd trick, it’s possible to refrain from initializing the&amp;nbsp;memory.
+This mysterious trick is used quite frequently in research articles, often without explanation and a reference to Exercise 2.12 in The Design and Analysis of Computer Algorithms by Aho, Hopcroft, and Ullman, 1974.</description>
     </item>
     
     <item>
@@ -129,6 +130,16 @@ Hash tables offer a combination of efficient lookup, insert and delete operation
       <guid>https://yourbasic.org/algorithms/insertion-sort/</guid>
       <description>Insertion sort Insertion sort is a simple sorting algorithm with quadratic worst-case time complexity, but in some cases it&amp;rsquo;s still the algorithm of choice.
  It&amp;rsquo;s efficient for small data sets. It typically outperforms other simple quadratic algorithms, such as selection sort or bubble sort. It&amp;rsquo;s adaptive: it sorts data sets that are already substantially sorted efficiently. The&amp;nbsp;time complexity is O(nk) when each element is at most k&amp;nbsp;places away from its sorted position.</description>
+    </item>
+    
+    <item>
+      <title>Introduction to graph algorithms: definitions and examples</title>
+      <link>https://yourbasic.org/algorithms/graph/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/algorithms/graph/</guid>
+      <description>Definitions Trees Directed graphs   Data structures Adjacency matrix Adjacency list     Search algorithms Depth-first search (DFS) Breadth-first search (BFS) Dijkstra’s algorithm       This text introduces basic graph terminology, standard graph data structures, and three fundamental algorithms for traversing a graph in a systematic&amp;nbsp;way.
+You may also want to take a look at the Github yourbasic/graph repository. It&amp;rsquo;s a Go library with generic implementations of basic graph algorithms.</description>
     </item>
     
     <item>
@@ -215,17 +226,6 @@ What would you require of this ideal, sole structure?</description>
  The seed is a starting point for a sequence of pseudorandom numbers. If you start from the same seed, you get the very same sequence. This can be quite useful for&amp;nbsp;debugging.
 If you want a different sequence of numbers each time, you can use the current time as a&amp;nbsp;seed.
 Example This generator produces a sequence of 97 different numbers, then it starts over again.</description>
-    </item>
-    
-    <item>
-      <title>Your basic graph</title>
-      <link>https://yourbasic.org/algorithms/graph/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/algorithms/graph/</guid>
-      <description>Terminology Data structures Search algorithms  This text introduces basic graph terminology, standard graph data structures, and three fundamental algorithms for traversing a graph in a systematic&amp;nbsp;way.
-You may also want to take a look at the Github yourbasic/graph repository. It&amp;rsquo;s a Go library with generic implementations of several basic graph algorithms.
-Terminology A graph G consists of two types of elements: vertices and edges. Each edge has two endpoints, which belong to the vertex set.</description>
     </item>
     
     <item>
