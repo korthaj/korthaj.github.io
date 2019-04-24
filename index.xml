@@ -2149,7 +2149,7 @@ func Min(x, y int) int { if x &amp;lt;= y { return x } return y }  </description
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/advantages-over-java-python/</guid>
-      <description>Go makes it easier (than Java or Python) to write write correct, clear and efficient code.
+      <description>Go makes it easier (than Java or Python) to write correct, clear and efficient code.
  Minimalism Features for the future   Code transparency Compatibility Performance  Choosing a programming language isn&amp;rsquo;t easy. The separate features of a language may look great at first, but it takes time and experience to&amp;nbsp;spot the&amp;nbsp;drawbacks.
 As a CS professor and longtime Go and Java developer, I&amp;rsquo;d like to share some of my&amp;nbsp;thoughts and explain why I prefer Go to Java or Python – Go makes it much easier for me to write good&amp;nbsp;code.</description>
     </item>
