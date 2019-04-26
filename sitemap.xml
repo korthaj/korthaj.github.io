@@ -622,10 +622,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/top-programming-languages/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/golang/public-private/</loc>
   </url>
   
@@ -736,6 +732,10 @@
   
   <url>
     <loc>https://yourbasic.org/golang/fmt-printf-reference-cheat-sheet/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/top-programming-languages/</loc>
   </url>
   
   <url>
