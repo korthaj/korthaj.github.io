@@ -1929,8 +1929,9 @@ select { case news := &amp;lt;-AFP: fmt.Println(news) case &amp;lt;-time.After(t
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/top-programming-languages/</guid>
-      <description>Language trends 2000–2019 Top languages 2019  Language trends 2000–2019 Number of hits (x1,000) on Dice, tech jobs search engine, February&amp;nbsp;2019.
- (year) 00 02 04 06 08 10 12 14 16 18 19 Java 55 3 8 14 16 12 18 17 16 15 18 JavaScript 5 1 2 4 6 6 11 12 12 10 12 C/C++ (*) 75 2 5 16 9 12 18 16 8 7 9 Python 1 1 2 4 5 7 8 9 Visual Basic 21 1 2 3 2 1 2 1 12 9 8 C# 1 5 8 6 9 8 7 6 6 Objective C 2 6 5 5 Go 3 Perl 18 1 2 5 5 4 5 4 4 3 2 R 2 2 Ruby 1 2 2 3 2 2 Bash 1 2 2 2 Scala 1 1 1 PHP 1 2 2 4 3 3 2 1 Matlab 1 1 Assembly 4 1 1 2 1 1 1 1 1 1 1 JSP 4 4 3 3 2 1 1 1 ASP 11 7 4 6 5 2 1 1 TypeScript 1 Swift 1 1  (*) Back in 2000, it made sense to lump C and C++ together.</description>
+      <description>Language trends 2000–2019 Top languages 2019  This informal study gives a broad estimate of what programming languages are used commercially in the&amp;nbsp;US. Starting in 2000, I&amp;rsquo;ve done a yearly job search at www.dice.com for some of the most well-known languages.
+Here are some main takeaways:
+ You can clearly see the dramatic effects of the dot-com bubble in&amp;nbsp;2000. It&amp;rsquo;s evident that some much-talked-about languages (let&amp;rsquo;s not mention any names) seem to find very little use in industry.</description>
     </item>
     
     <item>
