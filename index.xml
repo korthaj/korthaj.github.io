@@ -1931,7 +1931,7 @@ select { case news := &amp;lt;-AFP: fmt.Println(news) case &amp;lt;-time.After(t
       <guid>https://yourbasic.org/top-programming-languages/</guid>
       <description>Summary Language trends 2000–2019 Top languages 2019  Summary This informal study gives a broad estimate of what programming languages are used commercially in the&amp;nbsp;US. For the last 20 years, I&amp;rsquo;ve done a job search at www.dice.com for some of the most popular languages.
 Main takeaways:
- It&amp;rsquo;s evident that some much-talked-about languages (let&amp;rsquo;s not mention any names) seem to find very little use in industry. C#, Java, JavaScript, and Python have taken a large and stable market share during the last 20&amp;nbsp;years.</description>
+ It&amp;rsquo;s evident that some much-talked-about languages seem to find very little use in industry. C#, Java, JavaScript, and Python have taken a large and stable market share during the last 20&amp;nbsp;years.</description>
     </item>
     
     <item>
