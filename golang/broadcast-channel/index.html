@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Broadcast a signal on a channel · YourBasic Go </title>
-  <meta name="description" content="When you close a channel, all readers receive a zero value. This can be used to broadcast a signal to several goroutines on a single channel.">
+  <meta name="description" content="When you read from a closed channel, you receive a zero value. This can be used to broadcast a signal to several goroutines on a single channel.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -12,7 +12,7 @@
   <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
   <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
   <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
-  <meta name="keywords" content="go, golang, broadcast, signal, wait, channel, close">
+  
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/phonograph.jpg"
    ],
   "datePublished": "2018-06-12T00:00:00&#43;0000",
-  "dateModified": "2018-06-12T00:00:00&#43;0000",
+  "dateModified": "2019-04-29T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "When you close a channel, all readers receive a zero value. This can be used to broadcast a signal to several goroutines on a single channel."
+  "description": "When you read from a closed channel, you receive a zero value. This can be used to broadcast a signal to several goroutines on a single channel."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Broadcast a signal on a channel">
-<meta property="og:description" content="When you close a channel, all readers receive a zero value. This can be used to broadcast a signal to several goroutines on a single channel.">
+<meta property="og:description" content="When you read from a closed channel, you receive a zero value. This can be used to broadcast a signal to several goroutines on a single channel.">
 <meta property="og:url" content="https://yourbasic.org/golang/broadcast-channel/">
 <meta property="og:image" content="https://yourbasic.org/golang/phonograph.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Broadcast a signal on a channel">
-<meta name="twitter:description" content="When you close a channel, all readers receive a zero value. This can be used to broadcast a signal to several goroutines on a single channel.">
+<meta name="twitter:description" content="When you read from a closed channel, you receive a zero value. This can be used to broadcast a signal to several goroutines on a single channel.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/phonograph.jpg">
 
@@ -85,7 +85,7 @@
 <h1>Broadcast a signal on a channel</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-<p class="lead">When you close a channel, <b>all readers</b> receive a zero&nbsp;value.</p>
+<p class="lead">All readers receive zero&nbsp;values on a closed channel.</p>
 
 <!-- Public domain: https://en.wikipedia.org/wiki/File:Frances_Densmore_recording_Mountain_Chief2.jpg -->
 

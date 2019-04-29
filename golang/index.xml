@@ -303,7 +303,7 @@ _, present := timeZone[&amp;quot;CET&amp;quot;] sum := 0 for _, n := range a { s
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/broadcast-channel/</guid>
-      <description>When you close a channel, all readers receive a zero&amp;nbsp;value.
+      <description>All readers receive zero&amp;nbsp;values on a closed channel.
 In this example the Publish function returns a channel, which is used to broadcast a signal when a message has been published.
 // Print text after the given time has expired. // When done, the wait channel is closed. func Publish(text string, delay time.Duration) (wait close(ch) // Broadcast to all receivers. }() return ch } Notice that we use a channel of empty structs: struct{}.</description>
     </item>
