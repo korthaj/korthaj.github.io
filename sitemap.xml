@@ -49,6 +49,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/for-loop-range-array-slice-map-channel/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/string-functions-reference-cheat-sheet/</loc>
   </url>
   
@@ -700,10 +704,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/how-to-sort-in-go/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/for-loop-range-array-slice-map-channel/</loc>
   </url>
   
   <url>

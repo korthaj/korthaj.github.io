@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The 4 ways to write a range for loop · YourBasic Go </title>
-  <meta name="description" content="CODE EXAMPLE A foreach range loop is used to iterate over a slice, array, string, map or channel.">
+  <title>4 ways to write a range for loop [slice, string, map, channel] · YourBasic Go </title>
+  <meta name="description" content="CODE EXAMPLE A for-each range loop is used to iterate over the values in a slice, array or channel, the keys and values in a map, or the characters in a string.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/for-loop-range-array-slice-map-channel/"
   },
-  "headline": "The 4 ways to write a range for loop",
+  "headline": "4 ways to write a range for loop [slice, string, map, channel]",
   "image": [
     "https://yourbasic.org/golang/gopher-hula-hoop.jpg"
    ],
   "datePublished": "2018-07-03T00:00:00&#43;0000",
-  "dateModified": "2019-01-31T00:00:00&#43;0000",
+  "dateModified": "2019-05-09T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "CODE EXAMPLE A foreach range loop is used to iterate over a slice, array, string, map or channel."
+  "description": "CODE EXAMPLE A for-each range loop is used to iterate over the values in a slice, array or channel, the keys and values in a map, or the characters in a string."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="The 4 ways to write a range for loop">
-<meta property="og:description" content="CODE EXAMPLE A foreach range loop is used to iterate over a slice, array, string, map or channel.">
+<meta property="og:title" content="4 ways to write a range for loop [slice, string, map, channel]">
+<meta property="og:description" content="CODE EXAMPLE A for-each range loop is used to iterate over the values in a slice, array or channel, the keys and values in a map, or the characters in a string.">
 <meta property="og:url" content="https://yourbasic.org/golang/for-loop-range-array-slice-map-channel/">
 <meta property="og:image" content="https://yourbasic.org/golang/gopher-hula-hoop.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The 4 ways to write a range for loop">
-<meta name="twitter:description" content="CODE EXAMPLE A foreach range loop is used to iterate over a slice, array, string, map or channel.">
+<meta name="twitter:title" content="4 ways to write a range for loop [slice, string, map, channel]">
+<meta name="twitter:description" content="CODE EXAMPLE A for-each range loop is used to iterate over the values in a slice, array or channel, the keys and values in a map, or the characters in a string.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/gopher-hula-hoop.jpg">
 
@@ -82,25 +82,23 @@
 
 <main>
 <article>
-<h1>The 4 ways to write a range for loop</h1>
+<h1>4 ways to write a range for loop [slice, string, map, channel]</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
-<p class="lead">Go offers foreach loops for slices, arrays, strings, maps and&nbsp;channels.</p>
-
 <!-- CC BY 3.0: https://github.com/shalakhin/gophericons -->
 
-<div style="float:right; margin:-10px 20px 0 10px;"><img src="/golang/gopher-hula-hoop.jpg"></div>
+<div style="float:right; margin:0 20px 0 10px;"><img src="/golang/gopher-hula-hoop.jpg"></div>
 
 <ul class="toc">
-  <li><a href="#basic-range-loop-iteration">Basic range loop iteration</a></li>
-  <li><a href="#loop-over-string-indexes-and-runes">Loop over string indexes and runes</a></li>
-  <li><a href="#loop-over-map-keys-and-values">Loop over map keys and values</a></li>
-  <li><a href="#loop-over-channels">Loop over channels</a></li>
-  <li><a href="#range-loop-gotchas">Range loop gotchas</a></li>
+  <li><a href="#basic-for-each-loop-slice-or-array">Basic for-each loop (slice or array)</a></li>
+  <li><a href="#string-iteration-runes-or-bytes">String iteration: runes or bytes</a></li>
+  <li><a href="#map-iteration-keys-and-values">Map iteration: keys and values</a></li>
+  <li><a href="#channel-iteration">Channel iteration</a></li>
+  <li><a href="#gotchas">Gotchas</a></li>
 </ul>
 
-<h2 id="basic-range-loop-iteration">Basic range loop iteration</h2>
+<h2 id="basic-for-each-loop-slice-or-array">Basic for-each loop (slice or array)</h2>
 
 <pre><code>a := []string{"Foo", "Bar"}
 <b>for i, s := range a</b> {
@@ -116,12 +114,12 @@
 <li>The iteration values are assigned to the respective iteration variables, <code>i</code> and <code>s</code>,
 <strong>as in an assignment statement</strong>.</li>
 <li>The second iteration variable is optional.</li>
-<li>If a slice or map is <code>nil</code>, the number of iterations is&nbsp;0.</li>
+<li>For a nil slice, the number of iterations is&nbsp;0.</li>
 </ul>
 
-<h2 id="loop-over-string-indexes-and-runes">Loop over string indexes and runes</h2>
+<h2 id="string-iteration-runes-or-bytes">String iteration: runes or bytes</h2>
 
-<p>For a string, the loop iterates over Unicode code points.</p>
+<p>For strings, the range loop iterates over <a href="/golang/rune/">Unicode code points</a>.</p>
 
 <pre><code><b>for i, ch := range "日本語"</b> {
     fmt.Printf("%#U starts at byte position %d\n", ch, i)
@@ -139,9 +137,22 @@ the second value, of type <code>rune</code>, is the value of the code point.</li
 and the iteration will advance a single byte.</li>
 </ul>
 
-<h2 id="loop-over-map-keys-and-values">Loop over map keys and values</h2>
+<blockquote>
+To loop over individual bytes, simply use a
+<a href="/golang/for-loop/">normal for loop</a> and string indexing:
 
-<p>The iteration order over maps is not specified and is not guaranteed
+<pre><code>const s = "日本語"
+for i := 0; i < len(s); i++ {
+    fmt.Printf("%x ", s[i])
+}
+</code></pre>
+
+<pre>e6 97 a5 e6 9c ac e8 aa 9e</pre>
+</blockquote>
+
+<h2 id="map-iteration-keys-and-values">Map iteration: keys and values</h2>
+
+<p>The iteration order over <a href="/golang/maps-explained/">maps</a> is not specified and is not guaranteed
 to be the same from one iteration to the next.</p>
 
 <pre><code>m := map[string]int{
@@ -163,11 +174,12 @@ one 1
 this value will not be produced.</li>
 <li>If a map entry is created during iteration,
 that entry may or may not be produced.</li>
+<li>For a nil map, the number of iterations is&nbsp;0.</li>
 </ul>
 
-<h2 id="loop-over-channels">Loop over channels</h2>
+<h2 id="channel-iteration">Channel iteration</h2>
 
-<p>For channels, the iteration values are the successive values
+<p>For <a href="/golang/channels-explained/">channels</a>, the iteration values are the successive values
 sent on the channel until closed.</p>
 
 <pre><code>ch := make(chan int)
@@ -187,12 +199,12 @@ go func() {
 </code></pre>
 
 <ul>
-<li>For a <code>nil</code> channel, the range loop blocks forever.</li>
+<li>For a nil channel, the range loop blocks forever.</li>
 </ul>
 
-<h2 id="range-loop-gotchas">Range loop gotchas</h2>
+<h2 id="gotchas">Gotchas</h2>
 
-<p>Here are two traps that you might fall into when using range&nbsp;loops:</p>
+<p>Here are two traps that you want to avoid when using range&nbsp;loops:</p>
 
 <ul>
 <li><a href="/golang/gotcha-unexpected-values-range/">Unexpected values in range loop</a></li>
@@ -200,10 +212,10 @@ go func() {
 </ul>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2ffor-loop-range-array-slice-map-channel%2f&amp;text=The%204%20ways%20to%20write%20a%20range%20for%20loop&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2ffor-loop-range-array-slice-map-channel%2f&amp;text=4%20ways%20to%20write%20a%20range%20for%20loop%20[slice,%20string,%20map,%20channel]&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2ffor-loop-range-array-slice-map-channel%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2ffor-loop-range-array-slice-map-channel%2f&amp;title=The%204%20ways%20to%20write%20a%20range%20for%20loop" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=The%204%20ways%20to%20write%20a%20range%20for%20loop&body=https%3a%2f%2fyourbasic.org%2fgolang%2ffor-loop-range-array-slice-map-channel%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2ffor-loop-range-array-slice-map-channel%2f&amp;title=4%20ways%20to%20write%20a%20range%20for%20loop%20[slice,%20string,%20map,%20channel]" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=4%20ways%20to%20write%20a%20range%20for%20loop%20[slice,%20string,%20map,%20channel]&body=https%3a%2f%2fyourbasic.org%2fgolang%2ffor-loop-range-array-slice-map-channel%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>

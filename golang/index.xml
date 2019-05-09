@@ -140,6 +140,15 @@ The String functions cheat sheet presents the top Go string functions.</descript
     </item>
     
     <item>
+      <title>4 ways to write a range for loop [slice, string, map, channel]</title>
+      <link>https://yourbasic.org/golang/for-loop-range-array-slice-map-channel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/for-loop-range-array-slice-map-channel/</guid>
+      <description>Basic for-each loop (slice or array) String iteration: runes or bytes Map iteration: keys and values Channel iteration Gotchas  Basic for-each loop (slice or array) a := []string{&#34;Foo&#34;, &#34;Bar&#34;} for i, s := range a { fmt.Println(i, s) } 0 Foo 1 Bar   The range expression, a, is evaluated once before beginning the loop. The iteration values are assigned to the respective iteration variables, i and s, as in an assignment statement.</description>
+    </item>
+    
+    <item>
       <title>40&#43; practical string tips [cheat sheet]</title>
       <link>https://yourbasic.org/golang/string-functions-reference-cheat-sheet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1212,7 +1221,7 @@ dev etc tmp usr  Visit all files and folders in a directory tree Use the filepat
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/maps-explained/</guid>
-      <description>Go maps are implemented by hash tables and hence offer constant time operation.
+      <description>Go maps are implemented by hash tables and therefore have constant time operations.
  Map basics Add, find and delete keys/values Map iteration Performance and implementation  Map basics A map (or dictionary) is an unordered collection of key-value pairs, where each key is&amp;nbsp;unique.
 var m map[string]int // nil map of string-int pairs m1 := make(map[string]float64) // empty map of string-float64 pairs m2 := make(map[string]float64, 100) // preallocate room for 100 entries m3 := map[string]float64{ // map literal  &#34;</description>
     </item>
@@ -1646,16 +1655,6 @@ package search // Find returns the smallest index i at which x   Put the test co
       <guid>https://yourbasic.org/golang/how-to-sort-in-go/</guid>
       <description>Slice of ints, float64s or strings Custom comparator Custom data structures Bonus: Sort a map by key or value Performance and implementation  Sort a slice of ints, float64s or strings Use one of the functions
  sort.Ints sort.Float64s sort.Strings  s := []int{4, 2, 3, 1} sort.Ints(s) fmt.Println(s) // [1 2 3 4]  Package radix contains a drop-in replacement for sort.Strings, which can be more than twice as fast in some settings.</description>
-    </item>
-    
-    <item>
-      <title>The 4 ways to write a range for loop</title>
-      <link>https://yourbasic.org/golang/for-loop-range-array-slice-map-channel/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/for-loop-range-array-slice-map-channel/</guid>
-      <description>Go offers foreach loops for slices, arrays, strings, maps and&amp;nbsp;channels.
- Basic range loop iteration Loop over string indexes and runes Loop over map keys and values Loop over channels Range loop gotchas  Basic range loop iteration a := []string{&#34;Foo&#34;, &#34;Bar&#34;} for i, s := range a { fmt.Println(i, s) } 0 Foo 1 Bar   The range expression, a, is evaluated once before beginning the loop. The iteration values are assigned to the respective iteration variables, i and s, as in an assignment statement.</description>
     </item>
     
     <item>
