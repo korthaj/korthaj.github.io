@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Find the type of an object · YourBasic Go </title>
-  <meta name="description" content="You can find type information about an interface variable in Go using the fmt package, type assertions, type switches or reflection.">
+  <meta name="description" content="You can find type information about an interface variable with the fmt package, type assertions, type switches or reflection.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -21,6 +21,50 @@
 
     gtag('config', 'UA-113104149-1');
   </script>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/golang/find-type-of-object/"
+  },
+  "headline": "Find the type of an object",
+  "image": [
+    "https://yourbasic.org/golang/microscope.jpg"
+   ],
+  "datePublished": "2018-06-29T00:00:00&#43;0000",
+  "dateModified": "2019-05-09T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "You can find type information about an interface variable with the fmt package, type assertions, type switches or reflection."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Find the type of an object">
+<meta property="og:description" content="You can find type information about an interface variable with the fmt package, type assertions, type switches or reflection.">
+<meta property="og:url" content="https://yourbasic.org/golang/find-type-of-object/">
+<meta property="og:image" content="https://yourbasic.org/golang/microscope.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Find the type of an object">
+<meta name="twitter:description" content="You can find type information about an interface variable with the fmt package, type assertions, type switches or reflection.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="https://yourbasic.org/golang/microscope.jpg">
+
 
 </head>
 
@@ -42,23 +86,25 @@
 <div class="tagline">yourbasic.org/golang</div>
 
 
-<h2 id="a-simple-string">A simple string</h2>
+<!-- CC0: https://pixabay.com/sv/photos/mikroskop-lab-testning-vetenskap-2352650/ -->
 
-<p>Use the <code>%T</code> flag in the <a href="https://golang.org/pkg/fmt/">fmt</a> package
+<div style="margin-top:1em;"><img src="/golang/microscope.jpg"></div>
+
+<h2 id="use-fmt-for-a-string-type-description">Use fmt for a string type description</h2>
+
+<p>You can use the <code>%T</code> flag in the <a href="https://golang.org/pkg/fmt/">fmt</a> package
 to get a Go-syntax representation of the&nbsp;type.</p>
 
 <pre><code>var x interface{} = []int{1, 2, 3}
 xType := fmt.Sprintf("%T", x)
 fmt.Println(xType) <span class="comment">// "[]int"</span></code></pre>
 
-<blockquote>
-The <a href="/golang/interfaces-explained/#the-empty-interface">empty interface</a> denoted by <code>interface{}</code>
-can hold values of any type.
-</blockquote>
+<p>(The <a href="/golang/interfaces-explained/#the-empty-interface">empty interface</a> denoted by <code>interface{}</code>
+can hold values of any type.)</p>
 
-<h2 id="a-simple-choice">A simple choice</h2>
+<h2 id="a-type-switch-lets-you-choose-between-types">A type switch lets you choose between types</h2>
 
-<p>Use a type switch to do several type assertions in series.</p>
+<p>Use a <a href="/golang/type-assertion-switch/">type switch</a> to do several <a href="/golang/type-assertion-switch/">type assertions</a> in series.</p>
 
 <pre><code>var x interface{} = 2.3
 switch v := x.(type) {
@@ -71,7 +117,7 @@ default:
 }
 <span class="comment">// Output: float64: 2.3</span></code></pre>
 
-<h2 id="full-type-information">Full type information</h2>
+<h2 id="reflection-gives-full-type-information">Reflection gives full type information</h2>
 
 <p>Use the <a href="https://golang.org/pkg/reflect/">reflect</a> package if the options above don&rsquo;t suffice.</p>
 
@@ -79,6 +125,12 @@ default:
 xType := reflect.TypeOf(x)
 xValue := reflect.ValueOf(x)
 fmt.Println(xType, xValue) <span class="comment">// "[]int [1 2 3]"</span></code></pre>
+
+<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2ffind-type-of-object%2f&amp;text=Find%20the%20type%20of%20an%20object&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2ffind-type-of-object%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2ffind-type-of-object%2f&amp;title=Find%20the%20type%20of%20an%20object" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Find%20the%20type%20of%20an%20object&body=https%3a%2f%2fyourbasic.org%2fgolang%2ffind-type-of-object%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
@@ -100,8 +152,8 @@ fmt.Println(xType, xValue) <span class="comment">// "[]int [1 2 3]"</span></code
   </div>
 
   <div class="reference">
-    <a href="/golang/recover-from-panic/">Recover from a panic [best practice]</a>
-    <div class="desc">A panic stops the normal execution of a goroutine. The recover function is used to regain control and resume normal execution. Go uses panic only for exceptional errors, such as following a nil pointer.</div>
+    <a href="/golang/access-private-field-reflection/">Access private fields with reflection</a>
+    <div class="desc">How to read unexported fields in a struct using reflection in Go.</div>
     <div class="source">yourbasic.org</div>
   </div>
 

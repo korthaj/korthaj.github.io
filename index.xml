@@ -747,9 +747,9 @@ const s = `First line Second line` fmt.Println(s) First line Second line Backtic
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/find-type-of-object/</guid>
-      <description>A simple string Use the %T flag in the fmt package to get a Go-syntax representation of the&amp;nbsp;type.
-var x interface{} = []int{1, 2, 3} xType := fmt.Sprintf(&#34;%T&#34;, x) fmt.Println(xType) // &#34;[]int&#34;  The empty interface denoted by interface{} can hold values of any type.  A simple choice Use a type switch to do several type assertions in series.
-var x interface{} = 2.3 switch v := x.(type) { case int: fmt.</description>
+      <description>Use fmt for a string type description You can use the %T flag in the fmt package to get a Go-syntax representation of the&amp;nbsp;type.
+var x interface{} = []int{1, 2, 3} xType := fmt.Sprintf(&#34;%T&#34;, x) fmt.Println(xType) // &#34;[]int&#34; (The empty interface denoted by interface{} can hold values of any type.)
+A type switch lets you choose between types Use a type switch to do several type assertions in series.</description>
     </item>
     
     <item>
