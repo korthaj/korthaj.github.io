@@ -1873,7 +1873,7 @@ package search // Find returns the smallest index i at which x   Put the test co
       
       <guid>https://yourbasic.org/algorithms/time-complexity-arrays/</guid>
       <description>To write fast code, you must know the difference between constant and linear time array operations.
- Array basics Performance Dynamic array   Expensive list operations Java cheat sheet Python cheat sheet     Alternatives Sorted arrays Linked lists Maps and dictionaries Binary search trees       Is your list code dead slow? Accidentally quadratic list code is very common and can be hard to&amp;nbsp;spot.</description>
+ Array basics Performance Dynamic array   Expensive list operations Java cheat sheet Python cheat sheet     Alternatives Maps and dictionaries Sorted arrays Linked lists Binary search trees       Accidentally quadratic list code is very common and can be hard to&amp;nbsp;spot: it can be adequate for a short list, but when the list grows your code grinds to a&amp;nbsp;halt.</description>
     </item>
     
     <item>

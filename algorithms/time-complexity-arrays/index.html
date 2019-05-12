@@ -114,9 +114,9 @@ constant and linear time array operations.</p>
 <ul class="toc" style="font-weight: bold; margin:0;">
   <li><a href="#alternatives">Alternatives</a>
     <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
+      <li><a href="#maps-and-dictionaries">Maps and dictionaries</a></li>
       <li><a href="#sorted-arrays">Sorted arrays</a></li>
       <li><a href="#linked-lists">Linked lists</a></li>
-      <li><a href="#maps-and-dictionaries">Maps and dictionaries</a></li>
       <li><a href="#binary-search-trees">Binary search trees</a></li>
     </ul>
   </li>
@@ -125,7 +125,8 @@ constant and linear time array operations.</p>
 </div>
 <div style="clear: both"></div>
 
-<p>Is your list code dead slow? Accidentally quadratic list code is very common and can be hard to&nbsp;spot.</p>
+<p>Accidentally quadratic list code is very common and can be hard to&nbsp;spot:
+it can be adequate for a short list, but when the list grows your code grinds to a&nbsp;halt.</p>
 
 <p>This text takes a detailed look at the performance of basic <strong>array operations</strong>
 and discusses <strong>alternatives</strong> to a standard array.
@@ -309,6 +310,25 @@ of array indexing and array iteration.
 However, you may need to take a&nbsp;different approach
 if other operations are performance critical.</p>
 
+<h3 id="maps-and-dictionaries">Maps and dictionaries</h3>
+
+<p>The <strong><a href="/algorithms/hash-tables-explained/">hash table</a></strong>,
+often in the form of a <strong>map</strong> or a <strong>dictionary</strong>,
+is the <strong>most commonly used</strong> alternative to an&nbsp;array.
+It implements an unordered collection of key-value pairs, where each key is unique.</p>
+
+<ul>
+<li>Hash tables offer a combination of efficient <strong>search</strong>, <strong>add</strong> and <strong>delete</strong> operations.</li>
+<li>All of these operations run in <strong>expected constant time</strong>. The time complexity for the
+add operation is amortized.</li>
+</ul>
+
+<p>In Java hash tables are part of the standard library
+(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashSet.html">HashSet</a> and
+<a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html">HashMap</a>).
+More recent languages, such as Python and Go, typically have built-in
+dictionaries and maps implemented by hash tables.</p>
+
 <h3 id="sorted-arrays">Sorted arrays</h3>
 
 <p>If search is important for performance, you may want to use a <strong>sorted array</strong>.</p>
@@ -345,23 +365,6 @@ and also remove the first element in constant time.</li>
 is a doubly linked list,
 Python offers a <a href="https://docs.python.org/2/library/collections.html#collections.deque">deque</a>,
 and Go has a <a href="https://golang.org/pkg/container/list/">list</a> package.</p>
-
-<h3 id="maps-and-dictionaries">Maps and dictionaries</h3>
-
-<p>A <strong><a href="/algorithms/hash-tables-explained/">hash table</a></strong>
-is an unordered collection of key-value pairs, where each key is unique.</p>
-
-<ul>
-<li>Hash tables offer a combination of efficient search, add and delete operations.
-Neither arrays nor linked lists can achieve this.</li>
-<li>These operations run in <strong>expected constant time</strong>. The time complexity for the
-add operation is amortized.</li>
-</ul>
-
-<p>In Java, hash tables are part of the standard library
-(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashSet.html">HashSet</a> and
-<a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html">HashMap</a>),
-while Python and Go have built-in dictionaries and maps implemented by hash tables.</p>
 
 <h3 id="binary-search-trees">Binary search trees</h3>
 
