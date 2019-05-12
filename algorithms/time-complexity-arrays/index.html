@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time complexity of array/list operations [Java, Python] · YourBasic </title>
+  <meta name="description" content="CODE EXAMPLE To write fast code, avoid linear-time operations in Java ArrayLists and Python lists. Sorted arrays, Linked lists, Maps, Dictionaries and Search trees can be efficient alternatives.">
+  
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-113104149-1');
+  </script>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/algorithms/time-complexity-arrays/"
+  },
+  "headline": "Time complexity of array/list operations [Java, Python]",
+  "image": [
+    "https://yourbasic.org/algorithms/scooter-vs-taxi.jpeg"
+   ],
+  "datePublished": "2019-05-12T00:00:00&#43;0000",
+  "dateModified": "2019-05-12T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "CODE EXAMPLE To write fast code, avoid linear-time operations in Java ArrayLists and Python lists. Sorted arrays, Linked lists, Maps, Dictionaries and Search trees can be efficient alternatives."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Time complexity of array/list operations [Java, Python]">
+<meta property="og:description" content="CODE EXAMPLE To write fast code, avoid linear-time operations in Java ArrayLists and Python lists. Sorted arrays, Linked lists, Maps, Dictionaries and Search trees can be efficient alternatives.">
+<meta property="og:url" content="https://yourbasic.org/algorithms/time-complexity-arrays/">
+<meta property="og:image" content="https://yourbasic.org/algorithms/scooter-vs-taxi.jpeg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Time complexity of array/list operations [Java, Python]">
+<meta name="twitter:description" content="CODE EXAMPLE To write fast code, avoid linear-time operations in Java ArrayLists and Python lists. Sorted arrays, Linked lists, Maps, Dictionaries and Search trees can be efficient alternatives.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="https://yourbasic.org/algorithms/scooter-vs-taxi.jpeg">
+
+
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li class="here"><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Time complexity of array/list operations [Java, Python]</h1>
+<div class="tagline">yourbasic.org</div>
+
+
+<p class="lead">To write fast code, you must know the difference between
+constant and linear time array operations.</p>
+
+<!-- CC0: https://www.pexels.com/photo/cars-high-speed-high-speed-photography-street-425277/ -->
+
+<div><img src="/algorithms/scooter-vs-taxi-640.jpeg" alt="Scooter overtaking taxi at high speed"></div>
+
+<div style="margin-top:1em;">
+<div style="float: left; min-width: 40%; margin-right: 2em;">
+<ul class="toc" style="font-weight: bold; margin:0;">
+  <li><a href="#array-basics">Array basics</a>
+    <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
+      <li><a href="#performance">Performance</a></li>
+      <li><a href="#dynamic-array">Dynamic array</a></li>
+    </ul>
+  </li>
+  <li><a href="#expensive-list-operations">Expensive list operations</a>
+    <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
+      <li><a href="#expensive-java-arraylist-methods">Java cheat sheet</a></li>
+      <li><a href="#expensive-python-list-operations">Python cheat sheet</a></li>
+    </ul>
+  </li>
+</ul>
+</div>
+<div style="float: left;">
+<ul class="toc" style="font-weight: bold; margin:0;">
+  <li><a href="#alternatives">Alternatives</a>
+    <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
+      <li><a href="#sorted-arrays">Sorted arrays</a></li>
+      <li><a href="#linked-lists">Linked lists</a></li>
+      <li><a href="#maps-and-dictionaries">Maps and dictionaries</a></li>
+      <li><a href="#binary-search-trees">Binary search trees</a></li>
+    </ul>
+  </li>
+</ul>
+</div>
+</div>
+<div style="clear: both"></div>
+
+<p>Is your list code dead slow? Accidentally quadratic list code is very common and can be hard to&nbsp;spot.</p>
+
+<p>This text takes a detailed look at the performance of basic <strong>array operations</strong>
+and discusses <strong>alternatives</strong> to a standard array.
+It also includes <strong>cheat&nbsp;sheets</strong> of&nbsp;expen&shy;sive list operations in Java and Python.</p>
+
+<h2 id="array-basics">Array basics</h2>
+
+<p>An array is the most fundamental collection data type.
+It consists of elements of a&nbsp;single type laid out <strong>sequentially in memory</strong>.
+You can access any element in&nbsp;<strong>constant time</strong> by <strong>integer indexing</strong>.</p>
+
+<p>Arrays are available in all major languages.
+In <strong>Java</strong> you can either use <strong><code>[]</code></strong>-notation, or the more expressive <strong><code>ArrayList</code></strong>&nbsp;class.
+In <strong>Python</strong>, the <strong>list</strong> data type is imple&shy;mented as an&nbsp;array.</p>
+
+<h3 id="performance">Performance</h3>
+
+<p>In general, arrays have <strong>excellent performance</strong>.
+To&nbsp;optimize array performance is one of the major goals of
+<a href="https://en.wikipedia.org/wiki/Random-access_memory">memory hardware</a> and
+<a href="https://en.wikipedia.org/wiki/Memory_management_(operating_systems)">OS&nbsp;memory management</a> design.</p>
+
+<ul>
+<li>You can <strong>read</strong> or <strong>write</strong> a list item by referring to its index
+in <strong><a href="/algorithms/big-o-notation-explained/#constant-time">constant time</a></strong>.</li>
+<li>However, some array operations – such as <strong>add</strong>, <strong>remove</strong>, and <strong>search</strong> –
+can be quite <strong>epxensive</strong>, with worst-case
+<strong><a href="/algorithms/big-o-notation-explained/#linear-time">linear time complexity</a></strong>.</li>
+</ul>
+
+<h3 id="dynamic-array">Dynamic array</h3>
+
+<p>In a dynamic array, elements are stored at the start of an underlying fixed array,
+and the remaining positions are unused.</p>
+
+<ul>
+<li>If there is room left, elements can be added at the end in constant time.</li>
+<li>If there is no remaining positions, the underlying fixed-sized array needs to be increased in size.</li>
+</ul>
+
+<p>Here’s a view of the memory when appending the elements 2, 7, 1, 3, 8, 4
+to an initially empty dynamic array with capacity&nbsp;2.</p>
+
+<!-- CC0: https://en.wikipedia.org/wiki/File:Dynamic_array.svg -->
+
+<div><img src="/algorithms/dynamic-array.png" alt="Dynamic array example"></div>
+
+<p>The time to append an element is linear in the worst case,
+since it involves allocating new memory and copying each element.</p>
+
+<p>However, if we expand the array by a constant proportion (e.g. by doubling its size)
+the total time to insert <i>n</i> elements will be&nbsp;<i>O</i>(<i>n</i>),
+and we can say that each insertion takes <strong>constant amortized time</strong>.</p>
+
+<p>See <a href="/algorithms/amortized-time-complexity-analysis/">Amortized time complexity</a>
+for more on how to analyze data structures that have expensive operations that happen only rarely.</p>
+
+<h2 id="expensive-list-operations">Expensive list operations</h2>
+
+<p>To <strong>add</strong> or <strong>remove</strong> an element at a specified index can be expensive,
+since all elements after the index must be shifted.
+The worst-case time complexity is&nbsp;linear.</p>
+
+<p>Similarly, <strong>searching</strong> for an element for an element can be expensive,
+since you may need to scan the entire array.</p>
+
+<p>In this Python code example, the <strong>linear-time</strong> <code>pop(0)</code> call, which deletes the first element of a&nbsp;list,
+leads to <strong>highly inefficient code</strong>:</p>
+
+<blockquote class="warning">
+<p><b>Warning:</b> This code has
+<a href="/algorithms/big-o-notation-explained/#key-takeaways">quadratic time complexity</a>.
+It&nbsp;runs in time&nbsp;&Theta;(<i>n</i><sup>2</sup>),
+where <i>n</i>&nbsp;is the initial length of the list&nbsp;<code>a</code>.
+This means that the program is useful only for short lists, with at most <b>a few thousand elements</b>.</p>
+
+<pre><code>while len(a) > 0:
+    foo = a.pop(0)
+</code></pre>
+
+</blockquote>
+
+<p>To avoid this type of performance problems, you need to know the difference
+between constant and linear time list operations.</p>
+
+<h3 id="expensive-java-arraylist-methods">Expensive Java ArrayList methods</h3>
+
+<p>The following <a href="https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html">ArrayList methods</a>
+operate on a subset of the elements,
+but still have time complexity that depends on the <strong>size&nbsp;<code>n</code></strong> of the&nbsp;list.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Worst-case time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border-bottom: 0;"><code>add(int i, E element)</code></td>
+      <td style="border-bottom: 0;"><code>n&nbsp;-&nbsp;i</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>remove(int i)</code></td>
+      <td style="border-bottom: 0;"><code>n&nbsp;-&nbsp;i</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>removeRange(int i, int j)</code></td>
+      <td style="border-bottom: 0;"><code>n&nbsp;-&nbsp;i</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>remove(Object o)</code></td>
+      <td style="border-bottom: 0;"><code>n</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>contains(Object o)</code></td>
+      <td style="border-bottom: 0;"><code>n</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>indexOf(Object o)</code></td>
+      <td style="border-bottom: 0;"><code>n</code></td>
+    </tr>
+    <tr>
+      <td><code>lastIndexOf(Object o)</code></td>
+      <td><code>n</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Note:</strong> <code>add(E element)</code> takes <strong>constant amortized time</strong>,
+even though the worst-case time is&nbsp;linear.</p>
+
+<h3 id="expensive-python-list-operations">Expensive Python list operations</h3>
+
+<p>The following <a href="https://docs.python.org/2/tutorial/datastructures.html">Python list operations</a>
+operate on a subset of the elements, but still have time complexity that depends on <strong><code>n&nbsp;=&nbsp;len(a)</code></strong>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Worst-case time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border-bottom: 0;"><code>a.insert(i, x)</code></td>
+      <td style="border-bottom: 0;"><code>n&nbsp;-&nbsp;i</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>a.pop(i)</code></td>
+      <td style="border-bottom: 0;"><code>n&nbsp;-&nbsp;i</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>del a[i]</code></td>
+      <td style="border-bottom: 0;"><code>n&nbsp;-&nbsp;i</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>del a[i:j]</code></td>
+      <td style="border-bottom: 0;"><code>n&nbsp;-&nbsp;i</code></td>
+    </tr>
+    <tr>
+      <td style="border-bottom: 0;"><code>a.remove(x)</code></td>
+      <td style="border-bottom: 0;"><code>n</code></td>
+    </tr>
+    <tr>
+      <td><code>a.index(x)</code></td>
+      <td><code>n</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Note:</strong> <code>a.append(x)</code> takes <strong>constant amortized time</strong>,
+even though the worst-case time is&nbsp;linear.</p>
+
+<h2 id="alternatives">Alternatives</h2>
+
+<p>No other data structure can compete with the efficiency
+of array indexing and array iteration.
+However, you may need to take a&nbsp;different approach
+if other operations are performance critical.</p>
+
+<h3 id="sorted-arrays">Sorted arrays</h3>
+
+<p>If search is important for performance, you may want to use a <strong>sorted array</strong>.</p>
+
+<ul>
+<li>In a sorted array, you can use a <a href="https://en.wikipedia.org/wiki/Binary_search_algorithm">binary search</a>,
+which runs in worst-case <a href="/algorithms/big-o-notation-explained/#key-takeaways">logarithmic time</a>.</li>
+<li>However, it can be expensive to add a new element to a sorted array:
+the&nbsp;element needs to be inserted in its right place.</li>
+</ul>
+
+<p>The Java <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html">Arrays</a> class
+contains implementations of binary search,
+Python offers a similar <a href="https://docs.python.org/2/library/bisect.html">bisect</a> algorithm,
+and Go also has several <a href="/golang/find-search-contains-slice/#binary-search">binary search methods</a>.</p>
+
+<h3 id="linked-lists">Linked lists</h3>
+
+<!-- CC0: https://en.wikipedia.org/wiki/File:Singly-linked-list.svg -->
+
+<div><img src="/algorithms/singly-linked-list.png" alt="Singly linked list example"></div>
+
+<p>If you need to repeatedly add or remove elements at the start or end of a list,
+you may want to consider a <strong><a href="https://en.wikipedia.org/wiki/Linked_list">linked list</a></strong>.</p>
+
+<ul>
+<li>In a singly linked list you can add elements at both ends in constant time,
+and also remove the first element in constant time.</li>
+<li>In a doubly linked list, you can also remove the last element in constant time.</li>
+<li>However, it&rsquo;s not possible to index elements efficiently.</li>
+</ul>
+
+<p>The Java <a href="https://docs.oracle.com/javase/8/docs/api/java/util/LinkedList.html">LinkedList</a> class
+is a doubly linked list,
+Python offers a <a href="https://docs.python.org/2/library/collections.html#collections.deque">deque</a>,
+and Go has a <a href="https://golang.org/pkg/container/list/">list</a> package.</p>
+
+<h3 id="maps-and-dictionaries">Maps and dictionaries</h3>
+
+<p>A <strong><a href="/algorithms/hash-tables-explained/">hash table</a></strong>
+is an unordered collection of key-value pairs, where each key is unique.</p>
+
+<ul>
+<li>Hash tables offer a combination of efficient search, add and delete operations.
+Neither arrays nor linked lists can achieve this.</li>
+<li>These operations run in <strong>expected constant time</strong>. The time complexity for the
+add operation is amortized.</li>
+</ul>
+
+<p>In Java, hash tables are part of the standard library
+(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashSet.html">HashSet</a> and
+<a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html">HashMap</a>),
+while Python and Go have built-in dictionaries and maps implemented by hash tables.</p>
+
+<h3 id="binary-search-trees">Binary search trees</h3>
+
+<p><a href="/algorithms/binary-search-tree/">Balanced binary search trees</a>
+store items in sorted order and offer effi­cient lookup, addi­tion and remo­val of items.</p>
+
+<ul>
+<li>Most basic operations (e.g. add, delete, find and min)
+run in <a href="/algorithms/big-o-notation-explained/#key-takeaways">logarithmic time</a>.</li>
+</ul>
+
+<p>In Java, search trees are part of the standard library
+(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/TreeSet.html">TreeSet</a> and
+<a href="https://docs.oracle.com/javase/8/docs/api/java/util/TreeMap.html">TreeMap</a>),
+while Python and Go don&rsquo;t support them out of the box.</p>
+
+<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2falgorithms%2ftime-complexity-arrays%2f&amp;text=Time%20complexity%20of%20array/list%20operations%20[Java,%20Python]&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2falgorithms%2ftime-complexity-arrays%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2falgorithms%2ftime-complexity-arrays%2f&amp;title=Time%20complexity%20of%20array/list%20operations%20[Java,%20Python]" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Time%20complexity%20of%20array/list%20operations%20[Java,%20Python]&body=https%3a%2f%2fyourbasic.org%2falgorithms%2ftime-complexity-arrays%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+
+
+</article>
+<aside>
+
+    
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/algorithms/time-complexity-explained/">How to analyze time complexity: Count your steps</a>
+    <div class="desc">Time complexity analysis esti­mates the time to run an algo­rithm. It&#39;s calcu­lated by counting elemen­tary opera­tions.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="/algorithms/big-o-notation-explained/">Big O notation: definition and examples</a>
+    <div class="desc">Big O notation is a convenient way to describe how fast a function is growing. It is often used in computer science to describe time complexity.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="/algorithms/amortized-time-complexity-analysis/">Amortized time complexity</a>
+    <div class="desc">Amortized analysis considers both the cheap and expensive operations performed by an algorithm. It is used for algorithms that have expensive operations that happen only rarely.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+  <h2>Follow on Twitter</h2>
+  <ul class="none">
+    <li><span><a href="https://twitter.com/yourbasic_org">
+    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
+    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
+  </ul>
+
+
+  <h2>Most Read</h2>
+    <div style="margin-top:1em;"><a href="/algorithms/time-complexity-explained/" title="How to analyse time complexity: Count your steps"><img src="/algorithms/abacus-mini.jpg"></a></div>
+  <ul class="none">
+  
+    <li><a href="/algorithms/time-complexity-explained/">How to analyze time complexity: Count your steps</a></li>
+
+    <li><a href="/algorithms/big-o-notation-explained/">Big O notation: definition and examples</a></li>
+
+    <li><a href="/algorithms/dynamic-programming-explained/">Dynamic programming with memoization [step-by-step example]</a></li>
+
+    <li><a href="/algorithms/loop-invariants-explained/">Loop invariants can give you coding superpowers</a></li>
+
+    <li><a href="/algorithms/your-basic-api/">API design: principles and best practices</a></li>
+
+    <li><a href="/algorithms/fastest-sorting-algorithm/">The fastest sorting algorithm?</a></li>
+
+  </ul>
+  <p><a href="/algorithms/"><b>See all 23 algorithm articles</b></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>

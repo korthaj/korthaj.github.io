@@ -185,6 +185,16 @@ We&amp;rsquo;ll use the notation P(n), where n&amp;nbsp;&amp;ge;&amp;nbsp;0, to 
     </item>
     
     <item>
+      <title>Time complexity of array/list operations [Java, Python]</title>
+      <link>https://yourbasic.org/algorithms/time-complexity-arrays/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/algorithms/time-complexity-arrays/</guid>
+      <description>To write fast code, you must know the difference between constant and linear time array operations.
+ Array basics Performance Dynamic array   Expensive list operations Java cheat sheet Python cheat sheet     Alternatives Sorted arrays Linked lists Maps and dictionaries Binary search trees       Is your list code dead slow? Accidentally quadratic list code is very common and can be hard to&amp;nbsp;spot.</description>
+    </item>
+    
+    <item>
       <title>Time complexity of recursive functions [Master theorem]</title>
       <link>https://yourbasic.org/algorithms/time-complexity-recursive-functions/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
