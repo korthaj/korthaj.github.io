@@ -1037,8 +1037,8 @@ s := fmt.Sprintf(&#34;%c%c, world!&#34;, 72, &#39;i&#39;) fmt.Println(s)// &#34;
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/append-explained/</guid>
-      <description>Append function basics Append one slice to another Append string to byte slice Performance  Append function basics The built-in append function appends any number of elements to the end of a&amp;nbsp;slice:
- if there is enough capacity, the underlying array is&amp;nbsp;reused; if not, a new underlying array is allocated and the data is copied&amp;nbsp;over.  Append returns the updated slice. Therefore you need to store the result of an append, often in the variable holding the slice itself:</description>
+      <description>Append function basics Append one slice to another Append string to byte slice Performance  Append function basics With the built-in append function you can use a slice as a dynamic array. The&amp;nbsp;function appends any number of elements to the end of a&amp;nbsp;slice:
+ if there is enough capacity, the underlying array is&amp;nbsp;reused; if not, a new underlying array is allocated and the data is copied&amp;nbsp;over.  Append returns the updated slice.</description>
     </item>
     
     <item>
