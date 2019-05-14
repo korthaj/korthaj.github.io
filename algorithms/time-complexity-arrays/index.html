@@ -35,7 +35,7 @@
     "https://yourbasic.org/algorithms/scooter-vs-taxi.jpeg"
    ],
   "datePublished": "2019-05-12T00:00:00&#43;0000",
-  "dateModified": "2019-05-12T00:00:00&#43;0000",
+  "dateModified": "2019-05-14T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -125,8 +125,8 @@ constant and linear time array operations.</p>
 </div>
 <div style="clear: both"></div>
 
-<p>Accidentally quadratic list code is very common and can be hard to&nbsp;spot:
-it can be adequate for a short list, but when the list grows your code grinds to a&nbsp;halt.</p>
+<p>Accidentally quadratic list code is very common and can be hard to&nbsp;spot,
+but when the list grows your code grinds to a&nbsp;halt.</p>
 
 <p>This text takes a detailed look at the performance of basic <strong>array operations</strong>
 and discusses <strong>alternatives</strong> to a standard array.
@@ -145,9 +145,9 @@ In <strong>Python</strong>, the <strong>list</strong> data type is imple&shy;men
 <h3 id="performance">Performance</h3>
 
 <p>In general, arrays have <strong>excellent performance</strong>.
-To&nbsp;optimize array performance is one of the major goals of
-<a href="https://en.wikipedia.org/wiki/Random-access_memory">memory hardware</a> and
-<a href="https://en.wikipedia.org/wiki/Memory_management_(operating_systems)">OS&nbsp;memory management</a> design.</p>
+To&nbsp;optimize array performance is a&nbsp;major goal of
+<a href="https://en.wikipedia.org/wiki/Random-access_memory">memory hardware design</a> and
+<a href="https://en.wikipedia.org/wiki/Memory_management_(operating_systems)">OS&nbsp;memory management</a>.</p>
 
 <ul>
 <li>You can <strong>read</strong> or <strong>write</strong> a list item by referring to its index
@@ -177,9 +177,9 @@ to an initially empty dynamic array with capacity&nbsp;2.</p>
 <p>The time to append an element is linear in the worst case,
 since it involves allocating new memory and copying each element.</p>
 
-<p>However, if we expand the array by a constant proportion (e.g. by doubling its size)
+<p>However, if we expand the array by a constant proportion, e.g. by doubling its size,
 the total time to insert <i>n</i> elements will be&nbsp;<i>O</i>(<i>n</i>),
-and we can say that each insertion takes <strong>constant amortized time</strong>.</p>
+and we say that each insertion takes <strong>constant amortized time</strong>.</p>
 
 <p>See <a href="/algorithms/amortized-time-complexity-analysis/">Amortized time complexity</a>
 for more on how to analyze data structures that have expensive operations that happen only rarely.</p>
@@ -326,7 +326,7 @@ add operation is amortized.</li>
 <p>In Java, hash tables are part of the standard library
 (<a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashSet.html">HashSet</a> and
 <a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html">HashMap</a>).
-More recent languages, such as Python and Go, typically have built-in
+Many modern languages, such as Python and Go, have built-in
 dictionaries and maps implemented by hash tables.</p>
 
 <h3 id="sorted-arrays">Sorted arrays</h3>
@@ -334,7 +334,7 @@ dictionaries and maps implemented by hash tables.</p>
 <p>If search is important for performance, you may want to use a <strong>sorted array</strong>.</p>
 
 <ul>
-<li>In a sorted array, you can use a <a href="https://en.wikipedia.org/wiki/Binary_search_algorithm">binary search</a>,
+<li>In a sorted array, you can use <a href="https://en.wikipedia.org/wiki/Binary_search_algorithm">binary search</a>,
 which runs in worst-case <a href="/algorithms/big-o-notation-explained/#key-takeaways">logarithmic time</a>.</li>
 <li>However, it can be expensive to add a new element to a sorted array:
 the&nbsp;element needs to be inserted in its right place.</li>
@@ -358,13 +358,14 @@ you may want to consider a <strong><a href="https://en.wikipedia.org/wiki/Linked
 <li>In a singly linked list you can add elements at both ends in constant time,
 and also remove the first element in constant time.</li>
 <li>In a doubly linked list, you can also remove the last element in constant time.</li>
-<li>However, it&rsquo;s not possible to index elements efficiently.</li>
+<li>However, <strong>indexing is very expensive</strong>.
+To find an element at a given index you need to traverse the&nbsp;list.</li>
 </ul>
 
 <p>The Java <a href="https://docs.oracle.com/javase/8/docs/api/java/util/LinkedList.html">LinkedList</a> class
-is a doubly linked list,
+implements a doubly linked list,
 Python offers a <a href="https://docs.python.org/2/library/collections.html#collections.deque">deque</a>,
-and Go has a <a href="https://golang.org/pkg/container/list/">list</a> package.</p>
+and Go also has a <a href="https://golang.org/pkg/container/list/">list</a> package.</p>
 
 <h3 id="binary-search-trees">Binary search trees</h3>
 
@@ -403,12 +404,6 @@ while Python and Go don&rsquo;t support them out of the box.</p>
   <div class="reference">
     <a href="/algorithms/big-o-notation-explained/">Big O notation: definition and examples</a>
     <div class="desc">Big O notation is a convenient way to describe how fast a function is growing. It is often used in computer science to describe time complexity.</div>
-    <div class="source">yourbasic.org</div>
-  </div>
-
-  <div class="reference">
-    <a href="/algorithms/amortized-time-complexity-analysis/">Amortized time complexity</a>
-    <div class="desc">Amortized analysis considers both the cheap and expensive operations performed by an algorithm. It is used for algorithms that have expensive operations that happen only rarely.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
