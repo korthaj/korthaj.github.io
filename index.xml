@@ -318,7 +318,7 @@ m := make(map[string]float64) m[&#34;pi&#34;] = 3.1416  A new, empty map value i
       
       <guid>https://yourbasic.org/algorithms/big-o-notation-explained/</guid>
       <description>Big O notation is a convenient way to describe how fast a function is&amp;nbsp;growing.
- Definition Constant time Linear time Quadratic time   Sloppy notation Ω and Θ notation Key takeaways     Definition When we compute the time complexity&amp;nbsp;T(n) of an algorithm we rarely get an exact result. That&amp;rsquo;s fine, in computer science we are typically only interested in how fast T(n) is growing as a function of the input size&amp;nbsp;n.</description>
+ Definition Constant time Linear time Quadratic time   Sloppy notation Ω and Θ notation Key takeaways     Definition When we compute the time complexity&amp;nbsp;T(n) of an algorithm we rarely get an exact result, just an estimate. That&amp;rsquo;s fine, in computer science we are typically only interested in how fast T(n) is growing as a function of the input size&amp;nbsp;n.</description>
     </item>
     
     <item>
