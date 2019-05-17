@@ -181,9 +181,9 @@ a img:hover{
 transform:scale(0.95):
 }
 h1{
-  font-size:230%;
+  font-size:215%;
   font-weight:lighter;
-  line-height:1.1em;
+  line-height:1.15em;
   margin-bottom:0;
 }
 .tagline{
