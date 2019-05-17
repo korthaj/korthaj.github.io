@@ -88,17 +88,6 @@ type SyntaxError struct { Line int Col int } func (e *SyntaxError) Error() strin
     </item>
     
     <item>
-      <title>3 simple ways to find a key in a map</title>
-      <link>https://yourbasic.org/golang/check-map-contains-key/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/check-map-contains-key/</guid>
-      <description>Basics When you index a map in Go you get two return values; the&amp;nbsp;second one (which is optional) is a boolean that indicates if the key&amp;nbsp;exists.
-If the key doesn&amp;rsquo;t exist, the first value will be the default zero&amp;nbsp;value.
-Check second return value m := map[string]float64{&#34;pi&#34;: 3.14} v, found := m[&#34;pi&#34;] // v == 3.14 found == true v, found = m[&#34;pie&#34;] // v == 0.0 found == false _, found = m[&#34;</description>
-    </item>
-    
-    <item>
       <title>3 ways to compare slices (arrays)</title>
       <link>https://yourbasic.org/golang/compare-slices/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -106,6 +95,17 @@ Check second return value m := map[string]float64{&#34;pi&#34;: 3.14} v, found :
       <guid>https://yourbasic.org/golang/compare-slices/</guid>
       <description>Basic case In most cases, you will want to write your own code to compare the elements of two&amp;nbsp;slices.
 // Equal tells whether a and b contain the same elements. // A nil argument is equivalent to an empty slice. func Equal(a, b []int) bool { if len(a) != len(b) { return false } for i, v := range a { if v != b[i] { return false } } return true } For arrays, however, you can use the comparison operators == and&amp;nbsp;!</description>
+    </item>
+    
+    <item>
+      <title>3 ways to find a key in a map</title>
+      <link>https://yourbasic.org/golang/check-map-contains-key/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/check-map-contains-key/</guid>
+      <description>Basics When you index a map in Go you get two return values; the&amp;nbsp;second one (which is optional) is a boolean that indicates if the key&amp;nbsp;exists.
+If the key doesn&amp;rsquo;t exist, the first value will be the default zero&amp;nbsp;value.
+Check second return value m := map[string]float64{&#34;pi&#34;: 3.14} v, found := m[&#34;pi&#34;] // v == 3.14 found == true v, found = m[&#34;pie&#34;] // v == 0.0 found == false _, found = m[&#34;</description>
     </item>
     
     <item>
@@ -865,7 +865,7 @@ The io.Reader interface, which represents the read end of a stream of data, is a
       
       <guid>https://yourbasic.org/golang/slice-of-keys-values-from-map/</guid>
       <description>You can use a range statement to extract slices of keys and values from a&amp;nbsp;map.
-keys := make([]keyType, 0, len(myMap)) values := make([]valueType, 0, len(myMap)) for k, v := range myMap { keys = append(keys, k) values = append(values, v) }  Further reading  Map essentials in 4 easy steps</description>
+keys := make([]keyType, 0, len(myMap)) values := make([]valueType, 0, len(myMap)) for k, v := range myMap { keys = append(keys, k) values = append(values, v) }  Further reading  Maps in 4 easy steps [complete guide]</description>
     </item>
     
     <item>
@@ -1385,13 +1385,13 @@ dev etc tmp usr  Visit all files and folders in a directory tree Use the filepat
     </item>
     
     <item>
-      <title>Map essentials in 4 easy steps</title>
+      <title>Maps in 4 easy steps [complete guide]</title>
       <link>https://yourbasic.org/golang/maps-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/maps-explained/</guid>
       <description>Go maps are implemented by hash tables and therefore have constant time operations.
- Map basics Add, find and delete keys/values Map iteration Performance and implementation  Map basics A map (or dictionary) is an unordered collection of key-value pairs, where each key is&amp;nbsp;unique.
+ Create new map Add, get and delete keys/values For-each range loop Performance and implementation  Create new map A map (or dictionary) is an unordered collection of key-value pairs, where each key is&amp;nbsp;unique. You create a new map with a make statement or a map literal.
 var m map[string]int // nil map of string-int pairs m1 := make(map[string]float64) // empty map of string-float64 pairs m2 := make(map[string]float64, 100) // preallocate room for 100 entries m3 := map[string]float64{ // map literal  &#34;</description>
     </item>
     

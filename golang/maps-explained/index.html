@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Map essentials in 4 easy steps · YourBasic Go </title>
+  <title>Maps in 4 easy steps [complete guide] · YourBasic Go </title>
   <meta name="description" content="CODE EXAMPLE A map is an unordered collection of key-value pairs. Go maps are implemented by hash tables and hence offer constant time operation.">
   
   <link rel="stylesheet" href="/style.css">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/golang/maps-explained/"
   },
-  "headline": "Map essentials in 4 easy steps",
+  "headline": "Maps in 4 easy steps [complete guide]",
   "image": [
     "https://yourbasic.org/golang/15-men-16-slots.jpg"
    ],
   "datePublished": "2018-03-28T00:00:00&#43;0000",
-  "dateModified": "2019-05-09T00:00:00&#43;0000",
+  "dateModified": "2019-05-17T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -54,13 +54,13 @@
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Map essentials in 4 easy steps">
+<meta property="og:title" content="Maps in 4 easy steps [complete guide]">
 <meta property="og:description" content="CODE EXAMPLE A map is an unordered collection of key-value pairs. Go maps are implemented by hash tables and hence offer constant time operation.">
 <meta property="og:url" content="https://yourbasic.org/golang/maps-explained/">
 <meta property="og:image" content="https://yourbasic.org/golang/15-men-16-slots.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Map essentials in 4 easy steps">
+<meta name="twitter:title" content="Maps in 4 easy steps [complete guide]">
 <meta name="twitter:description" content="CODE EXAMPLE A map is an unordered collection of key-value pairs. Go maps are implemented by hash tables and hence offer constant time operation.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/15-men-16-slots.jpg">
@@ -82,7 +82,7 @@
 
 <main>
 <article>
-<h1>Map essentials in 4 easy steps</h1>
+<h1>Maps in 4 easy steps [complete guide]</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
 
@@ -94,15 +94,16 @@
 <div style="margin-top:1em;"><img src="/golang/15-men-16-slots.jpg"></div>
 
 <ul class="toc">
-  <li><a href="#map-basics">Map basics</a></li>
-  <li><a href="#add-find-and-delete-keys-values">Add, find and delete keys/values</a></li>
-  <li><a href="#map-iteration">Map iteration</a></li>
+  <li><a href="#create-new-map">Create new map</a></li>
+  <li><a href="#add-get-and-delete-keys-values">Add, get and delete keys/values</a></li>
+  <li><a href="#for-each-range-loop">For-each range loop</a></li>
   <li><a href="#performance-and-implementation">Performance and implementation</a></li>
 </ul>
 
-<h2 id="map-basics">Map basics</h2>
+<h2 id="create-new-map">Create new map</h2>
 
-<p>A map (or dictionary) is an <b>unordered</b> collection of <b>key-value</b> pairs, where each key is&nbsp;<b>unique</b>.</p>
+<p>A map (or dictionary) is an <b>unordered</b> collection of <b>key-value</b> pairs, where each key is&nbsp;<b>unique</b>.
+You create a new map  with a <strong><a href="https://golang.org/pkg/builtin/#make">make</a></strong> statement or a <strong>map literal</strong>.</p>
 
 <pre><code>var m map[string]int                  <span class="comment">// nil map of string-int pairs</span>
 
@@ -119,11 +120,9 @@ fmt.Println(len(m1), len(m2), len(m3)) <span class="comment">// 0 0 2</span>
 <ul>
 <li>The default <strong>zero value</strong> of a map is <code>nil</code>.
 A nil map is equivalent to an empty map except
-that <strong>no elements can be&nbsp;added</strong>.</li>
-<li>You create a map either by a a call to the <strong><a href="https://golang.org/pkg/builtin/#make"><code>make</code></a></strong> function,
-which takes an optional capacity as argument, or by a <strong>map literal</strong>.</li>
-<li>The built-in <a href="https://golang.org/pkg/builtin/#len"><code>len</code></a> function retrieves
-the number of key-value&nbsp;pairs.</li>
+that <strong>elements can&rsquo;t be&nbsp;added</strong>.</li>
+<li>The <b><a href="https://golang.org/pkg/builtin/#len"><code>len</code></a></b> function
+returns the <strong>size</strong> of a map, which is the number of key-value&nbsp;pairs.</li>
 </ul>
 
 <blockquote class="warning">
@@ -131,7 +130,7 @@ the number of key-value&nbsp;pairs.</li>
 <a href="/golang/gotcha-assignment-entry-nil-map/"><em>Assignment to entry in nil map</em></a>.
 </blockquote>
 
-<h2 id="add-find-and-delete-keys-values">Add, find and delete keys/values</h2>
+<h2 id="add-get-and-delete-keys-values">Add, get and delete keys/values</h2>
 
 <pre><code>m := make(map[string]float64)
 
@@ -158,7 +157,7 @@ the&nbsp;second one (which is optional) is a boolean that indicates if the key&n
 <a href="/golang/default-zero-value/">zero&nbsp;value</a>.</li>
 </ul>
 
-<h2 id="map-iteration">Map iteration</h2>
+<h2 id="for-each-range-loop">For-each range loop</h2>
 
 <pre><code>m := map[string]float64{
     "e":  2.71828,
@@ -186,7 +185,8 @@ prints maps in key-sorted order to ease testing.</p>
 
 <ul>
 <li>Maps are backed by <a href="/algorithms/hash-tables-explained/">hash tables</a>.</li>
-<li>They provide lookup, insert, and delete operations in constant <a href="/algorithms/amortized-time-complexity-analysis/">amortized time</a>.</li>
+<li>Add, get and delete operations run in <strong>constant</strong> expected time.
+The time complexity for the add operation is <a href="/algorithms/amortized-time-complexity-analysis/">amortized</a>.</li>
 <li>The comparison operators <code>==</code> and <code>!=</code> must be  defined for the key type.</li>
 </ul>
 
@@ -205,10 +205,10 @@ prints maps in key-sorted order to ease testing.</p>
 <a href="/golang/switch-statement/">switch statements</a>,
 <a href="/golang/packages-explained/">packages</a>.</p>
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fmaps-explained%2f&amp;text=Map%20essentials%20in%204%20easy%20steps&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fmaps-explained%2f&amp;text=Maps%20in%204%20easy%20steps%20[complete%20guide]&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fmaps-explained%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fmaps-explained%2f&amp;title=Map%20essentials%20in%204%20easy%20steps" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Map%20essentials%20in%204%20easy%20steps&body=https%3a%2f%2fyourbasic.org%2fgolang%2fmaps-explained%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fmaps-explained%2f&amp;title=Maps%20in%204%20easy%20steps%20[complete%20guide]" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Maps%20in%204%20easy%20steps%20[complete%20guide]&body=https%3a%2f%2fyourbasic.org%2fgolang%2fmaps-explained%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
