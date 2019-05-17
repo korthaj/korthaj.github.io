@@ -742,6 +742,16 @@ const s = `First line Second line` fmt.Println(s) First line Second line Backtic
     </item>
     
     <item>
+      <title>Find element in slice/array with linear or binary search</title>
+      <link>https://yourbasic.org/golang/find-search-contains-slice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/find-search-contains-slice/</guid>
+      <description>Linear search Binary search The map option  Linear search Go doesn&amp;rsquo;t have an out-of-the-box linear search function for slices and arrays. Here are two example linear&amp;nbsp;search implemen&amp;shy;tations, which you can use as templates.
+// Find returns the smallest index i at which x == a[i], // or len(a) if there is no such index. func Find(a []string, x string) int { for i, n := range a { if x == n { return i } } return len(a) } // Contains tells whether a contains x.</description>
+    </item>
+    
+    <item>
       <title>Find the type of an object</title>
       <link>https://yourbasic.org/golang/find-type-of-object/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1092,16 +1102,6 @@ package main import &#34;fmt&#34; func main() { i := 0 go func() { i++ // write 
       
       <guid>https://yourbasic.org/golang/disable-logging-output/</guid>
       <description>See Write log to file (or /dev/null).</description>
-    </item>
-    
-    <item>
-      <title>How to find an element in a slice/array</title>
-      <link>https://yourbasic.org/golang/find-search-contains-slice/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/find-search-contains-slice/</guid>
-      <description>Linear search Binary search The map option  Linear search Go doesn&amp;rsquo;t have an out-of-the-box linear search function for slices and arrays. Here are two example linear&amp;nbsp;search implemen&amp;shy;tations, which you can use as templates.
-// Find returns the smallest index i at which x == a[i], // or len(a) if there is no such index. func Find(a []string, x string) int { for i, n := range a { if x == n { return i } } return len(a) } // Contains tells whether a contains x.</description>
     </item>
     
     <item>

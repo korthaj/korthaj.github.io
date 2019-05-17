@@ -290,6 +290,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/find-search-contains-slice/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/find-type-of-object/</loc>
   </url>
   
@@ -423,10 +427,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/disable-logging-output/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/find-search-contains-slice/</loc>
   </url>
   
   <url>
