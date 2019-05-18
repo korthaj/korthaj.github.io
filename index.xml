@@ -1417,14 +1417,15 @@ func foo() { defer duration(track(&#34;foo&#34;)) // Code to measure } func trac
     </item>
     
     <item>
-      <title>Methods for all types</title>
+      <title>Methods explained</title>
       <link>https://yourbasic.org/golang/methods-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/methods-explained/</guid>
-      <description>Any type declared in a type definition can have methods attached.
- A method is a function with a receiver&amp;nbsp;argument. The receiver appears between the func keyword and the method&amp;nbsp;name. You can define methods on any type declared in a type definition.  In this example, the Value method is associated with&amp;nbsp;MyType. The method receiver is called&amp;nbsp;p.
-type MyType struct { n int } func (p *MyType) Value() int { return p.</description>
+      <description>Go doesn&#39;t have classes, but you can define methods on types.
+ You can define methods on any type declared in a type definition.
+ A method is a function with an extra receiver&amp;nbsp;argument. The receiver sits between the func keyword and the method&amp;nbsp;name.  In this example, the HasGarage method is associated with the&amp;nbsp;House type. The&amp;nbsp;method receiver is called&amp;nbsp;p.
+type House struct { garage bool } func (p *House) HasGarage() bool { return p.</description>
     </item>
     
     <item>

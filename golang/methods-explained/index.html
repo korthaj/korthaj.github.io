@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Methods for all types · YourBasic Go </title>
-  <meta name="description" content="Any Go type declared in a type definition can have methods attached.">
+  <title>Methods explained · YourBasic Go </title>
+  <meta name="description" content="CODE EXAMPLE Go doesn&#39;t have classes, but you can define methods on types. A method is a function with an extra receiver argument.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -22,6 +22,50 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/golang/methods-explained/"
+  },
+  "headline": "Methods explained",
+  "image": [
+    "https://yourbasic.org/golang/house-with-methods.png"
+   ],
+  "datePublished": "2018-08-05T00:00:00&#43;0000",
+  "dateModified": "2019-05-18T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "CODE EXAMPLE Go doesn&#39;t have classes, but you can define methods on types. A method is a function with an extra receiver argument."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Methods explained">
+<meta property="og:description" content="CODE EXAMPLE Go doesn&#39;t have classes, but you can define methods on types. A method is a function with an extra receiver argument.">
+<meta property="og:url" content="https://yourbasic.org/golang/methods-explained/">
+<meta property="og:image" content="https://yourbasic.org/golang/house-with-methods.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Methods explained">
+<meta name="twitter:description" content="CODE EXAMPLE Go doesn&#39;t have classes, but you can define methods on types. A method is a function with an extra receiver argument.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="https://yourbasic.org/golang/house-with-methods.png">
+
+
 </head>
 
 <body>
@@ -38,31 +82,41 @@
 
 <main>
 <article>
-<h1>Methods for all types</h1>
+<h1>Methods explained</h1>
 <div class="tagline">yourbasic.org/golang</div>
-<p class="lead">Any type declared in a type definition can have methods attached.</p>
+
+
+<p class="lead">Go doesn't have classes, but you can define methods on types.</p>
+
+<!-- CC0: https://pxhere.com/en/photo/1452109 -->
+
+<div ><img src="/golang/house-with-methods.png"></div>
+
+<p>You can define methods on any type declared in a type definition.</p>
 
 <ul>
-<li>A method is a function with a <em>receiver</em>&nbsp;argument.</li>
-<li>The receiver appears  between the <code>func</code> keyword and the method&nbsp;name.</li>
-<li>You can define methods on any type declared in a type definition.</li>
+<li>A method is a function with an extra <strong>receiver</strong>&nbsp;argument.</li>
+<li>The receiver sits between the <code>func</code> keyword and the method&nbsp;name.</li>
 </ul>
 
-<p>In this example, the <code>Value</code> method is associated with&nbsp;<code>MyType</code>.
-The method receiver is called&nbsp;<code>p</code>.</p>
+<p>In this example, the <code>HasGarage</code> method is associated with the&nbsp;<code>House</code> type.
+The&nbsp;method receiver is called&nbsp;<code>p</code>.</p>
 
-<pre><code class="skiphl">type MyType struct {
-    n int
+<pre><code class="skiphl">type House struct {
+    garage bool
 }
 
-func <b>(p *MyType)</b> Value() int { return p.n }
+func <b>(p *House)</b> HasGarage() bool { return p.garage }
 
 func main() {
-    pm := new(MyType)
-    fmt.Println(pm.Value()) <span class="comment">// 0 (zero value)</span>
+    house := new(House)
+    fmt.Println(house.HasGarage()) <span class="comment">// Prints "false" (zero value)</span>
 }</code></pre>
 
-<p>If you convert the value to a different type, the new value will have the methods of the new type, not those of the old type.</p>
+<h3 id="conversions-and-methods">Conversions and methods</h3>
+
+<p>If you <a href="/golang/conversions/">convert</a> a value to a different type,
+the new value will have the methods of the&nbsp;new&nbsp;type, but not the&nbsp;old.</p>
 
 <pre><code class="skiphl">type MyInt int
 
@@ -72,8 +126,8 @@ func main() {
     var m MyInt = 2
     m = m * m <span class="comment">// The operators of the underlying type still apply.</span>
 
-    fmt.Println(m.Positive())         <span class="comment">// true</span>
-    fmt.Println(MyInt(-1).Positive()) <span class="comment">// false</span>
+    fmt.Println(m.Positive())        <span class="comment">// Prints "true"</span>
+    fmt.Println(MyInt(3).Positive()) <span class="comment">// Prints "true"</span>
 
     var n int
     n = int(m) <span class="comment">// The conversion is required.</span>
@@ -83,6 +137,29 @@ func main() {
 <pre><code>../main.go:14:4: cannot use m (type MyInt) as type int in assignment
 </code></pre>
 
+<p>It&rsquo;s idiomatic in Go to convert the type of an expression to access a specific method.</p>
+
+<pre><code>var n int64 = 12345
+fmt.Println(n)                <span class="comment">// 12345</span>
+fmt.Println(time.Duration(n)) <span class="comment">// 12.345µs</span></code></pre>
+
+<p>(The underlying type of <a href="https://golang.org/pkg/time/#Duration"><code>time.Duration</code></a> is <code>int64</code>,
+and the <code>time.Duration</code> type has a <a href="https://golang.org/pkg/time/#Duration.String"><code>String</code></a> method
+that returns the duration formatted as a time.)</p>
+
+<h3 id="further-reading">Further reading</h3>
+
+<div><a href="/golang/inheritance-object-oriented/"><img src="/golang/improvement-thumb.jpg" title="Object-oriented programming without inheritance"></a></div>
+
+<p><a href="/golang/inheritance-object-oriented/">Object-oriented programming without inheritance</a>
+explains how composition, embedding and interfaces support code reuse and polymorphism in&nbsp;Go.</p>
+
+<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fmethods-explained%2f&amp;text=Methods%20explained&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fmethods-explained%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fmethods-explained%2f&amp;title=Methods%20explained" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Methods%20explained&body=https%3a%2f%2fyourbasic.org%2fgolang%2fmethods-explained%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+
 
 </article>
 <aside>
@@ -91,8 +168,8 @@ func main() {
   <h2>Related</h2>
 
   <div class="reference">
-    <a href="/golang/interfaces-explained/">Interfaces in 5 easy steps [complete guide]</a>
-    <div class="desc">An interface type consists of a set of method signatures. A variable of interface type can hold any value that implements these methods.</div>
+    <a href="/golang/inheritance-object-oriented/">Object-oriented programming without inheritance</a>
+    <div class="desc">Go doesn’t have inheritance. Composition, embedding and interfaces support code reuse and polymorphism.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
@@ -105,6 +182,12 @@ func main() {
   <div class="reference">
     <a href="/golang/public-private/">Public vs. private</a>
     <div class="desc">All identifiers are visible throughout the package where they are defined; an identifier that begins with a capital letter is globally visible.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/interfaces-explained/">Interfaces in 5 easy steps [complete guide]</a>
+    <div class="desc">An interface type consists of a set of method signatures. A variable of interface type can hold any value that implements these methods.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
