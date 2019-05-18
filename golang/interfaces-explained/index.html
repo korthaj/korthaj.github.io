@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/connection.jpg"
    ],
   "datePublished": "2018-08-05T00:00:00&#43;0000",
-  "dateModified": "2019-05-17T00:00:00&#43;0000",
+  "dateModified": "2019-05-18T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -92,14 +92,14 @@
 <div style="margin-top:1em;"><img src="/golang/connection.jpg"></div>
 
 <ul class="toc">
-  <li><a href="#basics">Basics</a></li>
+  <li><a href="#interface-type">Interface type</a></li>
   <li><a href="#structural-typing">Structural typing</a></li>
   <li><a href="#the-empty-interface">The empty interface</a></li>
   <li><a href="#interface-values">Interface values</a></li>
   <li><a href="#equality">Equality</a></li>
 </ul>
 
-<h2 id="basics">Basics</h2>
+<h2 id="interface-type">Interface type</h2>
 
 <blockquote>
 <p>An interface type consists of a set of method signatures.
@@ -215,10 +215,10 @@ fmt.Printf("%v %T\n", x, x) <span class="comment">// &lt;nil&gt; *main.Point</sp
 However, it&rsquo;s quite common to write methods that can handle
 a receiver value <code>[nil, Type]</code>, where <code>Type</code> isn&rsquo;t&nbsp;nil.</p>
 
-<p>You can also use <strong>type assertions</strong>, <strong>type switches</strong> and <strong>reflection</strong>
+<p>You can use <strong><a href="/golang/type-assertion-switch/">type assertions</a></strong> or
+<strong><a href="/golang/type-assertion-switch/">type switches</a></strong>
 to access the dynamic type of an interface value.
-<a href="/golang/find-type-of-object/">Find the type of an object</a>
-has more details.</p>
+See <a href="/golang/find-type-of-object/">Find the type of an object</a> for more details.</p>
 
 <h2 id="equality">Equality</h2>
 
@@ -244,6 +244,11 @@ fmt.Println(x == nil) <span class="comment">// false</span></code></pre>
 
 <p>In the second print statement, the concrete value of <code>x</code> equals <code>nil</code>,
 but its dynamic type is <code>*Point</code>, which is not&nbsp;<code>nil</code>.</p>
+
+<blockquote class="warning">
+<b>Warning:</b> See <a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a>
+for a real-world example where this definition of equality leads to puzzling results.
+</blockquote>
 
 <h3 id="further-reading">Further reading</h3>
 
@@ -285,14 +290,14 @@ but its dynamic type is <code>*Point</code>, which is not&nbsp;<code>nil</code>.
   </div>
 
   <div class="reference">
-    <a href="/golang/find-type-of-object/">Find the type of an object</a>
-    <div class="desc">You can find type information about an interface variable with the fmt package, type assertions, type switches or reflection.</div>
+    <a href="/golang/type-assertion-switch/">Type assertions and type switches</a>
+    <div class="desc">To convert an interface to a string, struct or map you should use a type assertion, which provides access to an interface’s concrete value.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
   <div class="reference">
-    <a href="/golang/type-assertion-switch/">Type assertions and type switches</a>
-    <div class="desc">To convert an interface to a string, struct or map you should use a type assertion, which provides access to an interface’s concrete value.</div>
+    <a href="/golang/find-type-of-object/">Find the type of an object</a>
+    <div class="desc">You can find type information about an interface variable with the fmt package, type assertions, type switches or reflection.</div>
     <div class="source">yourbasic.org</div>
   </div>
 
