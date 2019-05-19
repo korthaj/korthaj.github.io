@@ -738,7 +738,8 @@ const s = `First line Second line` fmt.Println(s) First line Second line Backtic
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/current-directory/</guid>
-      <description>Use os.Executable to find the path name for the executable that started the current process. Use filepath.Dir in package path/filepath to extract the path&amp;rsquo;s directory.  path, err := os.Executable() if err != nil { log.Printf(err) } dir := filepath.Dir(path) fmt.Println(path) // for example /home/user/main fmt.Println(dir) // for example /home/user Warning: There is no guarantee that the path is still pointing to the correct executable. If a symlink was used to start the process, depending on the operating system, the result might be the symlink or the path it pointed to.</description>
+      <description>Current directory Use os.Getwd to find the path name for the current directory.
+path, err := os.Getwd() if err != nil { log.Println(err) } fmt.Println(path) // for example /home/user Warning: If the current directory can be reached via multiple paths (due to symbolic links), Getwd may return any one of them.  Current executable Use os.Executable to find the path name for the executable that started the current process.</description>
     </item>
     
     <item>
