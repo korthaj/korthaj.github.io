@@ -127,7 +127,7 @@ Split by whitespace and newline Use the strings.Fields function to split a strin
       <guid>https://yourbasic.org/golang/trim-whitespace-from-string/</guid>
       <description>Use the strings.TrimSpace function to remove leading and trailing whitespace as defined by&amp;nbsp;Unicode.
 s := strings.TrimSpace(&#34;\t Goodbye hair!\n &#34;) fmt.Printf(&#34;%q&#34;, s) // &#34;Goodbye hair!&#34;  To remove other leading and trailing characters, use strings.Trim. To remove only the leading or the trailing characters, use strings.TrimLeft or strings.TrimRight.  Further reading 
-The String functions cheat sheet presents the top Go string functions.</description>
+40+ practical string tips [cheat sheet]</description>
     </item>
     
     <item>
@@ -474,7 +474,7 @@ s := strconv.Itoa(97) // s == &#34;97&#34; Warning: In a plain conversion the va
       <guid>https://yourbasic.org/golang/interface-to-string/</guid>
       <description>Use fmt.Sprintf to convert an interface value to a string.
 var x interface{} = &amp;quot;abc&amp;quot; str := fmt.Sprintf(&amp;quot;%v&amp;quot;, x)  In fact, the same technique can be used to get a string representation of any data structure.
-var x interface{} = []int{1, 2, 3} str := fmt.Sprintf(&#34;%v&#34;, x) fmt.Println(str) // &#34;[1 2 3]&#34; Fmt cheat sheet  How to format with fmt</description>
+var x interface{} = []int{1, 2, 3} str := fmt.Sprintf(&#34;%v&#34;, x) fmt.Println(str) // &#34;[1 2 3]&#34; Fmt cheat sheet  Top fmt formatting tips</description>
     </item>
     
     <item>
