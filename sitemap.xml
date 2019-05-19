@@ -346,10 +346,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/golang/gotcha-bitwise-operators/</loc>
   </url>
   
@@ -367,6 +363,10 @@
   
   <url>
     <loc>https://yourbasic.org/golang/operator-priority/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/</loc>
   </url>
   
   <url>
