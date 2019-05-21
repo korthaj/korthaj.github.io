@@ -213,7 +213,7 @@ sum := 0 for i := 1; i { sum += i } fmt.Println(sum) // 10 (1+2+3+4)  The init s
       <guid>https://yourbasic.org/about/</guid>
       <description>Christer Gummeson --  If some of these articles and code examples can help you become a better programmer, mission accomplished.
  About me My name is Stefan Nilsson.
-I teach computer science at KTH.
+I&amp;rsquo;m a CS prof. and Go go-to guy at KTH.
 Here I&amp;nbsp;write about algo&amp;shy;rithms and Go.
 &amp;nbsp;&amp;nbsp; trolleriprofessorn@gmail.com
 &amp;nbsp; My Twitter page
