@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maps in 4 easy steps [complete guide] · YourBasic Go </title>
-  <meta name="description" content="CODE EXAMPLE A map is an unordered collection of key-value pairs. Go maps are implemented by hash tables and hence offer constant time operation.">
+  <meta name="description" content="CODE EXAMPLE A map is an unordered collection of key-value pairs. Go maps are implemented by hash tables and have efficient add, get and delete operations.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -48,20 +48,20 @@
       "url": "https://yourbasic.org/res/favicon-96x96.png"
     }
   },
-  "description": "CODE EXAMPLE A map is an unordered collection of key-value pairs. Go maps are implemented by hash tables and hence offer constant time operation."
+  "description": "CODE EXAMPLE A map is an unordered collection of key-value pairs. Go maps are implemented by hash tables and have efficient add, get and delete operations."
 }
 </script>
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Maps in 4 easy steps [complete guide]">
-<meta property="og:description" content="CODE EXAMPLE A map is an unordered collection of key-value pairs. Go maps are implemented by hash tables and hence offer constant time operation.">
+<meta property="og:description" content="CODE EXAMPLE A map is an unordered collection of key-value pairs. Go maps are implemented by hash tables and have efficient add, get and delete operations.">
 <meta property="og:url" content="https://yourbasic.org/golang/maps-explained/">
 <meta property="og:image" content="https://yourbasic.org/golang/15-men-16-slots.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Maps in 4 easy steps [complete guide]">
-<meta name="twitter:description" content="CODE EXAMPLE A map is an unordered collection of key-value pairs. Go maps are implemented by hash tables and hence offer constant time operation.">
+<meta name="twitter:description" content="CODE EXAMPLE A map is an unordered collection of key-value pairs. Go maps are implemented by hash tables and have efficient add, get and delete operations.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/golang/15-men-16-slots.jpg">
 
@@ -87,7 +87,7 @@
 
 
 
-<p class="lead">Go maps are implemented by hash tables and therefore have constant time operations.</p>
+<p class="lead">Go maps are implemented by hash tables and have efficient add, get and delete operations.</p>
 
 <!-- CC0: https://en.wikipedia.org/wiki/File:Great_presidential_puzzle2.jpg -->
 
@@ -102,22 +102,21 @@
 
 <h2 id="create-new-map">Create new map</h2>
 
-<p>A map (or dictionary) is an <b>unordered</b> collection of <b>key-value</b> pairs, where each key is&nbsp;<b>unique</b>.
-You create a new map  with a <strong><a href="https://golang.org/pkg/builtin/#make">make</a></strong> statement or a <strong>map literal</strong>.</p>
+<pre><code>var m map[string]int                <span class="comment">// nil map of string-int pairs</span>
 
-<pre><code>var m map[string]int                  <span class="comment">// nil map of string-int pairs</span>
+m1 := make(map[string]float64)      <span class="comment">// Empty map of string-float64 pairs</span>
+m2 := make(map[string]float64, 100) <span class="comment">// Preallocate room for 100 entries</span>
 
-m1 := make(map[string]float64)        <span class="comment">// empty map of string-float64 pairs</span>
-m2 := make(map[string]float64, 100)   <span class="comment">// preallocate room for 100 entries</span>
-
-m3 := map[string]float64{             <span class="comment">// map literal </span>
+m3 := map[string]float64{           <span class="comment">// Map literal</span>
     "e":  2.71828,
     "pi": 3.1416,
 }
-fmt.Println(len(m1), len(m2), len(m3)) <span class="comment">// 0 0 2</span>
+fmt.Println(len(m3))                <span class="comment">// Size of map: 2</span>
 </code></pre>
 
 <ul>
+<li>A map (or dictionary) is an <b>unordered</b> collection of <b>key-value</b> pairs, where each key is&nbsp;<b>unique</b>.</li>
+<li>You create a new map  with a <strong><a href="https://golang.org/pkg/builtin/#make">make</a></strong> statement or a <strong>map literal</strong>.</li>
 <li>The default <strong>zero value</strong> of a map is <code>nil</code>.
 A nil map is equivalent to an empty map except
 that <strong>elements can&rsquo;t be&nbsp;added</strong>.</li>
@@ -134,21 +133,21 @@ returns the <strong>size</strong> of a map, which is the number of key-value&nbs
 
 <pre><code>m := make(map[string]float64)
 
-m["pi"] = 3.1416      <span class="comment">// <b>Add a new key-value pair.</b></span>
-fmt.Println(m)        <span class="comment">// map[pi:3.1416]</span>
+m["pi"] = 3.1416           <span class="comment">// <b>Add a new key-value pair</b></span>
+fmt.Println(m)             <span class="comment">// map[pi:3.1416]</span>
 
-v := m["pi"]          <span class="comment">// v == 3.1416</span>
-v = m["pie"]          <span class="comment">// v == 0 (zero value)</span>
+v := m["pi"]               <span class="comment">// <b>Get value:</b> v == 3.1416</span>
+v = m["pie"]               <span class="comment">// <b>Not found:</b> v == 0 (zero value)</span>
 
-_, found := m["pi"]   <span class="comment">// found == true</span>
-_, found = m["pie"]   <span class="comment">// found == false</span>
+_, found := m["pi"]        <span class="comment">// found == true</span>
+_, found = m["pie"]        <span class="comment">// found == false</span>
 
-if x, found := m["pi"]; found { <span class="comment">// Prints 3.1416.</span>
+if x, found := m["pi"]; found {
     fmt.Println(x)
-}
+}                           <span class="comment">// Prints 3.1416</span>
 
-delete(m, "pi")        <span class="comment">// <b>Delete a key-value pair.</b></span>
-fmt.Println(m)         <span class="comment">// map[]</span></code></pre>
+delete(m, "pi")             <span class="comment">// <b>Delete a key-value pair</b></span>
+fmt.Println(m)              <span class="comment">// map[]</span></code></pre>
 
 <ul>
 <li>When you index a map you get two return values;
@@ -163,7 +162,7 @@ the&nbsp;second one (which is optional) is a boolean that indicates if the key&n
     "e":  2.71828,
     "pi": 3.1416,
 }
-for key, value := range m { <span class="comment">// order not specified</span> 
+for key, value := range m { <span class="comment">// Order not specified</span> 
     fmt.Println(key, value)
 }</code></pre>
 
