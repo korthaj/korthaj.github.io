@@ -35,7 +35,7 @@
     "https://yourbasic.org/res/programmer.jpg"
    ],
   "datePublished": "2018-04-19T00:00:00&#43;0000",
-  "dateModified": "2019-04-28T00:00:00&#43;0000",
+  "dateModified": "2019-05-22T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -156,7 +156,27 @@ Exception in thread "main" java.lang.NullPointerException
 
 <p>With some more research funding I might be able to figure this&nbsp;out!</p>
 
-<h2 id="further-reading">Further reading</h2>
+<h2 id="key-takeaways">Key takeaways</h2>
+
+<p>Method overloading and inheritance are two fairly complicated constructs.
+If you combine them, things can get out of control.
+And this can happen when you least expect&nbsp;it.</p>
+
+<p>Here are two rules of thumb from
+<a href="https://www.oreilly.com/library/view/effective-java-3rd/9780134686097/">Effective Java</a>
+that can help.</p>
+
+<blockquote>
+A safe, conservative policy is never to export two overloadings with
+the same number of parameters. (Item&nbsp;41)
+</blockquote>
+
+<blockquote>
+Use composition and forwarding instead of inheritance,
+especially if an appropriate interface to implement a wrapper class exists. (Item&nbsp;16)
+</blockquote>
+
+<h3 id="further-reading">Further reading</h3>
 
 <div style="margin-top:1em;"><a href="/golang/go-vs-java/"><img src="/golang/java-go-tiny.png" title="Go vs. Java: 15 main differences"></a></div>
 
