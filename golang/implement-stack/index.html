@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/stack-of-apples.jpg"
    ],
   "datePublished": "2018-04-11T00:00:00&#43;0000",
-  "dateModified": "2018-10-10T00:00:00&#43;0000",
+  "dateModified": "2019-05-22T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -94,7 +94,7 @@
 <p>The idiomatic way to implement a stack data structure in Go is to use a <a href="/golang/slices-explained/">slice</a>:</p>
 
 <ul>
-<li>to push you use the built-in <code>append</code> function, and</li>
+<li>to push you use the built-in <a href="/golang/append-explained/">append function</a>, and</li>
 <li>to pop you slice off the top element.</li>
 </ul>
 
@@ -112,9 +112,15 @@ for len(stack) > 0 {
 
 <pre>Hello world!</pre>
 
-<h2 id="watch-out-for-memory-leaks">Watch out for memory leaks</h2>
+<h2 id="performance">Performance</h2>
 
-<p>If the stack is permanent and the elements temporary, you may want to remove the top element before popping the stack.</p>
+<div><a href="/algorithms/amortized-time-complexity-analysis/"><img src="/algorithms/pink-coins-thumb.jpg" title="Amortized time complexity"></a></div>
+
+<p>Appending a single element to a slice takes <strong>constant amortized time</strong>.
+See <a href="/algorithms/amortized-time-complexity-analysis/">Amortized time complexity</a> for a detailed explanation.</p>
+
+<p>If the stack is permanent and the elements temporary,
+you may want to remove the top element before popping the stack to avoid memory leaks.</p>
 
 <pre><code><span class="comment">// Pop</span>
 stack[n] = "" <span class="comment">// Erase element (write zero value)</span>
