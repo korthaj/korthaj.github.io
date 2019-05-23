@@ -35,7 +35,7 @@
     "https://yourbasic.org/algorithms/file-cabinet.jpg"
    ],
   "datePublished": "2018-01-26T00:00:00&#43;0000",
-  "dateModified": "2019-05-14T00:00:00&#43;0000",
+  "dateModified": "2019-05-23T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -119,11 +119,17 @@ but insertions become inefficient;</li>
 <p>The most common hash table implementation uses chaining with linked lists to resolve collisions.
 This combines the best properties of arrays and linked lists.</p>
 
-<p>Let&rsquo;s start with a somewhat simplistic example:
-a data structure that can store 1000 elements with random integer keys.</p>
+<!-- CC0: https://commons.wikimedia.org/wiki/File:HASHTB32.svg -->
+
+<div><img src="/algorithms/hash-table.png" alt="hash table"></div>
+<div style="font-size:smaller;">Hash table with names as keys and phone numbers as values.</div>
+
+<p>Let&rsquo;s start with a somewhat <strong>simplified example</strong>:
+a data structure that can store approximately 1000 records
+with <strong>random integer keys</strong>.</p>
 
 <p>To distribute the data evenly, we use several short lists.
-All elements with keys that end with 000 belong to one list,
+All records with keys that end with 000 belong to one list,
 those with keys that end with 001 belong to another one, and so on.
 There is a total of 1000 such lists. This structure can be represented as an array of lists:</p>
 
@@ -133,7 +139,7 @@ There is a total of 1000 such lists. This structure can be represented as an arr
 
 <p>where <code>LinkedList</code> denotes a linked list of key-value pairs.</p>
 
-<p>Inserting a new element <code>(key, value)</code> is a two-step procedure:</p>
+<p>Inserting a new record <code>(key, value)</code> is a two-step procedure:</p>
 
 <ul>
 <li>we extract the three last digits of the key, <code>hash = key % 1000</code>,</li>
@@ -151,8 +157,8 @@ table[hash].AddFirst(key, value)
 <pre><code>value = table[key%1000].Find(key)
 </code></pre>
 
-<p>Since the numbers are random, there will be roughly the same number of elements in each list.
-Since there are 1000 lists and at most 1000 elements, there will likely be very few elements
+<p>Since the numbers are random, there will be roughly the same number of records in each list.
+Since there are 1000 lists and at most 1000 records, there will likely be very few records
 in the list <code>table[key%1000]</code> and therefore the lookup operation will be fast.</p>
 
 <p>The <a href="/algorithms/time-complexity-explained/"><strong>average time complexity</strong></a> of both the lookup and insert operations are&nbsp;<i>O</i>(1).
@@ -161,13 +167,13 @@ Using the same technique, deletion can also be implemented in constant average t
 <h2 id="realistic-hash-function-example">Realistic hash function example</h2>
 
 <p>We want to generalize this basic idea to more complicated keys that aren&rsquo;t evenly distributed.
-The number of elements in each list must remain small,
-and the elements must be evenly distributed over the lists.
+The number of records in each list must remain small,
+and the records must be evenly distributed over the lists.
 To achieve this we just need to change the <a href="https://en.wikipedia.org/wiki/Hash_function"><strong>hash function</strong></a>,
 the function which selects the list where a key belongs.</p>
 
 <p>The hash function in the example above is <code>hash&nbsp;=&nbsp;key&nbsp;%&nbsp;1000</code>.
-It takes a key (a positive integer) as input and produces a number in the interval <code>0..999</code>.</p>
+It takes a key (a&nbsp;positive integer) as input and produces a number in the interval <code>0..999</code>.</p>
 
 <p>In general, a hash function is a function from <code>E</code> to <code>0..size-1</code>,
 where <code>E</code> is the set of all possible keys, and <code>size</code> is the number of entry points in the hash table.
@@ -194,13 +200,13 @@ Two properties that should hold for a good hash function.</p>
 
 <h2 id="resizing-in-constant-amortized-time">Resizing in constant amortized time</h2>
 
-<p>The efficiency of a hash table depends on the fact that the table size is proportional to the number of elements.
-If the number of elements is not known in advance,
+<p>The efficiency of a hash table depends on the fact that the table size is proportional to the number of records.
+If the number of records is not known in advance,
 the table must be resized when the lists become too&nbsp;long:</p>
 
 <ul>
 <li>a new larger table is allocated,</li>
-<li>each element is removed from the old table,</li>
+<li>each record is removed from the old table,</li>
 <li>and inserted into the new table.</li>
 </ul>
 
