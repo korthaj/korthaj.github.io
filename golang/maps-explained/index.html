@@ -95,7 +95,7 @@
 
 <ul class="toc">
   <li><a href="#create-a-new-map">Create a new map</a></li>
-  <li><a href="#add-replace-get-and-delete-keys-values">Add, replace, get and delete keys/values</a></li>
+  <li><a href="#add-update-get-and-delete-keys-values">Add, update, get and delete keys/values</a></li>
   <li><a href="#for-each-range-loop">For-each range loop</a></li>
   <li><a href="#performance-and-implementation">Performance and implementation</a></li>
 </ul>
@@ -129,12 +129,12 @@ returns the <strong>size</strong> of a map, which is the number of key-value&nbs
 <a href="/golang/gotcha-assignment-entry-nil-map/"><em>Assignment to entry in nil map</em></a>.
 </blockquote>
 
-<h2 id="add-replace-get-and-delete-keys-values">Add, replace, get and delete keys/values</h2>
+<h2 id="add-update-get-and-delete-keys-values">Add, update, get and delete keys/values</h2>
 
 <pre><code>m := make(map[string]float64)
 
 m["pi"] = 3.14             <span class="comment">// <b>Add a new key-value pair</b></span>
-m["pi"] = 3.1416           <span class="comment">// <b>Replace value</b></span>
+m["pi"] = 3.1416           <span class="comment">// <b>Update value</b></span>
 fmt.Println(m)             <span class="comment">// <b>Print map:</b> "map[pi:3.1416]"</span>
 
 v := m["pi"]               <span class="comment">// <b>Get value:</b> v == 3.1416</span>
