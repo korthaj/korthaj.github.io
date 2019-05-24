@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/15-men-16-slots.jpg"
    ],
   "datePublished": "2018-03-28T00:00:00&#43;0000",
-  "dateModified": "2019-05-22T00:00:00&#43;0000",
+  "dateModified": "2019-05-24T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -94,13 +94,13 @@
 <div style="margin-top:1em;"><img src="/golang/15-men-16-slots.jpg"></div>
 
 <ul class="toc">
-  <li><a href="#create-new-map">Create new map</a></li>
-  <li><a href="#add-get-and-delete-keys-values">Add, get and delete keys/values</a></li>
+  <li><a href="#create-a-new-map">Create a new map</a></li>
+  <li><a href="#add-replace-get-and-delete-keys-values">Add, replace, get and delete keys/values</a></li>
   <li><a href="#for-each-range-loop">For-each range loop</a></li>
   <li><a href="#performance-and-implementation">Performance and implementation</a></li>
 </ul>
 
-<h2 id="create-new-map">Create new map</h2>
+<h2 id="create-a-new-map">Create a new map</h2>
 
 <pre><code>var m map[string]int                <span class="comment">// nil map of string-int pairs</span>
 
@@ -129,12 +129,13 @@ returns the <strong>size</strong> of a map, which is the number of key-value&nbs
 <a href="/golang/gotcha-assignment-entry-nil-map/"><em>Assignment to entry in nil map</em></a>.
 </blockquote>
 
-<h2 id="add-get-and-delete-keys-values">Add, get and delete keys/values</h2>
+<h2 id="add-replace-get-and-delete-keys-values">Add, replace, get and delete keys/values</h2>
 
 <pre><code>m := make(map[string]float64)
 
-m["pi"] = 3.1416           <span class="comment">// <b>Add a new key-value pair</b></span>
-fmt.Println(m)             <span class="comment">// map[pi:3.1416]</span>
+m["pi"] = 3.14             <span class="comment">// <b>Add a new key-value pair</b></span>
+m["pi"] = 3.1416           <span class="comment">// <b>Replace value</b></span>
+fmt.Println(m)             <span class="comment">// <b>Print map:</b> "map[pi:3.1416]"</span>
 
 v := m["pi"]               <span class="comment">// <b>Get value:</b> v == 3.1416</span>
 v = m["pie"]               <span class="comment">// <b>Not found:</b> v == 0 (zero value)</span>
@@ -144,10 +145,10 @@ _, found = m["pie"]        <span class="comment">// found == false</span>
 
 if x, found := m["pi"]; found {
     fmt.Println(x)
-}                           <span class="comment">// Prints 3.1416</span>
+}                           <span class="comment">// Prints "3.1416"</span>
 
 delete(m, "pi")             <span class="comment">// <b>Delete a key-value pair</b></span>
-fmt.Println(m)              <span class="comment">// map[]</span></code></pre>
+fmt.Println(m)              <span class="comment">// <b>Print map:</b> "map[]"</span></code></pre>
 
 <ul>
 <li>When you index a map you get two return values;
@@ -159,9 +160,11 @@ the&nbsp;second one (which is optional) is a boolean that indicates if the key&n
 <h2 id="for-each-range-loop">For-each range loop</h2>
 
 <pre><code>m := map[string]float64{
-    "e":  2.71828,
     "pi": 3.1416,
+    "e":  2.71828,
 }
+fmt.Println(m) <span class="comment">// "map[e:2.71828 pi:3.1416]"</span>
+
 for key, value := range m { <span class="comment">// Order not specified</span> 
     fmt.Println(key, value)
 }</code></pre>
