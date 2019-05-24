@@ -156,11 +156,12 @@ table[hash].AddFirst(key, value)
 <pre><code>value = table[key%1000].Find(key)
 </code></pre>
 
-<p>Since the numbers are random, there will be roughly the same number of records in each list.
+<p>Since the keys are random, there will be roughly the same number of records in each list.
 Since there are 1000 lists and at most 1000 records, there will likely be very few records
 in the list <code>table[key%1000]</code> and therefore the lookup operation will be fast.</p>
 
-<p>The <a href="/algorithms/time-complexity-explained/"><strong>average time complexity</strong></a> of both the lookup and insert operations are&nbsp;<i>O</i>(1).
+<p>The <a href="/algorithms/time-complexity-explained/"><strong>average time complexity</strong></a>
+of both the lookup and insert operations is&nbsp;<i>O</i>(1).
 Using the same technique, deletion can also be implemented in constant average time.</p>
 
 <h2 id="realistic-hash-function-example">Realistic hash function example</h2>
@@ -193,9 +194,14 @@ and n is the length of the&nbsp;string.</p>
 
 <p>where <code>size</code> is the number of entry points in the hash&nbsp;table.</p>
 
-<p>Note that this function depends on all characters in the string,
-and that the value changes when we change the order of the characters.
-Two properties that should hold for a good hash function.</p>
+<p>Note that this function</p>
+
+<ul>
+<li>depends on all characters in the string,</li>
+<li>and that the value changes when we change the order of the characters.</li>
+</ul>
+
+<p>Two properties that should hold for a good hash function.</p>
 
 <h2 id="resizing-in-constant-amortized-time">Resizing in constant amortized time</h2>
 
@@ -210,7 +216,7 @@ the table must be resized when the lists become too&nbsp;long:</p>
 </ul>
 
 <p>If the table size is increased by a constant factor for each resizing, i.e. by doubling its size,
-this strategy gives <a href="/algorithms/amortized-time-complexity-analysis/"><strong>amortized constant time</strong></a> performance for lookups, insertions and deletions.</p>
+this strategy gives <a href="/algorithms/amortized-time-complexity-analysis/"><strong>amortized constant time</strong></a> performance for insertions.</p>
 
 <div><a href="/algorithms/amortized-time-complexity-analysis/"><img src="/algorithms/pink-coins-thumb.jpg" title="Amortized time complexity"></a></div>
 
