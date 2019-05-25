@@ -22,6 +22,50 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/golang/gotcha-multiple-value-single-value-context/"
+  },
+  "headline": "Multiple-value in single-value context",
+  "image": [
+    "https://yourbasic.org/golang/single-vs-multiple-values.jpg"
+   ],
+  "datePublished": "2018-07-29T00:00:00&#43;0000",
+  "dateModified": "2019-05-25T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "CODE EXAMPLE When a function returns multiple values, you must take care of each one. You can use the blank identifier (underscore) to ignore unwanted return values."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Multiple-value in single-value context">
+<meta property="og:description" content="CODE EXAMPLE When a function returns multiple values, you must take care of each one. You can use the blank identifier (underscore) to ignore unwanted return values.">
+<meta property="og:url" content="https://yourbasic.org/golang/gotcha-multiple-value-single-value-context/">
+<meta property="og:image" content="https://yourbasic.org/golang/single-vs-multiple-values.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Multiple-value in single-value context">
+<meta name="twitter:description" content="CODE EXAMPLE When a function returns multiple values, you must take care of each one. You can use the blank identifier (underscore) to ignore unwanted return values.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="https://yourbasic.org/golang/single-vs-multiple-values.jpg">
+
+
 </head>
 
 <body>
@@ -42,6 +86,10 @@
 <div class="tagline">yourbasic.org/golang</div>
 
 
+
+<!-- CC0: https://www.maxpixel.net/Number-Series-2-123-Digits-Pay-One-Two-1-3-705666 -->
+
+<div style="margin-top:1em;"><img src="/golang/single-vs-multiple-values.jpg"></div>
 
 <p>Why does this code give a compile error?</p>
 
