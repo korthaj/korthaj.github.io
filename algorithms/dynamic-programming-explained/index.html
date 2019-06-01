@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dynamic programming with memoization [step-by-step example] · YourBasic </title>
+  <title>Dynamic programming [step-by-step example] · YourBasic </title>
   <meta name="description" content="CODE EXAMPLE A dynamic programming algorithm solves a complex problem by dividing it into subproblems, solving each of those just once, and storing their solutions.">
   
   <link rel="stylesheet" href="/style.css">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/algorithms/dynamic-programming-explained/"
   },
-  "headline": "Dynamic programming with memoization [step-by-step example]",
+  "headline": "Dynamic programming [step-by-step example]",
   "image": [
     "https://yourbasic.org/algorithms/recursive-photography.jpg"
    ],
   "datePublished": "2018-10-19T00:00:00&#43;0000",
-  "dateModified": "2019-03-03T00:00:00&#43;0000",
+  "dateModified": "2019-06-01T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -54,13 +54,13 @@
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Dynamic programming with memoization [step-by-step example]">
+<meta property="og:title" content="Dynamic programming [step-by-step example]">
 <meta property="og:description" content="CODE EXAMPLE A dynamic programming algorithm solves a complex problem by dividing it into subproblems, solving each of those just once, and storing their solutions.">
 <meta property="og:url" content="https://yourbasic.org/algorithms/dynamic-programming-explained/">
 <meta property="og:image" content="https://yourbasic.org/algorithms/recursive-photography.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Dynamic programming with memoization [step-by-step example]">
+<meta name="twitter:title" content="Dynamic programming [step-by-step example]">
 <meta name="twitter:description" content="CODE EXAMPLE A dynamic programming algorithm solves a complex problem by dividing it into subproblems, solving each of those just once, and storing their solutions.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/algorithms/recursive-photography.jpg">
@@ -82,13 +82,21 @@
 
 <main>
 <article>
-<h1>Dynamic programming with memoization [step-by-step example]</h1>
+<h1>Dynamic programming [step-by-step example]</h1>
 <div class="tagline">yourbasic.org</div>
 
 
 <!-- CC BY-SA 2.0:  https://www.flickr.com/photos/gadl/604512604 -->
 
 <div style="margin-top:1em;"><img src="/algorithms/recursive-photography.jpg"></div>
+
+<ul class="toc">
+  <li><a href="#problem">Problem</a></li>
+  <li><a href="#recursive-algorithm">Recursive algorithm</a></li>
+  <li><a href="#dynamic-programming-with-memoization">Dynamic programming with memoization</a></li>
+  <li><a href="#dynamic-programming-with-tabulation">Dynamic programming with tabulation</a></li>
+  <li><a href="#memoization-vs-tabulation">Memoization vs. tabulation</a></li>
+</ul>
 
 <p>This text contains a detailed example showing how to solve
 a tricky problem efficiently with recursion and
@@ -105,7 +113,7 @@ by first filling up a table, and then compute the solution to the original probl
 based on the results in this table.</li>
 </ul>
 
-<h2 id="chocolate-feast-problem">Chocolate feast problem</h2>
+<h2 id="problem">Problem</h2>
 
 <p>You&rsquo;ve just got a tube of delicious chocolates and plan to eat one piece a&nbsp;day –
 either by picking the one on the left or the&nbsp;right.</p>
@@ -121,7 +129,7 @@ A piece will taste better if you eat it later: if the taste is <i>m</i>
 <p>Your task is to design an efficient algorithm that computes an optimal chocolate eating
 strategy and tells you how much pleasure to expect.</p>
 
-<h3 id="recursive-algorithm">Recursive algorithm</h3>
+<h2 id="recursive-algorithm">Recursive algorithm</h2>
 
 <pre><code>// Joy returns the total pleasure if you eat the chocolates
 // in an optimal order starting at the given day.
@@ -151,7 +159,7 @@ and returns the&nbsp;maximum.
 <br /></li>
 </ul>
 
-<h3 id="dynamic-programming-algorithm-with-memoization">Dynamic programming algorithm with memoization</h3>
+<h2 id="dynamic-programming-with-memoization">Dynamic programming with memoization</h2>
 
 <p>The code above is simple but terribly inefficient –
 it has <strong>exponential time complexity</strong>.</p>
@@ -222,7 +230,7 @@ func JoyMemo(choco []int, i, j int, memo [][]result) int {
 
 <p>Complete code: <a href="/algorithms/chocolate.go">chocolate.go</a></p>
 
-<h3 id="dynamic-programming-algorithm-with-tabulation">Dynamic programming algorithm with tabulation</h3>
+<h2 id="dynamic-programming-with-tabulation">Dynamic programming with tabulation</h2>
 
 <p>As an alternative, we can use <strong>tabulation</strong> and start by filling up the <code>memo</code>&nbsp;table.
 Note that the order of computation matters:
@@ -265,10 +273,10 @@ However, if some subproblems need not be solved at all,
 memoization may be more efficient since only the computations needed are carried&nbsp;out.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fdynamic-programming-explained%2f&amp;text=Dynamic%20programming%20with%20memoization%20[step-by-step%20example]&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fdynamic-programming-explained%2f&amp;text=Dynamic%20programming%20[step-by-step%20example]&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2falgorithms%2fdynamic-programming-explained%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fdynamic-programming-explained%2f&amp;title=Dynamic%20programming%20with%20memoization%20[step-by-step%20example]" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Dynamic%20programming%20with%20memoization%20[step-by-step%20example]&body=https%3a%2f%2fyourbasic.org%2falgorithms%2fdynamic-programming-explained%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fdynamic-programming-explained%2f&amp;title=Dynamic%20programming%20[step-by-step%20example]" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Dynamic%20programming%20[step-by-step%20example]&body=https%3a%2f%2fyourbasic.org%2falgorithms%2fdynamic-programming-explained%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
@@ -317,7 +325,7 @@ memoization may be more efficient since only the computations needed are carried
 
     <li><a href="/algorithms/big-o-notation-explained/">Big O notation: definition and examples</a></li>
 
-    <li><a href="/algorithms/dynamic-programming-explained/">Dynamic programming with memoization [step-by-step example]</a></li>
+    <li><a href="/algorithms/dynamic-programming-explained/">Dynamic programming [step-by-step example]</a></li>
 
     <li><a href="/algorithms/loop-invariants-explained/">Loop invariants can give you coding superpowers</a></li>
 

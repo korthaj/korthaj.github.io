@@ -683,12 +683,12 @@ Go Gotchas </description>
     </item>
     
     <item>
-      <title>Dynamic programming with memoization [step-by-step example]</title>
+      <title>Dynamic programming [step-by-step example]</title>
       <link>https://yourbasic.org/algorithms/dynamic-programming-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/algorithms/dynamic-programming-explained/</guid>
-      <description>This text contains a detailed example showing how to solve a tricky problem efficiently with recursion and dynamic programming – either with memoization or tabulation.
+      <description>Problem Recursive algorithm Dynamic programming with memoization Dynamic programming with tabulation Memoization vs. tabulation  This text contains a detailed example showing how to solve a tricky problem efficiently with recursion and dynamic programming – either with memoization or tabulation.
  Dynamic programming is a method for solving a complex problem by dividing it into simpler subproblems, solving each of those just once, and storing their solutions. Memoization is an optimization technique used to speed up programs by storing the results of expensive function calls and returning the cached result when the same inputs occur&amp;nbsp;again.</description>
     </item>
     
