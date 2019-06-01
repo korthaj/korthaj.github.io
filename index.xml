@@ -1204,8 +1204,7 @@ type Writer interface { Write(p []byte) (n int, err error) }  Write writes up to
 s := &#34;hello&#34; s[0] = &#39;H&#39; fmt.Println(s) ../main.go:3:7: cannot assign to s[0]  Answer
 Go strings are immutable and behave like read-only byte slices (with a few extra properties).
 To update the data, use a rune slice instead.
-buf := []rune(&#34;hello&#34;) buf[0] = &#39;H&#39; s := string(buf) fmt.Println(s) // &#34;Hello&#34;  If the string only contains ASCII characters, you could also use a byte&amp;nbsp;slice.
-See String functions cheat sheet for an overview of strings in&amp;nbsp;Go.</description>
+buf := []rune(&#34;hello&#34;) buf[0] = &#39;H&#39; s := string(buf) fmt.Println(s) // &#34;Hello&#34;  If the string only contains ASCII characters, you could also use a byte&amp;nbsp;slice.</description>
     </item>
     
     <item>

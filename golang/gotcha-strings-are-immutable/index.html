@@ -22,6 +22,50 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/golang/gotcha-strings-are-immutable/"
+  },
+  "headline": "Immutable strings",
+  "image": [
+    "https://yourbasic.org/golang/locked-gate.jpg"
+   ],
+  "datePublished": "2018-07-29T00:00:00&#43;0000",
+  "dateModified": "2019-06-01T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "CODE EXAMPLE Go strings are read-only byte slices (with a few extra properties). To update string data, consider using a rune slice instead."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Immutable strings">
+<meta property="og:description" content="CODE EXAMPLE Go strings are read-only byte slices (with a few extra properties). To update string data, consider using a rune slice instead.">
+<meta property="og:url" content="https://yourbasic.org/golang/gotcha-strings-are-immutable/">
+<meta property="og:image" content="https://yourbasic.org/golang/locked-gate.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Immutable strings">
+<meta name="twitter:description" content="CODE EXAMPLE Go strings are read-only byte slices (with a few extra properties). To update string data, consider using a rune slice instead.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="https://yourbasic.org/golang/locked-gate.jpg">
+
+
 </head>
 
 <body>
@@ -40,6 +84,10 @@
 <article>
 <h1>Immutable strings</h1>
 <div class="tagline">yourbasic.org/golang</div>
+
+<!-- CC0: https://www.publicdomainpictures.net/en/view-image.php?image=91579&picture=locked-gate-padlock-chain -->
+
+<div style="margin-top:1em;"><img src="/golang/locked-gate.jpg"></div>
 
 <p>Why doesn&rsquo;t this code compile?</p>
 
