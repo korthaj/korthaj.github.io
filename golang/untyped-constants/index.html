@@ -22,6 +22,50 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/golang/untyped-constants/"
+  },
+  "headline": "Untyped numeric constants with no limits",
+  "image": [
+    "https://yourbasic.org/golang/infinite-highway.jpg"
+   ],
+  "datePublished": "2018-07-29T00:00:00&#43;0000",
+  "dateModified": "2019-06-01T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "Numeric constants in Go have no limits and can be untyped. When it&#39;s used in a context that requires a type, a type will be inferred and a limit applied."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Untyped numeric constants with no limits">
+<meta property="og:description" content="Numeric constants in Go have no limits and can be untyped. When it&#39;s used in a context that requires a type, a type will be inferred and a limit applied.">
+<meta property="og:url" content="https://yourbasic.org/golang/untyped-constants/">
+<meta property="og:image" content="https://yourbasic.org/golang/infinite-highway.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Untyped numeric constants with no limits">
+<meta name="twitter:description" content="Numeric constants in Go have no limits and can be untyped. When it&#39;s used in a context that requires a type, a type will be inferred and a limit applied.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="https://yourbasic.org/golang/infinite-highway.jpg">
+
+
 </head>
 
 <body>
@@ -41,6 +85,10 @@
 <h1>Untyped numeric constants with no limits</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
+
+<!-- CC0: https://pxhere.com/en/photo/1161134 -->
+
+<div style="margin-top:1em;"><img src="/golang/infinite-highway.jpg"></div>
 
 <p>Constants may be <strong>typed</strong> or <strong>untyped</strong>.</p>
 
@@ -76,7 +124,7 @@ var j int = big
     green      <span class="comment">// green == 2</span>
 )</code></pre></p>
 
-<p>See <a href="/golang/iota/">iota enum examples</a> for a detailed example.</p>
+<p>See <a href="/golang/iota/">4 iota enum examples</a> for further examples.</p>
 
 
 </article>

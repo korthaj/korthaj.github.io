@@ -247,7 +247,8 @@ f, err := os.OpenFile(&amp;quot;text.log&amp;quot;, os.O_APPEND|os.O_CREATE|os.O
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/gotcha-function-doesnt-change-array/</guid>
-      <description>func Foo(a [2]int) { a[0] = 8 } func main() { a := [2]int{1, 2} Foo(a) // Try to change a[0]. fmt.Println(a) // Output: [1 2] } Answer
+      <description>Why does the array value stick?
+func Foo(a [2]int) { a[0] = 8 } func main() { a := [2]int{1, 2} Foo(a) // Try to change a[0]. fmt.Println(a) // Output: [1 2] } Answer
  Arrays in Go are values. When you pass an array to a function, the array is copied.  If you want Foo to update the elements of&amp;nbsp;a, use a slice instead.
 func Foo(a []int) { if len(a)  0 { a[0] = 8 } } func main() { a := []int{1, 2} Foo(a) // Change a[0].</description>
     </item>
@@ -1584,7 +1585,7 @@ Unicode, which is a superset of ASCII, defines a codespace of 1,114,112 code poi
 func main() { n := 0 if true { n := 1 n++ } fmt.Println(n) // 0 } Answer
 The statement n := 1 declares a new variable which shadows the original n throughout the scope of the if&amp;nbsp;statement.
 To reuse n from the outer block, write n = 1 instead.
-func main() { n := 0 if true { n = 1 n++ } fmt.Println(n) // 2 } Detecting shadowed variables To help detect shadowed variables, you may use the experimental -shadow feature provided by the vet tool.</description>
+func main() { n := 0 if true { n = 1 n++ } fmt.</description>
     </item>
     
     <item>
