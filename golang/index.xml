@@ -131,21 +131,21 @@ s := strings.TrimSpace(&#34;\t Goodbye hair!\n &#34;) fmt.Printf(&#34;%q&#34;, s
     </item>
     
     <item>
+      <title>4 basic range loop (for-each) patterns</title>
+      <link>https://yourbasic.org/golang/for-loop-range-array-slice-map-channel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/for-loop-range-array-slice-map-channel/</guid>
+      <description>Basic for-each loop (slice or array) String iteration: runes or bytes Map iteration: keys and values Channel iteration Gotchas  Basic for-each loop (slice or array) a := []string{&#34;Foo&#34;, &#34;Bar&#34;} for i, s := range a { fmt.Println(i, s) } 0 Foo 1 Bar   The range expression, a, is evaluated once before beginning the loop. The iteration values are assigned to the respective iteration variables, i and s, as in an assignment statement.</description>
+    </item>
+    
+    <item>
       <title>4 iota enum examples</title>
       <link>https://yourbasic.org/golang/iota/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/iota/</guid>
       <description>Iota basic example Start from one Skip value  Complete enum type with strings Naming convention   Iota basic example  The iota keyword represents successive integer constants 0, 1, 2,… It resets to 0 whenever the word const appears in the source code, and increments after each const specification.  const ( C0 = iota C1 = iota C2 = iota ) fmt.Println(C0, C1, C2) // &#34;</description>
-    </item>
-    
-    <item>
-      <title>4 ways to write a range for loop [slice, string, map, channel]</title>
-      <link>https://yourbasic.org/golang/for-loop-range-array-slice-map-channel/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/for-loop-range-array-slice-map-channel/</guid>
-      <description>Basic for-each loop (slice or array) String iteration: runes or bytes Map iteration: keys and values Channel iteration Gotchas  Basic for-each loop (slice or array) a := []string{&#34;Foo&#34;, &#34;Bar&#34;} for i, s := range a { fmt.Println(i, s) } 0 Foo 1 Bar   The range expression, a, is evaluated once before beginning the loop. The iteration values are assigned to the respective iteration variables, i and s, as in an assignment statement.</description>
     </item>
     
     <item>
@@ -952,7 +952,7 @@ Keep allocated memory To keep the underlying array, slice the slice to zero leng
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/iterator-generator-pattern/</guid>
-      <description>Go has a built-in range loop for iterating over slices, arrays, strings, maps and channels. See The 4 ways to write a range for loop.
+      <description>Go has a built-in range loop for iterating over slices, arrays, strings, maps and channels. See 4 basic range loop (for-each) patterns.
 To iterate over other types of data, an iterator function with callbacks is a clean and fairly efficient abstraction.
 Basic iterator pattern // Iterate calls the f function with n = 1, 2, and 3. func Iterate(f func(n int)) { for i := 1; i  In use:</description>
     </item>
