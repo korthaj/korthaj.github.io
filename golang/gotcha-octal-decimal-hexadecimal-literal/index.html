@@ -22,6 +22,50 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/golang/gotcha-octal-decimal-hexadecimal-literal/"
+  },
+  "headline": "Numbers that start with zero",
+  "image": [
+    "https://yourbasic.org/golang/007.jpg"
+   ],
+  "datePublished": "2018-07-29T00:00:00&#43;0000",
+  "dateModified": "2019-06-01T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "CODE EXAMPLE Octal literals start with 0, hexadecimal with 0x, and decimal literals never start with zero."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Numbers that start with zero">
+<meta property="og:description" content="CODE EXAMPLE Octal literals start with 0, hexadecimal with 0x, and decimal literals never start with zero.">
+<meta property="og:url" content="https://yourbasic.org/golang/gotcha-octal-decimal-hexadecimal-literal/">
+<meta property="og:image" content="https://yourbasic.org/golang/007.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Numbers that start with zero">
+<meta name="twitter:description" content="CODE EXAMPLE Octal literals start with 0, hexadecimal with 0x, and decimal literals never start with zero.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="https://yourbasic.org/golang/007.jpg">
+
+
 </head>
 
 <body>
@@ -41,7 +85,13 @@
 <h1>Numbers that start with zero</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-<p>What&rsquo;s going on with the counting in this example?</p>
+
+
+<!-- CC BY 2.0: https://www.flickr.com/photos/glynlowe/22573628975 -->
+
+<div style="margin-top:1em;"><img src="/golang/007.jpg"></div>
+
+<p>What&rsquo;s up with the counting in this example?</p>
 
 <pre><code>const (
     Century = 100
@@ -79,7 +129,7 @@ The number 16 can be written as <code>020</code>, <code>16</code> or <code>0x10<
     <tr>
       <td><code>16</code></td>
       <td>10</td>
-      <td>Never starts with&nbsp;<code>0</code>*</td>
+      <td>Never starts with&nbsp;<code>0</code></td>
     </tr>
     <tr>
       <td><code>0x10</code></td>
@@ -89,12 +139,21 @@ The number 16 can be written as <code>020</code>, <code>16</code> or <code>0x10<
   </tbody>
 </table>
 
-<p>* <code>0</code> is an octal literal in Go.</p>
+<p>This <a href="/golang/bitwise-operator-cheat-sheet/">bitwise operators cheat sheet</a> covers
+all bitwise operators and functions in&nbsp;Go.</p>
 
-<blockquote>
-An integer literal is a sequence of digits representing an integer constant. An optional prefix sets a non-decimal base: 0 for octal, 0x or 0X for hexadecimal.
-<a class="quote-source" href="https://golang.org/ref/spec#Integer_literals">The Go Programming Language Specification: Integer literals</a>
-</blockquote>
+<h3 id="zero-knowledge-trivia">Zero knowledge (trivia)</h3>
+
+<p>There are many ways to write zero in base&nbsp;8 in Go, including
+<code>0</code>, <code>00</code> and&nbsp;<code>000</code>.
+If&nbsp;you prefer hexadecimal notation, you also have a smörgåsbord of options: such as
+<code>0x0</code>, <code>0x00</code> and <code>0x000</code>
+(as well as <code>0X0</code>, <code>0X00</code> and&nbsp;<code>0X000</code>).
+However, there is no decimal zero integer literal in&nbsp;Go.</p>
+
+<p>In fact, Go doesn&rsquo;t have any negative decimal literals either:
+<code>-1</code>&nbsp;is the unary negation operator
+followed by the decimal literal&nbsp;<code>1</code>.</p>
 
 <p></details></p>
 

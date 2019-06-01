@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zero knowledge (besserwisser alert) · YourBasic Go </title>
-  <meta name="description" content="😉 There are infintitely many ways to write a zero integer literal in base 8 or 16 in Go, but no way to do it in base 10.">
+  <meta name="description" content="There are infintitely many ways to write a zero integer literal in base 8 or 16 in Go, but no way to do it in base 10.">
   
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
@@ -22,48 +22,7 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
-  <script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Article",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://yourbasic.org/golang/zero-knowledge/"
-  },
-  "headline": "Zero knowledge (besserwisser alert)",
-  "image": [
-    "https://yourbasic.org/golang/habermas.jpg"
-   ],
-  "datePublished": "2018-03-24T00:00:00&#43;0000",
-  "dateModified": "2018-04-29T00:00:00&#43;0000",
-  "author": {
-    "@type": "Person",
-    "name": "Stefan Nilsson"
-  },
-   "publisher": {
-    "@type": "Organization",
-    "name": "yourbasic.org",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://yourbasic.org/res/favicon-96x96.png"
-    }
-  },
-  "description": "😉 There are infintitely many ways to write a zero integer literal in base 8 or 16 in Go, but no way to do it in base 10."
-}
-</script>
-
-<meta property="og:locale" content="en_US">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Zero knowledge (besserwisser alert)">
-<meta property="og:description" content="😉 There are infintitely many ways to write a zero integer literal in base 8 or 16 in Go, but no way to do it in base 10.">
-<meta property="og:url" content="https://yourbasic.org/golang/zero-knowledge/">
-<meta property="og:image" content="https://yourbasic.org/golang/habermas.jpg">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Zero knowledge (besserwisser alert)">
-<meta name="twitter:description" content="😉 There are infintitely many ways to write a zero integer literal in base 8 or 16 in Go, but no way to do it in base 10.">
-<meta name="twitter:site" content="@yourbasic_org">
-<meta name="twitter:image" content="https://yourbasic.org/golang/habermas.jpg">
+  <meta http-equiv="Refresh" content="0; url=/golang/gotcha-octal-decimal-hexadecimal-literal/" />
 
 
 </head>
@@ -84,91 +43,12 @@
 <article>
 <h1>Zero knowledge (besserwisser alert)</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
-<p class="lead">0 isn’t a decimal number in Go – it’s an octal literal.</p>
-
-<!-- CC BY-SA 3.0: https://commons.wikimedia.org/wiki/File:JuergenHabermas.jpg -->
-
-<div><img src="/golang/habermas.jpg"></div>
-
-<p>An integer literal in Go (as well as in C and Java) is</p>
-
-<ul>
-<li>in base&nbsp;16 if it starts with <code>0x</code> or <code>0X</code>,</li>
-<li>in base&nbsp;8 if it starts with <code>0</code>,</li>
-<li>otherwise it's a decimal&nbsp;number.</li>
-</ul>
-
-<p>In fact, there are many ways to write zero in base&nbsp;8 in Go, including
-<code>0</code>, <code>00</code> and&nbsp;<code>000</code>.
-If&nbsp;you prefer hexadecimal notation, you also have a smörgåsbord of options: such as
-<code>0x0</code>, <code>0x00</code> and <code>0x000</code>
-(as well as <code>0X0</code>, <code>0X00</code> and&nbsp;<code>0X000</code>).
-However, there is no decimal zero integer literal in&nbsp;Go.</p>
-
-<p>Note that Go doesn&rsquo;t have any negative decimal literals either:
-<code>-1</code>&nbsp;is the unary negation operator
-followed by the decimal literal&nbsp;<code>1</code>.</p>
-
-<h2 id="why-should-i-care">Why should I care?</h2>
-
-<p>This is mostly useless knowledge, unless perhaps you&rsquo;re writing a Go compiler.
-But it&rsquo;s good to be aware of the octal integer literals.
-If your write a number with leading zeros by mistake, you could be in for
-a <a href="/golang/gotcha-octal-decimal-hexadecimal-literal/">nasty surprise</a>.</p>
-
-<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fzero-knowledge%2f&amp;text=Zero%20knowledge%20%28besserwisser%20alert%29&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fzero-knowledge%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fzero-knowledge%2f&amp;title=Zero%20knowledge%20%28besserwisser%20alert%29" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Zero%20knowledge%20%28besserwisser%20alert%29&body=https%3a%2f%2fyourbasic.org%2fgolang%2fzero-knowledge%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<p>See <a href="/golang/gotcha-octal-decimal-hexadecimal-literal/">Numbers that start with zero</a>.</p>
 
 
 </article>
 <aside>
-
-    
-  <h2>Related</h2>
-
-  <div class="reference">
-    <a href="https://golang.org/ref/spec#Integer_literals">Integer literals</a>
-    <div class="source">The Go Programming Language Specification</div>
-    <div class="author"></div>
-  </div>
-
-  <div class="reference">
-    <a href="/golang/bitwise-operator-cheat-sheet/">Bitwise operators [cheat sheet]</a>
-    <div class="desc">To manipulate bits your can use operators (bitwise NOT, AND, OR, XOR, left and right shift) and functions in package math/bits (bitcount, rotate, reverse, leading and trailing zeros).</div>
-    <div class="source">yourbasic.org</div>
-  </div>
-
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
-  <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
-  <ul class="none">
-  
-    <li><a href="/golang/gotcha/">Do you make these Go coding mistakes?</a></li>
-
-    <li><a href="/golang/advantages-over-java-python/">Why Go? – Key advantages you may have overlooked</a></li>
-
-    <li><a href="/golang/string-functions-reference-cheat-sheet/">40&#43; practical string tips [cheat sheet]</a></li>
-
-    <li><a href="/golang/interfaces-explained/">Interfaces in 5 easy steps [complete guide]</a></li>
-
-    <li><a href="/golang/concurrent-programming/">Concurrent programming</a></li>
-
-  </ul>
-  
-  <p><a href="/golang/"><strong>See all 177 Go articles</strong></a></p>
-
+<p></p>
 </aside>
 </main>
 

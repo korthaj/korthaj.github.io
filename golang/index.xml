@@ -1358,10 +1358,10 @@ package main var n = 1 func main() {} This is a trade-off in the design of the G
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/gotcha-octal-decimal-hexadecimal-literal/</guid>
-      <description>What&amp;rsquo;s going on with the counting in this example?
+      <description>What&amp;rsquo;s up with the counting in this example?
 const ( Century = 100 Decade = 010 Year = 001 ) // The world&#39;s oldest person, Emma Morano, lived for a century, // two decades and two years. fmt.Println(&#34;She was&#34;, Century+2*Decade+2*Year, &#34;years old.&#34;) She was 118 years old. Answer
 010 is a number in base&amp;nbsp;8, therefore it means&amp;nbsp;8, not&amp;nbsp;10.
-Integer literals in Go are specified in octal, decimal or hexadecimal. The number 16 can be written as 020, 16 or 0x10.</description>
+Integer literals in Go are specified in octal, decimal or hexadecimal.</description>
     </item>
     
     <item>
@@ -1930,9 +1930,7 @@ prefix: 2017/10/20 07:52:58 text to append prefix: 2017/10/20 07:52:58 more text
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/zero-knowledge/</guid>
-      <description>0 isn’t a decimal number in Go – it’s an octal literal.
- An integer literal in Go (as well as in C and Java) is
- in base&amp;nbsp;16 if it starts with 0x or 0X, in base&amp;nbsp;8 if it starts with 0, otherwise it&#39;s a decimal&amp;nbsp;number.  In fact, there are many ways to write zero in base&amp;nbsp;8 in Go, including 0, 00 and&amp;nbsp;000. If&amp;nbsp;you prefer hexadecimal notation, you also have a smörgåsbord of options: such as 0x0, 0x00 and 0x000 (as well as 0X0, 0X00 and&amp;nbsp;0X000).</description>
+      <description>See Numbers that start with zero.</description>
     </item>
     
   </channel>
