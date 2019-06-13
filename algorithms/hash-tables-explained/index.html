@@ -35,7 +35,7 @@
     "https://yourbasic.org/algorithms/file-cabinet.jpg"
    ],
   "datePublished": "2018-01-26T00:00:00&#43;0000",
-  "dateModified": "2019-05-24T00:00:00&#43;0000",
+  "dateModified": "2019-06-13T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -118,6 +118,13 @@ but insertions become inefficient;</li>
 
 <p>The most common hash table implementation uses chaining with linked lists to resolve collisions.
 This combines the best properties of arrays and linked lists.</p>
+
+<p>Hash table operations are performed in two steps:</p>
+
+<ul>
+<li>A key is converted into an integer index by using a hash function.</li>
+<li>This index decides the linked list where the key-value pair record belongs.</li>
+</ul>
 
 <!-- CC0: https://commons.wikimedia.org/wiki/File:HASHTB32.svg -->
 
