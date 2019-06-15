@@ -22,6 +22,50 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/golang/gotcha-concatenate-rune-string/"
+  },
+  "headline": "How does characters add up?",
+  "image": [
+    "https://yourbasic.org/golang/calculator.jpg"
+   ],
+  "datePublished": "2018-07-29T00:00:00&#43;0000",
+  "dateModified": "2019-06-15T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "CODE EXAMPLE Characters (rune literals) are integer values used to identify Unicode code points. You can turn a code point into a string with a conversion."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How does characters add up?">
+<meta property="og:description" content="CODE EXAMPLE Characters (rune literals) are integer values used to identify Unicode code points. You can turn a code point into a string with a conversion.">
+<meta property="og:url" content="https://yourbasic.org/golang/gotcha-concatenate-rune-string/">
+<meta property="og:image" content="https://yourbasic.org/golang/calculator.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How does characters add up?">
+<meta name="twitter:description" content="CODE EXAMPLE Characters (rune literals) are integer values used to identify Unicode code points. You can turn a code point into a string with a conversion.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="https://yourbasic.org/golang/calculator.jpg">
+
+
 </head>
 
 <body>
@@ -40,6 +84,10 @@
 <article>
 <h1>How does characters add up?</h1>
 <div class="tagline">yourbasic.org/golang</div>
+
+<!-- CC0: https://www.pexels.com/photo/woman-holding-pen-while-using-calculator-1253591/ -->
+
+<div style="margin-top:1em;"><img src="/golang/calculator.jpg"></div>
 
 <p>Why doesn&rsquo;t these print statements give the same result?</p>
 

@@ -922,7 +922,7 @@ fmt.Println(&amp;quot;H&amp;quot; + &amp;quot;i&amp;quot;) fmt.Println(&#39;H&#3
 The rune literals &#39;H&#39; and &#39;i&#39; are integer values identifying Unicode code points: &#39;H&#39; is 72 and &#39;i&#39; is&amp;nbsp;105.
 You can turn a code point into a string with a&amp;nbsp;conversion.
 fmt.Println(string(72) + string(&#39;i&#39;))// &#34;Hi&#34; You can also use the fmt.Sprintf function.
-s := fmt.Sprintf(&#34;%c%c, world!&#34;, 72, &#39;i&#39;) fmt.Println(s)// &#34;Hi, world!&#34; This fmt cheat sheet lists the most common formatting verbs and flags.</description>
+s := fmt.Sprintf(&#34;%c%c, world!&#34;, 72, &#39;i&#39;) fmt.Println(s)// &#34;Hi, world!</description>
     </item>
     
     <item>
