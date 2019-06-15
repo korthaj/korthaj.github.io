@@ -22,6 +22,50 @@
     gtag('config', 'UA-113104149-1');
   </script>
 
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/golang/gotcha-range-copy-array/"
+  },
+  "headline": "Iteration variable doesn’t see change in range loop",
+  "image": [
+    "https://yourbasic.org/golang/astonished-boy.jpg"
+   ],
+  "datePublished": "2018-07-29T00:00:00&#43;0000",
+  "dateModified": "2019-06-15T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "CODE EXAMPLE The range expression is evaluated once before beginning the loop."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Iteration variable doesn’t see change in range loop">
+<meta property="og:description" content="CODE EXAMPLE The range expression is evaluated once before beginning the loop.">
+<meta property="og:url" content="https://yourbasic.org/golang/gotcha-range-copy-array/">
+<meta property="og:image" content="https://yourbasic.org/golang/astonished-boy.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Iteration variable doesn’t see change in range loop">
+<meta name="twitter:description" content="CODE EXAMPLE The range expression is evaluated once before beginning the loop.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="https://yourbasic.org/golang/astonished-boy.jpg">
+
+
 </head>
 
 <body>
@@ -40,6 +84,10 @@
 <article>
 <h1>Iteration variable doesn’t see change in range loop</h1>
 <div class="tagline">yourbasic.org/golang</div>
+
+<!-- CC0: https://www.maxpixel.net/Astonished-Family-Young-Surprise-Child-Baby-Joy-216876 -->
+
+<div style="margin-top:1em;"><img src="/golang/astonished-boy.jpg"></div>
 
 <p>Why doesn&rsquo;t the iteration variable <code>x</code> notice that <code>a[1]</code> has been updated?</p>
 
