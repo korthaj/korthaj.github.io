@@ -902,7 +902,7 @@ s := &#34;Foo&#34; md5 := md5.Sum([]byte(s)) sha1 := sha1.Sum([]byte(s)) sha256 
     </item>
     
     <item>
-      <title>Hello world HTTP server</title>
+      <title>Hello world HTTP server example</title>
       <link>https://yourbasic.org/golang/http-server-example/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
