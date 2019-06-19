@@ -85,6 +85,8 @@
 <h1>Go and Pythagoras</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
+
+
 <!-- Public domain: https://en.wikipedia.org/wiki/File:Cropped_image_of_Pythagoras_from_Raphael%27s_School_of_Athens.jpg -->
 
 <div style="margin-top:1em;"><img src="/golang/pythagoras.jpg"></div>
@@ -100,8 +102,7 @@ a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>.</p>
 
 <pre><code>fmt.Println(6^2+8^2 == 10^2) <span class="comment">// <b>false</b></span></code></pre>
 
-<p><details class="answer">
-<summary class="answer">Answer</summary></p>
+<h2 id="answer">Answer</h2>
 
 <p>The circumflex&nbsp;<code>^</code> denotes bitwise&nbsp;XOR in&nbsp;Go.
 The computation written in base&nbsp;2 looks like&nbsp;this:</p>
@@ -121,8 +122,6 @@ See <a href="/golang/bitwise-operator-cheat-sheet/">Bitwise operators cheat shee
 
 <p>Go has no built-in support for integer power computations,
 but there is a <a href="https://golang.org/pkg/math/#Pow"><code>math.Pow</code></a> function for floating-point numbers.</p>
-
-<p></details></p>
 
 <ul class="pagina">
   

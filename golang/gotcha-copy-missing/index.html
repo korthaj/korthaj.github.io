@@ -85,6 +85,8 @@
 <h1>Where is my copy?</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
+
+
 <!-- CC0: https://www.maxpixel.net/Drilled-Down-Paper-Text-Box-Rip-Torn-Copy-Space-3792307 -->
 
 <div style="margin-top:1em;"><img src="/golang/hole-in-paper.png"></div>
@@ -99,8 +101,7 @@ fmt.Println("dst:", dst)</code></pre>
 <pre><code>dst: []
 </code></pre>
 
-<p><details class="answer">
-<summary class="answer">Answer</summary></p>
+<h2 id="answer">Answer</h2>
 
 <p>The number of elements copied by the <code>copy</code> function
 is the minimum of <code>len(dst)</code> and <code>len(src)</code>.
@@ -136,8 +137,6 @@ fmt.Println("dst:", dst)
 <p>Note that the capacity of the slice allocated by <code>append</code>
 may be a bit larger than <code>len(src)</code>.
 </p>
-
-<p></details></p>
 
 <ul class="pagina">
   

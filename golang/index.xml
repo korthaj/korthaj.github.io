@@ -248,8 +248,7 @@ f, err := os.OpenFile(&amp;quot;text.log&amp;quot;, os.O_APPEND|os.O_CREATE|os.O
       
       <guid>https://yourbasic.org/golang/gotcha-function-doesnt-change-array/</guid>
       <description>Why does the array value stick?
-func Foo(a [2]int) { a[0] = 8 } func main() { a := [2]int{1, 2} Foo(a) // Try to change a[0]. fmt.Println(a) // Output: [1 2] } Answer
- Arrays in Go are values. When you pass an array to a function, the array is copied.  If you want Foo to update the elements of&amp;nbsp;a, use a slice instead.
+func Foo(a [2]int) { a[0] = 8 } func main() { a := [2]int{1, 2} Foo(a) // Try to change a[0]. fmt.Println(a) // Output: [1 2] } Answer  Arrays in Go are values. When you pass an array to a function, the array is copied.  If you want Foo to update the elements of&amp;nbsp;a, use a slice instead.
 func Foo(a []int) { if len(a)  0 { a[0] = 8 } } func main() { a := []int{1, 2} Foo(a) // Change a[0].</description>
     </item>
     
@@ -260,8 +259,7 @@ func Foo(a []int) { if len(a)  0 { a[0] = 8 } } func main() { a := []int{1, 2} F
       
       <guid>https://yourbasic.org/golang/gotcha-assignment-entry-nil-map/</guid>
       <description>Why does this program panic?
-var m map[string]float64 m[&#34;pi&#34;] = 3.1416 panic: assignment to entry in nil map  Answer
-You have to initialize the map using the make function (or a map literal) before you can add any elements:
+var m map[string]float64 m[&#34;pi&#34;] = 3.1416 panic: assignment to entry in nil map  Answer You have to initialize the map using the make function (or a map literal) before you can add any elements:
 m := make(map[string]float64) m[&#34;pi&#34;] = 3.1416  A new, empty map value is made using the built-in function make, which takes the map type and an optional capacity hint as arguments: make(map[string]int) make(map[string]int, 100) The initial capacity does not bound its size: maps grow to accommodate the number of items stored in them, with the exception of nil maps.</description>
     </item>
     
@@ -325,8 +323,7 @@ In this example the Publish function returns a channel, which is used to broadca
       
       <guid>https://yourbasic.org/golang/gotcha-change-value-range/</guid>
       <description>Why isn&amp;rsquo;t the slice updated in this example?
-s := []int{1, 1, 1} for _, n := range s { n += 1 } fmt.Println(s) // Output: [1 1 1] Answer
-The range loop copies the values from the slice to a local variable n; updating n will not affect the&amp;nbsp;slice.
+s := []int{1, 1, 1} for _, n := range s { n += 1 } fmt.Println(s) // Output: [1 1 1] Answer The range loop copies the values from the slice to a local variable n; updating n will not affect the&amp;nbsp;slice.
 Update the slice entries like this:
 s := []int{1, 1, 1} for i := range s { s[i] += 1 } fmt.</description>
     </item>
@@ -402,8 +399,7 @@ Table of contents </description>
       
       <guid>https://yourbasic.org/golang/gotcha-constant-overflows-int/</guid>
       <description>Why doesn&amp;rsquo;t this code compile?
-const n = 9876543210 * 9876543210 fmt.Println(n) ../main.go:2:13: constant 97546105778997104100 overflows int  Answer
-The untyped constant n must be converted to a type before it can be assigned to the interface{} parameter in the call to fmt.Println.
+const n = 9876543210 * 9876543210 fmt.Println(n) ../main.go:2:13: constant 97546105778997104100 overflows int  Answer The untyped constant n must be converted to a type before it can be assigned to the interface{} parameter in the call to fmt.Println.
 fmt.Println(a ...interface{}) When the type can’t be inferred from the context, an untyped constant is converted to a bool, int, float64, complex128, string or rune depending of the format of the&amp;nbsp;constant.</description>
     </item>
     
@@ -792,8 +788,7 @@ t := time.Now() year := t.Year() // type int month := t.Month() // type time.</d
       
       <guid>https://yourbasic.org/golang/gotcha-operator-precedence/</guid>
       <description>Why doesn&amp;rsquo;t this code compute the number of hours and seconds?
-n := 43210 // time in seconds fmt.Println(n/60*60, &#34;hours and&#34;, n%60*60, &#34;seconds&#34;) 43200 hours and 600 seconds  Answer
-The *, /, and % operators have the same precedence and are evaluated left to right: n/60*60 is the same as (n/60)*60.
+n := 43210 // time in seconds fmt.Println(n/60*60, &#34;hours and&#34;, n%60*60, &#34;seconds&#34;) 43200 hours and 600 seconds  Answer The *, /, and % operators have the same precedence and are evaluated left to right: n/60*60 is the same as (n/60)*60.
 Insert a pair of parantheses to force the correct evaluation order.
 fmt.Println(n/(60*60), &#34;hours and&#34;, n%(60*60), &#34;seconds&#34;)  12 hours and 10 seconds  Or better yet, use a constant.</description>
     </item>
@@ -807,8 +802,7 @@ fmt.Println(n/(60*60), &#34;hours and&#34;, n%(60*60), &#34;seconds&#34;)  12 ho
       <description>Pythagorean triples are integer solutions to the Pythagorean Theorem, a2 + b2 = c2.
 A well-known example is (3,&amp;nbsp;4,&amp;nbsp;5):
 fmt.Println(3^2+4^2 == 5^2) // true The triple (6,&amp;nbsp;8,&amp;nbsp;10) is another example, but Go doesn&#39;t seem to agree.
-fmt.Println(6^2+8^2 == 10^2) // false Answer
-The circumflex&amp;nbsp;^ denotes bitwise&amp;nbsp;XOR in&amp;nbsp;Go. The computation written in base&amp;nbsp;2 looks like&amp;nbsp;this:
+fmt.Println(6^2+8^2 == 10^2) // false Answer The circumflex&amp;nbsp;^ denotes bitwise&amp;nbsp;XOR in&amp;nbsp;Go. The computation written in base&amp;nbsp;2 looks like&amp;nbsp;this:
  0011 ^ 0010 == 0001 (3^2 == 1) 0100 ^ 0010 == 0110 (4^2 == 6) 0101 ^ 0010 == 0111 (5^2 == 7)  Of course, 1 + 6 == 7; Go and Pythagoras agree on that.</description>
     </item>
     
@@ -918,11 +912,10 @@ package main import ( &amp;quot;fmt&amp;quot; &amp;quot;net/http&amp;quot; ) fun
       
       <guid>https://yourbasic.org/golang/gotcha-concatenate-rune-string/</guid>
       <description>Why doesn&amp;rsquo;t these print statements give the same result?
-fmt.Println(&amp;quot;H&amp;quot; + &amp;quot;i&amp;quot;) fmt.Println(&#39;H&#39; + &#39;i&#39;)  Hi 177  Answer
-The rune literals &#39;H&#39; and &#39;i&#39; are integer values identifying Unicode code points: &#39;H&#39; is 72 and &#39;i&#39; is&amp;nbsp;105.
+fmt.Println(&amp;quot;H&amp;quot; + &amp;quot;i&amp;quot;) fmt.Println(&#39;H&#39; + &#39;i&#39;)  Hi 177  Answer The rune literals &#39;H&#39; and &#39;i&#39; are integer values identifying Unicode code points: &#39;H&#39; is 72 and &#39;i&#39; is&amp;nbsp;105.
 You can turn a code point into a string with a&amp;nbsp;conversion.
 fmt.Println(string(72) + string(&#39;i&#39;))// &#34;Hi&#34; You can also use the fmt.Sprintf function.
-s := fmt.Sprintf(&#34;%c%c, world!&#34;, 72, &#39;i&#39;) fmt.Println(s)// &#34;Hi, world!</description>
+s := fmt.Sprintf(&#34;%c%c, world!&#34;, 72, &#39;i&#39;) fmt.Println(s)// &#34;</description>
     </item>
     
     <item>
@@ -1073,8 +1066,7 @@ type Writer interface { Write(p []byte) (n int, err error) }  Write writes up to
       
       <guid>https://yourbasic.org/golang/gotcha-strings-are-immutable/</guid>
       <description>Why doesn&amp;rsquo;t this code compile?
-s := &#34;hello&#34; s[0] = &#39;H&#39; fmt.Println(s) ../main.go:3:7: cannot assign to s[0]  Answer
-Go strings are immutable and behave like read-only byte slices (with a few extra properties).
+s := &#34;hello&#34; s[0] = &#39;H&#39; fmt.Println(s) ../main.go:3:7: cannot assign to s[0]  Answer Go strings are immutable and behave like read-only byte slices (with a few extra properties).
 To update the data, use a rune slice instead.
 buf := []rune(&#34;hello&#34;) buf[0] = &#39;H&#39; s := string(buf) fmt.Println(s) // &#34;Hello&#34;  If the string only contains ASCII characters, you could also use a byte&amp;nbsp;slice.</description>
     </item>
@@ -1086,8 +1078,7 @@ buf := []rune(&#34;hello&#34;) buf[0] = &#39;H&#39; s := string(buf) fmt.Println
       
       <guid>https://yourbasic.org/golang/gotcha-index-out-of-range/</guid>
       <description>Why does this program crash?
-a := []int{1, 2, 3} for i := 1; i  panic: runtime error: index out of range goroutine 1 [running]: main.main() ../main.go:3 +0xe0  Answer
-In the last iteration, i equals len(a) which is outside the bounds of&amp;nbsp;a.
+a := []int{1, 2, 3} for i := 1; i  panic: runtime error: index out of range goroutine 1 [running]: main.main() ../main.go:3 +0xe0  Answer In the last iteration, i equals len(a) which is outside the bounds of&amp;nbsp;a.
 Arrays, slices and strings are indexed starting from zero so the values of a are found at a[0], a[1], a[2], …, a[len(a)-1].
 Loop from 0 to len(a)-1 instead.</description>
     </item>
@@ -1121,8 +1112,7 @@ By convention, the package name is the same as the last element of the import pa
       
       <guid>https://yourbasic.org/golang/gotcha-nil-pointer-dereference/</guid>
       <description>Why does this program panic?
-type Point struct { X, Y float64 } func (p *Point) Abs() float64 { return math.Sqrt(p.X*p.X + p.Y*p.Y) } func main() { var p *Point fmt.Println(p.Abs()) } panic: runtime error: invalid memory address or nil pointer dereference [signal SIGSEGV: segmentation violation code=0xffffffff addr=0x0 pc=0xd2c5a] goroutine 1 [running]: main.(*Point).Abs(...) ../main.go:6 main.main() ../main.go:11 +0x1a  Answer
-The uninitialized pointer p in the main function is nil, and you can’t follow the nil pointer.</description>
+type Point struct { X, Y float64 } func (p *Point) Abs() float64 { return math.Sqrt(p.X*p.X + p.Y*p.Y) } func main() { var p *Point fmt.Println(p.Abs()) } panic: runtime error: invalid memory address or nil pointer dereference [signal SIGSEGV: segmentation violation code=0xffffffff addr=0x0 pc=0xd2c5a] goroutine 1 [running]: main.(*Point).Abs(...) ../main.go:6 main.main() ../main.go:11 +0x1a  Answer The uninitialized pointer p in the main function is nil, and you can’t follow the nil pointer.</description>
     </item>
     
     <item>
@@ -1132,8 +1122,7 @@ The uninitialized pointer p in the main function is nil, and you can’t follow 
       
       <guid>https://yourbasic.org/golang/gotcha-regexp-substring/</guid>
       <description>Why does the regular expression [0-9]*, which is supposed to match a string with zero or more digits, match a string with characters in&amp;nbsp;it?
-matched, err := regexp.MatchString(`[0-9]*`, &#34;12three45&#34;) fmt.Println(matched) // true fmt.Println(err) // nil (regexp is valid)  Answer
-The function regexp.MatchString (as well as most functions in the regexp package) does substring matching.
+matched, err := regexp.MatchString(`[0-9]*`, &#34;12three45&#34;) fmt.Println(matched) // true fmt.Println(err) // nil (regexp is valid)  Answer The function regexp.MatchString (as well as most functions in the regexp package) does substring matching.
 To check if a full string matches [0-9]*, anchor the start and the end of the regular expression:</description>
     </item>
     
@@ -1144,8 +1133,7 @@ To check if a full string matches [0-9]*, anchor the start and the end of the re
       
       <guid>https://yourbasic.org/golang/gotcha-range-copy-array/</guid>
       <description>Why doesn&amp;rsquo;t the iteration variable x notice that a[1] has been updated?
-var a [2]int for _, x := range a { fmt.Println(&#34;x =&#34;, x) a[1] = 8 } fmt.Println(&#34;a =&#34;, a) x = 0 x = 0 &amp;lt;- Why isn&#39;t this 8? a = [0 8] Answer
-The range expression a is evaluated once before beginning the loop and a copy of the array is used to generate the iteration values.</description>
+var a [2]int for _, x := range a { fmt.Println(&#34;x =&#34;, x) a[1] = 8 } fmt.Println(&#34;a =&#34;, a) x = 0 x = 0 &amp;lt;- Why isn&#39;t this 8? a = [0 8] Answer The range expression a is evaluated once before beginning the loop and a copy of the array is used to generate the iteration values.</description>
     </item>
     
     <item>
@@ -1157,8 +1145,7 @@ The range expression a is evaluated once before beginning the loop and a copy of
       <description>Why does this program
 func main() { var wg sync.WaitGroup wg.Add(5) for i := 0; i  print
 55555  (A WaitGroup waits for a collection of goroutines to finish.)
-Answer
-There is a data race: the variable i is shared by six&amp;nbsp;(6) goroutines.
+Answer There is a data race: the variable i is shared by six&amp;nbsp;(6) goroutines.
  A data race occurs when two goroutines access the same variable concurrently and at least one of the accesses is a write.
  To avoid this, use a local variable and pass the number as a parameter when starting the goroutine.</description>
     </item>
@@ -1278,8 +1265,7 @@ func main() { fmt.Println(&amp;quot;Hello&amp;quot;) }  This is a trade-off in t
       
       <guid>https://yourbasic.org/golang/gotcha-multiple-value-single-value-context/</guid>
       <description>Why does this code give a compile error?
-t := time.Parse(time.RFC3339, &#34;2018-04-06T10:49:05Z&#34;) fmt.Println(t) ../main.go:9:17: multiple-value time.Parse() in single-value context  Answer
-The time.Parse function returns two values, a time.Time and an error, and you must use&amp;nbsp;both.
+t := time.Parse(time.RFC3339, &#34;2018-04-06T10:49:05Z&#34;) fmt.Println(t) ../main.go:9:17: multiple-value time.Parse() in single-value context  Answer The time.Parse function returns two values, a time.Time and an error, and you must use&amp;nbsp;both.
 t, err := time.Parse(time.RFC3339, &#34;2018-04-06T10:49:05Z&#34;) if err != nil { // TODO: Handle error. } fmt.Println(t) 2018-04-06 10:49:05 +0000 UTC Blank identifier (underscore) You can use the blank identifier to ignore unwanted return values.</description>
     </item>
     
@@ -1312,8 +1298,7 @@ The names are not mandatory but can make for good documentation. Correctly used,
       
       <guid>https://yourbasic.org/golang/gotcha-why-nil-error-not-equal-nil/</guid>
       <description>Why is nil not equal to nil in this example?
-func Foo() error { var err *os.PathError = nil // … return err } func main() { err := Foo() fmt.Println(err) // &amp;lt;nil&amp;gt; fmt.Println(err == nil) // false } Answer
-An interface value is equal to nil only if both its value and dynamic type are nil. In the example above, Foo() returns [nil, *os.PathError] and we compare it with [nil,&amp;nbsp;nil].</description>
+func Foo() error { var err *os.PathError = nil // … return err } func main() { err := Foo() fmt.Println(err) // &amp;lt;nil&amp;gt; fmt.Println(err == nil) // false } Answer An interface value is equal to nil only if both its value and dynamic type are nil. In the example above, Foo() returns [nil, *os.PathError] and we compare it with [nil,&amp;nbsp;nil].</description>
     </item>
     
     <item>
@@ -1323,8 +1308,7 @@ An interface value is equal to nil only if both its value and dynamic type are n
       
       <guid>https://yourbasic.org/golang/gotcha-json-marshal-empty/</guid>
       <description>Why does json.Marshal produce empty structs in the JSON text output?
-type Person struct { name string age int } p := Person{&#34;Alice&#34;, 22} jsonData, _ := json.Marshal(p) fmt.Println(string(jsonData)) {}  Answer
-Only exported fields of a Go struct will be present in the JSON output.
+type Person struct { name string age int } p := Person{&#34;Alice&#34;, 22} jsonData, _ := json.Marshal(p) fmt.Println(string(jsonData)) {}  Answer Only exported fields of a Go struct will be present in the JSON output.
 type Person struct { Name string // Changed to capital N Age int // Changed to capital A } p := Person{&#34;Alice&#34;, 22} jsonData, _ := json.</description>
     </item>
     
@@ -1335,8 +1319,7 @@ type Person struct { Name string // Changed to capital N Age int // Changed to c
       
       <guid>https://yourbasic.org/golang/gotcha-integer-overflow-wrap-around/</guid>
       <description>Why does this loop run forever?
-var b byte for b = 250; b  Answer
-After the b == 255 iteration, b++ is executed. This overflows (since the maximum value for a byte is 255) and results in b == 0. Therefore b &amp;lt;= 255 still holds and the loop restarts from&amp;nbsp;0.
+var b byte for b = 250; b  Answer After the b == 255 iteration, b++ is executed. This overflows (since the maximum value for a byte is 255) and results in b == 0. Therefore b &amp;lt;= 255 still holds and the loop restarts from&amp;nbsp;0.
   For unsigned integer values, the operations +, -, *, and &amp;lt;&amp;lt; are computed modulo 2n, where n is the bit width of the unsigned integer type.</description>
     </item>
     
@@ -1359,8 +1342,7 @@ package main var n = 1 func main() {} This is a trade-off in the design of the G
       
       <guid>https://yourbasic.org/golang/gotcha-octal-decimal-hexadecimal-literal/</guid>
       <description>What&amp;rsquo;s up with the counting in this example?
-const ( Century = 100 Decade = 010 Year = 001 ) // The world&#39;s oldest person, Emma Morano, lived for a century, // two decades and two years. fmt.Println(&#34;She was&#34;, Century+2*Decade+2*Year, &#34;years old.&#34;) She was 118 years old. Answer
-010 is a number in base&amp;nbsp;8, therefore it means&amp;nbsp;8, not&amp;nbsp;10.
+const ( Century = 100 Decade = 010 Year = 001 ) // The world&#39;s oldest person, Emma Morano, lived for a century, // two decades and two years. fmt.Println(&#34;She was&#34;, Century+2*Decade+2*Year, &#34;years old.&#34;) She was 118 years old. Answer 010 is a number in base&amp;nbsp;8, therefore it means&amp;nbsp;8, not&amp;nbsp;10.
 Integer literals in Go are specified in octal, decimal or hexadecimal.</description>
     </item>
     
@@ -1581,8 +1563,7 @@ Unicode, which is a superset of ASCII, defines a codespace of 1,114,112 code poi
       
       <guid>https://yourbasic.org/golang/gotcha-shadowing-variables/</guid>
       <description>Why doesn&amp;rsquo;t n change?
-func main() { n := 0 if true { n := 1 n++ } fmt.Println(n) // 0 } Answer
-The statement n := 1 declares a new variable which shadows the original n throughout the scope of the if&amp;nbsp;statement.
+func main() { n := 0 if true { n := 1 n++ } fmt.Println(n) // 0 } Answer The statement n := 1 declares a new variable which shadows the original n throughout the scope of the if&amp;nbsp;statement.
 To reuse n from the outer block, write n = 1 instead.
 func main() { n := 0 if true { n = 1 n++ } fmt.</description>
     </item>
@@ -1674,8 +1655,7 @@ package search // Find returns the smallest index i at which x   Put the test co
       
       <guid>https://yourbasic.org/golang/gotcha-multiply-duration-integer/</guid>
       <description>Why doesn&amp;rsquo;t this compile?
-n := 100 time.Sleep(n * time.Millisecond) invalid operation: n * time.Millisecond (mismatched types int and time.Duration)  Answer
-There is no mixing of numeric types in Go. You can only multiply a time.Duration with
+n := 100 time.Sleep(n * time.Millisecond) invalid operation: n * time.Millisecond (mismatched types int and time.Duration)  Answer There is no mixing of numeric types in Go. You can only multiply a time.Duration with
  another time.Duration, or an untyped integer constant.  Here are three correct examples.
 var n time.Duration = 100 time.Sleep(n * time.Millisecond)  const n = 100 time.Sleep(n * time.Millisecond)  time.</description>
     </item>
@@ -1743,8 +1723,7 @@ The type assertion x.(T) asserts that the concrete value stored in&amp;nbsp;x is
       
       <guid>https://yourbasic.org/golang/gotcha-increment-decrement-statement/</guid>
       <description>Why doesn&amp;rsquo;t these lines compile?
-i := 0 fmt.Println(++i) fmt.Println(i++) main.go:9:14: syntax error: unexpected ++, expecting expression main.go:10:15: syntax error: unexpected ++, expecting comma or )  Answer
-In Go increment and decrement operations can’t be used as expressions, only as statements. Also, only the postfix notation is&amp;nbsp;allowed.
+i := 0 fmt.Println(++i) fmt.Println(i++) main.go:9:14: syntax error: unexpected ++, expecting expression main.go:10:15: syntax error: unexpected ++, expecting comma or )  Answer In Go increment and decrement operations can’t be used as expressions, only as statements. Also, only the postfix notation is&amp;nbsp;allowed.
 The above snippet needs to be written as:
 i := 0 i++ fmt.Println(i) fmt.Println(i) i++  Without pointer arithmetic, the convenience value of pre- and postfix increment operators drops.</description>
     </item>
@@ -1756,8 +1735,7 @@ i := 0 i++ fmt.Println(i) fmt.Println(i) i++  Without pointer arithmetic, the co
       
       <guid>https://yourbasic.org/golang/gotcha-missing-comma-slice-array-map-literal/</guid>
       <description>Why doesn&amp;rsquo;t this program compile?
-func main() { fruit := []string{ &#34;apple&#34;, &#34;banana&#34;, &#34;cherry&#34; } fmt.Println(fruit) } ../main.go:5:11: syntax error: unexpected newline, expecting comma or }  Answer
-In a multi-line slice, array or map literal, every line must end with a comma.
+func main() { fruit := []string{ &#34;apple&#34;, &#34;banana&#34;, &#34;cherry&#34; } fmt.Println(fruit) } ../main.go:5:11: syntax error: unexpected newline, expecting comma or }  Answer In a multi-line slice, array or map literal, every line must end with a comma.
 func main() { fruit := []string{ &#34;apple&#34;, &#34;banana&#34;, &#34;cherry&#34;, // comma added } fmt.Println(fruit) // &#34;[apple banana cherry]&#34; } This behavior is a consequence of the Go semicolon insertion rules.</description>
     </item>
     
@@ -1769,8 +1747,7 @@ func main() { fruit := []string{ &#34;apple&#34;, &#34;banana&#34;, &#34;cherry&
       <guid>https://yourbasic.org/golang/gotcha-unexpected-values-range/</guid>
       <description>Why does this code
 primes := []int{2, 3, 5, 7} for p := range primes { fmt.Println(p) } print
-0 1 2 3  Answer
-For arrays and slices, the range loop generates two&amp;nbsp;values:
+0 1 2 3  Answer For arrays and slices, the range loop generates two&amp;nbsp;values:
   first the index,  then the data at this position.  If you omit the second value, you get only the indices.
 To print the data, use the second value instead:
 primes := []int{2, 3, 5, 7} for _, p := range primes { fmt.</description>
@@ -1847,8 +1824,7 @@ var wg sync.WaitGroup wg.Add(2) go func() { // Do work. wg.Done() }() go func() 
       
       <guid>https://yourbasic.org/golang/gotcha-trim-string/</guid>
       <description>What&amp;rsquo;s up with strings.TrimRight?
-fmt.Println(strings.TrimRight(&#34;ABBA&#34;, &#34;BA&#34;)) // Output: &#34;&#34;  Answer
-The Trim, TrimLeft and TrimRight functions strip all Unicode code points contained in a cutset. In this case, all trailing A:s and B:s are stripped from the string, leaving the empty string.
+fmt.Println(strings.TrimRight(&#34;ABBA&#34;, &#34;BA&#34;)) // Output: &#34;&#34;  Answer The Trim, TrimLeft and TrimRight functions strip all Unicode code points contained in a cutset. In this case, all trailing A:s and B:s are stripped from the string, leaving the empty string.
 To strip a trailing string, use strings.TrimSuffix.
 fmt.Println(strings.TrimSuffix(&#34;ABBA&#34;, &#34;BA&#34;)) // Output: &#34;AB&#34;  See String functions cheat sheet for more about strings in&amp;nbsp;Go.</description>
     </item>
@@ -1860,8 +1836,7 @@ fmt.Println(strings.TrimSuffix(&#34;ABBA&#34;, &#34;BA&#34;)) // Output: &#34;AB
       
       <guid>https://yourbasic.org/golang/gotcha-remainder-modulo-operator/</guid>
       <description>Why isn&amp;rsquo;t -1 odd?
-func Odd(n int) bool { return n%2 == 1 } func main() { fmt.Println(Odd(-1)) // false } Answer
-The remainder operator can give negative answers if the dividend is negative: if n is an odd negative number, n&amp;nbsp;%&amp;nbsp;2 equals&amp;nbsp;-1.
+func Odd(n int) bool { return n%2 == 1 } func main() { fmt.Println(Odd(-1)) // false } Answer The remainder operator can give negative answers if the dividend is negative: if n is an odd negative number, n&amp;nbsp;%&amp;nbsp;2 equals&amp;nbsp;-1.
 The quotient q = x&amp;nbsp;/&amp;nbsp;y and remainder r = x&amp;nbsp;%&amp;nbsp;y satisfy the relationships
 x = q*y + r and |r| &amp;lt; |y|  where x / y is truncated towards zero.</description>
     </item>
@@ -1873,8 +1848,7 @@ x = q*y + r and |r| &amp;lt; |y|  where x / y is truncated towards zero.</descri
       
       <guid>https://yourbasic.org/golang/gotcha-copy-missing/</guid>
       <description>Why does the copy disappear?
-var src, dst []int src = []int{1, 2, 3} copy(dst, src) // Copy elements to dst from src. fmt.Println(&#34;dst:&#34;, dst) dst: []  Answer
-The number of elements copied by the copy function is the minimum of len(dst) and len(src). To make a full copy, you must allocate a big enough destination slice. var src, dst []int src = []int{1, 2, 3} dst = make([]int, len(src)) n := copy(dst, src) fmt.</description>
+var src, dst []int src = []int{1, 2, 3} copy(dst, src) // Copy elements to dst from src. fmt.Println(&#34;dst:&#34;, dst) dst: []  Answer The number of elements copied by the copy function is the minimum of len(dst) and len(src). To make a full copy, you must allocate a big enough destination slice. var src, dst []int src = []int{1, 2, 3} dst = make([]int, len(src)) n := copy(dst, src) fmt.</description>
     </item>
     
     <item>
@@ -1907,8 +1881,7 @@ As a CS professor and longtime Go and Java developer, I&amp;rsquo;d like to shar
       
       <guid>https://yourbasic.org/golang/gotcha-append/</guid>
       <description>What&amp;rsquo;s up with the append function?
-a := []byte(&#34;ba&#34;) a1 := append(a, &#39;d&#39;) a2 := append(a, &#39;g&#39;) fmt.Println(string(a1)) // bag fmt.Println(string(a2)) // bag Answer
-If there is room for more elements, append reuses the underlying array. Let&#39;s take a&amp;nbsp;look:
+a := []byte(&#34;ba&#34;) a1 := append(a, &#39;d&#39;) a2 := append(a, &#39;g&#39;) fmt.Println(string(a1)) // bag fmt.Println(string(a2)) // bag Answer If there is room for more elements, append reuses the underlying array. Let&#39;s take a&amp;nbsp;look:
 a := []byte(&#34;ba&#34;) fmt.Println(len(a), cap(a)) // 2 32 This means that the slices a, a1 and a2 will refer to the same underlying array in our example.
 To avoid this, we need to use two separate byte&amp;nbsp;arrays.</description>
     </item>

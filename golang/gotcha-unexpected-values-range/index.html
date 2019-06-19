@@ -85,6 +85,8 @@
 <h1>Unexpected values in range loop</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
+
+
 <!-- CC0: https://www.maxpixel.net/Man-People-Human-Age-Senior-New-Media-Surprise-1332348 -->
 
 <div style="margin-top:1em;"><img src="/golang/surprised-man.jpg"></div>
@@ -104,8 +106,7 @@ for p := range primes {
 3
 </code></pre>
 
-<p><details class="answer">
-<summary class="answer">Answer</summary></p>
+<h2 id="answer">Answer</h2>
 
 <p>For arrays and slices, the range loop generates <strong>two&nbsp;values</strong>:</p>
 
@@ -127,8 +128,6 @@ for <span class="highlight">_, </span>p := range primes {
 <p>In this case, the blank identifier (underscore) is used for the return value you're not interested&nbsp;in.</p>
 
 <p>See <a href="/golang/for-loop-range-array-slice-map-channel/">4 basic range loop (for-each) patterns</a> for all about range loops in&nbsp;Go.</p>
-
-<p></details></p>
 
 <ul class="pagina">
   

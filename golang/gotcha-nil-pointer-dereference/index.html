@@ -85,6 +85,8 @@
 <h1>Invalid memory address or nil pointer dereference</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
+
+
 <!-- CC BY 2.0: https://www.flickr.com/photos/vinayshivakumar/3280705941 -->
 
 <div style="margin-top:1em;"><img src="/golang/confused.jpg"></div>
@@ -114,8 +116,7 @@ main.main()
 	../main.go:11 +0x1a
 </code></pre>
 
-<p><details class="answer">
-<summary class="answer">Answer</summary></p>
+<h2 id="answer">Answer</h2>
 
 <p>The uninitialized pointer <code>p</code> in the <code>main</code> function is <code>nil</code>,
 and you can’t follow the nil pointer.</p>
@@ -141,8 +142,6 @@ you could also skip the pointer altogether:</p>
 }</code></pre>
 
 <p>See <a href="/golang/pointers-explained/">Pointers</a> for more about pointers in&nbsp;Go.</p>
-
-<p></details></p>
 
 <ul class="pagina">
   

@@ -85,6 +85,8 @@
 <h1>What happened to ABBA?</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
+
+
 <!-- CC BY 3.0: https://en.wikipedia.org/wiki/File:ABBA_Edmonton_1979_001.jpg -->
 
 <div style="margin-top:1em;"><img src="/golang/abba.jpg"></div>
@@ -94,8 +96,7 @@
 <pre><code>fmt.Println(strings.TrimRight("ABBA", "BA")) <span class="comment">// Output: ""</span>
 </code></pre>
 
-<p><details class="answer">
-<summary class="answer">Answer</summary></p>
+<h2 id="answer">Answer</h2>
 
 <p>The <code>Trim</code>, <code>TrimLeft</code> and <code>TrimRight</code> functions strip all Unicode code points contained in a <b>cutset</b>.
 In this case, all trailing A:s and B:s are stripped from the string, leaving the empty string.</p>
@@ -107,8 +108,6 @@ In this case, all trailing A:s and B:s are stripped from the string, leaving the
 </code></pre>
 
 <p>See <a href="/golang/string-functions-reference-cheat-sheet/">String functions cheat sheet</a> for more about strings in&nbsp;Go.</p>
-
-<p></details></p>
 
 <ul class="pagina">
   

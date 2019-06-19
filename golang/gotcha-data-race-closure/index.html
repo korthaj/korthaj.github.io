@@ -85,6 +85,8 @@
 <h1>Iteration variables and closures</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
+
+
 <!-- CC BY-NC 2.0: http://www.flickr.com/photos/brandoncwarren/2953838847/ -->
 
 <div style="margin-top:1em;"><img src="/golang/mid-action.jpg"></div>
@@ -111,8 +113,7 @@
 
 <p>(A <a href="/golang/wait-for-goroutines-waitgroup/">WaitGroup</a> waits for a collection of goroutines to finish.)</p>
 
-<p><details class="answer">
-<summary class="answer">Answer</summary></p>
+<h2 id="answer">Answer</h2>
 
 <p>There is a <strong>data race</strong>: the variable <code>i</code> is shared
 by six&nbsp;(6) goroutines.</p>
@@ -159,8 +160,6 @@ but then we must take care to use a unique variable for each goroutine.</p>
 }</code></pre>
 
 <p>See <a href="/golang/data-races-explained">Data races</a> for a detailed explanation of data races in&nbsp;Go.</p>
-
-<p></details></p>
 
 <ul class="pagina">
   

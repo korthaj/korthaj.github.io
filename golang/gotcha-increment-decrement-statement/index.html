@@ -85,6 +85,8 @@
 <h1>Unexpected &#43;&#43;, expecting expression</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
+
+
 <!-- CC BY-NC-ND 2.0: https://www.flickr.com/photos/ruminatrix/3052493260/ -->
 
 <div style="margin-top:1em;"><img src="/golang/syntax-terror-640.jpg"></div>
@@ -99,8 +101,7 @@ fmt.Println(i++)</code></pre>
 main.go:10:15: syntax error: unexpected ++, expecting comma or )
 </code></pre>
 
-<p><details class="answer">
-<summary class="answer">Answer</summary></p>
+<h2 id="answer">Answer</h2>
 
 <p>In Go increment and decrement operations can’t be used as expressions, only as <strong>statements</strong>.
 Also, only the <strong>postfix notation</strong> is&nbsp;allowed.</p>
@@ -117,8 +118,6 @@ i++</code></pre>
   <p>Without pointer arithmetic, the convenience value of pre- and postfix increment operators drops. By removing them from the expression hierarchy altogether, expression syntax is simplified and the messy issues around order of evaluation of <code>++</code> and <code>--</code> (consider <code>f(i++)</code> and <code>p[i] = q[++i]</code>) are eliminated as well. The simplification is&nbsp;significant.
 <a class="quote-source" href="https://golang.org/doc/faq#inc_dec">Go FAQ: Why are ++ and – statements and not expressions?</a></p>
 </blockquote>
-
-<p></details></p>
 
 <ul class="pagina">
   

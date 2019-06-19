@@ -99,8 +99,7 @@ fmt.Println(t)</code></pre>
 <pre><code>../main.go:9:17: multiple-value time.Parse() in single-value context
 </code></pre>
 
-<p><details class="answer">
-<summary class="answer">Answer</summary></p>
+<h2 id="answer">Answer</h2>
 
 <p>The <a href="https://golang.org/pkg/time/#Parse"><code>time.Parse</code></a> function returns two values,
 a <a href="https://golang.org/pkg/time/#Time"><code>time.Time</code></a> and
@@ -122,8 +121,6 @@ to ignore unwanted return values.</p>
 <pre><code>m := map[string]float64{"pi": 3.1416}
 _, exists := m["pi"] <span class="comment">// exists == true</span>
 </code></pre>
-
-<p></details></p>
 
 <ul class="pagina">
   

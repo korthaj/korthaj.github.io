@@ -85,6 +85,8 @@
 <h1>Iteration variable doesn’t see change in range loop</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
+
+
 <!-- CC0: https://www.maxpixel.net/Astonished-Family-Young-Surprise-Child-Baby-Joy-216876 -->
 
 <div style="margin-top:1em;"><img src="/golang/astonished-boy.jpg"></div>
@@ -102,8 +104,7 @@ fmt.Println("a =", a)</code></pre>
 x = 0        <span class="comment">&lt;- Why isn't this 8?</span>
 a = [0 8]</code></pre>
 
-<p><details class="answer">
-<summary class="answer">Answer</summary></p>
+<h2 id="answer">Answer</h2>
 
 <p>The range expression <code>a</code> is evaluated once before beginning the loop
 and a copy of the array is used to generate the iteration values.</p>
@@ -124,8 +125,6 @@ a = [0 8]
 </code></pre>
 
 <p>See <a href="/golang/for-loop-range-array-slice-map-channel/">4 basic range loop (for-each) patterns</a> for all about range loops in&nbsp;Go.</p>
-
-<p></details></p>
 
 <ul class="pagina">
   

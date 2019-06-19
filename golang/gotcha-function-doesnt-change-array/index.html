@@ -85,6 +85,8 @@
 <h1>Array won’t change</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
+
+
 <!-- CC0: https://pxhere.com/fr/photo/995842 -->
 
 <div style="margin-top:1em;"><img src="/golang/sticky-gum-under-shoe.jpg"></div>
@@ -101,8 +103,7 @@ func main() {
     fmt.Println(a) <span class="comment">// Output: [1 2]</span>
 }</code></pre>
 
-<p><details class="answer">
-<summary class="answer">Answer</summary></p>
+<h2 id="answer">Answer</h2>
 
 <ul>
 <li>Arrays in Go are <b>values</b>.</li>
@@ -128,8 +129,6 @@ func main() {
 <p>When you change an element of a slice, you modify the corresponding element of its underlying array, and other slices that share the same underlying array will see the change.</p>
 
 <p>See <a href="/golang/slices-explained/">Slices and arrays in 6 easy steps</a> for all about slices in&nbsp;Go.</p>
-
-<p></details></p>
 
 <ul class="pagina">
   

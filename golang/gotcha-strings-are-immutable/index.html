@@ -85,6 +85,8 @@
 <h1>Immutable strings</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
+
+
 <!-- CC0: https://www.publicdomainpictures.net/en/view-image.php?image=91579&picture=locked-gate-padlock-chain -->
 
 <div style="margin-top:1em;"><img src="/golang/locked-gate.jpg"></div>
@@ -98,8 +100,7 @@ fmt.Println(s)</code></pre>
 <pre><code>../main.go:3:7: cannot assign to s[0]
 </code></pre>
 
-<p><details class="answer">
-<summary class="answer">Answer</summary></p>
+<h2 id="answer">Answer</h2>
 
 <p>Go strings are immutable and behave like read-only byte slices (with a few extra properties).</p>
 
@@ -114,8 +115,6 @@ fmt.Println(s)  <span class="comment">// "Hello"</span>
 <p>If the string only contains ASCII characters, you could also use a byte&nbsp;slice.</p>
 
 <p>See <a href="/golang/string-functions-reference-cheat-sheet/">String functions cheat sheet</a> for an overview of strings in&nbsp;Go.</p>
-
-<p></details></p>
 
 <ul class="pagina">
   

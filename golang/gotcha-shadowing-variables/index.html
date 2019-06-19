@@ -85,6 +85,8 @@
 <h1>Shadowed variables</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
+
+
 <!-- CC0: https://pxhere.com/en/photo/1169066 -->
 
 <div style="margin-top:1em;"><img src="/golang/man-in-shadow.jpg"></div>
@@ -100,8 +102,7 @@
     fmt.Println(n) <span class="comment">// 0</span>
 }</code></pre>
 
-<p><details class="answer">
-<summary class="answer">Answer</summary></p>
+<h2 id="answer">Answer</h2>
 
 <p>The statement <code>n := 1</code> declares a new variable which <strong>shadows</strong> the original <code>n</code> throughout the scope of the if&nbsp;statement.</p>
 
@@ -143,8 +144,6 @@ go vet -vettool=$(which shadow)
 
 <pre><code>../main.go:4:3: err is shadowed during return
 </code></pre>
-
-<p></details></p>
 
 <ul class="pagina">
   

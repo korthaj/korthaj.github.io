@@ -85,6 +85,8 @@
 <h1>No end in sight</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
+
+
 <!-- CC BY 2.0: https://www.flickr.com/photos/nanpalmero/4348149625 -->
 
 <div style="margin-top:1em;"><img src="/golang/1-infinite-loop.jpg"></div>
@@ -96,8 +98,7 @@ for b = 250; b <= 255; b++ {
     fmt.Printf("%d %c\n", b, b)
 }</code></pre>
 
-<p><details class="answer">
-<summary class="answer">Answer</summary></p>
+<h2 id="answer">Answer</h2>
 
 <p>After the <code>b == 255</code> iteration, <code>b++</code> is executed. This overflows (since the maximum value for a byte is 255) and results in <code>b == 0</code>. Therefore <code>b &lt;= 255</code> still holds and the loop restarts from&nbsp;0.</p>
 
@@ -159,8 +160,6 @@ for b = 250; b &lt; 256; b++ {
 254 þ
 255 ÿ
 </code></pre>
-
-<p></details></p>
 
 <ul class="pagina">
   

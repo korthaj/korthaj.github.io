@@ -85,6 +85,8 @@
 <h1>Unexpected newline</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
+
+
 <!-- CC BY-SA 2.0: https://www.flickr.com/photos/sfllaw/3186749460 -->
 
 <div style="margin-top:1em;"><img src="/golang/surprise.jpg"></div>
@@ -103,8 +105,7 @@
 <pre><code>../main.go:5:11: syntax error: unexpected newline, expecting comma or }
 </code></pre>
 
-<p><details class="answer">
-<summary class="answer">Answer</summary></p>
+<h2 id="answer">Answer</h2>
 
 <p>In a multi-line slice, array or map literal, every line <b>must end with a comma</b>.</p>
 
@@ -120,8 +121,6 @@
 <p>This behavior is a consequence of the Go <a href="https://golang.org/ref/spec#Semicolons">semicolon insertion rules</a>.</p>
 
 <p>As a result, you can add and remove lines without modifying the surrounding&nbsp;code.</p>
-
-<p></details></p>
 
 <ul class="pagina">
   

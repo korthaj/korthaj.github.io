@@ -85,6 +85,8 @@
 <h1>Nil is not nil</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
+
+
 <!--CC BY 2.0: https://www.flickr.com/photos/davidpacey1975/9049992204 -->
 
 <div style="margin-top:1em;"><img src="/golang/odd-one-out.jpg"></div>
@@ -103,8 +105,7 @@ func main() {
     fmt.Println(<b>err == nil</b>) <span class="comment">// <b>false</b></span>
 }</code></pre>
 
-<p><details class="answer">
-<summary class="answer">Answer</summary></p>
+<h2 id="answer">Answer</h2>
 
 <p>An interface value is equal to <code>nil</code> only if both its value and dynamic type are <code>nil</code>.
 In the example above, <code>Foo()</code> returns <code>[nil, *os.PathError]</code> and we compare it with <code>[nil,&nbsp;nil]</code>.</p>
@@ -117,7 +118,7 @@ If we convert <code>nil</code> to the correct type, the values are indeed equal.
 fmt.Println(err == <b>(*os.PathError)(nil)</b>) <span class="comment">// <b>true</b></span>
 …</code></pre>
 
-<p><h2 id="a-better-approach">A better approach</h2>
+<p><h3 id="a-better-approach">A better approach</h3>
 <p>To avoid this problem use a variable of type <code>error</code> instead, for example a <a href="/golang/named-return-values-parameters/">named return value</a>.</p></p>
 
 <pre><code class="skiphl">func Foo() (err error) {
@@ -138,8 +139,6 @@ func main() {
 <div><a href="/golang/interfaces-explained/"><img src="/golang/connection-thumb.jpg" title="Interfaces in 5 easy steps"></a></div>
 
 <p style="margin-top:0;">See <a href="/golang/interfaces-explained/">Interfaces in 5 easy steps</a> for an extensive guide to interfaces in&nbsp;Go.</p>
-
-<p></details></p>
 
 <ul class="pagina">
   
