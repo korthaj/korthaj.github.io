@@ -125,7 +125,7 @@ fmt.Println(string(a2)) <span class="comment">// bag</span></code></pre>
 
 <h2 id="the-scary-case-it-worked-for-me">The scary case: It &ldquo;worked&rdquo; for me</h2>
 
-<p>In some implementations <code>[]byte(&quot;ba&quot;)</code>
+<p>In some Go implementations <code>[]byte(&quot;ba&quot;)</code>
 only allocates two bytes, and then the code seems to work: the first string
 is <code>&quot;bad&quot;</code> and the second one&nbsp;<code>&quot;bag&quot;</code>.</p>
 
