@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/panic-face.jpg"
    ],
   "datePublished": "2018-07-29T00:00:00&#43;0000",
-  "dateModified": "2019-05-25T00:00:00&#43;0000",
+  "dateModified": "2019-06-20T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -105,19 +105,6 @@ m["pi"] = 3.1416</code></pre>
 
 <pre><code>m := make(map[string]float64)
 m["pi"] = 3.1416</code></pre>
-
-<blockquote><p>
-A new, empty map value is made using the built-in function <code>make</code>,
-which takes the map type and an optional capacity hint as arguments:
-
-<pre><code>make(map[string]int)
-make(map[string]int, 100)</code></pre>
-
-The initial capacity does not bound its size: maps grow to accommodate
-the number of items stored in them, with the exception of nil maps.
-<em>A nil map is equivalent to an empty map except that no elements may be added.</em>
-<a class="quote-source" href="https://golang.org/ref/spec#Map_types">The Go Programming Language Specification: Map types</a>
-</p></blockquote>
 
 <p>See <a href="/golang/maps-explained/">Maps explained</a> for more about maps.</p>
 
