@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/numbers-1-2-3.jpg"
    ],
   "datePublished": "2018-05-16T00:00:00&#43;0000",
-  "dateModified": "2019-04-09T00:00:00&#43;0000",
+  "dateModified": "2019-06-26T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -91,17 +91,15 @@
 <div style="margin-top:1em"><img src="/golang/numbers-1-2-3.jpg"></div>
 
 <ul class="toc">
-  <li><a href="#int-to-string">int to string</a></li>
-  <li><a href="#int64-to-string">int64 to string</a></li>
-  <li><a href="#string-to-int-parsing">string to int (parsing)</a></li>
-  <li><a href="#string-to-int64">string to int64</a></li>
+  <li><a href="#int-int64-to-string">int/int64 to string</a></li>
+  <li><a href="#string-to-int-int64">string to int/int64</a></li>
   <li><a href="#int-to-int64-and-back">int to int64 (and back)</a></li>
   <li><a href="#general-formatting-width-indent-sign">General formatting (width, indent, sign)</a></li>
 </ul>
 
-<h2 id="int-to-string">int to string</h2>
+<h2 id="int-int64-to-string">int/int64 to string</h2>
 
-<p>Use the <a href="https://golang.org/pkg/strconv/#Itoa"><code>strconv.Itoa</code></a> function to convert an int to a decimal string.</p>
+<p>Use <a href="https://golang.org/pkg/strconv/#Itoa"><code>strconv.Itoa</code></a> to convert an int to a decimal string.</p>
 
 <pre><code>s := strconv.Itoa(97) <span class="comment">// s == "97"</span></code></pre>
 
@@ -114,10 +112,8 @@ and the resulting string will contain the character represented by that code poi
 </code></pre>
 </blockquote>
 
-<h2 id="int64-to-string">int64 to string</h2>
-
 <p>Use <a href="https://golang.org/pkg/strconv/#FormatInt"><code>strconv.FormatInt</code></a>
-to format an integer in a given base.</p>
+to format an int64 in a given base.</p>
 
 <pre><code>var n int64 = 97
 s := strconv.FormatInt(n, 10) <span class="comment">// s == "97" (decimal)</span>
@@ -127,7 +123,7 @@ s := strconv.FormatInt(n, 10) <span class="comment">// s == "97" (decimal)</span
 s := strconv.FormatInt(n, 16) <span class="comment">// s == "61" (hexadecimal)</span>
 </code></pre>
 
-<h2 id="string-to-int-parsing">string to int (parsing)</h2>
+<h2 id="string-to-int-int64">string to int/int64</h2>
 
 <p>Use <a href="https://golang.org/pkg/strconv/#Atoi"><code>strconv.Atoi</code></a> to parse a decimal string to an&nbsp;int.</p>
 
@@ -139,12 +135,8 @@ if n, err := strconv.Atoi(s); err == nil {
 }
 <span class="comment">// Output: 98</span></code></pre>
 
-<p>The call <code>strconv.Atoi(s)</code> is equivalent to <code><a href="https://golang.org/pkg/strconv/#ParseInt">strconv.ParseInt</a>(s, 10, 0)</code> converted to an&nbsp;<code>int</code>. See the next section for more details.</p>
-
-<h2 id="string-to-int64">string to int64</h2>
-
 <p>Use <a href="https://golang.org/pkg/strconv/#ParseInt"><code>strconv.ParseInt</code></a>
-to parse a decimal string (base&nbsp;<code>10</code>) and check if it fits into a <code>64</code>-bit signed integer.</p>
+to parse a decimal string (base&nbsp;<code>10</code>) and check if it fits into an&nbsp;int64.</p>
 
 <pre><code>s := "97"
 n, err := strconv.ParseInt(s, 10, 64)
@@ -166,7 +158,7 @@ Bit sizes 0, 8, 16, 32, and 64 correspond to <code>int</code>, <code>int8</code>
 
 <p>The size of an <code>int</code> is implementation-specific,
 it&rsquo;s either 32 or 64&nbsp;bits, and hence you won&rsquo;t lose any
-information when converting from <code>int</code> to &nbsp;<code>int64</code>.</p>
+information when converting from int to &nbsp;int64.</p>
 
 <pre><code>var n int = 97
 m := <b>int64(n)</b> <span class="comment">// safe</span>
@@ -201,7 +193,7 @@ is a useful general tool for converting data to&nbsp;string:</p>
 
 <div><a href="/golang/fmt-printf-reference-cheat-sheet/"><img src="/golang/format-thumb.jpg" title="fmt cheat sheet"></a></div>
 
-<p style="margin-top:0; margin-bottom:2em;">See this <a href="/golang/fmt-printf-reference-cheat-sheet/">fmt cheat sheet</a> for more about formatting with the fmt package.</p>
+<p style="margin-top:0; margin-bottom:2em;">See this <a href="/golang/fmt-printf-reference-cheat-sheet/">fmt cheat sheet</a> for more about formatting integers and other types of data with the fmt package.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
 <a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fconvert-int-to-string%2f&amp;text=Convert%20between%20int,%20int64%20and%20string&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;

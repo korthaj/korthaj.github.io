@@ -450,8 +450,8 @@ x := 5.1 n := int(x) // convert float to int The conversion rules are extensive 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/convert-int-to-string/</guid>
-      <description>int to string int64 to string string to int (parsing) string to int64 int to int64 (and back) General formatting (width, indent, sign)  int to string Use the strconv.Itoa function to convert an int to a decimal string.
-s := strconv.Itoa(97) // s == &#34;97&#34; Warning: In a plain conversion the value is interpreted as a Unicode code point, and the resulting string will contain the character represented by that code point, encoded in UTF-8.</description>
+      <description>int/int64 to string string to int/int64 int to int64 (and back) General formatting (width, indent, sign)  int/int64 to string Use strconv.Itoa to convert an int to a decimal string.
+s := strconv.Itoa(97) // s == &#34;97&#34; Warning: In a plain conversion the value is interpreted as a Unicode code point, and the resulting string will contain the character represented by that code point, encoded in UTF-8. s := string(97) // s == &#34;</description>
     </item>
     
     <item>
