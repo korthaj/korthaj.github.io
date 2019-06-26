@@ -766,7 +766,7 @@ A type switch lets you choose between types Use a type switch to do several type
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/format-parse-string-time-date-example/</guid>
-      <description>Basic example Common layouts Predefined layouts Layout options Corner cases  Basic example Go doesn&amp;rsquo;t use yyyy-mm-dd layout to format a time. Instead, you format a special layout parameter
+      <description>Basic example Standard time and date formats Layout options Corner cases  Basic example Go doesn&amp;rsquo;t use yyyy-mm-dd layout to format a time. Instead, you format a special layout parameter
 Mon Jan 2 15:04:05 MST 2006
 the same way as the time or date should be formatted. (This date is easier to remember when written as 01/02&amp;nbsp;03:04:05PM&amp;nbsp;&amp;lsquo;06&amp;nbsp;-0700.)
 const ( layoutISO = &#34;2006-01-02&#34; layoutUS = &#34;January 2, 2006&#34; ) date := &#34;</description>
