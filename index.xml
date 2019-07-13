@@ -1517,6 +1517,15 @@ Integer literals in Go are specified in octal, decimal or hexadecimal.</descript
     </item>
     
     <item>
+      <title>O(n log log n) time integer sorting</title>
+      <link>https://yourbasic.org/algorithms/fastest-sorting-algorithm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/algorithms/fastest-sorting-algorithm/</guid>
+      <description>The fastest sorting algorithm? The problem The algorithm Reducing number size Fast merging of short numbers    The fastest sorting algorithm?  Which sorting algorithm is the fastest? Ask this question to any group of programmers and you’ll get an animated discussion. Of course, there is no one answer. It depends not only on the algorithm, but also on the computer, data, and implementation. However, if you count the number of operations needed to sort integer numbers on a standard von Neumann computer, there is a clear winner – the algorithm presented in the paper “Sorting In Linear Time?</description>
+    </item>
+    
+    <item>
       <title>Object-oriented programming without inheritance</title>
       <link>https://yourbasic.org/golang/inheritance-object-oriented/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1837,16 +1846,6 @@ package search // Find returns the smallest index i at which x   Put the test co
       
       <guid>https://yourbasic.org/golang/empty-interface/</guid>
       <description>See Interfaces in a nutshell.</description>
-    </item>
-    
-    <item>
-      <title>The fastest sorting algorithm?</title>
-      <link>https://yourbasic.org/algorithms/fastest-sorting-algorithm/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/algorithms/fastest-sorting-algorithm/</guid>
-      <description>Integer sorting in O(n&amp;nbsp;log&amp;nbsp;log&amp;nbsp;n) time
-  Which sorting algorithm is the fastest? Ask this question to any group of programmers and you’ll get an animated discussion. Of course, there is no one answer. It depends not only on the algorithm, but also on the computer, data, and implementation. However, if you count the number of operations needed to sort integer numbers on a standard von Neumann computer, there is a clear winner – the algorithm presented in the paper “Sorting In Linear Time?</description>
     </item>
     
     <item>

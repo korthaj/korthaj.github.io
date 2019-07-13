@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The fastest sorting algorithm? · YourBasic </title>
+  <title>O(n log log n) time integer sorting · YourBasic </title>
   <meta name="description" content="Which sorting algorithm is the fastest? If you count the number of operations needed to sort integer numbers, there is a clear winner. You can sort n integers in O(n log log n) time.">
   
   <link rel="stylesheet" href="/style.css">
@@ -30,12 +30,12 @@
     "@type": "WebPage",
     "@id": "https://yourbasic.org/algorithms/fastest-sorting-algorithm/"
   },
-  "headline": "The fastest sorting algorithm?",
+  "headline": "O(n log log n) time integer sorting",
   "image": [
     "https://yourbasic.org/algorithms/sorted.jpg"
    ],
   "datePublished": "2018-01-26T00:00:00&#43;0000",
-  "dateModified": "2018-04-22T00:00:00&#43;0000",
+  "dateModified": "2019-07-13T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -54,13 +54,13 @@
 
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="The fastest sorting algorithm?">
+<meta property="og:title" content="O(n log log n) time integer sorting">
 <meta property="og:description" content="Which sorting algorithm is the fastest? If you count the number of operations needed to sort integer numbers, there is a clear winner. You can sort n integers in O(n log log n) time.">
 <meta property="og:url" content="https://yourbasic.org/algorithms/fastest-sorting-algorithm/">
 <meta property="og:image" content="https://yourbasic.org/algorithms/sorted.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The fastest sorting algorithm?">
+<meta name="twitter:title" content="O(n log log n) time integer sorting">
 <meta name="twitter:description" content="Which sorting algorithm is the fastest? If you count the number of operations needed to sort integer numbers, there is a clear winner. You can sort n integers in O(n log log n) time.">
 <meta name="twitter:site" content="@yourbasic_org">
 <meta name="twitter:image" content="https://yourbasic.org/algorithms/sorted.jpg">
@@ -82,15 +82,26 @@
 
 <main>
 <article>
-<h1>The fastest sorting algorithm?</h1>
+<h1>O(n log log n) time integer sorting</h1>
 <div class="tagline">yourbasic.org</div>
 
 
-<p class="lead">Integer sorting in O(<i>n</i>&nbsp;log&nbsp;log&nbsp;<i>n</i>) time</p>
-
 <!-- CC BY-NC 2.0: http://www.flickr.com/photos/davidsingleton/2175975083/ -->
 
-<div><img src="/algorithms/sorted.jpg" alt="Programmer in a sea of balls"></div>
+<div style="margin-top:1em;"><img src="/algorithms/sorted.jpg" alt="Programmer in a sea of balls"></div>
+
+<ul class="toc">
+  <li><a href="#the-fastest-sorting-algorithm">The fastest sorting algorithm?</a></li>
+  <li><a href="#the-problem">The problem</a></li>
+  <li><a href="#the-algorithm">The algorithm</a>
+    <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
+      <li><a href="#reducing-number-size">Reducing number size</a></li>
+      <li><a href="#fast-merging-of-short-numbers">Fast merging of short numbers</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="the-fastest-sorting-algorithm">The fastest sorting algorithm?</h2>
 
 <p>
 Which sorting algorithm is the fastest?
@@ -121,7 +132,7 @@ its real-life performance is good. A C implementation like
 with no particular optimizations runs faster on a typical 32-bit machine
 than many standard textbook sorting algorithms. </p></p>
 
-<h2>The Problem </h2>
+<h2 id="the-problem">The problem</h2>
 
 <p>
 To achieve agreement when discussing the speed of a sorting algorithm,
@@ -180,7 +191,7 @@ it sorts <i>n</i> word-sized integers in time proportional
 to&nbsp;<i>n</i>&nbsp;log&nbsp;log&nbsp;<i>n</i>.
 </p>
 
-<h2>The Algorithm</h2>
+<h2 id="the-algorithm">The algorithm</h2>
 
 <p>
 With this algorithm, the sorting is performed in two phases.
@@ -258,7 +269,7 @@ since both the reduction phase and the mergesorting phase
 run in time proportional to <i>n</i>&nbsp;log&nbsp;log&nbsp;<i>n</i>.
 </p>
 
-<h2>Reducing the Number Size</h2>
+<h3 id="reducing-number-size">Reducing number size</h3>
 
 <p>
 There are several alternative algorithms that can be used
@@ -398,7 +409,7 @@ The solution is a bit tricky; see
 <a href="/algorithms/avoid-initializing-memory/">How to Avoid Initializing Memory</a>.
 </p>
 
-<h2>Fast Merging of Short Numbers</h2>
+<h3 id="fast-merging-of-short-numbers">Fast merging of short numbers</h3>
 
 <p>
 All that remains is to merge short sequences of short numbers fast.
@@ -541,18 +552,18 @@ is proportional to&nbsp;log&nbsp;<i>k</i>.
 In <a href="http://drdobbs.com/architecture-and-design/184404062"><em>Dr. Dobb’s Journal</em></a>, pp.&nbsp;38-45, Vol.&nbsp;311, April&nbsp;01,&nbsp;2000.
 </p>
 
-<h3 id="further-reading">Further reading</h3>
+<h2 id="further-reading">Further reading</h2>
 
 <div><a href="/golang/quicksort-optimizations/"><img src="/golang/divide-conquer.jpg" width="200px" title="Optimized quicksort algorithm explained"></a></div>
 
-<p style="margin-top:0;">See <a href="/golang/quicksort-optimizations/">Optimized quicksort algorithm explained</a>
-for a fast and simple Quicksort implementation in&nbsp;Go.</p>
+<p style="margin-top:0;">See <a href="/golang/quicksort-optimizations/">Quicksort optimizations explained</a>
+for a fast and simple Quicksort implementation.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2falgorithms%2ffastest-sorting-algorithm%2f&amp;text=The%20fastest%20sorting%20algorithm?&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2falgorithms%2ffastest-sorting-algorithm%2f&amp;text=O%28n%20log%20log%20n%29%20time%20integer%20sorting&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2falgorithms%2ffastest-sorting-algorithm%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2falgorithms%2ffastest-sorting-algorithm%2f&amp;title=The%20fastest%20sorting%20algorithm?" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=The%20fastest%20sorting%20algorithm?&body=https%3a%2f%2fyourbasic.org%2falgorithms%2ffastest-sorting-algorithm%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2falgorithms%2ffastest-sorting-algorithm%2f&amp;title=O%28n%20log%20log%20n%29%20time%20integer%20sorting" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=O%28n%20log%20log%20n%29%20time%20integer%20sorting&body=https%3a%2f%2fyourbasic.org%2falgorithms%2ffastest-sorting-algorithm%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
@@ -595,7 +606,7 @@ for a fast and simple Quicksort implementation in&nbsp;Go.</p>
 
     <li><a href="/algorithms/your-basic-api/">API design: principles and best practices</a></li>
 
-    <li><a href="/algorithms/fastest-sorting-algorithm/">The fastest sorting algorithm?</a></li>
+    <li><a href="/algorithms/fastest-sorting-algorithm/">O(n log log n) time integer sorting</a></li>
 
   </ul>
   <p><a href="/algorithms/"><b>See all 23 algorithm articles</b></a></p>
