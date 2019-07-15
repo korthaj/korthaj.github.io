@@ -10,7 +10,7 @@
          SE-100 44 Stockholm
          Sweden
 
-         http://www.nada.kth.se/~snilsson
+         https://yourbasic.org/algorithms/fastest-sorting-algorithm/
 */
 /*
    This is an impelementation of an integers sorting algorithm that
