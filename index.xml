@@ -131,6 +131,16 @@ s := strings.TrimSpace(&#34;\t Goodbye hair!\n &#34;) fmt.Printf(&#34;%q&#34;, s
     </item>
     
     <item>
+      <title>4 basic if-else statement patterns</title>
+      <link>https://yourbasic.org/golang/if-else-statement/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/if-else-statement/</guid>
+      <description>Basic syntax With init statement Nested if statements Ternary ? operator alternatives  Basic syntax if x  max { x = max } if x  An if statement executes one of two branches according to a boolean expression.
+ If the expression evaluates to true, the if branch is executed, otherwise, if present, the else branch is executed.  With init statement if x := f(); x  The expression may be preceded by a simple statement, which executes before the expression is evaluated.</description>
+    </item>
+    
+    <item>
       <title>4 basic range loop (for-each) patterns</title>
       <link>https://yourbasic.org/golang/for-loop-range-array-slice-map-channel/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -2135,10 +2145,7 @@ var src, dst []int src = []int{1, 2, 3} copy(dst, src) // Copy elements to dst f
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/ternary-if-else-statement/</guid>
-      <description> Go has no ternary conditional operator. Instead&amp;nbsp;of
-res = expr ? x : y  you write
-if expr { res = x } else { res = y }  In some cases, you may want to create a dedicated function.
-func Min(x, y int) int { if x &amp;lt;= y { return x } return y }  </description>
+      <description>See 4 basic if-else statement patterns.</description>
     </item>
     
     <item>

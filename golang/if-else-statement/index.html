@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4 basic if-else statement patterns · YourBasic Go </title>
+  <meta name="description" content="CODE EXAMPLE If statements in Go can include an init statement. Go has no short one-line alternative to the question mark operator.">
+  
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-113104149-1');
+  </script>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/golang/if-else-statement/"
+  },
+  "headline": "4 basic if-else statement patterns",
+  "image": [
+    "https://yourbasic.org/golang/fork-in-road.jpg"
+   ],
+  "datePublished": "2019-07-16T00:00:00&#43;0000",
+  "dateModified": "2019-07-16T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "CODE EXAMPLE If statements in Go can include an init statement. Go has no short one-line alternative to the question mark operator."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="4 basic if-else statement patterns">
+<meta property="og:description" content="CODE EXAMPLE If statements in Go can include an init statement. Go has no short one-line alternative to the question mark operator.">
+<meta property="og:url" content="https://yourbasic.org/golang/if-else-statement/">
+<meta property="og:image" content="https://yourbasic.org/golang/fork-in-road.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="4 basic if-else statement patterns">
+<meta name="twitter:description" content="CODE EXAMPLE If statements in Go can include an init statement. Go has no short one-line alternative to the question mark operator.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="https://yourbasic.org/golang/fork-in-road.jpg">
+
+
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/algorithms/">Algorithms</a></li>
+      <li class="here"><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>4 basic if-else statement patterns</h1>
+<div class="tagline">yourbasic.org/golang</div>
+
+
+<!-- CC BY 2.0: https://www.flickr.com/photos/ttypic/14157641862 -->
+
+<div style="margin-top:1em;"><img src="/golang/fork-in-road.jpg"></div>
+
+<ul class="toc">
+  <li><a href="#basic-syntax">Basic syntax</a></li>
+  <li><a href="#with-init-statement">With init statement</a></li>
+  <li><a href="#nested-if-statements">Nested if statements</a></li>
+  <li><a href="#ternary-operator-alternatives">Ternary ? operator alternatives</a></li>
+</ul>
+
+<h2 id="basic-syntax">Basic syntax</h2>
+
+<pre><code>if x > max {
+    x = max
+}</code></pre>
+
+<pre><code>if x <= y {
+    min = x
+} else {
+    min = y
+}</code></pre>
+
+<p>An <strong>if statement</strong> executes one of two branches according to a boolean expression.</p>
+
+<ul>
+<li>If the expression evaluates to true, the <strong>if</strong> branch is executed,</li>
+<li>otherwise, if present, the <strong>else</strong> branch is executed.</li>
+</ul>
+
+<h2 id="with-init-statement">With init statement</h2>
+
+<pre><code>if x := f(); x <= y {
+    return x
+}</code></pre>
+
+<p>The expression may be preceded by a <strong>simple statement</strong>,
+which executes before the expression is evaluated.
+The <strong>scope</strong> of <code>x</code> is limited to the if&nbsp;statement.</p>
+
+<h2 id="nested-if-statements">Nested if statements</h2>
+
+<pre><code>if x := f(); x < y {
+    return x
+} else if x > z {
+    return z
+} else {
+    return y
+}</code></pre>
+
+<p>Complicated conditionals are often best expressed
+in Go with a <strong>switch statement</strong>.
+See <a href="/golang/switch-statement/">5&nbsp;switch statement patterns</a>
+for details.</p>
+
+<h2 id="ternary-operator-alternatives">Ternary ? operator alternatives</h2>
+
+<!-- CC BY-SA 2.0: http://www.geograph.org.uk/photo/4599631 -->
+
+<div style="margin-top:1em;"><img src="/golang/invisible-man.jpg"></div>
+
+<p>You can&rsquo;t write a short one-line conditional in Go;
+there is no ternary conditional operator. Instead&nbsp;of</p>
+
+<pre><code>res = expr ? x : y
+</code></pre>
+
+<p>you write</p>
+
+<pre><code>if expr {
+    res = x
+} else {
+    res = y
+}
+</code></pre>
+
+<p>In some cases, you may want to create a dedicated function.</p>
+
+<pre><code>func Min(x, y int) int {
+    if x &lt;= y {
+        return x
+    }
+    return y
+}
+</code></pre>
+
+<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fif-else-statement%2f&amp;text=4%20basic%20if-else%20statement%20patterns&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fif-else-statement%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fif-else-statement%2f&amp;title=4%20basic%20if-else%20statement%20patterns" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=4%20basic%20if-else%20statement%20patterns&body=https%3a%2f%2fyourbasic.org%2fgolang%2fif-else-statement%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+
+
+</article>
+<aside>
+
+    
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/switch-statement/">5 switch statement patterns</a>
+    <div class="desc">A switch-case-default statement is a shorter and cleaner way to write a sequence of if-else statements.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="https://golang.org/ref/spec#If_statements">If statements</a>
+    <div class="source">The Go Programming Language Specification</div>
+    <div class="author"></div>
+  </div>
+
+  <h2>Follow on Twitter</h2>
+  <ul class="none">
+    <li><span><a href="https://twitter.com/yourbasic_org">
+    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
+    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
+  </ul>
+
+
+  <h2>Most Read</h2>
+  <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
+  <ul class="none">
+  
+    <li><a href="/golang/gotcha/">Do you make these Go coding mistakes?</a></li>
+
+    <li><a href="/golang/advantages-over-java-python/">Why Go? – Key advantages you may have overlooked</a></li>
+
+    <li><a href="/golang/string-functions-reference-cheat-sheet/">40&#43; practical string tips [cheat sheet]</a></li>
+
+    <li><a href="/golang/interfaces-explained/">Interfaces in 5 easy steps [complete guide]</a></li>
+
+    <li><a href="/golang/concurrent-programming/">Concurrent programming</a></li>
+
+  </ul>
+  
+  <p><a href="/golang/"><strong>See all 178 Go articles</strong></a></p>
+
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>
