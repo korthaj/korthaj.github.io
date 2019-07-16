@@ -136,8 +136,8 @@ s := strings.TrimSpace(&#34;\t Goodbye hair!\n &#34;) fmt.Printf(&#34;%q&#34;, s
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/if-else-statement/</guid>
-      <description>Basic syntax With init statement Nested if statements Ternary ? operator alternatives  Basic syntax if x  max { x = max } if x  An if statement executes one of two branches according to a boolean expression.
- If the expression evaluates to true, the if branch is executed, otherwise, if present, the else branch is executed.  With init statement if x := f(); x  The expression may be preceded by a simple statement, which executes before the expression is evaluated.</description>
+      <description>Basic syntax With init statement Nested if statements Ternary ? operator alternatives  Basic syntax if x  max { x = max } if x { min = x } else { min = y } An if statement executes one of two branches according to a boolean expression.
+ If the expression evaluates to true, the if branch is executed, otherwise, if present, the else branch is executed.</description>
     </item>
     
     <item>
