@@ -1408,6 +1408,15 @@ The following command starts a web server that presents the documentation at htt
     </item>
     
     <item>
+      <title>Panics, stack traces and how to recover [best practice]</title>
+      <link>https://yourbasic.org/golang/recover-from-panic/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/recover-from-panic/</guid>
+      <description>A panic is an exception in Go Stack traces Interpret a stack trace Print and log a stack trace Level of detail   Recover and catch a panic Panic handler example Return a value   Test a panic (utility function)  A panic is an exception in Go Panics are similar to C++ and Java exceptions, but are only intended for run-time errors, such as following a nil pointer or attempting to index an array out of bounds.</description>
+    </item>
+    
+    <item>
       <title>Pass a slice to a variadic function</title>
       <link>https://yourbasic.org/golang/pass-slice-to-variadic-function/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1480,15 +1489,6 @@ Warning: Unexported identifiers is not a security measure and it does not hide o
       <description>Read from file Read from stdin Read from any stream  Read from file Use a bufio.Scanner to read a file line by&amp;nbsp;line.
 file, err := os.Open(&#34;file.txt&#34;) if err != nil { log.Fatal(err) } defer file.Close() scanner := bufio.NewScanner(file) for scanner.Scan() { fmt.Println(scanner.Text()) } if err := scanner.Err(); err != nil { log.Fatal(err) }  Read from stdin Use os.Stdin to read from the standard input&amp;nbsp;stream.
 scanner := bufio.</description>
-    </item>
-    
-    <item>
-      <title>Recover from a panic [best practice]</title>
-      <link>https://yourbasic.org/golang/recover-from-panic/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/recover-from-panic/</guid>
-      <description>A panic is an exception in Go Recover and catch a panic Panic handler example Return a value   Stack trace format Interpret a stack trace Print and log a stack trace Level of detail   Test a panic (utility function)  A panic is an exception in Go Panics are similar to C++ and Java exceptions, but are only intended for run-time errors, such as following a nil pointer or attempting to index an array out of bounds.</description>
     </item>
     
     <item>

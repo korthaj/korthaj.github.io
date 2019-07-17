@@ -614,6 +614,10 @@
   </url>
   
   <url>
+    <loc>https://yourbasic.org/golang/recover-from-panic/</loc>
+  </url>
+  
+  <url>
     <loc>https://yourbasic.org/golang/pass-slice-to-variadic-function/</loc>
   </url>
   
@@ -647,10 +651,6 @@
   
   <url>
     <loc>https://yourbasic.org/golang/read-file-line-by-line/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/recover-from-panic/</loc>
   </url>
   
   <url>
