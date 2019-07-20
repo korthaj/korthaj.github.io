@@ -557,17 +557,6 @@ func main() { t := Date(2000, 3, 0) // the day before 2000-03-01 fmt.Println(t) 
     </item>
     
     <item>
-      <title>Deadlock detection</title>
-      <link>https://yourbasic.org/golang/detect-deadlock/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/detect-deadlock/</guid>
-      <description>A deadlock happens when a group of goroutines are waiting for each other and none of them is able to&amp;nbsp;proceed.
- Take a look at this simple example.
-func main() { ch := make(chan int) ch &amp;lt;- 1 fmt.Println(&amp;lt;-ch) }  The program will get stuck on the channel send operation waiting forever for someone to read the value. Go is able to detect situations like this at runtime. Here is the output from our program:</description>
-    </item>
-    
-    <item>
       <title>Default zero values for all Go types</title>
       <link>https://yourbasic.org/golang/default-zero-value/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -959,6 +948,17 @@ Keep allocated memory To keep the underlying array, slice the slice to zero leng
       <description>Go has a built-in range loop for iterating over slices, arrays, strings, maps and channels. See 4 basic range loop (for-each) patterns.
 To iterate over other types of data, an iterator function with callbacks is a clean and fairly efficient abstraction.
 Basic iterator pattern // Iterate calls the f function with n = 1, 2, and 3. func Iterate(f func(n int)) { for i := 1; i  In use:</description>
+    </item>
+    
+    <item>
+      <title>How to debug deadlocks</title>
+      <link>https://yourbasic.org/golang/detect-deadlock/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/detect-deadlock/</guid>
+      <description>A deadlock happens when a group of goroutines are waiting for each other and none of them is able to&amp;nbsp;proceed.
+ Take a look at this simple example.
+func main() { ch := make(chan int) ch &amp;lt;- 1 fmt.Println(&amp;lt;-ch) }  The program will get stuck on the channel send operation waiting forever for someone to read the value. Go is able to detect situations like this at runtime. Here is the output from our program:</description>
     </item>
     
     <item>

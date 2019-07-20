@@ -254,10 +254,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/detect-deadlock/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/golang/default-zero-value/</loc>
   </url>
   
@@ -423,6 +419,10 @@
   
   <url>
     <loc>https://yourbasic.org/golang/iterator-generator-pattern/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/detect-deadlock/</loc>
   </url>
   
   <url>
