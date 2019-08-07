@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/cherry-cocktail-split.jpg"
    ],
   "datePublished": "2018-05-03T00:00:00&#43;0000",
-  "dateModified": "2019-03-14T00:00:00&#43;0000",
+  "dateModified": "2019-08-07T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -91,12 +91,12 @@
 <div style="margin-top:1em;"><img src="/golang/cherry-cocktail-split.jpg"></div>
 
 <ul class="toc">
-  <li><a href="#split-on-comma">Split on comma</a></li>
+  <li><a href="#split-on-comma-or-other-substring">Split on comma or other substring</a></li>
   <li><a href="#split-by-whitespace-and-newline">Split by whitespace and newline</a></li>
-  <li><a href="#split-on-any-character-or-delimeter">Split on any character or delimeter</a></li>
+  <li><a href="#split-on-regular-expression">Split on regular expression</a></li>
 </ul>
 
-<h2 id="split-on-comma">Split on comma</h2>
+<h2 id="split-on-comma-or-other-substring">Split on comma or other substring</h2>
 
 <p>Use the <a href="https://golang.org/pkg/strings/#Split"><code>strings.Split</code></a> function to split a string into its comma separated values.</p>
 
@@ -118,7 +118,7 @@ fmt.Println(s)
 // Output: [a b]
 </code></pre>
 
-<h2 id="split-on-any-character-or-delimeter">Split on any character or delimeter</h2>
+<h2 id="split-on-regular-expression">Split on regular expression</h2>
 
 <p>In more complicated situations,
 the regexp <a href="/golang/regexp-cheat-sheet/#split"><code>Split</code></a> method might do the trick.</p>
@@ -127,17 +127,14 @@ the regexp <a href="/golang/regexp-cheat-sheet/#split"><code>Split</code></a> me
 The method takes an integer argument <code>n</code>;
 if <code>n &gt;= 0</code>, it returns at most <code>n</code> substrings.</p>
 
-<pre><code>a := regexp.MustCompile(`a`)              <span class="comment">// Delimiter: a single`a`</span>
+<pre><code>a := regexp.MustCompile(`a`)              <span class="comment">// a single `a`</span>
 fmt.Printf("%q\n", a.Split("banana", -1)) <span class="comment">// ["b" "n" "n" ""]</span>
 fmt.Printf("%q\n", a.Split("banana", 0))  <span class="comment">// [] (nil slice)</span>
 fmt.Printf("%q\n", a.Split("banana", 1))  <span class="comment">// ["banana"]</span>
 fmt.Printf("%q\n", a.Split("banana", 2))  <span class="comment">// ["b" "nana"]</span>
 
-zp := regexp.MustCompile(`z+`)            <span class="comment">// Delimiter: one or more `z`:s</span>
-fmt.Printf("%q\n", zp.Split("pizza", -1)) <span class="comment">// ["pi" "a"]</span>
-fmt.Printf("%q\n", zp.Split("pizza", 0))  <span class="comment">// [] (nil slice)</span>
-fmt.Printf("%q\n", zp.Split("pizza", 1))  <span class="comment">// ["pizza"]</span>
-fmt.Printf("%q\n", zp.Split("pizza", 2))  <span class="comment">// ["pi" "a"]</span></code></pre>
+zp := regexp.MustCompile(` *, *`)             <span class="comment">// spaces and one comma</span>
+fmt.Printf("%q\n", zp.Split("a,b ,  c ", -1)) <span class="comment">// ["a" "b" "c "]</span></code></pre>
 
 <p>See this <a href="/golang/regexp-cheat-sheet/">Regexp tutorial and cheat sheet</a>
 for a gentle introduction to the Go regexp package with plenty of examples.</p>
