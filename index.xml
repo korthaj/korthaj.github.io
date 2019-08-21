@@ -207,15 +207,6 @@ sum := 0 for i := 1; i { sum += i } fmt.Println(sum) // 10 (1+2+3+4)  The init s
     </item>
     
     <item>
-      <title>API design: principles and best practices</title>
-      <link>https://yourbasic.org/algorithms/your-basic-api/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/algorithms/your-basic-api/</guid>
-      <description>Introduction The 5 Commandments 1. Tell me what this thing is 2. Tell me what it does 3. Don&#39;t tell me how it works 4. Grant me the right to use it 5. Don&#39;t change it   Keep it simple Don&#39;t use complicated constructs where simple ones will do Don&#39;t use a lot where a little will do One package, one idea Just say no Math is simple   Give it time Eat your own dog food   Show, don&#39;t tell Create tutorials Use examples   Tools of the trade Keep it consistent Write functions that need little and give much Discover a well-fitting interface Make it generic Names, keep them short and sweet    Introduction The aim of this text is to explore API design and try to find strategies and rules that can help us create code libraries that are safe, effective and easy to use.</description>
-    </item>
-    
-    <item>
       <title>About</title>
       <link>https://yourbasic.org/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -286,6 +277,15 @@ Let T1, T2,&amp;nbsp;…, Tk be the complexities of a sequence of operations on 
  In this example a function literal is passed as the less argument to the sort.Slice function.
 func Slice(slice interface{}, less func(i, j int) bool)  people := []string{&#34;Alice&#34;, &#34;Bob&#34;, &#34;Dave&#34;} sort.Slice(people, func(i, j int) bool { return len(people[i]) ) fmt.Println(people) // Output: [Bob Dave Alice] You can also use an intermediate variable.
 people := []string{&#34;Alice&#34;, &#34;Bob&#34;, &#34;Dave&#34;} less := func(i, j int) bool { return len(people[i]) sort.</description>
+    </item>
+    
+    <item>
+      <title>API design: principles and best practices</title>
+      <link>https://yourbasic.org/algorithms/your-basic-api/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/algorithms/your-basic-api/</guid>
+      <description>Introduction The 5 Commandments 1. Tell me what this thing is 2. Tell me what it does 3. Don&#39;t tell me how it works 4. Grant me the right to use it 5. Don&#39;t change it   Keep it simple Don&#39;t use complicated constructs where simple ones will do Don&#39;t use a lot where a little will do One package, one idea Just say no Math is simple   Give it time Eat your own dog food   Show, don&#39;t tell Create tutorials Use examples   Tools of the trade Keep it consistent Write functions that need little and give much Discover a well-fitting interface Make it generic Names, keep them short and sweet    Introduction The aim of this text is to explore API design and try to find strategies and rules that can help us create code libraries that are safe, effective and easy to use.</description>
     </item>
     
     <item>
@@ -1482,17 +1482,6 @@ func Foo() error { var err *os.PathError = nil // … return err } func main() {
     </item>
     
     <item>
-      <title>No JSON in sight</title>
-      <link>https://yourbasic.org/golang/gotcha-json-marshal-empty/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/gotcha-json-marshal-empty/</guid>
-      <description>Why does json.Marshal produce empty structs in the JSON text output?
-type Person struct { name string age int } p := Person{&#34;Alice&#34;, 22} jsonData, _ := json.Marshal(p) fmt.Println(string(jsonData)) {}  Answer Only exported fields of a Go struct will be present in the JSON output.
-type Person struct { Name string // Changed to capital N Age int // Changed to capital A } p := Person{&#34;Alice&#34;, 22} jsonData, _ := json.</description>
-    </item>
-    
-    <item>
       <title>No end in sight</title>
       <link>https://yourbasic.org/golang/gotcha-integer-overflow-wrap-around/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1501,6 +1490,17 @@ type Person struct { Name string // Changed to capital N Age int // Changed to c
       <description>Why does this loop run forever?
 var b byte for b = 250; b  Answer After the b == 255 iteration, b++ is executed. This overflows (since the maximum value for a byte is 255) and results in b == 0. Therefore b &amp;lt;= 255 still holds and the loop restarts from&amp;nbsp;0.
   For unsigned integer values, the operations +, -, *, and &amp;lt;&amp;lt; are computed modulo 2n, where n is the bit width of the unsigned integer type.</description>
+    </item>
+    
+    <item>
+      <title>No JSON in sight</title>
+      <link>https://yourbasic.org/golang/gotcha-json-marshal-empty/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-json-marshal-empty/</guid>
+      <description>Why does json.Marshal produce empty structs in the JSON text output?
+type Person struct { name string age int } p := Person{&#34;Alice&#34;, 22} jsonData, _ := json.Marshal(p) fmt.Println(string(jsonData)) {}  Answer Only exported fields of a Go struct will be present in the JSON output.
+type Person struct { Name string // Changed to capital N Age int // Changed to capital A } p := Person{&#34;Alice&#34;, 22} jsonData, _ := json.</description>
     </item>
     
     <item>
@@ -2149,17 +2149,6 @@ var src, dst []int src = []int{1, 2, 3} copy(dst, src) // Copy elements to dst f
     </item>
     
     <item>
-      <title>Why Go? – Key advantages you may have overlooked</title>
-      <link>https://yourbasic.org/golang/advantages-over-java-python/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/advantages-over-java-python/</guid>
-      <description>Go makes it easier (than Java or Python) to write correct, clear and efficient code.
- Minimalism Features for the future   Code transparency Compatibility Performance  Choosing a programming language isn&amp;rsquo;t easy. The separate features of a language may look great at first, but it takes time and experience to&amp;nbsp;spot the&amp;nbsp;drawbacks.
-As a CS professor and longtime Go and Java developer, I&amp;rsquo;d like to share some of my&amp;nbsp;thoughts and explain why I prefer Go to Java or Python – Go makes it much easier for me to write good&amp;nbsp;code.</description>
-    </item>
-    
-    <item>
       <title>Why doesn’t append work every time? [scary bug]</title>
       <link>https://yourbasic.org/golang/gotcha-append/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -2169,6 +2158,17 @@ As a CS professor and longtime Go and Java developer, I&amp;rsquo;d like to shar
 a := []byte(&#34;ba&#34;) a1 := append(a, &#39;d&#39;) a2 := append(a, &#39;g&#39;) fmt.Println(string(a1)) // bag fmt.Println(string(a2)) // bag Answer If there is room for more elements, append reuses the underlying array. Let&#39;s take a&amp;nbsp;look:
 a := []byte(&#34;ba&#34;) fmt.Println(len(a), cap(a)) // 2 32 This means that the slices a, a1 and a2 will refer to the same underlying array in our example.
 To avoid this, we need to use two separate byte&amp;nbsp;arrays.</description>
+    </item>
+    
+    <item>
+      <title>Why Go? – Key advantages you may have overlooked</title>
+      <link>https://yourbasic.org/golang/advantages-over-java-python/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/advantages-over-java-python/</guid>
+      <description>Go makes it easier (than Java or Python) to write correct, clear and efficient code.
+ Minimalism Features for the future   Code transparency Compatibility Performance  Choosing a programming language isn&amp;rsquo;t easy. The separate features of a language may look great at first, but it takes time and experience to&amp;nbsp;spot the&amp;nbsp;drawbacks.
+As a CS professor and longtime Go and Java developer, I&amp;rsquo;d like to share some of my&amp;nbsp;thoughts and explain why I prefer Go to Java or Python – Go makes it much easier for me to write good&amp;nbsp;code.</description>
     </item>
     
     <item>

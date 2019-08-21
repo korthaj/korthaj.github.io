@@ -1313,17 +1313,6 @@ func Foo() error { var err *os.PathError = nil // … return err } func main() {
     </item>
     
     <item>
-      <title>No JSON in sight</title>
-      <link>https://yourbasic.org/golang/gotcha-json-marshal-empty/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/gotcha-json-marshal-empty/</guid>
-      <description>Why does json.Marshal produce empty structs in the JSON text output?
-type Person struct { name string age int } p := Person{&#34;Alice&#34;, 22} jsonData, _ := json.Marshal(p) fmt.Println(string(jsonData)) {}  Answer Only exported fields of a Go struct will be present in the JSON output.
-type Person struct { Name string // Changed to capital N Age int // Changed to capital A } p := Person{&#34;Alice&#34;, 22} jsonData, _ := json.</description>
-    </item>
-    
-    <item>
       <title>No end in sight</title>
       <link>https://yourbasic.org/golang/gotcha-integer-overflow-wrap-around/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1332,6 +1321,17 @@ type Person struct { Name string // Changed to capital N Age int // Changed to c
       <description>Why does this loop run forever?
 var b byte for b = 250; b  Answer After the b == 255 iteration, b++ is executed. This overflows (since the maximum value for a byte is 255) and results in b == 0. Therefore b &amp;lt;= 255 still holds and the loop restarts from&amp;nbsp;0.
   For unsigned integer values, the operations +, -, *, and &amp;lt;&amp;lt; are computed modulo 2n, where n is the bit width of the unsigned integer type.</description>
+    </item>
+    
+    <item>
+      <title>No JSON in sight</title>
+      <link>https://yourbasic.org/golang/gotcha-json-marshal-empty/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/gotcha-json-marshal-empty/</guid>
+      <description>Why does json.Marshal produce empty structs in the JSON text output?
+type Person struct { name string age int } p := Person{&#34;Alice&#34;, 22} jsonData, _ := json.Marshal(p) fmt.Println(string(jsonData)) {}  Answer Only exported fields of a Go struct will be present in the JSON output.
+type Person struct { Name string // Changed to capital N Age int // Changed to capital A } p := Person{&#34;Alice&#34;, 22} jsonData, _ := json.</description>
     </item>
     
     <item>
@@ -1872,17 +1872,6 @@ var src, dst []int src = []int{1, 2, 3} copy(dst, src) // Copy elements to dst f
     </item>
     
     <item>
-      <title>Why Go? – Key advantages you may have overlooked</title>
-      <link>https://yourbasic.org/golang/advantages-over-java-python/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/advantages-over-java-python/</guid>
-      <description>Go makes it easier (than Java or Python) to write correct, clear and efficient code.
- Minimalism Features for the future   Code transparency Compatibility Performance  Choosing a programming language isn&amp;rsquo;t easy. The separate features of a language may look great at first, but it takes time and experience to&amp;nbsp;spot the&amp;nbsp;drawbacks.
-As a CS professor and longtime Go and Java developer, I&amp;rsquo;d like to share some of my&amp;nbsp;thoughts and explain why I prefer Go to Java or Python – Go makes it much easier for me to write good&amp;nbsp;code.</description>
-    </item>
-    
-    <item>
       <title>Why doesn’t append work every time? [scary bug]</title>
       <link>https://yourbasic.org/golang/gotcha-append/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1892,6 +1881,17 @@ As a CS professor and longtime Go and Java developer, I&amp;rsquo;d like to shar
 a := []byte(&#34;ba&#34;) a1 := append(a, &#39;d&#39;) a2 := append(a, &#39;g&#39;) fmt.Println(string(a1)) // bag fmt.Println(string(a2)) // bag Answer If there is room for more elements, append reuses the underlying array. Let&#39;s take a&amp;nbsp;look:
 a := []byte(&#34;ba&#34;) fmt.Println(len(a), cap(a)) // 2 32 This means that the slices a, a1 and a2 will refer to the same underlying array in our example.
 To avoid this, we need to use two separate byte&amp;nbsp;arrays.</description>
+    </item>
+    
+    <item>
+      <title>Why Go? – Key advantages you may have overlooked</title>
+      <link>https://yourbasic.org/golang/advantages-over-java-python/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/advantages-over-java-python/</guid>
+      <description>Go makes it easier (than Java or Python) to write correct, clear and efficient code.
+ Minimalism Features for the future   Code transparency Compatibility Performance  Choosing a programming language isn&amp;rsquo;t easy. The separate features of a language may look great at first, but it takes time and experience to&amp;nbsp;spot the&amp;nbsp;drawbacks.
+As a CS professor and longtime Go and Java developer, I&amp;rsquo;d like to share some of my&amp;nbsp;thoughts and explain why I prefer Go to Java or Python – Go makes it much easier for me to write good&amp;nbsp;code.</description>
     </item>
     
     <item>

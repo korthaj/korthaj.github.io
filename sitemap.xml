@@ -77,10 +77,6 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/algorithms/your-basic-api/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/about/</loc>
   </url>
   
@@ -110,6 +106,10 @@
   
   <url>
     <loc>https://yourbasic.org/golang/anonymous-function-literal-lambda-closure/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/algorithms/your-basic-api/</loc>
   </url>
   
   <url>
@@ -166,7 +166,6 @@
   
   <url>
     <loc>https://yourbasic.org/categories/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -570,11 +569,11 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/gotcha-json-marshal-empty/</loc>
+    <loc>https://yourbasic.org/golang/gotcha-integer-overflow-wrap-around/</loc>
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/gotcha-integer-overflow-wrap-around/</loc>
+    <loc>https://yourbasic.org/golang/gotcha-json-marshal-empty/</loc>
   </url>
   
   <url>
@@ -711,7 +710,6 @@
   
   <url>
     <loc>https://yourbasic.org/tags/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -823,11 +821,11 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/advantages-over-java-python/</loc>
+    <loc>https://yourbasic.org/golang/gotcha-append/</loc>
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/gotcha-append/</loc>
+    <loc>https://yourbasic.org/golang/advantages-over-java-python/</loc>
   </url>
   
   <url>
