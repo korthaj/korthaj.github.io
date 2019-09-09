@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/cherry-cocktail-split.jpg"
    ],
   "datePublished": "2018-05-03T00:00:00&#43;0000",
-  "dateModified": "2019-08-07T00:00:00&#43;0000",
+  "dateModified": "2019-09-09T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -108,6 +108,9 @@ fmt.Println(s)
 <p>To include the separators, use <a href="https://golang.org/pkg/strings/#SplitAfter"><code>strings.SplitAfter</code></a>.
 To split only the first n values, use <a href="https://golang.org/pkg/strings/#SplitN"><code>strings.SplitN</code></a> and <a href="https://golang.org/pkg/strings/#SplitAfterN"><code>strings.SplitAfterN</code></a>.</p>
 
+<p>You can use <a href="/golang/trim-whitespace-from-string/"><code>strings.TrimSpace</code></a>
+to strip leading and trailing whitespace from the resulting strings.</p>
+
 <h2 id="split-by-whitespace-and-newline">Split by whitespace and newline</h2>
 
 <p>Use the <a href="https://golang.org/pkg/strings/#Fields"><code>strings.Fields</code></a> function to split a string into substrings removing any space characters,
@@ -154,6 +157,16 @@ for a gentle introduction to the Go regexp package with plenty of examples.</p>
 
 </article>
 <aside>
+
+    
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/golang/trim-whitespace-from-string/">3 ways to trim whitespace (or other characters) from a string</a>
+    <div class="desc">Use the strings.TrimSpace function to strip leading and trailing whitespace from a string.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
   <h2>Follow on Twitter</h2>
   <ul class="none">
     <li><span><a href="https://twitter.com/yourbasic_org">

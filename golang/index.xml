@@ -116,7 +116,7 @@ Check second return value m := map[string]float64{&#34;pi&#34;: 3.14} v, found :
       <guid>https://yourbasic.org/golang/split-string-into-slice/</guid>
       <description>Split on comma or other substring Split by whitespace and newline Split on regular expression  Split on comma or other substring Use the strings.Split function to split a string into its comma separated values.
 s := strings.Split(&amp;quot;a,b,c&amp;quot;, &amp;quot;,&amp;quot;) fmt.Println(s) // Output: [a b c]  To include the separators, use strings.SplitAfter. To split only the first n values, use strings.SplitN and strings.SplitAfterN.
-Split by whitespace and newline Use the strings.</description>
+You can use strings.TrimSpace to strip leading and trailing whitespace from the resulting strings.</description>
     </item>
     
     <item>
