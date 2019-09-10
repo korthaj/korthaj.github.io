@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/gopherswim.jpg"
    ],
   "datePublished": "2018-06-30T00:00:00&#43;0000",
-  "dateModified": "2018-06-30T00:00:00&#43;0000",
+  "dateModified": "2019-09-10T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -108,7 +108,7 @@ func Find(a []int, x int) int {
         }
         return 1
     }
-    mid := 1 + (len(a)-1)/2
+    mid := len(a) / 2
     if x <= a[mid-1] {
         return Find(a[:mid], x)
     }
