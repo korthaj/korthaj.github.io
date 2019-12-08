@@ -119,7 +119,6 @@ if err := scanner.Err(); err != nil {
 <h2 id="read-from-stdin">Read from stdin</h2>
 
 <p>Use <a href="https://golang.org/pkg/os/#pkg-variables"><code>os.Stdin</code></a> to read from the standard input&nbsp;stream.</p>
-
 <pre><code>scanner := bufio.NewScanner(os.Stdin)
 for scanner.Scan() {
 	fmt.Println(scanner.Text())
@@ -127,9 +126,7 @@ for scanner.Scan() {
 
 if err := scanner.Err(); err != nil {
 	log.Println(err)
-}
-</code></pre>
-
+}</code></pre>
 <h2 id="read-from-any-stream">Read from any stream</h2>
 
 <div><a href="/golang/io-reader-interface-explained/"><img src="/golang/teddy-bear-reading-thumb.jpg" title="How to use the io.Reader interface"></a></div>

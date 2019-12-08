@@ -44,11 +44,8 @@
 
 <p>Use <a href="https://golang.org/pkg/fmt/#Sprintf"><code>fmt.Sprintf</code></a> to convert
 an <a href="/golang/interfaces-explained/">interface value</a> to a string.</p>
-
-<pre><code>var x interface{} = &quot;abc&quot;
-str := fmt.Sprintf(&quot;%v&quot;, x)
-</code></pre>
-
+<pre><code>var x interface{} = "abc"
+str := fmt.Sprintf("%v", x)</code></pre>
 <p>In fact, the same technique can be used to get a string representation of any data structure.</p>
 
 <pre><code>var x interface{} = []int{1, 2, 3}

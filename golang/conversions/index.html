@@ -217,13 +217,10 @@ yields a slice containing the individual Unicode code points of the string.</li>
 <p>A non-constant value can be converted to type <code>T</code> if it has the same underlying type as <code>T</code>.</p>
 
 <p>In this example, the underlying type of <code>int64</code>, <code>T1</code>, and <code>T2</code> is <code>int64</code>.</p>
-
 <pre><code>type (
 	T1 int64
 	T2 T1
-)
-</code></pre>
-
+)</code></pre>
 <p>It&rsquo;s idiomatic in Go to convert the type of an expression to access a specific method.</p>
 
 <pre><code>var n int64 = 12345
@@ -260,10 +257,7 @@ c := 'A' <span class="comment">// Same as c := rune('A')</span></code></pre>
 <p>Illegal implicit conversions are caught by the compiler.</p>
 
 <pre><code>var b byte = 256 <span class="comment">// Same as var b byte = byte(256)</span></code></pre>
-
-<pre><code>../main.go:2:6: constant 256 overflows byte
-</code></pre>
-
+<pre><code>../main.go:2:6: constant 256 overflows byte</code></pre>
 <h2 id="pointers">Pointers</h2>
 
 <p>The Go compiler does not allow conversions between pointers and integers.

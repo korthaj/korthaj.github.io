@@ -91,24 +91,15 @@
 <div style="margin-top:1em;"><img src="/golang/red-pencil.jpg"></div>
 
 <p>As you may have noticed, programs with an opening brace on separate line do not compile.</p>
-
 <pre><code>func main()
 {
-	fmt.Println(&quot;Hello&quot;)
-}
-</code></pre>
-
-<pre><code>../main.go:1:6: missing function body for &quot;main&quot;
-../main.go:2:1: syntax error: unexpected semicolon or newline before {
-</code></pre>
-
+	fmt.Println("Hello")
+}</code></pre><pre><code>../main.go:1:6: missing function body for "main"
+../main.go:2:1: syntax error: unexpected semicolon or newline before {</code></pre>
 <p>You must write:</p>
-
 <pre><code>func main() {
-	fmt.Println(&quot;Hello&quot;)
-}
-</code></pre>
-
+	fmt.Println("Hello")
+}</code></pre>
 <p>This is a trade-off in the design of the Go language.</p>
 
 <blockquote>

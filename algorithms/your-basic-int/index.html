@@ -152,12 +152,9 @@ to the top of a type hierarchy?</p>
 
 <p>It&rsquo;s easy to forget that an integer may be the preferred choice.
 Here is a solution from the <a href="https://github.com/yourbasic/graph">graph</a> package.</p>
-
 <pre><code>All algorithms operate on directed graphs with
 a fixed number of vertices, labeled from 0 to n-1,
-and edges with integer cost.
-</code></pre>
-
+and edges with integer cost.</code></pre>
 <p>Since vertices are represented by integers, it&rsquo;s easy to add any kind of
 vertex data on the side.
 For example, this generic implementation of breadth-first search uses
@@ -306,19 +303,16 @@ of RAM to spare, you can story a set of integer elements in the range
 It uses a bit set implementation from the <a href="https://github.com/yourbasic/bit">bit</a> package
 to generate the set of all primes less than <em>n</em> in O(<em>n</em> log log <em>n</em>) time.
 Try it with <em>n</em> equal to a few hundred millions and be pleasantly surprised.</p>
-
-<pre><code class="language-go">sieve := bit.New().AddRange(2, n)
-for k := 4; k &lt; n; k += 2 {
+<pre><code>sieve := bit.New().AddRange(2, n)
+for k := 4; k < n; k += 2 {
     sieve.Delete(k)
 }
 sqrtN := int(math.Sqrt(n))
-for p := 3; p &lt;= sqrtN; p = sieve.Next(p) {
-	for k := p * p; k &lt; n; k += 2 * p {
+for p := 3; p <= sqrtN; p = sieve.Next(p) {
+	for k := p * p; k < n; k += 2 * p {
 		sieve.Delete(k)
 	}
-}
-</code></pre>
-
+}</code></pre>
 <h3 id="a-fly-in-the-ointment">A fly in the ointment</h3>
 
 <p>The code above doesn&rsquo;t guard against <a href="https://en.wikipedia.org/wiki/Integer_overflow">integer overflow</a>.

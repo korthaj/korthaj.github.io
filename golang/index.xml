@@ -115,7 +115,7 @@ Check second return value m := map[string]float64{&#34;pi&#34;: 3.14} v, found :
       
       <guid>https://yourbasic.org/golang/split-string-into-slice/</guid>
       <description>Split on comma or other substring Split by whitespace and newline Split on regular expression  Split on comma or other substring Use the strings.Split function to split a string into its comma separated values.
-s := strings.Split(&amp;quot;a,b,c&amp;quot;, &amp;quot;,&amp;quot;) fmt.Println(s) // Output: [a b c]  To include the separators, use strings.SplitAfter. To split only the first n values, use strings.SplitN and strings.SplitAfterN.
+s := strings.Split(&#34;a,b,c&#34;, &#34;,&#34;) fmt.Println(s) // Output: [a b c] To include the separators, use strings.SplitAfter. To split only the first n values, use strings.SplitN and strings.SplitAfterN.
 You can use strings.TrimSpace to strip leading and trailing whitespace from the resulting strings.</description>
     </item>
     
@@ -146,7 +146,7 @@ s := strings.TrimSpace(&#34;\t Goodbye hair!\n &#34;) fmt.Printf(&#34;%q&#34;, s
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/golang/for-loop-range-array-slice-map-channel/</guid>
-      <description>Basic for-each loop (slice or array) String iteration: runes or bytes Map iteration: keys and values Channel iteration Gotchas  Basic for-each loop (slice or array) a := []string{&#34;Foo&#34;, &#34;Bar&#34;} for i, s := range a { fmt.Println(i, s) } 0 Foo 1 Bar   The range expression, a, is evaluated once before beginning the loop. The iteration values are assigned to the respective iteration variables, i and s, as in an assignment statement.</description>
+      <description>Basic for-each loop (slice or array) String iteration: runes or bytes Map iteration: keys and values Channel iteration Gotchas  Basic for-each loop (slice or array) a := []string{&#34;Foo&#34;, &#34;Bar&#34;} for i, s := range a { fmt.Println(i, s) } 0 Foo 1 Bar  The range expression, a, is evaluated once before beginning the loop. The iteration values are assigned to the respective iteration variables, i and s, as in an assignment statement.</description>
     </item>
     
     <item>
@@ -214,7 +214,7 @@ sum := 0 for i := 1; i { sum += i } fmt.Println(sum) // 10 (1+2+3+4)  The init s
       <guid>https://yourbasic.org/golang/environment-variables/</guid>
       <description> Use the os.Setenv, os.Getenv and os.Unsetenv functions to access environment variables.
 fmt.Printf(&#34;%q\n&#34;, os.Getenv(&#34;SHELL&#34;)) // &#34;/bin/bash&#34; os.Unsetenv(&#34;SHELL&#34;) fmt.Printf(&#34;%q\n&#34;, os.Getenv(&#34;SHELL&#34;)) // &#34;&#34; os.Setenv(&#34;SHELL&#34;, &#34;/bin/dash&#34;) fmt.Printf(&#34;%q\n&#34;, os.Getenv(&#34;SHELL&#34;)) // &#34;/bin/dash&#34; The os.Environ function returns a slice of &amp;quot;key=value&amp;quot; strings listing all environment variables.
-for _, s := range os.Environ() { kv := strings.SplitN(s, &#34;=&#34;, 2) // unpacks &#34;key=value&#34; fmt.Printf(&#34;key:%q value:%q\n&#34;, kv[0], kv[1]) } key:&amp;quot;SHELL&amp;quot; value:&amp;quot;/bin/bash&amp;quot; key:&amp;quot;SESSION&amp;quot; value:&amp;quot;ubuntu&amp;quot; key:&amp;quot;TERM&amp;quot; value:&amp;quot;xterm-256color&amp;quot; key:&amp;quot;LANG&amp;quot; value:&amp;quot;en_US.UTF-8&amp;quot; key:&amp;quot;XMODIFIERS&amp;quot; value:&amp;quot;@im=ibus&amp;quot; …  </description>
+for _, s := range os.Environ() { kv := strings.SplitN(s, &#34;=&#34;, 2) // unpacks &#34;key=value&#34; fmt.Printf(&#34;key:%q value:%q\n&#34;, kv[0], kv[1]) } key:&#34;SHELL&#34; value:&#34;/bin/bash&#34; key:&#34;SESSION&#34; value:&#34;ubuntu&#34; key:&#34;TERM&#34; value:&#34;xterm-256color&#34; key:&#34;LANG&#34; value:&#34;en_US.UTF-8&#34; key:&#34;XMODIFIERS&#34; value:&#34;@im=ibus&#34; …</description>
     </item>
     
     <item>
@@ -248,7 +248,7 @@ people := []string{&#34;Alice&#34;, &#34;Bob&#34;, &#34;Dave&#34;} less := func(
       
       <guid>https://yourbasic.org/golang/append-to-file/</guid>
       <description>This code appends a line of text to the file text.log. It creates the file if it doesn&amp;rsquo;t already&amp;nbsp;exist.
-f, err := os.OpenFile(&amp;quot;text.log&amp;quot;, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644) if err != nil { log.Println(err) } defer f.Close() if _, err := f.WriteString(&amp;quot;text to append\n&amp;quot;); err != nil { log.Println(err) }  If you&amp;rsquo;re appending text to a file for logging purposes, see Write log to file.</description>
+f, err := os.OpenFile(&#34;text.log&#34;, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644) if err != nil { log.Println(err) } defer f.Close() if _, err := f.WriteString(&#34;text to append\n&#34;); err != nil { log.Println(err) } If you&amp;rsquo;re appending text to a file for logging purposes, see Write log to file.</description>
     </item>
     
     <item>
@@ -269,7 +269,7 @@ func Foo(a []int) { if len(a)  0 { a[0] = 8 } } func main() { a := []int{1, 2} F
       
       <guid>https://yourbasic.org/golang/gotcha-assignment-entry-nil-map/</guid>
       <description>Why does this program panic?
-var m map[string]float64 m[&#34;pi&#34;] = 3.1416 panic: assignment to entry in nil map  Answer You have to initialize the map using the make function (or a map literal) before you can add any elements:
+var m map[string]float64 m[&#34;pi&#34;] = 3.1416 panic: assignment to entry in nil map Answer You have to initialize the map using the make function (or a map literal) before you can add any elements:
 m := make(map[string]float64) m[&#34;pi&#34;] = 3.1416 See Maps explained for more about maps.</description>
     </item>
     
@@ -289,7 +289,7 @@ m := make(map[string]float64) m[&#34;pi&#34;] = 3.1416 See Maps explained for mo
       
       <guid>https://yourbasic.org/golang/bitmask-flag-set-clear/</guid>
       <description>Bitmask A bitmask is a small set of booleans, often called flags, represented by the bits in a single number.
-type Bits uint8 const ( F0 Bits = 1  0 true 1 false 2 true  Larger bitsets To represent larger sets of bits, you may want to use a custom data structure. The package github.com/yourbasic/bit provides a bit array implementation and some utility bit functions.
+type Bits uint8 const ( F0 Bits = 1  0 true 1 false 2 true Larger bitsets To represent larger sets of bits, you may want to use a custom data structure. The package github.com/yourbasic/bit provides a bit array implementation and some utility bit functions.
 Because a bit array uses bit-level parallelism, limits memory access, and efficiently uses the data cache, it often outperforms other data structures.</description>
     </item>
     
@@ -312,7 +312,7 @@ Built-in operators   Operation Result Description     0011 &amp;amp; 0101 0001 B
       <guid>https://yourbasic.org/golang/underscore/</guid>
       <description>The blank identifier _ is an anonymous placeholder. It may be used like any other identifier in a declaration, but it does not introduce a binding.
 Ignore values The blank identifier provides a way to ignore left-hand side values in an assignment.
-_, present := timeZone[&amp;quot;CET&amp;quot;] sum := 0 for _, n := range a { sum += n }  Import for side effects It can also be used to import a package solely for its side effects.</description>
+_, present := timeZone[&#34;CET&#34;] sum := 0 for _, n := range a { sum += n } Import for side effects It can also be used to import a package solely for its side effects.</description>
     </item>
     
     <item>
@@ -356,7 +356,7 @@ A new channel value can be made using the built-in function make.
       
       <guid>https://yourbasic.org/golang/check-prime/</guid>
       <description>Sacks spiral of prime numbers Ints For integer types, use ProbablyPrime(0) from package math/big. This primality test is 100%&amp;nbsp;accurate for inputs less than&amp;nbsp;264.
-const n = 1212121 if big.NewInt(n).ProbablyPrime(0) { fmt.Println(n, &#34;is prime&#34;) } else { fmt.Println(n, &#34;is not prime&#34;) } 1212121 is prime  Larger numbers  For larger numbers, you need to provide the desired number of tests to ProbablyPrime(n). For n&amp;nbsp;tests, the&amp;nbsp;probability of returning true for a randomly chosen non-prime is at most (1/4)n.</description>
+const n = 1212121 if big.NewInt(n).ProbablyPrime(0) { fmt.Println(n, &#34;is prime&#34;) } else { fmt.Println(n, &#34;is not prime&#34;) } 1212121 is prime Larger numbers  For larger numbers, you need to provide the desired number of tests to ProbablyPrime(n). For n&amp;nbsp;tests, the&amp;nbsp;probability of returning true for a randomly chosen non-prime is at most (1/4)n.</description>
     </item>
     
     <item>
@@ -366,7 +366,7 @@ const n = 1212121 if big.NewInt(n).ProbablyPrime(0) { fmt.Println(n, &#34;is pri
       
       <guid>https://yourbasic.org/golang/command-line-arguments/</guid>
       <description>The os.Args variable holds the command-line arguments – starting with the program name – which are passed to a Go program.
-func main() { if len(os.Args) != 3 { fmt.Println(&#34;Usage:&#34;, os.Args[0], &#34;PATTERN&#34;, &#34;FILE&#34;) return } pattern := os.Args[1] file := os.Args[2] // ... } $ go build grep.go $ ./grep Usage: ./grep PATTERN FILE  Flag parsing The flag package implements basic command-line flag parsing.</description>
+func main() { if len(os.Args) != 3 { fmt.Println(&#34;Usage:&#34;, os.Args[0], &#34;PATTERN&#34;, &#34;FILE&#34;) return } pattern := os.Args[1] file := os.Args[2] // ... } $ go build grep.go $ ./grep Usage: ./grep PATTERN FILE Flag parsing The flag package implements basic command-line flag parsing.</description>
     </item>
     
     <item>
@@ -376,7 +376,7 @@ func main() { if len(os.Args) != 3 { fmt.Println(&#34;Usage:&#34;, os.Args[0], &
       
       <guid>https://yourbasic.org/golang/absolute-value-int-float/</guid>
       <description>Integers There is no built-in abs function for integers, but it&amp;rsquo;s simple to write your&amp;nbsp;own.
-// Abs returns the absolute value of x. func Abs(x int64) int64 { if x &amp;lt; 0 { return -x } return x }  Warning: The smallest value of a signed integer doesn’t have a matching positive value.  math.MinInt64 is -9223372036854775808, but math.MaxInt64 is 9223372036854775807.  Unfortunately, our Abs function returns a negative value in this case.</description>
+// Abs returns the absolute value of x. func Abs(x int64) int64 { if x  Warning: The smallest value of a signed integer doesn’t have a matching positive value.  math.MinInt64 is -9223372036854775808, but math.MaxInt64 is 9223372036854775807.  Unfortunately, our Abs function returns a negative value in this case. fmt.Println(Abs(math.MinInt64)) // Output: -9223372036854775808  (The Java and C libraries behave like this as well.</description>
     </item>
     
     <item>
@@ -409,7 +409,7 @@ Table of contents </description>
       
       <guid>https://yourbasic.org/golang/gotcha-constant-overflows-int/</guid>
       <description>Why doesn&amp;rsquo;t this code compile?
-const n = 9876543210 * 9876543210 fmt.Println(n) ../main.go:2:13: constant 97546105778997104100 overflows int  Answer The untyped constant n must be converted to a type before it can be assigned to the interface{} parameter in the call to fmt.Println.
+const n = 9876543210 * 9876543210 fmt.Println(n) ../main.go:2:13: constant 97546105778997104100 overflows int Answer The untyped constant n must be converted to a type before it can be assigned to the interface{} parameter in the call to fmt.Println.
 fmt.Println(a ...interface{}) When the type can’t be inferred from the context, an untyped constant is converted to a bool, int, float64, complex128, string or rune depending of the format of the&amp;nbsp;constant.</description>
     </item>
     
@@ -480,7 +480,7 @@ s := strconv.Itoa(97) // s == &#34;97&#34; Warning: In a plain conversion the va
       
       <guid>https://yourbasic.org/golang/interface-to-string/</guid>
       <description>Use fmt.Sprintf to convert an interface value to a string.
-var x interface{} = &amp;quot;abc&amp;quot; str := fmt.Sprintf(&amp;quot;%v&amp;quot;, x)  In fact, the same technique can be used to get a string representation of any data structure.
+var x interface{} = &#34;abc&#34; str := fmt.Sprintf(&#34;%v&#34;, x) In fact, the same technique can be used to get a string representation of any data structure.
 var x interface{} = []int{1, 2, 3} str := fmt.Sprintf(&#34;%v&#34;, x) fmt.Println(str) // &#34;[1 2 3]&#34; Fmt cheat sheet  Top fmt formatting tips</description>
     </item>
     
@@ -618,7 +618,7 @@ High-performance string concatenationGo&amp;nbsp;1.10 A strings.Builder is used 
       <guid>https://yourbasic.org/golang/errors-explained/</guid>
       <description>Go has two different error-handling mechanisms:
  most functions return errors; only a truly unrecoverable condition, such as an out-of-range index, produces a run-time exception, known as a panic.  Go’s multivalued return makes it easy to return a detailed error message alongside the normal return value. By convention, such messages have type error, a simple built-in interface:
-type error interface { Error() string }  Error handling example The os.</description>
+type error interface { Error() string } Error handling example The os.</description>
     </item>
     
     <item>
@@ -742,8 +742,8 @@ rand.Seed(time.Now().UnixNano()) chars := []rune(&#34;ABCDEFGHIJKLMNOPQRSTUVWXYZ
       
       <guid>https://yourbasic.org/golang/generate-permutation-slice-string/</guid>
       <description> // Perm calls f with each permutation of a. func Perm(a []rune, f func([]rune)) { perm(a, f, 0) } // Permute the values at index i to len(a)-1. func perm(a []rune, f func([]rune), i int) { if i  len(a) { f(a) return } perm(a, f, i+1) for j := i + 1; j  Example usage:
-Perm([]rune(&amp;quot;abc&amp;quot;), func(a []rune) { fmt.Println(string(a)) })  Output:
-abc acb bac bca cba cab  </description>
+Perm([]rune(&#34;abc&#34;), func(a []rune) { fmt.Println(string(a)) }) Output:
+abc acb bac bca cba cab</description>
     </item>
     
     <item>
@@ -775,7 +775,7 @@ The io.Reader interface, which represents the read end of a stream of data, is a
       
       <guid>https://yourbasic.org/golang/slice-of-keys-values-from-map/</guid>
       <description>You can use a range statement to extract slices of keys and values from a&amp;nbsp;map.
-keys := make([]keyType, 0, len(myMap)) values := make([]valueType, 0, len(myMap)) for k, v := range myMap { keys = append(keys, k) values = append(values, v) }  Further reading  Maps explained [code example]</description>
+keys := make([]keyType, 0, len(myMap)) values := make([]valueType, 0, len(myMap)) for k, v := range myMap { keys = append(keys, k) values = append(values, v) } Further reading  Maps explained [code example]</description>
     </item>
     
     <item>
@@ -785,7 +785,7 @@ keys := make([]keyType, 0, len(myMap)) values := make([]valueType, 0, len(myMap)
       
       <guid>https://yourbasic.org/golang/day-month-year-from-time/</guid>
       <description>The Date function returns the year, month and day of a time.Time.
-func (t Time) Date() (year int, month Month, day int)  In use:
+func (t Time) Date() (year int, month Month, day int) In use:
 year, month, day := time.Now().Date() fmt.Println(year, month, day) // For example 2009 November 10 fmt.Println(year, int(month), day) // For example 2009 11 10 You can also extract the information with seperate calls:
 t := time.Now() year := t.Year() // type int month := t.Month() // type time.</description>
     </item>
@@ -797,7 +797,7 @@ t := time.Now() year := t.Year() // type int month := t.Month() // type time.</d
       
       <guid>https://yourbasic.org/golang/gotcha-operator-precedence/</guid>
       <description>Why doesn&amp;rsquo;t this code compute the number of hours and seconds?
-n := 43210 // time in seconds fmt.Println(n/60*60, &#34;hours and&#34;, n%60*60, &#34;seconds&#34;) 43200 hours and 600 seconds  Answer The *, /, and % operators have the same precedence and are evaluated left to right: n/60*60 is the same as (n/60)*60.
+n := 43210 // time in seconds fmt.Println(n/60*60, &#34;hours and&#34;, n%60*60, &#34;seconds&#34;) 43200 hours and 600 seconds Answer The *, /, and % operators have the same precedence and are evaluated left to right: n/60*60 is the same as (n/60)*60.
 Insert a pair of parantheses to force the correct evaluation order.
 fmt.Println(n/(60*60), &#34;hours and&#34;, n%(60*60), &#34;seconds&#34;)  12 hours and 10 seconds  Or better yet, use a constant.</description>
     </item>
@@ -900,7 +900,7 @@ go list.Sort() // Run list.Sort in parallel; don’t wait for it. The following 
       
       <guid>https://yourbasic.org/golang/hash-md5-sha256-string-file/</guid>
       <description>String checksum To compute the hash value of a string or byte slice, use the Sum function from a crypto package such as crypto/md5, crypto/sha1, or crypto/sha256.
-s := &#34;Foo&#34; md5 := md5.Sum([]byte(s)) sha1 := sha1.Sum([]byte(s)) sha256 := sha256.Sum256([]byte(s)) fmt.Printf(&#34;%x\n&#34;, md5) fmt.Printf(&#34;%x\n&#34;, sha1) fmt.Printf(&#34;%x\n&#34;, sha256) 1356c67d7ad1638d816bfb822dd2c25d 201a6b3053cc1422d2c3670b62616221d2290929 1cbec737f863e4922cee63cc2ebbfaafcd1cff8b790d8cfd2e6a5d550b648afa  File checksum To compute the hash value of a file or other input stream:
+s := &#34;Foo&#34; md5 := md5.Sum([]byte(s)) sha1 := sha1.Sum([]byte(s)) sha256 := sha256.Sum256([]byte(s)) fmt.Printf(&#34;%x\n&#34;, md5) fmt.Printf(&#34;%x\n&#34;, sha1) fmt.Printf(&#34;%x\n&#34;, sha256) 1356c67d7ad1638d816bfb822dd2c25d 201a6b3053cc1422d2c3670b62616221d2290929 1cbec737f863e4922cee63cc2ebbfaafcd1cff8b790d8cfd2e6a5d550b648afa File checksum To compute the hash value of a file or other input stream:
  create a new hash.Hash from a crypto package such as crypto/md5, crypto/sha1, or crypto/sha256, add data by writing to its io.</description>
     </item>
     
@@ -911,7 +911,7 @@ s := &#34;Foo&#34; md5 := md5.Sum([]byte(s)) sha1 := sha1.Sum([]byte(s)) sha256 
       
       <guid>https://yourbasic.org/golang/http-server-example/</guid>
       <description>A basic web server If you access the URL http://localhost:8080/world on a machine where the program below is running, you will be greeted by&amp;nbsp;this&amp;nbsp;page.
-package main import ( &amp;quot;fmt&amp;quot; &amp;quot;net/http&amp;quot; ) func main() { http.HandleFunc(&amp;quot;/&amp;quot;, HelloServer) http.ListenAndServe(&amp;quot;:8080&amp;quot;, nil) } func HelloServer(w http.ResponseWriter, r *http.Request) { fmt.Fprintf(w, &amp;quot;Hello, %s!&amp;quot;, r.URL.Path[1:]) }   The call to http.HandleFunc tells the net.http package to handle all requests to the web root with the HelloServer function.</description>
+package main import ( &#34;fmt&#34; &#34;net/http&#34; ) func main() { http.HandleFunc(&#34;/&#34;, HelloServer) http.ListenAndServe(&#34;:8080&#34;, nil) } func HelloServer(w http.ResponseWriter, r *http.Request) { fmt.Fprintf(w, &#34;Hello, %s!&#34;, r.URL.Path[1:]) }  The call to http.HandleFunc tells the net.http package to handle all requests to the web root with the HelloServer function.</description>
     </item>
     
     <item>
@@ -921,10 +921,10 @@ package main import ( &amp;quot;fmt&amp;quot; &amp;quot;net/http&amp;quot; ) fun
       
       <guid>https://yourbasic.org/golang/gotcha-concatenate-rune-string/</guid>
       <description>Why doesn&amp;rsquo;t these print statements give the same result?
-fmt.Println(&amp;quot;H&amp;quot; + &amp;quot;i&amp;quot;) fmt.Println(&#39;H&#39; + &#39;i&#39;)  Hi 177  Answer The rune literals &#39;H&#39; and &#39;i&#39; are integer values identifying Unicode code points: &#39;H&#39; is 72 and &#39;i&#39; is&amp;nbsp;105.
+fmt.Println(&#34;H&#34; + &#34;i&#34;) fmt.Println(&#39;H&#39; + &#39;i&#39;)Hi 177 Answer The rune literals &#39;H&#39; and &#39;i&#39; are integer values identifying Unicode code points: &#39;H&#39; is 72 and &#39;i&#39; is&amp;nbsp;105.
 You can turn a code point into a string with a&amp;nbsp;conversion.
 fmt.Println(string(72) + string(&#39;i&#39;))// &#34;Hi&#34; You can also use the fmt.Sprintf function.
-s := fmt.Sprintf(&#34;%c%c, world!&#34;, 72, &#39;i&#39;) fmt.Println(s)// &#34;</description>
+s := fmt.Sprintf(&#34;%c%c, world!&#34;, 72, &#39;i&#39;) fmt.Println(s)// &#34;Hi, world!&#34; This fmt cheat sheet lists the most common formatting verbs and flags.</description>
     </item>
     
     <item>
@@ -967,7 +967,7 @@ Basic iterator pattern // Iterate calls the f function with n = 1, 2, and 3. fun
       <guid>https://yourbasic.org/golang/detect-deadlock/</guid>
       <description>A deadlock happens when a group of goroutines are waiting for each other and none of them is able to&amp;nbsp;proceed.
  Take a look at this simple example.
-func main() { ch := make(chan int) ch &amp;lt;- 1 fmt.Println(&amp;lt;-ch) }  The program will get stuck on the channel send operation waiting forever for someone to read the value. Go is able to detect situations like this at runtime. Here is the output from our program:</description>
+func main() { ch := make(chan int) ch  The program will get stuck on the channel send operation waiting forever for someone to read the value. Go is able to detect situations like this at runtime. Here is the output from our program:</description>
     </item>
     
     <item>
@@ -978,7 +978,7 @@ func main() { ch := make(chan int) ch &amp;lt;- 1 fmt.Println(&amp;lt;-ch) }  Th
       <guid>https://yourbasic.org/golang/detect-data-races/</guid>
       <description>Data races can happen easily and are hard to debug. Luckily, the Go runtime is often able to&amp;nbsp;help.
 Use -race to enable the built-in data race detector.
-$ go test -race [packages] $ go run -race [packages]  Example Here&amp;rsquo;s a program with a data race:
+$ go test -race [packages] $ go run -race [packages] Example Here&amp;rsquo;s a program with a data race:
 package main import &#34;fmt&#34; func main() { i := 0 go func() { i++ // write }() fmt.Println(i) // concurrent read } Running this program with the -race options tells us that there&amp;rsquo;s a race between the write at line&amp;nbsp;7 and the read at line&amp;nbsp;9:</description>
     </item>
     
@@ -998,9 +998,9 @@ package main import &#34;fmt&#34; func main() { i := 0 go func() { i++ // write 
       
       <guid>https://yourbasic.org/golang/day-of-week-int/</guid>
       <description>  The Weekday function returns returns the day of the week of a time.Time.
-func (t Time) Weekday() Weekday  In use:
+func (t Time) Weekday() Weekday In use:
 weekday := time.Now().Weekday() fmt.Println(weekday) // &#34;Tuesday&#34; fmt.Println(int(weekday)) // &#34;2&#34; Type Weekday The time.Weekday type specifies a day of the week (Sunday = 0, …).
-type Weekday int const ( Sunday Weekday = iota Monday Tuesday Wednesday Thursday Friday Saturday )  </description>
+type Weekday int const ( Sunday Weekday = iota Monday Tuesday Wednesday Thursday Friday Saturday )</description>
     </item>
     
     <item>
@@ -1010,7 +1010,7 @@ type Weekday int const ( Sunday Weekday = iota Monday Tuesday Wednesday Thursday
       
       <guid>https://yourbasic.org/golang/current-time/</guid>
       <description> Use time.Now and one of time.Unix or time.UnixNano to get a timestamp.
-now := time.Now() // current local time sec := now.Unix() // number of seconds since January 1, 1970 UTC nsec := now.UnixNano() // number of nanoseconds since January 1, 1970 UTC fmt.Println(now) // time.Time fmt.Println(sec) // int64 fmt.Println(nsec) // int64  2009-11-10 23:00:00 +0000 UTC m=+0.000000000 1257894000 1257894000000000000  </description>
+now := time.Now() // current local time sec := now.Unix() // number of seconds since January 1, 1970 UTC nsec := now.UnixNano() // number of nanoseconds since January 1, 1970 UTC fmt.Println(now) // time.Time fmt.Println(sec) // int64 fmt.Println(nsec) // int64  2009-11-10 23:00:00 +0000 UTC m=+0.000000000 1257894000 1257894000000000000</description>
     </item>
     
     <item>
@@ -1053,9 +1053,9 @@ quit := make(chan struct{}) go func() { for { select { case // … } } }() // �
       
       <guid>https://yourbasic.org/golang/copy-explained/</guid>
       <description>The built-in copy function copies elements into a destination slice dst from a source slice&amp;nbsp;src.
-func copy(dst, src []Type) int  It returns the number of elements copied, which will be the minimum of len(dst) and len(src). The result does not depend on whether the arguments overlap.
+func copy(dst, src []Type) int It returns the number of elements copied, which will be the minimum of len(dst) and len(src). The result does not depend on whether the arguments overlap.
 As a special case, it&amp;rsquo;s legal to copy bytes from a string to a slice of&amp;nbsp;bytes.
-copy(dst []byte, src string) int  Examples Copy from one slice to another var s = make([]int, 3) n := copy(s, []int{0, 1, 2, 3}) // n == 3, s == []int{0, 1, 2} Copy from a slice to itself s := []int{0, 1, 2} n := copy(s, s[1:]) // n == 2, s == []int{1, 2, 2} Copy from a string to a byte slice (special&amp;nbsp;case) var b = make([]byte, 5) copy(b, &#34;</description>
+copy(dst []byte, src string) int Examples Copy from one slice to another var s = make([]int, 3) n := copy(s, []int{0, 1, 2, 3}) // n == 3, s == []int{0, 1, 2} Copy from a slice to itself s := []int{0, 1, 2} n := copy(s, s[1:]) // n == 2, s == []int{1, 2, 2} Copy from a string to a byte slice (special&amp;nbsp;case) var b = make([]byte, 5) copy(b, &#34;</description>
     </item>
     
     <item>
@@ -1065,7 +1065,7 @@ copy(dst []byte, src string) int  Examples Copy from one slice to another var s 
       
       <guid>https://yourbasic.org/golang/io-reader-interface-explained/</guid>
       <description>Basics Use a built-in reader Read directly from a byte stream Buffered reading and scanning  Basics The io.Reader interface represents an entity from which you can read a stream of&amp;nbsp;bytes.
-type Reader interface { Read(buf []byte) (n int, err error) }  Read reads up to len(buf) bytes into buf and returns the number of bytes read &amp;ndash; it returns an io.EOF error when the stream&amp;nbsp;ends.
+type Reader interface { Read(buf []byte) (n int, err error) } Read reads up to len(buf) bytes into buf and returns the number of bytes read &amp;ndash; it returns an io.EOF error when the stream&amp;nbsp;ends.
 The standard library provides numerous Reader implementations (including in-memory byte buffers, files and network connections), and Readers are accepted as input by many utilities (including the HTTP client and server implementations).</description>
     </item>
     
@@ -1076,7 +1076,7 @@ The standard library provides numerous Reader implementations (including in-memo
       
       <guid>https://yourbasic.org/golang/io-writer-interface-explained/</guid>
       <description>Basics How to use a built-in writer (3&amp;nbsp;examples) Optimize string writes  Basics The io.Writer interface represents an entity to which you can write a stream of&amp;nbsp;bytes.
-type Writer interface { Write(p []byte) (n int, err error) }  Write writes up to len(p) bytes from p to the underlying data stream &amp;ndash; it returns the number of bytes written and any error encountered that caused the write to stop&amp;nbsp;early.</description>
+type Writer interface { Write(p []byte) (n int, err error) } Write writes up to len(p) bytes from p to the underlying data stream &amp;ndash; it returns the number of bytes written and any error encountered that caused the write to stop&amp;nbsp;early.</description>
     </item>
     
     <item>
@@ -1086,7 +1086,7 @@ type Writer interface { Write(p []byte) (n int, err error) }  Write writes up to
       
       <guid>https://yourbasic.org/golang/gotcha-strings-are-immutable/</guid>
       <description>Why doesn&amp;rsquo;t this code compile?
-s := &#34;hello&#34; s[0] = &#39;H&#39; fmt.Println(s) ../main.go:3:7: cannot assign to s[0]  Answer Go strings are immutable and behave like read-only byte slices (with a few extra properties).
+s := &#34;hello&#34; s[0] = &#39;H&#39; fmt.Println(s) ../main.go:3:7: cannot assign to s[0] Answer Go strings are immutable and behave like read-only byte slices (with a few extra properties).
 To update the data, use a rune slice instead.
 buf := []rune(&#34;hello&#34;) buf[0] = &#39;H&#39; s := string(buf) fmt.Println(s) // &#34;Hello&#34;  If the string only contains ASCII characters, you could also use a byte&amp;nbsp;slice.</description>
     </item>
@@ -1098,7 +1098,7 @@ buf := []rune(&#34;hello&#34;) buf[0] = &#39;H&#39; s := string(buf) fmt.Println
       
       <guid>https://yourbasic.org/golang/gotcha-index-out-of-range/</guid>
       <description>Why does this program crash?
-a := []int{1, 2, 3} for i := 1; i  panic: runtime error: index out of range goroutine 1 [running]: main.main() ../main.go:3 +0xe0  Answer In the last iteration, i equals len(a) which is outside the bounds of&amp;nbsp;a.
+a := []int{1, 2, 3} for i := 1; i  panic: runtime error: index out of range goroutine 1 [running]: main.main() ../main.go:3 +0xe0 Answer In the last iteration, i equals len(a) which is outside the bounds of&amp;nbsp;a.
 Arrays, slices and strings are indexed starting from zero so the values of a are found at a[0], a[1], a[2], …, a[len(a)-1].
 Loop from 0 to len(a)-1 instead.</description>
     </item>
@@ -1111,7 +1111,7 @@ Loop from 0 to len(a)-1 instead.</description>
       <guid>https://yourbasic.org/golang/interfaces-explained/</guid>
       <description>Interface type Structural typing The empty interface Interface values Equality  Interface type  An interface type consists of a set of method signatures. A variable of interface type can hold any value that implements these methods.
  In this example both Temp and *Point implement the MyStringer interface.
-type MyStringer interface { String() string }  type Temp int func (t Temp) String() string { return strconv.Itoa(int(t)) + &amp;quot; °C&amp;quot; } type Point struct { x, y int } func (p *Point) String() string { return fmt.</description>
+type MyStringer interface { String() string }type Temp int func (t Temp) String() string { return strconv.Itoa(int(t)) + &#34; °C&#34;</description>
     </item>
     
     <item>
@@ -1132,7 +1132,7 @@ By convention, the package name is the same as the last element of the import pa
       
       <guid>https://yourbasic.org/golang/gotcha-nil-pointer-dereference/</guid>
       <description>Why does this program panic?
-type Point struct { X, Y float64 } func (p *Point) Abs() float64 { return math.Sqrt(p.X*p.X + p.Y*p.Y) } func main() { var p *Point fmt.Println(p.Abs()) } panic: runtime error: invalid memory address or nil pointer dereference [signal SIGSEGV: segmentation violation code=0xffffffff addr=0x0 pc=0xd2c5a] goroutine 1 [running]: main.(*Point).Abs(...) ../main.go:6 main.main() ../main.go:11 +0x1a  Answer The uninitialized pointer p in the main function is nil, and you can’t follow the nil pointer.</description>
+type Point struct { X, Y float64 } func (p *Point) Abs() float64 { return math.Sqrt(p.X*p.X + p.Y*p.Y) } func main() { var p *Point fmt.Println(p.Abs()) } panic: runtime error: invalid memory address or nil pointer dereference [signal SIGSEGV: segmentation violation code=0xffffffff addr=0x0 pc=0xd2c5a] goroutine 1 [running]: main.(*Point).Abs(...) ../main.go:6 main.main() ../main.go:11 +0x1a Answer The uninitialized pointer p in the main function is nil, and you can’t follow the nil pointer.</description>
     </item>
     
     <item>
@@ -1164,7 +1164,7 @@ var a [2]int for _, x := range a { fmt.Println(&#34;x =&#34;, x) a[1] = 8 } fmt.
       <guid>https://yourbasic.org/golang/gotcha-data-race-closure/</guid>
       <description>Why does this program
 func main() { var wg sync.WaitGroup wg.Add(5) for i := 0; i  print
-55555  (A WaitGroup waits for a collection of goroutines to finish.)
+55555 (A WaitGroup waits for a collection of goroutines to finish.)
 Answer There is a data race: the variable i is shared by six&amp;nbsp;(6) goroutines.
  A data race occurs when two goroutines access the same variable concurrently and at least one of the accesses is a write.
  To avoid this, use a local variable and pass the number as a parameter when starting the goroutine.</description>
@@ -1210,7 +1210,7 @@ a := []string{&#34;A&#34;, &#34;B&#34;, &#34;C&#34;} s := a[len(a)-1] // C  Go d
       <description>Directory listing Use the ioutil.ReadDir function in package io/ioutil. It returns a sorted slice containing elements of type os.FileInfo.
 The code in this example prints a sorted list of all file names in the current directory.
 files, err := ioutil.ReadDir(&#34;.&#34;) if err != nil { log.Fatal(err) } for _, f := range files { fmt.Println(f.Name()) } Example output:
-dev etc tmp usr  Visit all files and folders in a directory tree Use the filepath.</description>
+dev etc tmp usr Visit all files and folders in a directory tree Use the filepath.</description>
     </item>
     
     <item>
@@ -1273,8 +1273,8 @@ type House struct { garage bool } func (p *House) HasGarage() bool { return p.</
       
       <guid>https://yourbasic.org/golang/opening-brace-separate-line/</guid>
       <description>As you may have noticed, programs with an opening brace on separate line do not compile.
-func main() { fmt.Println(&amp;quot;Hello&amp;quot;) }  ../main.go:1:6: missing function body for &amp;quot;main&amp;quot; ../main.go:2:1: syntax error: unexpected semicolon or newline before {  You must write:
-func main() { fmt.Println(&amp;quot;Hello&amp;quot;) }  This is a trade-off in the design of the Go language.
+func main() { fmt.Println(&#34;Hello&#34;) }../main.go:1:6: missing function body for &#34;main&#34; ../main.go:2:1: syntax error: unexpected semicolon or newline before { You must write:
+func main() { fmt.Println(&#34;Hello&#34;) } This is a trade-off in the design of the Go language.
  Some have argued that the lexer should do lookahead to permit the brace to live on the next line.</description>
     </item>
     
@@ -1285,7 +1285,7 @@ func main() { fmt.Println(&amp;quot;Hello&amp;quot;) }  This is a trade-off in t
       
       <guid>https://yourbasic.org/golang/gotcha-multiple-value-single-value-context/</guid>
       <description>Why does this code give a compile error?
-t := time.Parse(time.RFC3339, &#34;2018-04-06T10:49:05Z&#34;) fmt.Println(t) ../main.go:9:17: multiple-value time.Parse() in single-value context  Answer The time.Parse function returns two values, a time.Time and an error, and you must use&amp;nbsp;both.
+t := time.Parse(time.RFC3339, &#34;2018-04-06T10:49:05Z&#34;) fmt.Println(t) ../main.go:9:17: multiple-value time.Parse() in single-value context Answer The time.Parse function returns two values, a time.Time and an error, and you must use&amp;nbsp;both.
 t, err := time.Parse(time.RFC3339, &#34;2018-04-06T10:49:05Z&#34;) if err != nil { // TODO: Handle error. } fmt.Println(t) 2018-04-06 10:49:05 +0000 UTC Blank identifier (underscore) You can use the blank identifier to ignore unwanted return values.</description>
     </item>
     
@@ -1339,7 +1339,7 @@ var b byte for b = 250; b  Answer After the b == 255 iteration, b++ is executed.
       
       <guid>https://yourbasic.org/golang/gotcha-json-marshal-empty/</guid>
       <description>Why does json.Marshal produce empty structs in the JSON text output?
-type Person struct { name string age int } p := Person{&#34;Alice&#34;, 22} jsonData, _ := json.Marshal(p) fmt.Println(string(jsonData)) {}  Answer Only exported fields of a Go struct will be present in the JSON output.
+type Person struct { name string age int } p := Person{&#34;Alice&#34;, 22} jsonData, _ := json.Marshal(p) fmt.Println(string(jsonData)) {} Answer Only exported fields of a Go struct will be present in the JSON output.
 type Person struct { Name string // Changed to capital N Age int // Changed to capital A } p := Person{&#34;Alice&#34;, 22} jsonData, _ := json.</description>
     </item>
     
@@ -1350,7 +1350,7 @@ type Person struct { Name string // Changed to capital N Age int // Changed to c
       
       <guid>https://yourbasic.org/golang/short-variable-declaration-outside-function/</guid>
       <description>As you may have noticed, a program with short variable declarations outside a function doesn&amp;rsquo;t&amp;nbsp;compile.
-package main n := 1 // illegal func main() {} ../main.go:3:1: syntax error: non-declaration statement outside function body  Short variable declarations can only be used inside functions. You have to write
+package main n := 1 // illegal func main() {} ../main.go:3:1: syntax error: non-declaration statement outside function body Short variable declarations can only be used inside functions. You have to write
 package main var n = 1 func main() {} This is a trade-off in the design of the Go language.
  At the top level, every declaration begins with a keyword.</description>
     </item>
@@ -1507,8 +1507,8 @@ scanner := bufio.</description>
       
       <guid>https://yourbasic.org/golang/redeclaring-variables/</guid>
       <description>You can&amp;rsquo;t redeclare a variable which has already been declared in the same block.
-func main() { m := 0 m := 1 fmt.Println(m) }  ../main.go:3:4: no new variables on left side of :=  However, variables can be redeclared in short multi-variable declarations where at least one new variable is introduced.
-func main() { m := 0 m, n := 1, 2 fmt.Println(m, n) }   Unlike regular variable declarations, a short variable declaration may redeclare variables provided they were originally declared earlier in the same block (or the parameter lists if the block is the function body) with the same type, and at least one of the non-blank variables is new.</description>
+func main() { m := 0 m := 1 fmt.Println(m) }../main.go:3:4: no new variables on left side of := However, variables can be redeclared in short multi-variable declarations where at least one new variable is introduced.
+func main() { m := 0 m, n := 1, 2 fmt.Println(m, n) }  Unlike regular variable declarations, a short variable declaration may redeclare variables provided they were originally declared earlier in the same block (or the parameter lists if the block is the function body) with the same type, and at least one of the non-blank variables is new.</description>
     </item>
     
     <item>
@@ -1552,7 +1552,7 @@ x := 12.3456 fmt.Println(math.Floor(x*100)/100) // 12.34 (round down) fmt.Printl
       <guid>https://yourbasic.org/golang/round-float-to-int/</guid>
       <description>Round away from zero Round to even number Convert to an int type Before Go 1.10  Round away from zeroGo&amp;nbsp;1.10 Use math.Round to return the nearest integer, as a float64, rounding ties away from&amp;nbsp;zero.
 fmt.Println(math.Round(-0.6)) // -1 fmt.Println(math.Round(-0.4)) // -0 fmt.Println(math.Round(0.4)) // 0 fmt.Println(math.Round(0.6)) // 1  Note the special cases.
-Round(±0) = ±0 Round(±Inf) = ±Inf Round(NaN) = NaN  Round to even numberGo&amp;nbsp;1.10 Use math.RoundToEven to return the nearest integer, as a float64, rounding ties to an even&amp;nbsp;number.</description>
+Round(±0) = ±0 Round(±Inf) = ±Inf Round(NaN) = NaN Round to even numberGo&amp;nbsp;1.10 Use math.RoundToEven to return the nearest integer, as a float64, rounding ties to an even&amp;nbsp;number.</description>
     </item>
     
     <item>
@@ -1595,7 +1595,7 @@ func main() { n := 0 if true { n = 1 n++ } fmt.</description>
       
       <guid>https://yourbasic.org/golang/shuffle-slice-array/</guid>
       <description>The rand.Shuffle function in package math/rand shuffles an input sequence using a given swap function.
-a := []int{1, 2, 3, 4, 5, 6, 7, 8} rand.Seed(time.Now().UnixNano()) rand.Shuffle(len(a), func(i, j int) { a[i], a[j] = a[j], a[i] })  [5 8 6 4 3 7 2 1]  Warning: Without the call to rand.Seed you will get the same sequence of pseudo&amp;shy;random numbers each time you run the program.  Further reading  Generate random numbers, characters and slice elements</description>
+a := []int{1, 2, 3, 4, 5, 6, 7, 8} rand.Seed(time.Now().UnixNano()) rand.Shuffle(len(a), func(i, j int) { a[i], a[j] = a[j], a[i] })[5 8 6 4 3 7 2 1] Warning: Without the call to rand.Seed you will get the same sequence of pseudo&amp;shy;random numbers each time you run the program.  Further reading  Generate random numbers, characters and slice elements</description>
     </item>
     
     <item>
@@ -1615,7 +1615,7 @@ a := []int{1, 2, 3, 4, 5, 6, 7, 8} rand.Seed(time.Now().UnixNano()) rand.Shuffle
       
       <guid>https://yourbasic.org/golang/sort-map-keys-values/</guid>
       <description>A map is an unordered collection of key-value pairs. If you need a stable iteration order, you must maintain a separate data structure.  This example uses a sorted slice of keys to print a map[string]int in key order.
-m := map[string]int{&amp;quot;Alice&amp;quot;: 23, &amp;quot;Eve&amp;quot;: 2, &amp;quot;Bob&amp;quot;: 25} keys := make([]string, 0, len(m)) for k := range m { keys = append(keys, k) } sort.Strings(keys) for _, k := range keys { fmt.</description>
+m := map[string]int{&#34;Alice&#34;: 23, &#34;Eve&#34;: 2, &#34;Bob&#34;: 25} keys := make([]string, 0, len(m)) for k := range m { keys = append(keys, k) } sort.Strings(keys) for _, k := range keys { fmt.</description>
     </item>
     
     <item>
@@ -1675,7 +1675,7 @@ package search // Find returns the smallest index i at which x   Put the test co
       
       <guid>https://yourbasic.org/golang/gotcha-multiply-duration-integer/</guid>
       <description>Why doesn&amp;rsquo;t this compile?
-n := 100 time.Sleep(n * time.Millisecond) invalid operation: n * time.Millisecond (mismatched types int and time.Duration)  Answer There is no mixing of numeric types in Go. You can only multiply a time.Duration with
+n := 100 time.Sleep(n * time.Millisecond) invalid operation: n * time.Millisecond (mismatched types int and time.Duration) Answer There is no mixing of numeric types in Go. You can only multiply a time.Duration with
  another time.Duration, or an untyped integer constant.  Here are three correct examples.
 var n time.Duration = 100 time.Sleep(n * time.Millisecond)  const n = 100 time.Sleep(n * time.Millisecond)  time.</description>
     </item>
@@ -1700,7 +1700,7 @@ Here is a convenience function that changes the location associated with a&amp;n
       <guid>https://yourbasic.org/golang/time-reset-wait-stop-timeout-cancel-interval/</guid>
       <description>Timers and Tickers let you execute code in the future, once or repeatedly.
  Timeout (Timer) Repeat (Ticker) Wait, act and cancel  Timeout (Timer) time.After waits for a specified duration and then sends the current time on the returned channel:
-select { case news := &amp;lt;-AFP: fmt.Println(news) case &amp;lt;-time.After(time.Hour): fmt.Println(&amp;quot;No news in an hour.&amp;quot;) }  The underlying time.Timer will not be recovered by the garbage collector until the timer fires.</description>
+select { case news :=  The underlying time.Timer will not be recovered by the garbage collector until the timer fires. If this is a concern, use time.NewTimer instead and call its Stop method when the timer is no longer needed:</description>
     </item>
     
     <item>
@@ -1711,7 +1711,7 @@ select { case news := &amp;lt;-AFP: fmt.Println(news) case &amp;lt;-time.After(t
       <guid>https://yourbasic.org/golang/type-alias/</guid>
       <description>An alias declaration has the form
 type T1 = T2 as opposed to a standard type definition
-type T1 T2  An alias declaration doesn&amp;rsquo;t create a new distinct type different from the type it&amp;rsquo;s created from. It just introduces an alias name T1, an alternate spelling, for the type denoted by&amp;nbsp;T2.
+type T1 T2 An alias declaration doesn&amp;rsquo;t create a new distinct type different from the type it&amp;rsquo;s created from. It just introduces an alias name T1, an alternate spelling, for the type denoted by&amp;nbsp;T2.
 Type aliases are not meant for everyday use. They were introduced to support gradual code repair while moving a type between packages during large-scale refactoring.</description>
     </item>
     
@@ -1734,7 +1734,7 @@ The type assertion x.(T) asserts that the concrete value stored in&amp;nbsp;x is
       
       <guid>https://yourbasic.org/golang/gotcha-increment-decrement-statement/</guid>
       <description>Why doesn&amp;rsquo;t these lines compile?
-i := 0 fmt.Println(++i) fmt.Println(i++) main.go:9:14: syntax error: unexpected ++, expecting expression main.go:10:15: syntax error: unexpected ++, expecting comma or )  Answer In Go increment and decrement operations can’t be used as expressions, only as statements. Also, only the postfix notation is&amp;nbsp;allowed.
+i := 0 fmt.Println(++i) fmt.Println(i++) main.go:9:14: syntax error: unexpected ++, expecting expression main.go:10:15: syntax error: unexpected ++, expecting comma or ) Answer In Go increment and decrement operations can’t be used as expressions, only as statements. Also, only the postfix notation is&amp;nbsp;allowed.
 The above snippet needs to be written as:
 i := 0 i++ fmt.Println(i) fmt.Println(i) i++  Without pointer arithmetic, the convenience value of pre- and postfix increment operators drops.</description>
     </item>
@@ -1746,7 +1746,7 @@ i := 0 i++ fmt.Println(i) fmt.Println(i) i++  Without pointer arithmetic, the co
       
       <guid>https://yourbasic.org/golang/gotcha-missing-comma-slice-array-map-literal/</guid>
       <description>Why doesn&amp;rsquo;t this program compile?
-func main() { fruit := []string{ &#34;apple&#34;, &#34;banana&#34;, &#34;cherry&#34; } fmt.Println(fruit) } ../main.go:5:11: syntax error: unexpected newline, expecting comma or }  Answer In a multi-line slice, array or map literal, every line must end with a comma.
+func main() { fruit := []string{ &#34;apple&#34;, &#34;banana&#34;, &#34;cherry&#34; } fmt.Println(fruit) } ../main.go:5:11: syntax error: unexpected newline, expecting comma or } Answer In a multi-line slice, array or map literal, every line must end with a comma.
 func main() { fruit := []string{ &#34;apple&#34;, &#34;banana&#34;, &#34;cherry&#34;, // comma added } fmt.Println(fruit) // &#34;[apple banana cherry]&#34; } This behavior is a consequence of the Go semicolon insertion rules.</description>
     </item>
     
@@ -1758,7 +1758,7 @@ func main() { fruit := []string{ &#34;apple&#34;, &#34;banana&#34;, &#34;cherry&
       <guid>https://yourbasic.org/golang/gotcha-unexpected-values-range/</guid>
       <description>Why does this code
 primes := []int{2, 3, 5, 7} for p := range primes { fmt.Println(p) } print
-0 1 2 3  Answer For arrays and slices, the range loop generates two&amp;nbsp;values:
+0 1 2 3 Answer For arrays and slices, the range loop generates two&amp;nbsp;values:
   first the index,  then the data at this position.  If you omit the second value, you get only the indices.
 To print the data, use the second value instead:
 primes := []int{2, 3, 5, 7} for _, p := range primes { fmt.</description>
@@ -1771,7 +1771,7 @@ primes := []int{2, 3, 5, 7} for _, p := range primes { fmt.</description>
       
       <guid>https://yourbasic.org/golang/untyped-constants/</guid>
       <description>Constants may be typed or untyped.
-const a uint = 17 const b = 55  An untyped constant has no limits. When it&amp;rsquo;s used in a context that requires a type, a type will be inferred and a limit applied.
+const a uint = 17 const b = 55 An untyped constant has no limits. When it&amp;rsquo;s used in a context that requires a type, a type will be inferred and a limit applied.
 const big = 10000000000 // Ok, even though it&#39;s too big for an int. const bigger = big * 100 // Still ok. var i int = big / 100 // No problem: the new result fits in an int.</description>
     </item>
     
@@ -1782,7 +1782,7 @@ const big = 10000000000 // Ok, even though it&#39;s too big for an int. const bi
       
       <guid>https://yourbasic.org/golang/unused-local-variables/</guid>
       <description>As you may have noticed, programs with unused local variables do not compile. func main() { var n int // &amp;ldquo;n declared and not used&amp;rdquo; n = 5 // this doesn&amp;rsquo;t help }
-../main.go:2:6: n declared and not used  This is a deliberate feature of the Go language.
+../main.go:2:6: n declared and not used This is a deliberate feature of the Go language.
  The presence of an unused variable may indicate a bug [&amp;hellip;] Go refuses to compile programs with unused variables or imports, trading short-term convenience for long-term build speed and program clarity.</description>
     </item>
     
@@ -1793,7 +1793,7 @@ const big = 10000000000 // Ok, even though it&#39;s too big for an int. const bi
       
       <guid>https://yourbasic.org/golang/unused-imports/</guid>
       <description>As you may have noticed, programs with unused package imports do not compile.
-package main import ( &#34;fmt&#34; &#34;log&#34; // &#34;imported and not used: log&#34; ) func main() { fmt.Println(&#34;Hello&#34;) } ../main.go:5:2: imported and not used: &amp;quot;log&amp;quot;  This is a deliberate feature of the Go language.
+package main import ( &#34;fmt&#34; &#34;log&#34; // &#34;imported and not used: log&#34; ) func main() { fmt.Println(&#34;Hello&#34;) } ../main.go:5:2: imported and not used: &#34;log&#34; This is a deliberate feature of the Go language.
  The presence of an unused variable may indicate a bug [&amp;hellip;] Go refuses to compile programs with unused variables or imports, trading short-term convenience for long-term build speed and program clarity.</description>
     </item>
     
@@ -1859,7 +1859,7 @@ x = q*y + r and |r| &amp;lt; |y|  where x / y is truncated towards zero.</descri
       
       <guid>https://yourbasic.org/golang/gotcha-copy-missing/</guid>
       <description>Why does the copy disappear?
-var src, dst []int src = []int{1, 2, 3} copy(dst, src) // Copy elements to dst from src. fmt.Println(&#34;dst:&#34;, dst) dst: []  Answer The number of elements copied by the copy function is the minimum of len(dst) and len(src). To make a full copy, you must allocate a big enough destination slice. var src, dst []int src = []int{1, 2, 3} dst = make([]int, len(src)) n := copy(dst, src) fmt.</description>
+var src, dst []int src = []int{1, 2, 3} copy(dst, src) // Copy elements to dst from src. fmt.Println(&#34;dst:&#34;, dst) dst: [] Answer The number of elements copied by the copy function is the minimum of len(dst) and len(src). To make a full copy, you must allocate a big enough destination slice. var src, dst []int src = []int{1, 2, 3} dst = make([]int, len(src)) n := copy(dst, src) fmt.</description>
     </item>
     
     <item>
@@ -1901,8 +1901,8 @@ As a CS professor and longtime Go and Java developer, I&amp;rsquo;d like to shar
       
       <guid>https://yourbasic.org/golang/log-to-file/</guid>
       <description>This code appends a log message to the file text.log. It creates the file if it doesn&amp;rsquo;t already exist.
-f, err := os.OpenFile(&amp;quot;text.log&amp;quot;, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644) if err != nil { log.Println(err) } defer f.Close() logger := log.New(f, &amp;quot;prefix&amp;quot;, log.LstdFlags) logger.Println(&amp;quot;text to append&amp;quot;) logger.Println(&amp;quot;more text to append&amp;quot;)  Contents of text.log:
-prefix: 2017/10/20 07:52:58 text to append prefix: 2017/10/20 07:52:58 more text to append   log.New creates a new log.</description>
+f, err := os.OpenFile(&#34;text.log&#34;, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644) if err != nil { log.Println(err) } defer f.Close() logger := log.New(f, &#34;prefix&#34;, log.LstdFlags) logger.Println(&#34;text to append&#34;) logger.Println(&#34;more text to append&#34;) Contents of text.log:
+prefix: 2017/10/20 07:52:58 text to append prefix: 2017/10/20 07:52:58 more text to append  log.New creates a new log.Logger that writes to f.</description>
     </item>
     
     <item>

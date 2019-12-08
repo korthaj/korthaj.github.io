@@ -153,13 +153,10 @@ func Publish(text string, delay time.Duration) {
 
 <p>The program will, most likely, print the following three lines,
 in the given order and with a five second break in between each line.</p>
-
 <pre><code>$ go run publish1.go
 Let’s hope the news will published before I leave.
 BREAKING NEWS: A goroutine starts a new thread.
-Ten seconds later: I’m leaving now.
-</code></pre>
-
+Ten seconds later: I’m leaving now.</code></pre>
 <p>In general it’s not possible to arrange for threads to wait for each
 other by sleeping. Go’s main method for synchronization is to use
 <a href="/golang/channels-explained/">channels</a>.</p>

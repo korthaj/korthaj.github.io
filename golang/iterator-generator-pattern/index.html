@@ -104,15 +104,9 @@ func Iterate(f func(n int)) {
 }</code></pre>
 
 <p>In use:</p>
-
-<pre><code>Iterate(func(n int) { fmt.Println(n) })
-</code></pre>
-
-<pre><code>1
+<pre><code>Iterate(func(n int) { fmt.Println(n) })</code></pre><pre><code>1
 2
-3
-</code></pre>
-
+3</code></pre>
 <h2 id="iterator-with-break">Iterator with break</h2>
 
 <pre><code>// Iterate calls the f function with n = 1, 2, and 3.
@@ -127,17 +121,11 @@ func Iterate(f func(n int) (skip bool)) {
 }</code></pre>
 
 <p>In use:</p>
-
 <pre><code>Iterate(func(n int) (skip bool) {
 	fmt.Println(n)
 	return n == 2
-})
-</code></pre>
-
-<pre><code>1
-2
-</code></pre>
-
+})</code></pre><pre><code>1
+2</code></pre>
 
 <h3>More code examples</h3>
 

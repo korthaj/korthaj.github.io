@@ -131,15 +131,14 @@ your&nbsp;code.</p>
 <p>The following example shows how to divide a costly computation and
 distribute it on all available CPUs.
 This is the code we want to optimize.</p>
-
 <pre><code>type Vector []float64
 
 // Convolve computes w = u * v, where w[k] = Σ u[i]*v[j], i + j = k.
-// Precondition: len(u) &gt; 0, len(v) &gt; 0.
+// Precondition: len(u) > 0, len(v) > 0.
 func Convolve(u, v Vector) Vector {
     n := len(u) + len(v) - 1
     w := make(Vector, n)
-    for k := 0; k &lt; n; k++ {
+    for k := 0; k < n; k++ {
         w[k] = mul(u, v, k)
     }
     return w
@@ -150,13 +149,11 @@ func mul(u, v Vector, k int) float64 {
     var res float64
     n := min(k+1, len(u))
     j := min(k, len(v)-1)
-    for i := k - j; i &lt; n; i, j = i+1, j-1 {
+    for i := k - j; i < n; i, j = i+1, j-1 {
         res += u[i] * v[j]
     }
     return res
-}
-</code></pre>
-
+}</code></pre>
 <p>The idea is simple:
 identify work units of suitable size and then run each work unit
 in a separate goroutine. Here is a parallel version of <code>Convolve</code>.</p>

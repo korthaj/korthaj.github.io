@@ -109,15 +109,12 @@ returns a slice of <code>&quot;key=value&quot;</code> strings listing all enviro
     kv := strings.SplitN(s, "=", 2) <span class="comment">// unpacks "key=value"</span>
     fmt.Printf("key:%q value:%q\n", kv[0], kv[1])
 }</code></pre>
-
-<pre><code>key:&quot;SHELL&quot; value:&quot;/bin/bash&quot;
-key:&quot;SESSION&quot; value:&quot;ubuntu&quot;
-key:&quot;TERM&quot; value:&quot;xterm-256color&quot;
-key:&quot;LANG&quot; value:&quot;en_US.UTF-8&quot;
-key:&quot;XMODIFIERS&quot; value:&quot;@im=ibus&quot;
-…
-</code></pre>
-
+<pre><code>key:"SHELL" value:"/bin/bash"
+key:"SESSION" value:"ubuntu"
+key:"TERM" value:"xterm-256color"
+key:"LANG" value:"en_US.UTF-8"
+key:"XMODIFIERS" value:"@im=ibus"
+…</code></pre>
 
 <h3>More code examples</h3>
 

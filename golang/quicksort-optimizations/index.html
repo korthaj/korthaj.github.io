@@ -159,7 +159,6 @@ in the next section gives very poor performance when sorting an already sorted l
 the median of three random elements.
 With this strategy, the expected number of comparisons becomes
 1.2&#8202;<i>n</i>&nbsp;log&nbsp;<i>n</i>.</p>
-
 <pre><code>func Pivot(v []int) int {
 	n := len(v)
 	return Median(v[rand.Intn(n)],
@@ -168,71 +167,66 @@ With this strategy, the expected number of comparisons becomes
 }
 
 func Median(a, b, c int) int {
-	if a &lt; b {
+	if a < b {
 		switch {
-		case b &lt; c:
+		case b < c:
 			return b
-		case a &lt; c:
+		case a < c:
 			return c
 		default:
 			return a
 		}
 	}
 	switch {
-	case a &lt; c:
+	case a < c:
 		return a
-	case b &lt; c:
+	case b < c:
 		return c
 	default:
 		return b
 	}
-}
-</code></pre>
-
+}</code></pre>
 <h2 id="3-way-partition">3-way partition</h2>
 
 <p>This 3-way partition algorithm handles input with many replicated elements gracefully,
 a case where the standard 2-way partition can run into troubles.
 A well-chosen <a href="/algorithms/loop-invariants-explained/">loop invariant</a>
 is vital if we want to untangle this intricate piece of code.</p>
-
 <pre><code>// Partition reorders the elements of v so that:
 // - all elements in v[:low] are less than p,
 // - all elements in v[low:high] are equal to p,
 // - all elements in v[high:] are greater than p.
 func Partition(v []int, p int) (low, high int) {
 	low, high = 0, len(v)
-	for mid := 0; mid &lt; high; {
+	for mid := 0; mid < high; {
 		// Invariant:
-		//  - v[:low] &lt; p
+		//  - v[:low] < p
 		//  - v[low:mid] = p
 		//  - v[mid:high] are unknown
-		//  - v[high:] &gt; p
+		//  - v[high:] > p
 		//
-		//         &lt; p       = p        unknown       &gt; p
+		//         < p       = p        unknown       > p
 		//     -----------------------------------------------
 		// v: |          |          |a            |           |
 		//     -----------------------------------------------
 		//                ^          ^             ^
 		//               low        mid           high
 		switch a := v[mid]; {
-		case a &lt; p:
+		case a < p:
 			v[mid] = v[low]
 			v[low] = a
 			low++
 			mid++
 		case a == p:
 			mid++
-		default: // a &gt; p
+		default: // a > p
 			v[mid] = v[high-1]
 			v[high-1] = a
 			high--
 		}
 	}
 	return
-}
-</code></pre>
-
+}</code></pre>
 <p>It&rsquo;s easy to see that the algorithm runs in linear time:
 the distance between <code>mid</code> and <code>high</code> decreases in every loop,
 either because <code>mid</code> increases or because <code>high</code> decreases.</p>
@@ -255,22 +249,19 @@ faster for small lists.</p>
 the nature of the data, hardware characteristics)
 and has to be found experimentally. Luckily the choice is seldom critical:
 break points between 10 and 100 tend to work well.</p>
-
 <pre><code>func InsertionSort(v []int) {
-	for j := 1; j &lt; len(v); j++ {
+	for j := 1; j < len(v); j++ {
 		// Invariant: v[:j] contains the same elements as
 		// the original slice v[:j], but in sorted order.
 		key := v[j]
 		i := j - 1
-		for i &gt;= 0 &amp;&amp; v[i] &gt; key {
+		for i >= 0 && v[i] > key {
 			v[i+1] = v[i]
 			i--
 		}
 		v[i+1] = key
 	}
-}
-</code></pre>
-
+}</code></pre>
 <h3 id="further-reading">Further reading</h3>
 
 <div><a href="/algorithms/fastest-sorting-algorithm/"><img src="/algorithms/sorted-thumb.jpg" title="The fastest sorting algorithm?"></a></div>

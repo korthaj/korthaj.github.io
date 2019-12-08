@@ -108,12 +108,9 @@ sha256 := sha256.Sum256([]byte(s))
 fmt.Printf("%x\n", md5)
 fmt.Printf("%x\n", sha1)
 fmt.Printf("%x\n", sha256)</code></pre>
-
 <pre><code>1356c67d7ad1638d816bfb822dd2c25d
 201a6b3053cc1422d2c3670b62616221d2290929
-1cbec737f863e4922cee63cc2ebbfaafcd1cff8b790d8cfd2e6a5d550b648afa
-</code></pre>
-
+1cbec737f863e4922cee63cc2ebbfaafcd1cff8b790d8cfd2e6a5d550b648afa</code></pre>
 <h2 id="file-checksum">File checksum</h2>
 
 <p>To compute the hash value of a <strong>file</strong> or other <strong>input stream</strong>:</p>
@@ -137,10 +134,7 @@ if _, err := io.Copy(hash, input); err != nil {
 sum := hash.Sum(nil)
 
 fmt.Printf("%x\n", sum)</code></pre>
-
-<pre><code>1cbec737f863e4922cee63cc2ebbfaafcd1cff8b790d8cfd2e6a5d550b648afa
-</code></pre>
-
+<pre><code>1cbec737f863e4922cee63cc2ebbfaafcd1cff8b790d8cfd2e6a5d550b648afa</code></pre>
 
 <h3>More code examples</h3>
 

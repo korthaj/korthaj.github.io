@@ -116,16 +116,12 @@ func Min(x, y int64) int64 {
 <h2 id="floats">Floats</h2>
 
 <p>For floats, use <a href="https://golang.org/pkg/math/#Max"><code>math.Max</code></a> and <a href="https://golang.org/pkg/math/#Min"><code>math.Min</code></a>.</p>
-
 <pre><code>// Max returns the larger of x or y. 
 func Max(x, y float64) float64
 
 // Min returns the smaller of x or y.
-func Min(x, y float64) float64
-</code></pre>
-
+func Min(x, y float64) float64</code></pre>
 <p>Special cases:</p>
-
 <pre><code>Max(x, +Inf) = Max(+Inf, x) = +Inf
 Max(x, NaN) = Max(NaN, x) = NaN
 Max(+0, ±0) = Max(±0, +0) = +0
@@ -133,9 +129,7 @@ Max(-0, -0) = -0
 
 Min(x, -Inf) = Min(-Inf, x) = -Inf
 Min(x, NaN) = Min(NaN, x) = NaN
-Min(-0, ±0) = Min(±0, -0) = -0
-</code></pre>
-
+Min(-0, ±0) = Min(±0, -0) = -0</code></pre>
 
 <h3>More code examples</h3>
 

@@ -102,10 +102,7 @@ produce empty structs in the JSON text output?</p>
 p := Person{"Alice", 22}
 jsonData, _ := json.Marshal(p)
 fmt.Println(string(jsonData))</code></pre>
-
-<pre><code>{}
-</code></pre>
-
+<pre><code>{}</code></pre>
 <h2 id="answer">Answer</h2>
 
 <p>Only <strong>exported</strong> fields of a Go struct will be present in the JSON output.</p>

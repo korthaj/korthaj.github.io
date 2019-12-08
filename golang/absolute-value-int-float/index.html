@@ -95,16 +95,13 @@
 
 <p>There is no built-in abs function for integers,
 but it&rsquo;s simple to write your&nbsp;own.</p>
-
 <pre><code>// Abs returns the absolute value of x.
 func Abs(x int64) int64 {
-	if x &lt; 0 {
+	if x < 0 {
 		return -x
 	}
 	return x
-}
-</code></pre>
-
+}</code></pre>
 <blockquote class="warning">
 <b>Warning:</b> The smallest value of a signed integer doesn’t have a matching positive value.
 
@@ -126,16 +123,10 @@ Unfortunately, our <code>Abs</code> function returns a <b>negative</b> value in 
 
 <p>The <a href="https://golang.org/pkg/math/#Abs"><code>math.Abs</code></a> function
 returns the absolute value of&nbsp;<code>x</code>.</p>
-
-<pre><code>func Abs(x float64) float64
-</code></pre>
-
+<pre><code>func Abs(x float64) float64</code></pre>
 <p>Special cases:</p>
-
 <pre><code>Abs(±Inf) = +Inf
-Abs(NaN) = NaN
-</code></pre>
-
+Abs(NaN) = NaN</code></pre>
 
 <h3>More code examples</h3>
 

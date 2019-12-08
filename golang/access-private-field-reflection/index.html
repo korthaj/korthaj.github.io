@@ -124,7 +124,6 @@ func main() {
     <span class="comment">// Try to set the value of len.</span>
     fv.Set(reflect.ValueOf(3)) <span class="comment">// <b>ILLEGAL</b></span>
 }</code></pre>
-
 <pre><code>2
 panic: reflect: reflect.Value.Set using value obtained using unexported field
 
@@ -134,9 +133,7 @@ reflect.flag.mustBeAssignable(0x1a2, 0x285a)
 reflect.Value.Set(0xee2c0, 0x10444254, 0x1a2, 0xee2c0, 0x1280c0, 0x82)
 	/usr/local/go/src/reflect/value.go:1345 +0x40
 main.main()
-	../main.go:18 +0x280
-</code></pre>
-
+	../main.go:18 +0x280</code></pre>
 
 <h3>More code examples</h3>
 

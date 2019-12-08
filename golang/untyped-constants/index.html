@@ -91,11 +91,8 @@
 <div style="margin-top:1em;"><img src="/golang/infinite-highway.jpg"></div>
 
 <p>Constants may be <strong>typed</strong> or <strong>untyped</strong>.</p>
-
 <pre><code>const a uint = 17
-const b = 55
-</code></pre>
-
+const b = 55</code></pre>
 <p>An untyped constant has <strong>no limits</strong>. When it&rsquo;s used in a context that requires a type, a type will be inferred and a limit applied.</p>
 
 <pre><code>const big = 10000000000  <span class="comment">// Ok, even though it's too big for an int.</span>

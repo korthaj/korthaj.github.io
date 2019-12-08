@@ -96,15 +96,12 @@ It may be used like any other identifier in a declaration, but it does not intro
 <h2 id="ignore-values">Ignore values</h2>
 
 <p>The blank identifier provides a way to ignore left-hand side values in an assignment.</p>
-
-<pre><code>_, present := timeZone[&quot;CET&quot;]
+<pre><code>_, present := timeZone["CET"]
 
 sum := 0
 for _, n := range a {
 	sum += n
-}
-</code></pre>
-
+}</code></pre>
 <h2 id="import-for-side-effects">Import for side effects</h2>
 
 <p>It can also be used to import a package solely for its side effects.</p>

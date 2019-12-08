@@ -92,25 +92,19 @@
 
 <p>This code appends a log message to the file <code>text.log</code>.
 It creates the file if it doesn&rsquo;t already exist.</p>
-
-<pre><code>f, err := os.OpenFile(&quot;text.log&quot;,
+<pre><code>f, err := os.OpenFile("text.log",
 	os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 if err != nil {
 	log.Println(err)
 }
 defer f.Close()
 
-logger := log.New(f, &quot;prefix&quot;, log.LstdFlags)
-logger.Println(&quot;text to append&quot;)
-logger.Println(&quot;more text to append&quot;)
-</code></pre>
-
+logger := log.New(f, "prefix", log.LstdFlags)
+logger.Println("text to append")
+logger.Println("more text to append")</code></pre>
 <p>Contents of <code>text.log</code>:</p>
-
 <pre><code>prefix: 2017/10/20 07:52:58 text to append
-prefix: 2017/10/20 07:52:58 more text to append
-</code></pre>
-
+prefix: 2017/10/20 07:52:58 more text to append</code></pre>
 <ul>
 <li><a href="https://golang.org/pkg/log/#New"><code>log.New</code></a> creates a new
 <a href="https://golang.org/pkg/log/#Logger"><code>log.Logger</code></a> that writes to <code>f</code>.</li>
@@ -128,10 +122,7 @@ to prefix to each log entry.</li>
 <p>To turn off all output from a <a href="https://golang.org/pkg/log/#Logger"><code>log.Logger</code></a>,
 set the output destination to <a href="https://golang.org/pkg/io/ioutil/#pkg-variables"><code>ioutil.Discard</code></a>,
 a writer on which all calls succeed without doing anything.</p>
-
-<pre><code>log.SetOutput(ioutil.Discard)
-</code></pre>
-
+<pre><code>log.SetOutput(ioutil.Discard)</code></pre>
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
 <a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2flog-to-file%2f&amp;text=Write%20log%20to%20file%20%28or%20/dev/null%29&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2flog-to-file%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;

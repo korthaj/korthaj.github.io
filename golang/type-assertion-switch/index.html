@@ -122,10 +122,7 @@ n, ok := x.(int)
 fmt.Println(n, ok) <span class="comment">// "0 false"</span>
 
 n = x.(int)        <span class="comment">// ILLEGAL</span></code></pre>
-
-<pre><code>panic: interface conversion: interface {} is string, not int
-</code></pre>
-
+<pre><code>panic: interface conversion: interface {} is string, not int</code></pre>
 <h2 id="type-switches">Type switches</h2>
 
 <p>A <strong>type switch</strong> performs several type assertions in series and
@@ -143,10 +140,7 @@ case bool, string:
 default:
     fmt.Println("type unknown")        <span class="comment">// here v has type interface{}</span>
 }</code></pre>
-
-<pre><code>x is bool or string
-</code></pre>
-
+<pre><code>x is bool or string</code></pre>
 <h3 id="further-reading">Further reading</h3>
 
 <div><a href="/golang/interfaces-explained/"><img src="/golang/connection-thumb.jpg" title="Interfaces in 5 easy steps"></a></div>

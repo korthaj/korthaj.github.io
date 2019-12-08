@@ -96,10 +96,7 @@
 <pre><code>s := "hello"
 s[0] = 'H'
 fmt.Println(s)</code></pre>
-
-<pre><code>../main.go:3:7: cannot assign to s[0]
-</code></pre>
-
+<pre><code>../main.go:3:7: cannot assign to s[0]</code></pre>
 <h2 id="answer">Answer</h2>
 
 <p>Go strings are immutable and behave like read-only byte slices (with a few extra properties).</p>

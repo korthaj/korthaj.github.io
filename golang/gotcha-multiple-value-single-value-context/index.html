@@ -95,10 +95,7 @@
 
 <pre><code>t := time.Parse(time.RFC3339, "2018-04-06T10:49:05Z")
 fmt.Println(t)</code></pre>
-
-<pre><code>../main.go:9:17: multiple-value time.Parse() in single-value context
-</code></pre>
-
+<pre><code>../main.go:9:17: multiple-value time.Parse() in single-value context</code></pre>
 <h2 id="answer">Answer</h2>
 
 <p>The <a href="https://golang.org/pkg/time/#Parse"><code>time.Parse</code></a> function returns two values,

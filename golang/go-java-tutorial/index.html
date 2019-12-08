@@ -348,28 +348,19 @@ of the object being declared. The keyword is one of <code>const</code>,
 <code>type</code>, <code>var</code>, or <code>func</code>.
 You can also use a keyword followed by a series of declarations in
 parentheses.</p>
-
 <pre><code>var (
     n int
     x float64
-)
-</code></pre>
-
+)</code></pre>
 <p>When declaring a function, you must either provide a name for each parameter
 or not provide a name for any parameter; you can’t omit some names
 and provide others.  You may group several names with the same type.</p>
-
-<pre><code>func f(i, j, k int, s, t string)
-</code></pre>
-
+<pre><code>func f(i, j, k int, s, t string)</code></pre>
 <p>A variable may be initialized when it is declared.  When this is done,
 specifying the type of the variable is permitted but not required.
 When the type is not specified, it defaults to the type of
 the initialization expression.</p>
-
-<pre><code>var v9 = *v2
-</code></pre>
-
+<pre><code>var v9 = *v2</code></pre>
 <p>If a variable is not initialized explicitly, the type must be specified.
 In that case it will be implicitly initialized to the type’s
 <a href="/golang/default-zero-value/">zero value</a>
@@ -381,15 +372,9 @@ There are no uninitialized variables in&nbsp;Go.</p>
 <p>Within a function, a short declaration syntax is available
 with&nbsp;<code>:=</code>&nbsp;.
 The statement</p>
-
-<pre><code>v10 := v1
-</code></pre>
-
+<pre><code>v10 := v1</code></pre>
 <p>is the same as</p>
-
-<pre><code>var v10 = v1
-</code></pre>
-
+<pre><code>var v10 = v1</code></pre>
 <h3 id="function-types">Function types</h3>
 
 <p>In Go, functions are first-class citizens.
@@ -415,11 +400,8 @@ before assigning to any of the operands on the left.</p>
 <p>Functions may have multiple return values, indicated by a list in
 parentheses.  The returned values can be stored by assignment
 to a list of variables.</p>
-
 <pre><code>func f() (i int, pj *int) { ... }
-v1, v2 = f()
-</code></pre>
-
+v1, v2 = f()</code></pre>
 <h3 id="the-blank-identifier">The blank identifier</h3>
 
 <p>The <a href="/golang/underscore/">blank&nbsp;identifier</a>, represented by the underscore character,
@@ -475,13 +457,10 @@ for (i = 0; i < 10; i++) {} <span class="comment">// <b>INVALID</b></span></code
 <p>Furthermore, <code>if</code> and <code>switch</code> accept
 an optional initialization statement, which is commonly used
 to set up a local variable.</p>
-
 <pre><code>if err := file.Chmod(0664); err != nil {
     log.Print(err)
     return err
-}
-</code></pre>
-
+}</code></pre>
 <h3 id="for-statements">For statements</h3>
 
 <p>Go does not have a <code>while</code> statement
@@ -493,15 +472,9 @@ Omitting the condition entirely produces an endless loop.</p>
 <p>A <code>for</code> statement may contain a <code>range</code> clause
 for iterating over strings, arrays, slices, maps, or channels.
 Instead of writing</p>
-
-<pre><code>for i := 0; i &lt; len(a); i++ { ... }
-</code></pre>
-
+<pre><code>for i := 0; i < len(a); i++ { ... }</code></pre>
 <p>to loop over the elements of <code>a</code>, we could also write</p>
-
-<pre><code>for i, v := range a { ... }
-</code></pre>
-
+<pre><code>for i, v := range a { ... }</code></pre>
 <p>This assigns <code>i</code> to the index and <code>v</code>
 to the value of the successive elements of an array, slice, or string.</p>
 
@@ -543,17 +516,14 @@ case 0, 1:
 the equality comparison operator, such as strings or pointers.
 A missing switch expression is equivalent to
 the expression <code>true</code>.</p>
-
 <pre><code>switch {
-case n &lt; 0:
+case n < 0:
     f1()
 case n == 0:
     f2()
 default:
     f3()
-}
-</code></pre>
-
+}</code></pre>
 <h3 id="increment-and-decrement">Increment and decrement</h3>
 
 <p>The <code>++</code> and <code>-&#8202;-</code> may only be used
@@ -598,11 +568,8 @@ f(a + 1e3) <span class="comment">// 1e3 is also typed as uint.</span></code></pr
 <p>The language does not impose any limits on the size of an untyped
 numeric constant. A limit is only applied when a constant is used
 where a type is required.</p>
-
-<pre><code>const huge = 1 &lt;&lt; 100
-var n int = huge &gt;&gt; 98
-</code></pre>
-
+<pre><code>const huge = 1 << 100
+var n int = huge >> 98</code></pre>
 <p>If the type is absent in a variable declaration and the corresponding
 expression evaluates to an untyped numeric constant,
 the constant is converted to type <code>rune</code>, <code>int</code>,
@@ -677,32 +644,20 @@ and returns its address, which has type&nbsp;<code>*int</code>.</p>
 where <code>T</code> is a class with two instance variables
 <code>a</code> and <code>b</code> of type <code>int</code>,
 corresponds to</p>
-
 <pre><code>type T struct { a, b int }
-var p *T = new(T)
-</code></pre>
-
+var p *T = new(T)</code></pre>
 <p>or the more idiomatic</p>
-
-<pre><code>p := new(T)
-</code></pre>
-
+<pre><code>p := new(T)</code></pre>
 <p>The declaration <code>var&nbsp;v&nbsp;T</code>,
 which declares a variable that holds a value of type&nbsp;<code>T</code>,
 has no equivalent in Java.
 Values can also be created and initialized using a <em>composite literal</em>.
 For example:</p>
-
-<pre><code>v := T{1, 2}
-</code></pre>
-
+<pre><code>v := T{1, 2}</code></pre>
 <p>is equivalent to</p>
-
 <pre><code>var v T
 v.a = 1
-v.b = 2
-</code></pre>
-
+v.b = 2</code></pre>
 <p>For an operand <code>x</code> of type&nbsp;<code>T</code>,
 the <em>address operator</em> <code>&amp;x</code>
 gives the address of <code>x</code>, a value of type&nbsp;<code>*T</code>.
@@ -784,10 +739,7 @@ whose value is a substring of the original string.</p>
 
 <p>Map and channel values must be allocated using the built-in
 <a href="/golang/make-slice-map-channel/"><code>make</code></a> function. For example, calling</p>
-
-<pre><code>make(map[string]int)
-</code></pre>
-
+<pre><code>make(map[string]int)</code></pre>
 <p>returns a newly allocated value of type <code>map[string]int</code>.</p>
 
 <p>As opposed to <code>new</code>, <code>make</code> returns
@@ -813,7 +765,6 @@ A second optional argument is the capacity of the slice.</p>
 except that it has a <em>receiver</em>.
 The receiver is similar to the <code>this</code> reference
 in a Java instance method.</p>
-
 <pre><code>type MyType struct { i int }
 
 func (p *MyType) Get() int {
@@ -821,9 +772,7 @@ func (p *MyType) Get() int {
 }
 
 var pm = new(MyType)
-var n = pm.Get()
-</code></pre>
-
+var n = pm.Get()</code></pre>
 <p>This declares a method <code>Get</code> associated with <code>MyType</code>.
 The receiver is named <code>p</code> in the body of the function.</p>
 
@@ -855,32 +804,23 @@ may be treated as an implementation of that interface.
 No explicit declaration is required.</p>
 
 <p>Let&rsquo;s assume that this interface is defined:</p>
-
 <pre><code>type MyInterface interface {
     Get() int
     Set(i int)
-}
-</code></pre>
-
+}</code></pre>
 <p>Since <code>MyType</code> already has a <code>Get</code>&nbsp;method,
 we can make <code>MyType</code> satisfy the interface by adding</p>
-
 <pre><code>func (p *MyType) Set(i int) {
     p.i = i
-}
-</code></pre>
-
+}</code></pre>
 <p>Now any function which takes <code>MyInterface</code> as a parameter
 will accept a variable of type <code>*MyType</code>.</p>
-
 <pre><code>func GetAndSet(x MyInterface) {}
 
 func f1() {
     var p MyType
-    GetAndSet(&amp;p)
-}
-</code></pre>
-
+    GetAndSet(&p)
+}</code></pre>
 <p>In Java terms, defining <code>Set</code> and <code>Get</code> for
 <code>*MyType</code> made <code>*MyType</code> automatically implement
 <code>MyInterface</code>. A type may satisfy multiple interfaces.
@@ -894,7 +834,6 @@ like a&nbsp;duck and quacks like a&nbsp;duck, I&nbsp;call that&nbsp;bird a&nbsp;
 <h3 id="embedding-delegation">Embedding (delegation)</h3>
 
 <p>Embedding a type as an anonymous field may be used to implement a form of subtyping.</p>
-
 <pre><code>type MySubType struct {
     MyType
     j int
@@ -903,18 +842,13 @@ like a&nbsp;duck and quacks like a&nbsp;duck, I&nbsp;call that&nbsp;bird a&nbsp;
 func (p *MySubType) Get() int {
     p.j++
     return p.MyType.Get()
-}
-</code></pre>
-
+}</code></pre>
 <p>This effectively implements <code>MySubType</code> as a subtype of
 <code>MyType</code>.</p>
-
 <pre><code>func f2() {
     var p MySubType
-    GetAndSet(&amp;p)
-}
-</code></pre>
-
+    GetAndSet(&p)
+}</code></pre>
 <p>The <code>Set</code> method is inherited from <code>MyType</code>,
 because methods associated with the anonymous field are promoted
 to become methods of the enclosing type.</p>
@@ -973,18 +907,12 @@ defines a <code>Print</code> method.</p>
 <p>Go’s multivalued return makes it easy to return a detailed error message
 alongside the normal return value. By convention, such messages
 have type <code>error</code>, a simple built-in interface.</p>
-
 <pre><code>type error interface {
     Error() string
-}
-</code></pre>
-
+}</code></pre>
 <p>For example, the <code>os.Open</code> function returns a non-nil
 <code>error</code> value when it fails to open a file.</p>
-
-<pre><code>func Open(name string) (file *File, err error)
-</code></pre>
-
+<pre><code>func Open(name string) (file *File, err error)</code></pre>
 <p>The following code uses <code>os.Open</code> to open a file.
 If an <code>error</code> occurs it calls <code>log.Fatal</code>
 to print the error message and stop.</p>
@@ -1164,15 +1092,12 @@ for { <span class="comment">// Send random sequence of bits to rand.</span>
 
 <p>Somewhat more realistically, here is how a select statement
 could be used to set a time limit on a receive operation.</p>
-
 <pre><code>select {
-case news := &lt;-AFP:
+case news := <-AFP:
     fmt.Println(news)
-case &lt;-time.After(time.Minute):
-    fmt.Println(&quot;Time out: no news in one minute.&quot;)
-}
-</code></pre>
-
+case <-time.After(time.Minute):
+    fmt.Println("Time out: no news in one minute.")
+}</code></pre>
 <p>The function <code>time.After</code> is part of the standard library;
 it waits for a specified time to elapse and then sends the current time
 on the returned channel.</p>

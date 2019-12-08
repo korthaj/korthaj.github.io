@@ -96,11 +96,8 @@
 <pre><code>i := 0
 fmt.Println(++i)
 fmt.Println(i++)</code></pre>
-
 <pre><code>main.go:9:14: syntax error: unexpected ++, expecting expression
-main.go:10:15: syntax error: unexpected ++, expecting comma or )
-</code></pre>
-
+main.go:10:15: syntax error: unexpected ++, expecting comma or )</code></pre>
 <h2 id="answer">Answer</h2>
 
 <p>In Go increment and decrement operations can’t be used as expressions, only as <strong>statements</strong>.

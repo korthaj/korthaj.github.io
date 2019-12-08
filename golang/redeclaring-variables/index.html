@@ -41,27 +41,18 @@
 <h1>Redeclaring variables</h1>
 <div class="tagline">yourbasic.org/golang</div>
 <p>You can&rsquo;t redeclare a variable which has already been declared in the same block.</p>
-
 <pre><code>func main() {
 	m := 0
 	m := 1
 	fmt.Println(m)
-}
-</code></pre>
-
-<pre><code>../main.go:3:4: no new variables on left side of :=
-</code></pre>
-
+}</code></pre><pre><code>../main.go:3:4: no new variables on left side of :=</code></pre>
 <p>However, variables can be redeclared in short multi-variable declarations
 where at least one new variable is introduced.</p>
-
 <pre><code>func main() {
 	m := 0
 	m, n := 1, 2
 	fmt.Println(m, n)
-}
-</code></pre>
-
+}</code></pre>
 <blockquote>
 <p>Unlike regular variable declarations, a short variable declaration may redeclare
 variables provided they were originally declared earlier in the same block

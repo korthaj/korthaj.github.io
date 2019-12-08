@@ -42,18 +42,15 @@
 <div class="tagline">yourbasic.org/golang</div>
 <p>This code appends a line of text to the file <code>text.log</code>.
 It creates the file if it doesn&rsquo;t already&nbsp;exist.</p>
-
-<pre><code>f, err := os.OpenFile(&quot;text.log&quot;,
+<pre><code>f, err := os.OpenFile("text.log",
 	os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 if err != nil {
 	log.Println(err)
 }
 defer f.Close()
-if _, err := f.WriteString(&quot;text to append\n&quot;); err != nil {
+if _, err := f.WriteString("text to append\n"); err != nil {
 	log.Println(err)
-}
-</code></pre>
-
+}</code></pre>
 <p>If you&rsquo;re appending text to a file for logging purposes, see <a href="/golang/log-to-file/">Write log to file</a>.</p>
 
 

@@ -44,16 +44,13 @@
 
 <p>You can use a range statement to extract slices of keys and values from
 a&nbsp;<a href="/golang/maps-explained/">map</a>.</p>
-
 <pre><code>keys := make([]keyType, 0, len(myMap))
 values := make([]valueType, 0, len(myMap))
 
 for k, v := range myMap {
 	keys = append(keys, k)
 	values = append(values, v)
-}
-</code></pre>
-
+}</code></pre>
 <h3 id="further-reading">Further reading</h3>
 
 <div><a href="/golang/maps-explained/"><img src="/golang/15-men-in-16-slots-thumb.jpg" title="Maps explained"></a></div>

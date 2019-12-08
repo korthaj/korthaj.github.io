@@ -104,11 +104,8 @@
 <b>for i, s := range a</b> {
     fmt.Println(i, s)
 }</code></pre>
-
 <pre><code>0 Foo
-1 Bar
-</code></pre>
-
+1 Bar</code></pre>
 <ul>
 <li>The range expression, <code>a</code>, is <strong>evaluated once</strong> before beginning the loop.</li>
 <li>The iteration values are assigned to the respective iteration variables, <code>i</code> and <code>s</code>,
@@ -163,12 +160,9 @@ to be the same from one iteration to the next.</p>
 <b>for k, v := range m</b> {
     fmt.Println(k, v)
 }</code></pre>
-
 <pre><code>two 2
 three 3
-one 1
-</code></pre>
-
+one 1</code></pre>
 <ul>
 <li>If a map entry that has not yet been reached is removed during iteration,
 this value will not be produced.</li>
@@ -192,12 +186,9 @@ go func() {
 <b>for n := range ch</b> {
     fmt.Println(n)
 }</code></pre>
-
 <pre><code>1
 2
-3
-</code></pre>
-
+3</code></pre>
 <ul>
 <li>For a nil channel, the range loop blocks forever.</li>
 </ul>

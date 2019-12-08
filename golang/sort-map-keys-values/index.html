@@ -49,8 +49,7 @@ you must maintain a separate data structure.</li>
 </ul>
 
 <p>This example uses a sorted slice of keys to print a <code>map[string]int</code> in key order.</p>
-
-<pre><code>m := map[string]int{&quot;Alice&quot;: 23, &quot;Eve&quot;: 2, &quot;Bob&quot;: 25}
+<pre><code>m := map[string]int{"Alice": 23, "Eve": 2, "Bob": 25}
 
 keys := make([]string, 0, len(m))
 for k := range m {
@@ -60,16 +59,11 @@ sort.Strings(keys)
 
 for _, k := range keys {
 	fmt.Println(k, m[k])
-}
-</code></pre>
-
+}</code></pre>
 <p>Output:</p>
-
 <pre><code>Alice 23
 Bob 25
-Eve 2
-</code></pre>
-
+Eve 2</code></pre>
 <blockquote>
 <p>Also, starting with <a href="https://tip.golang.org/doc/go1.12">Go&nbsp;1.12</a>,
 the <a href="https://golang.org/pkg/fmt/"><code>fmt</code></a>

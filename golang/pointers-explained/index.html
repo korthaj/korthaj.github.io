@@ -116,10 +116,7 @@ The keyword <code>new</code> allocates a new object and returns its&nbsp;address
 var ps *Student = new(Student) <span class="comment">// ps holds the address of the new struct</span></code></pre>
 
 <p>The variable declaration can be written more compactly.</p>
-
-<pre><code>ps := new(Student)
-</code></pre>
-
+<pre><code>ps := new(Student)</code></pre>
 <h2 id="address-operator">Address operator</h2>
 
 <p>The <code>&amp;</code> operator returns the address of an&nbsp;object.</p>
@@ -129,10 +126,7 @@ ps := &s              <span class="comment">// ps holds the address of the struc
 
 <p>The <code>&amp;</code> operator can also be used with <strong>composite literals</strong>.
 The two lines above can be&nbsp;written as</p>
-
-<pre><code>ps := &amp;Student{&quot;Alice&quot;}
-</code></pre>
-
+<pre><code>ps := &Student{"Alice"}</code></pre>
 <h2 id="pointer-indirection">Pointer indirection</h2>
 
 <p>For a pointer <code>x</code>, the <strong>pointer indirection</strong> <code>*x</code> denotes the value which <code>x</code> points to.

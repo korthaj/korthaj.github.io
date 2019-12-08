@@ -100,12 +100,9 @@
 
 <p>The <a href="https://golang.org/pkg/io/#Writer"><code>io.Writer</code></a> <a href="/golang/interfaces-explained/">interface</a> represents an entity
 to which you can write a stream of&nbsp;bytes.</p>
-
 <pre><code>type Writer interface {
         Write(p []byte) (n int, err error)
-}
-</code></pre>
-
+}</code></pre>
 <p><code>Write</code> writes up to <code>len(p)</code> bytes from <code>p</code> to the underlying data stream &ndash;
 it returns the number of bytes written and any error encountered that caused
 the write to stop&nbsp;early.</p>
@@ -147,10 +144,7 @@ since it writes a string directly without allocating a byte&nbsp;slice.</p>
 
 <p>You can take direct advantage of this optimization by using the
 <a href="https://golang.org/pkg/io/#WriteString"><code>io.WriteString()</code></a> function.</p>
-
-<pre><code>func WriteString(w Writer, s string) (n int, err error)
-</code></pre>
-
+<pre><code>func WriteString(w Writer, s string) (n int, err error)</code></pre>
 <p>If <code>w</code> implements a <code>WriteString</code> method, it is invoked directly.
 Otherwise, <code>w.Write</code> is called exactly&nbsp;once.</p>
 

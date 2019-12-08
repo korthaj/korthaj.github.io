@@ -92,10 +92,7 @@
 
 <p>The <a href="https://golang.org/pkg/time/#Time.Weekday"><code>Weekday</code></a> function
 returns returns the day of the week of a <a href="https://golang.org/pkg/time/#Time"><code>time.Time</code></a>.</p>
-
-<pre><code>func (t Time) Weekday() Weekday
-</code></pre>
-
+<pre><code>func (t Time) Weekday() Weekday</code></pre>
 <p>In use:</p>
 
 <pre><code>weekday := time.Now().Weekday()
@@ -105,7 +102,6 @@ fmt.Println(int(weekday)) <span class="comment">// "2"</span></code></pre>
 <h2 id="type-weekday">Type Weekday</h2>
 
 <p>The <a href="https://golang.org/pkg/time/#Weekday"><code>time.Weekday</code></a> type specifies a day of the week (Sunday = 0, …).</p>
-
 <pre><code>type Weekday int
 
 const (
@@ -116,9 +112,7 @@ const (
 	Thursday
 	Friday
 	Saturday
-)
-</code></pre>
-
+)</code></pre>
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
 <a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fday-of-week-int%2f&amp;text=How%20to%20find%20the%20day%20of%20week&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fday-of-week-int%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;

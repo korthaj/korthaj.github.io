@@ -94,24 +94,21 @@ on a machine where the program below is running,
 you will be greeted by&nbsp;this&nbsp;page.</p>
 
 <p><img src="/golang/hello-server.png" alt="Web browser localhost:8080" style="border:1px solid grey;" /></p>
-
 <pre><code>package main
 
 import (
-    &quot;fmt&quot;
-    &quot;net/http&quot;
+    "fmt"
+    "net/http"
 )
 
 func main() {
-    http.HandleFunc(&quot;/&quot;, HelloServer)
-    http.ListenAndServe(&quot;:8080&quot;, nil)
+    http.HandleFunc("/", HelloServer)
+    http.ListenAndServe(":8080", nil)
 }
 
 func HelloServer(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, &quot;Hello, %s!&quot;, r.URL.Path[1:])
-}
-</code></pre>
-
+    fmt.Fprintf(w, "Hello, %s!", r.URL.Path[1:])
+}</code></pre>
 <ul>
 <li>The call to <a href="https://golang.org/pkg/net/http/#HandleFunc"><code>http.HandleFunc</code></a>
 tells the <a href="https://golang.org/pkg/net/http/"><code>net.http</code></a> package

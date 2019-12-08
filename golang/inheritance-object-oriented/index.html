@@ -129,7 +129,6 @@ it's easy to introduce polymorphism and dynamic dispatch later on.
 
 <p>If a <code>Dog</code> needs some or all of the functionality of an <code>Animal</code>,
 simply use <strong>composition</strong>.</p>
-
 <pre><code>type Animal struct {
 	// …
 }
@@ -137,9 +136,7 @@ simply use <strong>composition</strong>.</p>
 type Dog struct {
 	beast Animal
 	// …
-}
-</code></pre>
-
+}</code></pre>
 <p>This gives you full freedom to use the <code>Animal</code> part of your <code>Dog</code> as needed.
 Yes, it&rsquo;s that simple.</p>
 
@@ -147,7 +144,6 @@ Yes, it&rsquo;s that simple.</p>
 
 <p>If the <code>Dog</code> class inherits <strong>the exact behavior</strong> of an <code>Animal</code>,
 this approach can result in some tedious coding.</p>
-
 <pre><code>type Animal struct {
 	// …
 }
@@ -163,20 +159,15 @@ type Dog struct {
 
 func (a *Dog) Eat()   { a.beast.Eat() }
 func (a *Dog) Sleep() { a.beast.Sleep() }
-func (a *Dog) Breed() { a.beast.Breed() }
-</code></pre>
-
+func (a *Dog) Breed() { a.beast.Breed() }</code></pre>
 <p>This code pattern is known as <strong>delegation</strong>.</p>
 
 <p>Go uses <strong>embedding</strong> for situations like this.
 The declaration of the <code>Dog</code> struct and it&rsquo;s three methods can be reduced to:</p>
-
 <pre><code>type Dog struct {
 	Animal
 	// …
-}
-</code></pre>
-
+}</code></pre>
 <h2 id="polymorphism-and-dynamic-dispatch-with-interfaces">Polymorphism and dynamic dispatch with interfaces</h2>
 
 <blockquote class="math">
@@ -187,7 +178,6 @@ Keep your interfaces short, and introduce them only when needed.
 At this point you can introduce polymorphism and dynamic dispatch using <strong><a href="/golang/interfaces-explained/">interfaces</a></strong>.</p>
 
 <p>If you need to put all your pets to sleep, you can define a <code>Sleeper</code> interface.</p>
-
 <pre><code>type Sleeper interface {
 	Sleep()
 }
@@ -197,9 +187,7 @@ func main() {
 	for _, x := range pets {
 		x.Sleep()
 	}
-}
-</code></pre>
-
+}</code></pre>
 <p>No explicit declaration is required by the <code>Cat</code> and <code>Dog</code> types.
 Any type that provides the methods named in an inter&shy;face
 may be treated as an imple&shy;mentation.</p>

@@ -152,10 +152,9 @@ for v := range ch {
 <h2 id="example">Example</h2>
 
 <p>In the following example we let the <code>Publish</code> function return a channel, which is used to broadcast a message when the text has been published.</p>
-
 <pre><code>// Publish prints text to stdout after the given time has expired.
 // It closes the wait channel when the text has been published.
-func Publish(text string, delay time.Duration) (wait &lt;-chan struct{}) {
+func Publish(text string, delay time.Duration) (wait <-chan struct{}) {
 	ch := make(chan struct{})
 	go func() {
 		time.Sleep(delay)
@@ -163,9 +162,7 @@ func Publish(text string, delay time.Duration) (wait &lt;-chan struct{}) {
 		close(ch)
 	}()
 	return ch
-}
-</code></pre>
-
+}</code></pre>
 <p>Note that we use a channel of empty structs to indicate that the channel will only be used for signalling, not for passing data.
 This is how you might use the function.</p>
 

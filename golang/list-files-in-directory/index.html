@@ -57,13 +57,10 @@ for _, f := range files {
 }</code></pre>
 
 <p>Example output:</p>
-
 <pre><code>dev
 etc
 tmp
-usr
-</code></pre>
-
+usr</code></pre>
 <h2 id="visit-all-files-and-folders-in-a-directory-tree">Visit all files and folders in a directory tree</h2>
 
 <p>Use the <a href="https://golang.org/pkg/path/filepath/#Walk"><code>filepath.Walk</code></a> function in package <a href="https://golang.org/pkg/path/filepath/"><code>path/filepath</code></a>.</p>
@@ -89,7 +86,6 @@ if err != nil {
 }</code></pre>
 
 <p>Example output:</p>
-
 <pre><code>. 1644
 dev 1644
 dev/null 0
@@ -107,9 +103,7 @@ usr/local 822
 usr/local/go 822
 usr/local/go/lib 822
 usr/local/go/lib/time 822
-usr/local/go/lib/time/zoneinfo.zip 366776
-</code></pre>
-
+usr/local/go/lib/time/zoneinfo.zip 366776</code></pre>
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
 <a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2flist-files-in-directory%2f&amp;text=List%20all%20files%20%28recursively%29%20in%20a%20directory&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2flist-files-in-directory%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;

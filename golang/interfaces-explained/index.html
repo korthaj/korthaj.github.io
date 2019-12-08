@@ -107,16 +107,12 @@ A variable of interface type can hold any value that implements these methods.</
 </blockquote>
 
 <p>In this example both <code>Temp</code> and <code>*Point</code> implement the <code>MyStringer</code> interface.</p>
-
 <pre><code>type MyStringer interface {
 	String() string
-}
-</code></pre>
-
-<pre><code>type Temp int
+}</code></pre><pre><code>type Temp int
 
 func (t Temp) String() string {
-	return strconv.Itoa(int(t)) + &quot; °C&quot;
+	return strconv.Itoa(int(t)) + " °C"
 }
 
 type Point struct {
@@ -124,10 +120,8 @@ type Point struct {
 }
 
 func (p *Point) String() string {
-	return fmt.Sprintf(&quot;(%d,%d)&quot;, p.x, p.y)
-}
-</code></pre>
-
+	return fmt.Sprintf("(%d,%d)", p.x, p.y)
+}</code></pre>
 <p>Actually, <code>*Temp</code> also implements <code>MyStringer</code>, since the method set of
 a pointer type <code>*T</code> is the set of all methods with receiver <code>*T</code>&nbsp;or&nbsp;<code>T</code>.</p>
 
@@ -168,10 +162,7 @@ fmt.Println(x) <span class="comment">// (1,2)</span></code></pre>
 <div style="margin-top:1em;"><img src="/golang/empty-room.png"></div>
 
 <p>The interface type that specifies no methods is known as the empty interface.</p>
-
-<pre><code>interface{}
-</code></pre>
-
+<pre><code>interface{}</code></pre>
 <p>An empty interface can hold values of any type since every type implements at&nbsp;least zero&nbsp;methods.</p>
 
 <pre><code>var x interface{}
@@ -184,10 +175,7 @@ fmt.Println(x) <span class="comment">// (1,2)</span></code></pre>
 
 <p>The <a href="https://golang.org/pkg/fmt/#Println"><code>fmt.Println</code></a> function is a chief example.
 It takes any number of arguments of any&nbsp;type.</p>
-
-<pre><code>func Println(a ...interface{}) (n int, err error)
-</code></pre>
-
+<pre><code>func Println(a ...interface{}) (n int, err error)</code></pre>
 <h2 id="interface-values">Interface values</h2>
 
 <blockquote>

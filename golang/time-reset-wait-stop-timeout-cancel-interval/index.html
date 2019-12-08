@@ -104,46 +104,37 @@
 <p><a href="https://golang.org/pkg/time/#After"><code>time.After</code></a>
 waits for a specified duration and then sends the current time
 on the returned channel:</p>
-
 <pre><code>select {
-case news := &lt;-AFP:
+case news := <-AFP:
 	fmt.Println(news)
-case &lt;-time.After(time.Hour):
-	fmt.Println(&quot;No news in an hour.&quot;)
-}
-</code></pre>
-
+case <-time.After(time.Hour):
+	fmt.Println("No news in an hour.")
+}</code></pre>
 <p>The underlying <a href="https://golang.org/pkg/time/#Timer"><code>time.Timer</code></a>
 will not be recovered by the garbage collector until the timer fires.
 If this is a concern, use <a href="https://golang.org/pkg/time/#NewTimer"><code>time.NewTimer</code></a>
 instead and call its <a href="https://golang.org/pkg/time/#Timer.Stop"><code>Stop</code></a> method
 when the timer is no longer needed:</p>
-
 <pre><code>for alive := true; alive; {
 	timer := time.NewTimer(time.Hour)
 	select {
-	case news := &lt;-AFP:
+	case news := <-AFP:
 		timer.Stop()
 		fmt.Println(news)
-	case &lt;-timer.C:
+	case <-timer.C:
 		alive = false
-		fmt.Println(&quot;No news in an hour. Service aborting.&quot;)
+		fmt.Println("No news in an hour. Service aborting.")
 	}
-}
-</code></pre>
-
+}</code></pre>
 <h2 id="repeat-ticker">Repeat (Ticker)</h2>
 
 <p><a href="https://golang.org/pkg/time/#Tick"><code>time.Tick</code></a> returns
 a channel that delivers clock ticks at even intervals:</p>
-
 <pre><code>go func() {
 	for now := range time.Tick(time.Minute) {
 		fmt.Println(now, statusUpdate())
 	}
-}()
-</code></pre>
-
+}()</code></pre>
 <p>The underlying <a href="https://golang.org/pkg/time/#Ticker"><code>time.Ticker</code></a>
 will not be recovered by the garbage collector.
 If this is a concern, use <a href="https://golang.org/pkg/time/#NewTicker"><code>time.NewTicker</code></a>

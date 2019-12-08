@@ -92,19 +92,13 @@
 
 <p>The built-in <a href="https://golang.org/ref/spec#Appending_and_copying_slices">copy function</a>
 copies elements into a destination slice <code>dst</code> from a source slice&nbsp;<code>src</code>.</p>
-
-<pre><code>func copy(dst, src []Type) int
-</code></pre>
-
+<pre><code>func copy(dst, src []Type) int</code></pre>
 <p>It returns the number of elements copied,
 which will be the <strong>minimum</strong> of <code>len(dst)</code> and <code>len(src)</code>.
 The result does not depend on whether the arguments overlap.</p>
 
 <p>As a <strong>special case</strong>, it&rsquo;s legal to copy bytes from a string to a slice of&nbsp;bytes.</p>
-
-<pre><code>copy(dst []byte, src string) int
-</code></pre>
-
+<pre><code>copy(dst []byte, src string) int</code></pre>
 <h2 id="examples">Examples</h2>
 
 <h3 id="copy-from-one-slice-to-another">Copy from one slice to another</h3>

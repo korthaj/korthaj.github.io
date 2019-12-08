@@ -92,15 +92,9 @@
 <div style="margin-top:1em;"><img src="/golang/calculator.jpg"></div>
 
 <p>Why doesn&rsquo;t these print statements give the same result?</p>
-
-<pre><code>fmt.Println(&quot;H&quot; + &quot;i&quot;)
-fmt.Println('H' + 'i')
-</code></pre>
-
-<pre><code>Hi
-177
-</code></pre>
-
+<pre><code>fmt.Println("H" + "i")
+fmt.Println('H' + 'i')</code></pre><pre><code>Hi
+177</code></pre>
 <h2 id="answer">Answer</h2>
 
 <p>The rune literals <code>'H'</code> and <code>'i'</code> are integer values identifying

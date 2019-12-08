@@ -162,14 +162,11 @@ s := string(buf)</code></pre>
 
 <p>If the expected maximum length of the string is known,
 you may want to preallocate the slice.</p>
-
 <pre><code>buf := make([]byte, 0, 16)
-buf = append(buf, &quot;Size: &quot;...)
+buf = append(buf, "Size: "...)
 buf = strconv.AppendInt(buf, 85, 10)
-buf = append(buf, &quot; MB.&quot;...)
-s := string(buf)
-</code></pre>
-
+buf = append(buf, " MB."...)
+s := string(buf)</code></pre>
 <h2 id="further-reading">Further reading</h2>
 
 <div><a href="/golang/string-functions-reference-cheat-sheet/"><img src="/golang/typewriter-thumb.png" title="40+ practical string tips [cheat sheet]"></a></div>

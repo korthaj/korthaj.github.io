@@ -90,10 +90,7 @@
 
 <p>The <a href="https://golang.org/pkg/time/#Time.Date"><code>Date</code></a> function
 returns the year, month and day of a <a href="https://golang.org/pkg/time/#Time"><code>time.Time</code></a>.</p>
-
-<pre><code>func (t Time) Date() (year int, month Month, day int)
-</code></pre>
-
+<pre><code>func (t Time) Date() (year int, month Month, day int)</code></pre>
 <p>In use:</p>
 
 <pre><code>year, month, day := time.Now().Date()
@@ -108,7 +105,6 @@ month := t.Month() <span class="comment">// type time.Month</span>
 day := t.Day()     <span class="comment">// type int</span></code></pre>
 
 <p>The <a href="https://golang.org/pkg/time/#Month"><code>time.Month</code></a> type specifies a month of the year (January = 1, …).</p>
-
 <pre><code>type Month int
 
 const (
@@ -124,9 +120,7 @@ const (
 	October
 	November
 	December
-)
-</code></pre>
-
+)</code></pre>
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
 <a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fday-month-year-from-time%2f&amp;text=Get%20year,%20month,%20day%20from%20time&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fday-month-year-from-time%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;

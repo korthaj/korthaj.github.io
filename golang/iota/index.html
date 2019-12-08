@@ -118,14 +118,11 @@
 fmt.Println(C0, C1, C2) <span class="comment">// "0 1 2"</span></code></pre>
 
 <p>This can be simplified to</p>
-
 <pre><code>const (
 	C0 = iota
 	C1
 	C2
-)
-</code></pre>
-
+)</code></pre>
 <p>Here we rely on the fact that expressions are implicitly repeated
 in a paren&shy;thesized const declaration &ndash; this indicates a repetition
 of the preceding expression and its&nbsp;type.</p>

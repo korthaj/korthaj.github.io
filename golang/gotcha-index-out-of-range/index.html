@@ -97,14 +97,11 @@
 for i := 1; i <= len(a); i++ {
     fmt.Println(a[i])
 }</code></pre>
-
 <pre><code>panic: runtime error: index out of range
 
 goroutine 1 [running]:
 main.main()
-	../main.go:3 +0xe0
-</code></pre>
-
+	../main.go:3 +0xe0</code></pre>
 <h2 id="answer">Answer</h2>
 
 <p>In the last iteration, <code>i</code> equals <code>len(a)</code> which is outside the bounds of&nbsp;<code>a</code>.</p>

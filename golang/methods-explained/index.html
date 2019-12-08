@@ -133,10 +133,7 @@ func main() {
     n = int(m) <span class="comment">// The conversion is required.</span>
     n = m      <span class="comment">// ILLEGAL</span>
 }</code></pre>
-
-<pre><code>../main.go:14:4: cannot use m (type MyInt) as type int in assignment
-</code></pre>
-
+<pre><code>../main.go:14:4: cannot use m (type MyInt) as type int in assignment</code></pre>
 <p>It&rsquo;s idiomatic in Go to convert the type of an expression to access a specific method.</p>
 
 <pre><code>var n int64 = 12345

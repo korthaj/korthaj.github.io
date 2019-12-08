@@ -107,28 +107,22 @@ func TimeIn(t time.Time, name string) (time.Time, error) {
 }</code></pre>
 
 <p>In use:</p>
-
 <pre><code>for _, name := range []string{
-	&quot;&quot;,
-	&quot;Local&quot;,
-	&quot;Asia/Shanghai&quot;,
-	&quot;America/Metropolis&quot;,
+	"",
+	"Local",
+	"Asia/Shanghai",
+	"America/Metropolis",
 } {
 	t, err := TimeIn(time.Now(), name)
 	if err == nil {
-		fmt.Println(t.Location(), t.Format(&quot;15:04&quot;))
+		fmt.Println(t.Location(), t.Format("15:04"))
 	} else {
-		fmt.Println(name, &quot;&lt;time unknown&gt;&quot;)
+		fmt.Println(name, "<time unknown>")
 	}
-}
-</code></pre>
-
-<pre><code>UTC 19:32
+}</code></pre><pre><code>UTC 19:32
 Local 20:32
 Asia/Shanghai 03:32
-America/Metropolis &lt;time unknown&gt;
-</code></pre>
-
+America/Metropolis <time unknown></code></pre>
 <blockquote class="warning">
 <b>Warning:</b> A daylight savings time transition skips or repeats times.
 For example, in the United States, March 13, 2011 2:15am never occurred,

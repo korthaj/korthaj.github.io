@@ -111,10 +111,7 @@ both your own code and the standard libraries.</p>
 
 <p>The following command starts a web server that presents the documentation
 at <code>http://localhost:6060/</code>.</p>
-
-<pre><code>$ godoc -http=:6060 &amp;
-</code></pre>
-
+<pre><code>$ godoc -http=:6060 &</code></pre>
 <div><img src="/golang/localhost-6060.png" alt="Web browser localhost:6060" style="border:1px solid grey;" ></div>
 
 <p>The documentation is tightly coupled with the code.
@@ -124,29 +121,23 @@ For example, you can navigate from a function&rsquo;s documentation to its imple
 
 <p>The <a href="https://golang.org/cmd/go/#hdr-Show_documentation_for_package_or_symbol">go doc</a>
 command prints plain text documentation to standard output:</p>
-
 <pre><code>$ go doc fmt Println
 func Println(a ...interface{}) (n int, err error)
     Println formats using the default formats for its operands and writes to
     standard output. Spaces are always added between operands and a newline is
     appended. It returns the number of bytes written and any write error
-    encountered.
-</code></pre>
-
+    encountered.</code></pre>
 <h2 id="create-documentation">Create documentation</h2>
 
 <p>To document a function, type, constant, variable, or even a complete package,
 write a regular comment directly preceding its declaration, with no blank line in between.
 For example, this is the documentation for the
 <a href="https://golang.org/src/fmt/print.go?s=7388:7437#L246"><code>fmt.Println</code></a> function:</p>
-
 <pre><code>// Println formats using the default formats for its operands and writes to standard output.
 // Spaces are always added between operands and a newline is appended.
 // It returns the number of bytes written and any write error encountered.
 func Println(a ...interface{}) (n int, err error) {
-…
-</code></pre>
-
+…</code></pre>
 <p>For best practices on how to document Go code,
 see <a href="https://golang.org/doc/effective_go.html#commentary">Effective Go: Commentary</a>.</p>
 

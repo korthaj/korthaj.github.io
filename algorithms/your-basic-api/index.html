@@ -206,16 +206,13 @@ but never tells what Candide is and what it has to offer.</p>
 <p>In the <a href="https://github.com/yourbasic/fenwick">fenwick repo</a> I stick my neck out and try to
 implement a small library that follows the rules in this chapter.
 Its <code>README</code> file starts like this.</p>
-
 <pre><code># Your basic Fenwick tree
 
 ### Golang list data structure supporting prefix sums
 
 A Fenwick tree, or binary indexed tree, is a space-efficient
 list data structure that can efficiently update elements and
-calculate prefix sums in a list of numbers.
-</code></pre>
-
+calculate prefix sums in a list of numbers.</code></pre>
 <h3 id="2-tell-me-what-it-does">2. Tell me what it does</h3>
 
 <blockquote class="math">
@@ -227,27 +224,18 @@ the <a href="https://godoc.org/github.com/yourbasic/fenwick">Fenwick documentati
 the full story. Telling it three times is often a good approach.</p>
 
 <p>First a short sentence stating the purpose of the package.</p>
-
-<pre><code>Package fenwick provides a list data structure supporting prefix sums.
-</code></pre>
-
+<pre><code>Package fenwick provides a list data structure supporting prefix sums.</code></pre>
 <p>Then a slightly longer explanation.</p>
-
 <pre><code>A Fenwick tree, or binary indexed tree, is a space-efficient
 list data structure that can efficiently update elements and
-calculate prefix sums in a list of numbers.
-</code></pre>
-
+calculate prefix sums in a list of numbers.</code></pre>
 <p>And finally, the nitty-gritty for those who want to know it all.</p>
-
 <pre><code>Compared to a common array, a Fenwick tree achieves better
 balance between element update and prefix sum calculation –
 both operations run in O(log n) time – while using the same
 amount of memory. This is achieved by representing the list
 as an implicit tree, where the value of each node is the sum
-of the numbers in that subtree.
-</code></pre>
-
+of the numbers in that subtree.</code></pre>
 <h4 id="corollary">Corollary</h4>
 
 <p>The 2nd Commandment comes with an obvious corollary.</p>
@@ -357,7 +345,6 @@ and why you should consider using <strong>semantic versioning</strong>.</p>
 <h4 id="compatibility-policies">Compatibility policies</h4>
 
 <p>Fenwick&rsquo;s compatibility policy is very simple, but still explicitly stated:</p>
-
 <pre><code>### Roadmap
 
 * The API of this library is frozen.
@@ -365,9 +352,7 @@ and why you should consider using <strong>semantic versioning</strong>.</p>
 
 The only accepted reason to modify the API of this package
 is to handle issues that can't be resolved in any other
-reasonable way.
-</code></pre>
-
+reasonable way.</code></pre>
 <p><a href="https://golang.org/doc/go1compat">Go 1 and the Future of Go Programs</a> is a full, detailed
 compatibility document. It&rsquo;s required study for anyone working with
 large-scale library design and maintenance.</p>
@@ -522,15 +507,12 @@ An API shouldn't encourage bad design decisions.
 </blockquote>
 
 <p>The <code>add</code> method in Java&rsquo;s <code>ArrayList</code> is a case in point:</p>
-
 <pre><code>public void add(int index, E element)
 
 Inserts the specified element at the specified position
 in this list. Shifts the element currently at that
 position (if any) and any subsequent elements to the
-right (adds one to their indices).
-</code></pre>
-
+right (adds one to their indices).</code></pre>
 <p>This method makes it easy to do the wrong thing. <a href="/algorithms/time-complexity-arrays/">Adding a new element
 to the middle of an array is really inefficient</a>; something you should
 typically avoid.</p>
@@ -705,8 +687,7 @@ a type, or a field of an object or a struct, considering that such names
 often need to be recognized over longer stretches of code.</p>
 
 <p>Here is a first-rate example from Go&rsquo;s aptly named <code>net/http</code> package.</p>
-
-<pre><code class="language-go">// A Client is an HTTP client.
+<pre><code>// A Client is an HTTP client.
 type Client struct {
 	// Transport specifies the mechanism by which individual
 	// HTTP requests are made.
@@ -721,9 +702,7 @@ type Client struct {
 	// Timeout specifies a time limit for requests made
 	// by this Client.
 	Timeout time.Duration
-}
-</code></pre>
-
+}</code></pre>
 <p>When naming interfaces, we should do what the Romans do.
 In Java it&rsquo;s <code>Comparable</code> and <code>Serializable</code>; in Go it&rsquo;s <code>Reader</code>,
 <code>Writer</code>, and even a <code>RoundTripper</code> home run.</p>
@@ -740,19 +719,13 @@ a good choice here.</p>
 </ul>
 
 <p>Here&rsquo;s a code snippet that follows these naming conventions.</p>
-
-<pre><code class="language-go">if proc.Running() &amp;&amp; proc.Name() != path {
+<pre><code>if proc.Running() && proc.Name() != path {
 	proc.SetName(path)
-}
-</code></pre>
-
+}</code></pre>
 <p>For comparison, here&rsquo;s a more verbose version of the same code.</p>
-
-<pre><code class="language-go">if process.IsRunning() &amp;&amp; process.GetProcessName() != pathName {
+<pre><code>if process.IsRunning() && process.GetProcessName() != pathName {
 	process.SetProcessName(pathName)
-}
-</code></pre>
-
+}</code></pre>
 <p>Yikes.</p>
 
 <h3 id="further-reading">Further reading</h3>

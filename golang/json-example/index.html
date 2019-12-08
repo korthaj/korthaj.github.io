@@ -160,10 +160,7 @@ if err != nil {
 fmt.Println(string(jsonData))</code></pre>
 
 <p>Output:</p>
-
-<pre><code>{&quot;Name&quot;:&quot;Standard&quot;,&quot;Fruit&quot;:[&quot;Apple&quot;,&quot;Banana&quot;,&quot;Orange&quot;],&quot;ref&quot;:999,&quot;Created&quot;:&quot;2018-04-09T23:00:00Z&quot;}
-</code></pre>
-
+<pre><code>{"Name":"Standard","Fruit":["Apple","Banana","Orange"],"ref":999,"Created":"2018-04-09T23:00:00Z"}</code></pre>
 <p>Only data that can be represented as JSON will be encoded;
 see <a href="https://golang.org/pkg/encoding/json/#Marshal"><code>json.Marshal</code></a> for the complete rules.</p>
 
@@ -183,19 +180,16 @@ in the example above to indent the JSON output.</p>
 <pre><code>jsonData, err := <b>json.MarshalIndent</b>(basket, "", "    ")</code></pre>
 
 <p>Output:</p>
-
 <pre><code>{
-    &quot;Name&quot;: &quot;Standard&quot;,
-    &quot;Fruit&quot;: [
-        &quot;Apple&quot;,
-        &quot;Banana&quot;,
-        &quot;Orange&quot;
+    "Name": "Standard",
+    "Fruit": [
+        "Apple",
+        "Banana",
+        "Orange"
     ],
-    &quot;ref&quot;: 999,
-    &quot;Created&quot;: &quot;2018-04-09T23:00:00Z&quot;
-}
-</code></pre>
-
+    "ref": 999,
+    "Created": "2018-04-09T23:00:00Z"
+}</code></pre>
 <h2 id="decode-unmarshal-json-to-struct">Decode (unmarshal) JSON to struct</h2>
 
 <p>The <a href="https://golang.org/pkg/encoding/json/#Unmarshal"><code>json.Unmarshal</code></a> function
@@ -229,11 +223,8 @@ fmt.Println(basket.Name, basket.Fruit, basket.Id)
 fmt.Println(basket.Created)</code></pre>
 
 <p>Output:</p>
-
 <pre><code>Standard [Apple Banana Orange] 999
-2018-04-09 23:00:00 +0000 UTC
-</code></pre>
-
+2018-04-09 23:00:00 +0000 UTC</code></pre>
 <p>Note that <code>Unmarshal</code> allocated a new slice all by itself.
 This is how unmarshaling works for slices, maps and pointers.</p>
 
@@ -264,17 +255,14 @@ This is how unmarshaling works for slices, maps and pointers.</p>
 <p>It will unmarshal any valid JSON data into a plain <code>interface{}</code> value.</p>
 
 <p>Consider this JSON data:</p>
-
 <pre><code>{
-    &quot;Name&quot;: &quot;Eve&quot;,
-    &quot;Age&quot;: 6,
-    &quot;Parents&quot;: [
-        &quot;Alice&quot;,
-        &quot;Bob&quot;
+    "Name": "Eve",
+    "Age": 6,
+    "Parents": [
+        "Alice",
+        "Bob"
     ]
-}
-</code></pre>
-
+}</code></pre>
 <p>The <a href="https://golang.org/pkg/encoding/json/#Unmarshal"><code>json.Unmarshal</code></a> function will parse it into a map whose keys are strings, and whose values are
 themselves stored as empty interface values:</p>
 
@@ -313,14 +301,11 @@ for k, v := range data {
 }</code></pre>
 
 <p>Output:</p>
-
 <pre><code>Name Eve (string)
 Age 6 (float64)
 Parents (array):
      0 Alice
-     1 Bob
-</code></pre>
-
+     1 Bob</code></pre>
 <h2 id="json-file-example">JSON file example</h2>
 
 <p>The <a href="https://golang.org/pkg/encoding/json/#Decoder"><code>json.Decoder</code></a> and
@@ -371,11 +356,8 @@ for {
 }</code></pre>
 
 <p>Output:</p>
-
-<pre><code>{&quot;Name&quot;:&quot;Alice&quot;}
-{&quot;Name&quot;:&quot;Bob&quot;}
-</code></pre>
-
+<pre><code>{"Name":"Alice"}
+{"Name":"Bob"}</code></pre>
 
 <h3>Further reading</h3>
 
