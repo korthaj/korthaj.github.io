@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/divide-conquer.jpg"
    ],
   "datePublished": "2018-02-28T00:00:00&#43;0000",
-  "dateModified": "2019-04-13T00:00:00&#43;0000",
+  "dateModified": "2019-12-10T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -93,10 +93,11 @@
 <p class="lead">Most Quicksort optimi&shy;zations give only small improve&shy;ments.
 Here&nbsp;are three that can make a&nbsp;real differ&shy;ence.</p>
 
-<ul>
-<li>Choose a good pivot.</li>
-<li>Use 3-way partitioning.</li>
-<li>Switch to a simpler algorithm for short sublists.</li>
+<ul class="toc">
+  <li><a href="#algorithm-overview">Algorithm overview</a></li>
+  <li><a href="#pivot-element">Pivot element</a></li>
+  <li><a href="#3-way-partition">3-way partition</a></li>
+  <li><a href="#combining-algorithms">Combining algorithms</a></li>
 </ul>
 
 <h2 id="algorithm-overview">Algorithm overview</h2>
@@ -136,7 +137,7 @@ is&nbsp;<i>O</i>(<i>n</i>&nbsp;log&nbsp;<i>n</i>).</p>
 <p>Unfortunately the worst case is θ(<i>n</i><sup>2</sup>),
 but this case is rare if the pivot is chosen carefully.</p>
 
-<h2 id="pivot">Pivot</h2>
+<h2 id="pivot-element">Pivot element</h2>
 
 <p>Choosing a suitable pivot <code>p</code> is a balancing act:</p>
 
@@ -264,9 +265,9 @@ break points between 10 and 100 tend to work well.</p>
 }</code></pre>
 <h3 id="further-reading">Further reading</h3>
 
-<div><a href="/algorithms/fastest-sorting-algorithm/"><img src="/algorithms/sorted-thumb.jpg" title="The fastest sorting algorithm?"></a></div>
+<div><a href="/algorithms/fastest-sorting-algorithm/"><img src="/algorithms/sorted-thumb.jpg" title="O(n log log n) time integer sorting"></a></div>
 
-<p style="margin-top:0;">See <a href="/algorithms/fastest-sorting-algorithm/">The fastest sorting algorithm?</a> for an <i>O</i>(<i>n</i>&nbsp;log&nbsp;log&nbsp;<i>n</i>) time sorting algorithm.</p>
+<p style="margin-top:0;">See <a href="/algorithms/fastest-sorting-algorithm/">O(n log log n) time integer sorting</a> for a theoretically fast sorting algorithm.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
 <a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fquicksort-optimizations%2f&amp;text=Quicksort%20optimizations%20explained%20[complete%20code]&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
