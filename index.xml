@@ -159,15 +159,6 @@ s := strings.TrimSpace(&#34;\t Goodbye hair!\n &#34;) fmt.Printf(&#34;%q&#34;, s
     </item>
     
     <item>
-      <title>40&#43; practical string tips [cheat sheet]</title>
-      <link>https://yourbasic.org/golang/string-functions-reference-cheat-sheet/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/string-functions-reference-cheat-sheet/</guid>
-      <description>String literals (escape characters) Concatenate Equal and compare (ignore case) Length in bytes or runes Index, substring, iterate Search (contains, prefix/suffix, index) Replace (uppercase/lowercase, trim) Split by space or comma Join strings with separator Format and convert Regular expressions  String literals (escape characters)   Expression Result Note     &#34;&#34;  Default zero value for type string   &#34;Japan 日本&#34; Japan 日本 Go code is Unicode text encoded in UTF‑8   &#34;</description>
-    </item>
-    
-    <item>
       <title>5 basic for loop patterns</title>
       <link>https://yourbasic.org/golang/for-loop/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -958,6 +949,15 @@ package main import &#34;fmt&#34; func main() { fmt.Println(&#34;Hello, world!&#
       <guid>https://yourbasic.org/golang/nutshells/</guid>
       <description> Detailed descriptions of core Go concepts
  Table of contents </description>
+    </item>
+    
+    <item>
+      <title>Go string handling overview [cheat sheet]</title>
+      <link>https://yourbasic.org/golang/string-functions-reference-cheat-sheet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/string-functions-reference-cheat-sheet/</guid>
+      <description>String literals (escape characters) Concatenate Equal and compare (ignore case) Length in bytes or runes Index, substring, iterate Search (contains, prefix/suffix, index) Replace (uppercase/lowercase, trim) Split by space or comma Join strings with separator Format and convert Regular expressions  String literals (escape characters)   Expression Result Note     &#34;&#34;  Default zero value for type string   &#34;Japan 日本&#34; Japan 日本 Go code is Unicode text encoded in UTF‑8   &#34;</description>
     </item>
     
     <item>
