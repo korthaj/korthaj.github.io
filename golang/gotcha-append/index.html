@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/scary-bug.jpg"
    ],
   "datePublished": "2018-07-29T00:00:00&#43;0000",
-  "dateModified": "2019-06-19T00:00:00&#43;0000",
+  "dateModified": "2020-02-04T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -124,12 +124,17 @@ fmt.Println(string(a2)) <span class="comment">// bag</span></code></pre>
 
 <h3 id="the-scary-case-it-worked-for-me">The scary case: It &ldquo;worked&rdquo; for me</h3>
 
-<p>In some Go implementations <code>[]byte(&quot;ba&quot;)</code>
+<blockquote class="warning">
+<p>
+In some Go implementations <code>[]byte(&quot;ba&quot;)</code>
 only allocates two bytes, and then the code seems to work: the first string
-is <code>&quot;bad&quot;</code> and the second one&nbsp;<code>&quot;bag&quot;</code>.</p>
-
-<p>Unfortunately the code is <strong>still wrong</strong>, even though it seems to work.
-The program may behave differently when you run it in another environment.</p>
+is <code>&quot;bad&quot;</code> and the second one&nbsp;<code>&quot;bag&quot;</code>.
+</p>
+<p>
+Unfortunately the code is <b>still wrong</b>, even though it seems to work.
+The program may behave differently when you run it in another environment.
+</p>
+</blockquote>
 
 <p>See <a href="/golang/append-explained/">How to append anything</a> for more about
 the built-in <code>append</code> function in&nbsp;Go.</p>
