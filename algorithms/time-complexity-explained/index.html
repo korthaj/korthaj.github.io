@@ -35,7 +35,7 @@
     "https://yourbasic.org/algorithms/abacus.jpg"
    ],
   "datePublished": "2018-02-13T00:00:00&#43;0000",
-  "dateModified": "2019-11-20T00:00:00&#43;0000",
+  "dateModified": "2020-02-05T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -226,11 +226,12 @@ and it also requires knowledge of how the input is distributed.</p>
 Updating an element in an array is a constant-time operation,
 and the assignment dominates the cost of the algorithm.</p>
 
-<p>The number of elementary operations only depends on&nbsp;<em>n</em>
-in this case, and the time complexity becomes</p>
+<p>The number of elementary operations is fully determined by the input size&nbsp;<em>n</em>.
+In fact, the outer for loop is executed <i>n</i>&nbsp;-&nbsp;1 times.
+The time complexity therefore becomes</p>
 
 <p>W(<i>n</i>)&nbsp;=
-1&nbsp;+&nbsp;2&nbsp;+&nbsp;&hellip;&nbsp;+&nbsp;<i>n</i>&nbsp;-&nbsp;1&nbsp;=
+1&nbsp;+&nbsp;2&nbsp;+&nbsp;&hellip;&nbsp;+&nbsp;(<i>n</i>&nbsp;-&nbsp;1)&nbsp;=
 <i>n</i>(<i>n</i>&nbsp;-&nbsp;1)/2&nbsp;=
 <i>n<sup>2</sup></i>/2&nbsp;-&nbsp;<i>n</i>/2.</p>
 
