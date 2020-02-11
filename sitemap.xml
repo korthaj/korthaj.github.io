@@ -481,15 +481,7 @@
   </url>
   
   <url>
-    <loc>https://yourbasic.org/golang/interfaces-explained/</loc>
-  </url>
-  
-  <url>
     <loc>https://yourbasic.org/algorithms/graph/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yourbasic.org/golang/packages-explained/</loc>
   </url>
   
   <url>
@@ -614,6 +606,10 @@
   
   <url>
     <loc>https://yourbasic.org/golang/package-init-function-main-execution-order/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/packages-explained/</loc>
   </url>
   
   <url>
@@ -758,6 +754,10 @@
   
   <url>
     <loc>https://yourbasic.org/golang/type-assertion-switch/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yourbasic.org/golang/interfaces-explained/</loc>
   </url>
   
   <url>

@@ -1104,28 +1104,6 @@ Loop from 0 to len(a)-1 instead.</description>
     </item>
     
     <item>
-      <title>Interfaces in 5 easy steps [complete guide]</title>
-      <link>https://yourbasic.org/golang/interfaces-explained/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/interfaces-explained/</guid>
-      <description>Interface type Structural typing The empty interface Interface values Equality  Interface type  An interface type consists of a set of method signatures. A variable of interface type can hold any value that implements these methods.
- In this example both Temp and *Point implement the MyStringer interface.
-type MyStringer interface { String() string }type Temp int func (t Temp) String() string { return strconv.Itoa(int(t)) + &#34; °C&#34;</description>
-    </item>
-    
-    <item>
-      <title>Introduction to packages in 6 easy steps</title>
-      <link>https://yourbasic.org/golang/packages-explained/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yourbasic.org/golang/packages-explained/</guid>
-      <description>Basics Declare a package Package name conflicts Dot imports Package download Package documentation  Basics Every Go program is made up of packages and each package has an&amp;nbsp;import&amp;nbsp;path:
- &amp;quot;fmt&amp;quot; &amp;quot;math/rand&amp;quot; &amp;quot;github.com/yourbasic/graph&amp;quot;  Packages in the standard library have short import paths, such&amp;nbsp;as &amp;quot;fmt&amp;quot; and &amp;quot;math/rand&amp;quot;. Third-party packages, such as &amp;quot;github.com/yourbasic/graph&amp;quot;, typically have an import path that includes a hosting service (github.com) and an organization name (yourbasic).
-By convention, the package name is the same as the last element of the import path:</description>
-    </item>
-    
-    <item>
       <title>Invalid memory address or nil pointer dereference</title>
       <link>https://yourbasic.org/golang/gotcha-nil-pointer-dereference/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1417,6 +1395,17 @@ The following command starts a web server that presents the documentation at htt
     </item>
     
     <item>
+      <title>Packages explained: declare, import, download, document</title>
+      <link>https://yourbasic.org/golang/packages-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/packages-explained/</guid>
+      <description>Basics Declare a package Package name conflicts Dot imports Package download Package documentation  Basics Every Go program is made up of packages and each package has an&amp;nbsp;import&amp;nbsp;path:
+ &amp;quot;fmt&amp;quot; &amp;quot;math/rand&amp;quot; &amp;quot;github.com/yourbasic/graph&amp;quot;  Packages in the standard library have short import paths, such&amp;nbsp;as &amp;quot;fmt&amp;quot; and &amp;quot;math/rand&amp;quot;. Third-party packages, such as &amp;quot;github.com/yourbasic/graph&amp;quot;, typically have an import path that includes a hosting service (github.com) and an organization name (yourbasic).
+By convention, the package name is the same as the last element of the import path:</description>
+    </item>
+    
+    <item>
       <title>Panics, stack traces and how to recover [best practice]</title>
       <link>https://yourbasic.org/golang/recover-from-panic/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1599,7 +1588,7 @@ a := []int{1, 2, 3, 4, 5, 6, 7, 8} rand.Seed(time.Now().UnixNano()) rand.Shuffle
     </item>
     
     <item>
-      <title>Slices and arrays in 6 easy steps</title>
+      <title>Slices/arrays explained: create, index, slice, iterate</title>
       <link>https://yourbasic.org/golang/slices-explained/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1725,6 +1714,17 @@ Type aliases are not meant for everyday use. They were introduced to support gra
  Type assertions Type switches  Type assertions A type assertion doesn’t really convert an interface to another data type, but it provides access to an interface’s concrete value, which is typically what you&amp;nbsp;want.
 The type assertion x.(T) asserts that the concrete value stored in&amp;nbsp;x is of type&amp;nbsp;T, and that x is&amp;nbsp;not&amp;nbsp;nil.
  If T is not an interface, it asserts that the dynamic type of&amp;nbsp;x is identical to&amp;nbsp;T.</description>
+    </item>
+    
+    <item>
+      <title>Type, value and equality of interfaces</title>
+      <link>https://yourbasic.org/golang/interfaces-explained/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourbasic.org/golang/interfaces-explained/</guid>
+      <description>Interface type Structural typing The empty interface Interface values Equality  Interface type  An interface type consists of a set of method signatures. A variable of interface type can hold any value that implements these methods.
+ In this example both Temp and *Point implement the MyStringer interface.
+type MyStringer interface { String() string }type Temp int func (t Temp) String() string { return strconv.Itoa(int(t)) + &#34; °C&#34;</description>
     </item>
     
     <item>
