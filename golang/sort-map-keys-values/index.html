@@ -49,7 +49,7 @@ you must maintain a separate data structure.</li>
 </ul>
 
 <p>This example uses a sorted slice of keys to print a <code>map[string]int</code> in key order.</p>
-<pre><code>m := map[string]int{"Alice": 23, "Eve": 2, "Bob": 25}
+<pre><code>m := map[string]int{&#34;Alice&#34;: 23, &#34;Eve&#34;: 2, &#34;Bob&#34;: 25}
 
 keys := make([]string, 0, len(m))
 for k := range m {

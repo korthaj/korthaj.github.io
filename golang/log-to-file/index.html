@@ -92,16 +92,16 @@
 
 <p>This code appends a log message to the file <code>text.log</code>.
 It creates the file if it doesn&rsquo;t already exist.</p>
-<pre><code>f, err := os.OpenFile("text.log",
+<pre><code>f, err := os.OpenFile(&#34;text.log&#34;,
 	os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 if err != nil {
 	log.Println(err)
 }
 defer f.Close()
 
-logger := log.New(f, "prefix", log.LstdFlags)
-logger.Println("text to append")
-logger.Println("more text to append")</code></pre>
+logger := log.New(f, &#34;prefix&#34;, log.LstdFlags)
+logger.Println(&#34;text to append&#34;)
+logger.Println(&#34;more text to append&#34;)</code></pre>
 <p>Contents of <code>text.log</code>:</p>
 <pre><code>prefix: 2017/10/20 07:52:58 text to append
 prefix: 2017/10/20 07:52:58 more text to append</code></pre>

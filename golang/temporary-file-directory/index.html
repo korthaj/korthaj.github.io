@@ -139,7 +139,7 @@ and the random digits are appended to the&nbsp;end.</p>
 <p>Use <a href="https://golang.org/pkg/io/ioutil/#TempDir"><code>ioutil.TempDir</code></a> in package
 <a href="https://golang.org/pkg/io/ioutil/"><code>io/ioutil</code></a> to create a
 <strong>globally unique temporary directory</strong>.</p>
-<pre><code>dir, err := ioutil.TempDir("dir", "prefix")
+<pre><code>dir, err := ioutil.TempDir(&#34;dir&#34;, &#34;prefix&#34;)
 if err != nil {
 	log.Fatal(err)
 }

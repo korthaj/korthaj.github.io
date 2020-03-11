@@ -112,7 +112,7 @@ A variable of interface type can hold any value that implements these methods.</
 }</code></pre><pre><code>type Temp int
 
 func (t Temp) String() string {
-	return strconv.Itoa(int(t)) + " °C"
+	return strconv.Itoa(int(t)) + &#34; °C&#34;
 }
 
 type Point struct {
@@ -120,7 +120,7 @@ type Point struct {
 }
 
 func (p *Point) String() string {
-	return fmt.Sprintf("(%d,%d)", p.x, p.y)
+	return fmt.Sprintf(&#34;(%d,%d)&#34;, p.x, p.y)
 }</code></pre>
 <p>Actually, <code>*Temp</code> also implements <code>MyStringer</code>, since the method set of
 a pointer type <code>*T</code> is the set of all methods with receiver <code>*T</code>&nbsp;or&nbsp;<code>T</code>.</p>

@@ -126,7 +126,7 @@ ps := &s              <span class="comment">// ps holds the address of the struc
 
 <p>The <code>&amp;</code> operator can also be used with <strong>composite literals</strong>.
 The two lines above can be&nbsp;written as</p>
-<pre><code>ps := &Student{"Alice"}</code></pre>
+<pre><code>ps := &amp;Student{&#34;Alice&#34;}</code></pre>
 <h2 id="pointer-indirection">Pointer indirection</h2>
 
 <p>For a pointer <code>x</code>, the <strong>pointer indirection</strong> <code>*x</code> denotes the value which <code>x</code> points to.

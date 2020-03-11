@@ -122,7 +122,7 @@ if err != nil {
 <h2 id="custom-errors">Custom errors</h2>
 
 <p>To create a simple string-only <code>error</code> you can use <a href="https://golang.org/pkg/errors/#New"><code>errors.New</code></a>:</p>
-<pre><code>err := errors.New("Houston, we have a problem")</code></pre>
+<pre><code>err := errors.New(&#34;Houston, we have a problem&#34;)</code></pre>
 <p>The <code>error</code> interface requires only an <code>Error</code> method,
 but specific <code>error</code> implementations often have additional methods,
 allowing callers to inspect the details of the error.</p>

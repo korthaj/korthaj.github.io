@@ -115,7 +115,7 @@ Check second return value m := map[string]float64{&#34;pi&#34;: 3.14} v, found :
       
       <guid>https://yourbasic.org/golang/split-string-into-slice/</guid>
       <description>Split on comma or other substring Split by whitespace and newline Split on regular expression  Split on comma or other substring Use the strings.Split function to split a string into its comma separated values.
-s := strings.Split(&#34;a,b,c&#34;, &#34;,&#34;) fmt.Println(s) // Output: [a b c] To include the separators, use strings.SplitAfter. To split only the first n values, use strings.SplitN and strings.SplitAfterN.
+s := strings.Split(&amp;#34;a,b,c&amp;#34;, &amp;#34;,&amp;#34;) fmt.Println(s) // Output: [a b c] To include the separators, use strings.SplitAfter. To split only the first n values, use strings.SplitN and strings.SplitAfterN.
 You can use strings.TrimSpace to strip leading and trailing whitespace from the resulting strings.</description>
     </item>
     
@@ -205,7 +205,7 @@ sum := 0 for i := 1; i { sum += i } fmt.Println(sum) // 10 (1+2+3+4)  The init s
       <guid>https://yourbasic.org/golang/environment-variables/</guid>
       <description> Use the os.Setenv, os.Getenv and os.Unsetenv functions to access environment variables.
 fmt.Printf(&#34;%q\n&#34;, os.Getenv(&#34;SHELL&#34;)) // &#34;/bin/bash&#34; os.Unsetenv(&#34;SHELL&#34;) fmt.Printf(&#34;%q\n&#34;, os.Getenv(&#34;SHELL&#34;)) // &#34;&#34; os.Setenv(&#34;SHELL&#34;, &#34;/bin/dash&#34;) fmt.Printf(&#34;%q\n&#34;, os.Getenv(&#34;SHELL&#34;)) // &#34;/bin/dash&#34; The os.Environ function returns a slice of &amp;quot;key=value&amp;quot; strings listing all environment variables.
-for _, s := range os.Environ() { kv := strings.SplitN(s, &#34;=&#34;, 2) // unpacks &#34;key=value&#34; fmt.Printf(&#34;key:%q value:%q\n&#34;, kv[0], kv[1]) } key:&#34;SHELL&#34; value:&#34;/bin/bash&#34; key:&#34;SESSION&#34; value:&#34;ubuntu&#34; key:&#34;TERM&#34; value:&#34;xterm-256color&#34; key:&#34;LANG&#34; value:&#34;en_US.UTF-8&#34; key:&#34;XMODIFIERS&#34; value:&#34;@im=ibus&#34; …</description>
+for _, s := range os.Environ() { kv := strings.SplitN(s, &#34;=&#34;, 2) // unpacks &#34;key=value&#34; fmt.Printf(&#34;key:%q value:%q\n&#34;, kv[0], kv[1]) } key:&amp;#34;SHELL&amp;#34; value:&amp;#34;/bin/bash&amp;#34; key:&amp;#34;SESSION&amp;#34; value:&amp;#34;ubuntu&amp;#34; key:&amp;#34;TERM&amp;#34; value:&amp;#34;xterm-256color&amp;#34; key:&amp;#34;LANG&amp;#34; value:&amp;#34;en_US.UTF-8&amp;#34; key:&amp;#34;XMODIFIERS&amp;#34; value:&amp;#34;@im=ibus&amp;#34; …</description>
     </item>
     
     <item>
@@ -239,7 +239,7 @@ people := []string{&#34;Alice&#34;, &#34;Bob&#34;, &#34;Dave&#34;} less := func(
       
       <guid>https://yourbasic.org/golang/append-to-file/</guid>
       <description>This code appends a line of text to the file text.log. It creates the file if it doesn&amp;rsquo;t already&amp;nbsp;exist.
-f, err := os.OpenFile(&#34;text.log&#34;, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644) if err != nil { log.Println(err) } defer f.Close() if _, err := f.WriteString(&#34;text to append\n&#34;); err != nil { log.Println(err) } If you&amp;rsquo;re appending text to a file for logging purposes, see Write log to file.</description>
+f, err := os.OpenFile(&amp;#34;text.log&amp;#34;, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644) if err != nil { log.Println(err) } defer f.Close() if _, err := f.WriteString(&amp;#34;text to append\n&amp;#34;); err != nil { log.Println(err) } If you&amp;rsquo;re appending text to a file for logging purposes, see Write log to file.</description>
     </item>
     
     <item>
@@ -303,7 +303,7 @@ Built-in operators   Operation Result Description     0011 &amp;amp; 0101 0001 B
       <guid>https://yourbasic.org/golang/underscore/</guid>
       <description>The blank identifier _ is an anonymous placeholder. It may be used like any other identifier in a declaration, but it does not introduce a binding.
 Ignore values The blank identifier provides a way to ignore left-hand side values in an assignment.
-_, present := timeZone[&#34;CET&#34;] sum := 0 for _, n := range a { sum += n } Import for side effects It can also be used to import a package solely for its side effects.</description>
+_, present := timeZone[&amp;#34;CET&amp;#34;] sum := 0 for _, n := range a { sum += n } Import for side effects It can also be used to import a package solely for its side effects.</description>
     </item>
     
     <item>
@@ -367,7 +367,7 @@ func main() { if len(os.Args) != 3 { fmt.Println(&#34;Usage:&#34;, os.Args[0], &
       
       <guid>https://yourbasic.org/golang/absolute-value-int-float/</guid>
       <description>Integers There is no built-in abs function for integers, but it&amp;rsquo;s simple to write your&amp;nbsp;own.
-// Abs returns the absolute value of x. func Abs(x int64) int64 { if x  Warning: The smallest value of a signed integer doesn’t have a matching positive value.  math.MinInt64 is -9223372036854775808, but math.MaxInt64 is 9223372036854775807.  Unfortunately, our Abs function returns a negative value in this case. fmt.Println(Abs(math.MinInt64)) // Output: -9223372036854775808  (The Java and C libraries behave like this as well.</description>
+// Abs returns the absolute value of x. func Abs(x int64) int64 { if x &amp;lt; 0 { return -x } return x } Warning: The smallest value of a signed integer doesn’t have a matching positive value.  math.MinInt64 is -9223372036854775808, but math.MaxInt64 is 9223372036854775807.  Unfortunately, our Abs function returns a negative value in this case.</description>
     </item>
     
     <item>
@@ -471,7 +471,7 @@ s := strconv.Itoa(97) // s == &#34;97&#34; Warning: In a plain conversion the va
       
       <guid>https://yourbasic.org/golang/interface-to-string/</guid>
       <description>Use fmt.Sprintf to convert an interface value to a string.
-var x interface{} = &#34;abc&#34; str := fmt.Sprintf(&#34;%v&#34;, x) In fact, the same technique can be used to get a string representation of any data structure.
+var x interface{} = &amp;#34;abc&amp;#34; str := fmt.Sprintf(&amp;#34;%v&amp;#34;, x) In fact, the same technique can be used to get a string representation of any data structure.
 var x interface{} = []int{1, 2, 3} str := fmt.Sprintf(&#34;%v&#34;, x) fmt.Println(str) // &#34;[1 2 3]&#34; Fmt cheat sheet  Top fmt formatting tips</description>
     </item>
     
@@ -733,7 +733,7 @@ rand.Seed(time.Now().UnixNano()) chars := []rune(&#34;ABCDEFGHIJKLMNOPQRSTUVWXYZ
       
       <guid>https://yourbasic.org/golang/generate-permutation-slice-string/</guid>
       <description> // Perm calls f with each permutation of a. func Perm(a []rune, f func([]rune)) { perm(a, f, 0) } // Permute the values at index i to len(a)-1. func perm(a []rune, f func([]rune), i int) { if i  len(a) { f(a) return } perm(a, f, i+1) for j := i + 1; j  Example usage:
-Perm([]rune(&#34;abc&#34;), func(a []rune) { fmt.Println(string(a)) }) Output:
+Perm([]rune(&amp;#34;abc&amp;#34;), func(a []rune) { fmt.Println(string(a)) }) Output:
 abc acb bac bca cba cab</description>
     </item>
     
@@ -911,7 +911,7 @@ s := &#34;Foo&#34; md5 := md5.Sum([]byte(s)) sha1 := sha1.Sum([]byte(s)) sha256 
       
       <guid>https://yourbasic.org/golang/http-server-example/</guid>
       <description>A basic web server If you access the URL http://localhost:8080/world on a machine where the program below is running, you will be greeted by&amp;nbsp;this&amp;nbsp;page.
-package main import ( &#34;fmt&#34; &#34;net/http&#34; ) func main() { http.HandleFunc(&#34;/&#34;, HelloServer) http.ListenAndServe(&#34;:8080&#34;, nil) } func HelloServer(w http.ResponseWriter, r *http.Request) { fmt.Fprintf(w, &#34;Hello, %s!&#34;, r.URL.Path[1:]) }  The call to http.HandleFunc tells the net.http package to handle all requests to the web root with the HelloServer function.</description>
+package main import ( &amp;#34;fmt&amp;#34; &amp;#34;net/http&amp;#34; ) func main() { http.HandleFunc(&amp;#34;/&amp;#34;, HelloServer) http.ListenAndServe(&amp;#34;:8080&amp;#34;, nil) } func HelloServer(w http.ResponseWriter, r *http.Request) { fmt.Fprintf(w, &amp;#34;Hello, %s!&amp;#34;, r.URL.Path[1:]) }  The call to http.HandleFunc tells the net.http package to handle all requests to the web root with the HelloServer function.</description>
     </item>
     
     <item>
@@ -921,7 +921,7 @@ package main import ( &#34;fmt&#34; &#34;net/http&#34; ) func main() { http.Hand
       
       <guid>https://yourbasic.org/golang/gotcha-concatenate-rune-string/</guid>
       <description>Why doesn&amp;rsquo;t these print statements give the same result?
-fmt.Println(&#34;H&#34; + &#34;i&#34;) fmt.Println(&#39;H&#39; + &#39;i&#39;)Hi 177 Answer The rune literals &#39;H&#39; and &#39;i&#39; are integer values identifying Unicode code points: &#39;H&#39; is 72 and &#39;i&#39; is&amp;nbsp;105.
+fmt.Println(&amp;#34;H&amp;#34; + &amp;#34;i&amp;#34;) fmt.Println(&amp;#39;H&amp;#39; + &amp;#39;i&amp;#39;)Hi 177 Answer The rune literals &#39;H&#39; and &#39;i&#39; are integer values identifying Unicode code points: &#39;H&#39; is 72 and &#39;i&#39; is&amp;nbsp;105.
 You can turn a code point into a string with a&amp;nbsp;conversion.
 fmt.Println(string(72) + string(&#39;i&#39;))// &#34;Hi&#34; You can also use the fmt.Sprintf function.
 s := fmt.Sprintf(&#34;%c%c, world!&#34;, 72, &#39;i&#39;) fmt.Println(s)// &#34;Hi, world!&#34; This fmt cheat sheet lists the most common formatting verbs and flags.</description>
@@ -967,7 +967,7 @@ Basic iterator pattern // Iterate calls the f function with n = 1, 2, and 3. fun
       <guid>https://yourbasic.org/golang/detect-deadlock/</guid>
       <description>A deadlock happens when a group of goroutines are waiting for each other and none of them is able to&amp;nbsp;proceed.
  Take a look at this simple example.
-func main() { ch := make(chan int) ch  The program will get stuck on the channel send operation waiting forever for someone to read the value. Go is able to detect situations like this at runtime. Here is the output from our program:</description>
+func main() { ch := make(chan int) ch &amp;lt;- 1 fmt.Println(&amp;lt;-ch) } The program will get stuck on the channel send operation waiting forever for someone to read the value. Go is able to detect situations like this at runtime. Here is the output from our program:</description>
     </item>
     
     <item>
@@ -1251,8 +1251,8 @@ type House struct { garage bool } func (p *House) HasGarage() bool { return p.</
       
       <guid>https://yourbasic.org/golang/opening-brace-separate-line/</guid>
       <description>As you may have noticed, programs with an opening brace on separate line do not compile.
-func main() { fmt.Println(&#34;Hello&#34;) }../main.go:1:6: missing function body for &#34;main&#34; ../main.go:2:1: syntax error: unexpected semicolon or newline before { You must write:
-func main() { fmt.Println(&#34;Hello&#34;) } This is a trade-off in the design of the Go language.
+func main() { fmt.Println(&amp;#34;Hello&amp;#34;) }../main.go:1:6: missing function body for &amp;#34;main&amp;#34; ../main.go:2:1: syntax error: unexpected semicolon or newline before { You must write:
+func main() { fmt.Println(&amp;#34;Hello&amp;#34;) } This is a trade-off in the design of the Go language.
  Some have argued that the lexer should do lookahead to permit the brace to live on the next line.</description>
     </item>
     
@@ -1604,7 +1604,7 @@ a := []int{1, 2, 3, 4, 5, 6, 7, 8} rand.Seed(time.Now().UnixNano()) rand.Shuffle
       
       <guid>https://yourbasic.org/golang/sort-map-keys-values/</guid>
       <description>A map is an unordered collection of key-value pairs. If you need a stable iteration order, you must maintain a separate data structure.  This example uses a sorted slice of keys to print a map[string]int in key order.
-m := map[string]int{&#34;Alice&#34;: 23, &#34;Eve&#34;: 2, &#34;Bob&#34;: 25} keys := make([]string, 0, len(m)) for k := range m { keys = append(keys, k) } sort.Strings(keys) for _, k := range keys { fmt.</description>
+m := map[string]int{&amp;#34;Alice&amp;#34;: 23, &amp;#34;Eve&amp;#34;: 2, &amp;#34;Bob&amp;#34;: 25} keys := make([]string, 0, len(m)) for k := range m { keys = append(keys, k) } sort.Strings(keys) for _, k := range keys { fmt.</description>
     </item>
     
     <item>
@@ -1689,7 +1689,7 @@ Here is a convenience function that changes the location associated with a&amp;n
       <guid>https://yourbasic.org/golang/time-reset-wait-stop-timeout-cancel-interval/</guid>
       <description>Timers and Tickers let you execute code in the future, once or repeatedly.
  Timeout (Timer) Repeat (Ticker) Wait, act and cancel  Timeout (Timer) time.After waits for a specified duration and then sends the current time on the returned channel:
-select { case news :=  The underlying time.Timer will not be recovered by the garbage collector until the timer fires. If this is a concern, use time.NewTimer instead and call its Stop method when the timer is no longer needed:</description>
+select { case news := &amp;lt;-AFP: fmt.Println(news) case &amp;lt;-time.After(time.Hour): fmt.Println(&amp;#34;No news in an hour.&amp;#34;) } The underlying time.Timer will not be recovered by the garbage collector until the timer fires.</description>
     </item>
     
     <item>
@@ -1724,7 +1724,7 @@ The type assertion x.(T) asserts that the concrete value stored in&amp;nbsp;x is
       <guid>https://yourbasic.org/golang/interfaces-explained/</guid>
       <description>Interface type Structural typing The empty interface Interface values Equality  Interface type  An interface type consists of a set of method signatures. A variable of interface type can hold any value that implements these methods.
  In this example both Temp and *Point implement the MyStringer interface.
-type MyStringer interface { String() string }type Temp int func (t Temp) String() string { return strconv.Itoa(int(t)) + &#34; °C&#34;</description>
+type MyStringer interface { String() string }type Temp int func (t Temp) String() string { return strconv.Itoa(int(t)) + &amp;#34; °C&amp;#34; } type Point struct { x, y int } func (p *Point) String() string { return fmt.</description>
     </item>
     
     <item>
@@ -1793,7 +1793,7 @@ const big = 10000000000 // Ok, even though it&#39;s too big for an int. const bi
       
       <guid>https://yourbasic.org/golang/unused-imports/</guid>
       <description>As you may have noticed, programs with unused package imports do not compile.
-package main import ( &#34;fmt&#34; &#34;log&#34; // &#34;imported and not used: log&#34; ) func main() { fmt.Println(&#34;Hello&#34;) } ../main.go:5:2: imported and not used: &#34;log&#34; This is a deliberate feature of the Go language.
+package main import ( &#34;fmt&#34; &#34;log&#34; // &#34;imported and not used: log&#34; ) func main() { fmt.Println(&#34;Hello&#34;) } ../main.go:5:2: imported and not used: &amp;#34;log&amp;#34; This is a deliberate feature of the Go language.
  The presence of an unused variable may indicate a bug [&amp;hellip;] Go refuses to compile programs with unused variables or imports, trading short-term convenience for long-term build speed and program clarity.</description>
     </item>
     
@@ -1901,7 +1901,7 @@ As a CS professor and longtime Go and Java developer, I&amp;rsquo;d like to shar
       
       <guid>https://yourbasic.org/golang/log-to-file/</guid>
       <description>This code appends a log message to the file text.log. It creates the file if it doesn&amp;rsquo;t already exist.
-f, err := os.OpenFile(&#34;text.log&#34;, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644) if err != nil { log.Println(err) } defer f.Close() logger := log.New(f, &#34;prefix&#34;, log.LstdFlags) logger.Println(&#34;text to append&#34;) logger.Println(&#34;more text to append&#34;) Contents of text.log:
+f, err := os.OpenFile(&amp;#34;text.log&amp;#34;, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644) if err != nil { log.Println(err) } defer f.Close() logger := log.New(f, &amp;#34;prefix&amp;#34;, log.LstdFlags) logger.Println(&amp;#34;text to append&amp;#34;) logger.Println(&amp;#34;more text to append&amp;#34;) Contents of text.log:
 prefix: 2017/10/20 07:52:58 text to append prefix: 2017/10/20 07:52:58 more text to append  log.New creates a new log.Logger that writes to f.</description>
     </item>
     

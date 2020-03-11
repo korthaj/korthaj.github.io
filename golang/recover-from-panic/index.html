@@ -215,7 +215,7 @@ the argument passed to&nbsp;<code>panic</code>.</li>
 <h3 id="panic-handler-example">Panic handler example</h3>
 <pre><code>func main() {
 	n := foo()
-	fmt.Println("main received", n)
+	fmt.Println(&#34;main received&#34;, n)
 }
 
 func foo() int {
@@ -225,7 +225,7 @@ func foo() int {
 		}
 	}()
 	m := 1
-	panic("foo: fail")
+	panic(&#34;foo: fail&#34;)
 	m = 2
 	return m
 }</code></pre><pre><code>foo: fail
@@ -238,7 +238,7 @@ main received 0</code></pre>
 <p>To return a value during a panic, you must use a <a href="/golang/named-return-values-parameters/">named return value</a>.</p>
 <pre><code>func main() {
 	n := foo()
-	fmt.Println("main received", n)
+	fmt.Println(&#34;main received&#34;, n)
 }
 
 func foo() (m int) {
@@ -249,7 +249,7 @@ func foo() (m int) {
 		}
 	}()
 	m = 1
-	panic("foo: fail")
+	panic(&#34;foo: fail&#34;)
 	m = 3
 	return m
 }</code></pre><pre><code>foo: fail
@@ -268,12 +268,12 @@ func Panics(f interface{}, p ...interface{}) bool {
 	fv := reflect.ValueOf(f)
 	ft := reflect.TypeOf(f)
 	if ft.NumIn() != len(p) {
-		panic("wrong argument count")
+		panic(&#34;wrong argument count&#34;)
 	}
 	pv := make([]reflect.Value, len(p))
 	for i, v := range p {
 		if reflect.TypeOf(v) != ft.In(i) {
-			panic("wrong argument type")
+			panic(&#34;wrong argument type&#34;)
 		}
 		pv[i] = reflect.ValueOf(v)
 	}

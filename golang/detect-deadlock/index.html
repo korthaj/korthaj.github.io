@@ -96,8 +96,8 @@
 <p>Take a look at this simple example.</p>
 <pre><code>func main() {
 	ch := make(chan int)
-	ch <- 1
-	fmt.Println(<-ch)
+	ch &lt;- 1
+	fmt.Println(&lt;-ch)
 }</code></pre>
 <p>The program will get stuck on the channel send operation
 waiting forever for someone to read the value.

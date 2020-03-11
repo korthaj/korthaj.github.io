@@ -97,17 +97,17 @@ you will be greeted by&nbsp;this&nbsp;page.</p>
 <pre><code>package main
 
 import (
-    "fmt"
-    "net/http"
+    &#34;fmt&#34;
+    &#34;net/http&#34;
 )
 
 func main() {
-    http.HandleFunc("/", HelloServer)
-    http.ListenAndServe(":8080", nil)
+    http.HandleFunc(&#34;/&#34;, HelloServer)
+    http.ListenAndServe(&#34;:8080&#34;, nil)
 }
 
 func HelloServer(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, "Hello, %s!", r.URL.Path[1:])
+    fmt.Fprintf(w, &#34;Hello, %s!&#34;, r.URL.Path[1:])
 }</code></pre>
 <ul>
 <li>The call to <a href="https://golang.org/pkg/net/http/#HandleFunc"><code>http.HandleFunc</code></a>

@@ -163,9 +163,9 @@ s := string(buf)</code></pre>
 <p>If the expected maximum length of the string is known,
 you may want to preallocate the slice.</p>
 <pre><code>buf := make([]byte, 0, 16)
-buf = append(buf, "Size: "...)
+buf = append(buf, &#34;Size: &#34;...)
 buf = strconv.AppendInt(buf, 85, 10)
-buf = append(buf, " MB."...)
+buf = append(buf, &#34; MB.&#34;...)
 s := string(buf)</code></pre>
 <h2 id="further-reading">Further reading</h2>
 

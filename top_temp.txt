@@ -1,0 +1,178 @@
+---
+title: "Top programming languages in use 2019 [informal study]"
+description: "List of top programming languages seen in tech jobs listings 2000-2019."
+share: true
+meta:
+  published: "2018-03-25"
+  modified: "2019-04-27"
+  image: "/res/skyscrapers-960.jpg"
+---
+
+<!-- CC0: https://pixabay.com/sv/photos/skyskrapor-sky-stadsbilden-h%C3%B6ga-1081737/ -->
+<div style="margin-top:1em;"><img src="/res/skyscrapers.jpg"></div>
+
+<ul class="toc"">
+  <li><a href="#summary">Summary</a></li>
+  <li><a href="#language-trends-2000-2019">Language trends 2000–2019</a></li>
+  <li><a href="#top-languages-2019">Top languages 2019</a></li>
+</ul>
+
+## Summary
+
+This informal study gives a broad estimate of what
+programming languages are **used commercially** in the&nbsp;US.
+For the last **20 years**, I've done a job search at
+[www.dice.com](https://www.dice.com)
+for some of the most popular languages.
+
+Main takeaways:
+
+- Some much-talked-about languages find very little use in industry.
+- C#, Java, JavaScript, and Python have taken a large and stable market share during the last 20&nbsp;years.
+- Visual Basic has made a recent comeback.
+- A huge number of programming jobs disappeared from the US job market after the [dot-com crash](https://en.wikipedia.org/wiki/Dot-com_bubble)
+  in&nbsp;2000.
+
+## Language trends 2000–2019
+
+Number of hits (x1,000) on [Dice](https://www.dice.com), tech jobs search engine, 
+<span style="color: green">February&nbsp;2019</span>.
+
+<pre>
+(year)            00   02   04   06   08   10   12   14   16   18   <span style="color: green"><b>19</b></span>
+
+Java              55    3    8   14   16   12   18   17   16   15   <span style="color: green"><b>18</b></span>
+JavaScript         5    1    2    4    6    6   11   12   12   10   <span style="color: green"><b>12</b></span>
+C/C++ (*)         75    2    5   16    9   12   18   16    8    7    <span style="color: green"><b>9</b></span>
+Python                            1    1    2    4    5    7    8    <span style="color: green"><b>9</b></span>
+Visual Basic      21    1    2    3    2    1    2    1   12    9    <span style="color: green"><b>8</b></span>
+C#                           1    5    8    6    9    8    7    6    <span style="color: green"><b>6</b></span>
+Objective C                                           2    6    5    <span style="color: green"><b>5</b></span>
+Go                                                                   <span style="color: green"><b>3</b></span>
+Perl              18    1    2    5    5    4    5    4    4    3    <span style="color: green"><b>2</b></span>
+R                                                               2    <span style="color: green"><b>2</b></span>
+Ruby                                        1    2    2    3    2    <span style="color: green"><b>2</b></span>
+Bash                                                  1    2    2    <span style="color: green"><b>2</b></span>
+Scala                                                      1    1    <span style="color: green"><b>1</b></span>
+PHP                               1    2    2    4    3    3    2    <span style="color: green"><b>1</b></span>
+Matlab                                                          1    <span style="color: green"><b>1</b></span>
+Assembly           4    1    1    2    1    1    1    1    1    1    <span style="color: green"><b>1</b></span>
+JSP                               4    4    3    3    2    1    1    <span style="color: green"><b>1</b></span>
+ASP                              11    7    4    6    5    2    1    <span style="color: green"><b>1</b></span>
+TypeScript                                                           <span style="color: green"><b>1</b></span>
+Swift                                                           1    <span style="color: green"><b>1</b></span>
+</pre>
+
+(*) Back in 2000 it made sense to lump C and C++ together.
+
+## Top languages 2019
+
+Number of hits on [Dice](https://www.dice.com), tech jobs search engine.
+
+<!--
+<pre>
+Java           14,995
+JavaScript     10,198
+Visual Basic    8,572
+Python          8,043
+C or C++        6,530
+C#              5,979
+Objective-C     5,312
+Perl            2,587
+Ruby            2,186
+PHP             1,806
+R               1,705
+Bash            1,575
+Scala           1,220
+ASP             1,133
+Assembly          941
+JSP               822
+Swift             686
+Matlab            633
+Crystal           493
+TypeScript        493
+Cobol             449
+VBA               351
+Groovy            343
+Ada               243
+Golang            274
+Tcl               124
+Kotlin             88
+awk                70
+Fortran            59
+Clojure            49
+Delphi             46
+Erlang             45
+Scheme             37
+Haskell            30
+Lua                28
+F#                 25
+Dart               24
+Rust               20
+Lisp               10
+Smalltalk           8
+Prolog              6
+Pascal              4
+PostScript          3
+</pre>
+-->
+<pre>
+Java           18,413
+JavaScript     11,948
+C or C++        9,031
+Python          8,720
+Visual Basic    7,783
+C#              5,625
+Objective-C     5,478
+Go              3,475
+Perl            2,153
+R               1,921
+Ruby            1,719
+Bash            1,535
+Scala           1,355
+PHP             1,309
+Matlab          1,090
+Assembly          963
+JSP               949
+ASP               740
+Typescript        709
+Swift             578
+Groovy            426
+Crystal           416
+Cobol             332
+VBA               280
+Kotlin            242
+Ada               211
+Fortran           109
+Tcl                92
+Clojure            65
+Scheme             49
+awk                47
+Elixir             45
+Elm                31
+Lua                28
+Rust               27
+Haskell            23
+Dart               22
+Delphi             20
+Erlang             20
+F#                 18
+Lisp               12
+PostScript          9
+Pascal              4
+Smalltalk           2
+Prolog              0
+</pre>
+
+### Further reading
+
+<p><a href="/golang/advantages-over-java-python/"><img src="/golang/unicorn-thumb.png" title="Why Go?" alt="Why Go?"></a></p>
+
+<ul class="index">
+{{< li "golang/advantages-over-java-python.md" >}}
+{{< li "algorithms/your-basic-api.md" >}}
+{{< li "golang/your-basic-func.md" >}}
+{{< li "algorithms/loop-invariants-explained.md" >}}
+</ul>
+
+<a href="/"><b>See all articles</b></a>

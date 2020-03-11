@@ -289,7 +289,7 @@ where n = g2.Order(), and index i corresponds to the vertex (i/n, i%n).</p>
 	g := generic0(m*n, func(v, w int) (edge bool) {
 		v1, v2 := v/n, v%n
 		w1, w2 := w/n, w%n
-		return g1.Edge(v1, w1) && g2.Edge(v2, w2)
+		return g1.Edge(v1, w1) &amp;&amp; g2.Edge(v2, w2)
 	})
 
 	g.degree = func(v int) (deg int) {
@@ -336,8 +336,8 @@ than the other.</p>
 
 <p>To test the <code>Cycle</code> function we simply need to check its output
 and call the automated consistency test:</p>
-<pre><code>for n := 0; n < 5; n++ {
-	Consistent("Cycle", t, Cycle(n))
+<pre><code>for n := 0; n &lt; 5; n++ {
+	Consistent(&#34;Cycle&#34;, t, Cycle(n))
 }</code></pre>
 <h2 id="performance">Performance</h2>
 

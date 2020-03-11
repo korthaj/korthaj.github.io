@@ -125,14 +125,14 @@ func ReverseRune(s string) string {
 
 <h3 id="example-usage">Example usage</h3>
 <pre><code>for _, s := range []string{
-	"Ångström",
-	"Hello, 世界",
-	"\xff\xfe\xfd", // invalid UTF-8
+	&#34;Ångström&#34;,
+	&#34;Hello, 世界&#34;,
+	&#34;\xff\xfe\xfd&#34;, // invalid UTF-8
 } {
-	fmt.Printf("%q\n", ReverseRune(s))
-}</code></pre><pre><code>"mörtsgnÅ"
-"界世 ,olleH"
-"\xfd\xfe\xff"</code></pre>
+	fmt.Printf(&#34;%q\n&#34;, ReverseRune(s))
+}</code></pre><pre><code>&#34;mörtsgnÅ&#34;
+&#34;界世 ,olleH&#34;
+&#34;\xfd\xfe\xff&#34;</code></pre>
 <h2 id="further-reading">Further reading</h2>
 
 <p><a href="/golang/string-functions-reference-cheat-sheet/"><img src="/golang/typewriter-thumb.png" title="40+ practical string tips [cheat sheet]"></a></p>

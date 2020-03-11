@@ -99,7 +99,7 @@
 <h2 id="split-on-comma-or-other-substring">Split on comma or other substring</h2>
 
 <p>Use the <a href="https://golang.org/pkg/strings/#Split"><code>strings.Split</code></a> function to split a string into its comma separated values.</p>
-<pre><code>s := strings.Split("a,b,c", ",")
+<pre><code>s := strings.Split(&#34;a,b,c&#34;, &#34;,&#34;)
 fmt.Println(s)
 // Output: [a b c]</code></pre>
 <p>To include the separators, use <a href="https://golang.org/pkg/strings/#SplitAfter"><code>strings.SplitAfter</code></a>.
@@ -112,7 +112,7 @@ to strip leading and trailing whitespace from the resulting strings.</p>
 
 <p>Use the <a href="https://golang.org/pkg/strings/#Fields"><code>strings.Fields</code></a> function to split a string into substrings removing any space characters,
 including newlines.</p>
-<pre><code>s := strings.Fields(" a \t b \n")
+<pre><code>s := strings.Fields(&#34; a \t b \n&#34;)
 fmt.Println(s)
 // Output: [a b]</code></pre>
 <h2 id="split-on-regular-expression">Split on regular expression</h2>

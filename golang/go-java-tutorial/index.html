@@ -472,7 +472,7 @@ Omitting the condition entirely produces an endless loop.</p>
 <p>A <code>for</code> statement may contain a <code>range</code> clause
 for iterating over strings, arrays, slices, maps, or channels.
 Instead of writing</p>
-<pre><code>for i := 0; i < len(a); i++ { ... }</code></pre>
+<pre><code>for i := 0; i &lt; len(a); i++ { ... }</code></pre>
 <p>to loop over the elements of <code>a</code>, we could also write</p>
 <pre><code>for i, v := range a { ... }</code></pre>
 <p>This assigns <code>i</code> to the index and <code>v</code>
@@ -517,7 +517,7 @@ the equality comparison operator, such as strings or pointers.
 A missing switch expression is equivalent to
 the expression <code>true</code>.</p>
 <pre><code>switch {
-case n < 0:
+case n &lt; 0:
     f1()
 case n == 0:
     f2()
@@ -568,8 +568,8 @@ f(a + 1e3) <span class="comment">// 1e3 is also typed as uint.</span></code></pr
 <p>The language does not impose any limits on the size of an untyped
 numeric constant. A limit is only applied when a constant is used
 where a type is required.</p>
-<pre><code>const huge = 1 << 100
-var n int = huge >> 98</code></pre>
+<pre><code>const huge = 1 &lt;&lt; 100
+var n int = huge &gt;&gt; 98</code></pre>
 <p>If the type is absent in a variable declaration and the corresponding
 expression evaluates to an untyped numeric constant,
 the constant is converted to type <code>rune</code>, <code>int</code>,
@@ -819,7 +819,7 @@ will accept a variable of type <code>*MyType</code>.</p>
 
 func f1() {
     var p MyType
-    GetAndSet(&p)
+    GetAndSet(&amp;p)
 }</code></pre>
 <p>In Java terms, defining <code>Set</code> and <code>Get</code> for
 <code>*MyType</code> made <code>*MyType</code> automatically implement
@@ -847,7 +847,7 @@ func (p *MySubType) Get() int {
 <code>MyType</code>.</p>
 <pre><code>func f2() {
     var p MySubType
-    GetAndSet(&p)
+    GetAndSet(&amp;p)
 }</code></pre>
 <p>The <code>Set</code> method is inherited from <code>MyType</code>,
 because methods associated with the anonymous field are promoted
@@ -1093,10 +1093,10 @@ for { <span class="comment">// Send random sequence of bits to rand.</span>
 <p>Somewhat more realistically, here is how a select statement
 could be used to set a time limit on a receive operation.</p>
 <pre><code>select {
-case news := <-AFP:
+case news := &lt;-AFP:
     fmt.Println(news)
-case <-time.After(time.Minute):
-    fmt.Println("Time out: no news in one minute.")
+case &lt;-time.After(time.Minute):
+    fmt.Println(&#34;Time out: no news in one minute.&#34;)
 }</code></pre>
 <p>The function <code>time.After</code> is part of the standard library;
 it waits for a specified time to elapse and then sends the current time

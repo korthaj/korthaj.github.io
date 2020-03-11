@@ -304,12 +304,12 @@ It uses a bit set implementation from the <a href="https://github.com/yourbasic/
 to generate the set of all primes less than <em>n</em> in O(<em>n</em> log log <em>n</em>) time.
 Try it with <em>n</em> equal to a few hundred millions and be pleasantly surprised.</p>
 <pre><code>sieve := bit.New().AddRange(2, n)
-for k := 4; k < n; k += 2 {
+for k := 4; k &lt; n; k += 2 {
     sieve.Delete(k)
 }
 sqrtN := int(math.Sqrt(n))
-for p := 3; p <= sqrtN; p = sieve.Next(p) {
-	for k := p * p; k < n; k += 2 * p {
+for p := 3; p &lt;= sqrtN; p = sieve.Next(p) {
+	for k := p * p; k &lt; n; k += 2 * p {
 		sieve.Delete(k)
 	}
 }</code></pre>

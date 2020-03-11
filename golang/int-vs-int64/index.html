@@ -123,8 +123,8 @@ It forces you to spend a moment thinking about the choice and also makes the cod
 while the index and the length of the slice have type&nbsp;<code>int</code>.</p>
 <pre><code>func Max(a []int64) int64 {
 	max := a[0]
-	for i := 1; i < len(a); i++ {
-		if max < a[i] {
+	for i := 1; i &lt; len(a); i++ {
+		if max &lt; a[i] {
 			max = a[i]
 		}
 	}

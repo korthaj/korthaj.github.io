@@ -351,7 +351,7 @@ and why you should consider using <strong>semantic versioning</strong>.</p>
 * Version numbers adhere to semantic versioning.
 
 The only accepted reason to modify the API of this package
-is to handle issues that can't be resolved in any other
+is to handle issues that can&#39;t be resolved in any other
 reasonable way.</code></pre>
 <p><a href="https://golang.org/doc/go1compat">Go 1 and the Future of Go Programs</a> is a full, detailed
 compatibility document. It&rsquo;s required study for anyone working with
@@ -719,11 +719,11 @@ a good choice here.</p>
 </ul>
 
 <p>Here&rsquo;s a code snippet that follows these naming conventions.</p>
-<pre><code>if proc.Running() && proc.Name() != path {
+<pre><code>if proc.Running() &amp;&amp; proc.Name() != path {
 	proc.SetName(path)
 }</code></pre>
 <p>For comparison, here&rsquo;s a more verbose version of the same code.</p>
-<pre><code>if process.IsRunning() && process.GetProcessName() != pathName {
+<pre><code>if process.IsRunning() &amp;&amp; process.GetProcessName() != pathName {
 	process.SetProcessName(pathName)
 }</code></pre>
 <p>Yikes.</p>
