@@ -35,7 +35,7 @@
     "https://yourbasic.org/algorithms/neutral-density-filter-demonstration.jpg"
    ],
   "datePublished": "2018-01-26T00:00:00&#43;0000",
-  "dateModified": "2019-04-12T00:00:00&#43;0000",
+  "dateModified": "2020-06-07T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -94,7 +94,7 @@
 
 <ul class="toc">
   <li><a href="#bloom-filter-basics">Bloom filter basics</a></li>
-  <li><a href="#example-a-blacklist-of-shady-websites">Example: A blacklist of shady websites</a></li>
+  <li><a href="#example-blocking-shady-websites">Example: Blocking shady websites</a></li>
   <li><a href="#implementation">Implementation</a></li>
   <li><a href="#performance">Performance</a></li>
 </ul>
@@ -110,27 +110,27 @@ With more elements in the filter, the error rate increases.</p>
 
 <p>Content distribution networks use them to avoid caching one-hit wonders, files that are seen only once. Web browsers use them to check for potentially harmful URLs.</p>
 
-<h2 id="example-a-blacklist-of-shady-websites">Example: A blacklist of shady websites</h2>
+<h2 id="example-blocking-shady-websites">Example: Blocking shady websites</h2>
 
 <p>This piece of code, which uses the Go  Bloom filter implementation in package <a href="https://github.com/yourbasic/bloom">github.com/yourbasic/bloom</a>,
 shows a typical Bloom filter use case.</p>
 
 <pre><code><span class="comment">// A Bloom filter with room for at most 100000 elements.
 // The error rate for the filter is less than 1/200.</span>
-blacklist := bloom.New(10000, 200)
+blocklist := bloom.New(10000, 200)
 
 <span class="comment">// Add an element to the filter.</span>
 url := "https://rascal.com"
-blacklist.Add(url) 
+blocklist.Add(url) 
 
 <span class="comment">// Test for membership.</span>
-if blacklist.Test(url) {
-    fmt.Println(url, "may be blacklisted.")
+if blocklist.Test(url) {
+    fmt.Println(url, "may be blocked.")
 } else {
-    fmt.Println(url, "has not been added to our blacklist.")
+    fmt.Println(url, "has not been blocked.")
 }</code></pre>
 
-<pre><code>https://rascal.com may be blacklisted.</code></pre>
+<pre><code>https://rascal.com may be blocked.</code></pre>
 
 <h2 id="implementation">Implementation</h2>
 
