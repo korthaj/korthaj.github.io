@@ -35,7 +35,7 @@
     "https://yourbasic.org/golang/extinguish-fire.jpg"
    ],
   "datePublished": "2018-06-20T00:00:00&#43;0000",
-  "dateModified": "2018-06-21T00:00:00&#43;0000",
+  "dateModified": "2020-06-19T00:00:00&#43;0000",
   "author": {
     "@type": "Person",
     "name": "Stefan Nilsson"
@@ -91,9 +91,10 @@
 
 <div><img src="/golang/extinguish-fire.jpg"></div>
 
-<p>To make a goroutine stoppable, let it listen for a stop signal on a channel.</p>
+<p>To make a goroutine stoppable, let it listen for a stop signal on a dedicated quit&nbsp;channel,
+and check this channel at suitable points in your goroutine.</p>
 
-<pre><code>quit := make(chan struct{})
+<pre><code>quit := make(chan bool)
 go func() {
     for {
         select {
@@ -105,12 +106,12 @@ go func() {
     }
 }()
 <span class="comment">// …</span>
-close(quit)</code></pre>
+quit <- true</code></pre>
 
-<p>Sometimes it&rsquo;s convenient to use a single channel for both data and signalling.</p>
+<p>Here is a more complete example, where we use a single channel for both data and signalling.</p>
 
 <pre><code>// Generator returns a channel that produces the numbers 1, 2, 3,…
-// To stop the underlying goroutine, close the channel.
+// To stop the underlying goroutine, send a number on this channel.
 func Generator() chan int {
     ch := make(chan int)
     go func() {
@@ -131,11 +132,14 @@ func main() {
     number := Generator()
     fmt.Println(<-number)
     fmt.Println(<-number)
-    close(number)
+    number <- 0           <span class="comment">// stops underlying goroutine</span>
+    fmt.Println(<-number) <span class="comment">// error, no one is sending anymore</span>
     <span class="comment">// …</span>
 }</code></pre>
 <pre><code>1
-2</code></pre>
+2
+fatal error: all goroutines are asleep - deadlock!</code></pre>
+
 <ul class="pagina">
   
         <li><a href="/golang/broadcast-channel/" class="button">« Prev</a></li>

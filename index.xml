@@ -1148,9 +1148,8 @@ now := time.Now() // current local time sec := now.Unix() // number of seconds s
       
       <guid>https://yourbasic.org/golang/stop-goroutine/</guid>
       <description>One&amp;nbsp;goroutine can&#39;t forcibly stop another.
- To make a goroutine stoppable, let it listen for a stop signal on a channel.
-quit := make(chan struct{}) go func() { for { select { case // … } } }() // … close(quit) Sometimes it&amp;rsquo;s convenient to use a single channel for both data and signalling.
-// Generator returns a channel that produces the numbers 1, 2, 3,… // To stop the underlying goroutine, close the channel.</description>
+ To make a goroutine stoppable, let it listen for a stop signal on a dedicated quit&amp;nbsp;channel, and check this channel at suitable points in your goroutine.
+quit := make(chan bool) go func() { for { select { case // … } } }() // … quit  Here is a more complete example, where we use a single channel for both data and signalling.</description>
     </item>
     
     <item>
