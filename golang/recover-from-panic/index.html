@@ -84,12 +84,8 @@
 <article>
 <h1>Panics, stack traces and how to recover [best practice]</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC0:  https://pixabay.com/en/terrorist-terror-happiness-positive-2481808/ -->
-
 <div style="margin-top:1em;"><img src="/golang/panic.jpg"></div>
-
 <ul class="toc" style="font-weight: bold; margin-top:1em;">
   <li><a href="#a-panic-is-an-exception-in-go">A panic is an exception in Go</a></li>
   <li><a href="#stack-traces">Stack traces</a>
@@ -107,58 +103,45 @@
   </li>
   <li><a href="#test-a-panic-utility-function">Test a panic (utility function)</a></li>
 </ul>
-
 <h2 id="a-panic-is-an-exception-in-go">A panic is an exception in Go</h2>
-
 <p>Panics are similar to C++ and Java exceptions,
 but are only intended for run-time errors,
 such as following a nil pointer or attempting to index an array out of bounds.
 To signify events such as end-of-file, Go programs use the built-in <code>error</code> type.
 See <a href="/golang/errors-explained/">Error handling best practice</a> and <a href="/golang/create-error/">3 simple ways to create an error</a> for more on errors.</p>
-
 <p>A panic stops the normal execution of a goroutine:</p>
-
 <ul>
 <li>When a program panics, it immediately starts to unwind the call stack.</li>
 <li>This continues until the program crashes and prints a stack trace,</li>
-<li>or until the built-in <code>recover</code> function is&nbsp;called.</li>
+<li>or until the built-in <code>recover</code> function is called.</li>
 </ul>
-
 <p>A panic is caused either by a runtime error,
-or an explicit call to the built-in <code>panic</code>&nbsp;function.</p>
-
+or an explicit call to the built-in <code>panic</code> function.</p>
 <h2 id="stack-traces">Stack traces</h2>
-
 <p>A <strong>stack trace</strong> – a report of all active stack frames –
 is typically printed to the console when a panic occurs.
-Stack traces can be very useful for&nbsp;debugging:</p>
-
+Stack traces can be very useful for debugging:</p>
 <ul>
 <li>not only do you see <strong>where</strong> the error happened,</li>
 <li>but also <strong>how</strong> the program arrived in this place.</li>
 </ul>
-
 <h3 id="interpret-a-stack-trace">Interpret a stack trace</h3>
-
 <p>Here&rsquo;s an example of a stack trace:</p>
-
 <pre><code>goroutine 11 [running]:
 testing.tRunner.func1(0xc420092690)
-    /usr/local/go/src/testing/testing.go:711 +0x2d2
+	/usr/local/go/src/testing/testing.go:711 +0x2d2
 panic(0x53f820, 0x594da0)
-    /usr/local/go/src/runtime/panic.go:491 +0x283
+	/usr/local/go/src/runtime/panic.go:491 +0x283
 github.com/yourbasic/bit.(*Set).Max(0xc42000a940, 0x0)
-    ../src/github.com/bit/set_math_bits.go:137 +0x89
+	../src/github.com/bit/set_math_bits.go:137 +0x89
 github.com/yourbasic/bit.TestMax(0xc420092690)
-    ../src/github.com/bit/set_test.go:165 +0x337
+	../src/github.com/bit/set_test.go:165 +0x337
 testing.tRunner(0xc420092690, 0x57f5e8)
-    /usr/local/go/src/testing/testing.go:746 +0xd0
+	/usr/local/go/src/testing/testing.go:746 +0xd0
 created by testing.(*T).Run
-    /usr/local/go/src/testing/testing.go:789 +0x2de
+	/usr/local/go/src/testing/testing.go:789 +0x2de
 </code></pre>
-
 <p>It can be read from the bottom up:</p>
-
 <ul>
 <li><code>testing.(*T).Run</code> has called <code>testing.tRunner</code>,</li>
 <li>which has called <code>bit.TestMax</code>,</li>
@@ -166,22 +149,15 @@ created by testing.(*T).Run
 <li>which has called <code>panic</code>,</li>
 <li>which has called <code>testing.tRunner.func1</code>.</li>
 </ul>
-
 <p>The indented lines show the source file and line number at which the function was called.
 The hexadecimal numbers refer to parameter values, including values of pointers and internal data structures.
 <a href="https://www.goinggo.net/2015/01/stack-traces-in-go.html">Stack Traces in Go</a> has more details.</p>
-
 <h3 id="print-and-log-a-stack-trace">Print and log a stack trace</h3>
-
 <p>To print the stack trace for the current goroutine, use <a href="https://golang.org/pkg/runtime/debug/#PrintStack"><code>debug.PrintStack</code></a> from package <a href="https://golang.org/pkg/runtime/debug/"><code>runtime/debug</code></a>.</p>
-
 <p>You can also examine the current stack trace programmatically by calling <a href="https://golang.org/pkg/runtime/#Stack"><code>runtime.Stack</code></a>.</p>
-
 <h3 id="level-of-detail">Level of detail</h3>
-
 <p>The <a href="https://golang.org/pkg/runtime/#hdr-Environment_Variables"><code>GOTRACEBACK</code></a> variable
-controls the amount of output generated when a Go program&nbsp;fails.</p>
-
+controls the amount of output generated when a Go program fails.</p>
 <ul>
 <li><code>GOTRACEBACK=none</code> omits the goroutine stack traces entirely.</li>
 <li><code>GOTRACEBACK=single</code> (the default)  prints a stack trace for the current goroutine,
@@ -192,30 +168,23 @@ or the failure is   internal to the run-time.</li>
 <li><code>GOTRACEBACK=system</code> is like <code>all</code> but adds stack frames for run-time functions
 and shows goroutines created internally by the run-time.</li>
 </ul>
-
 <h2 id="recover-and-catch-a-panic">Recover and catch a panic</h2>
-
 <!-- CC0: https://www.maxpixel.net/Extinguish-Fire-Extinction-Firefighter-484540 -->
-
 <div><img src="/golang/extinguish-fire.jpg"></div>
-
 <p>The built-in <code>recover</code> function can be used to regain
 control of a panicking goroutine and resume normal execution.</p>
-
 <ul>
 <li>A call to <code>recover</code> stops the unwinding and returns
-the argument passed to&nbsp;<code>panic</code>.</li>
+the argument passed to <code>panic</code>.</li>
 <li>If the goroutine is not panicking,
-<code>recover</code> returns&nbsp;<code>nil</code>.</li>
+<code>recover</code> returns <code>nil</code>.</li>
 </ul>
-
 <p>Because the only code that runs while unwinding is inside <a href="/golang/defer/">deferred functions</a>,
 <code>recover</code> is only useful inside such functions.</p>
-
 <h3 id="panic-handler-example">Panic handler example</h3>
-<pre><code>func main() {
+<pre tabindex="0"><code>func main() {
 	n := foo()
-	fmt.Println(&#34;main received&#34;, n)
+	fmt.Println(&quot;main received&quot;, n)
 }
 
 func foo() int {
@@ -225,20 +194,19 @@ func foo() int {
 		}
 	}()
 	m := 1
-	panic(&#34;foo: fail&#34;)
+	panic(&quot;foo: fail&quot;)
 	m = 2
 	return m
-}</code></pre><pre><code>foo: fail
-main received 0</code></pre>
-<p>Since the panic occurred before <code>foo</code> returned a value,
-<code>n</code> still has its initial zero&nbsp;value.</p>
-
+}
+</code></pre><pre tabindex="0"><code>foo: fail
+main received 0
+</code></pre><p>Since the panic occurred before <code>foo</code> returned a value,
+<code>n</code> still has its initial zero value.</p>
 <h3 id="return-a-value">Return a value</h3>
-
 <p>To return a value during a panic, you must use a <a href="/golang/named-return-values-parameters/">named return value</a>.</p>
-<pre><code>func main() {
+<pre tabindex="0"><code>func main() {
 	n := foo()
-	fmt.Println(&#34;main received&#34;, n)
+	fmt.Println(&quot;main received&quot;, n)
 }
 
 func foo() (m int) {
@@ -249,31 +217,29 @@ func foo() (m int) {
 		}
 	}()
 	m = 1
-	panic(&#34;foo: fail&#34;)
+	panic(&quot;foo: fail&quot;)
 	m = 3
 	return m
-}</code></pre><pre><code>foo: fail
-main received 2</code></pre>
-<h2 id="test-a-panic-utility-function">Test a panic (utility function)</h2>
-
+}
+</code></pre><pre tabindex="0"><code>foo: fail
+main received 2
+</code></pre><h2 id="test-a-panic-utility-function">Test a panic (utility function)</h2>
 <!-- CC BY-SA 2.0: https://commons.wikimedia.org/wiki/File:Panic_button.jpg -->
-
 <div><img src="/golang/panic-button.jpg"></div>
-
 <p>In this example, we use reflection to check if a list of interface variables
-have types corre&shy;sponding to the para&shy;meters of a given function.
-If so, we call the function with those para&shy;meters to check if there is a&nbsp;panic.</p>
-<pre><code>// Panics tells if function f panics with parameters p.
+have types corre­sponding to the para­meters of a given function.
+If so, we call the function with those para­meters to check if there is a panic.</p>
+<pre tabindex="0"><code>// Panics tells if function f panics with parameters p.
 func Panics(f interface{}, p ...interface{}) bool {
 	fv := reflect.ValueOf(f)
 	ft := reflect.TypeOf(f)
 	if ft.NumIn() != len(p) {
-		panic(&#34;wrong argument count&#34;)
+		panic(&quot;wrong argument count&quot;)
 	}
 	pv := make([]reflect.Value, len(p))
 	for i, v := range p {
 		if reflect.TypeOf(v) != ft.In(i) {
-			panic(&#34;wrong argument type&#34;)
+			panic(&quot;wrong argument type&quot;)
 		}
 		pv[i] = reflect.ValueOf(v)
 	}
@@ -288,7 +254,8 @@ func call(fv reflect.Value, pv []reflect.Value) (b bool) {
 	}()
 	fv.Call(pv)
 	return
-}</code></pre>
+}
+</code></pre>
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
 <a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2frecover-from-panic%2f&amp;text=Panics,%20stack%20traces%20and%20how%20to%20recover%20[best%20practice]&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2frecover-from-panic%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
@@ -326,15 +293,7 @@ func call(fv reflect.Value, pv []reflect.Value) (b bool) {
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

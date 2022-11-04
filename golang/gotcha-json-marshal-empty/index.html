@@ -85,56 +85,44 @@
 <h1>No JSON in sight</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC0: https://pxhere.com/en/photo/940438 -->
-
 <div style="margin-top:1em;"><img src="/golang/empty-book.jpg"></div>
-
 <p>Why does <a href="https://golang.org/pkg/encoding/json/#Marshal"><code>json.Marshal</code></a>
 produce empty structs in the JSON text output?</p>
-
 <pre><code>type Person struct {
-    name string
-    age  int
+	name string
+	age  int
 }
 
 p := Person{"Alice", 22}
 jsonData, _ := json.Marshal(p)
 fmt.Println(string(jsonData))</code></pre>
-<pre><code>{}</code></pre>
-<h2 id="answer">Answer</h2>
-
+<pre tabindex="0"><code>{}
+</code></pre><h2 id="answer">Answer</h2>
 <p>Only <strong>exported</strong> fields of a Go struct will be present in the JSON output.</p>
-
 <pre><code class="skiphl">type Person struct {
-    <b>Name</b> string <span class="comment">// Changed to capital N</span>
-    <b>Age</b>  int    <span class="comment">// Changed to capital A</span>
+	<b>Name</b> string <span class="comment">// Changed to capital N</span>
+	<b>Age</b>  int    <span class="comment">// Changed to capital A</span>
 }
 
 p := Person{"Alice", 22}
 
 jsonData, _ := json.Marshal(p)
 fmt.Println(string(jsonData))</code></pre>
-
 <pre><code>{"Name":"Alice","Age":22}
 </code></pre>
-
 <p>You can specify the JSON field name explicitly with a <code>json:</code>&nbsp;tag.</p>
-
 <pre><code class="skiphl">type Person struct {
-    Name string <b>`json:"name"`</b>
-    Age  int    <b>`json:"age"`</b>
+	Name string <b>`json:"name"`</b>
+	Age  int    <b>`json:"age"`</b>
 }
 
 p := Person{"Alice", 22}
 
 jsonData, _ := json.Marshal(p)
 fmt.Println(string(jsonData))</code></pre>
-
 <pre><code>{"name":"Alice","age":22}
 </code></pre>
-
 <p>See <a href="/golang/json-example/">JSON by example</a> for an extensive guide to the Go JSON&nbsp;library.</p>
 
 <ul class="pagina">
@@ -216,14 +204,6 @@ fmt.Println(string(jsonData))</code></pre>
       <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a></li>
 
   </ul>
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
 
 
   

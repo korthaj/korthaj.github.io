@@ -84,17 +84,13 @@
 <article>
 <h1>Untyped numeric constants with no limits</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC0: https://pxhere.com/en/photo/1161134 -->
-
 <div style="margin-top:1em;"><img src="/golang/infinite-highway.jpg"></div>
-
 <p>Constants may be <strong>typed</strong> or <strong>untyped</strong>.</p>
 <pre><code>const a uint = 17
-const b = 55</code></pre>
+const b = 55
+</code></pre>
 <p>An untyped constant has <strong>no limits</strong>. When it&rsquo;s used in a context that requires a type, a type will be inferred and a limit applied.</p>
-
 <pre><code>const big = 10000000000  <span class="comment">// Ok, even though it's too big for an int.</span>
 const bigger = big * 100 <span class="comment">// Still ok.</span>
 var i int = big / 100    <span class="comment">// No problem: the new result fits in an int.</span>
@@ -102,25 +98,19 @@ var i int = big / 100    <span class="comment">// No problem: the new result fit
 <span class="comment">// Compile time error: "constant 10000000000 overflows int"</span>
 var j int = big
 </code></pre>
-
 <p>The inferred type is determined by the syntax of the value:</p>
-
 <ul>
 <li><code>123</code> gets type <code>int</code>, and</li>
 <li><code>123.4</code> becomes a <code>float64</code>.</li>
 </ul>
-
 <p>The other possibilities are <code>rune</code> (alias for <code>int32</code>) and <code>complex128</code>.</p>
-
 <h2 id="enumerations">Enumerations</h2>
-
-<p>Go does not have enumerated types. Instead, you can use the special name <code>iota</code> in a single <code>const</code> declaration to get a series of increasing values. When an initialization expression is omitted for a <code>const</code>, it reuses the preceding expression.
+<p>Go does not have enumerated types. Instead, you can use the special name <code>iota</code> in a single <code>const</code> declaration to get a series of increasing values. When an initialization expression is omitted for a <code>const</code>, it reuses the preceding expression.</p>
 <pre><code>const (
-    red = iota <span class="comment">// red == 0</span>
-    blue       <span class="comment">// blue == 1</span>
-    green      <span class="comment">// green == 2</span>
-)</code></pre></p>
-
+	red = iota <span class="comment">// red == 0</span>
+	blue       <span class="comment">// blue == 1</span>
+	green      <span class="comment">// green == 2</span>
+)</code></pre>
 <p>See <a href="/golang/iota/">4 iota enum examples</a> for further examples.</p>
 
 
@@ -142,15 +132,7 @@ var j int = big
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

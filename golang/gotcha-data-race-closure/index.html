@@ -85,77 +85,61 @@
 <h1>Iteration variables and closures</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC BY-NC 2.0: http://www.flickr.com/photos/brandoncwarren/2953838847/ -->
-
 <div style="margin-top:1em;"><img src="/golang/mid-action.jpg"></div>
-
 <p>Why does this program</p>
-
 <pre><code>func main() {
-    var wg sync.WaitGroup
-    wg.Add(5)
-    for i := 0; i < 5; i++ {
-        go func() {
-            fmt.Print(i)
-            wg.Done()
-        }()
-    }
-    wg.Wait()
-    fmt.Println()
+	var wg sync.WaitGroup
+	wg.Add(5)
+	for i := 0; i < 5; i++ {
+		go func() {
+			fmt.Print(i)
+			wg.Done()
+		}()
+	}
+	wg.Wait()
+	fmt.Println()
 }</code></pre>
-
 <p>print</p>
-<pre><code>55555</code></pre>
-<p>(A <a href="/golang/wait-for-goroutines-waitgroup/">WaitGroup</a> waits for a collection of goroutines to finish.)</p>
-
+<pre tabindex="0"><code>55555
+</code></pre><p>(A <a href="/golang/wait-for-goroutines-waitgroup/">WaitGroup</a> waits for a collection of goroutines to finish.)</p>
 <h2 id="answer">Answer</h2>
-
 <p>There is a <strong>data race</strong>: the variable <code>i</code> is shared
 by six&nbsp;(6) goroutines.</p>
-
 <blockquote>
   <p>A data race occurs when two goroutines access the same variable concurrently and at least one of the accesses is a write.</p>
 </blockquote>
-
 <p>To avoid this, use a local variable and pass the number as a parameter when starting the goroutine.</p>
-
 <pre><code class="language-go">func main() {
-    var wg sync.WaitGroup
-    wg.Add(5)
-    for i := 0; i &lt; 5; i++ {
-        go func(n int) { <span class="comment">// Use a local variable.</span>
-            fmt.Print(n)
-            wg.Done()
-        }(i)
-    }
-    wg.Wait()
-    fmt.Println()
+	var wg sync.WaitGroup
+	wg.Add(5)
+	for i := 0; i &lt; 5; i++ {
+		go func(n int) { <span class="comment">// Use a local variable.</span>
+			fmt.Print(n)
+			wg.Done()
+		}(i)
+	}
+	wg.Wait()
+	fmt.Println()
 }</code></pre>
-
 <p>Example output:</p>
-
 <pre><code>40123
 </code></pre>
-
 <p>It’s also possible to avoid this data race while still using a closure,
 but then we must take care to use a unique variable for each goroutine.</p>
-
 <pre><code class="language-go">func main() {
-    var wg sync.WaitGroup
-    wg.Add(5)
-    for i := 0; i &lt; 5; i++ {
-        n := i <span class="comment">// Create a unique variable for each closure.</span>
-        go func() {
-            fmt.Print(n)
-            wg.Done()
-        }()
-    }
-    wg.Wait()
-    fmt.Println()
+	var wg sync.WaitGroup
+	wg.Add(5)
+	for i := 0; i &lt; 5; i++ {
+		n := i <span class="comment">// Create a unique variable for each closure.</span>
+		go func() {
+			fmt.Print(n)
+			wg.Done()
+		}()
+	}
+	wg.Wait()
+	fmt.Println()
 }</code></pre>
-
 <p>See <a href="/golang/data-races-explained">Data races</a> for a detailed explanation of data races in&nbsp;Go.</p>
 
 <ul class="pagina">
@@ -237,14 +221,6 @@ but then we must take care to use a unique variable for each goroutine.</p>
       <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a></li>
 
   </ul>
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
 
 
   

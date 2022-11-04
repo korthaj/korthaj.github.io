@@ -85,22 +85,16 @@
 <h1>Bitmasks, bitsets and flags</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC BY-SA 2.0: https://www.flickr.com/photos/christiaancolen/20445410340 -->
-
 <div style="margin-top:1em;"><img src="/golang/bits.jpg"></div>
-
 <h2 id="bitmask">Bitmask</h2>
-
 <p>A bitmask is a small set of booleans, often called flags, represented by the bits in a single number.</p>
-
 <pre><code>type Bits uint8
 
 const (
-    F0 Bits = 1 << iota
-    F1
-    F2
+	F0 Bits = 1 << iota
+	F1
+	F2
 )
 
 func Set(b, flag Bits) Bits    { return b | flag }
@@ -109,27 +103,24 @@ func Toggle(b, flag Bits) Bits { return b ^ flag }
 func Has(b, flag Bits) bool    { return b&flag != 0 }
 
 func main() {
-    var b Bits
-    b = Set(b, F0)
-    b = Toggle(b, F2)
-    for i, flag := range []Bits{F0, F1, F2} {
-        fmt.Println(i, Has(b, flag))
-    }
+	var b Bits
+	b = Set(b, F0)
+	b = Toggle(b, F2)
+	for i, flag := range []Bits{F0, F1, F2} {
+		fmt.Println(i, Has(b, flag))
+	}
 }</code></pre>
-<pre><code>0 true
+<pre tabindex="0"><code>0 true
 1 false
-2 true</code></pre>
-<h2 id="larger-bitsets">Larger bitsets</h2>
-
+2 true
+</code></pre><h2 id="larger-bitsets">Larger bitsets</h2>
 <p>To represent larger sets of bits, you may want to use a custom data structure.
 The package <a href="https://github.com/yourbasic/bit"><code>github.com/yourbasic/bit</code></a>
 provides a bit array implementation and some utility bit functions.</p>
-
 <p>Because a bit array uses bit-level parallelism, limits memory access, and efficiently uses the data cache, it often outperforms other data structures.
 Here is an example that shows how to create the set of all primes less than <i>n</i>
-in <i>O</i>(<i>n</i>&nbsp;log&nbsp;log&nbsp;<i>n</i>) time using the <a href="https://godoc.org/github.com/yourbasic/bit#Set"><code>bit.Set</code></a> data structure from package <a href="https://godoc.org/github.com/yourbasic/bit"><code>bit</code></a>.
+in <i>O</i>(<i>n</i> log log <i>n</i>) time using the <a href="https://godoc.org/github.com/yourbasic/bit#Set"><code>bit.Set</code></a> data structure from package <a href="https://godoc.org/github.com/yourbasic/bit"><code>bit</code></a>.
 Try the code with <i>n</i> equal to a few hundred millions and be pleasantly surprised.</p>
-
 <pre><code><span class="comment">// Sieve of Eratosthenes</span>
 const n = 50
 sieve := bit.New().AddRange(2, n)
@@ -141,11 +132,9 @@ for p := 2; p <= sqrtN; p = sieve.Next(p) {
 }
 fmt.Println(sieve)
 </code></pre>
-<pre><code>{2 3 5 7 11 13 17 19 23 29 31 37 41 43 47}</code></pre>
-<h3 id="further-reading">Further reading</h3>
-
+<pre tabindex="0"><code>{2 3 5 7 11 13 17 19 23 29 31 37 41 43 47}
+</code></pre><h3 id="further-reading">Further reading</h3>
 <div><a href="/golang/bitwise-operator-cheat-sheet/"><img src="/golang/Leibniz-binary-system-1697-thumb.jpg" title="Bitwise operators cheat sheet"></a></div>
-
 <div style="margin-top:0;"><a href="/golang/bitwise-operator-cheat-sheet/">Bitwise operators cheat sheet</a></div>
 
 
@@ -189,15 +178,7 @@ fmt.Println(sieve)
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

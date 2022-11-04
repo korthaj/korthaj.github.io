@@ -85,84 +85,62 @@
 <h1>Select waits on a group of channels</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC BY-SA 3.0: https://commons.wikimedia.org/wiki/File:Bluewater3753.JPG -->
-
 <div style="margin-top:1em;"><img src="/golang/select-sushi.jpg"/></div>
-
-<p>The select statement waits for multiple send or receive opera&shy;tions simul&shy;taneously.</p>
-
+<p>The select statement waits for multiple send or receive opera­tions simul­taneously.</p>
 <ul>
 <li>The statement blocks as a whole until one of the operations becomes unblocked.</li>
 <li>If several cases can proceed, a single one of them will be chosen at random.</li>
 </ul>
-
 <pre><code><span class="comment">// blocks until there's data available on ch1 or ch2</span>
 select {
 case <-ch1:
-    fmt.Println("Received from ch1")
+	fmt.Println("Received from ch1")
 case <-ch2:
-    fmt.Println("Received from ch2")
+	fmt.Println("Received from ch2")
 }</code></pre>
-
 <p>Send and receive operations on a <code>nil</code> channel block forever.
 This can be used to disable a channel in a select statement:</p>
-
 <pre><code>ch1 = nil <span class="comment">// disables this channel</span>
 select {
 case <-ch1:
-    fmt.Println("Received from ch1") <span class="comment">// will not happen</span>
+	fmt.Println("Received from ch1") <span class="comment">// will not happen</span>
 case <-ch2:
-    fmt.Println("Received from ch2")
+	fmt.Println("Received from ch2")
 }</code></pre>
-
 <h2 id="default-case">Default case</h2>
-
 <p>The <code>default</code> case is always able to proceed and runs if all other cases are blocked.</p>
-
 <pre><code><span class="comment">// never blocks</span>
 select {
 case x := <-ch:
-    fmt.Println("Received", x)
+	fmt.Println("Received", x)
 default:
-    fmt.Println("Nothing available")
+	fmt.Println("Nothing available")
 }</code></pre>
-
 <h2 id="examples">Examples</h2>
-
 <h3 id="an-infinite-random-binary-sequence">An infinite random binary sequence</h3>
-
 <p>As a toy example you can use the <em>random choice among cases that can proceed</em>
-to generate random&nbsp;bits.</p>
-
+to generate random bits.</p>
 <pre><code>rand := make(chan int)
 for {
-    select {
-    case rand <- 0: <span class="comment">// no statement</span>
-    case rand <- 1:
-    }
+	select {
+	case rand <- 0: <span class="comment">// no statement</span>
+	case rand <- 1:
+	}
 }</code></pre>
-
 <h3 id="a-blocking-operation-with-a-timeout">A blocking operation with a timeout</h3>
-
 <p>The function <a href="https://golang.org/pkg/time#After"><code>time.After</code></a> is part of the standard library;
 it waits for a specified time to elapse and then sends the current time on the returned channel.</p>
-
 <pre><code>select {
 case news := <-AFP:
-    fmt.Println(news)
+	fmt.Println(news)
 case <-time.After(time.Minute):
-    fmt.Println("Time out: No news in one minute")
+	fmt.Println("Time out: No news in one minute")
 }</code></pre>
-
 <h3 id="a-statement-that-blocks-forever">A statement that blocks forever</h3>
-
 <p>A select statement blocks until <em>at least one</em> of it&rsquo;s cases can proceed.
 With zero cases this will never happen.</p>
-
 <pre><code>select {}</code></pre>
-
 <p>A typical use would be at the end of the main function in some multithreaded programs.
 When main returns, the program exits and it does not wait for other goroutines to complete.</p>
 
@@ -215,14 +193,6 @@ When main returns, the program exits and it does not wait for other goroutines t
 
   </ul>
 
-
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
 
 </aside>
 </main>

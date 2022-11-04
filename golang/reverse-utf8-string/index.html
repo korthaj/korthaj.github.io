@@ -84,59 +84,48 @@
 <article>
 <h1>How to reverse a string by byte or rune</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC BY-SA 4.0: https://commons.wikimedia.org/wiki/File:Ambigram_Ambiguity.png -->
-
 <div style="margin-top:1em;"><img src="/golang/ambiguity-ambigram.png"></div>
-
 <h2 id="byte-by-byte">Byte by byte</h2>
-
 <p>It&rsquo;s pretty straightforward to reverse a string one byte at a time.</p>
-
 <pre><code>// Reverse returns a string with the bytes of s in reverse order.
 func Reverse(s string) string {
-    var b strings.Builder
-    b.Grow(len(s))
-    for i := len(s) - 1; i >= 0; i-- {
-        b.WriteByte(s[i])
-    }
-    return b.String()
+	var b strings.Builder
+	b.Grow(len(s))
+	for i := len(s) - 1; i >= 0; i-- {
+		b.WriteByte(s[i])
+	}
+	return b.String()
 }
 </code></pre>
-
 <h2 id="rune-by-rune">Rune by rune</h2>
-
 <p>To reverse a string by UTF-8 encoded characters is a bit trickier.</p>
-
 <pre><code>// ReverseRune returns a string with the runes of s in reverse order.
 // Invalid UTF-8 sequences, if any, will be reversed byte by byte.
 func ReverseRune(s string) string {
-    res := make([]byte, len(s))
-    prevPos, resPos := 0, len(s)
-    for pos := range s {
-        resPos -= pos - prevPos
-        copy(res[resPos:], s[prevPos:pos])
-        prevPos = pos
-    }
-    copy(res[0:], s[prevPos:])
-    return string(res)
+	res := make([]byte, len(s))
+	prevPos, resPos := 0, len(s)
+	for pos := range s {
+		resPos -= pos - prevPos
+		copy(res[resPos:], s[prevPos:pos])
+		prevPos = pos
+	}
+	copy(res[0:], s[prevPos:])
+	return string(res)
 }</code></pre>
-
 <h3 id="example-usage">Example usage</h3>
-<pre><code>for _, s := range []string{
-	&#34;Ångström&#34;,
-	&#34;Hello, 世界&#34;,
-	&#34;\xff\xfe\xfd&#34;, // invalid UTF-8
+<pre tabindex="0"><code>for _, s := range []string{
+	&quot;Ångström&quot;,
+	&quot;Hello, 世界&quot;,
+	&quot;\xff\xfe\xfd&quot;, // invalid UTF-8
 } {
-	fmt.Printf(&#34;%q\n&#34;, ReverseRune(s))
-}</code></pre><pre><code>&#34;mörtsgnÅ&#34;
-&#34;界世 ,olleH&#34;
-&#34;\xfd\xfe\xff&#34;</code></pre>
-<h2 id="further-reading">Further reading</h2>
-
+	fmt.Printf(&quot;%q\n&quot;, ReverseRune(s))
+}
+</code></pre><pre tabindex="0"><code>&quot;mörtsgnÅ&quot;
+&quot;界世 ,olleH&quot;
+&quot;\xfd\xfe\xff&quot;
+</code></pre><h2 id="further-reading">Further reading</h2>
 <p><a href="/golang/string-functions-reference-cheat-sheet/"><img src="/golang/typewriter-thumb.png" title="40+ practical string tips [cheat sheet]"></a></p>
-
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/string-functions-reference-cheat-sheet/">40+ practical string tips [cheat sheet]</a></p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -170,15 +159,7 @@ func ReverseRune(s string) string {
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

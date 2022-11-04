@@ -84,73 +84,57 @@
 <article>
 <h1>Generate a random string (password)</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC0: https://pixabay.com/en/password-app-application-business-2781614/ -->
-
 <div style="margin-top:1em;"><img src="/golang/password-generator.jpg"></div>
-
 <h2 id="random-string">Random string</h2>
-
 <p>This code generates a random string of numbers and characters from the Swedish alphabet
 (which includes the non-ASCII characters å, ä and ö).</p>
-
 <pre><code>rand.Seed(time.Now().UnixNano())
 chars := []rune("ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ" +
-    "abcdefghijklmnopqrstuvwxyzåäö" +
-    "0123456789")
+	"abcdefghijklmnopqrstuvwxyzåäö" +
+	"0123456789")
 length := 8
 var b strings.Builder
 for i := 0; i < length; i++ {
-    b.WriteRune(chars[rand.Intn(len(chars))])
+	b.WriteRune(chars[rand.Intn(len(chars))])
 }
 str := b.String() <span class="comment">// E.g. "ExcbsVQs"</span>
 </code></pre>
-
 <blockquote class="warning">
 <strong>Warning:</strong> To generate a password, you should use cryptographically
 secure pseudorandom numbers.
 See <a href="/golang/crypto-rand-int/">User-friendly access to crypto/rand</a>.
 </blockquote>
-
 <h2 id="random-string-with-restrictions">Random string with restrictions</h2>
-
 <p>This code generates a random ASCII string with at least one digit and one special character.</p>
-
 <pre><code>rand.Seed(time.Now().UnixNano())
 digits := "0123456789"
 specials := "~=+%^*/()[]{}/!@#$?|"
 all := "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
-    "abcdefghijklmnopqrstuvwxyz" +
-    digits + specials
+	"abcdefghijklmnopqrstuvwxyz" +
+	digits + specials
 length := 8
 buf := make([]byte, length)
 buf[0] = digits[rand.Intn(len(digits))]
 buf[1] = specials[rand.Intn(len(specials))]
 for i := 2; i < length; i++ {
-    buf[i] = all[rand.Intn(len(all))]
+	buf[i] = all[rand.Intn(len(all))]
 }
 rand.Shuffle(len(buf), func(i, j int) {
-    buf[i], buf[j] = buf[j], buf[i]
+	buf[i], buf[j] = buf[j], buf[i]
 })
 str := string(buf) <span class="comment">// E.g. "3i[g0|)z"</span>
 </code></pre>
-
-<h3 id="before-go-1-10">Before Go 1.10</h3>
-
+<h3 id="before-go-110">Before Go 1.10</h3>
 <p>In code before Go 1.10, replace the call to <a href="https://golang.org/pkg/math/rand/#Shuffle">rand.Shuffle</a>
 with this code:</p>
-
 <pre><code>for i := len(buf) - 1; i > 0; i-- { <span class="comment">// Fisher–Yates shuffle</span>
-    j := rand.Intn(i + 1)
-    buf[i], buf[j] = buf[j], buf[i]
+	j := rand.Intn(i + 1)
+	buf[i], buf[j] = buf[j], buf[i]
 }
 </code></pre>
-
 <h2 id="further-reading">Further reading</h2>
-
 <div><a href="/golang/generate-number-random-range/"><img src="/golang/dart-thumb.jpg" title="Generate random numbers, characters and slice elements"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/generate-number-random-range/">Generate random numbers, characters and slice elements</a></p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -184,15 +168,7 @@ with this code:</p>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

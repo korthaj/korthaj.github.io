@@ -84,12 +84,8 @@
 <article>
 <h1>Escapes and multiline strings</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC0: https://commons.wikimedia.org/wiki/File:Aa_example1.png -->
-
 <div style="margin-top:1em;"><img src="/golang/ascii-art.png" alt="Amiga style ASCII art"></div>
-
 <ul class="toc">
   <li><a href="#raw-string-literals">Raw string literals</a>
     <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
@@ -105,92 +101,61 @@
   <li><a href="#escape-url">Escape URL</a></li>
   <li><a href="#all-escape-characters">All escape characters</a></li>
 </ul>
-
 <h2 id="raw-string-literals">Raw string literals</h2>
-
 <p>Raw <a href="https://golang.org/ref/spec#String_literals">string literals</a>, delimited by <b>backticks</b> (back quotes),
 are interpreted literally.
 They can contain line breaks, and backslashes have no special meaning.</p>
-
 <pre><code>const s = `First line
 Second line`
 fmt.Println(s)</code></pre>
-
 <pre>First line
 Second line</pre>
-
 <h3 id="backtick-escape">Backtick escape</h3>
-
 <p>It&rsquo;s <a href="https://github.com/golang/go/issues/24475">not possible</a> to include a backtick in a raw string literal,
 but you can do</p>
-
 <pre><code>fmt.Println("`" + "foo" + "`") <span class="comment">// Prints: `foo`</span>
 </code></pre>
-
 <h2 id="interpreted-string-literals">Interpreted string literals</h2>
-
-<p>To insert escape characters, use interpreted string literals delimited by <b>double&nbsp;quotes</b>.</p>
-
+<p>To insert escape characters, use interpreted string literals delimited by <b>double quotes</b>.</p>
 <pre><code>const s = "\tFirst line\n" +
 "Second line"
 fmt.Println(s)</code></pre>
-
-<pre>   First line
+<pre>	First line
 Second line</pre>
-
-<p>The escape character <code>\t</code> denotes a horizontal tab and <code>\n</code> is a line&nbsp;feed or newline.</p>
-
+<p>The escape character <code>\t</code> denotes a horizontal tab and <code>\n</code> is a line feed or newline.</p>
 <h3 id="double-quote-escape">Double quote escape</h3>
-
 <p>Use <code>\&quot;</code> to insert a double quote in an interpreted string literal:</p>
-
 <pre><code>fmt.Println("\"foo\"") <span class="comment">// Prints: "foo"</span>
 </code></pre>
-
 <h2 id="escape-html">Escape HTML</h2>
-
 <p>Use <a href="https://golang.org/pkg/html/#EscapeString"><code>html.EscpapeString</code></a>
-to encode a string so that it can be safely placed inside HTML&nbsp;text.
-The function escapes the five characters <code>&lt;</code>, <code>&gt;</code>, <code>&amp;</code>, <code>'</code> and&nbsp;<code>&quot;</code>.</p>
-
+to encode a string so that it can be safely placed inside HTML text.
+The function escapes the five characters <code>&lt;</code>, <code>&gt;</code>, <code>&amp;</code>, <code>'</code> and <code>&quot;</code>.</p>
 <pre><code>const s = `"Foo's Bar" &lt;foobar@example.com&gt;`
 fmt.Println(html.EscapeString(s))</code></pre>
-
 <pre>&amp;#34;Foo&amp;#39;s Bar&amp;#34; &amp;lt;foobar@example.com&amp;gt;</pre>
-
 <p><a href="https://golang.org/pkg/html/#UnescapeString"><code>html.UnescapeString</code></a> does the inverse transformation.</p>
-
 <h2 id="escape-url">Escape URL</h2>
-
 <p>Use <a href="https://golang.org/pkg/net/url/#PathEscape"><code>url.PathEscape</code></a>
 in package <a href="https://golang.org/pkg/net/url/"><code>net/url</code></a>
-to encode a string so it can be safely placed inside a&nbsp;URL.
+to encode a string so it can be safely placed inside a URL.
 The function uses <a href="https://en.wikipedia.org/wiki/Percent-encoding">percent-encoding</a>.</p>
-
 <pre><code>const s = `Foo's Bar?`
 fmt.Println(url.PathEscape(s))</code></pre>
-
 <pre>Foo%27s%20Bar%3F</pre>
-
 <p><a href="https://golang.org/pkg/net/url/#PathUnescape"><code>url.PathUnescape</code></a> does the inverse transformation.</p>
-
 <h2 id="all-escape-characters">All escape characters</h2>
-
 <p>Arbitrary character values can be encoded with backslash escapes and
 used in string or <a href="https://golang.org/ref/spec#Rune_literals">rune literals</a>.
 There are four different formats:</p>
-
 <ul>
 <li><code>\x</code> followed by exactly two hexadecimal digits,</li>
 <li><code>\</code> followed by exactly three octal digits,</li>
 <li><code>\u</code> followed by exactly four hexadecimal digits,</li>
 <li><code>\U</code> followed by exactly eight hexadecimal digits,</li>
 </ul>
-
 <p>where the escapes <code>\u</code> and <code>\U</code> represent Unicode code points.</p>
-
 <p>The following special escape values are also available.</p>
-
 <table class="white">
   <thead>
     <tr>
@@ -241,7 +206,6 @@ There are four different formats:</p>
     </tr>
   </tbody>
 </table>
-
 <pre><code>fmt.Println("\\caf\u00e9") <span class="comment">// Prints string: \café</span>
 fmt.Printf("%c", '\u00e9') <span class="comment">// Prints character: é</span>
 </code></pre>
@@ -277,15 +241,7 @@ fmt.Printf("%c", '\u00e9') <span class="comment">// Prints character: é</span>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

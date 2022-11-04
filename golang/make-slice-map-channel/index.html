@@ -42,8 +42,7 @@
 <div class="tagline">yourbasic.org/golang</div>
 <p><a href="/golang/slices-explained/">Slices</a>, <a href="/golang/maps-explained/">maps</a>
 and <a href="/golang/channels-explained/">channels</a> can be created with the built-in <code>make</code> function.
-The memory is initialized with <a href="/golang/default-zero-value/">zero&nbsp;values</a>.</p>
-
+The memory is initialized with <a href="/golang/default-zero-value/">zero values</a>.</p>
 <table class="white">
   <thead>
     <tr>
@@ -85,19 +84,16 @@ The memory is initialized with <a href="/golang/default-zero-value/">zero&nbsp;v
     </tr>
   </tbody>
 </table>
-
 <pre><code>s := make([]int, 10, 100)      <span class="comment">// slice with len(s) == 10, cap(s) == 100</span>
 m := make(map[string]int, 100) <span class="comment">// map with initial room for ~100 elements</span>
 c := make(chan int, 10)        <span class="comment">// channel with a buffer size of 10</span></code></pre>
-
 <p>Slices, arrays and maps can also be created with
 <a href="https://golang.org/ref/spec#Composite_literals">composite literals</a>.</p>
-
 <pre><code>s := []string{"f", "o", "o"} <span class="comment">// slice with len(s) == 3, cap(s) == 3</span>
 a := [...]int{1, 2}          <span class="comment">// array with len(a) == 2</span>
 m := map[string]float64{     <span class="comment">// map with two key-value elements</span>
-    "e":  2.71828,
-    "pi": 3.1416,
+	"e":  2.71828,
+	"pi": 3.1416,
 }</code></pre>
 
 
@@ -137,15 +133,7 @@ m := map[string]float64{     <span class="comment">// map with two key-value ele
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

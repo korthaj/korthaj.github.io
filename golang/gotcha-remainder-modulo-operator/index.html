@@ -85,59 +85,43 @@
 <h1>Whatever remains</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC0: https://pixnio.com/miscellaneous/red-pencil-drawing-creativity-wooden -->
-
 <div style="margin-top:1em;"><img src="/golang/red-cross-wrong.jpg"></div>
-
 <p>Why isn&rsquo;t -1 odd?</p>
-
 <pre><code>func Odd(n int) bool {
-    return n%2 == 1
+	return n%2 == 1
 }
 
 func main() {
-    fmt.Println(Odd(-1)) <span class="comment">// <b>false</b></span>
+	fmt.Println(Odd(-1)) <span class="comment">// <b>false</b></span>
 }</code></pre>
-
 <h2 id="answer">Answer</h2>
-
 <p>The remainder operator can give negative answers if the dividend is negative:
 if <code>n</code> is an odd negative number, <code>n&nbsp;%&nbsp;2</code> equals&nbsp;<code>-1</code>.</p>
-
 <p>The  quotient <code>q = x&nbsp;/&nbsp;y</code> and remainder <code>r = x&nbsp;%&nbsp;y</code>
 satisfy the relationships</p>
-
 <pre><code>x = q*y + r  and  |r| &lt; |y|
 </code></pre>
-
 <p>where <code>x / y</code> is truncated towards zero.</p>
-
 <pre><code> x     y     x / y     x % y
  5     3       1         2
 -5     3      -1        -2
  5    -3      -1         2
 -5    -3       1        -2
 </code></pre>
-
 <p>(There is one exception: if <code>x</code> is the most negative value of its type,
 the quotient <code>q = x&nbsp;/&nbsp;-1</code> is equal to <code>x</code>.
 See <a href="/golang/absolute-value-int-float/">Compute absolute values</a> for more on this anomaly.)</p>
-
 <p>One solution is to write the function like&nbsp;this:</p>
-
 <pre><code class="language-go">// Odd tells whether n is an odd number.
 func Odd(n int) bool {
-    return n%2 != 0
+	return n%2 != 0
 }
 </code></pre>
-
 <p>You can also use the bitwise AND operator&nbsp;<code>&amp;</code>.</p>
-
 <pre><code class="language-go">// Odd tells whether n is an odd number.
 func Odd(n int) bool {
-    return n&amp;1 == 1
+	return n&amp;1 == 1
 }
 </code></pre>
 
@@ -220,14 +204,6 @@ func Odd(n int) bool {
       <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a></li>
 
   </ul>
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
 
 
   

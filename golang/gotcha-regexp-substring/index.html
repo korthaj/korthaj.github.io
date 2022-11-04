@@ -85,39 +85,28 @@
 <h1>Is &#34;three&#34; a digit?</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC0: https://pxhere.com/en/photo/497768 -->
-
 <div style="margin-top:1em;"><img src="/golang/texture-three-3-digit.jpg"></div>
-
 <p>Why does the regular expression <code>[0-9]*</code>, which is supposed to match
-a string with zero or more digits, match a string with characters in&nbsp;it?</p>
-
+a string with zero or more digits, match a string with characters in it?</p>
 <pre><code>matched, err := regexp.MatchString(`[0-9]*`, "12three45")
 fmt.Println(matched) // <b>true</b>
 fmt.Println(err)     // nil (regexp is valid)
 </code></pre>
-
 <h2 id="answer">Answer</h2>
-
 <p>The function <a href="https://golang.org/pkg/regexp/#MatchString"><code>regexp.MatchString</code></a>
 (as well as most functions in the <a href="https://golang.org/pkg/regexp/"><code>regexp</code></a> package)
 does <b>substring</b> matching.</p>
-
 <p>To check if a full string matches <code>[0-9]*</code>,
 anchor the start and the end of the regular expression:</p>
-
 <ul>
 <li>the caret ^ matches the beginning of a text or line,
 <li>the dollar sign $ matches the end of a text.
 </ul>
-
 <pre><code>matched, err := regexp.MatchString(`<b>^</b>[0-9]*<b>$</b>`, "12three45")
 fmt.Println(matched) // <b>false</b>
 fmt.Println(err)     // nil (regexp is valid)
 </code></pre>
-
 <p>See this <a href="/golang/regexp-cheat-sheet/">Regexp in-depth tutorial</a>
 for a cheat sheet and plenty of code examples.</p>
 
@@ -200,14 +189,6 @@ for a cheat sheet and plenty of code examples.</p>
       <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a></li>
 
   </ul>
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
 
 
   

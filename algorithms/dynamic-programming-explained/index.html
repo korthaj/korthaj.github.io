@@ -84,12 +84,8 @@
 <article>
 <h1>Dynamic programming [step-by-step example]</h1>
 <div class="tagline">yourbasic.org</div>
-
-
 <!-- CC BY-SA 2.0:  https://www.flickr.com/photos/gadl/604512604 -->
-
 <div style="margin-top:1em;"><img src="/algorithms/recursive-photography.jpg"></div>
-
 <ul class="toc">
   <li><a href="#problem">Problem</a></li>
   <li><a href="#recursive-algorithm">Recursive algorithm</a></li>
@@ -97,180 +93,149 @@
   <li><a href="#dynamic-programming-with-tabulation">Dynamic programming with tabulation</a></li>
   <li><a href="#memoization-vs-tabulation">Memoization vs. tabulation</a></li>
 </ul>
-
 <p>This text contains a detailed example showing how to solve
 a tricky problem efficiently with recursion and
 dynamic programming – either with memoization or tabulation.</p>
-
 <ul>
 <li>A <strong>dynamic programming algorithm</strong> solves a complex problem by dividing it into simpler subproblems,
 solving each of those just once, and storing their solutions.</li>
 <li><strong>Memoization</strong>  is an optimization technique used to speed up programs by storing
 the results of expensive function calls and returning the cached result when
-the same inputs occur&nbsp;again.</li>
+the same inputs occur again.</li>
 <li><strong>Tabulation</strong> is an approach where you solve a dynamic programming problem
 by first filling up a table, and then compute the solution to the original problem
 based on the results in this table.</li>
 </ul>
-
 <h2 id="problem">Problem</h2>
-
-<p>You&rsquo;ve just got a tube of delicious chocolates and plan to eat one piece a&nbsp;day –
-either by picking the one on the left or the&nbsp;right.</p>
-
+<p>You&rsquo;ve just got a tube of delicious chocolates and plan to eat one piece a day –
+either by picking the one on the left or the right.</p>
 <div><img src="/algorithms/chocolate-tube.jpg"></div>
 <div style="font-size:smaller;">Problem partly solved</div>
-
 <p>Each piece has a positive integer that indicates how tasty it is.
 Since taste is subjective, there is also an expectancy factor.
 A piece will taste better if you eat it later: if the taste is <i>m</i>
-(as in <i>hmm</i>) on the first day, it will be <i>km</i> on day number&nbsp;<i>k</i>.</p>
-
+(as in <i>hmm</i>) on the first day, it will be <i>km</i> on day number <i>k</i>.</p>
 <p>Your task is to design an efficient algorithm that computes an optimal chocolate eating
 strategy and tells you how much pleasure to expect.</p>
-
 <h2 id="recursive-algorithm">Recursive algorithm</h2>
-
 <pre><code>// Joy returns the total pleasure if you eat the chocolates
 // in an optimal order starting at the given day.
 func Joy(choco []int, day int) int {
-    n := len(choco)
-    if n == 1 {
-        return day * choco[0]
-    }
-    left := day*choco[0] + Joy(choco[1:], day+1)
-    right := day*choco[n-1] + Joy(choco[:n-1], day+1)
-    return max(left, right)
+	n := len(choco)
+	if n == 1 {
+		return day * choco[0]
+	}
+	left := day*choco[0] + Joy(choco[1:], day+1)
+	right := day*choco[n-1] + Joy(choco[:n-1], day+1)
+	return max(left, right)
 }</code></pre>
-
 <p>Note that the function solve a slightly <strong>more general problem</strong> than the one stated.
 It computes the total pleasure if you start eating at a given day.
 This is a common strategy when writing recursive code.</p>
-
 <p>It&rsquo;s easy to see that the code gives the correct result.</p>
-
 <ul>
 <li>In the base case, where <code>choco</code> contains only one element,
 the function returns the correct value.</li>
-<li>When <code>choco</code> contains <code>n</code>&nbsp;elements, <code>n</code>&nbsp;&gt;&nbsp;1,
+<li>When <code>choco</code> contains <code>n</code> elements, <code>n</code> &gt; 1,
 we have to start with either <code>choco[0]</code> or <code>choco[n-1]</code>.
 The code computes the pleasure for each of these cases with recursion,
-and returns the&nbsp;maximum.
-<br /></li>
+and returns the maximum.</li>
 </ul>
-
 <h2 id="dynamic-programming-with-memoization">Dynamic programming with memoization</h2>
-
 <p>The code above is simple but terribly inefficient –
 it has <strong>exponential time complexity</strong>.</p>
-
 <p>However, many or the recursive calls perform the very same computation.
 In fact, the only values that need to be computed are</p>
-
 <blockquote>
 <code>joy(choco[i:j], day)</code>
 </blockquote>
-
-<p>where 0 &leq; <code>i</code> &lt; <code>j</code> &leq; <code>n</code>,
-<code>day</code> = 1 + <code>n</code> - (<code>j</code>&nbsp;-&nbsp;<code>i</code>)
+<p>where 0 ≤ <code>i</code> &lt; <code>j</code> ≤ <code>n</code>,
+<code>day</code> = 1 + <code>n</code> - (<code>j</code> - <code>i</code>)
 and <code>n</code> = <code>len(choco)</code>.</p>
-
 <p>The joy of <code>choco[i:j]</code>
 is either computed directly (the base case), or it can be computed in constant
 time from the already known joy of
 <code>choco[i+1:j]</code> and <code>choco[i:j-1]</code>.
 If we use <strong>dynamic programming</strong> and memorize all of these subresults,
 we will get an algorithm with <b><i>O</i>(<i>n</i><sup>2</sup>) time complexity</b>.</p>
-
 <p>To implement this strategy using <strong>memoization</strong> we need to include
 the two indexes in the function call.
 To help record an optimal solution, we also keep track of which choices
 (left or right) that gives optimal pleasure.</p>
-
 <pre><code>type result struct {
-    joy      int
-    pickLeft bool
+	joy      int
+	pickLeft bool
 }
 
 // JoyMemo returns the joy if you eat the chocolates choco[i:j]
 // in an optimal order starting at day 1 + len(choco) - (j - i).
 func JoyMemo(choco []int, i, j int, memo [][]result) int {
-    // Reuse previous result, if available.
-    if res := memo[i][j].joy; res != 0 {
-        return res
-    }
-    // base case
-    if j-i == 1 {
-        return len(choco) * choco[i]
-    }
-    // recursion
-    day := 1 + len(choco) - (j - i)
-    left := day*choco[i] + JoyMemo(choco, i+1, j, memo)
-    right := day*choco[j-1] + JoyMemo(choco, i, j-1, memo)
-    res := max(left, right)
-    // Save the result.
-    memo[i][j].joy = res
-    memo[i][j].pickLeft = left > right
-    return res
+	// Reuse previous result, if available.
+	if res := memo[i][j].joy; res != 0 {
+		return res
+	}
+	// base case
+	if j-i == 1 {
+		return len(choco) * choco[i]
+	}
+	// recursion
+	day := 1 + len(choco) - (j - i)
+	left := day*choco[i] + JoyMemo(choco, i+1, j, memo)
+	right := day*choco[j-1] + JoyMemo(choco, i, j-1, memo)
+	res := max(left, right)
+	// Save the result.
+	memo[i][j].joy = res
+	memo[i][j].pickLeft = left > right
+	return res
 }
 </code></pre>
-
 <p>Given the <code>memo</code> table, it&rsquo;s a simple matter to print an optimal eating order:</p>
-
 <pre><code>for i, j := 0, n; i < j; {
-    if memo[i][j].pickLeft {
-        fmt.Print("left ")
-        i++
-    } else {
-        fmt.Print("right ")
-        j--
-    }
+	if memo[i][j].pickLeft {
+		fmt.Print("left ")
+		i++
+	} else {
+		fmt.Print("right ")
+		j--
+	}
 }
 </code></pre>
-
 <p>Complete code: <a href="/algorithms/chocolate.go">chocolate.go</a></p>
-
 <h2 id="dynamic-programming-with-tabulation">Dynamic programming with tabulation</h2>
-
-<p>As an alternative, we can use <strong>tabulation</strong> and start by filling up the <code>memo</code>&nbsp;table.
+<p>As an alternative, we can use <strong>tabulation</strong> and start by filling up the <code>memo</code> table.
 Note that the order of computation matters:
 to compute the value <code>memo[i][j]</code>, the values of
-<code>memo[i+1][j]</code> and <code>memo[i][j-1]</code> must first be&nbsp;known.</p>
-
+<code>memo[i+1][j]</code> and <code>memo[i][j-1]</code> must first be known.</p>
 <pre><code>// JoyTab returns a table containing the joys memo[i,j] that
 // you get if you eat the chocolates choco[i:j] in an optimal
 // order starting at day 1 + len(choco) - (j - i).
 func JoyTab(choco []int) (memo [][]result) {
-    n := len(choco)
-    memo = make([][]result, n)
-    for i := range memo {
-        memo[i] = make([]result, n+1)
-    }
-    for i := range memo { // base cases
-        memo[i][i+1].joy = n * choco[i]
-    }
-    for i := n - 1; i >= 0; i-- {
-        for j := i + 2; j <= n; j++ {
-            day := 1 + n - (j - i)
-            left := day*choco[i] + memo[i+1][j].joy
-            right := day*choco[j-1] + memo[i][j-1].joy
-            memo[i][j].joy = max(left, right)
-            memo[i][j].pickLeft = left > right
-        }
-    }
-    return
+	n := len(choco)
+	memo = make([][]result, n)
+	for i := range memo {
+		memo[i] = make([]result, n+1)
+	}
+	for i := range memo { // base cases
+		memo[i][i+1].joy = n * choco[i]
+	}
+	for i := n - 1; i >= 0; i-- {
+		for j := i + 2; j <= n; j++ {
+			day := 1 + n - (j - i)
+			left := day*choco[i] + memo[i+1][j].joy
+			right := day*choco[j-1] + memo[i][j-1].joy
+			memo[i][j].joy = max(left, right)
+			memo[i][j].pickLeft = left > right
+		}
+	}
+	return
 }
 </code></pre>
-
 <p>Given this table, the optimal eating order can be computed exactly as before.</p>
-
 <p>Complete code: <a href="/algorithms/chocolatetab.go">chocolatetab.go</a></p>
-
 <h2 id="memoization-vs-tabulation">Memoization vs. tabulation</h2>
-
 <p>The choice between memoization and tabulation is mostly a matter of taste.
 However, if some subproblems need not be solved at all,
-memoization may be more efficient since only the computations needed are carried&nbsp;out.</p>
+memoization may be more efficient since only the computations needed are carried out.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
 <a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fdynamic-programming-explained%2f&amp;text=Dynamic%20programming%20[step-by-step%20example]&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
@@ -309,15 +274,7 @@ memoization may be more efficient since only the computations needed are carried
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
     <div style="margin-top:1em;"><a href="/algorithms/time-complexity-explained/" title="How to analyse time complexity: Count your steps"><img src="/algorithms/abacus-mini.jpg"></a></div>
   <ul class="none">
   

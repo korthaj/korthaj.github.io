@@ -84,32 +84,22 @@
 <article>
 <h1>Type assertions and type switches</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <p class="lead">A type assertion provides access to an interface’s concrete value.</p>
-
 <!-- CC0: https://www.maxpixel.net/Gesture-Thumbs-Up-Feedback-Faust-Hand-Wrist-3050586 -->
-
 <div style="float:right" class="extra-content"><img width="320px" src="/golang/thumbs-up.jpg"></div>
-
 <ul class="toc">
   <li><a href="#type-assertions">Type assertions</a></li>
   <li><a href="#type-switches">Type switches</a></li>
 </ul>
-
 <h2 id="type-assertions">Type assertions</h2>
-
 <p>A <strong>type assertion</strong> doesn’t really convert an <a href="/golang/interfaces-explained/">interface</a> to another data type,
-but it provides access to an interface’s concrete value, which is typically what you&nbsp;want.</p>
-
-<p>The type assertion <code>x.(T)</code> asserts that the concrete value stored in&nbsp;<code>x</code>
-is of type&nbsp;<code>T</code>, and that <code>x</code> is&nbsp;not&nbsp;nil.</p>
-
+but it provides access to an interface’s concrete value, which is typically what you want.</p>
+<p>The type assertion <code>x.(T)</code> asserts that the concrete value stored in <code>x</code>
+is of type <code>T</code>, and that <code>x</code> is not nil.</p>
 <ul>
-<li>If <code>T</code> is not an interface, it asserts that the dynamic type of&nbsp;<code>x</code> is identical to&nbsp;<code>T</code>.</li>
-<li>If <code>T</code> is an interface, it asserts that the dynamic type of&nbsp;<code>x</code> implements&nbsp;<code>T</code>.</li>
+<li>If <code>T</code> is not an interface, it asserts that the dynamic type of <code>x</code> is identical to <code>T</code>.</li>
+<li>If <code>T</code> is an interface, it asserts that the dynamic type of <code>x</code> implements <code>T</code>.</li>
 </ul>
-
 <pre><code>var x interface{} = "foo"
 
 var s string = x.(string)
@@ -122,29 +112,25 @@ n, ok := x.(int)
 fmt.Println(n, ok) <span class="comment">// "0 false"</span>
 
 n = x.(int)        <span class="comment">// ILLEGAL</span></code></pre>
-<pre><code>panic: interface conversion: interface {} is string, not int</code></pre>
-<h2 id="type-switches">Type switches</h2>
-
+<pre tabindex="0"><code>panic: interface conversion: interface {} is string, not int
+</code></pre><h2 id="type-switches">Type switches</h2>
 <p>A <strong>type switch</strong> performs several type assertions in series and
-runs the first case with a matching&nbsp;type.</p>
-
+runs the first case with a matching type.</p>
 <pre><code>var x interface{} = "foo"
 
 switch v := x.(type) {
 case nil:
-    fmt.Println("x is nil")            <span class="comment">// here v has type interface{}</span>
+	fmt.Println("x is nil")            <span class="comment">// here v has type interface{}</span>
 case int: 
-    fmt.Println("x is", v)             <span class="comment">// here v has type int</span>
+	fmt.Println("x is", v)             <span class="comment">// here v has type int</span>
 case bool, string:
-    fmt.Println("x is bool or string") <span class="comment">// here v has type interface{}</span>
+	fmt.Println("x is bool or string") <span class="comment">// here v has type interface{}</span>
 default:
-    fmt.Println("type unknown")        <span class="comment">// here v has type interface{}</span>
+	fmt.Println("type unknown")        <span class="comment">// here v has type interface{}</span>
 }</code></pre>
-<pre><code>x is bool or string</code></pre>
-<h3 id="further-reading">Further reading</h3>
-
+<pre tabindex="0"><code>x is bool or string
+</code></pre><h3 id="further-reading">Further reading</h3>
 <div><a href="/golang/interfaces-explained/"><img src="/golang/connection-thumb.jpg" title="Interfaces in 5 easy steps"></a></div>
-
 <div><a href="/golang/interfaces-explained/">Interfaces in 5 easy steps [complete guide]</a></div>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -166,15 +152,7 @@ default:
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

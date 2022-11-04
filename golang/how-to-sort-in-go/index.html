@@ -85,12 +85,8 @@
 <h1>The 3 ways to sort in Go</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC0: https://pixabay.com/en/ring-binders-aligned-organization-2654130/ -->
-
 <div style="margin-top:1em;"><img src="/golang/sorted-ring-binders.jpg"></div>
-
 <ul class="toc">
   <li><a href="#sort-a-slice-of-ints-float64s-or-strings">Slice of ints, float64s or strings</a></li>
   <li><a href="#sort-with-custom-comparator">Custom comparator</a></li>
@@ -98,54 +94,44 @@
   <li><a href="#bonus-sort-a-map-by-key-or-value">Bonus: Sort a map by key or value</a></li>
   <li><a href="#performance-and-implementation">Performance and implementation</a></li>
 </ul>
-
 <h2 id="sort-a-slice-of-ints-float64s-or-strings">Sort a slice of ints, float64s or strings</h2>
-
 <p>Use one of the functions</p>
-
 <ul>
 <li><a href="https://golang.org/pkg/sort/#Ints"><code>sort.Ints</code></a></li>
 <li><a href="https://golang.org/pkg/sort/#Float64s"><code>sort.Float64s</code></a></li>
 <li><a href="https://golang.org/pkg/sort/#Strings"><code>sort.Strings</code></a></li>
 </ul>
-
 <pre><code>s := []int{4, 2, 3, 1}
 sort.Ints(s)
 fmt.Println(s) // <span class="comment">[1 2 3 4]</span></code></pre>
-
 <blockquote>
 <p>Package <a href="https://godoc.org/github.com/yourbasic/radix">radix</a> contains
 a drop-in replacement for sort.Strings, which can be
 more than twice as fast in some settings.</p>
 </blockquote>
-
 <h2 id="sort-with-custom-comparator">Sort with custom comparator</h2>
-
 <ul>
 <li>Use the function <a href="https://golang.org/pkg/sort/#Slice"><code>sort.Slice</code></a>.
-It sorts a slice using a provided function <code>less(i,&nbsp;j&nbsp;int)&nbsp;bool</code>.</li>
+It sorts a slice using a provided function <code>less(i, j int) bool</code>.</li>
 <li>To sort the slice while keeping the original order of equal elements,
 use <a href="https://golang.org/pkg/sort/#SliceStable"><code>sort.SliceStable</code></a> instead.</li>
 </ul>
-
 <pre><code>family := []struct {
-    Name string
-    Age  int
+	Name string
+	Age  int
 }{
-    {"Alice", 23},
-    {"David", 2},
-    {"Eve", 2},
-    {"Bob", 25},
+	{"Alice", 23},
+	{"David", 2},
+	{"Eve", 2},
+	{"Bob", 25},
 }
 
 <span class="comment">// Sort by age, keeping original order or equal elements.</span>
 sort.SliceStable(family, func(i, j int) bool {
-    return family[i].Age < family[j].Age
+	return family[i].Age < family[j].Age
 })
 fmt.Println(family) <span class="comment">// [{David 2} {Eve 2} {Alice 23} {Bob 25}]</span></code></pre>
-
 <h2 id="sort-custom-data-structures">Sort custom data structures</h2>
-
 <ul>
 <li>Use the generic <a href="https://golang.org/pkg/sort/#Sort"><code>sort.Sort</code></a> and
 <a href="https://golang.org/pkg/sort/#Stable"><code>sort.Stable</code></a> functions.</li>
@@ -153,7 +139,6 @@ fmt.Println(family) <span class="comment">// [{David 2} {Eve 2} {Alice 23} {Bob 
 <a href="https://golang.org/pkg/sort/#Interface"><code>sort.Interface</code></a>
 <a href="/golang/interfaces-explained/">interface</a>.</li>
 </ul>
-
 <pre><code>type Interface interface {
         <span class="comment">// Len is the number of elements in the collection.</span>
         Len() int
@@ -163,12 +148,10 @@ fmt.Println(family) <span class="comment">// [{David 2} {Eve 2} {Alice 23} {Bob 
         <span class="comment">// Swap swaps the elements with indexes i and j.</span>
         Swap(i, j int)
 }</code></pre>
-
 <p>Here&rsquo;s an example.</p>
-
 <pre><code>type Person struct {
-    Name string
-    Age  int
+	Name string
+	Age  int
 }
 
 <span class="comment">// ByAge implements sort.Interface based on the Age field.</span>
@@ -179,50 +162,42 @@ func (a ByAge) Less(i, j int) bool { return a[i].Age < a[j].Age }
 func (a ByAge) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 
 func main() {
-    family := []Person{
-        {"Alice", 23},
-        {"Eve", 2},
-        {"Bob", 25},
-    }
-    sort.Sort(ByAge(family))
-    fmt.Println(family) <span class="comment">// [{Eve 2} {Alice 23} {Bob 25}]</span>
+	family := []Person{
+		{"Alice", 23},
+		{"Eve", 2},
+		{"Bob", 25},
+	}
+	sort.Sort(ByAge(family))
+	fmt.Println(family) <span class="comment">// [{Eve 2} {Alice 23} {Bob 25}]</span>
 }</code></pre>
-
 <h2 id="bonus-sort-a-map-by-key-or-value">Bonus: Sort a map by key or value</h2>
-
 <p>A <a href="/golang/maps-explained/">map</a> is an <strong>unordered</strong> collection of key-value pairs.
 If you need a stable iteration order,
 you must maintain a separate data structure.</p>
-
 <p>This code example uses a slice of keys to sort a map in key order.</p>
-
 <pre><code>m := map[string]int{&quot;Alice&quot;: 2, &quot;Cecil&quot;: 1, &quot;Bob&quot;: 3}
 
 keys := make([]string, 0, len(m))
 for k := range m {
-    keys = append(keys, k)
+	keys = append(keys, k)
 }
 sort.Strings(keys)
 
 for _, k := range keys {
-    fmt.Println(k, m[k])
+	fmt.Println(k, m[k])
 }
 <span class="comment">// Output:</span>
 <span class="comment">// Alice 2</span>
 <span class="comment">// Bob 3</span>
 <span class="comment">// Cecil 1</span>
 </code></pre>
-
 <blockquote>
-<p>Also, starting with <a href="https://tip.golang.org/doc/go1.12">Go&nbsp;1.12</a>,
+<p>Also, starting with <a href="https://tip.golang.org/doc/go1.12">Go 1.12</a>,
 the <a href="https://golang.org/pkg/fmt/"><code>fmt</code></a>
 package prints maps in key-sorted order to ease testing.</p>
 </blockquote>
-
 <h2 id="performance-and-implementation">Performance and implementation</h2>
-
-<p>All algorithms in the Go sort package make <em>O</em>(<em>n</em>&nbsp;log&nbsp;<em>n</em>) comparisons in the worst case, where <em>n</em> is the number of elements to be sorted.</p>
-
+<p>All algorithms in the Go sort package make <em>O</em>(<em>n</em> log <em>n</em>) comparisons in the worst case, where <em>n</em> is the number of elements to be sorted.</p>
 <p>Most of the functions are implemented using an <a href="/golang/quicksort-optimizations/">optimized version of quicksort</a>.</p>
 
 
@@ -266,15 +241,7 @@ package prints maps in key-sorted order to ease testing.</p>
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

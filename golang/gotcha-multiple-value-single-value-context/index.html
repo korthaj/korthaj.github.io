@@ -85,36 +85,25 @@
 <h1>Multiple-value in single-value context</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC0: https://www.maxpixel.net/Number-Series-2-123-Digits-Pay-One-Two-1-3-705666 -->
-
 <div style="margin-top:1em;"><img src="/golang/single-vs-multiple-values.jpg"></div>
-
 <p>Why does this code give a compile error?</p>
-
 <pre><code>t := time.Parse(time.RFC3339, "2018-04-06T10:49:05Z")
 fmt.Println(t)</code></pre>
-<pre><code>../main.go:9:17: multiple-value time.Parse() in single-value context</code></pre>
-<h2 id="answer">Answer</h2>
-
+<pre tabindex="0"><code>../main.go:9:17: multiple-value time.Parse() in single-value context
+</code></pre><h2 id="answer">Answer</h2>
 <p>The <a href="https://golang.org/pkg/time/#Parse"><code>time.Parse</code></a> function returns two values,
 a <a href="https://golang.org/pkg/time/#Time"><code>time.Time</code></a> and
 an <a href="/golang/errors-explained/"><code>error</code></a>, and you must use&nbsp;both.</p>
-
 <pre><code>t, err := time.Parse(time.RFC3339, "2018-04-06T10:49:05Z")
 if err != nil {
-    <span class="comment">// TODO: Handle error.</span>
+	<span class="comment">// TODO: Handle error.</span>
 }
 fmt.Println(t)</code></pre>
-
 <pre><code>2018-04-06 10:49:05 +0000 UTC</code></pre>
-
 <h3 id="blank-identifier-underscore">Blank identifier (underscore)</h3>
-
 <p>You can use the <a href="/golang/underscore/">blank identifier</a>
 to ignore unwanted return values.</p>
-
 <pre><code>m := map[string]float64{"pi": 3.1416}
 _, exists := m["pi"] <span class="comment">// exists == true</span>
 </code></pre>
@@ -198,14 +187,6 @@ _, exists := m["pi"] <span class="comment">// exists == true</span>
       <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a></li>
 
   </ul>
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
 
 
   

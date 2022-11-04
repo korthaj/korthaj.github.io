@@ -86,12 +86,9 @@
 <div class="tagline">yourbasic.org/golang</div>
 
 <!-- CC BY-SA 3.0: https://commons.wikimedia.org/wiki/File:Flash_memory_cards_size_comparison_(composite).svg -->
-
 <div style="margin-top:1em;"><img src="/golang/flash-memory-cards.png"></div>
-
 <p>These utility functions convert a size in bytes to a human-readable string
-in either SI&nbsp;(decimal) or IEC&nbsp;(binary) format.</p>
-
+in either SI (decimal) or IEC (binary) format.</p>
 <table class="white">
   <thead>
     <tr>
@@ -133,37 +130,34 @@ in either SI&nbsp;(decimal) or IEC&nbsp;(binary) format.</p>
     </tr>
   </tbody>
 </table>
-
-<p><br></p>
-
+<br>
 <pre><code>func ByteCountSI(b int64) string {
-    const unit = 1000
-    if b < unit {
-        return fmt.Sprintf("%d B", b)
-    }
-    div, exp := int64(unit), 0
-    for n := b / unit; n >= unit; n /= unit {
-        div *= unit
-        exp++
-    }
-    return fmt.Sprintf("%.1f %cB",
-        float64(b)/float64(div), "kMGTPE"[exp])
+	const unit = 1000
+	if b < unit {
+		return fmt.Sprintf("%d B", b)
+	}
+	div, exp := int64(unit), 0
+	for n := b / unit; n >= unit; n /= unit {
+		div *= unit
+		exp++
+	}
+	return fmt.Sprintf("%.1f %cB",
+		float64(b)/float64(div), "kMGTPE"[exp])
 }
 
 func ByteCountIEC(b int64) string {
-    const unit = 1024
-    if b < unit {
-        return fmt.Sprintf("%d B", b)
-    }
-    div, exp := int64(unit), 0
-    for n := b / unit; n >= unit; n /= unit {
-        div *= unit
-        exp++
-    }
-    return fmt.Sprintf("%.1f %ciB",
-        float64(b)/float64(div), "KMGTPE"[exp])
+	const unit = 1024
+	if b < unit {
+		return fmt.Sprintf("%d B", b)
+	}
+	div, exp := int64(unit), 0
+	for n := b / unit; n >= unit; n /= unit {
+		div *= unit
+		exp++
+	}
+	return fmt.Sprintf("%.1f %ciB",
+		float64(b)/float64(div), "KMGTPE"[exp])
 }</code></pre>
-
 <p><a href="/golang/byte-count.go">byte-count.go</a></p>
 
 
@@ -185,15 +179,7 @@ func ByteCountIEC(b int64) string {
 
 </article>
 <aside>
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

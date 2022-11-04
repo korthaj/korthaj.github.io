@@ -84,41 +84,33 @@
 <article>
 <h1>Function types and values</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC0:  https://pixabay.com/en/math-function-symbol-icon-27248/ -->
-
-<p>Function types and function values can be used and passed around just like other&nbsp;values:</p>
-
+<p>Function types and function values can be used and passed around just like other values:</p>
 <pre><code><b>type Operator func(x float64) float64</b>
 
 // Map applies op to each element of a.
 func Map(<b>op Operator</b>, a []float64) []float64 {
-    res := make([]float64, len(a))
-    for i, x := range a {
-        res[i] = op(x)
-    }
-    return res
+	res := make([]float64, len(a))
+	for i, x := range a {
+		res[i] = op(x)
+	}
+	return res
 }
 
 func main() {
-    <b>op := math.Abs</b>
-    a := []float64{1, -2}
-    b := Map(<b>op</b>, a)
-    fmt.Println(b) <span class="comment">// [1 2]</span>
+	<b>op := math.Abs</b>
+	a := []float64{1, -2}
+	b := Map(<b>op</b>, a)
+	fmt.Println(b) <span class="comment">// [1 2]</span>
 
-    c := Map(<b>func(x float64) float64 { return 10 * x }</b>, b)
-    fmt.Println(c) <span class="comment">// [10, 20]</span>
+	c := Map(<b>func(x float64) float64 { return 10 * x }</b>, b)
+	fmt.Println(c) <span class="comment">// [10, 20]</span>
 }</code></pre>
-
 <p>The second call to <code>Map</code> uses a <strong>function literal</strong> (or <strong>lambda</strong>).
 See <a href="/golang/anonymous-function-literal-lambda-closure/">Anonymous functions and closures</a>
-for more about lambdas in&nbsp;Go.</p>
-
+for more about lambdas in Go.</p>
 <h2 id="details">Details</h2>
-
 <p>A function type describes the set of all functions with the same parameter and result types.</p>
-
 <ul>
     <li>
         The value of an uninitialized variable of function type is&nbsp;<code>nil</code>.
@@ -127,16 +119,11 @@ for more about lambdas in&nbsp;Go.</p>
         The parameter names are optional.
     </li>
 </ul>
-        
-
-<p>The following two function types are identical.
+<p>The following two function types are identical.</p>
 <pre><code>func(x, y int) int
-func(int, int) int</code></pre></p>
-
+func(int, int) int</code></pre>
 <h3 id="further-reading">Further reading</h3>
-
 <div><a href="/golang/anonymous-function-literal-lambda-closure/"><img src="/golang/anonymous-hoodie-thumb.jpg" title="Anonymous functions and closures"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/anonymous-function-literal-lambda-closure/">Anonymous functions and closures</a></p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -148,15 +135,7 @@ func(int, int) int</code></pre></p>
 
 </article>
 <aside>
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

@@ -85,30 +85,24 @@
 <h1>Command-line arguments and flags</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC0: https://pixabay.com/en/tibetan-prayer-flags-flags-color-1384193/ -->
-
 <div style="margin-top:1em;"><img src="/golang/tibetan-prayer-flags.jpg"></div>
-
 <p>The <a href="https://golang.org/pkg/os/#pkg-variables"><code>os.Args</code></a> variable
 holds the command-line arguments – starting with the program name –
 which are passed to a Go program.</p>
-
 <pre><code>func main() {
-    if len(os.Args) != 3 {
-        fmt.Println("Usage:", os.Args[0], "PATTERN", "FILE")
-        return
-    }
-    pattern := os.Args[1]
-    file := os.Args[2]
-    <span class="comment">// ...</span>
+	if len(os.Args) != 3 {
+		fmt.Println("Usage:", os.Args[0], "PATTERN", "FILE")
+		return
+	}
+	pattern := os.Args[1]
+	file := os.Args[2]
+	<span class="comment">// ...</span>
 }</code></pre>
-<pre><code>$ go build grep.go
+<pre tabindex="0"><code>$ go build grep.go
 $ ./grep
-Usage: ./grep PATTERN FILE</code></pre>
-<h3 id="flag-parsing">Flag parsing</h3>
-
+Usage: ./grep PATTERN FILE
+</code></pre><h3 id="flag-parsing">Flag parsing</h3>
 <p>The <a href="https://golang.org/pkg/flag/">flag</a> package implements basic command-line flag parsing.</p>
 
 
@@ -140,15 +134,7 @@ Usage: ./grep PATTERN FILE</code></pre>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

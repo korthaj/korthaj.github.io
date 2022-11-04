@@ -84,12 +84,8 @@
 <article>
 <h1>Defer a function call (with return value)</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC0: https://pixabay.com/en/sign-direction-now-afterwards-1865303/ -->
-
-<p><img src="/golang/now-later-sign.jpg"></p>
-
+<img src="/golang/now-later-sign.jpg">
 <ul class="toc">
   <li><a href="#defer-statement-basics">Defer statement basics</a>
     <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
@@ -104,104 +100,79 @@
     </ul>
   </li>
 </ul>
-
 <h2 id="defer-statement-basics">Defer statement basics</h2>
-
 <p>A <code>defer</code> statement postpones the execution of a function
-until the surrounding function returns, either normally or through a&nbsp;panic.</p>
-
+until the surrounding function returns, either normally or through a panic.</p>
 <pre><code>func main() {
-    <b>defer</b> fmt.Println("World")
-    fmt.Println("Hello")
+	<b>defer</b> fmt.Println("World")
+	fmt.Println("Hello")
 }</code></pre>
-
 <pre>Hello
 World</pre>
-
 <p>Deferred calls are executed even when the function panics:</p>
-
 <pre><code>func main() {
-    <b>defer</b> fmt.Println("World")
-    panic("Stop")
-    fmt.Println("Hello")
+	<b>defer</b> fmt.Println("World")
+	panic("Stop")
+	fmt.Println("Hello")
 }</code></pre>
-
 <pre>World
 panic: Stop
 
 goroutine 1 [running]:
 main.main()
-    ../main.go:3 +0xa0</pre>
-
+	../main.go:3 +0xa0</pre>
 <h3 id="order-of-execution">Order of execution</h3>
-
 <p>The deferred call&rsquo;s <strong>arguments are evaluated immediately</strong>,
 even though the function call is not executed until the surrounding function returns.</p>
-
 <p>If there are several deferred function calls, they are executed in last-in-first-out order.</p>
-
 <pre><code>func main() {
-    fmt.Println("Hello")
-    for i := 1; i &lt;= 3; i++ {
-        defer fmt.Println(i)
-    }
-    fmt.Println("World")
+	fmt.Println("Hello")
+	for i := 1; i &lt;= 3; i++ {
+		defer fmt.Println(i)
+	}
+	fmt.Println("World")
 }</code></pre>
-
 <pre>Hello
 World
 3
 2
 1</pre>
-
 <h3 id="use-func-to-return-a-value">Use func to return a value</h3>
-
 <p>Deferred anonymous functions may access and modify the surrounding function&rsquo;s
 named return parameters.</p>
-
 <p>In this example, the <code>foo</code> function returns &ldquo;Change World&rdquo;.</p>
-
 <pre><code>func foo() (result string) {
-    defer func() {
-        result = "Change World" <span class="comment">// change value at the very last moment</span>
-    }()
-    return "Hello World"
+	defer func() {
+		result = "Change World" <span class="comment">// change value at the very last moment</span>
+	}()
+	return "Hello World"
 }</code></pre>
-
 <h2 id="common-applications">Common applications</h2>
-
 <p>Defer is often used to perform clean-up actions,
 such as closing a file or unlocking a mutex.
 Such actions should be performed both when the function returns normally and when it panics.</p>
-
 <h3 id="close-a-file">Close a file</h3>
-
 <p>In this example, defer statements are used to ensure that all files
 are closed before leaving the <code>CopyFile</code> function, whichever way that happens.</p>
-
 <pre><code>func CopyFile(dstName, srcName string) (written int64, err error) {
-    src, err := os.Open(srcName)
-    if err != nil {
-        return
-    }
-    defer src.Close()
+	src, err := os.Open(srcName)
+	if err != nil {
+		return
+	}
+	defer src.Close()
 
-    dst, err := os.Create(dstName)
-    if err != nil {
-        return
-    }
-    defer dst.Close()
+	dst, err := os.Create(dstName)
+	if err != nil {
+		return
+	}
+	defer dst.Close()
 
-    return io.Copy(dst, src)
+	return io.Copy(dst, src)
 }</code></pre>
-
 <h3 id="error-handling-catch-a-panic">Error handling: catch a panic</h3>
-
 <!-- CC0: https://www.maxpixel.net/Extinguish-Fire-Extinction-Firefighter-484540 -->
-
 <div><a href="/golang/recover-from-panic/#recover-and-catch-a-panic" title="Recover from a panic"><img src="/golang/extinguish-fire-
 thumb.jpg"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;">
 The <a href="/golang/recover-from-panic/#recover-and-catch-a-panic">Recover from a panic</a> code example
 shows how to use a defer statement to recover from a&nbsp;panic and update the return value.</p>
@@ -231,15 +202,7 @@ shows how to use a defer statement to recover from a&nbsp;panic and update the r
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

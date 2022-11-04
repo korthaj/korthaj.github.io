@@ -84,12 +84,8 @@
 <article>
 <h1>Package initialization and program execution order</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC0: https://pixabay.com/en/formation-migratory-birds-geese-508038/ -->
-
 <div style="margin-top:1em;"><img src="/golang/birds-in-formation.jpg"></div>
-
 <ul class="toc">
   <li><a href="#basics">Basics</a></li>
   <li><a href="#program-execution">Program execution</a></li>
@@ -97,79 +93,65 @@
   <li><a href="#init-function">Init function</a></li>
   <li><a href="#warning">Warning</a></li>
 </ul>
-
 <h2 id="basics">Basics</h2>
-
 <ul>
 <li>First the <code>main</code> <a href="/golang/packages-explained/">package</a> is initialized.
-
 <ul>
 <li>Imported packages are initialized before the package itself.</li>
-<li>Packages are initialized one at a time:</li>
+<li>Packages are initialized one at a time:
+<ul>
 <li>first package-level variables are initialized in declaration order,</li>
 <li>then the <code>init</code> functions are run.</li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Finally the <code>main</code> function is called.</li>
 </ul>
-
 <h2 id="program-execution">Program execution</h2>
-
 <p>Program execution begins by initializing the <code>main</code> package and
 then calling the function <code>main</code>.
 When <code>main</code> returns, the program exits.
 It <b>does not wait</b> for other goroutines to complete.</p>
-
 <h2 id="package-initialization">Package initialization</h2>
-
 <ul>
 <li>Package-level variables are initialized in <strong>declaration order</strong>, but after any of the variables they <strong>depend</strong> on.</li>
 <li>Initialization of variables declared in multiple files is done in <strong>lexical file name order</strong>. Variables declared in the first file are declared before any of the variables declared in the second file.</li>
 <li>Initialization cycles are <strong>not allowed</strong>.</li>
 <li>Dependency analysis is performed <strong>per package</strong>; only references referring to variables, functions, and methods declared in the current package are considered.</li>
 </ul>
-
 <h3 id="example">Example</h3>
-
 <p>In this example, taken directly from the <a href="https://golang.org/ref/spec#Package_initialization">Go language specification</a>,
-the initialization order is d,&nbsp;b,&nbsp;c,&nbsp;a.</p>
-
+the initialization order is d, b, c, a.</p>
 <pre><code>var (
-    a = c + b
-    b = f()
-    c = f()
-    d = 3
+	a = c + b
+	b = f()
+	c = f()
+	d = 3
 )
 
 func f() int {
-    d++
-    return d
+	d++
+	return d
 }</code></pre>
-
 <h2 id="init-function">Init function</h2>
-
-<p>Variables may also be initialized using <code>init</code>&nbsp;functions.</p>
-<pre><code>func init() { … }</code></pre>
-<p>Multiple such functions may be defined. They cannot be called from inside a program.</p>
-
+<p>Variables may also be initialized using <code>init</code> functions.</p>
+<pre tabindex="0"><code>func init() { … }
+</code></pre><p>Multiple such functions may be defined. They cannot be called from inside a program.</p>
 <ul>
 <li>A package with <strong>no imports</strong> is initialized
-
 <ul>
 <li>by assigning initial values to all its package-level variables,</li>
 <li>followed by calling all <code>init</code> functions in the order they appear in the source.</li>
-</ul></li>
+</ul>
+</li>
 <li>Imported packages are initialized before the package itself.</li>
 <li>Each package is initialized <strong>once</strong>, regardless if it&rsquo;s imported by multiple other packages.</li>
 </ul>
-
 <p>It follows that there can be <strong>no cyclic dependencies</strong>.</p>
-
 <p>Package initialization happens in a single goroutine, sequentially, one package at a time.</p>
-
 <h2 id="warning">Warning</h2>
-
 <p>Lexical ordering according to file names is not part of the formal language specification.</p>
-
 <blockquote class="warning">
 To ensure reproducible initialization behavior, build systems are encouraged to present multiple files belonging to the same package in lexical file name order to a compiler.<br />
 <a class="quote-source" href="https://golang.org/ref/spec#Package_initialization">The Go Programming Language Specification: Package initialization</a>
@@ -194,15 +176,7 @@ To ensure reproducible initialization behavior, build systems are encouraged to 
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

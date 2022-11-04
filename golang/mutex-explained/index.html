@@ -85,29 +85,19 @@
 <h1>Mutual exclusion lock (mutex)</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <p class="lead">Mutexes let you synchronize data access by explicit locking, without channels.</p>
-
 <!-- CC BY-NC-ND 2.0: http://www.flickr.com/photos/dzarro72/7187334179/ -->
-
 <div><img src="/golang/lock.jpg" alt="lock"></div>
-
 <p>Sometimes it’s more convenient to synchronize data access by explicit locking instead of using channels. The Go standard library offers a mutual exclusion lock, <a href="https://golang.org/pkg/sync/#Mutex">sync.Mutex</a>, for this purpose.</p>
-
 <h2 id="use-with-caution">Use with caution</h2>
-
 <p>For this type of locking to be safe, it&rsquo;s crucial that all accesses
 to the shared data, both reads and writes, are performed only
 when a goroutine holds the lock. One mistake by a single goroutine
 is enough to introduce a data race and break the program.</p>
-
 <p>Because of this you should consider designing a custom data structure
 with a clean API and make sure that all the synchronization
 is done internally.</p>
-
 <p>In this example we build a safe and easy-to-use concurrent data structure, <code>AtomicInt</code>, that stores a single integer. Any number of goroutines can safely access this number through the <code>Add</code> and <code>Value</code> methods.</p>
-
 <pre><code>// AtomicInt is a concurrent data structure that holds an int.
 // Its zero value is 0.
 type AtomicInt struct {
@@ -201,14 +191,6 @@ func main() {
     <div class="author"></div>
   </div>
 
-
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
 
 </aside>
 </main>

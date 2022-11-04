@@ -84,72 +84,56 @@
 <article>
 <h1>Methods explained</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <p class="lead">Go doesn't have classes, but you can define methods on types.</p>
-
 <!-- CC0: https://pxhere.com/en/photo/1452109 -->
-
 <div ><img src="/golang/house-with-methods.png"></div>
-
 <p>You can define methods on any type declared in a type definition.</p>
-
 <ul>
-<li>A method is a function with an extra <strong>receiver</strong>&nbsp;argument.</li>
-<li>The receiver sits between the <code>func</code> keyword and the method&nbsp;name.</li>
+<li>A method is a function with an extra <strong>receiver</strong> argument.</li>
+<li>The receiver sits between the <code>func</code> keyword and the method name.</li>
 </ul>
-
-<p>In this example, the <code>HasGarage</code> method is associated with the&nbsp;<code>House</code> type.
-The&nbsp;method receiver is called&nbsp;<code>p</code>.</p>
-
+<p>In this example, the <code>HasGarage</code> method is associated with the <code>House</code> type.
+The method receiver is called <code>p</code>.</p>
 <pre><code class="skiphl">type House struct {
-    garage bool
+	garage bool
 }
 
 func <b>(p *House)</b> HasGarage() bool { return p.garage }
 
 func main() {
-    house := new(House)
-    fmt.Println(house.HasGarage()) <span class="comment">// Prints "false" (zero value)</span>
+	house := new(House)
+	fmt.Println(house.HasGarage()) <span class="comment">// Prints "false" (zero value)</span>
 }</code></pre>
-
 <h3 id="conversions-and-methods">Conversions and methods</h3>
-
 <p>If you <a href="/golang/conversions/">convert</a> a value to a different type,
-the new value will have the methods of the&nbsp;new&nbsp;type, but not the&nbsp;old.</p>
-
+the new value will have the methods of the new type, but not the old.</p>
 <pre><code class="skiphl">type MyInt int
 
 func (m MyInt) Positive() bool { return m > 0 }
 
 func main() {
-    var m MyInt = 2
-    m = m * m <span class="comment">// The operators of the underlying type still apply.</span>
+	var m MyInt = 2
+	m = m * m <span class="comment">// The operators of the underlying type still apply.</span>
 
-    fmt.Println(m.Positive())        <span class="comment">// Prints "true"</span>
-    fmt.Println(MyInt(3).Positive()) <span class="comment">// Prints "true"</span>
+	fmt.Println(m.Positive())        <span class="comment">// Prints "true"</span>
+	fmt.Println(MyInt(3).Positive()) <span class="comment">// Prints "true"</span>
 
-    var n int
-    n = int(m) <span class="comment">// The conversion is required.</span>
-    n = m      <span class="comment">// ILLEGAL</span>
+	var n int
+	n = int(m) <span class="comment">// The conversion is required.</span>
+	n = m      <span class="comment">// ILLEGAL</span>
 }</code></pre>
-<pre><code>../main.go:14:4: cannot use m (type MyInt) as type int in assignment</code></pre>
-<p>It&rsquo;s idiomatic in Go to convert the type of an expression to access a specific method.</p>
-
+<pre tabindex="0"><code>../main.go:14:4: cannot use m (type MyInt) as type int in assignment
+</code></pre><p>It&rsquo;s idiomatic in Go to convert the type of an expression to access a specific method.</p>
 <pre><code>var n int64 = 12345
 fmt.Println(n)                <span class="comment">// 12345</span>
 fmt.Println(time.Duration(n)) <span class="comment">// 12.345µs</span></code></pre>
-
 <p>(The underlying type of <a href="https://golang.org/pkg/time/#Duration"><code>time.Duration</code></a> is <code>int64</code>,
 and the <code>time.Duration</code> type has a <a href="https://golang.org/pkg/time/#Duration.String"><code>String</code></a> method
 that returns the duration formatted as a time.)</p>
-
 <h3 id="further-reading">Further reading</h3>
-
 <div><a href="/golang/inheritance-object-oriented/"><img src="/golang/improvement-thumb.jpg" title="Object-oriented programming without inheritance"></a></div>
-
 <p><a href="/golang/inheritance-object-oriented/">Object-oriented programming without inheritance</a>
-explains how composition, embedding and interfaces support code reuse and polymorphism in&nbsp;Go.</p>
+explains how composition, embedding and interfaces support code reuse and polymorphism in Go.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
 <a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fmethods-explained%2f&amp;text=Methods%20explained&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
@@ -188,15 +172,7 @@ explains how composition, embedding and interfaces support code reuse and polymo
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

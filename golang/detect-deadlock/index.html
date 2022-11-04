@@ -85,47 +85,36 @@
 <h1>How to debug deadlocks</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <p class="lead">A deadlock happens when a group of goroutines are waiting for each other and none of them is able to&nbsp;proceed.</p>
-
 <!-- CC BY-NC 2.0: http://www.flickr.com/photos/lasgalletas/263909727/ -->
-
 <div><img src="/golang/traffic-jam.jpg" alt="traffic jam"></div>
-
 <p>Take a look at this simple example.</p>
-<pre><code>func main() {
+<pre tabindex="0"><code>func main() {
 	ch := make(chan int)
 	ch &lt;- 1
 	fmt.Println(&lt;-ch)
-}</code></pre>
-<p>The program will get stuck on the channel send operation
+}
+</code></pre><p>The program will get stuck on the channel send operation
 waiting forever for someone to read the value.
 Go is able to detect situations like this at runtime.
 Here is the output from our program:</p>
-<pre><code>fatal error: all goroutines are asleep - deadlock!
+<pre tabindex="0"><code>fatal error: all goroutines are asleep - deadlock!
 
 goroutine 1 [chan send]:
 main.main()
-	.../deadlock.go:7 +0x6c</code></pre>
-<h2 id="debugging-tips">Debugging tips</h2>
-
+	.../deadlock.go:7 +0x6c
+</code></pre><h2 id="debugging-tips">Debugging tips</h2>
 <p>A goroutine can get stuck</p>
-
 <ul>
 <li>either because it&rsquo;s waiting for a <strong>channel</strong> or</li>
 <li>because it is waiting for one of the <strong>locks</strong> in the <a href="https://golang.org/pkg/sync/">sync</a> package.</li>
 </ul>
-
 <p>Common reasons are that</p>
-
 <ul>
 <li>no other goroutine has access to the channel or the lock,</li>
 <li>a group of goroutines are waiting for each other and none of them is able to proceed.</li>
 </ul>
-
 <p>Currently Go only detects when the program as a whole freezes, not when a subset of goroutines get stuck.</p>
-
 <p>With channels it&rsquo;s often easy to figure out what caused a deadlock. Programs that make heavy use of mutexes can, on the other hand, be notoriously difficult to debug.</p>
 
 <ul class="pagina">
@@ -177,14 +166,6 @@ main.main()
 
   </ul>
 
-
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
 
 </aside>
 </main>

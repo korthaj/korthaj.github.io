@@ -85,37 +85,31 @@
 <h1>Table-driven unit tests</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC BY 3.0: https://golang.org/doc/gopher/ -->
-
 <div><img src="/golang/swim-safe.png" style="float:right; margin: -25px 10px 0 0;" width="90px"></div>
-
-<p>Here is the code we want to&nbsp;test.</p>
-
+<p>Here is the code we want to test.</p>
 <pre><code>package search
 
 // Find returns the smallest index i at which x <= a[i].
 // If there is no such index, it returns len(a).
 // The slice must be sorted in ascending order.
 func Find(a []int, x int) int {
-    switch len(a) {
-    case 0:
-        return 0
-    case 1:
-        if x <= a[0] {
-            return 0
-        }
-        return 1
-    }
-    mid := len(a) / 2
-    if x <= a[mid-1] {
-        return Find(a[:mid], x)
-    }
-    return mid + Find(a[mid:], x)
+	switch len(a) {
+	case 0:
+		return 0
+	case 1:
+		if x <= a[0] {
+			return 0
+		}
+		return 1
+	}
+	mid := len(a) / 2
+	if x <= a[mid-1] {
+		return Find(a[:mid], x)
+	}
+	return mid + Find(a[mid:], x)
 }
 </code></pre>
-
 <ul>
 <li>Put the test code in a file whose name ends with <strong>_test.go</strong>.</li>
 <li>Write a function <code>TestXXX</code> with a single argument of type
@@ -123,47 +117,42 @@ func Find(a []int, x int) int {
 <li>To indicate a failed test, call a failure function such as
 <a href="https://golang.org/pkg/testing/#T.Errorf"><code>t.Errorf</code></a>.</li>
 </ul>
-
 <pre><code>package search
 
 <b>import "testing"</b>
 
 var tests = []struct {
-    a   []int
-    x   int
-    exp int
+	a   []int
+	x   int
+	exp int
 }{
-    {[]int{}, 1, 0},
-    {[]int{1, 2, 3, 3}, 0, 0},
-    {[]int{1, 2, 3, 3}, 1, 0},
-    {[]int{1, 2, 3, 3}, 2, 1},
-    {[]int{1, 2, 3, 3}, 3, 3}, <span class="comment">// incorrect test case</span>
-    {[]int{1, 2, 3, 3}, 4, 4},
+	{[]int{}, 1, 0},
+	{[]int{1, 2, 3, 3}, 0, 0},
+	{[]int{1, 2, 3, 3}, 1, 0},
+	{[]int{1, 2, 3, 3}, 2, 1},
+	{[]int{1, 2, 3, 3}, 3, 3}, <span class="comment">// incorrect test case</span>
+	{[]int{1, 2, 3, 3}, 4, 4},
 }
 
 func <b>TestFind(t *testing.T)</b> {
-    for _, e := range tests {
-        res := Find(e.a, e.x)
-        if res != e.exp {
-            <b>t.Errorf</b>("Find(%v, %d) = %d, expected %d",
-                e.a, e.x, res, e.exp)
-        }
-    }
+	for _, e := range tests {
+		res := Find(e.a, e.x)
+		if res != e.exp {
+			<b>t.Errorf</b>("Find(%v, %d) = %d, expected %d",
+				e.a, e.x, res, e.exp)
+		}
+	}
 }</code></pre>
-
 <p>Run the tests with <a href="https://golang.org/cmd/go/#hdr-Test_packages"><code>go test</code></a>.</p>
-
 <pre>$ <b>go test</b>
 --- FAIL: TestFind (0.00s)
-    <b>search_test.go</b>:22: Find([1 2 3 3], 3) = 2, expected 3
+	<b>search_test.go</b>:22: Find([1 2 3 3], 3) = 2, expected 3
 FAIL
 exit status 1
-FAIL    .../search  0.001s</pre>
-
+FAIL	.../search	0.001s</pre>
 <h3 id="further-reading">Further reading</h3>
-
 <p>The <a href="/algorithms/induction-recursive-functions/">Induction and recursive functions</a> article
-has a correctness proof for the&nbsp;<code>Find</code>&nbsp;function.</p>
+has a correctness proof for the <code>Find</code> function.</p>
 
 
 <h3>More code examples</h3>
@@ -200,15 +189,7 @@ has a correctness proof for the&nbsp;<code>Find</code>&nbsp;function.</p>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

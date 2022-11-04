@@ -85,14 +85,9 @@
 <h1>How to use JSON with Go [best practices]</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <p class="lead">The JSON data-interchange format is easy for humans to read and write, and efficient for machines to parse and generate.</p>
-
 <!-- CC0: https://pixabay.com/en/man-boy-stylish-internet-network-475559/-->
-
 <div><img src="/golang/bits-man.jpg"></div>
-
 <ul class="toc">
   <li><a href="#default-types">Default types</a></li>
   <li><a href="#encode-marshal-struct-to-json">Encode (marshal) struct to JSON</a></li>
@@ -101,105 +96,87 @@
   <li><a href="#arbitrary-objects-and-arrays">Arbitrary objects and arrays</a></li>
   <li><a href="#json-file-example">JSON file example</a></li>
 </ul>
-
 <h2 id="default-types">Default types</h2>
-
 <p>The default Go types for decoding and encoding JSON are</p>
-
 <ul>
 <li><code>bool</code> for JSON booleans,</li>
 <li><code>float64</code> for JSON numbers,</li>
 <li><code>string</code> for JSON strings, and</li>
 <li><code>nil</code> for JSON null.</li>
 </ul>
-
 <p>Additionally, <a href="https://golang.org/pkg/time/#Time"><code>time.Time</code></a> and
 the numeric types in the  <a href="https://golang.org/pkg/math/big/"><code>math/big</code></a> package
 can be automatically encoded as JSON strings.</p>
-
 <p>Note that JSON doesn&rsquo;t support basic integer types.
 They can often be approximated by floating-point numbers.</p>
-
 <blockquote>
 <p>Since software that implements IEEE 754-2008 binary64 (double precision) numbers
 is generally available and widely used, good interoperability can be
 achieved by implementations that expect no more precision or range than these provide [&hellip;]</p>
-
 <p>Note that when such software is used, numbers that are integers and
-are in the range [-2<sup>53</sup>&nbsp;+&nbsp;1,&nbsp;2<sup>53</sup>&nbsp;-&nbsp;1] are interoperable in the
+are in the range [-2<sup>53</sup> + 1, 2<sup>53</sup> - 1] are interoperable in the
 sense that implementations will agree exactly on their numeric values.
 <a class="quote-source" href="https://tools.ietf.org/html/rfc7159#section-6">RFC 7159: The JSON Data Interchange Format</a></p>
 </blockquote>
-
 <h2 id="encode-marshal-struct-to-json">Encode (marshal) struct to JSON</h2>
-
 <p>The <a href="https://golang.org/pkg/encoding/json/#Marshal"><code>json.Marshal</code></a> function
 in package <a href="https://golang.org/pkg/encoding/json/"><code>encoding/json</code></a> generates JSON data.</p>
-
 <pre><code>type FruitBasket struct {
-    Name    string
-    Fruit   []string
-    Id      int64  `json:"ref"`
-    private string <span class="comment">// An unexported field is not encoded.</span>
-    Created time.Time
+	Name    string
+	Fruit   []string
+	Id      int64  `json:"ref"`
+	private string <span class="comment">// An unexported field is not encoded.</span>
+	Created time.Time
 }
 
 basket := FruitBasket{
-    Name:    "Standard",
-    Fruit:   []string{"Apple", "Banana", "Orange"},
-    Id:      999,
-    private: "Second-rate",
-    Created: time.Now(),
+	Name:    "Standard",
+	Fruit:   []string{"Apple", "Banana", "Orange"},
+	Id:      999,
+	private: "Second-rate",
+	Created: time.Now(),
 }
 
 var jsonData []byte
 jsonData, err := <b>json.Marshal</b>(basket)
 if err != nil {
-    log.Println(err)
+	log.Println(err)
 }
 fmt.Println(string(jsonData))</code></pre>
-
 <p>Output:</p>
-<pre><code>{&#34;Name&#34;:&#34;Standard&#34;,&#34;Fruit&#34;:[&#34;Apple&#34;,&#34;Banana&#34;,&#34;Orange&#34;],&#34;ref&#34;:999,&#34;Created&#34;:&#34;2018-04-09T23:00:00Z&#34;}</code></pre>
-<p>Only data that can be represented as JSON will be encoded;
+<pre tabindex="0"><code>{&quot;Name&quot;:&quot;Standard&quot;,&quot;Fruit&quot;:[&quot;Apple&quot;,&quot;Banana&quot;,&quot;Orange&quot;],&quot;ref&quot;:999,&quot;Created&quot;:&quot;2018-04-09T23:00:00Z&quot;}
+</code></pre><p>Only data that can be represented as JSON will be encoded;
 see <a href="https://golang.org/pkg/encoding/json/#Marshal"><code>json.Marshal</code></a> for the complete rules.</p>
-
 <ul>
 <li>Only the exported (public) fields of a struct will be present in the JSON output.
-<strong>Other&nbsp;fields are&nbsp;ignored</strong>.</li>
+<strong>Other fields are ignored</strong>.</li>
 <li>A field with a <code>json:</code> <strong>struct tag</strong> is stored with its tag name instead of its variable name.</li>
 <li>Pointers will be encoded as the values they point to,
 or <code>null</code> if the pointer is <code>nil</code>.</li>
 </ul>
-
 <h2 id="pretty-print">Pretty print</h2>
-
 <p>Replace <code>json.Marshal</code> with <a href="https://golang.org/pkg/encoding/json/#MarshalIndent"><code>json.MarshalIndent</code></a>
 in the example above to indent the JSON output.</p>
-
 <pre><code>jsonData, err := <b>json.MarshalIndent</b>(basket, "", "    ")</code></pre>
-
 <p>Output:</p>
-<pre><code>{
-    &#34;Name&#34;: &#34;Standard&#34;,
-    &#34;Fruit&#34;: [
-        &#34;Apple&#34;,
-        &#34;Banana&#34;,
-        &#34;Orange&#34;
+<pre tabindex="0"><code>{
+    &quot;Name&quot;: &quot;Standard&quot;,
+    &quot;Fruit&quot;: [
+        &quot;Apple&quot;,
+        &quot;Banana&quot;,
+        &quot;Orange&quot;
     ],
-    &#34;ref&#34;: 999,
-    &#34;Created&#34;: &#34;2018-04-09T23:00:00Z&#34;
-}</code></pre>
-<h2 id="decode-unmarshal-json-to-struct">Decode (unmarshal) JSON to struct</h2>
-
+    &quot;ref&quot;: 999,
+    &quot;Created&quot;: &quot;2018-04-09T23:00:00Z&quot;
+}
+</code></pre><h2 id="decode-unmarshal-json-to-struct">Decode (unmarshal) JSON to struct</h2>
 <p>The <a href="https://golang.org/pkg/encoding/json/#Unmarshal"><code>json.Unmarshal</code></a> function
 in package <a href="https://golang.org/pkg/encoding/json/"><code>encoding/json</code></a> parses JSON data.</p>
-
 <pre><code>type FruitBasket struct {
-    Name    string
-    Fruit   []string
-    Id      int64 `json:"ref"`
-    Created time.Time
+	Name    string
+	Fruit   []string
+	Id      int64 `json:"ref"`
+	Created time.Time
 }
 
 jsonData := []byte(`
@@ -217,67 +194,54 @@ jsonData := []byte(`
 var basket FruitBasket
 err := json.Unmarshal(jsonData, &basket)
 if err != nil {
-    log.Println(err)
+	log.Println(err)
 }
 fmt.Println(basket.Name, basket.Fruit, basket.Id)
 fmt.Println(basket.Created)</code></pre>
-
 <p>Output:</p>
-<pre><code>Standard [Apple Banana Orange] 999
-2018-04-09 23:00:00 +0000 UTC</code></pre>
-<p>Note that <code>Unmarshal</code> allocated a new slice all by itself.
+<pre tabindex="0"><code>Standard [Apple Banana Orange] 999
+2018-04-09 23:00:00 +0000 UTC
+</code></pre><p>Note that <code>Unmarshal</code> allocated a new slice all by itself.
 This is how unmarshaling works for slices, maps and pointers.</p>
-
 <p>For a given JSON key <code>Foo</code>, <code>Unmarshal</code> will attempt to match the struct fields in this order:</p>
-
 <ol>
 <li>an exported (public) field with a struct tag <code><code>json:&quot;Foo&quot;</code></code>,</li>
 <li>an exported field named <code>Foo</code>, or</li>
 <li>an exported field named <code>FOO</code>, <code>FoO</code>, or some other case-insensitive match.</li>
 </ol>
-
 <p>Only fields thar are found in the destination type will be decoded:</p>
-
 <ul>
 <li>This is useful when you wish to pick only a few specific fields.</li>
 <li>In particular, any unexported fields in the destination struct will be unaffected.</li>
 </ul>
-
 <h2 id="arbitrary-objects-and-arrays">Arbitrary objects and arrays</h2>
-
 <p>The <a href="https://golang.org/pkg/encoding/json/">encoding/json</a> package uses</p>
-
 <ul>
 <li><code>map[string]interface{}</code> to store arbitrary JSON objects, and</li>
 <li><code>[]interface{}</code> to store arbitrary JSON arrays.</li>
 </ul>
-
 <p>It will unmarshal any valid JSON data into a plain <code>interface{}</code> value.</p>
-
 <p>Consider this JSON data:</p>
-<pre><code>{
-    &#34;Name&#34;: &#34;Eve&#34;,
-    &#34;Age&#34;: 6,
-    &#34;Parents&#34;: [
-        &#34;Alice&#34;,
-        &#34;Bob&#34;
+<pre tabindex="0"><code>{
+    &quot;Name&quot;: &quot;Eve&quot;,
+    &quot;Age&quot;: 6,
+    &quot;Parents&quot;: [
+        &quot;Alice&quot;,
+        &quot;Bob&quot;
     ]
-}</code></pre>
-<p>The <a href="https://golang.org/pkg/encoding/json/#Unmarshal"><code>json.Unmarshal</code></a> function will parse it into a map whose keys are strings, and whose values are
+}
+</code></pre><p>The <a href="https://golang.org/pkg/encoding/json/#Unmarshal"><code>json.Unmarshal</code></a> function will parse it into a map whose keys are strings, and whose values are
 themselves stored as empty interface values:</p>
-
 <pre><code><b>map[string]interface{}</b>{
-    "Name": "Eve",
-    "Age":  6.0,
-    "Parents": <b>[]interface{}</b>{
-        "Alice",
-        "Bob",
-    },
+	"Name": "Eve",
+	"Age":  6.0,
+	"Parents": <b>[]interface{}</b>{
+		"Alice",
+		"Bob",
+	},
 }</code></pre>
-
 <p>We can iterate through the map with a range statement and use a type switch
-to access its&nbsp;values.</p>
-
+to access its values.</p>
 <pre><code>jsonData := []byte(`{"Name":"Eve","Age":6,"Parents":["Alice","Bob"]}`)
 
 var v interface{}
@@ -285,36 +249,32 @@ var v interface{}
 data := v.(map[string]interface{})
 
 for k, v := range data {
-    switch v := v.(type) {
-    case string:
-        fmt.Println(k, v, "(string)")
-    case float64:
-        fmt.Println(k, v, "(float64)")
-    case []interface{}:
-        fmt.Println(k, "(array):")
-        for i, u := range v {
-            fmt.Println("    ", i, u)
-        }
-    default:
-        fmt.Println(k, v, "(unknown)")
-    }
+	switch v := v.(type) {
+	case string:
+		fmt.Println(k, v, "(string)")
+	case float64:
+		fmt.Println(k, v, "(float64)")
+	case []interface{}:
+		fmt.Println(k, "(array):")
+		for i, u := range v {
+			fmt.Println("    ", i, u)
+		}
+	default:
+		fmt.Println(k, v, "(unknown)")
+	}
 }</code></pre>
-
 <p>Output:</p>
-<pre><code>Name Eve (string)
+<pre tabindex="0"><code>Name Eve (string)
 Age 6 (float64)
 Parents (array):
      0 Alice
-     1 Bob</code></pre>
-<h2 id="json-file-example">JSON file example</h2>
-
+     1 Bob
+</code></pre><h2 id="json-file-example">JSON file example</h2>
 <p>The <a href="https://golang.org/pkg/encoding/json/#Decoder"><code>json.Decoder</code></a> and
 <a href="https://golang.org/pkg/encoding/json/#Encoder"><code>json.Encoder</code></a> types
 in package <a href="https://golang.org/pkg/encoding/json/"><code>encoding/json</code></a>
 offer support for reading and writing streams, e.g. files, of JSON data.</p>
-
 <p>The code in this example</p>
-
 <ul>
 <li>reads a stream of JSON objects from a <a href="/golang/io-reader-interface-explained/">Reader</a>
 (<a href="https://golang.org/pkg/strings/#Reader"><code>strings.Reader</code></a>),</li>
@@ -322,10 +282,9 @@ offer support for reading and writing streams, e.g. files, of JSON data.</p>
 <li>and then writes the objects to a <a href="/golang/io-writer-interface-explained/">Writer</a>
 (<a href="https://golang.org/pkg/os/#pkg-variables"><code>os.Stdout</code></a>).</li>
 </ul>
-
 <pre><code>const jsonData = `
-    {"Name": "Alice", "Age": 25}
-    {"Name": "Bob", "Age": 22}
+	{"Name": "Alice", "Age": 25}
+	{"Name": "Bob", "Age": 22}
 `
 reader := strings.NewReader(jsonData)
 writer := os.Stdout
@@ -334,30 +293,30 @@ dec := json.NewDecoder(reader)
 enc := json.NewEncoder(writer)
 
 for {
-    <span class="comment">// Read one JSON object and store it in a map.</span>
-    var m map[string]interface{}
-    if err := dec.Decode(&m); err == io.EOF {
-        break
-    } else if err != nil {
-        log.Fatal(err)
-    }
+	<span class="comment">// Read one JSON object and store it in a map.</span>
+	var m map[string]interface{}
+	if err := dec.Decode(&m); err == io.EOF {
+		break
+	} else if err != nil {
+		log.Fatal(err)
+	}
 
-    <span class="comment">// Remove all key-value pairs with key == "Age" from the map.</span>
-    for k := range m {
-        if k == "Age" {
-            delete(m, k)
-        }
-    }
+	<span class="comment">// Remove all key-value pairs with key == "Age" from the map.</span>
+	for k := range m {
+		if k == "Age" {
+			delete(m, k)
+		}
+	}
 
-    <span class="comment">// Write the map as a JSON object.</span>
-    if err := enc.Encode(&m); err != nil {
-        log.Println(err)
-    }
+	<span class="comment">// Write the map as a JSON object.</span>
+	if err := enc.Encode(&m); err != nil {
+		log.Println(err)
+	}
 }</code></pre>
-
 <p>Output:</p>
-<pre><code>{&#34;Name&#34;:&#34;Alice&#34;}
-{&#34;Name&#34;:&#34;Bob&#34;}</code></pre>
+<pre tabindex="0"><code>{&quot;Name&quot;:&quot;Alice&quot;}
+{&quot;Name&quot;:&quot;Bob&quot;}
+</code></pre>
 
 <h3>Further reading</h3>
 
@@ -401,15 +360,7 @@ for {
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

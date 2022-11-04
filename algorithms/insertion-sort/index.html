@@ -84,73 +84,59 @@
 <article>
 <h1>Insertion sort vs. selection sort (time complexity and performance)</h1>
 <div class="tagline">yourbasic.org</div>
-
-
 <!-- CC0: http://www.publicdomainpictures.net/view-image.php?image=96282&picture=playing-cards -->
-
 <div style="margin-top:1em;"><img src="/algorithms/sort-playing-cards.jpg"></div>
-
 <h2 id="insertion-sort">Insertion sort</h2>
-
 <p>Insertion sort is a simple sorting algorithm with <strong>quadratic</strong> worst-case <a href="/algorithms/time-complexity-explained/">time complexity</a>,
 but in some cases it&rsquo;s still the algorithm of choice.</p>
-
 <ul>
 <li>It&rsquo;s efficient for <strong>small data sets</strong>.
 It typically outperforms other simple quadratic algorithms,
 such as selection sort or bubble sort.</li>
 <li>It&rsquo;s <strong>adaptive</strong>: it sorts data sets that are already substantially sorted efficiently.
-The&nbsp;time complexity is O(<i>nk</i>) when each element is at most <i>k</i>&nbsp;places
+The time complexity is O(<i>nk</i>) when each element is at most <i>k</i> places
 away from its sorted position.</li>
 <li>It&rsquo;s <strong>stable</strong>: it doesn&rsquo;t change the order of elements with equal keys.</li>
 <li>It&rsquo;s <strong>in-place</strong>: it only requires a constant amount of additional memory.</li>
 <li>It has <a href="https://dl.acm.org/citation.cfm?id=1370599">good branch prediction characteristics</a>,
 typically limited to a single misprediction per key.</li>
 </ul>
-
 <pre><code>// InsertionSort sorts the elements of a in ascending order.
 func InsertionSort(a []int) {
-    for j := 1; j < len(a); j++ {
-        <span class="comment">// Invariant: a[:j] contains the same elements as</span>
-        <span class="comment">// the original slice a[:j], but in sorted order.</span>
-        key := a[j]
-        i := j - 1
-        for i >= 0 && a[i] > key {
-            a[i+1] = a[i]
-            i--
-        }
-        a[i+1] = key
-    }
+	for j := 1; j < len(a); j++ {
+		<span class="comment">// Invariant: a[:j] contains the same elements as</span>
+		<span class="comment">// the original slice a[:j], but in sorted order.</span>
+		key := a[j]
+		i := j - 1
+		for i >= 0 && a[i] > key {
+			a[i+1] = a[i]
+			i--
+		}
+		a[i+1] = key
+	}
 }</code></pre>
-
 <h2 id="selection-sort">Selection sort</h2>
-
-<p>In practice, selection sort generally performs worse than insertion&nbsp;sort.</p>
-
+<p>In practice, selection sort generally performs worse than insertion sort.</p>
 <ul>
 <li>It doesn&rsquo;t adapt to data and always performs a quadratic number of comparisons.</li>
 <li>However, it <strong>moves each element at most once</strong>.</li>
 </ul>
-
 <pre><code>// SelectionSort sorts the elements of a in ascending order.
 func SelectionSort(a []int) {
-    for j := 0; j < len(a)-1; j++ {
-        <span class="comment">// Invariant: a[:j] contains the first j elements</span>
-        <span class="comment">// of the final sorted slice.</span>
-        minPos := j
-        for i := j + 1; i < len(a); i++ {
-            if a[i] < a[minPos] {
-                minPos = i
-            }
-        }
-        a[j], a[minPos] = a[minPos], a[j]
-    }
+	for j := 0; j < len(a)-1; j++ {
+		<span class="comment">// Invariant: a[:j] contains the first j elements</span>
+		<span class="comment">// of the final sorted slice.</span>
+		minPos := j
+		for i := j + 1; i < len(a); i++ {
+			if a[i] < a[minPos] {
+				minPos = i
+			}
+		}
+		a[j], a[minPos] = a[minPos], a[j]
+	}
 }</code></pre>
-
 <h2 id="further-reading">Further reading</h2>
-
 <div><a href="/golang/quicksort-optimizations/"><img src="/golang/divide-conquer.jpg" width="200px" title="Top 3 Quicksort optimizations"></a></div>
-
 <p style="margin-top:0;">See <a href="/golang/quicksort-optimizations/">Optimized quicksort algorithm explained</a>
 for a fast Quicksort implementation that uses Insertion sort to improve performance.</p>
 
@@ -185,15 +171,7 @@ for a fast Quicksort implementation that uses Insertion sort to improve performa
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
     <div style="margin-top:1em;"><a href="/algorithms/time-complexity-explained/" title="How to analyse time complexity: Count your steps"><img src="/algorithms/abacus-mini.jpg"></a></div>
   <ul class="none">
   

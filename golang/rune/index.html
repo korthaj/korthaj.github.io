@@ -84,55 +84,38 @@
 <article>
 <h1>Runes and character encoding</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- No copyright: https://www.flickr.com/photos/34419668@N08/5435942992 -->
-
 <div style="margin-top:1em;"><img src="/golang/rune-stone-ballstorp-1900.jpg" alt="Runic letters encoded in stone"></div>
 <div style="font-size:smaller;">Runic letters encoded in stone, Ballstorp 1900</div>
-
 <h2 id="characters-ascii-and-unicode">Characters, ASCII and Unicode</h2>
-
 <blockquote>
 <p>The <code>rune</code> type is an alias for <code>int32</code>, and is used to emphasize
-than an integer represents a code&nbsp;point.</p>
+than an integer represents a code point.</p>
 </blockquote>
-
 <p><strong>ASCII</strong> defines 128 characters, identified by the <strong>code points</strong> 0–127.
 It covers English letters, Latin numbers, and a few other characters.</p>
-
 <p><strong>Unicode</strong>, which is a superset of ASCII, defines a codespace of 1,114,112 code points.
 Unicode version 10.0 covers 139 modern and historic scripts (including the runic alphabet, but not Klingon)
 as well as multiple symbol sets.</p>
-
 <h2 id="strings-and-utf-8-encoding">Strings and UTF-8 encoding</h2>
-
 <blockquote>
-<p>A <code>string</code> is a sequence of bytes, not&nbsp;runes.</p>
+<p>A <code>string</code> is a sequence of bytes, not runes.</p>
 </blockquote>
-
 <p>However, strings often contain Unicode text encoded in <a href="https://research.swtch.com/utf8">UTF-8</a>,
-which encodes all Unicode code points using one to four&nbsp;bytes.
+which encodes all Unicode code points using one to four bytes.
 (ASCII characters are encoded with one byte, while other code points use more.)</p>
-
 <p>Since Go source code itself is encoded as UTF-8, string literals
 will automatically get this encoding.</p>
-
-<p>For example, in the string <code>&quot;café&quot;</code> the character <code>é</code> (code point 233) is encoded using two&nbsp;bytes,
+<p>For example, in the string <code>&quot;café&quot;</code> the character <code>é</code> (code point 233) is encoded using two bytes,
 while the ASCII characters <code>c</code>, <code>a</code> and <code>f</code>
-(code points 99, 97 and 102) only use&nbsp;one:</p>
-
+(code points 99, 97 and 102) only use one:</p>
 <pre><code>fmt.Println(<b>[]byte</b>("café")) <span class="comment">// [99 97 102 195 169]</span>
 fmt.Println(<b>[]rune</b>("café")) <span class="comment">// [99 97 102 233]</span>
 </code></pre>
-
 <p>See <a href="/golang/convert-string-to-byte-slice/">Convert between byte array/slice and string</a> and
 <a href="/golang/convert-string-to-rune-slice/">Convert between rune array/slice and string</a>.</p>
-
 <h3 id="further-reading">Further reading</h3>
-
 <div><a href="/golang/multiline-string/" title="Escapes and multiline strings"><img src="/golang/ascii-art.png"></a></div>
-
 <p style="margin-top:0em;"><a href="/golang/multiline-string/">Escapes and multiline strings</a></p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -172,15 +155,7 @@ fmt.Println(<b>[]rune</b>("café")) <span class="comment">// [99 97 102 233]</sp
     <div class="author">Russ Cox</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

@@ -84,12 +84,8 @@
 <article>
 <h1>Package documentation</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC BY 3.0: https://golang.org/doc/gopher/ -->
-
 <div><img src="/golang/ref.png" style="float: right; margin: 0 0 25px 10px;"></div>
-
 <ul class="toc">
   <li><a href="#godoc-org-website">godoc.org website</a></li>
   <li><a href="#local-godoc-server">Local godoc server</a></li>
@@ -97,52 +93,41 @@
   <li><a href="#create-documentation">Create documentation</a></li>
   <li><a href="#runnable-documentation-examples">Runnable documentation examples</a></li>
 </ul>
-
-<h2 id="godoc-org-website">godoc.org website</h2>
-
-<p>The <a href="https://godoc.org/">GoDoc</a> website hosts docu&shy;men&shy;tation for all public
-Go <a href="/golang/packages-explained/">packages</a> on Bitbucket, GitHub, Google Project Hosting and&nbsp;Launchpad.</p>
-
+<h2 id="godocorg-website">godoc.org website</h2>
+<p>The <a href="https://godoc.org/">GoDoc</a> website hosts docu­men­tation for all public
+Go <a href="/golang/packages-explained/">packages</a> on Bitbucket, GitHub, Google Project Hosting and Launchpad.</p>
 <h2 id="local-godoc-server">Local godoc server</h2>
-
 <p>The <a href="https://godoc.org/golang.org/x/tools/cmd/godoc">godoc</a> command
 extracts and generates documentation for all locally installed Go programs,
 both your own code and the standard libraries.</p>
-
 <p>The following command starts a web server that presents the documentation
 at <code>http://localhost:6060/</code>.</p>
-<pre><code>$ godoc -http=:6060 &amp;</code></pre>
-<div><img src="/golang/localhost-6060.png" alt="Web browser localhost:6060" style="border:1px solid grey;" ></div>
-
+<pre tabindex="0"><code>$ godoc -http=:6060 &amp;
+</code></pre><div><img src="/golang/localhost-6060.png" alt="Web browser localhost:6060" style="border:1px solid grey;" ></div>
 <p>The documentation is tightly coupled with the code.
 For example, you can navigate from a function&rsquo;s documentation to its implementation with a single click.</p>
-
 <h2 id="go-doc-command-line-tool">go doc command-line tool</h2>
-
 <p>The <a href="https://golang.org/cmd/go/#hdr-Show_documentation_for_package_or_symbol">go doc</a>
 command prints plain text documentation to standard output:</p>
-<pre><code>$ go doc fmt Println
+<pre tabindex="0"><code>$ go doc fmt Println
 func Println(a ...interface{}) (n int, err error)
     Println formats using the default formats for its operands and writes to
     standard output. Spaces are always added between operands and a newline is
     appended. It returns the number of bytes written and any write error
-    encountered.</code></pre>
-<h2 id="create-documentation">Create documentation</h2>
-
+    encountered.
+</code></pre><h2 id="create-documentation">Create documentation</h2>
 <p>To document a function, type, constant, variable, or even a complete package,
 write a regular comment directly preceding its declaration, with no blank line in between.
 For example, this is the documentation for the
 <a href="https://golang.org/src/fmt/print.go?s=7388:7437#L246"><code>fmt.Println</code></a> function:</p>
-<pre><code>// Println formats using the default formats for its operands and writes to standard output.
+<pre tabindex="0"><code>// Println formats using the default formats for its operands and writes to standard output.
 // Spaces are always added between operands and a newline is appended.
 // It returns the number of bytes written and any write error encountered.
 func Println(a ...interface{}) (n int, err error) {
-…</code></pre>
-<p>For best practices on how to document Go code,
+…
+</code></pre><p>For best practices on how to document Go code,
 see <a href="https://golang.org/doc/effective_go.html#commentary">Effective Go: Commentary</a>.</p>
-
 <h2 id="runnable-documentation-examples">Runnable documentation examples</h2>
-
 <p>You can add example code snippets to the package documentation;
 this code is verified by running it as a test.
 For more information on how to create such testable examples,
@@ -197,15 +182,7 @@ see <a href="https://blog.golang.org/examples">The Go Blog: Testable Examples in
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

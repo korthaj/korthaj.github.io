@@ -85,58 +85,42 @@
 <h1>Channels offer synchronized communication</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <p class="lead">A&nbsp;channel is a mechanism for goroutines to <b>synchronize execution</b> and <b>communicate</b> by passing values.</p>
-
 <!-- CC BY-NC-ND 2.0: https://www.flickr.com/photos/erikjaeger/35008017/ -->
-
-<p><img src="/golang/sushi-conveyor-belt.jpg" alt="sushi conveyor belt"></p>
-
+<img src="/golang/sushi-conveyor-belt.jpg" alt="sushi conveyor belt">
 <p>A new channel value can be made using the built-in function <code>make</code>.</p>
-
 <pre><code><span class="comment">// unbuffered channel of ints</span>
 ic := make(chan int)
 
 <span class="comment">// buffered channel with room for 10 strings</span>
 sc := make(chan string, 10)</code></pre>
-
 <p><strong>To send</strong> a value on a channel, use <code>&lt;-</code> as a binary operator. <strong>To receive</strong> a value on a channel, use it as a unary operator.</p>
-
 <pre><code>ic <- 3   <span class="comment">// Send 3 on the channel.</span>
 n := <-sc <span class="comment">// Receive a string from the channel.</span></code></pre>
-
 <p>The <code>&lt;-</code> operator specifies the channel direction, <strong>send</strong> or <strong>receive</strong>. If no direction is given, the channel is <strong>bi-directional</strong>.</p>
-
 <pre><code>chan Sushi    <span class="comment">// can be used to send and receive values of type Sushi</span>
 chan<- string <span class="comment">// can only be used to <b>send</b> strings</span>
 <-chan int    <span class="comment">// can only be used to <b>receive</b> ints</span></code></pre>
-
 <h2 id="buffered-and-unbuffered-channels">Buffered and unbuffered channels</h2>
-
 <ul>
 <li>If the capacity of a channel is zero or absent, the channel is <strong>unbuffered</strong> and the sender blocks until the receiver has received the value.</li>
 <li>If the channel <strong>has a buffer</strong>, the sender blocks only until the value has been copied to the buffer; if the buffer is full, this means waiting until some receiver has retrieved a value.</li>
 <li>Receivers always block until there is data to receive.</li>
 <li>Sending or receiving from a <code>nil</code> channel blocks forever.</li>
 </ul>
-
 <h2 id="closing-a-channel">Closing a channel</h2>
-
 <p>The <code>close</code> function records that no more values will be sent on a channel. Note that it is only necessary to close a channel if a receiver is looking for a close.</p>
-
 <ul>
 <li>After calling <code>close</code>, and after any previously sent values have been received,
 receive operations will return a <a href="/golang/default-zero-value/">zero value</a> without blocking.</li>
 <li>A multi-valued receive operation additionally returns an indication of whether the channel is closed.</li>
 <li>Sending to or closing a closed channel causes a run-time panic.
-Closing a nil&nbsp;channel also causes a run-time panic.</li>
+Closing a nil channel also causes a run-time panic.</li>
 </ul>
-
 <pre><code>ch := make(chan string)
 go func() {
-    ch <- "Hello!"
-    close(ch)
+	ch <- "Hello!"
+	close(ch)
 }()
 
 fmt.Println(<-ch) <span class="comment">// Print "Hello!".</span>
@@ -146,13 +130,11 @@ v, ok := <-ch     <span class="comment">// v is "", ok is false.</span>
 
 <span class="comment">// Receive values from ch until closed.</span>
 for v := range ch {
-    fmt.Println(v) <span class="comment">// Will not be executed.</span>
+	fmt.Println(v) <span class="comment">// Will not be executed.</span>
 }</code></pre>
-
 <h2 id="example">Example</h2>
-
 <p>In the following example we let the <code>Publish</code> function return a channel, which is used to broadcast a message when the text has been published.</p>
-<pre><code>// Publish prints text to stdout after the given time has expired.
+<pre tabindex="0"><code>// Publish prints text to stdout after the given time has expired.
 // It closes the wait channel when the text has been published.
 func Publish(text string, delay time.Duration) (wait &lt;-chan struct{}) {
 	ch := make(chan struct{})
@@ -162,10 +144,9 @@ func Publish(text string, delay time.Duration) (wait &lt;-chan struct{}) {
 		close(ch)
 	}()
 	return ch
-}</code></pre>
-<p>Note that we use a channel of empty structs to indicate that the channel will only be used for signalling, not for passing data.
+}
+</code></pre><p>Note that we use a channel of empty structs to indicate that the channel will only be used for signalling, not for passing data.
 This is how you might use the function.</p>
-
 <pre><code>wait := Publish("important news", 2 * time.Minute)
 <span class="comment">// Do some more work.</span>
 <-wait <span class="comment">// Block until the text has been published.</span></code></pre>
@@ -219,14 +200,6 @@ This is how you might use the function.</p>
 
   </ul>
 
-
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
 
 </aside>
 </main>

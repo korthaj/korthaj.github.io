@@ -84,10 +84,7 @@
 <article>
 <h1>Binary search trees explained</h1>
 <div class="tagline">yourbasic.org</div>
-
-
 <div><img src="/algorithms/tree.png" class="extra-content" style="float:right; margin:10px 60px 0 0;"></div>
-
 <ul class="toc">
   <li><a href="#binary-tree-definitions">Binary tree definitions</a></li>
   <li><a href="#binary-search-tree">Binary search tree</a>
@@ -104,11 +101,8 @@
     </ul>
   </li>
 </ul>
-
 <h2 id="binary-tree-definitions">Binary tree definitions</h2>
-
-<p>A <b>binary tree</b> is a data structure most easily described by&nbsp;recursion.</p>
-
+<p>A <b>binary tree</b> is a data structure most easily described by recursion.</p>
 <blockquote>
 A <b>binary tree</b>
 <ul style="margin:0.5em 0;">
@@ -118,18 +112,14 @@ A <b>binary tree</b>
   the left and right subtree, which are also binary trees.</li>
 </ul>
 </blockquote>
-
-<p>A node with two empty subtrees is called a&nbsp;<b>leaf</b>.</p>
-
+<p>A node with two empty subtrees is called a <b>leaf</b>.</p>
 <p>If <code>p</code> is a node and <code>q</code> is the root of
 <code>p</code>&rsquo;s subtree, we say that
 <code>p</code> is the <b>parent</b> of <code>q</code>
-and that <code>q</code> is a <b>child</b> of&nbsp;<code>p</code>.
+and that <code>q</code> is a <b>child</b> of <code>p</code>.
 Two nodes with the same parents are called <b>siblings</b>.</p>
-
-<p>The set of <b>ancestors</b> if the node&nbsp;<code>n</code>
-is defined recursively by these two&nbsp;rules:</p>
-
+<p>The set of <b>ancestors</b> if the node <code>n</code>
+is defined recursively by these two rules:</p>
 <ul>
 <li><code>n</code> is an ancestor of&nbsp;<code>n</code>.
 </li>
@@ -138,25 +128,18 @@ is defined recursively by these two&nbsp;rules:</p>
     <code>p</code> is an ancestor of&nbsp;<code>n</code> as&nbsp;well.
 </li>
 </ul>
-
-<p>The set of ancestors to the node&nbsp;<code>n</code>
-form a <b>path</b> from&nbsp;<code>n</code>
-to the root of the&nbsp;tree.</p>
-
+<p>The set of ancestors to the node <code>n</code>
+form a <b>path</b> from <code>n</code>
+to the root of the tree.</p>
 <p>The <b>depth of a node</b> is the number of element on the path from
-the node to the&nbsp;root.</p>
-
+the node to the root.</p>
 <p>The <b>depth of a tree</b> is defined to be the largest depth of any
-node in the tree. The empty tree has depth&nbsp;0.</p>
-
+node in the tree. The empty tree has depth 0.</p>
 <h2 id="binary-search-tree">Binary search tree</h2>
-
 <p>A <b>binary search tree</b> is a binary tree where each node contains
 a value from a well-ordered set.</p>
-
 <p>For <b>each node</b> <code>n</code> in a binary search tree
-the following invariants&nbsp;hold.</p>
-
+the following invariants hold.</p>
 <ul>
 <li>Every node in the <b>left subtree</b> of&nbsp;<code>n</code> contains
 a value which is <b>smaller</b> than the value in the node&nbsp;<code>n</code>.
@@ -165,43 +148,30 @@ a value which is <b>smaller</b> than the value in the node&nbsp;<code>n</code>.
 a value which is <b>larger</b> than the value in the node&nbsp;<code>n</code>.
 </li>
 </ul>
-
 <h3 id="example">Example</h3>
-
-<p>This binary tree has 9&nbsp;nodes and depth&nbsp;4.</p>
-
+<p>This binary tree has 9 nodes and depth 4.</p>
 <!-- Public domain: https://en.wikipedia.org/wiki/File:Binary_search_tree.svg -->
-
-<p><img style="margin: 8px 18px;" src="/algorithms/binary-tree.png" alt="binary search tree"></p>
-
-<p>The root of the tree contains the value&nbsp;8.
+<img style="margin: 8px 18px;" src="/algorithms/binary-tree.png" alt="binary search tree">
+<p>The root of the tree contains the value 8.
 The leaf values are 1, 4, 7 and 13.</p>
-
 <ul>
-<li>Each node in the left subtree has a value smaller than &nbsp;8,</li>
-<li>while each node in the right subtree has a value larger than &nbsp;8.</li>
+<li>Each node in the left subtree has a value smaller than  8,</li>
+<li>while each node in the right subtree has a value larger than  8.</li>
 </ul>
-
 <p>In fact, this is a binary search tree, since
-the corresponding invariant holds for <b>each&nbsp;node</b> in the&nbsp;tree.</p>
-
-<h2 id="balanced-trees-with-o-log-n-time-complexity">Balanced trees with O(log n) time complexity</h2>
-
+the corresponding invariant holds for <b>each node</b> in the tree.</p>
+<h2 id="balanced-trees-with-olog-n-time-complexity">Balanced trees with O(log n) time complexity</h2>
 <p>We say that a tree is <b>well-balanced</b> if each node in the tree has
 two subtrees with roughly the same number of nodes.
-It&rsquo;s possible to show that a well-balanced tree with <i>n</i>&nbsp;nodes
-has depth <i>O</i>(log&nbsp;<i>n</i>).</p>
-
+It&rsquo;s possible to show that a well-balanced tree with <i>n</i> nodes
+has depth <i>O</i>(log <i>n</i>).</p>
 <p>If we can manage to keep a binary search tree well-balanced,
 we get an <b>ordered</b> data structure with
-<i>O</i>(log&nbsp;<i>n</i>) worst-case time complexity for all basic operations:
+<i>O</i>(log <i>n</i>) worst-case time complexity for all basic operations:
 lookup, addition and removal.</p>
-
 <div><a href="/algorithms/treap/" title="Treaps: randomized search trees"><img src="/algorithms/search-tree-thumb.png" class="extra-content" style="float:right; margin-right:20px;"></a></div>
-
 <p>There are several, more or less complicated, strategies
 to keep a binary search tree well-balanced.</p>
-
 <ul>
 <li><b>AVL trees</b> came first,
 </li>
@@ -210,25 +180,18 @@ to keep a binary search tree well-balanced.</p>
 <li><b>Treaps</b>, randomized binary search trees, are simple and elegant.
 </li>
 </ul>
-
 <p>See the <a href="/algorithms/treap/">Treaps: randomized search trees</a> article
 for a full description of treaps.</p>
-
 <p>In this text we only present pseudocode for some basic operations
 on unbalanced binary search trees.</p>
-
 <blockquote class="warning">
 <b>Warning:</b> An unbalanced tree can be very inefficient.
 In the most extreme case, for example when all left subtrees are empty,
 the tree degrades into a singly linked list.
 </blockquote>
-
 <h2 id="tree-algorithms">Tree algorithms</h2>
-
 <h3 id="inorder-traversal">Inorder traversal</h3>
-
 <p>An <b>inorder</b> traversal of a binary search tree visits the nodes in sorted order.</p>
-
 <pre>
 // Visit all nodes of a binary search tree in sorted order.
 <b>Algorithm</b> inorder(root)
@@ -239,13 +202,10 @@ the tree degrades into a singly linked list.
         // do something with root
         inorder(root.right)
 </pre>
-
 <h3 id="search">Search</h3>
-
 <p>It&rsquo;s pretty straightforward to implement the find operation
 in a binary search tree with iteration, but to
 keep things simple, here is a recursive version.</p>
-
 <pre>
 // Returns true if the value is found in the tree.
 <b>Algorithm</b> find(value, root)
@@ -258,13 +218,10 @@ keep things simple, here is a recursive version.</p>
     <b>else</b>
         return find(value, root.right)
 </pre>
-
 <h3 id="insert">Insert</h3>
-
 <p>To implement an algorithm that changes the structure of a tree,
 it&rsquo;s convenient to define a function that takes the root of the old tree
 as input, and returns the root of new updated tree.</p>
-
 <pre>
 // Adds a new node and returns the root of the updated tree.
 <b>Algorithm</b> insert(node, root)
@@ -298,15 +255,7 @@ as input, and returns the root of new updated tree.</p>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
     <div style="margin-top:1em;"><a href="/algorithms/time-complexity-explained/" title="How to analyse time complexity: Count your steps"><img src="/algorithms/abacus-mini.jpg"></a></div>
   <ul class="none">
   

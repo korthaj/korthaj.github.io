@@ -84,12 +84,8 @@
 <article>
 <h1>Go string handling overview [cheat sheet]</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC0: https://pixabay.com/en/typewriter-old-letters-print-keys-1505997/ -->
-
 <div><img src="/golang/typewriter.png" class="extra-content" style="float:right;margin-top:2em;"></div>
-
 <ul class="toc">
   <li><a href="#string-literals-escape-characters">String literals (escape characters)</a></li>
   <li><a href="#concatenate">Concatenate</a></li>
@@ -103,9 +99,7 @@
   <li><a href="#format-and-convert">Format and convert</a></li>
   <li><a href="#regular-expressions">Regular expressions</a></li>
 </ul>
-
 <h2 id="string-literals-escape-characters">String literals (escape characters)</h2>
-
 <table class="white">
   <thead>
     <tr>
@@ -172,13 +166,10 @@
     </tr>
   </tbody>
 </table>
-
-<p>&#42; In <code>``</code> string literals, text is interpreted literally and
+<p>* In <code>``</code> string literals, text is interpreted literally and
 backslashes have no special meaning.
 See <a href="/golang/multiline-string/">Escapes and multiline strings</a> for more on raw strings, escape characters and string encodings.</p>
-
 <h2 id="concatenate">Concatenate</h2>
-
 <table class="white">
   <thead>
     <tr>
@@ -195,15 +186,12 @@ See <a href="/golang/multiline-string/">Escapes and multiline strings</a> for mo
     </tr>
   </tbody>
 </table>
-
 <blockquote>
 <p><b>Performance tips</b><br>
 See <a href="/golang/build-append-concatenate-strings-efficiently/">3 tips for efficient string concatenation</a>
 for how to best use a string builder to concatenate strings without redundant copying.</p>
 </blockquote>
-
 <h2 id="equal-and-compare-ignore-case">Equal and compare (ignore case)</h2>
-
 <table class="white">
   <thead>
     <tr>
@@ -230,9 +218,7 @@ for how to best use a string builder to concatenate strings without redundant co
     </tr>
   </tbody>
 </table>
-
 <h2 id="length-in-bytes-or-runes">Length in bytes or runes</h2>
-
 <table class="white">
   <thead>
     <tr>
@@ -258,9 +244,7 @@ for how to best use a string builder to concatenate strings without redundant co
     </tr>
   </tbody>
 </table>
-
 <h2 id="index-substring-iterate">Index, substring, iterate</h2>
-
 <table class="white">
   <thead>
     <tr>
@@ -292,24 +276,18 @@ for how to best use a string builder to concatenate strings without redundant co
     </tr>
   </tbody>
 </table>
-
 <p>A Go <a href="/golang/for-loop-range-array-slice-map-channel/">range loop</a> iterates over UTF-8 encoded characters (<a href="/golang/rune/">runes</a>):</p>
-
 <pre><code>for i, ch := range "Japan 日本" {
-    fmt.Printf("%d:%q ", i, ch)
+	fmt.Printf("%d:%q ", i, ch)
 }
 <span class="comment">// Output: 0:'J' 1:'a' 2:'p' 3:'a' 4:'n' 5:' ' 6:'日' 9:'本'</span></code></pre>
-
 <p>Iterating over bytes produces nonsense characters for non-ASCII text:</p>
-
 <pre><code>s := "Japan 日本"
 for i := 0; i < len(s); i++ {
-    fmt.Printf("%q ", s[i])
+	fmt.Printf("%q ", s[i])
 }
 <span class="comment">// Output: 'J' 'a' 'p' 'a' 'n' ' ' 'æ' '\u0097' '¥' 'æ' '\u009c' '¬'</span></code></pre>
-
-<h2 id="search-contains-prefix-suffix-index">Search (contains, prefix/suffix, index)</h2>
-
+<h2 id="search-contains-prefixsuffix-index">Search (contains, prefix/suffix, index)</h2>
 <table class="white">
   <thead>
     <tr>
@@ -366,9 +344,7 @@ for i := 0; i < len(s); i++ {
     </tr>
   </tbody>
 </table>
-
-<h2 id="replace-uppercase-lowercase-trim">Replace (uppercase/lowercase, trim)</h2>
-
+<h2 id="replace-uppercaselowercase-trim">Replace (uppercase/lowercase, trim)</h2>
 <table class="white">
   <thead>
     <tr>
@@ -435,9 +411,7 @@ for i := 0; i < len(s); i++ {
     </tr>
   </tbody>
 </table>
-
 <h2 id="split-by-space-or-comma">Split by space or comma</h2>
-
 <table class="white">
   <thead>
     <tr>
@@ -464,9 +438,7 @@ for i := 0; i < len(s); i++ {
     </tr>
   </tbody>
 </table>
-
 <h2 id="join-strings-with-separator">Join strings with separator</h2>
-
 <table class="white">
   <thead>
     <tr>
@@ -488,9 +460,7 @@ for i := 0; i < len(s); i++ {
     </tr>
   </tbody>
 </table>
-
 <h2 id="format-and-convert">Format and convert</h2>
-
 <table class="white">
   <thead>
     <tr>
@@ -512,23 +482,15 @@ for i := 0; i < len(s); i++ {
     </tr>
   </tbody>
 </table>
-
 <h3 id="sprintf">Sprintf</h3>
-
 <p>The <a href="https://golang.org/pkg/fmt/#Sprintf"><code>fmt.Sprintf</code></a> function
 is often your best friend when formatting data:</p>
-
 <pre><code>s := fmt.Sprintf("%.4f", math.Pi) <span class="comment">// s == "3.1416"</span></code></pre>
-
 <div><a href="/golang/fmt-printf-reference-cheat-sheet/"><img src="/golang/format-thumb.jpg" title="fmt cheat sheet"></a></div>
-
 <p>This <a href="/golang/fmt-printf-reference-cheat-sheet/">fmt cheat sheet</a>
 covers the most common formatting flags.</p>
-
 <h2 id="regular-expressions">Regular expressions</h2>
-
 <div><a href="/golang/regexp-cheat-sheet/"><img src="/golang/cog-wheels-thumb.jpg" title="Regular expressions"></a></div>
-
 <p>For more advanced string handling, see  this <a href="/golang/regexp-cheat-sheet/">Regular expressions tutorial</a>,
 a gentle introduction to the <code>regexp</code> package with cheat sheet
 and plenty of examples.</p>
@@ -564,15 +526,7 @@ and plenty of examples.</p>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

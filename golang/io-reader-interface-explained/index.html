@@ -84,48 +84,37 @@
 <article>
 <h1>How to use the io.Reader interface</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC0: https://pixabay.com/en/still-life-teddy-white-read-book-1037378/ -->
-
 <div style="margin-top:1em;"><img src="/golang/teddy-bear-reading.jpg"></div>
-
 <ul class="toc">
   <li><a href="#basics">Basics</a></li>
   <li><a href="#use-a-built-in-reader">Use a built-in reader</a></li>
   <li><a href="#read-directly-from-a-byte-stream">Read directly from a byte stream</a></li>
   <li><a href="#buffered-reading-and-scanning">Buffered reading and scanning</a></li>
 </ul>
-
 <h2 id="basics">Basics</h2>
-
 <p>The <a href="https://golang.org/pkg/io/#Reader"><code>io.Reader</code></a> <a href="/golang/interfaces-explained/">interface</a> represents an entity
-from which you can read a stream of&nbsp;bytes.</p>
-<pre><code>type Reader interface {
+from which you can read a stream of bytes.</p>
+<pre tabindex="0"><code>type Reader interface {
         Read(buf []byte) (n int, err error)
-}</code></pre>
-<p><code>Read</code> reads up to <code>len(buf)</code> bytes into <code>buf</code> and returns the number of bytes read &ndash;
-it returns an <a href="https://golang.org/pkg/io/#pkg-variables"><code>io.EOF</code></a> error when the stream&nbsp;ends.</p>
-
+}
+</code></pre><p><code>Read</code> reads up to <code>len(buf)</code> bytes into <code>buf</code> and returns the number of bytes read –
+it returns an <a href="https://golang.org/pkg/io/#pkg-variables"><code>io.EOF</code></a> error when the stream ends.</p>
 <p>The standard library provides numerous Reader
 <a href="https://golang.org/search?q=Read#Global">implementations</a>
 (including in-memory byte buffers, files and network connections),
 and Readers are accepted as input by many utilities
 (including the HTTP client and server implementations).</p>
-
 <h2 id="use-a-built-in-reader">Use a built-in reader</h2>
-
 <p>As an example, you can create a Reader from a string using the <a href="https://golang.org/pkg/strings/#Reader"><code>strings.Reader</code></a> function and then pass the Reader directly to the <a href="https://golang.org/pkg/net/http/#Post"><code>http.Post</code></a> function in package <a href="https://golang.org/pkg/net/http/"><code>net/http</code></a>.
 The Reader is then used as the source for the data to be posted.</p>
-<pre><code>r := strings.NewReader(&#34;my request&#34;)
-resp, err := http.Post(&#34;http://foo.bar&#34;,
-	&#34;application/x-www-form-urlencoded&#34;, r)</code></pre>
-<p>Since <code>http.Post</code> uses a Reader instead of a <code>[]byte</code> it&rsquo;s trivial to, for instance, use the contents of a file instead.</p>
-
+<pre tabindex="0"><code>r := strings.NewReader(&quot;my request&quot;)
+resp, err := http.Post(&quot;http://foo.bar&quot;,
+	&quot;application/x-www-form-urlencoded&quot;, r)
+</code></pre><p>Since <code>http.Post</code> uses a Reader instead of a <code>[]byte</code> it&rsquo;s trivial to, for instance, use the contents of a file instead.</p>
 <h2 id="read-directly-from-a-byte-stream">Read directly from a byte stream</h2>
-
-<p>You can use the <code>Read</code> function directly (this is the least common use&nbsp;case).</p>
-<pre><code>r := strings.NewReader(&#34;abcde&#34;)
+<p>You can use the <code>Read</code> function directly (this is the least common use case).</p>
+<pre tabindex="0"><code>r := strings.NewReader(&quot;abcde&quot;)
 
 buf := make([]byte, 4)
 for {
@@ -134,12 +123,13 @@ for {
 	if err == io.EOF {
 		break
 	}
-}</code></pre><pre><code>4 &lt;nil&gt; [97 98 99 100]
+}
+</code></pre><pre tabindex="0"><code>4 &lt;nil&gt; [97 98 99 100]
 1 &lt;nil&gt; [101]
-0 EOF []</code></pre>
-<p>Use <a href="https://golang.org/pkg/io/#ReadFull"><code>io.ReadFull</code></a> to read exactly
-<code>len(buf)</code>&nbsp;bytes into&nbsp;<code>buf</code>:</p>
-<pre><code>r := strings.NewReader(&#34;abcde&#34;)
+0 EOF []
+</code></pre><p>Use <a href="https://golang.org/pkg/io/#ReadFull"><code>io.ReadFull</code></a> to read exactly
+<code>len(buf)</code> bytes into <code>buf</code>:</p>
+<pre tabindex="0"><code>r := strings.NewReader(&quot;abcde&quot;)
 
 buf := make([]byte, 4)
 if _, err := io.ReadFull(r, buf); err != nil {
@@ -149,23 +139,22 @@ fmt.Println(buf)
 
 if _, err := io.ReadFull(r, buf); err != nil {
 	fmt.Println(err)
-}</code></pre><pre><code>[97 98 99 100]
-unexpected EOF</code></pre>
-<p>Use <a href="https://golang.org/pkg/io/ioutil/#ReadAll"><code>ioutil.ReadAll</code></a> to read everything:</p>
-<pre><code>r := strings.NewReader(&#34;abcde&#34;)
+}
+</code></pre><pre tabindex="0"><code>[97 98 99 100]
+unexpected EOF
+</code></pre><p>Use <a href="https://golang.org/pkg/io/ioutil/#ReadAll"><code>ioutil.ReadAll</code></a> to read everything:</p>
+<pre tabindex="0"><code>r := strings.NewReader(&quot;abcde&quot;)
 
 buf, err := ioutil.ReadAll(r)
 if err != nil {
 	log.Fatal(err)
 }
-fmt.Println(buf)</code></pre><pre><code>[97 98 99 100 101]</code></pre>
-<h2 id="buffered-reading-and-scanning">Buffered reading and scanning</h2>
-
+fmt.Println(buf)
+</code></pre><pre tabindex="0"><code>[97 98 99 100 101]
+</code></pre><h2 id="buffered-reading-and-scanning">Buffered reading and scanning</h2>
 <p>The <a href="https://golang.org/pkg/bufio/#Reader"><code>bufio.Reader</code></a> and <a href="https://golang.org/pkg/bufio/#Scanner"><code>bufio.Scanner</code></a> types wrap a Reader creating another Reader that also implements the interface but provides buffering and some help for textual input.</p>
-
 <p>In this example we use a <a href="https://golang.org/pkg/bufio/#Scanner"><code>bufio.Scanner</code></a>
-to count the number of words in a&nbsp;text.</p>
-
+to count the number of words in a text.</p>
 <pre><code>const input = `Beware of bugs in the above code;
 I have only proved it correct, not tried it.`
 
@@ -174,13 +163,14 @@ scanner.Split(bufio.ScanWords) <span class="comment">// Set up the split functio
 
 count := 0
 for scanner.Scan() {
-    count++
+	count++
 }
 if err := scanner.Err(); err != nil {
-    fmt.Println(err)
+	fmt.Println(err)
 }
 fmt.Println(count)</code></pre>
-<pre><code>16</code></pre>
+<pre tabindex="0"><code>16
+</code></pre>
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
 <a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fio-reader-interface-explained%2f&amp;text=How%20to%20use%20the%20io.Reader%20interface&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fio-reader-interface-explained%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
@@ -206,15 +196,7 @@ fmt.Println(count)</code></pre>
     <div class="author">Ben Johnson</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

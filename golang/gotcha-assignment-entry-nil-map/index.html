@@ -85,24 +85,16 @@
 <h1>Assignment to entry in nil map</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC0: https://www.flickr.com/photos/nate/321938695 -->
-
 <div style="margin-top:1em;"><img src="/golang/panic-face.jpg"></div>
-
 <p>Why does this program panic?</p>
-
 <pre><code>var m map[string]float64
 m["pi"] = 3.1416</code></pre>
-<pre><code>panic: assignment to entry in nil map</code></pre>
-<h2 id="answer">Answer</h2>
-
+<pre tabindex="0"><code>panic: assignment to entry in nil map
+</code></pre><h2 id="answer">Answer</h2>
 <p>You have to initialize the map using the make function (or a map literal) before you can add any elements:</p>
-
 <pre><code>m := make(map[string]float64)
 m["pi"] = 3.1416</code></pre>
-
 <p>See <a href="/golang/maps-explained/">Maps explained</a> for more about maps.</p>
 
 <ul class="pagina">
@@ -182,14 +174,6 @@ m["pi"] = 3.1416</code></pre>
       <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a></li>
 
   </ul>
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
 
 
   

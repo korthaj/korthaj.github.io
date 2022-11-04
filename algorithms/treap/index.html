@@ -84,24 +84,17 @@
 <article>
 <h1>Treaps: Randomized search trees</h1>
 <div class="tagline">yourbasic.org</div>
-
-
 <!-- CC0: https://pixabay.com/en/tree-trunk-abstract-brown-food-157673/ (missing) -->
-
 <div><img class="extra-content" src="/algorithms/search-tree.png" alt="symbolic search tree" style="float:right;margin:10px 0 10px 20px;"></div>
-
 <p class="lead">A treap stores items in sorted order and offers effi&shy;cient lookup, addi&shy;tion and remo&shy;val of items.</p>
-
 <p>If you could use only one data structure, which one would you choose?
-A&nbsp;hash table? While it supports the basic lookup, addition and removal operations,
-it&nbsp;doesn’t keep the elements sorted.
+A hash table? While it supports the basic lookup, addition and removal operations,
+it doesn’t keep the elements sorted.
 Therefore it can’t efficiently perform some common tasks,
-such as finding the minimum element or producing an ordered list of all&nbsp;elements.</p>
-
+such as finding the minimum element or producing an ordered list of all elements.</p>
 <p>What would you require of this ideal, sole structure?
 It should be easy to use (and preferably easy to implement) and
 it should be efficient in terms of both speed and memory.</p>
-
 <p>
 The randomized search tree by Seidel and Aragon,
 described in “<a href="https://link.springer.com/article/10.1007/BF01940876">Randomized Search Trees</a>” (<i>Algorithmica</i>,
@@ -109,18 +102,14 @@ described in “<a href="https://link.springer.com/article/10.1007/BF01940876">R
 and it offers the functionality of a general-purpose sorting routine,
 priority queue, hash table, stack, or standard queue.
 </p>
-
 <h2>Data Structure</h2>
-
 <p>The data structure consists of a balanced binary tree.
 Therefore, an element is never more than about
-log</sub>&nbsp;<i>n</i> steps away,
+log</sub> <i>n</i> steps away,
 where <i>n</i> is the number of elements in the treap and
-log</sub>&nbsp;<i>n</i> is the binary logarithm.</p>
-
+log</sub> <i>n</i> is the binary logarithm.</p>
 <p>Being able to access the elements in the treap in log <i>n</i> time
 is a big improvement over some of the most common basic data structures.</p>
-
 <table style="max-width:500px;">
   <thead>
     <tr>
@@ -169,27 +158,22 @@ is a big improvement over some of the most common basic data structures.</p>
     </tr>
   </tbody>
 </table>
-
 <p>The treap is reasonably space efficient as well.
 Each element is stored in a node in a tree,
 and each node contains an integer and two references,
 one to the left subtree and one to the right subtree.
-Hence, to store <i>n</i>&nbsp;elements in a treap, we need <i>n</i>&nbsp;integers
-and 2<i>n</i>&nbsp;references.</p>
-
+Hence, to store <i>n</i> elements in a treap, we need <i>n</i> integers
+and 2<i>n</i> references.</p>
 <p>A typical hash-table implementation
-uses <i>n</i>&nbsp;integers for the hash values and <i>n</i>&nbsp;references for the linked lists.
+uses <i>n</i> integers for the hash values and <i>n</i> references for the linked lists.
 Furthermore, it uses an array with a size that is typically close to <i>n</i>.
 For example, with a load factor of 1.0, the hash table will use the same amount
 of extra space as a treap if the table is full, and more space
-if it’s only partly&nbsp;filled.</p>
-
+if it’s only partly filled.</p>
 <h2>Implementation</h2>
-
 <p>A search tree consists of a number of nodes.
 Each node contains a key and has two references,
 one to the left subtree and one to the right.</p>
-
 <pre style="max-width:220px;">
          E
         / \
@@ -197,81 +181,63 @@ one to the left subtree and one to the right.</p>
       /   / \
      A   F   K
 </pre>
-
 <p>Note that the tree is ordered.
 All keys in the left subtree are smaller than the key in the node,
 and all keys in the right subtree are larger.
 This property holds for every node in the tree.
 Therefore, it’s possible to search the tree in a simple manner.</p>
-
 <p>For example, to check if the key F is present in the tree,</p>
-
 <ul>
 <li>you start by comparing F to the key in topmost node (the root) of the tree.
 F is larger than E and you know that F must be in the right subtree
-(if it’s in the tree at&nbsp;all).</li>
+(if it’s in the tree at all).</li>
 <li>Next compare F to H, the root of the right subtree.
 It’s smaller, and you turn to the left, where you find the key you are looking for.</li>
 </ul>
-
 <p>You can use the same technique to insert a new node.
 If the key of the new node isn’t already present in the tree,
 the search will take you to a position at the bottom of the tree
 where the new node can be inserted.</p>
-
 <p>But you still have a potential problem.
 The algorithm above is efficient only if the tree is well balanced.
 For example, if each node in the tree has only one child,
 the structure will behave just like a linked list:
 You have to visit every node in the tree to find the one at the bottom.</p>
-
 <p>There are plenty of algorithms available that try to keep a search tree balanced.
 Most of them are rather complicated. The treap offers a simple solution.</p>
-
 <p>You will use rotations (the simplest possible rebalancing operation)
 to help keep the tree balanced.
 The idea is to change the form of the tree without disturbing the order of the keys.
-The left tree in this figure is transformed into the right one by a right&nbsp;rotation.</p>
-
+The left tree in this figure is transformed into the right one by a right rotation.</p>
 <pre style="max-width:350px;">
         B               A
        / \             / \
       A        &lt;-&gt;        B
      / \                 / \
 </pre>
-
 <p>This operation is easy to implement – only two references need to be updated,
 and the order of the keys is preserved.
 The corresponding balancing operation that transforms the right tree
-into the left one is called a left&nbsp;rotation.</p>
-
+into the left one is called a left rotation.</p>
 <!-- CC0: https://pixabay.com/en/cartoon-icon-light-bulb-symbol-1294877/ -->
-
 <div><img src="/algorithms/light-bulb.png" style="float:right; margin: -10px 0 10px 10px;"></div>
-
 <p><strong>Now comes the stroke of genius.</strong>
 You want the tree to look as if it was constructed from a random sequence of updates.
 (Random trees are nicely balanced.
 The expected length of an average search path is roughly
-1.4&nbsp;log<sub>2</sub>&nbsp;<i>n</i>&nbsp;-&nbsp;2,
+1.4 log<sub>2</sub> <i>n</i> - 2,
 and the expected length of the longest search path is about
-4.3&nbsp;log<sub>2</sub><i>&nbsp;n</i>.)</p>
-
+4.3 log<sub>2</sub><i> n</i>.)</p>
 <p>To achieve this,</p>
-
 <ul>
 <li>you assign a random priority number to each node
 before you insert it into the tree,</li>
 <li>and you make sure that each node in the tree has higher priority than its children.</li>
 </ul>
-
 <p>If you do this, the tree will have the same form as if the nodes
 had been added in priority order, that is random order.</p>
-
 <h3 id="insert">Insert</h3>
-
 <p>The insertion algorithm is best explained by an example.</p>
-
 <pre style="max-width:480px;">
 (a)       E3                (b)       E3
          / \                         / \
@@ -290,25 +256,20 @@ had been added in priority order, that is random order.</p>
                \                 /
                 K8              A6
 </pre>
-
-<p>In Fig.&nbsp;A the node G (with priority&nbsp;2) has just been added to the treap.
+<p>In Fig. A the node G (with priority 2) has just been added to the treap.
 It has been placed in the correct position with respect to the ordering of the keys,
 but it violates the priority requirement: It has higher priority than its parent.</p>
-
 <ul>
-<li>To fix this you perform a left rotation, to move it higher up in the tree. (Fig.&nbsp;B)</li>
-<li>G still has higher priority than its parent and we perform a right rotation. (Fig.&nbsp;C)</li>
-<li>Finally, G is rotated up to the root of the tree. (Fig.&nbsp;D)</li>
+<li>To fix this you perform a left rotation, to move it higher up in the tree. (Fig. B)</li>
+<li>G still has higher priority than its parent and we perform a right rotation. (Fig. C)</li>
+<li>Finally, G is rotated up to the root of the tree. (Fig. D)</li>
 </ul>
-
 <p>Now the tree fulfills both the key order and the priority order requirements.</p>
-
 <p>At first this algorithm may seem hard to implement.
 It looks as if you would have to walk up the tree,
 which is hard since the references point in the other direction.
 However, this problem is easily overcome
 if you formulate the insertion algorithm recursively.</p>
-
 <pre>
 // Insert a new node in the tree and return the updated tree.
 <b>Algorithm</b> insert(node, tree)
@@ -324,12 +285,9 @@ if you formulate the insertion algorithm recursively.</p>
             rotate tree to the left
     <b>return</b> tree
 </pre>
-
 <h3 id="delete">Delete</h3>
-
 <p>Compared to those of other balanced search tree schemes,
 the delete operation is also quite simple.</p>
-
 <ul>
 <li>
   If the node to be deleted is at the very bottom of the tree,
@@ -350,7 +308,6 @@ the delete operation is also quite simple.</p>
   be solved by calling the delete algorithm recursively.
 </li>
 </ul>
-
 <p style="font-size:small;">
 In <a href="http://drdobbs.com/windows/184410231"><i>Dr. Dobb’s Journal</i></a>,
 pp.&nbsp;40-44, Vol.&nbsp;267, July&nbsp;1997.</p>
@@ -380,15 +337,7 @@ pp.&nbsp;40-44, Vol.&nbsp;267, July&nbsp;1997.</p>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
     <div style="margin-top:1em;"><a href="/algorithms/time-complexity-explained/" title="How to analyse time complexity: Count your steps"><img src="/algorithms/abacus-mini.jpg"></a></div>
   <ul class="none">
   

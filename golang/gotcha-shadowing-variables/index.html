@@ -85,63 +85,47 @@
 <h1>Shadowed variables</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC0: https://pxhere.com/en/photo/1169066 -->
-
 <div style="margin-top:1em;"><img src="/golang/man-in-shadow.jpg"></div>
-
 <p>Why doesn&rsquo;t <code>n</code> change?</p>
-
 <pre><code>func main() {
-    n := 0
-    if true {
-        n := 1
-        n++
-    }
-    fmt.Println(n) <span class="comment">// 0</span>
+	n := 0
+	if true {
+		n := 1
+		n++
+	}
+	fmt.Println(n) <span class="comment">// 0</span>
 }</code></pre>
-
 <h2 id="answer">Answer</h2>
-
 <p>The statement <code>n := 1</code> declares a new variable which <strong>shadows</strong> the original <code>n</code> throughout the scope of the if&nbsp;statement.</p>
-
 <p>To reuse <code>n</code> from the outer block, write <code>n = 1</code> instead.</p>
-
 <pre><code>func main() {
-    n := 0
-    if true {
-        <b>n = 1</b>
-        n++
-    }
-    fmt.Println(n) <span class="comment">// <b>2</b></span>
+	n := 0
+	if true {
+		<b>n = 1</b>
+		n++
+	}
+	fmt.Println(n) <span class="comment">// <b>2</b></span>
 }</code></pre>
-
-<p><h2 id="detecting-shadowed-variables">Detecting shadowed variables</h2>
-<p>To help detect shadowed variables, you may use the experimental <code>-shadow</code> feature provided by the <a href="https://golang.org/cmd/vet/">vet</a> tool. It flags variables that <strong>may have been</strong> unintentionally shadowed. Passing the original version of the code to <code>vet</code> gives a warning message.</p></p>
-
+<h2 id="detecting-shadowed-variables">Detecting shadowed variables</h2>
+<p>To help detect shadowed variables, you may use the experimental <code>-shadow</code> feature provided by the <a href="https://golang.org/cmd/vet/">vet</a> tool. It flags variables that <strong>may have been</strong> unintentionally shadowed. Passing the original version of the code to <code>vet</code> gives a warning message.</p>
 <pre><code>$ go vet -shadow main.go
 main.go:4: declaration of "n" shadows declaration at main.go:2
 </code></pre>
-
 <p><a href="https://tip.golang.org/doc/go1.12">Go 1.12</a> no longer supports this.
 Instead you may do</p>
-
 <pre><code>go install golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow
 go vet -vettool=$(which shadow)
 </code></pre>
-
 <p>Additionally, the Go compiler detects and disallows some cases of shadowing.</p>
-
 <pre><code class="language-go">func Foo() (n int, err error) {
-    if true {
-        err := fmt.Errorf("Invalid")
-        return
-    }
-    return
+	if true {
+		err := fmt.Errorf("Invalid")
+		return
+	}
+	return
 }
 </code></pre>
-
 <pre><code>../main.go:4:3: err is shadowed during return
 </code></pre>
 
@@ -224,14 +208,6 @@ go vet -vettool=$(which shadow)
       <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a></li>
 
   </ul>
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
 
 
   

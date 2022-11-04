@@ -40,16 +40,13 @@
 <article>
 <h1>Sort a map by key or value</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <ul>
 <li>A <a href="/golang/maps-explained/">map</a> is an <strong>unordered</strong> collection of key-value pairs.</li>
 <li>If you need a stable iteration order,
 you must maintain a separate data structure.</li>
 </ul>
-
 <p>This example uses a sorted slice of keys to print a <code>map[string]int</code> in key order.</p>
-<pre><code>m := map[string]int{&#34;Alice&#34;: 23, &#34;Eve&#34;: 2, &#34;Bob&#34;: 25}
+<pre tabindex="0"><code>m := map[string]int{&quot;Alice&quot;: 23, &quot;Eve&quot;: 2, &quot;Bob&quot;: 25}
 
 keys := make([]string, 0, len(m))
 for k := range m {
@@ -59,21 +56,18 @@ sort.Strings(keys)
 
 for _, k := range keys {
 	fmt.Println(k, m[k])
-}</code></pre>
-<p>Output:</p>
-<pre><code>Alice 23
+}
+</code></pre><p>Output:</p>
+<pre tabindex="0"><code>Alice 23
 Bob 25
-Eve 2</code></pre>
-<blockquote>
-<p>Also, starting with <a href="https://tip.golang.org/doc/go1.12">Go&nbsp;1.12</a>,
+Eve 2
+</code></pre><blockquote>
+<p>Also, starting with <a href="https://tip.golang.org/doc/go1.12">Go 1.12</a>,
 the <a href="https://golang.org/pkg/fmt/"><code>fmt</code></a>
 package prints maps in key-sorted order to ease testing.</p>
 </blockquote>
-
 <h3 id="further-reading">Further reading</h3>
-
 <div><a href="/golang/maps-explained/"><img src="/golang/15-men-in-16-slots-thumb.jpg" title="Maps explained"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/maps-explained/">Maps explained [code example]</a></p>
 
 
@@ -89,15 +83,7 @@ package prints maps in key-sorted order to ease testing.</p>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

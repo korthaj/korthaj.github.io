@@ -85,49 +85,37 @@
 <h1>Array won’t change</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC0: https://pxhere.com/fr/photo/995842 -->
-
 <div style="margin-top:1em;"><img src="/golang/sticky-gum-under-shoe.jpg"></div>
-
 <p>Why does the array value stick?</p>
-
 <pre><code>func Foo(a [2]int) {
-    a[0] = 8
+	a[0] = 8
 }
 
 func main() {
-    a := [2]int{1, 2}
-    Foo(a)         <span class="comment">// Try to change a[0].</span>
-    fmt.Println(a) <span class="comment">// Output: [1 2]</span>
+	a := [2]int{1, 2}
+	Foo(a)         <span class="comment">// Try to change a[0].</span>
+	fmt.Println(a) <span class="comment">// Output: [1 2]</span>
 }</code></pre>
-
 <h2 id="answer">Answer</h2>
-
 <ul>
 <li>Arrays in Go are <b>values</b>.</li>
 <li>When you pass an array to a function, the array is copied.</li>
 </ul>
-
 <p>If you want <code>Foo</code> to update the elements of&nbsp;<code>a</code>, <em>use a slice instead</em>.</p>
-
 <pre><code>func Foo(a []int) {
-    if len(a) > 0 {
-        a[0] = 8
-    }
+	if len(a) > 0 {
+		a[0] = 8
+	}
 }
 
 func main() {
-    a := []int{1, 2}
-    Foo(a)         <span class="comment">// Change a[0].</span>
-    fmt.Println(a) <span class="comment">// Output: [8 2]</span>
+	a := []int{1, 2}
+	Foo(a)         <span class="comment">// Change a[0].</span>
+	fmt.Println(a) <span class="comment">// Output: [8 2]</span>
 }</code></pre>
-
 <p>A slice does not store any data, it just describes a section of an underlying array.</p>
-
 <p>When you change an element of a slice, you modify the corresponding element of its underlying array, and other slices that share the same underlying array will see the change.</p>
-
 <p>See <a href="/golang/slices-explained/">Slices and arrays in 6 easy steps</a> for all about slices in&nbsp;Go.</p>
 
 <ul class="pagina">
@@ -209,14 +197,6 @@ func main() {
       <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a></li>
 
   </ul>
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
 
 
   

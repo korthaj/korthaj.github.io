@@ -84,14 +84,10 @@
 <article>
 <h1>Go vs. Java: 15 main differences</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <div style="margin-top:1em;"><img src="/golang/java-go.png"></div>
-
 <p>The following Java code, adapted from
 <a href="https://www.amazon.com/Effective-Java-2nd-Joshua-Bloch/dp/0321356683">Effective Java</a>,
 implements an immutable class representing a complex number.</p>
-
 <pre><code class="language-java">public final class Complex {
     private final double re;
     private final double im;
@@ -137,63 +133,56 @@ implements an immutable class representing a complex number.</p>
     }
 }
 </code></pre>
-
 <p>The same program written in idiomatic Go would consist of two separate <a href="/golang/packages-explained/">packages</a>.</p>
-
 <pre><code>package complex
 
 import (
-    "fmt"
-    "math"
+	"fmt"
+	"math"
 )
 
 type Complex struct {
-    re, im float64
+	re, im float64
 }
 
 func New(re, im float64) Complex {
-    if math.IsNaN(re) || math.IsNaN(im) {
-        panic("NaN")
-    }
-    return Complex{re, im}
+	if math.IsNaN(re) || math.IsNaN(im) {
+		panic("NaN")
+	}
+	return Complex{re, im}
 }
 
 func (c Complex) Real() float64 { return c.re }
 func (c Complex) Imag() float64 { return c.im }
 
 func (c Complex) Add(d Complex) Complex {
-    return New(c.re+d.re, c.im+d.im)
+	return New(c.re+d.re, c.im+d.im)
 }
 
 func (c Complex) String() string {
-    if c.im &lt; 0 {
-        return fmt.Sprintf("(%g%gi)", c.re, c.im)
-    }
-    return fmt.Sprintf("(%g+%gi)", c.re, c.im)
+	if c.im &lt; 0 {
+		return fmt.Sprintf("(%g%gi)", c.re, c.im)
+	}
+	return fmt.Sprintf("(%g+%gi)", c.re, c.im)
 }
 </code></pre>
-
 <pre><code>package main
 
 import (
-    "complex"
-    "fmt"
+	"complex"
+	"fmt"
 )
 
 func main() {
-    z := complex.New(1, 2)
-    fmt.Println(z.Add(z))
+	z := complex.New(1, 2)
+	fmt.Println(z.Add(z))
 }
 </code></pre>
-
 <p>Note that in this case Go uses struct values where Java uses references to objects.
 Also, the <code>equals</code> and <code>hashCode</code> methods are omitted since Go already defines
 equality for structs with comparable fields.</p>
-
 <h2 id="main-differences">Main differences</h2>
-
 <h3 id="built-in-types">Built-in types</h3>
-
 <ul>
 <li>Strings are provided by the language;
 a <a href="/golang/string-functions-reference-cheat-sheet/">string</a> behaves like a
@@ -201,14 +190,12 @@ slice of bytes, but is immutable.</li>
 <li>Hash tables are provided by the language.
 They are called <a href="/golang/maps-explained/">maps</a>.</li>
 </ul>
-
 <h3 id="pointers-and-references">Pointers and references</h3>
-
 <ul>
 <li>Go offers <a href="/golang/pointers-explained/">pointers</a> to values of all types,
 not just objects and arrays.
-For any type&nbsp;<code>T</code>, there is a corresponding pointer type&nbsp;<code>*T</code>,
-denoting pointers to values of type&nbsp;<code>T</code>.</li>
+For any type <code>T</code>, there is a corresponding pointer type <code>*T</code>,
+denoting pointers to values of type <code>T</code>.</li>
 <li>Arrays in Go are values. When an array is used as a
 function parameter, the function receives a copy of the array,
 not a pointer to it. However, in practice functions often use
@@ -219,57 +206,44 @@ not by value. That is, passing a map to a function does not copy the map;
 if the function changes the map, the change will be seen by the caller.
 In Java terms, one can think of this as being a reference to the map.</li>
 </ul>
-
 <h3 id="error-handling">Error handling</h3>
-
 <ul>
 <li>Instead of exceptions, Go uses <a href="/golang/errors-explained/">errors</a>
 to signify events such as end-of-file,
 and run-time <a href="/golang/recover-from-panic/">panics</a> for run-time errors
 such as attempting to index an array out of bounds.</li>
 </ul>
-
 <h3 id="object-oriented-programming">Object-oriented programming</h3>
-
 <ul>
 <li>Go does not have classes with constructors.
 Instead of instance methods, a class inheritance hierarchy,
 and dynamic method lookup, Go provides
 <a href="/golang/structs-explained/">structs</a> and <a href="/golang/interfaces-explained/">interfaces</a>.</li>
 <li>Go allows <a href="/golang/methods-explained/">methods</a> on any type; no boxing is required.
-The method <em>receiver</em>, which corresponds to&nbsp;<code>this</code> in&nbsp;Java,
+The method <em>receiver</em>, which corresponds to <code>this</code> in Java,
 can be a direct value or a pointer.</li>
-<li>Go provides <a href="/golang/public-private/">two&nbsp;access&nbsp;levels</a>,
+<li>Go provides <a href="/golang/public-private/">two access levels</a>,
 analogous to Java’s public and package-private. Top-level declarations
 are public if their names start with an upper-case letter,
 otherwise they are package-private.</li>
 </ul>
-
 <p><em>Learn more:</em> <a href="/golang/inheritance-object-oriented/">Object-oriented programming in Go without inheritance</a>.</p>
-
 <h3 id="functional-programming">Functional programming</h3>
-
 <ul>
 <li>Functions in Go are first class citizens.
 <a href="/golang/function-pointer-type-declaration/">Function values</a> can be used and passed around
 just like other values and <a href="/golang/anonymous-function-literal-lambda-closure/">function literals</a>
 may refer to variables defined in a enclosing function.</li>
 </ul>
-
 <p><em>Learn more:</em> <a href="/golang/your-basic-func/">Functional programming in Go [case study]</a>.</p>
-
 <h3 id="concurrency">Concurrency</h3>
-
 <ul>
 <li>Separate threads of execution, <a href="/golang/goroutines-explained/">goroutines</a>,
 and communication channels between them, <a href="/golang/channels-explained/">channels</a>,
 are provided by the language.</li>
 </ul>
-
 <p><em>Learn more:</em> <a href="/golang/concurrent-programming/">Concurrent programming in Go [tutorial]</a>.</p>
-
 <h3 id="omitted-features">Omitted features</h3>
-
 <ul>
 <li>Go does not support implicit type conversion. Operations that mix
 different types require an explicit conversion.
@@ -281,21 +255,14 @@ and generic functions, such as append and copy.
 However, there is no mechanism for writing your own generic functions.
 For alternatives, see <a href="/golang/generics/">Generics (alternatives and workarounds)</a>.</li>
 </ul>
-
 <h3 id="complex-numbers">Complex numbers</h3>
-
 <p>Strangely enough, Go has built-in support for complex numbers.</p>
-
 <pre><code>z := 1+2i
 fmt.Println(z + z)
 </code></pre>
-
 <p>It’s the least used feature of the language. By far.</p>
-
 <h2 id="further-reading">Further reading</h2>
-
 <div><a href="/golang/advantages-over-java-python/"><img src="/golang/unicorn-thumb.png" title="Why Go? – Key advantages you may have overlooked"></a></div>
-
 <div><a href="/golang/advantages-over-java-python/">Why Go?</a> discusses some main reasons why Go can make it easier (than Java or Python) to write correct, clear and efficient code.</div>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -329,15 +296,7 @@ fmt.Println(z + z)
     <div class="author">Joshua Bloch</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

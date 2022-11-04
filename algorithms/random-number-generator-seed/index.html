@@ -84,52 +84,41 @@
 <article>
 <h1>What’s a seed in a random number generator?</h1>
 <div class="tagline">yourbasic.org</div>
-
-
 <p class="lead">In reality pseudo&shy;random numbers aren't random at all.
 They are computed using a fixed determi&shy;nistic algorithm.</p>
-
 <!-- CC BY-NC-SA 2.0: https://www.flickr.com/photos/rosswebsdale/2510946638/ -->
-
 <div><img src="/algorithms/dominoes.jpg" alt="dominoes falling over"></div>
-
 <p>The <strong>seed</strong> is a starting point for a sequence of pseudorandom numbers.
 If you start from the same seed, you get the very same sequence.
-This can be quite useful for&nbsp;debugging.</p>
-
+This can be quite useful for debugging.</p>
 <p>If you want a different sequence of numbers each time,
-you can use the <strong>current time</strong> as a&nbsp;seed.</p>
-
+you can use the <strong>current time</strong> as a seed.</p>
 <h2 id="example">Example</h2>
-
 <p>This generator produces a sequence of 97 different numbers, then it starts over again.
-The seed decides at what number the sequence will&nbsp;start.</p>
-
+The seed decides at what number the sequence will start.</p>
 <pre><code>// New returns a pseudorandom number generator Rand with a given seed.
 // Every time you call Rand, you get a new "random" number.
 func New(seed int) (Rand func() int) {
-    current := seed
-    return func() int {
-        <b>next := (17 * current) % 97</b>
-        current = next
-        return next
-    }
+	current := seed
+	return func() int {
+		<b>next := (17 * current) % 97</b>
+		current = next
+		return next
+	}
 }
 
 func main() {
-    rand1 := New(1)
-    fmt.Println(rand1(), rand1(), rand1())
+	rand1 := New(1)
+	fmt.Println(rand1(), rand1(), rand1())
 
-    rand2 := New(2)
-    fmt.Println(rand2(), rand2(), rand2())
+	rand2 := New(2)
+	fmt.Println(rand2(), rand2(), rand2())
 }
 </code></pre>
-
 <pre>
 17 95 63
 34 93 29
 </pre>
-
 <p>The random number generators you&rsquo;ll find in most programming languages
 work just like this, but of course they use a smarter function.
 Ideally, you want a long sequence with good random properties
@@ -167,15 +156,7 @@ For example, you would typically want to avoid the <code>%</code> modulus operat
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
     <div style="margin-top:1em;"><a href="/algorithms/time-complexity-explained/" title="How to analyse time complexity: Count your steps"><img src="/algorithms/abacus-mini.jpg"></a></div>
   <ul class="none">
   

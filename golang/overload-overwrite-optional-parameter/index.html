@@ -85,17 +85,13 @@
 <h1>Optional parameters, default parameter values and method overloading</h1>
 <div class="tagline">yourbasic.org/golang</div>
 <!-- CC0: https://www.maxpixel.net/Junction-Away-Decision-Direction-Fork-In-The-Road-1020088 -->
-
 <div><img src="/golang/decision-fork-in-the-road.jpg"></div>
-
 <p>By design, Go does <strong>not</strong> support</p>
-
 <ul>
 <li><strong>optional parameters</strong>,</li>
 <li><strong>default parameter values</strong>,</li>
 <li>or <strong>method overloading</strong>.</li>
 </ul>
-
 <blockquote>
 <p>Method dispatch is simplified if it doesn&rsquo;t need to do type matching as well.
 Experience with other languages told us that having a variety of methods
@@ -105,21 +101,16 @@ Matching only by name and requiring consistency in the types
 was a major simplifying decision in Go&rsquo;s type system.
 <a class="quote-source" href="https://golang.org/doc/faq#overloading">Go FAQ: Why does Go not support overloading of methods and operators?</a></p>
 </blockquote>
-
 <p>However, there are</p>
-
 <ul>
 <li><a href="/golang/variadic-function/"><strong>variadic functions</strong></a> (functions that accept a variable number of arguments),</li>
 <li>and <strong>dynamic method dispatch</strong> is supported through <a href="/golang/interfaces-explained/">interfaces</a>.</li>
 </ul>
-
 <p>For more on this, see <a href="/golang/interfaces-explained/">Interfaces in 5 easy steps</a>.</p>
-
 <p>The idiomatic way to emulate optional parameters and method overloading in Go
 is to write several methods with different names.
 For example, the <a href="https://golang.org/pkg/sort/"><code>sort</code></a> package
- has five different functions for sorting a slice:</p>
-
+has five different functions for sorting a slice:</p>
 <ul>
 <li>the generic <a href="https://golang.org/pkg/sort/#Slice"><code>sort.Slice</code></a> and
 <a href="https://golang.org/pkg/sort/#SliceStable"><code>sort.SliceStable</code></a>,</li>
@@ -165,15 +156,7 @@ For example, the <a href="https://golang.org/pkg/sort/"><code>sort</code></a> pa
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

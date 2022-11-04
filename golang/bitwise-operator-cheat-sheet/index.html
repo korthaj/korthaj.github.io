@@ -84,24 +84,17 @@
 <article>
 <h1>Bitwise operators [cheat sheet]</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- Public domain: https://commons.wikimedia.org/wiki/File:Leibniz_binary_system_1697.jpg -->
-
 <div style="margin-top:1em;"><img src="/golang/Leibniz-binary-system-1697.jpg"></div>
 <div style="font-size:smaller;">Gottfried Wilhelm Leibniz, 1697</div>
-
 <ul class="toc">
   <li><a href="#number-literals">Number literals</a></li>
   <li><a href="#built-in-operators">Built-in operators</a></li>
   <li><a href="#package-math-bits">Package <code>math/bits</code></a></li>
   <li><a href="#bit-manipulation-code-example">Bit manipulation code example</a></li>
 </ul>
-
 <h2 id="number-literals">Number literals</h2>
-
-<p>The binary number 10000<sub>2</sub> can be written as <code>020</code>, <code>16</code> or <code>0x10</code> in&nbsp;Go.</p>
-
+<p>The binary number 10000<sub>2</sub> can be written as <code>020</code>, <code>16</code> or <code>0x10</code> in Go.</p>
 <table class="white">
   <thead>
     <tr>
@@ -128,11 +121,8 @@
     </tr>
   </tbody>
 </table>
-
 <p>&nbsp;</p>
-
 <h2 id="built-in-operators">Built-in operators</h2>
-
 <table class="white">
   <thead>
     <tr>
@@ -184,7 +174,6 @@
     </tr>
   </tbody>
 </table>
-
 <ul>
 <li>The binary numbers in the examples are for explanation only.
 Integer literals in Go must be specified in octal, decimal or hexadecimal.</li>
@@ -193,9 +182,7 @@ The right-hand side of a shift operator, however, must be an unsigned integer.</
 <li>Shift operators implement arithmetic shifts if the left operand is a signed integer
 and logical shifts if it is an unsigned integer.</li>
 </ul>
-
 <h2 id="package-math-bits">Package <a href="https://golang.org/pkg/math/bits/"><code style="font-size:90%;background-color:white;">math/bits</code></a></h2>
-
 <table class="white">
   <thead>
     <tr>
@@ -267,7 +254,6 @@ and logical shifts if it is an unsigned integer.</li>
     </tr>
   </tbody>
 </table>
-
 <ul>
 <li>The functions operate on <strong>unsigned integers</strong>.</li>
 <li>They come in different forms that take arguments of different sizes.
@@ -276,11 +262,8 @@ For example, <code>Len</code>, <code>Len8</code>, <code>Len16</code>, <code>Len3
 <li>The functions are recognized by the compiler and on most architectures
 they are treated as <a href="https://dave.cheney.net/2019/08/20/go-compiler-intrinsics">intrinsics</a> for additional performance.</li>
 </ul>
-
 <h2 id="bit-manipulation-code-example">Bit manipulation code example</h2>
-
 <div><a href="/golang/bitmask-flag-set-clear/"><img src="/golang/bits-thumb.jpg" title="Bitmasks, bitsets and flags"></a></div>
-
 <p><a href="/golang/bitmask-flag-set-clear/">Bitmasks, bitsets and flags</a> shows how to implement a bitmask, a small set of booleans, often called flags, represented by the bits in a single number.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -308,15 +291,7 @@ they are treated as <a href="https://dave.cheney.net/2019/08/20/go-compiler-intr
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

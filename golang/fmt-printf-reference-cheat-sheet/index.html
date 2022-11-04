@@ -84,12 +84,8 @@
 <article>
 <h1>fmt.Printf formatting tutorial and cheat sheet</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC BY-SA 3.0: http://www.thebluediamondgallery.com/wooden-tile/f/format.html -->
-
 <div style="margin-top:1em;"><img src="/golang/format.jpg" alt="Letter tiles forming the word format"></div>
-
 <ul class="toc" style="margin-top: 1em;">
   <li><a href="#basics">Basics</a>
     <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
@@ -111,68 +107,45 @@
     </ul>
   </li>
 </ul>
-
 <h2 id="basics">Basics</h2>
-
 <p>With the Go <a href="https://golang.org/pkg/fmt"><code>fmt</code></a> package
 you can format numbers and strings padded with spaces or zeroes,
 in different bases, and with optional quotes.</p>
-
 <p>You submit a <strong>template string</strong> that contains the text you want to format
 plus some <strong>annotation verbs</strong> that tell the <code>fmt</code> functions
 how to format the trailing arguments.</p>
-
 <h3 id="printf">Printf</h3>
-
 <p>In this example, <a href="https://golang.org/pkg/fmt/#Printf"><code>fmt.Printf</code></a> formats and writes to standard output:</p>
-
 <pre><code>fmt.Printf("Binary: %b\\%b", 4, 5) <span class="comment">// Prints `Binary: 100\101`</span>
 </code></pre>
-
 <ul>
 <li>the <strong>template string</strong> is <code>&quot;Binary: %b\\%b&quot;</code>,</li>
 <li>the <strong>annotation verb</strong> <code>%b</code> formats a number in binary, and</li>
 <li>the <strong>special value</strong> <code>\\</code> is a backslash.</li>
 </ul>
-
-<p>As a special case, the verb <code>%%</code>, which consumes no argument, produces a percent&nbsp;sign:</p>
-
+<p>As a special case, the verb <code>%%</code>, which consumes no argument, produces a percent sign:</p>
 <pre><code>fmt.Printf("%d %%", 50) <span class="comment">// Prints `50 %`</span></code></pre>
-
 <h3 id="sprintf-format-without-printing">Sprintf (format without printing)</h3>
-
 <p>Use <a href="https://golang.org/pkg/fmt/#Sprintf"><code>fmt.Sprintf</code></a>
-to format a string without printing&nbsp;it:</p>
-
+to format a string without printing it:</p>
 <pre><code>s := fmt.Sprintf("Binary: %b\\%b", 4, 5) <span class="comment">// s == `Binary: 100\101`</span></code></pre>
-
 <h3 id="find-fmt-errors-with-vet">Find fmt errors with vet</h3>
-
 <p>If you try to compile and run this incorrect line of code</p>
-
 <pre><code>fmt.Printf("Binary: %b\\%b", 4) <span class="comment">// An argument to Printf is missing.
 </code></pre>
-
 <p>you&rsquo;ll find that the program will compile, and then print</p>
-
 <pre><code>Binary: 100\%!b(MISSING)</code></pre>
-
 <p>To catch this type of errors early, you can use
 the <a href="https://golang.org/cmd/vet/">vet command</a> – it can find
 calls whose arguments do not align with the format string.</p>
-
 <pre><code>$ go vet example.go
 example.go:8: missing argument for Printf("%b"): format reads arg 2, have only 1 args
 </code></pre>
-
 <h2 id="cheat-sheet">Cheat sheet</h2>
-
 <h3 id="default">Default formats and type</h3>
-
 <ul>
 <li><strong>Value:</strong> <code>[]int64{0, 1}</code></li>
 </ul>
-
 <table class="white">
   <thead>
     <tr>
@@ -199,13 +172,10 @@ example.go:8: missing argument for Printf("%b"): format reads arg 2, have only 1
     </tr>
   </tbody>
 </table>
-
 <h3 id="integer">Integer (indent, base, sign)</h3>
-
 <ul>
 <li><strong>Value:</strong> <code>15</code></li>
 </ul>
-
 <table class="white">
   <thead>
     <tr>
@@ -267,13 +237,10 @@ example.go:8: missing argument for Printf("%b"): format reads arg 2, have only 1
     </tr>
   </tbody>
 </table>
-
 <h3 id="character">Character (quoted, Unicode)</h3>
-
 <ul>
-<li><strong>Value:</strong> <code>65</code> &nbsp; (Unicode letter A)</li>
+<li><strong>Value:</strong> <code>65</code>   (Unicode letter A)</li>
 </ul>
-
 <table class="white">
   <thead>
     <tr>
@@ -305,21 +272,14 @@ example.go:8: missing argument for Printf("%b"): format reads arg 2, have only 1
     </tr>
   </tbody>
 </table>
-
 <h3 id="boolean">Boolean (true/false)</h3>
-
 <p>Use <code>%t</code> to format a boolean as <code>true</code> or <code>false</code>.</p>
-
 <h3 id="pointer">Pointer (hex)</h3>
-
 <p>Use <code>%p</code> to format a pointer in base 16 notation with leading <code>0x</code>.</p>
-
 <h3 id="float">Float (indent, precision, scientific notation)</h3>
-
 <ul>
 <li><strong>Value:</strong> <code>123.456</code></li>
 </ul>
-
 <table class="white">
   <thead>
     <tr>
@@ -356,13 +316,10 @@ example.go:8: missing argument for Printf("%b"): format reads arg 2, have only 1
     </tr>
   </tbody>
 </table>
-
 <h3 id="string-or-byte-slice">String or byte slice (quote, indent, hex)</h3>
-
 <ul>
 <li><strong>Value:</strong> <code>&quot;café&quot;</code></li>
 </ul>
-
 <table class="white">
   <thead>
     <tr>
@@ -404,9 +361,7 @@ example.go:8: missing argument for Printf("%b"): format reads arg 2, have only 1
     </tr>
   </tbody>
 </table>
-
 <h3 id="special-values">Special values</h3>
-
 <table class="white">
   <thead>
     <tr>
@@ -449,28 +404,20 @@ example.go:8: missing argument for Printf("%b"): format reads arg 2, have only 1
     </tr>
   </tbody>
 </table>
-
 <p>Arbitrary values can be encoded with backslash escapes and
-can be used in any <code>&quot;&quot;</code>&nbsp;string literal.</p>
-
+can be used in any <code>&quot;&quot;</code> string literal.</p>
 <p>There are four different formats:</p>
-
 <ul>
 <li><code>\x</code> followed by exactly two hexadecimal digits,</li>
 <li><code>\</code> followed by exactly three octal digits,</li>
 <li><code>\u</code> followed by exactly four hexadecimal digits,</li>
 <li><code>\U</code> followed by exactly eight hexadecimal digits.</li>
 </ul>
-
 <p>The escapes <code>\u</code> and <code>\U</code> represent Unicode code points.</p>
-
 <pre><code>fmt.Println("\\caf\u00e9") <span class="comment">// Prints \café</span>
 </code></pre>
-
 <h2 id="further-reading">Further reading</h2>
-
 <div><a href="/golang/string-functions-reference-cheat-sheet/"><img src="/golang/typewriter-thumb.png" title="40+ practical string tips [cheat sheet]"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/string-functions-reference-cheat-sheet/">40+ practical string tips [cheat sheet]</a></p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -504,15 +451,7 @@ can be used in any <code>&quot;&quot;</code>&nbsp;string literal.</p>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

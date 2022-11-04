@@ -84,59 +84,45 @@
 <article>
 <h1>Unused package imports</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC0: https://pixnio.com/miscellaneous/red-pencil-drawing-creativity-wooden -->
-
 <div style="margin-top:1em;"><img src="/golang/red-cross-wrong.jpg"></div>
-
 <p>As you may have noticed, programs with unused <a href="/golang/packages-explained/">package</a> imports do not compile.</p>
-
 <pre><code>package main
 
 import (
-    "fmt"
-    "log" <span class="comment">// "imported and not used: log"</span>
+	"fmt"
+	"log" <span class="comment">// "imported and not used: log"</span>
 )
 
 func main() {
-    fmt.Println("Hello")
+	fmt.Println("Hello")
 }</code></pre>
-<pre><code>../main.go:5:2: imported and not used: &#34;log&#34;</code></pre>
-<p>This is a deliberate feature of the Go language.</p>
-
+<pre tabindex="0"><code>../main.go:5:2: imported and not used: &quot;log&quot;
+</code></pre><p>This is a deliberate feature of the Go language.</p>
 <blockquote>
 <p>The presence of an unused variable may indicate a bug [&hellip;]
 Go refuses to compile programs with unused variables or imports,
 trading short-term convenience for long-term build speed and program clarity.
 <a class="quote-source" href="https://golang.org/doc/faq#unused_variables_and_imports">Go FAQ: Can I stop these complaints about my unused variable/import?</a></p>
 </blockquote>
-
 <h2 id="workaround">Workaround</h2>
-
 <p>There&rsquo;s no compiler option to allow unused package imports. If you don&rsquo;t want to remove/comment out the import, you can for instance use it in a dummy assignment:</p>
-
 <pre><code class="skiphl">package main
 
 import (
-    "fmt"
-    "log"
+	"fmt"
+	"log"
 )
 
 <b>var _ = log.Printf</b>
 
 func main() {
-    fmt.Println("Hello")
+	fmt.Println("Hello")
 }</code></pre>
-
 <h2 id="a-better-solution">A better solution</h2>
-
 <p>Use the <a href="https://godoc.org/golang.org/x/tools/cmd/goimports">goimports</a> tool, which rewrites a Go source file to have the correct imports. Many Go editors and IDEs run this tool automatically whenever a source file is written.</p>
-
 <h2 id="further-reading">Further reading</h2>
-
 <div><a href="/golang/compiler-error-messages/"><img src="/golang/tree-of-love-thumb.jpg" title="Learn to love your compiler"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/compiler-error-messages/">Learn to love your compiler</a>
  is a list of common Go compiler error messages: what they mean and how to fix the problem.</p>
 
@@ -165,15 +151,7 @@ func main() {
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

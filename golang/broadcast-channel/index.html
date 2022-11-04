@@ -86,36 +86,28 @@
 <div class="tagline">yourbasic.org/golang</div>
 
 <p class="lead">All readers receive zero&nbsp;values on a closed channel.</p>
-
 <!-- Public domain: https://en.wikipedia.org/wiki/File:Frances_Densmore_recording_Mountain_Chief2.jpg -->
-
-<p><img src="/golang/phonograph.jpg"></p>
-
+<img src="/golang/phonograph.jpg">
 <p>In this example the <code>Publish</code> function returns a channel, which is used to broadcast a signal when a message has been published.</p>
-
 <pre><code>// Print text after the given time has expired.
 // When done, the wait channel is closed.
 func Publish(text string, delay time.Duration) (wait <-chan struct{}) {
-    ch := make(chan struct{})
-    go func() {
-        time.Sleep(delay)
-        fmt.Println("BREAKING NEWS:", text)
-        <b>close(ch)</b> <span class="comment">// Broadcast to all receivers.</span>
-    }()
-    return ch
+	ch := make(chan struct{})
+	go func() {
+		time.Sleep(delay)
+		fmt.Println("BREAKING NEWS:", text)
+		<b>close(ch)</b> <span class="comment">// Broadcast to all receivers.</span>
+	}()
+	return ch
 }</code></pre>
-
 <p>Notice that we use a channel of empty structs: <code>struct{}</code>. This clearly indicates that the channel will only be used for signalling, not for passing data.</p>
-
 <p>This is how you may use the function.</p>
-
 <pre><code>func main() {
-    wait := Publish("Channels let goroutines communicate.", 5*time.Second)
-    fmt.Println("Waiting for news...")
-    <-wait
-    fmt.Println("Time to leave.")
+	wait := Publish("Channels let goroutines communicate.", 5*time.Second)
+	fmt.Println("Waiting for news...")
+	<-wait
+	fmt.Println("Time to leave.")
 }</code></pre>
-
 <pre>
 Waiting for news...
 BREAKING NEWS: Channels let goroutines communicate.
@@ -171,14 +163,6 @@ Time to leave.
 
   </ul>
 
-
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
 
 </aside>
 </main>

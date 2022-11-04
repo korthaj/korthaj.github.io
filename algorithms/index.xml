@@ -5,11 +5,7 @@
     <link>https://yourbasic.org/algorithms/</link>
     <description>Recent content in Algorithms explained on Algorithms to Go</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    
-	<atom:link href="https://yourbasic.org/algorithms/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>en-us</language><atom:link href="https://yourbasic.org/algorithms/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Algorithms: What’s the problem?</title>
       <link>https://yourbasic.org/algorithms/algorithms/</link>
@@ -17,7 +13,7 @@
       
       <guid>https://yourbasic.org/algorithms/algorithms/</guid>
       <description>A good programmer describes algo&amp;shy;rithms in a form that can be&amp;nbsp;effi&amp;shy;ciently exe&amp;shy;cuted by&amp;nbsp;ma&amp;shy;chines and easily under&amp;shy;stood by&amp;nbsp;humans.
- Algorithms and programs are pretty much the same thing &amp;ndash; the main difference is that we can talk about algorithms without relying on a programming language. An algorithm invented today will be equally as useful when the last Java programmer has logged&amp;nbsp;out. Here is an attempt at a formal definition.
+ Algorithms and programs are pretty much the same thing – the main difference is that we can talk about algorithms without relying on a programming language. An algorithm invented today will be equally as useful when the last Java programmer has logged out. Here is an attempt at a formal definition.
  An algorithm is a stepwise procedure of well-defined executable instructions intended to perform a task or solve a problem, often with the added requirement that the procedure must come to a stop.</description>
     </item>
     
@@ -48,7 +44,7 @@ Let T1, T2,&amp;nbsp;…, Tk be the complexities of a sequence of operations on 
       
       <guid>https://yourbasic.org/algorithms/big-o-notation-explained/</guid>
       <description>Big O notation is a convenient way to describe how fast a function is&amp;nbsp;growing.
- Definition Constant time Linear time Quadratic time   Sloppy notation Ω and Θ notation Key takeaways     Definition When we compute the time complexity&amp;nbsp;T(n) of an algorithm we rarely get an exact result, just an estimate. That&amp;rsquo;s fine, in computer science we are typically only interested in how fast T(n) is growing as a function of the input size&amp;nbsp;n.</description>
+ Definition Constant time Linear time Quadratic time   Sloppy notation Ω and Θ notation Key takeaways     Definition When we compute the time complexity T(n) of an algorithm we rarely get an exact result, just an estimate. That&amp;rsquo;s fine, in computer science we are typically only interested in how fast T(n) is growing as a function of the input size n.</description>
     </item>
     
     <item>
@@ -57,7 +53,7 @@ Let T1, T2,&amp;nbsp;…, Tk be the complexities of a sequence of operations on 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/algorithms/binary-search-tree/</guid>
-      <description>Binary tree definitions Binary search tree Example   Balanced trees with O(log n) time complexity Tree algorithms Inorder traversal Search Insert    Binary tree definitions A binary tree is a data structure most easily described by&amp;nbsp;recursion.
+      <description>Binary tree definitions Binary search tree Example   Balanced trees with O(log n) time complexity Tree algorithms Inorder traversal Search Insert    Binary tree definitions A binary tree is a data structure most easily described by recursion.
  A binary tree  is either empty,  or consists of a node (also known as the root of the tree) and two subtrees, the left and right subtree, which are also binary trees.</description>
     </item>
     
@@ -88,7 +84,7 @@ Let T1, T2,&amp;nbsp;…, Tk be the complexities of a sequence of operations on 
       
       <guid>https://yourbasic.org/algorithms/dynamic-programming-explained/</guid>
       <description>Problem Recursive algorithm Dynamic programming with memoization Dynamic programming with tabulation Memoization vs. tabulation  This text contains a detailed example showing how to solve a tricky problem efficiently with recursion and dynamic programming – either with memoization or tabulation.
- A dynamic programming algorithm solves a complex problem by dividing it into simpler subproblems, solving each of those just once, and storing their solutions. Memoization is an optimization technique used to speed up programs by storing the results of expensive function calls and returning the cached result when the same inputs occur&amp;nbsp;again.</description>
+ A dynamic programming algorithm solves a complex problem by dividing it into simpler subproblems, solving each of those just once, and storing their solutions. Memoization is an optimization technique used to speed up programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again.</description>
     </item>
     
     <item>
@@ -98,7 +94,7 @@ Let T1, T2,&amp;nbsp;…, Tk be the complexities of a sequence of operations on 
       
       <guid>https://yourbasic.org/algorithms/hash-tables-explained/</guid>
       <description>Basics Hashing with chaining (simplified example) Realistic hash function example Resizing in constant amortized time  Basics Hash tables are used to implement map and set data structures in most common programming languages. In C++ and Java they are part of the standard libraries, while Python and Go have builtin dictionaries and maps.
-A hash table is an unordered collection of key-value pairs, where each key is&amp;nbsp;unique.
+A hash table is an unordered collection of key-value pairs, where each key is unique.
 Hash tables offer a combination of efficient lookup, insert and delete operations.</description>
     </item>
     
@@ -118,7 +114,7 @@ Hash tables offer a combination of efficient lookup, insert and delete operation
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/algorithms/avoid-initializing-memory/</guid>
-      <description>Consider an algorithm that uses a large memory area. If the running time of the algorithm is smaller than the size of the memory, initializing the memory will take longer than running the algorithm. However, using a shrewd trick, it’s possible to refrain from initializing the&amp;nbsp;memory.
+      <description>Consider an algorithm that uses a large memory area. If the running time of the algorithm is smaller than the size of the memory, initializing the memory will take longer than running the algorithm. However, using a shrewd trick, it’s possible to refrain from initializing the memory.
 This mysterious trick is used quite frequently in research articles, often without explanation and a reference to Exercise 2.12 in The Design and Analysis of Computer Algorithms by Aho, Hopcroft, and Ullman, 1974.</description>
     </item>
     
@@ -129,7 +125,7 @@ This mysterious trick is used quite frequently in research articles, often witho
       
       <guid>https://yourbasic.org/algorithms/insertion-sort/</guid>
       <description>Insertion sort Insertion sort is a simple sorting algorithm with quadratic worst-case time complexity, but in some cases it&amp;rsquo;s still the algorithm of choice.
- It&amp;rsquo;s efficient for small data sets. It typically outperforms other simple quadratic algorithms, such as selection sort or bubble sort. It&amp;rsquo;s adaptive: it sorts data sets that are already substantially sorted efficiently. The&amp;nbsp;time complexity is O(nk) when each element is at most k&amp;nbsp;places away from its sorted position.</description>
+ It&amp;rsquo;s efficient for small data sets. It typically outperforms other simple quadratic algorithms, such as selection sort or bubble sort. It&amp;rsquo;s adaptive: it sorts data sets that are already substantially sorted efficiently. The time complexity is O(nk) when each element is at most k places away from its sorted position.</description>
     </item>
     
     <item>
@@ -138,7 +134,7 @@ This mysterious trick is used quite frequently in research articles, often witho
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yourbasic.org/algorithms/graph/</guid>
-      <description>Definitions Trees Directed graphs   Data structures Adjacency matrix Adjacency list     Search algorithms Depth-first search (DFS) Breadth-first search (BFS) Dijkstra’s algorithm       This text introduces basic graph terminology, standard graph data structures, and three fundamental algorithms for traversing a graph in a systematic&amp;nbsp;way.
+      <description>Definitions Trees Directed graphs   Data structures Adjacency matrix Adjacency list     Search algorithms Depth-first search (DFS) Breadth-first search (BFS) Dijkstra’s algorithm       This text introduces basic graph terminology, standard graph data structures, and three fundamental algorithms for traversing a graph in a systematic way.
 You may also want to take a look at the Github yourbasic/graph repository. It&amp;rsquo;s a Go library with generic implementations of basic graph algorithms.</description>
     </item>
     
@@ -180,7 +176,7 @@ Monte Carlo simulations are a broad class of algorithms that use repeated random
       <guid>https://yourbasic.org/algorithms/induction-recursive-functions/</guid>
       <description>To make sense of recursive functions, you can use a way of thinking closely related to mathematical induction.
  Mathematical induction Sum of an arithmetic series (basic example) The same sum in code Binary search correctness proof  Mathematical induction Mathematical induction is a proof method often used to prove statements about integers.
-We&amp;rsquo;ll use the notation P(n), where n&amp;nbsp;&amp;ge;&amp;nbsp;0, to denote such a&amp;nbsp;statement. To prove P(n) with induction is a two-step procedure.</description>
+We&amp;rsquo;ll use the notation P(n), where n ≥ 0, to denote such a statement. To prove P(n) with induction is a two-step procedure.</description>
     </item>
     
     <item>
@@ -190,7 +186,7 @@ We&amp;rsquo;ll use the notation P(n), where n&amp;nbsp;&amp;ge;&amp;nbsp;0, to 
       
       <guid>https://yourbasic.org/algorithms/time-complexity-arrays/</guid>
       <description>To write fast code, you must know the difference between constant and linear time array operations.
- Array basics Performance Dynamic array   Expensive list operations Java cheat sheet Python cheat sheet     Alternatives Maps and dictionaries Sorted arrays Linked lists Binary search trees       Accidentally inefficient list code with quadratic time complexity is very common and can be hard to&amp;nbsp;spot, but when the list grows your code grinds to a&amp;nbsp;halt.</description>
+ Array basics Performance Dynamic array   Expensive list operations Java cheat sheet Python cheat sheet     Alternatives Maps and dictionaries Sorted arrays Linked lists Binary search trees       Accidentally inefficient list code with quadratic time complexity is very common and can be hard to spot, but when the list grows your code grinds to a halt.</description>
     </item>
     
     <item>
@@ -200,7 +196,7 @@ We&amp;rsquo;ll use the notation P(n), where n&amp;nbsp;&amp;ge;&amp;nbsp;0, to 
       
       <guid>https://yourbasic.org/algorithms/time-complexity-recursive-functions/</guid>
       <description>It&#39;s often possible to compute the time complexity of a recursive function by formulating and solving a recurrence relation.
- Recurrence relation (basic example) Binary search Master theorem Analysis without recurrence  This text contains a few examples and a formula, the &amp;ldquo;master theorem&amp;rdquo;, which gives the solution to a class of recurrence relations that often show up when analyzing recursive functions.
+ Recurrence relation (basic example) Binary search Master theorem Analysis without recurrence  This text contains a few examples and a formula, the “master theorem”, which gives the solution to a class of recurrence relations that often show up when analyzing recursive functions.
 We also show how to analyze recursive algorithms that depend on the size and shape of a data structure.</description>
     </item>
     
@@ -211,8 +207,7 @@ We also show how to analyze recursive algorithms that depend on the size and sha
       
       <guid>https://yourbasic.org/algorithms/treap/</guid>
       <description>A treap stores items in sorted order and offers effi&amp;shy;cient lookup, addi&amp;shy;tion and remo&amp;shy;val of items.
-If you could use only one data structure, which one would you choose? A&amp;nbsp;hash table? While it supports the basic lookup, addition and removal operations, it&amp;nbsp;doesn’t keep the elements sorted. Therefore it can’t efficiently perform some common tasks, such as finding the minimum element or producing an ordered list of all&amp;nbsp;elements.
-What would you require of this ideal, sole structure?</description>
+If you could use only one data structure, which one would you choose? A hash table? While it supports the basic lookup, addition and removal operations, it doesn’t keep the elements sorted. Therefore it can’t efficiently perform some common tasks, such as finding the minimum element or producing an ordered list of all elements.</description>
     </item>
     
     <item>
@@ -222,7 +217,7 @@ What would you require of this ideal, sole structure?</description>
       
       <guid>https://yourbasic.org/algorithms/unit-cost-vs-bit-cost/</guid>
       <description>Unit-cost multiplication Unit cost and bit cost are two different cost functions used to compute space and time complexity.
- Unit cost is used in a simplified model where a number, of any size, fits within a memory cell, and where standard arithmetic operations take constant&amp;nbsp;time. With bit cost we take into account that computations with bigger numbers can be more&amp;nbsp;expensive.   Unit cost often works well in practice as modern processors can perform arithmetics on 64-bit integer and floating point numbers in constant time.</description>
+ Unit cost is used in a simplified model where a number, of any size, fits within a memory cell, and where standard arithmetic operations take constant time. With bit cost we take into account that computations with bigger numbers can be more expensive.   Unit cost often works well in practice as modern processors can perform arithmetics on 64-bit integer and floating point numbers in constant time.</description>
     </item>
     
     <item>
@@ -232,8 +227,8 @@ What would you require of this ideal, sole structure?</description>
       
       <guid>https://yourbasic.org/algorithms/random-number-generator-seed/</guid>
       <description>In reality pseudo&amp;shy;random numbers aren&#39;t random at all. They are computed using a fixed determi&amp;shy;nistic algorithm.
- The seed is a starting point for a sequence of pseudorandom numbers. If you start from the same seed, you get the very same sequence. This can be quite useful for&amp;nbsp;debugging.
-If you want a different sequence of numbers each time, you can use the current time as a&amp;nbsp;seed.
+ The seed is a starting point for a sequence of pseudorandom numbers. If you start from the same seed, you get the very same sequence. This can be quite useful for debugging.
+If you want a different sequence of numbers each time, you can use the current time as a seed.
 Example This generator produces a sequence of 97 different numbers, then it starts over again.</description>
     </item>
     
@@ -244,7 +239,7 @@ Example This generator produces a sequence of 97 different numbers, then it star
       
       <guid>https://yourbasic.org/algorithms/your-basic-int/</guid>
       <description>The int data type is generic, effective, simple and efficient.
- Introduction Generic graph data Effective searching and sorting Simple sets Efficient filtering  Introduction Every kid can spot an integer number, and every programmer is familiar with the&amp;nbsp;int data&amp;nbsp;type. Still we frequently forget how powerful an integer can&amp;nbsp;be.
+ Introduction Generic graph data Effective searching and sorting Simple sets Efficient filtering  Introduction Every kid can spot an integer number, and every programmer is familiar with the int data type. Still we frequently forget how powerful an integer can be.
  Generic
 An int or []int is a bit pattern that can represent any digital data. Furthermore, an int can point into any type of array.</description>
     </item>

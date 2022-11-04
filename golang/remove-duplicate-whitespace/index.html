@@ -40,31 +40,20 @@
 <article>
 <h1>Remove all duplicate whitespace</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <pre><code>space := regexp.MustCompile(`\s+`)
 s := space.ReplaceAllString("Hello  \t \n world!", " ")
 fmt.Printf("%q", s) <span class="comment">// "Hello world!"</span></code></pre>
-
 <p><code>\s+</code> is a <a href="/golang/regexp-cheat-sheet/">regular expression</a>:</p>
-
 <ul>
 <li>the character class <code>\s</code> matches a space, tab, new line, carriage return or form feed,</li>
 <li>and <code>+</code> says “one or more of those”.</li>
 </ul>
-
-<p>In other words, the code will replace each whitespace substring with a single space&nbsp;character.</p>
-
+<p>In other words, the code will replace each whitespace substring with a single space character.</p>
 <h3 id="trim-leading-and-trailing-space">Trim leading and trailing space</h3>
-
 <div><a href="/golang/trim-whitespace-from-string/"><img src="/golang/trim-hair-thumb.jpg" title="Trim leading and trailing whitespace"></a></div>
-
 <p>To <a href="/golang/trim-whitespace-from-string/">trim leading and trailing whitespace</a>, use the <code>strings.TrimSpace</code> function.</p>
-
 <h3 id="further-reading">Further reading</h3>
-
 <div><a href="/golang/regexp-cheat-sheet/"><img src="/golang/cog-wheels-thumb.jpg" title="Regular expressions"></a></div>
-
 <p><a href="/golang/regexp-cheat-sheet/">Regular expressions</a>
 is a gentle introduction to the <code>regexp</code> package with cheat sheet
 and plenty of examples.</p>
@@ -82,15 +71,7 @@ and plenty of examples.</p>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

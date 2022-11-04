@@ -85,43 +85,31 @@
 <h1>A basic stack (LIFO) data structure</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC0: https://pxhere.com/fr/photo/1382123 -->
-
 <div style="margin-top:1em;"><img src="/golang/stack-of-apples.jpg"></div>
-
 <p>The idiomatic way to implement a stack data structure in Go is to use a <a href="/golang/slices-explained/">slice</a>:</p>
-
 <ul>
 <li>to push you use the built-in <a href="/golang/append-explained/">append function</a>, and</li>
 <li>to pop you slice off the top element.</li>
 </ul>
-
 <pre><code>var stack []string
 
 stack = append(stack, "world!") <span class="comment">// Push</span>
 stack = append(stack, "Hello ")
 
 for len(stack) > 0 {
-    n := len(stack) - 1 <span class="comment">// Top element</span>
-    fmt.Print(stack[n])
+	n := len(stack) - 1 <span class="comment">// Top element</span>
+	fmt.Print(stack[n])
 
-    stack = stack[:n] <span class="comment">// Pop</span>
+	stack = stack[:n] <span class="comment">// Pop</span>
 }</code></pre>
-
 <pre>Hello world!</pre>
-
 <h2 id="performance">Performance</h2>
-
 <div><a href="/algorithms/amortized-time-complexity-analysis/"><img src="/algorithms/pink-coins-thumb.jpg" title="Amortized time complexity"></a></div>
-
 <p>Appending a single element to a slice takes <strong>constant amortized time</strong>.
 See <a href="/algorithms/amortized-time-complexity-analysis/">Amortized time complexity</a> for a detailed explanation.</p>
-
 <p>If the stack is permanent and the elements temporary,
 you may want to remove the top element before popping the stack to avoid memory leaks.</p>
-
 <pre><code><span class="comment">// Pop</span>
 stack[n] = "" <span class="comment">// Erase element (write zero value)</span>
 stack = stack[:n]
@@ -168,15 +156,7 @@ stack = stack[:n]
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

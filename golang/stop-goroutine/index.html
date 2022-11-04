@@ -86,30 +86,24 @@
 <div class="tagline">yourbasic.org/golang</div>
 
 <p class="lead">One&nbsp;goroutine can't forcibly stop another.</p>
-
 <!-- CC0: https://www.maxpixel.net/Extinguish-Fire-Extinction-Firefighter-484540 -->
-
 <div><img src="/golang/extinguish-fire.jpg"></div>
-
-<p>To make a goroutine stoppable, let it listen for a stop signal on a dedicated quit&nbsp;channel,
+<p>To make a goroutine stoppable, let it listen for a stop signal on a dedicated quit channel,
 and check this channel at suitable points in your goroutine.</p>
-
 <pre><code>quit := make(chan bool)
 go func() {
-    for {
-        select {
-        case <-quit:
-            return
-        default:
-            <span class="comment">// …</span>
-        }
-    }
+	for {
+		select {
+		case <-quit:
+			return
+		default:
+			<span class="comment">// …</span>
+		}
+	}
 }()
 <span class="comment">// …</span>
 quit <- true</code></pre>
-
 <p>Here is a more complete example, where we use a single channel for both data and signalling.</p>
-
 <pre><code>// Generator returns a channel that produces the numbers 1, 2, 3,…
 // To stop the underlying goroutine, send a number on this channel.
 func Generator() chan int {
@@ -205,14 +199,6 @@ fatal error: all goroutines are asleep - deadlock!</code></pre>
     <div class="author"></div>
   </div>
 
-
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
 
 </aside>
 </main>

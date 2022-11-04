@@ -87,44 +87,38 @@
 
 <p class="lead">With reflection it's possible to read, <em>but not write</em>,
 unexported fields of a struct defined in another package.</p>
-
 <!-- CC0: https://en.wikipedia.org/wiki/File:Head_mirror_in_use.png -->
-
 <div><img src="/golang/head-mirror.png"></div>
-
 <p>In this example, we access the unexported field <code>len</code> in the
- <code>List</code> struct in <a href="/golang/packages-explained/">package</a> <a href="https://golang.org/pkg/container/list/"><code>container/list</code></a>:</p>
-
+<code>List</code> struct in <a href="/golang/packages-explained/">package</a> <a href="https://golang.org/pkg/container/list/"><code>container/list</code></a>:</p>
 <pre><code>package list
 
 type List struct {
-    root Element
-    <b>len</b>  int
+	root Element
+	<b>len</b>  int
 }</code></pre>
-
 <p>This code reads the value of <code>len</code> with reflection.</p>
-
 <pre><code>package main
 
 import (
-    "container/list"
-    "fmt"
-    "reflect"
+	"container/list"
+	"fmt"
+	"reflect"
 )
 
 func main() {
-    l := list.New()
-    l.PushFront("foo")
-    l.PushFront("bar")
+	l := list.New()
+	l.PushFront("foo")
+	l.PushFront("bar")
 
-    <span class="comment">// Get a reflect.Value fv for the unexported field len.</span>
-    fv := reflect.ValueOf(l).Elem().FieldByName("<b>len</b>")
-    fmt.Println(fv.Int()) <span class="comment">// 2</span>
+	<span class="comment">// Get a reflect.Value fv for the unexported field len.</span>
+	fv := reflect.ValueOf(l).Elem().FieldByName("<b>len</b>")
+	fmt.Println(fv.Int()) <span class="comment">// 2</span>
 
-    <span class="comment">// Try to set the value of len.</span>
-    fv.Set(reflect.ValueOf(3)) <span class="comment">// <b>ILLEGAL</b></span>
+	<span class="comment">// Try to set the value of len.</span>
+	fv.Set(reflect.ValueOf(3)) <span class="comment">// <b>ILLEGAL</b></span>
 }</code></pre>
-<pre><code>2
+<pre tabindex="0"><code>2
 panic: reflect: reflect.Value.Set using value obtained using unexported field
 
 goroutine 1 [running]:
@@ -133,7 +127,8 @@ reflect.flag.mustBeAssignable(0x1a2, 0x285a)
 reflect.Value.Set(0xee2c0, 0x10444254, 0x1a2, 0xee2c0, 0x1280c0, 0x82)
 	/usr/local/go/src/reflect/value.go:1345 +0x40
 main.main()
-	../main.go:18 +0x280</code></pre>
+	../main.go:18 +0x280
+</code></pre>
 
 <h3>More code examples</h3>
 
@@ -169,15 +164,7 @@ main.main()
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

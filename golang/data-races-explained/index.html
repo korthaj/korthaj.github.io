@@ -85,104 +85,86 @@
 <h1>Data races explained</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <p class="lead">A&nbsp;data&nbsp;race happens when two goroutines access the same variable concur&shy;rently, and at least one of the accesses is a&nbsp;write.</p>
-
 <p>Data races are quite common and can be very hard to debug.</p>
-
 <p>This function has a data race and it’s behavior is undefined. It may, for example,
-print the number&nbsp;1. Try to figure out how that can happen –
-one possible explanation comes after the&nbsp;code.</p>
-
+print the number 1. Try to figure out how that can happen –
+one possible explanation comes after the code.</p>
 <pre><code>func race() {
-    wait := make(chan struct{})
-    n := 0
-    go func() {
-        <b>n++</b> <span class="comment">// read, increment, write</span>
-        close(wait)
-    }()
-    <b>n++</b> <span class="comment">// conflicting access</span>
-    <-wait
-    fmt.Println(n) <span class="comment">// Output: &lt;unspecified&gt;</span>
+	wait := make(chan struct{})
+	n := 0
+	go func() {
+		<b>n++</b> <span class="comment">// read, increment, write</span>
+		close(wait)
+	}()
+	<b>n++</b> <span class="comment">// conflicting access</span>
+	<-wait
+	fmt.Println(n) <span class="comment">// Output: &lt;unspecified&gt;</span>
 }</code></pre>
-
 <p>The two goroutines, g1 and g2, participate in a race
 and there is no way to know in which order the operations will take place.
 The following is one out of many possible outcomes.</p>
-
-<p><center>
+<center>
 <table class="column" style="width: auto;">
   <thead>
-    <tr>
-        <th>g1</th>
-        <th>g2</th>
-    </tr>
+	<tr>
+		<th>g1</th>
+		<th>g2</th>
+	</tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Read the value 0 from&nbsp;<code>n</code>.</td><td></td>
-    </tr>
-    <tr>
-        <td></td><td>Read the value&nbsp;0 from&nbsp;<code>n</code>.</td>
-    </tr>
-    <tr>
-        <td>Incre&shy;ment value from&nbsp;0 to&nbsp;1.</td><td></td>
-    </tr>
-    <tr>
-        <td>Write 1 to&nbsp;<code>n</code>.</td><td></td>
-    </tr>
-    <tr>
-        <td></td><td>Incre&shy;ment value from&nbsp;0 to&nbsp;1.</td>
-    </tr>
-    <tr>
-        <td></td><td>Write 1 to&nbsp;<code>n</code>.</td>
-    </tr>
-    <tr>
-        <td>Print <code>n</code>, which is now&nbsp;1.</td><td></td>
-    </tr>
+	<tr>
+	  <td>Read the value 0 from&nbsp;<code>n</code>.</td><td></td>
+	</tr>
+	<tr>
+		<td></td><td>Read the value&nbsp;0 from&nbsp;<code>n</code>.</td>
+	</tr>
+	<tr>
+		<td>Incre&shy;ment value from&nbsp;0 to&nbsp;1.</td><td></td>
+	</tr>
+	<tr>
+		<td>Write 1 to&nbsp;<code>n</code>.</td><td></td>
+	</tr>
+	<tr>
+		<td></td><td>Incre&shy;ment value from&nbsp;0 to&nbsp;1.</td>
+	</tr>
+	<tr>
+		<td></td><td>Write 1 to&nbsp;<code>n</code>.</td>
+	</tr>
+	<tr>
+		<td>Print <code>n</code>, which is now&nbsp;1.</td><td></td>
+	</tr>
   </tbody>
 </table>
-</center></p>
-
+</center>
 <p>The name ”data race” is somewhat misleading.
-Not only is the ordering of operations undefined &ndash; there are very few guarantees.
+Not only is the ordering of operations undefined – there are very few guarantees.
 Both compilers and hardware frequently turn code upside-down and inside-out
 to achieve better performance.
 If you look at a thread in mid-action, you might see pretty much anything.</p>
-
 <!-- CC BY-NC 2.0: http://www.flickr.com/photos/brandoncwarren/2953838847/ -->
-
 <div><img src="/golang/mid-action.jpg"></div>
-
 <h2 id="how-to-avoid-data-races">How to avoid data races</h2>
-
 <p>The only way to avoid data races is to synchronize access to all mutable data that is shared between threads. There are several ways to achieve this. In Go, you would normally use a <strong>channel</strong> or a <strong>lock</strong>. (Lower-lever mechanisms are available in the <a href="https://golang.org/pkg/sync/"><code>sync</code></a> and <a href="https://golang.org/pkg/sync/atomic/"><code>sync/atomic</code></a> packages.)</p>
-
 <p>The preferred way to handle concurrent data access in Go is to use a channel to pass the actual data from one goroutine to the next. The motto is: &ldquo;Don’t communicate by sharing memory; share memory by communicating.&rdquo;</p>
-
 <pre><code>func sharingIsCaring() {
-    ch := make(chan int)
-    go func() {
-        n := 0 <span class="comment">// A local variable is only visible to one goroutine.</span>
-        n++
-        ch <- n <span class="comment">// The data leaves one goroutine...</span>
-    }()
-    n := <-ch <span class="comment">// ...and arrives safely in another.</span>
-    n++
-    fmt.Println(n) <span class="comment">// Output: 2</span>
+	ch := make(chan int)
+	go func() {
+		n := 0 <span class="comment">// A local variable is only visible to one goroutine.</span>
+		n++
+		ch <- n <span class="comment">// The data leaves one goroutine...</span>
+	}()
+	n := <-ch <span class="comment">// ...and arrives safely in another.</span>
+	n++
+	fmt.Println(n) <span class="comment">// Output: 2</span>
 }</code></pre>
-
 <p>In this code the channel does double duty:</p>
-
 <ul>
 <li>it passes the data from one goroutine to another,</li>
 <li>and it acts as a point of synchronization.</li>
 </ul>
-
 <p>The sending goroutine will wait for the other goroutine to receive the data
 and the receiving goroutine will wait for the other goroutine to send the data.</p>
-
 <p><a href="https://golang.org/ref/mem">The Go memory model</a> – the conditions under which reads of a variable in one goroutine can be guaranteed to observe values produced by writes to the same variable in a different goroutine – is quite complicated, but as long as you share all mutable data between goroutines through channels you are safe from data races.</p>
 
 <ul class="pagina">
@@ -250,14 +232,6 @@ and the receiving goroutine will wait for the other goroutine to send the data.<
     <div class="author"></div>
   </div>
 
-
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
 
 </aside>
 </main>

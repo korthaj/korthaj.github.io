@@ -85,59 +85,47 @@
 <h1>Invalid memory address or nil pointer dereference</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC BY 2.0: https://www.flickr.com/photos/vinayshivakumar/3280705941 -->
-
 <div style="margin-top:1em;"><img src="/golang/confused.jpg"></div>
-
 <p>Why does this program panic?</p>
-
 <pre><code>type Point struct {
-    X, Y float64
+	X, Y float64
 }
 
 func (p *Point) Abs() float64 {
-    return math.Sqrt(p.X*p.X + p.Y*p.Y)
+	return math.Sqrt(p.X*p.X + p.Y*p.Y)
 }
 
 func main() {
-    var p *Point
-    fmt.Println(p.Abs())
+	var p *Point
+	fmt.Println(p.Abs())
 }</code></pre>
-<pre><code>panic: runtime error: invalid memory address or nil pointer dereference
+<pre tabindex="0"><code>panic: runtime error: invalid memory address or nil pointer dereference
 [signal SIGSEGV: segmentation violation code=0xffffffff addr=0x0 pc=0xd2c5a]
 
 goroutine 1 [running]:
 main.(*Point).Abs(...)
 	../main.go:6
 main.main()
-	../main.go:11 +0x1a</code></pre>
-<h2 id="answer">Answer</h2>
-
+	../main.go:11 +0x1a
+</code></pre><h2 id="answer">Answer</h2>
 <p>The uninitialized pointer <code>p</code> in the <code>main</code> function is <code>nil</code>,
 and you can’t follow the nil pointer.</p>
-
 <blockquote>
 If <code>x</code> is nil, an attempt to evaluate <code>*x</code> will cause a run-time panic.
 <a class="quote-source" href="https://golang.org/ref/spec#Address_operators">The Go Programming Language Specification: Address operators</a>
 </blockquote>
-
 <p>You need to create a <code>Point</code>:</p>
-
 <pre><code>func main() {
-    var p *Point = new(Point)
-    fmt.Println(p.Abs())
+	var p *Point = new(Point)
+	fmt.Println(p.Abs())
 }</code></pre>
-
 <p>Since methods with pointer receivers take either a value or a pointer,
 you could also skip the pointer altogether:</p>
-
 <pre><code>func main() {
-    var p Point <span class="comment">// has zero value Point{X:0, Y:0}</span>
-    fmt.Println(p.Abs())
+	var p Point <span class="comment">// has zero value Point{X:0, Y:0}</span>
+	fmt.Println(p.Abs())
 }</code></pre>
-
 <p>See <a href="/golang/pointers-explained/">Pointers</a> for more about pointers in&nbsp;Go.</p>
 
 <ul class="pagina">
@@ -219,14 +207,6 @@ you could also skip the pointer altogether:</p>
       <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a></li>
 
   </ul>
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
 
 
   

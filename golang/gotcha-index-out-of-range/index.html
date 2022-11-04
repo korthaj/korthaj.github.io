@@ -85,39 +85,28 @@
 <h1>Index out of range</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC BY 2.0: https://www.flickr.com/photos/aukirk/9596420966 -->
-
 <div style="margin-top:1em;"><img src="/golang/so-close-yet-so-far.jpg"></div>
-
 <p>Why does this program crash?</p>
-
 <pre><code>a := []int{1, 2, 3}
 for i := 1; i <= len(a); i++ {
-    fmt.Println(a[i])
+	fmt.Println(a[i])
 }</code></pre>
-<pre><code>panic: runtime error: index out of range
+<pre tabindex="0"><code>panic: runtime error: index out of range
 
 goroutine 1 [running]:
 main.main()
-	../main.go:3 +0xe0</code></pre>
-<h2 id="answer">Answer</h2>
-
+	../main.go:3 +0xe0
+</code></pre><h2 id="answer">Answer</h2>
 <p>In the last iteration, <code>i</code> equals <code>len(a)</code> which is outside the bounds of&nbsp;<code>a</code>.</p>
-
 <p>Arrays, slices and strings are indexed <strong>starting from zero</strong> so the values of <code>a</code> are found at <code>a[0]</code>, <code>a[1]</code>, <code>a[2]</code>, …, <code>a[len(a)-1]</code>.</p>
-
 <p>Loop from <code>0</code> to <code>len(a)-1</code> instead.</p>
-
 <pre><code class="skiphl">for i := 0; <b>i &lt; len(a)</b>; i++ {
-    fmt.Println(a[i])
+	fmt.Println(a[i])
 }</code></pre>
-
 <p>Or, better yet, use a range loop.</p>
-
 <pre><code class="language-go">for _, n := range a {
-    fmt.Println(n)
+	fmt.Println(n)
 }
 </code></pre>
 
@@ -200,14 +189,6 @@ main.main()
       <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a></li>
 
   </ul>
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
 
 
   

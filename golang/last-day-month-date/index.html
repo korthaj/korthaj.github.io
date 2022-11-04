@@ -85,27 +85,21 @@
 <h1>Days in a month</h1>
 <div class="tagline">yourbasic.org/golang</div>
 <!-- CC0: https://pixabay.com/en/moon-sea-full-moon-mediterranean-2762111/ -->
-
 <div style="margin-top:1em;"><img src="/golang/full-moon.jpg"></div>
-
 <p>To compute the last day of a month, you can use the fact that <a href="https://golang.org/pkg/time/#Date"><code>time.Date</code></a>
-accepts values outside their usual ranges &ndash; the values are normalized during the conversion.</p>
-
-<p>To compute the number of days in February, look at the day before March&nbsp;1.</p>
-
+accepts values outside their usual ranges – the values are normalized during the conversion.</p>
+<p>To compute the number of days in February, look at the day before March 1.</p>
 <pre><code>func main() {
-    t := Date(2000, 3, 0) <span class="comment">// the day before 2000-03-01</span>
-    fmt.Println(t)        <span class="comment">// 2000-02-29 00:00:00 +0000 UTC</span>
-    fmt.Println(t.Day())  <span class="comment">// 29</span>
+	t := Date(2000, 3, 0) <span class="comment">// the day before 2000-03-01</span>
+	fmt.Println(t)        <span class="comment">// 2000-02-29 00:00:00 +0000 UTC</span>
+	fmt.Println(t.Day())  <span class="comment">// 29</span>
 }
 
 func Date(year, month, day int) time.Time {
-    return time.Date(year, time.Month(month), day, 0, 0, 0, 0, time.UTC)
+	return time.Date(year, time.Month(month), day, 0, 0, 0, 0, time.UTC)
 }</code></pre>
-
 <p><a href="https://golang.org/pkg/time/#Time.AddDate"><code>AddDate</code></a> normalizes its result in the same way.
-For example, adding one month to October&nbsp;31 yields December&nbsp;1, the normalized form of November&nbsp;31.</p>
-
+For example, adding one month to October 31 yields December 1, the normalized form of November 31.</p>
 <pre><code>t = Date(2000, 10, 31).AddDate(0, 1, 0) <span class="comment">// a month after October 31</span>
 fmt.Println(t)                          <span class="comment">// 2000-12-01 00:00:00 +0000 UTC</span></code></pre>
 
@@ -146,15 +140,7 @@ fmt.Println(t)                          <span class="comment">// 2000-12-01 00:0
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

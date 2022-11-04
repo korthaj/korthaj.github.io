@@ -84,46 +84,34 @@
 <article>
 <h1>3 ways to split a string into a slice</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- Public domain: https://commons.wikimedia.org/wiki/File:Cherry-Cocktail-Split.jpg -->
-
 <div style="margin-top:1em;"><img src="/golang/cherry-cocktail-split.jpg"></div>
-
 <ul class="toc">
   <li><a href="#split-on-comma-or-other-substring">Split on comma or other substring</a></li>
   <li><a href="#split-by-whitespace-and-newline">Split by whitespace and newline</a></li>
   <li><a href="#split-on-regular-expression">Split on regular expression</a></li>
 </ul>
-
 <h2 id="split-on-comma-or-other-substring">Split on comma or other substring</h2>
-
 <p>Use the <a href="https://golang.org/pkg/strings/#Split"><code>strings.Split</code></a> function to split a string into its comma separated values.</p>
-<pre><code>s := strings.Split(&#34;a,b,c&#34;, &#34;,&#34;)
+<pre tabindex="0"><code>s := strings.Split(&quot;a,b,c&quot;, &quot;,&quot;)
 fmt.Println(s)
-// Output: [a b c]</code></pre>
-<p>To include the separators, use <a href="https://golang.org/pkg/strings/#SplitAfter"><code>strings.SplitAfter</code></a>.
+// Output: [a b c]
+</code></pre><p>To include the separators, use <a href="https://golang.org/pkg/strings/#SplitAfter"><code>strings.SplitAfter</code></a>.
 To split only the first n values, use <a href="https://golang.org/pkg/strings/#SplitN"><code>strings.SplitN</code></a> and <a href="https://golang.org/pkg/strings/#SplitAfterN"><code>strings.SplitAfterN</code></a>.</p>
-
 <p>You can use <a href="/golang/trim-whitespace-from-string/"><code>strings.TrimSpace</code></a>
 to strip leading and trailing whitespace from the resulting strings.</p>
-
 <h2 id="split-by-whitespace-and-newline">Split by whitespace and newline</h2>
-
 <p>Use the <a href="https://golang.org/pkg/strings/#Fields"><code>strings.Fields</code></a> function to split a string into substrings removing any space characters,
 including newlines.</p>
-<pre><code>s := strings.Fields(&#34; a \t b \n&#34;)
+<pre tabindex="0"><code>s := strings.Fields(&quot; a \t b \n&quot;)
 fmt.Println(s)
-// Output: [a b]</code></pre>
-<h2 id="split-on-regular-expression">Split on regular expression</h2>
-
+// Output: [a b]
+</code></pre><h2 id="split-on-regular-expression">Split on regular expression</h2>
 <p>In more complicated situations,
 the regexp <a href="/golang/regexp-cheat-sheet/#split"><code>Split</code></a> method might do the trick.</p>
-
 <p>It splits a string into substrings separated by a regular expression.
 The method takes an integer argument <code>n</code>;
 if <code>n &gt;= 0</code>, it returns at most <code>n</code> substrings.</p>
-
 <pre><code>a := regexp.MustCompile(`a`)              <span class="comment">// a single `a`</span>
 fmt.Printf("%q\n", a.Split("banana", -1)) <span class="comment">// ["b" "n" "n" ""]</span>
 fmt.Printf("%q\n", a.Split("banana", 0))  <span class="comment">// [] (nil slice)</span>
@@ -132,14 +120,10 @@ fmt.Printf("%q\n", a.Split("banana", 2))  <span class="comment">// ["b" "nana"]<
 
 zp := regexp.MustCompile(` *, *`)             <span class="comment">// spaces and one comma</span>
 fmt.Printf("%q\n", zp.Split("a,b ,  c ", -1)) <span class="comment">// ["a" "b" "c "]</span></code></pre>
-
 <p>See this <a href="/golang/regexp-cheat-sheet/">Regexp tutorial and cheat sheet</a>
 for a gentle introduction to the Go regexp package with plenty of examples.</p>
-
 <h2 id="further-reading">Further reading</h2>
-
 <div><a href="/golang/string-functions-reference-cheat-sheet/"><img src="/golang/typewriter-thumb.png" title="40+ practical string tips [cheat sheet]"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/string-functions-reference-cheat-sheet/">40+ practical string tips [cheat sheet]</a></p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -161,15 +145,7 @@ for a gentle introduction to the Go regexp package with plenty of examples.</p>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

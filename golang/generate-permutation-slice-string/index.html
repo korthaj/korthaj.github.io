@@ -86,39 +86,37 @@
 <div class="tagline">yourbasic.org/golang</div>
 
 <!-- CC BY-SA 2.0: https://www.flickr.com/photos/mollystevens/12165359335 -->
-
 <div style="margin-top:1em;"><img src="/golang/quilt.jpg"></div>
-
 <pre><code>// Perm calls f with each permutation of a.
 func Perm(a []rune, f func([]rune)) {
-    perm(a, f, 0)
+	perm(a, f, 0)
 }
 
 // Permute the values at index i to len(a)-1.
 func perm(a []rune, f func([]rune), i int) {
-    if i > len(a) {
-        f(a)
-        return
-    }
-    perm(a, f, i+1)
-    for j := i + 1; j < len(a); j++ {
-        a[i], a[j] = a[j], a[i]
-        perm(a, f, i+1)
-        a[i], a[j] = a[j], a[i]
-    }
+	if i > len(a) {
+		f(a)
+		return
+	}
+	perm(a, f, i+1)
+	for j := i + 1; j < len(a); j++ {
+		a[i], a[j] = a[j], a[i]
+		perm(a, f, i+1)
+		a[i], a[j] = a[j], a[i]
+	}
 }</code></pre>
-
 <p>Example usage:</p>
-<pre><code>Perm([]rune(&#34;abc&#34;), func(a []rune) {
+<pre tabindex="0"><code>Perm([]rune(&quot;abc&quot;), func(a []rune) {
 	fmt.Println(string(a))
-})</code></pre>
-<p>Output:</p>
-<pre><code>abc
+})
+</code></pre><p>Output:</p>
+<pre tabindex="0"><code>abc
 acb
 bac
 bca
 cba
-cab</code></pre>
+cab
+</code></pre>
 
 <h3>More code examples</h3>
 
@@ -160,15 +158,7 @@ cab</code></pre>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

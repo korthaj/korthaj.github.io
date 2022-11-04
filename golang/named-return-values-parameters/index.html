@@ -84,44 +84,33 @@
 <article>
 <h1>Named return values [best practice]</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC BY 2.0: https://www.flickr.com/photos/robertnyman/4030997193 -->
-
 <div style="margin-top:1em;"><img src="/golang/geek-tattoo.jpg"></div>
-
 <p>In Go return parameters may be named and used as regular variables. When the function returns,
-they are used as return&nbsp;values.</p>
-
+they are used as return values.</p>
 <pre><code class="skiphl">func f() <b>(i int, s string)</b> {
-    i = 17
-    s = "abc"
-    <b>return</b> <span class="comment">// same as return i, s</span>
+	i = 17
+	s = "abc"
+	<b>return</b> <span class="comment">// same as return i, s</span>
 }</code></pre>
-
-<p>Named return parameters are initialized to their <a href="/golang/default-zero-value/">zero&nbsp;values</a>.</p>
-
-<p>The names are not mandatory but can make for good documentation. Correctly used, named return parameters can also help clarify and clean up the&nbsp;code.</p>
-
+<p>Named return parameters are initialized to their <a href="/golang/default-zero-value/">zero values</a>.</p>
+<p>The names are not mandatory but can make for good documentation. Correctly used, named return parameters can also help clarify and clean up the code.</p>
 <h2 id="example">Example</h2>
-
 <p>This version of <a href="https://golang.org/pkg/io/#ReadFull"><code>io.ReadFull</code></a>,
 taken from <a href="https://golang.org/doc/effective_go.html#named-results">Effective Go</a>,
 uses them to good effect.</p>
-
 <p><code><pre><span class="comment">// ReadFull reads exactly len(buf) bytes from r into buf. It returns</span>
 <span class="comment">// the number of bytes copied and an error if fewer bytes were read.</span>
 func ReadFull(r Reader, buf []byte) (n int, err error) {
-    for len(buf) &gt; 0 &amp;&amp; err == nil {
-        var nr int
-        nr, err = r.Read(buf)
-        n += nr
-        buf = buf[nr:]
-    }
-    return
+for len(buf) &gt; 0 &amp;&amp; err == nil {
+var nr int
+nr, err = r.Read(buf)
+n += nr
+buf = buf[nr:]
+}
+return
 }
 </pre></code></p>
-
 <p>The code is both simpler and clearer, with named return values
 that are properly initialized and tied to a plain return.</p>
 
@@ -156,15 +145,7 @@ that are properly initialized and tied to a plain return.</p>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

@@ -85,12 +85,8 @@
 <h1>Type, value and equality of interfaces</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC0: http://maxpixel.freegreatpicture.com/Hand-In-Hand-Hands-Connection-Love-Heart-Anchor-1100886 -->
-
 <div style="margin-top:1em;"><img src="/golang/connection.jpg"></div>
-
 <ul class="toc">
   <li><a href="#interface-type">Interface type</a></li>
   <li><a href="#structural-typing">Structural typing</a></li>
@@ -98,21 +94,19 @@
   <li><a href="#interface-values">Interface values</a></li>
   <li><a href="#equality">Equality</a></li>
 </ul>
-
 <h2 id="interface-type">Interface type</h2>
-
 <blockquote>
 <p>An interface type consists of a set of method signatures.
 A variable of interface type can hold any value that implements these methods.</p>
 </blockquote>
-
 <p>In this example both <code>Temp</code> and <code>*Point</code> implement the <code>MyStringer</code> interface.</p>
-<pre><code>type MyStringer interface {
+<pre tabindex="0"><code>type MyStringer interface {
 	String() string
-}</code></pre><pre><code>type Temp int
+}
+</code></pre><pre tabindex="0"><code>type Temp int
 
 func (t Temp) String() string {
-	return strconv.Itoa(int(t)) + &#34; °C&#34;
+	return strconv.Itoa(int(t)) + &quot; °C&quot;
 }
 
 type Point struct {
@@ -120,13 +114,11 @@ type Point struct {
 }
 
 func (p *Point) String() string {
-	return fmt.Sprintf(&#34;(%d,%d)&#34;, p.x, p.y)
-}</code></pre>
-<p>Actually, <code>*Temp</code> also implements <code>MyStringer</code>, since the method set of
-a pointer type <code>*T</code> is the set of all methods with receiver <code>*T</code>&nbsp;or&nbsp;<code>T</code>.</p>
-
-<p>When you call a method on an interface value, the method of its underlying type is&nbsp;executed.</p>
-
+	return fmt.Sprintf(&quot;(%d,%d)&quot;, p.x, p.y)
+}
+</code></pre><p>Actually, <code>*Temp</code> also implements <code>MyStringer</code>, since the method set of
+a pointer type <code>*T</code> is the set of all methods with receiver <code>*T</code> or <code>T</code>.</p>
+<p>When you call a method on an interface value, the method of its underlying type is executed.</p>
 <pre><code>var x MyStringer
 
 x = Temp(24)
@@ -134,19 +126,15 @@ fmt.Println(x.String()) <span class="comment">// 24 °C</span>
 
 x = &Point{1, 2}
 fmt.Println(x.String()) <span class="comment">// (1,2)</span></code></pre>
-
 <h2 id="structural-typing">Structural typing</h2>
-
 <blockquote>
 <p>A type implements an interface by implementing its methods.
-No explicit declaration is&nbsp;required.</p>
+No explicit declaration is required.</p>
 </blockquote>
-
 <p>In fact, the <code>Temp</code>, <code>*Temp</code> and <code>*Point</code> types also implement
 the standard library <a href="https://golang.org/pkg/fmt/#Stringer"><code>fmt.Stringer</code></a> interface.
 The <code>String</code> method in this interface is used to print values passed as an operand
 to functions such as <a href="https://golang.org/pkg/fmt/#Println"><code>fmt.Println</code></a>.</p>
-
 <pre><code>var x MyStringer
 
 x = Temp(24)
@@ -154,17 +142,12 @@ fmt.Println(x) <span class="comment">// 24 °C</span>
 
 x = &Point{1, 2}
 fmt.Println(x) <span class="comment">// (1,2)</span></code></pre>
-
 <h2 id="the-empty-interface">The empty interface</h2>
-
 <!-- CC0: https://pixabay.com/en/room-empty-interior-ground-2133173/ -->
-
 <div style="margin-top:1em;"><img src="/golang/empty-room.png"></div>
-
 <p>The interface type that specifies no methods is known as the empty interface.</p>
-<pre><code>interface{}</code></pre>
-<p>An empty interface can hold values of any type since every type implements at&nbsp;least zero&nbsp;methods.</p>
-
+<pre tabindex="0"><code>interface{}
+</code></pre><p>An empty interface can hold values of any type since every type implements at least zero methods.</p>
 <pre><code>var x interface{}
 
 x = 2.4
@@ -172,19 +155,15 @@ fmt.Println(x) <span class="comment">// 2.4</span>
 
 x = &Point{1, 2}
 fmt.Println(x) <span class="comment">// (1,2)</span></code></pre>
-
 <p>The <a href="https://golang.org/pkg/fmt/#Println"><code>fmt.Println</code></a> function is a chief example.
-It takes any number of arguments of any&nbsp;type.</p>
-<pre><code>func Println(a ...interface{}) (n int, err error)</code></pre>
-<h2 id="interface-values">Interface values</h2>
-
+It takes any number of arguments of any type.</p>
+<pre tabindex="0"><code>func Println(a ...interface{}) (n int, err error)
+</code></pre><h2 id="interface-values">Interface values</h2>
 <blockquote>
-<p>An <strong>interface value</strong> consists of a <strong>concrete&nbsp;value</strong>
-and a <strong>dynamic&nbsp;type</strong>: <code>[Value,&nbsp;Type]</code></p>
+<p>An <strong>interface value</strong> consists of a <strong>concrete value</strong>
+and a <strong>dynamic type</strong>: <code>[Value, Type]</code></p>
 </blockquote>
-
 <p>In a call to <a href="https://golang.org/pkg/fmt/#Printf"><code>fmt.Printf</code></a>, you can use <code>%v</code> to print the concrete value and <code>%T</code> to print the dynamic type.</p>
-
 <pre><code>var x MyStringer
 fmt.Printf("%v %T\n", x, x) <span class="comment">// &lt;nil&gt; &lt;nil&gt;</span>
 
@@ -196,53 +175,39 @@ fmt.Printf("%v %T\n", x, x) <span class="comment">// (1,2) *main.Point</span>
 
 x = (*Point)(nil)
 fmt.Printf("%v %T\n", x, x) <span class="comment">// &lt;nil&gt; *main.Point</span></code></pre>
-
 <p>The <strong>zero value</strong> of an interface type is nil, which is represented as <code>[nil, nil]</code>.</p>
-
 <p>Calling a method on a nil interface is a run-time error.
 However, it&rsquo;s quite common to write methods that can handle
-a receiver value <code>[nil, Type]</code>, where <code>Type</code> isn&rsquo;t&nbsp;nil.</p>
-
+a receiver value <code>[nil, Type]</code>, where <code>Type</code> isn&rsquo;t nil.</p>
 <p>You can use <strong><a href="/golang/type-assertion-switch/">type assertions</a></strong> or
 <strong><a href="/golang/type-assertion-switch/">type switches</a></strong>
 to access the dynamic type of an interface value.
 See <a href="/golang/find-type-of-object/">Find the type of an object</a> for more details.</p>
-
 <h2 id="equality">Equality</h2>
-
 <p>Two interface values are equal</p>
-
 <ul>
 <li>if they have equal concrete values <b>and</b> identical dynamic types,</li>
 <li>or if both are nil.</li>
 </ul>
-
 <p>A value <code>t</code> of interface type <code>T</code> and a value <code>x</code> of non-interface type <code>X</code> are equal if</p>
-
 <ul>
 <li><code>t</code>&rsquo;s concrete value is equal to <code>x</code></li>
 <li><b>and</b> <code>t</code>&rsquo;s dynamic type is identical to <code>X</code>.</li>
 </ul>
-
 <pre><code>var x MyStringer
 fmt.Println(x == nil)<span class="comment"> // true</span>
 
 x = (*Point)(nil)
 fmt.Println(x == nil) <span class="comment">// false</span></code></pre>
-
 <p>In the second print statement, the concrete value of <code>x</code> equals <code>nil</code>,
-but its dynamic type is <code>*Point</code>, which is not&nbsp;<code>nil</code>.</p>
-
+but its dynamic type is <code>*Point</code>, which is not <code>nil</code>.</p>
 <blockquote class="warning">
 <b>Warning:</b> See <a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a>
 for a real-world example where this definition of equality leads to puzzling results.
 </blockquote>
-
 <h3 id="further-reading">Further reading</h3>
-
 <div><a href="/golang/generics/"><img src="/golang/bland-face-tiny.png" title="Generics (alternatives and workarounds)"></a></div>
-
-<p><a href="/golang/generics/">Generics (alternatives and workarounds)</a> discusses how interfaces, multiple functions, type assertions, reflection and code generation can be use in place of parametric polymorphism in&nbsp;Go.</p>
+<p><a href="/golang/generics/">Generics (alternatives and workarounds)</a> discusses how interfaces, multiple functions, type assertions, reflection and code generation can be use in place of parametric polymorphism in Go.</p>
 
 
 <h3>Go step by step</h3>
@@ -301,15 +266,7 @@ for a real-world example where this definition of equality leads to puzzling res
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

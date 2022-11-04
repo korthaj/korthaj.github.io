@@ -84,115 +84,83 @@
 <article>
 <h1>Convert between int, int64 and string</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC0: https://pixabay.com/en/numbers-123-1-2-3-one-of-the-two-1990109/ -->
-
 <div style="margin-top:1em"><img src="/golang/numbers-1-2-3.jpg"></div>
-
 <ul class="toc">
   <li><a href="#int-int64-to-string">int/int64 to string</a></li>
   <li><a href="#string-to-int-int64">string to int/int64</a></li>
   <li><a href="#int-to-int64-and-back">int to int64 (and back)</a></li>
   <li><a href="#general-formatting-width-indent-sign">General formatting (width, indent, sign)</a></li>
 </ul>
-
-<h2 id="int-int64-to-string">int/int64 to string</h2>
-
+<h2 id="intint64-to-string">int/int64 to string</h2>
 <p>Use <a href="https://golang.org/pkg/strconv/#Itoa"><code>strconv.Itoa</code></a> to convert an int to a decimal string.</p>
-
 <pre><code>s := strconv.Itoa(97) <span class="comment">// s == "97"</span></code></pre>
-
 <blockquote class="warning">
 <b>Warning:</b> In a plain <a href="/golang/conversions/">conversion</a>
 the value is interpreted as a Unicode code point,
 and the resulting string will contain the character represented by that code point, encoded in UTF-8.
-
 <pre><code>s := string(97) <span class="comment">// s == "a"</span>
 </code></pre>
 </blockquote>
-
 <p>Use <a href="https://golang.org/pkg/strconv/#FormatInt"><code>strconv.FormatInt</code></a>
 to format an int64 in a given base.</p>
-
 <pre><code>var n int64 = 97
 s := strconv.FormatInt(n, 10) <span class="comment">// s == "97" (decimal)</span>
 </code></pre>
-
 <pre><code>var n int64 = 97
 s := strconv.FormatInt(n, 16) <span class="comment">// s == "61" (hexadecimal)</span>
 </code></pre>
-
-<h2 id="string-to-int-int64">string to int/int64</h2>
-
-<p>Use <a href="https://golang.org/pkg/strconv/#Atoi"><code>strconv.Atoi</code></a> to parse a decimal string to an&nbsp;int.</p>
-
+<h2 id="string-to-intint64">string to int/int64</h2>
+<p>Use <a href="https://golang.org/pkg/strconv/#Atoi"><code>strconv.Atoi</code></a> to parse a decimal string to an int.</p>
 <pre><code>s := "97"
 if n, err := strconv.Atoi(s); err == nil {
-    fmt.Println(n+1)
+	fmt.Println(n+1)
 } else {
-    fmt.Println(s, "is not an integer.")
+	fmt.Println(s, "is not an integer.")
 }
 <span class="comment">// Output: 98</span></code></pre>
-
 <p>Use <a href="https://golang.org/pkg/strconv/#ParseInt"><code>strconv.ParseInt</code></a>
-to parse a decimal string (base&nbsp;<code>10</code>) and check if it fits into an&nbsp;int64.</p>
-
+to parse a decimal string (base <code>10</code>) and check if it fits into an int64.</p>
 <pre><code>s := "97"
 n, err := strconv.ParseInt(s, 10, 64)
 if err == nil {
-    fmt.Printf("%d of type %T", n, n)
+	fmt.Printf("%d of type %T", n, n)
 }
 <span class="comment">// Output: 97 of type int64</span></code></pre>
-
-<p>The two numeric arguments represent a  base (0, 2 to 36) and a bit size (0&nbsp;to&nbsp;64).</p>
-
+<p>The two numeric arguments represent a  base (0, 2 to 36) and a bit size (0 to 64).</p>
 <p>If the first argument is 0, the base is implied by the string&rsquo;s prefix:
-base 16 for <code>&#34;0x&#34;</code>, base 8 for <code>&#34;0&#34;</code>, and base&nbsp;10 otherwise.</p>
-
+base 16 for <code>&quot;0x&quot;</code>, base 8 for <code>&quot;0&quot;</code>, and base 10 otherwise.</p>
 <p>The second argument specifies the integer type that the result must fit into.
 Bit sizes 0, 8, 16, 32, and 64 correspond to <code>int</code>, <code>int8</code>,
-<code>int16</code>, <code>int32</code>, and&nbsp;<code>int64</code>.</p>
-
+<code>int16</code>, <code>int32</code>, and <code>int64</code>.</p>
 <h2 id="int-to-int64-and-back">int to int64 (and back)</h2>
-
 <p>The size of an <code>int</code> is implementation-specific,
-it&rsquo;s either 32 or 64&nbsp;bits, and hence you won&rsquo;t lose any
-information when converting from int to &nbsp;int64.</p>
-
+it&rsquo;s either 32 or 64 bits, and hence you won&rsquo;t lose any
+information when converting from int to  int64.</p>
 <pre><code>var n int = 97
 m := <b>int64(n)</b> <span class="comment">// safe</span>
 </code></pre>
-
 <blockquote class="warning">
 However, when converting to a shorter integer type,
 the value is <b>truncated</b> to fit in the result type's size.
 </blockquote>
-
 <pre><code>var m int64 = 2 << 32
 n := <b>int(m)</b>    <span class="comment">// truncated on machines with 32-bit ints</span>
 fmt.Println(n) <span class="comment">// either 0 or 4,294,967,296</span>
 </code></pre>
-
 <ul>
 <li>See <a href="/golang/max-min-int-uint/">Maximum value of an int</a> for code
-to compute the size of an&nbsp;<code>int</code>.</li>
+to compute the size of an <code>int</code>.</li>
 <li>See <a href="/golang/int-vs-int64/">Pick the right one: int vs. int64</a>
 for best practices.</li>
 </ul>
-
 <h2 id="general-formatting-width-indent-sign">General formatting (width, indent, sign)</h2>
-
 <p>The <a href="https://golang.org/pkg/fmt/#Sprintf"><code>fmt.Sprintf</code></a> function
-is a useful general tool for converting data to&nbsp;string:</p>
-
+is a useful general tool for converting data to string:</p>
 <pre><code>s := fmt.Sprintf("%+8d", 97)
 <span class="comment">// s == "     +97" (width 8, right justify, always show sign)</span></code></pre>
-
 <h3 id="further-reading">Further reading</h3>
-
 <div><a href="/golang/fmt-printf-reference-cheat-sheet/"><img src="/golang/format-thumb.jpg" title="fmt cheat sheet"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;">See this <a href="/golang/fmt-printf-reference-cheat-sheet/">fmt cheat sheet</a> for more about formatting integers and other types of data with the fmt package.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -226,15 +194,7 @@ is a useful general tool for converting data to&nbsp;string:</p>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

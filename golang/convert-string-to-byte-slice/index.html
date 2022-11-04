@@ -84,74 +84,50 @@
 <article>
 <h1>Convert between byte array/slice and string</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC BY 2.0: https://www.flickr.com/photos/appleboy/24407557644/in/photostream/ -->
-
 <div><img src="/golang/gopher-brown-left-thumb.jpg" style="float: right; margin-right: 30px;" alt="Golang gopher"></div>
-
 <ul class="toc">
   <li><a href="#basics">Basics</a></li>
   <li><a href="#convert-string-to-bytes">Convert string to bytes</a></li>
   <li><a href="#convert-bytes-to-string">Convert bytes to string</a></li>
   <li><a href="#performance">Performance</a></li>
 </ul>
-
 <h2 id="basics">Basics</h2>
-
 <p>When you convert between a string and a byte slice (array),
 you get a brand new slice that contains the same bytes as the string, and vice versa.</p>
-
 <ul>
 <li>The conversion doesn&rsquo;t change the data;</li>
 <li>the only difference is that strings are immutable, while byte slices can be modified.</li>
 </ul>
-
 <blockquote>
 <p>If you need to manipulate the characters (runes) of a string, you may want to
 convert the string to a rune slice instead.
 See <a href="/golang/convert-string-to-rune-slice/">Convert between rune array/slice and string</a>.</p>
 </blockquote>
-
 <h2 id="convert-string-to-bytes">Convert string to bytes</h2>
-
 <p>When you convert a string to a byte slice,
-you get a new slice that contains the same bytes as the&nbsp;string.</p>
-
+you get a new slice that contains the same bytes as the string.</p>
 <pre><code>b := <b>[]byte</b>("ABC€")
 fmt.Println(b) <span class="comment">// [65 66 67 226 130 172]</span>
 </code></pre>
-
-<p>Note that the character <code>€</code> is encoded in UTF-8 using 3&nbsp;bytes.
+<p>Note that the character <code>€</code> is encoded in UTF-8 using 3 bytes.
 See the <a href="/golang/rune/">Go rune article</a> for more on UTF-8 encoding of Unicode code points.</p>
-
 <h2 id="convert-bytes-to-string">Convert bytes to string</h2>
-
 <p>When you convert a slice of bytes to a string,
-you get a new string that contains the same bytes as the&nbsp;slice.</p>
-
+you get a new string that contains the same bytes as the slice.</p>
 <pre><code>s := <b>string</b>([]byte{65, 66, 67, 226, 130, 172})
 fmt.Println(s) <span class="comment">// ABC€</span>
 </code></pre>
-
 <h2 id="performance">Performance</h2>
-
 <p>These conversions create a new slice or string,
-and therefore have <a href="/algorithms/time-complexity-explained/">time&nbsp;complexity</a>
+and therefore have <a href="/algorithms/time-complexity-explained/">time complexity</a>
 proportional to the number of bytes that are processed.</p>
-
 <h3 id="more-efficient-alternative">More efficient alternative</h3>
-
 <p>In some cases, you might be able to use a <a href="/golang/build-append-concatenate-strings-efficiently/">string builder</a>, which can concatenate strings without redundant copying:</p>
-
 <div><a href="/golang/build-append-concatenate-strings-efficiently/"><img src="/golang/bricklayer-thumb.jpg" title="Efficient string concatenation [full guide]"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/build-append-concatenate-strings-efficiently/">Efficient string concatenation [full guide]</a></p>
-
 <h2 id="further-reading">Further reading</h2>
-
 <div><a href="/golang/string-functions-reference-cheat-sheet/"><img src="/golang/typewriter-thumb.png" title="40+ practical string tips [cheat sheet]"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/string-functions-reference-cheat-sheet/">40+ practical string tips [cheat sheet]</a></p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -191,15 +167,7 @@ proportional to the number of bytes that are processed.</p>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

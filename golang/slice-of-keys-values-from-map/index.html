@@ -40,21 +40,17 @@
 <article>
 <h1>Get slices of keys and values from a map</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <p>You can use a range statement to extract slices of keys and values from
-a&nbsp;<a href="/golang/maps-explained/">map</a>.</p>
-<pre><code>keys := make([]keyType, 0, len(myMap))
+a <a href="/golang/maps-explained/">map</a>.</p>
+<pre tabindex="0"><code>keys := make([]keyType, 0, len(myMap))
 values := make([]valueType, 0, len(myMap))
 
 for k, v := range myMap {
 	keys = append(keys, k)
 	values = append(values, v)
-}</code></pre>
-<h3 id="further-reading">Further reading</h3>
-
+}
+</code></pre><h3 id="further-reading">Further reading</h3>
 <div><a href="/golang/maps-explained/"><img src="/golang/15-men-in-16-slots-thumb.jpg" title="Maps explained"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/maps-explained/">Maps explained [code example]</a></p>
 
 
@@ -76,15 +72,7 @@ for k, v := range myMap {
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

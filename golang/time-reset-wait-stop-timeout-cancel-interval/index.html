@@ -85,37 +85,30 @@
 <h1>Timer and Ticker: events in the future</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <p class="lead">Timers and Tickers let you execute code in the future, once or repeatedly.</p>
-
 <!-- CC0: https://pixabay.com/en/time-scholarship-2160154/ -->
-
 <div><img src="/golang/timekeepers.jpg"></div>
-
 <ul class="toc">
   <li><a href="#timeout-timer">Timeout (Timer)</a></li>
   <li><a href="#repeat-ticker">Repeat (Ticker)</a></li>
   <li><a href="#wait-act-and-cancel">Wait, act and cancel</a></li>
 </ul>
-
 <h2 id="timeout-timer">Timeout (Timer)</h2>
-
 <p><a href="https://golang.org/pkg/time/#After"><code>time.After</code></a>
 waits for a specified duration and then sends the current time
 on the returned channel:</p>
-<pre><code>select {
+<pre tabindex="0"><code>select {
 case news := &lt;-AFP:
 	fmt.Println(news)
 case &lt;-time.After(time.Hour):
-	fmt.Println(&#34;No news in an hour.&#34;)
-}</code></pre>
-<p>The underlying <a href="https://golang.org/pkg/time/#Timer"><code>time.Timer</code></a>
+	fmt.Println(&quot;No news in an hour.&quot;)
+}
+</code></pre><p>The underlying <a href="https://golang.org/pkg/time/#Timer"><code>time.Timer</code></a>
 will not be recovered by the garbage collector until the timer fires.
 If this is a concern, use <a href="https://golang.org/pkg/time/#NewTimer"><code>time.NewTimer</code></a>
 instead and call its <a href="https://golang.org/pkg/time/#Timer.Stop"><code>Stop</code></a> method
 when the timer is no longer needed:</p>
-<pre><code>for alive := true; alive; {
+<pre tabindex="0"><code>for alive := true; alive; {
 	timer := time.NewTimer(time.Hour)
 	select {
 	case news := &lt;-AFP:
@@ -123,38 +116,34 @@ when the timer is no longer needed:</p>
 		fmt.Println(news)
 	case &lt;-timer.C:
 		alive = false
-		fmt.Println(&#34;No news in an hour. Service aborting.&#34;)
+		fmt.Println(&quot;No news in an hour. Service aborting.&quot;)
 	}
-}</code></pre>
-<h2 id="repeat-ticker">Repeat (Ticker)</h2>
-
+}
+</code></pre><h2 id="repeat-ticker">Repeat (Ticker)</h2>
 <p><a href="https://golang.org/pkg/time/#Tick"><code>time.Tick</code></a> returns
 a channel that delivers clock ticks at even intervals:</p>
-<pre><code>go func() {
+<pre tabindex="0"><code>go func() {
 	for now := range time.Tick(time.Minute) {
 		fmt.Println(now, statusUpdate())
 	}
-}()</code></pre>
-<p>The underlying <a href="https://golang.org/pkg/time/#Ticker"><code>time.Ticker</code></a>
+}()
+</code></pre><p>The underlying <a href="https://golang.org/pkg/time/#Ticker"><code>time.Ticker</code></a>
 will not be recovered by the garbage collector.
 If this is a concern, use <a href="https://golang.org/pkg/time/#NewTicker"><code>time.NewTicker</code></a>
 instead and call its <a href="https://golang.org/pkg/time/#Timer.Stop"><code>Stop</code></a> method
 when the ticker is no longer needed.</p>
-
 <h2 id="wait-act-and-cancel">Wait, act and cancel</h2>
-
 <p><a href="https://golang.org/pkg/time/#AfterFunc"><code>time.AfterFunc</code></a>
 waits for a specified duration and then calls a function in its own goroutine.
 It returns a <a href="https://golang.org/pkg/time/#Timer"><code>time.Timer</code></a> that can be used
 to cancel the call:</p>
-
 <pre><code>func Foo() {
-    timer = time.AfterFunc(time.Minute, func() {
-        log.Println("Foo run for more than a minute.")
-    })
-    defer timer.Stop()
+	timer = time.AfterFunc(time.Minute, func() {
+		log.Println("Foo run for more than a minute.")
+	})
+	defer timer.Stop()
 
-    <span class="comment">// Do heavy work</span>
+	<span class="comment">// Do heavy work</span>
 }</code></pre>
 
 <ul class="pagina">
@@ -206,14 +195,6 @@ to cancel the call:</p>
 
   </ul>
 
-
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
 
 </aside>
 </main>

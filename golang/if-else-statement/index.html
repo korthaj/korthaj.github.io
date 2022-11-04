@@ -84,91 +84,67 @@
 <article>
 <h1>4 basic if-else statement patterns</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC BY 2.0: https://www.flickr.com/photos/ttypic/14157641862 -->
-
 <div style="margin-top:1em;"><img src="/golang/fork-in-road.jpg"></div>
-
 <ul class="toc">
   <li><a href="#basic-syntax">Basic syntax</a></li>
   <li><a href="#with-init-statement">With init statement</a></li>
   <li><a href="#nested-if-statements">Nested if statements</a></li>
   <li><a href="#ternary-operator-alternatives">Ternary ? operator alternatives</a></li>
 </ul>
-
 <h2 id="basic-syntax">Basic syntax</h2>
-
 <pre><code><b>if</b> x > max <b>{</b>
-    x = max
+	x = max
 <b>}</b></code></pre>
-
 <pre><code><b>if</b> x <= y <b>{</b>
-    min = x
+	min = x
 <b>} else {</b>
-    min = y
+	min = y
 <b>}</b></code></pre>
-
 <p>An <strong>if statement</strong> executes one of two branches according to a boolean expression.</p>
-
 <ul>
 <li>If the expression evaluates to true, the <strong>if</strong> branch is executed,</li>
 <li>otherwise, if present, the <strong>else</strong> branch is executed.</li>
 </ul>
-
 <h2 id="with-init-statement">With init statement</h2>
-
 <pre><code>if <b>x := f();</b> x <= y {
-    return x
+	return x
 }</code></pre>
-
 <p>The expression may be preceded by a <strong>simple statement</strong>,
 which executes before the expression is evaluated.
-The <strong>scope</strong> of <code>x</code> is limited to the if&nbsp;statement.</p>
-
+The <strong>scope</strong> of <code>x</code> is limited to the if statement.</p>
 <h2 id="nested-if-statements">Nested if statements</h2>
-
 <pre><code>if x := f(); x < y {
-    return x
+	return x
 } else if x > z {
-    return z
+	return z
 } else {
-    return y
+	return y
 }</code></pre>
-
 <p>Complicated conditionals are often best expressed
 in Go with a <strong>switch statement</strong>.
-See <a href="/golang/switch-statement/">5&nbsp;switch statement patterns</a>
+See <a href="/golang/switch-statement/">5 switch statement patterns</a>
 for details.</p>
-
-<h2 id="ternary-operator-alternatives">Ternary ? operator alternatives</h2>
-
+<h2 id="ternary--operator-alternatives">Ternary ? operator alternatives</h2>
 <!-- CC BY-SA 2.0: http://www.geograph.org.uk/photo/4599631 -->
-
 <div style="margin-top:1em;"><img src="/golang/invisible-man.jpg"></div>
-
 <p>You can&rsquo;t write a short one-line conditional in Go;
-there is no ternary conditional operator. Instead&nbsp;of</p>
-
+there is no ternary conditional operator. Instead of</p>
 <pre><code>res = expr ? x : y
 </code></pre>
-
 <p>you write</p>
-
 <pre><code>if expr {
-    res = x
+	res = x
 } else {
-    res = y
+	res = y
 }
 </code></pre>
-
 <p>In some cases, you may want to create a dedicated function.</p>
-
 <pre><code>func Min(x, y int) int {
-    if x &lt;= y {
-        return x
-    }
-    return y
+	if x &lt;= y {
+		return x
+	}
+	return y
 }
 </code></pre>
 
@@ -197,15 +173,7 @@ there is no ternary conditional operator. Instead&nbsp;of</p>
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

@@ -85,45 +85,40 @@
 <h1>Time zones</h1>
 <div class="tagline">yourbasic.org/golang</div>
 <!-- Public domain: https://en.wikipedia.org/wiki/File:Standard_World_Time_Zones.png -->
-
 <div style="margin-top:1em;"><a href="https://en.wikipedia.org/wiki/List_of_UTC_time_offsets" title="List of UTC time offsets"><img src="/golang/time-zones.png"></a></div>
-
 <p>Each <a href="https://golang.org/pkg/time/#Time"><code>Time</code></a> has an associated <a href="https://golang.org/pkg/time/#Location"><code>Location</code></a>, which is used for display purposes.</p>
-
 <p>The method <a href="https://golang.org/pkg/time/#Time.In"><code>In</code></a> returns a time with a specific location. Changing the location in this way changes only the presentation; it does not change the instant in time.</p>
-
-<p>Here is a convenience function that changes the location associated with a&nbsp;time.</p>
-
+<p>Here is a convenience function that changes the location associated with a time.</p>
 <pre><code>// TimeIn returns the time in UTC if the name is "" or "UTC".
 // It returns the local time if the name is "Local".
 // Otherwise, the name is taken to be a location name in
 // the IANA Time Zone database, such as "Africa/Lagos".
 func TimeIn(t time.Time, name string) (time.Time, error) {
-    loc, err := time.LoadLocation(name)
-    if err == nil {
-        t = t.In(loc)
-    }
-    return t, err
+	loc, err := time.LoadLocation(name)
+	if err == nil {
+		t = t.In(loc)
+	}
+	return t, err
 }</code></pre>
-
 <p>In use:</p>
-<pre><code>for _, name := range []string{
-	&#34;&#34;,
-	&#34;Local&#34;,
-	&#34;Asia/Shanghai&#34;,
-	&#34;America/Metropolis&#34;,
+<pre tabindex="0"><code>for _, name := range []string{
+	&quot;&quot;,
+	&quot;Local&quot;,
+	&quot;Asia/Shanghai&quot;,
+	&quot;America/Metropolis&quot;,
 } {
 	t, err := TimeIn(time.Now(), name)
 	if err == nil {
-		fmt.Println(t.Location(), t.Format(&#34;15:04&#34;))
+		fmt.Println(t.Location(), t.Format(&quot;15:04&quot;))
 	} else {
-		fmt.Println(name, &#34;&lt;time unknown&gt;&#34;)
+		fmt.Println(name, &quot;&lt;time unknown&gt;&quot;)
 	}
-}</code></pre><pre><code>UTC 19:32
+}
+</code></pre><pre tabindex="0"><code>UTC 19:32
 Local 20:32
 Asia/Shanghai 03:32
-America/Metropolis &lt;time unknown&gt;</code></pre>
-<blockquote class="warning">
+America/Metropolis &lt;time unknown&gt;
+</code></pre><blockquote class="warning">
 <b>Warning:</b> A daylight savings time transition skips or repeats times.
 For example, in the United States, March 13, 2011 2:15am never occurred,
 while November 6, 2011 1:15am occurred twice.
@@ -182,15 +177,7 @@ but it does not guarantee which.
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

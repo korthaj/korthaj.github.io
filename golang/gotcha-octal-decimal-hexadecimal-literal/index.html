@@ -85,32 +85,22 @@
 <h1>Numbers that start with zero</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC BY 2.0: https://www.flickr.com/photos/glynlowe/22573628975 -->
-
 <div style="margin-top:1em;"><img src="/golang/007.jpg"></div>
-
 <p>What&rsquo;s up with the counting in this example?</p>
-
 <pre><code>const (
-    Century = 100
-    Decade  = 010
-    Year    = 001
+	Century = 100
+	Decade  = 010
+	Year    = 001
 )
 <span class="comment">// The world's oldest person, Emma Morano, lived for a century,</span>
 <span class="comment">// two decades and two years.</span>
 fmt.Println("She was", Century+2*Decade+2*Year, "years old.")</code></pre>
-
 <pre>She was 118 years old.</pre>
-
 <h2 id="answer">Answer</h2>
-
 <p><code>010</code> is a number in <b>base&nbsp;8</b>, therefore it means&nbsp;8, not&nbsp;10.</p>
-
 <p>Integer literals in Go are specified in octal, decimal or hexadecimal.
 The number 16 can be written as <code>020</code>, <code>16</code> or <code>0x10</code>.</p>
-
 <table class="white">
   <thead>
     <tr>
@@ -137,22 +127,18 @@ The number 16 can be written as <code>020</code>, <code>16</code> or <code>0x10<
     </tr>
   </tbody>
 </table>
-
 <p>This <a href="/golang/bitwise-operator-cheat-sheet/">bitwise operators cheat sheet</a> covers
-all bitwise operators and functions in&nbsp;Go.</p>
-
+all bitwise operators and functions in Go.</p>
 <h3 id="zero-knowledge-trivia">Zero knowledge (trivia)</h3>
-
-<p>There are many ways to write zero in base&nbsp;8 in Go, including
-<code>0</code>, <code>00</code> and&nbsp;<code>000</code>.
-If&nbsp;you prefer hexadecimal notation, you also have a smörgåsbord of options: such as
+<p>There are many ways to write zero in base 8 in Go, including
+<code>0</code>, <code>00</code> and <code>000</code>.
+If you prefer hexadecimal notation, you also have a smörgåsbord of options: such as
 <code>0x0</code>, <code>0x00</code> and <code>0x000</code>
-(as well as <code>0X0</code>, <code>0X00</code> and&nbsp;<code>0X000</code>).
-However, there is no decimal zero integer literal in&nbsp;Go.</p>
-
+(as well as <code>0X0</code>, <code>0X00</code> and <code>0X000</code>).
+However, there is no decimal zero integer literal in Go.</p>
 <p>In fact, Go doesn&rsquo;t have any negative decimal literals either:
-<code>-1</code>&nbsp;is the unary negation operator
-followed by the decimal literal&nbsp;<code>1</code>.</p>
+<code>-1</code> is the unary negation operator
+followed by the decimal literal <code>1</code>.</p>
 
 <ul class="pagina">
   
@@ -233,14 +219,6 @@ followed by the decimal literal&nbsp;<code>1</code>.</p>
       <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a></li>
 
   </ul>
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
 
 
   

@@ -85,26 +85,19 @@
 <h1>Check if a number is prime</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC BY-SA 3.0: https://en.wikipedia.org/wiki/File:Sacks_spiral.svg -->
-
 <div style="margin-top:1em;"><img src="/golang/sacks-spiral.png"></div>
 <div><em><a href="https://en.wikipedia.org/wiki/Ulam_spiral">Sacks spiral of prime numbers</a></em></div>
-
 <h2 id="ints">Ints</h2>
-
-<p>For integer types, use <a href="https://golang.org/pkg/math/big/#Int.ProbablyPrime"><code>ProbablyPrime(0)</code></a> from package <a href="https://golang.org/pkg/math/big/"><code>math/big</code></a>. This primality test is 100%&nbsp;accurate for inputs less than&nbsp;2<sup>64</sup>.</p>
-
+<p>For integer types, use <a href="https://golang.org/pkg/math/big/#Int.ProbablyPrime"><code>ProbablyPrime(0)</code></a> from package <a href="https://golang.org/pkg/math/big/"><code>math/big</code></a>. This primality test is 100% accurate for inputs less than 2<sup>64</sup>.</p>
 <pre><code>const n = 1212121
 if <b>big.NewInt(n).ProbablyPrime(0)</b> {
-    fmt.Println(n, "is prime")
+	fmt.Println(n, "is prime")
 } else {
-    fmt.Println(n, "is not prime")
+	fmt.Println(n, "is not prime")
 }</code></pre>
-<pre><code>1212121 is prime</code></pre>
-<h2 id="larger-numbers">Larger numbers</h2>
-
+<pre tabindex="0"><code>1212121 is prime
+</code></pre><h2 id="larger-numbers">Larger numbers</h2>
 <p>
 For larger numbers, you need to provide the desired number of tests to
 <a href="https://golang.org/pkg/math/big/#Int.ProbablyPrime"><code></code>ProbablyPrime(n)</a>.
@@ -113,15 +106,15 @@ a randomly chosen non-prime is at most (1/4)<sup><i>n</i></sup>.
 A&nbsp;common choice is to use <i>n</i>&nbsp;=&nbsp;20;
 this gives a false positive rate 0.000,000,000,001.
 </p>
-
 <pre><code>z := new(big.Int)
 fmt.Sscan("170141183460469231731687303715884105727", z)
 if <b>z.ProbablyPrime(20)</b> {
-    fmt.Println(z, "is probably prime")
+	fmt.Println(z, "is probably prime")
 } else {
-    fmt.Println(z, "is not prime")
+	fmt.Println(z, "is not prime")
 }</code></pre>
-<pre><code>170141183460469231731687303715884105727 is probably prime</code></pre>
+<pre tabindex="0"><code>170141183460469231731687303715884105727 is probably prime
+</code></pre>
 
 <h3>More code examples</h3>
 
@@ -151,15 +144,7 @@ if <b>z.ProbablyPrime(20)</b> {
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

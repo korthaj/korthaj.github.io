@@ -84,40 +84,29 @@
 <article>
 <h1>Algorithms: What’s the problem?</h1>
 <div class="tagline">yourbasic.org</div>
-
-
 <p class="lead">A good programmer describes algo&shy;rithms in a form
 that can be&nbsp;effi&shy;ciently exe&shy;cuted by&nbsp;ma&shy;chines
 and easily under&shy;stood by&nbsp;humans.</p>
-
 <!-- CC0: https://pixabay.com/en/maze-labyrinth-solution-lost-1804499/ -->
-
 <div><img src="/algorithms/maze.jpg"></div>
-
-<p>Algorithms and programs are pretty much the same thing &ndash;
+<p>Algorithms and programs are pretty much the same thing –
 the main difference is that we can talk about algorithms without relying
 on a programming language.
 An algorithm invented today will be equally as useful when
-the last Java programmer has logged&nbsp;out.
+the last Java programmer has logged out.
 Here is an attempt at a formal definition.</p>
-
 <blockquote>
 An <b>algorithm</b> is a stepwise procedure of well-defined
 executable instructions intended to perform a task or solve a problem,
 often with the added requirement that the procedure must come to a stop.
 </blockquote>
-
 <p>A programmer&rsquo;s job is to design and implement algorithms that are
 <b>correct</b>, <b>clear</b> and <b>efficient</b>.</p>
-
 <h2 id="problems">Problems</h2>
-
 <p>Algorithms are commonly used to solve certain types of computational problems.
 We can often describe such a problem by specifying a relationship between
 input and output.</p>
-
 <p><b>The sorting problem</b>, for example, can be described like this:</p>
-
 <ul>
 <li><b>Input:</b> a sequence
 <i>a<sub>1</sub></i>,&nbsp;<i>a<sub>2</sub></i>,&nbsp;...,&nbsp;<i>a<sub>n</sub></i>
@@ -129,34 +118,26 @@ of the input, which satisfies the property
 <i>a'<sub>1</sub></i>&nbsp;&le;&nbsp;<i>a'<sub>2</sub></i>&nbsp;&le;&nbsp;...&nbsp;&le;&nbsp;<i>a'<sub>n</sub></i>.
 </li>
 </ul>
-
-<p>As an example: given the input sequence 12,&nbsp;24,&nbsp;13,&nbsp;12,&nbsp;8
-a sorting algorithm must produce the output sequence 8,&nbsp;12,&nbsp;12,&nbsp;13,&nbsp;24.
+<p>As an example: given the input sequence 12, 24, 13, 12, 8
+a sorting algorithm must produce the output sequence 8, 12, 12, 13, 24.
 One such specific example of input for a problem is called
 an <b>instance of the problem</b>.</p>
-
 <p>We say that an algorithm is <b>correct</b> if the algorithmic procedure <b>stops</b>
 for each problem instance and returns the <b>required output</b>.
 The algorithm <b>solves</b> the problem.</p>
-
 <h2>Pseudocode</h2>
-
 <p>When talking and writing about algorithms it&rsquo;s convenient to use pseudocode
 instead of executable code.</p>
-
 <blockquote>
 <b>Pseudocode</b> is a compact and informal high-level description
 of an algorithm intended for humans rather than machines.
 </blockquote>
-
 <p>In pseudocode you can omit details that are easy to figure out for a human,
 such as variable declarations and system-specific function calls.
 You can also use natural language and mathematical notation.</p>
-
 <p>For obvious reasons, there is no standard for writing pseudocode,
 but here is a typical example.
 First take a look at the code written in Go.</p>
-
 <pre><code>// Sum returns the sum 1 + 2 + ... + n, where n ≥ 1.
 func Sum(n int) int {
     var sum int
@@ -166,9 +147,7 @@ func Sum(n int) int {
     return sum
 }
 </code></pre>
-
-<p>The same algorithm described in pseudocode might look like&nbsp;this.</p>
-
+<p>The same algorithm described in pseudocode might look like this.</p>
 <pre>
 // Returns the sum 1 + 2 + ... + n, where n ≥ 1.
 <b>Algorithm</b> sum(n)
@@ -177,13 +156,10 @@ func Sum(n int) int {
         sum += i
     return sum
 </pre>
-
 <h2>Efficiency</h2>
-
 <p>Different algorithms that solve the same problem
 can have large performance differences.
 Here is a typical situation.</p>
-
 <ul>
 <li>
 The number of machine instructions required to sort <i>n</i>&nbsp;numbers with
@@ -197,17 +173,13 @@ is a constant that depends on how well the algorithm is implemented.
 <i>c<sub>2</sub></i> is an implementation-dependent constant.
 </li>
 </ul>
-
-<p>From this we can see that Quicksort is much&nbsp;faster than Insertion sort
-when <i>n</i>&nbsp;is&nbsp;large.
+<p>From this we can see that Quicksort is much faster than Insertion sort
+when <i>n</i> is large.
 This holds true even if we use an <b>incompetent implementation</b> of Quicksort
 running on a <b>slow computer</b>.</p>
-
 <h3 id="example">Example</h3>
-
 <p>The differences become painfully obvious when
-we plug in some actual values in the&nbsp;formulas.</p>
-
+we plug in some actual values in the formulas.</p>
 <ol>
 <li>Let's run Insertion sort on a fast computer
   that can execute 10<sup>9</sup>&nbsp;instructions per&nbsp;second.
@@ -220,32 +192,22 @@ we plug in some actual values in the&nbsp;formulas.</p>
   <i>c<sub>2</sub></i>&nbsp;=&nbsp;100.
 </li>
 </ol>
-
 <p>For small instances of the sorting problem, the faster computer wins.</p>
-
 <ul>
-<li>If <i>n</i>&nbsp;=&nbsp;1000 it takes about 5&nbsp;ms to sort using in the first case,</li>
-<li>while the second case takes 100&nbsp;ms.</li>
+<li>If <i>n</i> = 1000 it takes about 5 ms to sort using in the first case,</li>
+<li>while the second case takes 100 ms.</li>
 </ul>
-
 <p>For larger instances, the picture is very different.</p>
-
 <ul>
-<li>If <i>n</i>&nbsp;=&nbsp;1,000,000, the first case takes <b>more than an hour</b> (5000&nbsp;s),</li>
-<li>while the second case takes <b>less than five minutes</b> (200&nbsp;s).</li>
+<li>If <i>n</i> = 1,000,000, the first case takes <b>more than an hour</b> (5000 s),</li>
+<li>while the second case takes <b>less than five minutes</b> (200 s).</li>
 </ul>
-
 <p>For even larger problem instances, the differences are even bigger
 and the choice of algorithm becomes even more critical.</p>
-
 <h3 id="further-reading">Further reading</h3>
-
 <div><a href="/algorithms/time-complexity-explained/"><img src="/algorithms/abacus-thumb.jpg" title="Time complexity: Count your steps"></a></div>
-
 <p style="margin-top:0.5em;">See <a href="/algorithms/time-complexity-explained/">Time complexity: Count your steps</a> for more on estimating algorithm performance.</p>
-
 <div><a href="/golang/quicksort-optimizations/"><img src="/golang/divide-conquer.jpg" width="200px" title="Top 3 Quicksort optimizations"></a></div>
-
 <p style="margin-top:0;">See <a href="/golang/quicksort-optimizations/">Top 3 Quicksort optimizations</a>
 for a fast Quicksort implementation that uses Insertion sort to improve performance.</p>
 
@@ -280,15 +242,7 @@ for a fast Quicksort implementation that uses Insertion sort to improve performa
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
     <div style="margin-top:1em;"><a href="/algorithms/time-complexity-explained/" title="How to analyse time complexity: Count your steps"><img src="/algorithms/abacus-mini.jpg"></a></div>
   <ul class="none">
   

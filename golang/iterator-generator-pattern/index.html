@@ -85,47 +85,41 @@
 <h1>How to best implement an iterator</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <div style="float:right; margin-left:16px;"><img src="/golang/spinning-wheel.gif"></div>
-
 <p>Go has a built-in range loop for iterating over slices, arrays, strings, maps and channels.
 See <a href="/golang/for-loop-range-array-slice-map-channel/">4 basic range loop (for-each) patterns</a>.</p>
-
 <p>To iterate over other types of data, an iterator function with callbacks is a clean and fairly efficient abstraction.</p>
-
 <h2 id="basic-iterator-pattern">Basic iterator pattern</h2>
-
 <pre><code>// Iterate calls the f function with n = 1, 2, and 3.
 func Iterate(f func(n int)) {
-    for i := 1; i <= 3; i++ {
-        f(i)
-    }
+	for i := 1; i <= 3; i++ {
+		f(i)
+	}
 }</code></pre>
-
 <p>In use:</p>
-<pre><code>Iterate(func(n int) { fmt.Println(n) })</code></pre><pre><code>1
+<pre tabindex="0"><code>Iterate(func(n int) { fmt.Println(n) })
+</code></pre><pre tabindex="0"><code>1
 2
-3</code></pre>
-<h2 id="iterator-with-break">Iterator with break</h2>
-
+3
+</code></pre><h2 id="iterator-with-break">Iterator with break</h2>
 <pre><code>// Iterate calls the f function with n = 1, 2, and 3.
 // If f returns true, Iterate returns immediately
 // skipping any remaining values.
 func Iterate(f func(n int) (skip bool)) {
-    for i := 1; i <= 3; i++ {
-        if f(i) {
-            return
-        }
-    }
+	for i := 1; i <= 3; i++ {
+		if f(i) {
+			return
+		}
+	}
 }</code></pre>
-
 <p>In use:</p>
-<pre><code>Iterate(func(n int) (skip bool) {
+<pre tabindex="0"><code>Iterate(func(n int) (skip bool) {
 	fmt.Println(n)
 	return n == 2
-})</code></pre><pre><code>1
-2</code></pre>
+})
+</code></pre><pre tabindex="0"><code>1
+2
+</code></pre>
 
 <h3>More code examples</h3>
 
@@ -167,15 +161,7 @@ func Iterate(f func(n int) (skip bool)) {
     <div class="author">Ewen Cheslack-Postava</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

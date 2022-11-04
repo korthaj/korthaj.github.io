@@ -85,12 +85,8 @@
 <h1>5 switch statement patterns</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC BY 2.0: https://www.flickr.com/photos/zigazou76/7858993572 -->
-
 <div style="float:right; margin-top:-50px;" class="extra-content"><img src="/golang/switch.jpg"></div>
-
 <ul class="toc">
   <li><a href="#basic-switch-with-default">Basic switch with default</a></li>
   <li><a href="#no-condition">No condition</a></li>
@@ -99,44 +95,35 @@
   <li><a href="#exit-with-break">Exit with break</a></li>
   <li><a href="#execution-order">Execution order</a></li>
 </ul>
-
 <h2 id="basic-switch-with-default">Basic switch with default</h2>
-
 <ul>
 <li>A switch statement runs the first case equal to the condition expression.</li>
 <li>The cases are evaluated from top to bottom, stopping when a case succeeds.</li>
 <li>If no case matches and there is a default case,
 its statements are executed.</li>
 </ul>
-
 <pre><code><b>switch</b> time.Now().Weekday() {
 <b>case</b> time.Saturday:
-    fmt.Println("Today is Saturday.")
+	fmt.Println("Today is Saturday.")
 <b>case</b> time.Sunday:
-    fmt.Println("Today is Sunday.")
+	fmt.Println("Today is Sunday.")
 <b>default</b>:
-    fmt.Println("Today is a weekday.")
+	fmt.Println("Today is a weekday.")
 }</code></pre>
-
 <blockquote>
 <p>Unlike C and Java, the case expressions do not need to be constants.</p>
 </blockquote>
-
 <h2 id="no-condition">No condition</h2>
-
-<p>A switch without a condition is the same as switch&nbsp;true.</p>
-
+<p>A switch without a condition is the same as switch true.</p>
 <pre><code>switch hour := time.Now().Hour(); { <span class="comment">// missing expression means "true"</span>
 case hour < 12:
-    fmt.Println("Good morning!")
+	fmt.Println("Good morning!")
 case hour < 17:
-    fmt.Println("Good afternoon!")
+	fmt.Println("Good afternoon!")
 default:
-    fmt.Println("Good evening!")
+	fmt.Println("Good evening!")
 }</code></pre>
-
 <h2 id="case-list">Case list</h2>
-
 <pre><code>func WhiteSpace(c rune) bool {
     switch c {
     <b>case ' ', '\t', '\n', '\f', '\r':</b>
@@ -144,80 +131,73 @@ default:
     }
     return false
 }</code></pre>
-
 <h2 id="fallthrough">Fallthrough</h2>
-
 <ul>
 <li>A <code>fallthrough</code> statement transfers control to the next case.</li>
 <li>It may be used only as the final statement in a clause.</li>
 </ul>
-
 <pre><code>switch 2 {
 case 1:
-    fmt.Println("1")
-    <b>fallthrough</b>
+	fmt.Println("1")
+	<b>fallthrough</b>
 case 2:
-    fmt.Println("2")
-    <b>fallthrough</b>
+	fmt.Println("2")
+	<b>fallthrough</b>
 case 3:
-    fmt.Println("3")
+	fmt.Println("3")
 }</code></pre>
-<pre><code>2
-3</code></pre>
-<h2 id="exit-with-break">Exit with break</h2>
-
+<pre tabindex="0"><code>2
+3
+</code></pre><h2 id="exit-with-break">Exit with break</h2>
 <p>A <code>break</code> statement terminates execution of the <strong>innermost</strong> <code>for</code>, <code>switch</code>, or <code>select</code> statement.</p>
-
 <p>If you need to break out of a surrounding loop, not the switch, you can put a <strong>label</strong>
 on the loop and break to that label. This example shows both uses.</p>
-
 <pre><code>Loop:
-    for _, ch := range "a b\nc" {
-        switch ch {
-        case ' ': <span class="comment">// skip space</span>
-            break
-        case '\n': <span class="comment">// break at newline</span>
-            break Loop
-        default:
-            fmt.Printf("%c\n", ch)
-        }
-    }
+	for _, ch := range "a b\nc" {
+		switch ch {
+		case ' ': <span class="comment">// skip space</span>
+			break
+		case '\n': <span class="comment">// break at newline</span>
+			break Loop
+		default:
+			fmt.Printf("%c\n", ch)
+		}
+	}
 </code></pre>
-<pre><code>a
-b</code></pre>
-<h2 id="execution-order">Execution order</h2>
-
+<pre tabindex="0"><code>a
+b
+</code></pre><h2 id="execution-order">Execution order</h2>
 <ul>
 <li>First the switch expression is evaluated once.</li>
 <li>Then case expressions are evaluated left-to-right and top-to-bottom:
-
 <ul>
 <li>the first one that equals the switch expression triggers execution
-of the statements of the associated&nbsp;case,</li>
+of the statements of the associated case,</li>
 <li>the other cases are skipped.</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <pre><code><span class="comment">// Foo prints and returns n.</span>
 func Foo(n int) int {
-    fmt.Println(n)
-    return n
+	fmt.Println(n)
+	return n
 }
 
 func main() {
-    switch Foo(2) {
-    case Foo(1), Foo(2), Foo(3):
-        fmt.Println("First case")
-        fallthrough
-    case Foo(4):
-        fmt.Println("Second case")
-    }
+	switch Foo(2) {
+	case Foo(1), Foo(2), Foo(3):
+		fmt.Println("First case")
+		fallthrough
+	case Foo(4):
+		fmt.Println("Second case")
+	}
 }</code></pre>
-<pre><code>2
+<pre tabindex="0"><code>2
 1
 2
 First case
-Second case</code></pre>
+Second case
+</code></pre>
 
 <h3>Go step by step</h3>
 
@@ -263,15 +243,7 @@ Second case</code></pre>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

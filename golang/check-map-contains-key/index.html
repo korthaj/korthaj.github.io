@@ -84,53 +84,37 @@
 <article>
 <h1>3 ways to find a key in a map</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC0: https://www.maxpixel.net/Search-To-Find-Internet-Magnifying-Glass-Cache-1013910 -->
-
 <div style="float:right;"><img width="110px;" src="/golang/man-with-magnifying-glass.jpg"></div>
-
 <h2 id="basics">Basics</h2>
-
 <p>When you index a <a href="/golang/maps-explained/">map</a> in Go you get two return values;
-the&nbsp;second one (which is optional) is a boolean that indicates if the key&nbsp;exists.</p>
-
+the second one (which is optional) is a boolean that indicates if the key exists.</p>
 <p>If the key doesn&rsquo;t exist, the first value will be the default
-<a href="/golang/default-zero-value/">zero&nbsp;value</a>.</p>
-
+<a href="/golang/default-zero-value/">zero value</a>.</p>
 <h2 id="check-second-return-value">Check second return value</h2>
-
 <pre><code>m := map[string]float64{"pi": 3.14}
 v, found := m["pi"] <span class="comment">// v == 3.14  found == true</span>
 v, found = m["pie"] <span class="comment">// v == 0.0   found == false</span>
 _, found = m["pi"]  <span class="comment">// found == true</span>
 </code></pre>
-
 <h2 id="use-second-return-value-directly-in-an-if-statement">Use second return value directly in an if statement</h2>
-
 <pre><code>m := map[string]float64{"pi": 3.14}
 if v, found := m["pi"]; found {
-    fmt.Println(v)
+	fmt.Println(v)
 }
 <span class="comment">// Output: 3.14</span>
 </code></pre>
-
 <h2 id="check-for-zero-value">Check for zero value</h2>
-
 <pre><code>m := map[string]float64{"pi": 3.14}
 
 v := m["pi"] <span class="comment">// v == 3.14</span>
 v = m["pie"] <span class="comment">// v == 0.0 (zero value)</span>
 </code></pre>
-
 <blockquote class="warning">
 <b>Warning:</b> This approach doesn't work if the zero value is a possible key.
 </blockquote>
-
 <h2 id="further-reading">Further reading</h2>
-
 <div><a href="/golang/maps-explained/"><img src="/golang/15-men-in-16-slots-thumb.jpg" title="Maps explained"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/maps-explained/">Maps explained [code example]</a></p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -164,15 +148,7 @@ v = m["pie"] <span class="comment">// v == 0.0 (zero value)</span>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

@@ -84,80 +84,53 @@
 <article>
 <h1>How to append anything (element, slice or string) to a slice</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC0: https://pixabay.com/en/toddler-fiat-126p-trailer-car-456161/ -->
-
 <div style="margin-top:1em;"><img src="/golang/toddler-fiat-with-trailer.jpg"></div>
-
 <ul class="toc">
   <li><a href="#append-function-basics">Append function basics</a></li>
   <li><a href="#append-one-slice-to-another">Append one slice to another</a></li>
   <li><a href="#append-string-to-byte-slice">Append string to byte slice</a></li>
   <li><a href="#performance">Performance</a></li>
 </ul>
-
 <h2 id="append-function-basics">Append function basics</h2>
-
 <p>With the built-in <a href="https://golang.org/ref/spec#Appending_and_copying_slices">append function</a>
 you can use a slice as a <a href="/algorithms/time-complexity-arrays/">dynamic array</a>.
-The&nbsp;function appends any number of elements to the end of a&nbsp;<a href="/golang/slices-explained/">slice</a>:</p>
-
+The function appends any number of elements to the end of a <a href="/golang/slices-explained/">slice</a>:</p>
 <ul>
-<li>if there is enough capacity, the underlying array is&nbsp;reused;</li>
-<li>if not, a new underlying array is allocated and the data is copied&nbsp;over.</li>
+<li>if there is enough capacity, the underlying array is reused;</li>
+<li>if not, a new underlying array is allocated and the data is copied over.</li>
 </ul>
-
 <p>Append <strong>returns the updated slice</strong>.
 Therefore you need to store the result of an append,
 often in the variable holding the slice itself:</p>
-
 <pre><code>a := []int{1, 2}
 a = append(a, 3, 4) <span class="comment">// a == [1 2 3 4]</span></code></pre>
-
 <p>In particular, it&rsquo;s perfectly fine to <strong>append to an empty slice</strong>:</p>
-
 <pre><code>a := []int{}
 a = append(a, 3, 4) <span class="comment">// a == [3 4]</span></code></pre>
-
 <blockquote class="warning">
 <b>Warning:</b> See <a href="/golang/gotcha-append/">Why doesn’t append work every time?</a> for an example
 of what can happen if you forget that <code>append</code> may reuse the underlying array.
 </blockquote>
-
 <h2 id="append-one-slice-to-another">Append one slice to another</h2>
-
 <p>You can <strong>concatenate two slices</strong> using the <a href="/golang/variadic-function/">three dots notation</a>:</p>
-
 <pre><code>a := []int{1, 2}
 b := []int{11, 22}
 a = append(a, b...) <span class="comment">// a == [1 2 11 22]</span></code></pre>
-
-<p>The <code>...</code> unpacks <code>b</code>. Without the dots, the code would attempt to append the slice as a whole, which is&nbsp;invalid.</p>
-
+<p>The <code>...</code> unpacks <code>b</code>. Without the dots, the code would attempt to append the slice as a whole, which is invalid.</p>
 <p>The result does not depend on whether the <strong>arguments overlap</strong>:</p>
-
 <pre><code>a := []int{1, 2}
 a = append(a, a...) <span class="comment">// a == [1 2 1 2]</span></code></pre>
-
 <h2 id="append-string-to-byte-slice">Append string to byte slice</h2>
-
 <p>As a special case, it&rsquo;s legal to append a string to a byte slice:</p>
-
 <pre><code>slice := append([]byte("Hello "), "world!"...)
 </code></pre>
-
 <h2 id="performance">Performance</h2>
-
 <div><a href="/algorithms/amortized-time-complexity-analysis/"><img src="/algorithms/pink-coins-thumb.jpg" title="Amortized time complexity"></a></div>
-
 <p>Appending a single element takes <strong>constant amortized time</strong>.
 See <a href="/algorithms/amortized-time-complexity-analysis/">Amortized time complexity</a> for a detailed explanation.</p>
-
 <h3 id="further-reading">Further reading</h3>
-
 <div><a href="/golang/slices-explained/"><img src="/golang/orange-thumb.jpg" title="Slices and arrays in 6 easy steps"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/slices-explained/">Slices and arrays in 6 easy&nbsp;steps</a></p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -185,15 +158,7 @@ See <a href="/algorithms/amortized-time-complexity-analysis/">Amortized time com
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

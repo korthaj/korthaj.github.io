@@ -41,35 +41,27 @@
 <h1>How to detect data races</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC0: https://pxhere.com/en/photo/1443437 -->
-
 <div style="float:right;"><img src="/golang/sherlock-with-looking-glass.png"></div>
-
 <p class="lead">Data races can happen easily and are hard to debug. Luckily, the Go runtime is often able to&nbsp;help.</p>
-
 <p>Use <code>-race</code> to enable the built-in data race detector.</p>
 <pre><code>$ go test -race [packages]
-$ go run -race [packages]</code></pre>
+$ go run -race [packages]
+</code></pre>
 <h2 id="example">Example</h2>
-
 <p>Here&rsquo;s a program with a data race:</p>
-
 <pre><code>package main
 import "fmt"
 
 func main() {
-    i := 0
-    go func() {
-        <b>i++</b> <span class="comment">// write</span>
-    }()
-    <b>fmt.Println(i)</b> <span class="comment">// concurrent read</span>
+	i := 0
+	go func() {
+		<b>i++</b> <span class="comment">// write</span>
+	}()
+	<b>fmt.Println(i)</b> <span class="comment">// concurrent read</span>
 }</code></pre>
-
 <p>Running this program with the <code>-race</code> options tells us that there&rsquo;s a race
-between the write at line&nbsp;7 and the read at line&nbsp;9:</p>
-
+between the write at line 7 and the read at line 9:</p>
 <pre><code class="skiphl">$ go run -race main.go
 0
 ==================
@@ -88,13 +80,9 @@ Goroutine 6 (running) created at:
 ==================
 Found 1 data race(s)
 exit status 66</code></pre>
-
 <h2 id="details">Details</h2>
-
 <p>The data race detector does not perform any static analysis. It checks the memory access in runtime and only for the code paths that are actually executed.</p>
-
 <p>It runs on darwin/amd64, freebsd/amd64, linux/amd64 and windows/amd64.</p>
-
 <p>The overhead varies, but typically there&rsquo;s a 5-10x increase in memory usage, and 2-20x increase in execution time.</p>
 
 <ul class="pagina">
@@ -156,14 +144,6 @@ exit status 66</code></pre>
     <div class="author"></div>
   </div>
 
-
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
 
 </aside>
 </main>

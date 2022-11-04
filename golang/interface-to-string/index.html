@@ -40,22 +40,16 @@
 <article>
 <h1>Convert interface to string</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <p>Use <a href="https://golang.org/pkg/fmt/#Sprintf"><code>fmt.Sprintf</code></a> to convert
 an <a href="/golang/interfaces-explained/">interface value</a> to a string.</p>
-<pre><code>var x interface{} = &#34;abc&#34;
-str := fmt.Sprintf(&#34;%v&#34;, x)</code></pre>
-<p>In fact, the same technique can be used to get a string representation of any data structure.</p>
-
+<pre tabindex="0"><code>var x interface{} = &quot;abc&quot;
+str := fmt.Sprintf(&quot;%v&quot;, x)
+</code></pre><p>In fact, the same technique can be used to get a string representation of any data structure.</p>
 <pre><code>var x interface{} = []int{1, 2, 3}
 str := fmt.Sprintf("%v", x)
 fmt.Println(str) <span class="comment">// "[1 2 3]"</span></code></pre>
-
 <h3 id="fmt-cheat-sheet">Fmt cheat sheet</h3>
-
 <div><a href="/golang/fmt-printf-reference-cheat-sheet/"><img src="/golang/format-thumb.jpg" title="Top fmt formatting tips"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/fmt-printf-reference-cheat-sheet/">Top fmt formatting tips</a></p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -77,15 +71,7 @@ fmt.Println(str) <span class="comment">// "[1 2 3]"</span></code></pre>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

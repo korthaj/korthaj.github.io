@@ -40,64 +40,44 @@
 <article>
 <h1>Generics (alternatives and workarounds)</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC BY-SA 3.0:  https://commons.wikimedia.org/wiki/File:Face_icon_bland.svg -->
-
 <div><img style="float:right; margin:20px 0 20px 20px" src="/golang/bland-face.png"></div>
-
 <p>Go has some built-in generic data types, such as slices and maps,
 and some generic functions, such as <code>append</code> and <code>copy</code>.
-However, there is no mechanism for writing your&nbsp;own.</p>
-
-<p>Here are some techniques that can be used in place of parametric polymorphism in&nbsp;Go.</p>
-
+However, there is no mechanism for writing your own.</p>
+<p>Here are some techniques that can be used in place of parametric polymorphism in Go.</p>
 <h2 id="find-a-well-fitting-interface">Find a well-fitting interface</h2>
-
 <p>Describe the generic behaviour of your data with an <a href="/golang/interfaces-explained/">interface</a>.</p>
-
 <p>The <a href="https://golang.org/pkg/io/#Reader"><code>io.Reader</code></a> interface,
 which represents the read end of a stream of data, is a good example:</p>
-
 <ul>
 <li>many functions take an <a href="https://golang.org/pkg/io/#Reader"><code>io.Reader</code></a> as input,</li>
 <li>and many data types, including files, network connections, and ciphers,
 implement this interface.</li>
 </ul>
-
 <h2 id="use-multiple-functions">Use multiple functions</h2>
-
 <p>If you only need to support a few data types,
 consider offering a separate function for each type.</p>
-
 <p>As an example, the two packages <a href="https://golang.org/pkg/strings/"><code>strings</code></a> and
 <a href="https://golang.org/pkg/bytes/"><code>bytes</code></a> come with pretty much the same set of functions.</p>
-
 <p>If this leads to an unmanageable amount of copy and paste,
 consider using a code generation tool.</p>
-
 <h2 id="use-the-empty-interface">Use the empty interface</h2>
-
 <p>If little is known about the data, consider using the empty interface <code>interface{}</code>
 in combination with type assertions, and possibly also reflection.
 Libraries such as <a href="https://golang.org/pkg/fmt/"><code>fmt</code></a> and
 <a href="https://golang.org/pkg/encoding/json/"><code>encoding/json</code></a>
-couldn&rsquo;t have been written in any other&nbsp;way.</p>
-
+couldn&rsquo;t have been written in any other way.</p>
 <h2 id="write-an-experience-report">Write an experience report</h2>
-
 <p>If none of these solutions are effective, consider submitting
 an experience report:</p>
-
 <blockquote>
 <p>This page collects experience reports about problems with Go that might
 inform our design of solutions to those problems. These reports should
 focus on the problems: they should not focus on and need not propose solutions.</p>
-
 <p>We hope to use these experience reports to understand where people
 are having trouble writing Go, to help us prioritize future changes
 to the Go ecosystem.</p>
-
 <p><a class="quote-source" href="https://github.com/golang/go/wiki/ExperienceReports">The Go Wiki: Experience Reports</a></p>
 </blockquote>
 
@@ -150,15 +130,7 @@ to the Go ecosystem.</p>
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

@@ -84,42 +84,28 @@
 <article>
 <h1>How to use the copy function</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC BY 4.0: https://commons.wikimedia.org/wiki/File:A_letter-copying_machine;_plan_(top)_and_three-quarter_view_Wellcome_V0023778.jpg -->
-
 <div style="margin-top:1em;"><img src="/golang/letter-copying-machine.jpg"></div>
-
 <p>The built-in <a href="https://golang.org/ref/spec#Appending_and_copying_slices">copy function</a>
-copies elements into a destination slice <code>dst</code> from a source slice&nbsp;<code>src</code>.</p>
-<pre><code>func copy(dst, src []Type) int</code></pre>
-<p>It returns the number of elements copied,
+copies elements into a destination slice <code>dst</code> from a source slice <code>src</code>.</p>
+<pre tabindex="0"><code>func copy(dst, src []Type) int
+</code></pre><p>It returns the number of elements copied,
 which will be the <strong>minimum</strong> of <code>len(dst)</code> and <code>len(src)</code>.
 The result does not depend on whether the arguments overlap.</p>
-
-<p>As a <strong>special case</strong>, it&rsquo;s legal to copy bytes from a string to a slice of&nbsp;bytes.</p>
-<pre><code>copy(dst []byte, src string) int</code></pre>
-<h2 id="examples">Examples</h2>
-
+<p>As a <strong>special case</strong>, it&rsquo;s legal to copy bytes from a string to a slice of bytes.</p>
+<pre tabindex="0"><code>copy(dst []byte, src string) int
+</code></pre><h2 id="examples">Examples</h2>
 <h3 id="copy-from-one-slice-to-another">Copy from one slice to another</h3>
-
 <pre><code>var s = make([]int, 3)
 n := copy(s, []int{0, 1, 2, 3}) <span class="comment">// n == 3, s == []int{0, 1, 2}</span></code></pre>
-
 <h3 id="copy-from-a-slice-to-itself">Copy from a slice to itself</h3>
-
 <pre><code>s := []int{0, 1, 2}
 n := copy(s, s[1:]) <span class="comment">// n == 2, s == []int{1, 2, 2}</span></code></pre>
-
-<h3 id="copy-from-a-string-to-a-byte-slice-special-nbsp-case">Copy from a string to a byte slice (special&nbsp;case)</h3>
-
+<h3 id="copy-from-a-string-to-a-byte-slice-specialnbspcase">Copy from a string to a byte slice (special case)</h3>
 <pre><code>var b = make([]byte, 5)
 copy(b, "Hello, world!") <span class="comment">// b == []byte("Hello")</span></code></pre>
-
 <h3 id="further-reading">Further reading</h3>
-
 <div><a href="/golang/slices-explained/"><img src="/golang/orange-thumb.jpg" title="Slices and arrays in 6 easy steps"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/slices-explained/">Slices and arrays in 6 easy steps</a></p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -147,15 +133,7 @@ copy(b, "Hello, world!") <span class="comment">// b == []byte("Hello")</span></c
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

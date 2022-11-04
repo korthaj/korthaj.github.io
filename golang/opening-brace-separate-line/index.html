@@ -84,24 +84,20 @@
 <article>
 <h1>Missing function body</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC0: https://picryl.com/media/pencil-macro-red-177beb -->
-
 <div style="margin-top:1em;"><img src="/golang/red-pencil.jpg"></div>
-
 <p>As you may have noticed, programs with an opening brace on separate line do not compile.</p>
-<pre><code>func main()
+<pre tabindex="0"><code>func main()
 {
-	fmt.Println(&#34;Hello&#34;)
-}</code></pre><pre><code>../main.go:1:6: missing function body for &#34;main&#34;
-../main.go:2:1: syntax error: unexpected semicolon or newline before {</code></pre>
-<p>You must write:</p>
-<pre><code>func main() {
-	fmt.Println(&#34;Hello&#34;)
-}</code></pre>
-<p>This is a trade-off in the design of the Go language.</p>
-
+	fmt.Println(&quot;Hello&quot;)
+}
+</code></pre><pre tabindex="0"><code>../main.go:1:6: missing function body for &quot;main&quot;
+../main.go:2:1: syntax error: unexpected semicolon or newline before {
+</code></pre><p>You must write:</p>
+<pre tabindex="0"><code>func main() {
+	fmt.Println(&quot;Hello&quot;)
+}
+</code></pre><p>This is a trade-off in the design of the Go language.</p>
 <blockquote>
 <p>Some have argued that the lexer should do lookahead to permit the brace to live on the next line.
 We disagree. Since Go code is meant to be formatted automatically by <strong>gofmt</strong>,
@@ -109,11 +105,8 @@ some style must be chosen. [&hellip;] The advantages of a single, programmatical
 for all Go programs greatly outweigh any perceived disadvantages of the particular style.
 <a class="quote-source" href="https://golang.org/doc/faq#semicolons">Go FAQ: Why are there braces but no semicolons? And why can&rsquo;t I put the opening brace on the next line?</a></p>
 </blockquote>
-
 <h2 id="further-reading">Further reading</h2>
-
 <div><a href="/golang/compiler-error-messages/"><img src="/golang/tree-of-love-thumb.jpg" title="Learn to love your compiler"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/compiler-error-messages/">Learn to love your compiler</a>
  is a list of common Go compiler error messages: what they mean and how to fix the problem.</p>
 
@@ -136,15 +129,7 @@ for all Go programs greatly outweigh any perceived disadvantages of the particul
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

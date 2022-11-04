@@ -41,17 +41,17 @@
 <h1>Append text to a file</h1>
 <div class="tagline">yourbasic.org/golang</div>
 <p>This code appends a line of text to the file <code>text.log</code>.
-It creates the file if it doesn&rsquo;t already&nbsp;exist.</p>
-<pre><code>f, err := os.OpenFile(&#34;text.log&#34;,
+It creates the file if it doesn&rsquo;t already exist.</p>
+<pre tabindex="0"><code>f, err := os.OpenFile(&quot;text.log&quot;,
 	os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 if err != nil {
 	log.Println(err)
 }
 defer f.Close()
-if _, err := f.WriteString(&#34;text to append\n&#34;); err != nil {
+if _, err := f.WriteString(&quot;text to append\n&quot;); err != nil {
 	log.Println(err)
-}</code></pre>
-<p>If you&rsquo;re appending text to a file for logging purposes, see <a href="/golang/log-to-file/">Write log to file</a>.</p>
+}
+</code></pre><p>If you&rsquo;re appending text to a file for logging purposes, see <a href="/golang/log-to-file/">Write log to file</a>.</p>
 
 
 </article>
@@ -72,15 +72,7 @@ if _, err := f.WriteString(&#34;text to append\n&#34;); err != nil {
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

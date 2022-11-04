@@ -84,43 +84,30 @@
 <article>
 <h1>Find the type of an object</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC0: https://pixabay.com/sv/photos/mikroskop-lab-testning-vetenskap-2352650/ -->
-
 <div style="margin-top:1em;"><img src="/golang/microscope.jpg"></div>
-
 <h2 id="use-fmt-for-a-string-type-description">Use fmt for a string type description</h2>
-
 <p>You can use the <code>%T</code> flag in the <a href="https://golang.org/pkg/fmt/">fmt</a> package
-to get a Go-syntax representation of the&nbsp;type.</p>
-
+to get a Go-syntax representation of the type.</p>
 <pre><code>var x interface{} = []int{1, 2, 3}
 xType := fmt.Sprintf("%T", x)
 fmt.Println(xType) <span class="comment">// "[]int"</span></code></pre>
-
 <p>(The <a href="/golang/interfaces-explained/#the-empty-interface">empty interface</a> denoted by <code>interface{}</code>
 can hold values of any type.)</p>
-
 <h2 id="a-type-switch-lets-you-choose-between-types">A type switch lets you choose between types</h2>
-
 <p>Use a <a href="/golang/type-assertion-switch/">type switch</a> to do several <a href="/golang/type-assertion-switch/">type assertions</a> in series.</p>
-
 <pre><code>var x interface{} = 2.3
 switch v := x.(type) {
 case int:
-    fmt.Println("int:", v)
+	fmt.Println("int:", v)
 case float64:
-    fmt.Println("float64:", v)
+	fmt.Println("float64:", v)
 default:
-    fmt.Println("unknown")
+	fmt.Println("unknown")
 }
 <span class="comment">// Output: float64: 2.3</span></code></pre>
-
 <h2 id="reflection-gives-full-type-information">Reflection gives full type information</h2>
-
 <p>Use the <a href="https://golang.org/pkg/reflect/">reflect</a> package if the options above don&rsquo;t suffice.</p>
-
 <pre><code>var x interface{} = []int{1, 2, 3}
 xType := reflect.TypeOf(x)
 xValue := reflect.ValueOf(x)
@@ -163,15 +150,7 @@ fmt.Println(xType, xValue) <span class="comment">// "[]int [1 2 3]"</span></code
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

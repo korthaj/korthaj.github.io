@@ -84,52 +84,34 @@
 <article>
 <h1>3 dots in 4 places</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <p class="lead">Can you name four places where three&nbsp;dots (...) are used in&nbsp;Go?</p>
-
 <!-- CC0: http://maxpixel.freegreatpicture.com/Roll-White-Wallpaper-Fun-Dice-Game-Luck-3010247 -->
-
 <div><img src="/golang/four-dice.jpg"></div>
-
 <h2 id="variadic-function-parameters">Variadic function parameters</h2>
-
-<p>If the <strong>last parameter</strong> of a function has type <code>...T</code>, it can be called with any number of trailing arguments of type&nbsp;<code>T</code>.
-The actual type of <code>...T</code> inside the function is&nbsp;<code>[]T</code>.</p>
-
-<p>This example function can be called with, for instance, <code>Sum(1, 2, 3)</code> or&nbsp;<code>Sum()</code>.</p>
-
+<p>If the <strong>last parameter</strong> of a function has type <code>...T</code>, it can be called with any number of trailing arguments of type <code>T</code>.
+The actual type of <code>...T</code> inside the function is <code>[]T</code>.</p>
+<p>This example function can be called with, for instance, <code>Sum(1, 2, 3)</code> or <code>Sum()</code>.</p>
 <pre><code>func Sum(<b>nums ...int</b>) int {
-    res := 0
-    for _, n := range nums {
-        res += n
-    }
-    return res
+	res := 0
+	for _, n := range nums {
+		res += n
+	}
+	return res
 }</code></pre>
-
 <h2 id="arguments-to-variadic-functions">Arguments to variadic functions</h2>
-
 <p>You can pass a slice <code>s</code> directly to a variadic function if you unpack it with the <code>s...</code> notation.
 In this case no new slice is created.</p>
-
-<p>In this example, we pass a slice to the <code>Sum</code>&nbsp;function.
+<p>In this example, we pass a slice to the <code>Sum</code> function.</p>
 <pre><code>primes := []int{2, 3, 5, 7}
 fmt.Println(Sum(<b>primes&period;&period;&period;</b>)) <span class="comment">// 17</span>
-</code></pre></p>
-
+</code></pre>
 <h2 id="array-literals">Array literals</h2>
-
 <p>In an array literal, the <code>...</code> notation specifies
-a length equal to the number of elements in the&nbsp;literal.</p>
-
+a length equal to the number of elements in the literal.</p>
 <pre><code>stooges := [<b>...</b>]string{"Moe", "Larry", "Curly"} <span class="comment">// len(stooges) == 3</span></code></pre>
-
 <h2 id="the-go-command">The go command</h2>
-
 <p>Three dots are used by the <a href="https://golang.org/cmd/go/"><code>go</code></a> command as a wildcard when describing package lists.</p>
-
-<p>This command tests all packages in the current directory and its&nbsp;subdirectories.</p>
-
+<p>This command tests all packages in the current directory and its subdirectories.</p>
 <pre><code>$ go test ./<b>...</b></code></pre>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -163,15 +145,7 @@ a length equal to the number of elements in the&nbsp;literal.</p>
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

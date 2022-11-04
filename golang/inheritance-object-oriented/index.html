@@ -84,67 +84,51 @@
 <article>
 <h1>Object-oriented programming without inheritance</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <p class="lead">Go doesn’t have inheritance &ndash;
 instead composition, embed&shy;ding and inter&shy;faces support code reuse and poly&shy;morphism.</p>
-
 <!-- CC BY-SA 4.0: https://commons.wikimedia.org/wiki/File:Performance-Evaluation-Process-z.jpg -->
-
 <div><img src="/golang/improvement.jpg"></div>
-
 <ul class="toc">
   <li><a href="#object-oriented-programming-with-inheritance">Object-oriented programming with inheritance</a></li>
   <li><a href="#code-reuse-by-composition">Code reuse by composition</a></li>
   <li><a href="#code-reuse-by-embedding">Code reuse by embedding</a></li>
   <li><a href="#polymorphism-and-dynamic-dispatch-with-interfaces">Polymorphism and dynamic dispatch with interfaces</a></li>
 </ul>
-
 <h2 id="object-oriented-programming-with-inheritance">Object-oriented programming with inheritance</h2>
-
-<p>Inheritance in traditional object-oriented languages offers three features in&nbsp;one.
-When a&nbsp;<code>Dog</code> inherits from an&nbsp;<code>Animal</code></p>
-
+<p>Inheritance in traditional object-oriented languages offers three features in one.
+When a <code>Dog</code> inherits from an <code>Animal</code></p>
 <ol>
-<li>the <code>Dog</code> class reuses code from the <code>Animal</code>&nbsp;class,</li>
+<li>the <code>Dog</code> class reuses code from the <code>Animal</code> class,</li>
 <li>a variable <code>x</code>  of type <code>Animal</code> can refer to either a <code>Dog</code> or an <code>Animal</code>,</li>
-<li><code>x.Eat()</code> will choose an <code>Eat</code> method based on what type of object <code>x</code> refers&nbsp;to.</li>
+<li><code>x.Eat()</code> will choose an <code>Eat</code> method based on what type of object <code>x</code> refers to.</li>
 </ol>
-
-<p>In object-oriented lingo, these features are known as <b>code reuse</b>, <b>poly&shy;mor&shy;phism</b> and <b>dynamic dispatch</b>.</p>
-
+<p>In object-oriented lingo, these features are known as <b>code reuse</b>, <b>poly­mor­phism</b> and <b>dynamic dispatch</b>.</p>
 <p>All of these are available in Go, using separate constructs:</p>
-
 <ul>
 <li><b>composition</b> and <b>embedding</b> provide code reuse,</li>
 <li><strong><a href="/golang/interfaces-explained/">interfaces</a></strong> take care of polymorphism and dynamic dispatch.</li>
 </ul>
-
 <h2 id="code-reuse-by-composition">Code reuse by composition</h2>
-
 <blockquote class="math">
 Don't worry about type hierarchies when starting a new Go&nbsp;project &ndash; <br>
 it's easy to introduce polymorphism and dynamic dispatch later on.
 </blockquote>
-
 <p>If a <code>Dog</code> needs some or all of the functionality of an <code>Animal</code>,
 simply use <strong>composition</strong>.</p>
-<pre><code>type Animal struct {
+<pre tabindex="0"><code>type Animal struct {
 	// …
 }
 
 type Dog struct {
 	beast Animal
 	// …
-}</code></pre>
-<p>This gives you full freedom to use the <code>Animal</code> part of your <code>Dog</code> as needed.
+}
+</code></pre><p>This gives you full freedom to use the <code>Animal</code> part of your <code>Dog</code> as needed.
 Yes, it&rsquo;s that simple.</p>
-
 <h2 id="code-reuse-by-embedding">Code reuse by embedding</h2>
-
 <p>If the <code>Dog</code> class inherits <strong>the exact behavior</strong> of an <code>Animal</code>,
 this approach can result in some tedious coding.</p>
-<pre><code>type Animal struct {
+<pre tabindex="0"><code>type Animal struct {
 	// …
 }
 
@@ -159,26 +143,22 @@ type Dog struct {
 
 func (a *Dog) Eat()   { a.beast.Eat() }
 func (a *Dog) Sleep() { a.beast.Sleep() }
-func (a *Dog) Breed() { a.beast.Breed() }</code></pre>
-<p>This code pattern is known as <strong>delegation</strong>.</p>
-
+func (a *Dog) Breed() { a.beast.Breed() }
+</code></pre><p>This code pattern is known as <strong>delegation</strong>.</p>
 <p>Go uses <strong>embedding</strong> for situations like this.
 The declaration of the <code>Dog</code> struct and it&rsquo;s three methods can be reduced to:</p>
-<pre><code>type Dog struct {
+<pre tabindex="0"><code>type Dog struct {
 	Animal
 	// …
-}</code></pre>
-<h2 id="polymorphism-and-dynamic-dispatch-with-interfaces">Polymorphism and dynamic dispatch with interfaces</h2>
-
+}
+</code></pre><h2 id="polymorphism-and-dynamic-dispatch-with-interfaces">Polymorphism and dynamic dispatch with interfaces</h2>
 <blockquote class="math">
 Keep your interfaces short, and introduce them only when needed.
 </blockquote>
-
 <p>Further down the road your project might have grown to include more animals.
 At this point you can introduce polymorphism and dynamic dispatch using <strong><a href="/golang/interfaces-explained/">interfaces</a></strong>.</p>
-
 <p>If you need to put all your pets to sleep, you can define a <code>Sleeper</code> interface.</p>
-<pre><code>type Sleeper interface {
+<pre tabindex="0"><code>type Sleeper interface {
 	Sleep()
 }
 
@@ -187,19 +167,15 @@ func main() {
 	for _, x := range pets {
 		x.Sleep()
 	}
-}</code></pre>
-<p>No explicit declaration is required by the <code>Cat</code> and <code>Dog</code> types.
-Any type that provides the methods named in an inter&shy;face
-may be treated as an imple&shy;mentation.</p>
-
-<p><em>When I see a bird that walks like a&nbsp;duck and swims like a&nbsp;duck and quacks like a&nbsp;duck, I&nbsp;call that&nbsp;bird a&nbsp;duck.</em><br>
-&ndash;James Whitcomb Riley</p>
-
+}
+</code></pre><p>No explicit declaration is required by the <code>Cat</code> and <code>Dog</code> types.
+Any type that provides the methods named in an inter­face
+may be treated as an imple­mentation.</p>
+<p><em>When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck.</em><br>
+–James Whitcomb Riley</p>
 <h2 id="what-about-constructors">What about constructors?</h2>
-
 <div><a href="/golang/constructor-best-practice/"><img src="/golang/factory-conveyor-belt-thumb.jpg" title="Constructors deconstructed [best practice]"></a></div>
-
-<p>See <a href="/golang/constructor-best-practice/">Constructors deconstructed</a> for best practices on how to set up new data structures in&nbsp;Go.</p>
+<p>See <a href="/golang/constructor-best-practice/">Constructors deconstructed</a> for best practices on how to set up new data structures in Go.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
 <a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2finheritance-object-oriented%2f&amp;text=Object-oriented%20programming%20without%20inheritance&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
@@ -250,15 +226,7 @@ may be treated as an imple&shy;mentation.</p>
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

@@ -84,12 +84,8 @@
 <article>
 <h1>4 iota enum examples</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC BY-SA 2.0: https://www.flickr.com/photos/teosaurio/3392883329 -->
-
 <div style="margin-top:1em;"><img src="/golang/lane-numbers.jpg"></div>
-
 <ul class="toc" style="font-weight: bold;">
   <li><a href="#iota-basic-example">Iota basic example</a></li>
   <ul style="list-style: none; font-weight: normal;">
@@ -101,107 +97,85 @@
     <li><a href="#naming-convention">Naming convention</a></li>
   </ul>
 </ul>
-
 <h2 id="iota-basic-example">Iota basic example</h2>
-
 <ul>
 <li>The <a href="/golang/iota/"><code>iota</code></a> keyword represents successive integer constants 0, 1, 2,…</li>
 <li>It resets to 0 whenever the word <code>const</code> appears in the source code,</li>
 <li>and increments after each const specification.</li>
 </ul>
-
 <pre><code>const (
-    C0 = iota
-    C1 = iota
-    C2 = iota
+	C0 = iota
+	C1 = iota
+	C2 = iota
 )
 fmt.Println(C0, C1, C2) <span class="comment">// "0 1 2"</span></code></pre>
-
 <p>This can be simplified to</p>
-<pre><code>const (
+<pre tabindex="0"><code>const (
 	C0 = iota
 	C1
 	C2
-)</code></pre>
-<p>Here we rely on the fact that expressions are implicitly repeated
-in a paren&shy;thesized const declaration &ndash; this indicates a repetition
-of the preceding expression and its&nbsp;type.</p>
-
+)
+</code></pre><p>Here we rely on the fact that expressions are implicitly repeated
+in a paren­thesized const declaration – this indicates a repetition
+of the preceding expression and its type.</p>
 <h3 id="start-from-one">Start from one</h3>
-
-<p>To start a list of constants at&nbsp;1 instead of&nbsp;0, you can use <code>iota</code> in an arithmetic expression.</p>
-
+<p>To start a list of constants at 1 instead of 0, you can use <code>iota</code> in an arithmetic expression.</p>
 <pre><code>const (
-    C1 = iota + 1
-    C2
-    C3
+	C1 = iota + 1
+	C2
+	C3
 )
 fmt.Println(C1, C2, C3) <span class="comment">// "1 2 3"</span></code></pre>
-
 <h3 id="skip-value">Skip value</h3>
-
 <p>You can use the blank identifier to skip a value in a list of constants.</p>
-
 <pre><code>const (
-    C1 = iota + 1
-    _
-    C3
-    C4
+	C1 = iota + 1
+	_
+	C3
+	C4
 )
 fmt.Println(C1, C3, C4) <span class="comment">// "1 3 4"</span></code></pre>
-
 <h2 id="complete-enum-type-with-strings-best-practice">Complete enum type with strings [best practice]</h2>
-
 <p>Here&rsquo;s an idiomatic way to implement an enumerated type:</p>
-
 <ul>
 <li>create a new integer type,</li>
 <li>list its values using <code>iota</code>,</li>
 <li>give the type a <code>String</code> function.</li>
 </ul>
-
 <pre><code>type Direction int
 
 const (
-    North Direction = iota
-    East
-    South
-    West
+	North Direction = iota
+	East
+	South
+	West
 )
 
 func (d Direction) String() string {
-    return [...]string{"North", "East", "South", "West"}[d]
+	return [...]string{"North", "East", "South", "West"}[d]
 }</code></pre>
-
 <p>In use:</p>
-
 <pre><code>var d Direction = North
 fmt.Print(d)
 switch d {
 case North:
-    fmt.Println(" goes up.")
+	fmt.Println(" goes up.")
 case South:
-    fmt.Println(" goes down.")
+	fmt.Println(" goes down.")
 default:
-    fmt.Println(" stays put.")
+	fmt.Println(" stays put.")
 }
 <span class="comment">// Output: North goes up.</span>
 </code></pre>
-
 <h3 id="naming-convention">Naming convention</h3>
-
 <blockquote>
 <p>The standard naming convention is to use mixed caps also for constants.
-For&nbsp;example, an exported constant is <code>NorthWest</code>, not <code>NORTH_WEST</code>.</p>
+For example, an exported constant is <code>NorthWest</code>, not <code>NORTH_WEST</code>.</p>
 </blockquote>
-
 <h2 id="further-reading">Further reading</h2>
-
 <div><a href="/golang/bitmask-flag-set-clear/"><img src="/golang/bits-thumb.jpg" title="Bitmasks and flags"></a></div>
-
 <p>Another common application for <code>iota</code> is to implement a <strong>bitmask</strong>,
 a small set of booleans, often called flags, represented by the bits in a single number.</p>
-
 <p>See <a href="/golang/bitmask-flag-set-clear/">Bitmasks and flags</a> for a complete example.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -229,15 +203,7 @@ a small set of booleans, often called flags, represented by the bits in a single
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

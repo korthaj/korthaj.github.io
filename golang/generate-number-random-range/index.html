@@ -84,12 +84,8 @@
 <article>
 <h1>Generate random numbers, characters and slice elements</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC0: https://www.pexels.com/photo/dart-fun-game-shot-85642/ -->
-
 <div style="margin-top:1em;"><img src="/golang/dart.jpg"></div>
-
 <ul class="toc" style="font-weight: bold; margin-top:1em;">
   <li><a href="#go-pseudo-random-number-basics">Go pseudo-random number basics</a>
     <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
@@ -104,74 +100,50 @@
   </li>
   <li><a href="#random-element-from-slice">Random element from slice</a></li>
 </ul>
-
 <h2 id="go-pseudo-random-number-basics">Go pseudo-random number basics</h2>
-
 <p>Use the <a href="https://golang.org/pkg/math/rand/#Seed"><code>rand.Seed</code></a> and
 <a href="https://golang.org/pkg/math/rand/#Int63"><code>rand.Int63</code></a> functions in package
 <a href="https://golang.org/pkg/math/rand/"><code>math/rand</code></a>
 to generate a non-negative pseudo-random number of type <code>int64</code>:</p>
-
 <pre><code>rand.Seed(time.Now().UnixNano())
 n := rand.Int63() <span class="comment">// for example 4601851300195147788</span>
 </code></pre>
-
 <p>Similarly, <a href="https://golang.org/pkg/math/rand/#Float64"><code>rand.Float64</code></a>
-generates a pseudo-random float x, where 0&nbsp;≤&nbsp;x&nbsp;&lt;&nbsp;1:</p>
-
+generates a pseudo-random float x, where 0 ≤ x &lt; 1:</p>
 <pre><code>x := rand.Float64() <span class="comment">// for example 0.49893371771268225</span>
 </code></pre>
-
 <blockquote class="warning">
 <b>Warning:</b> Without an initial call to <code>rand.Seed</code>, you will get
 the same sequence of numbers each time you run the program.
 </blockquote>
-
 <div style="margin-top:2em;"><a href="/algorithms/random-number-generator-seed/"><img src="/algorithms/dominoes-thumb.jpg" title="What’s a seed in a random number generator?"></a></div>
-
 <p>See <a href="/algorithms/random-number-generator-seed/">What’s a seed in a random number generator?</a>
 for an explanation of pseuodo-random number generators.</p>
-
 <h3 id="several-random-sources">Several random sources</h3>
-
 <p>The functions in the <a href="https://golang.org/pkg/math/rand/"><code>math/rand</code></a> package all use a single random source.</p>
-
 <p>If needed, you can create a new random generator of type <a href="https://golang.org/pkg/math/rand/#Rand"><code>Rand</code></a>
 with its own source, and then use its methods to generate random numbers:</p>
-
 <pre><code>generator := rand.New(rand.NewSource(time.Now().UnixNano()))
 n := generator.Int63()
 x := generator.Float64()
 </code></pre>
-
 <h2 id="integers-and-characters-in-a-given-range">Integers and characters in a given range</h2>
-
 <h3 id="number-between-a-and-b">Number between a and b</h3>
-
 <p>Use <a href="https://golang.org/pkg/math/rand/#Intn"><code>rand.Intn(m)</code></a>,
-which returns a pseudo-random number&nbsp;n, where 0&nbsp;≤&nbsp;n&nbsp;&lt;&nbsp;m.</p>
-
+which returns a pseudo-random number n, where 0 ≤ n &lt; m.</p>
 <pre><code>n := a + rand.Intn(b-a+1) <span class="comment">// a ≤ n ≤ b</span>
 </code></pre>
-
-<h3 id="character-between-39-a-39-and-39-z-39">Character between &#39;a&#39; and &#39;z&#39;</h3>
-
+<h3 id="character-between-39a39-and-39z39">Character between 'a' and 'z'</h3>
 <pre><code>c := 'a' + rune(rand.Intn('z'-'a'+1)) <span class="comment">// 'a' ≤ c ≤ 'z'</span>
 </code></pre>
-
 <h2 id="random-element-from-slice">Random element from slice</h2>
-
 <p>To generate a character from an arbitrary set,
 choose a random index from a slice of characters:</p>
-
 <pre><code>chars := []rune("AB⌘")
 c := chars[rand.Intn(len(chars))] <span class="comment">// for example '⌘'
 </code></pre>
-
 <h3 id="further-reading">Further reading</h3>
-
 <div><a href="/golang/rune/"><img src="/golang/rune-stone-thumb.jpg" title="Runes and character encoding"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/rune/">Runes and character encoding</a></p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -211,15 +183,7 @@ c := chars[rand.Intn(len(chars))] <span class="comment">// for example '⌘'
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

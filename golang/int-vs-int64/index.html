@@ -84,44 +84,32 @@
 <article>
 <h1>Pick the right one: int vs. int64</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC0: https://pixabay.com/en/house-houses-spot-the-difference-3208132/ -->
-
 <div style="margin-top:1em;"><img src="/golang/spot-difference.png"></div>
-
 <h2 id="use-int-for-indexing">Use int for indexing</h2>
-
 <p>An <strong>index</strong>, <strong>length</strong> or <strong>capacity</strong> should normally be an <code>int</code>.
-The <code>int</code> type is either 32 or 64&nbsp;bits, and always big enough
-to hold the maximum possible length of an&nbsp;array.</p>
-
+The <code>int</code> type is either 32 or 64 bits, and always big enough
+to hold the maximum possible length of an array.</p>
 <p>See <a href="/golang/max-min-int-uint/">Maximum value of an int</a> for code
-to compute the maximum value of an&nbsp;<code>int</code>.</p>
-
+to compute the maximum value of an <code>int</code>.</p>
 <h2 id="use-int64-and-friends-for-data">Use int64 and friends for data</h2>
-
 <p>The types <code>int8</code>, <code>int16</code>, <code>int32</code>, and <code>int64</code> (and their
 unsigned counterparts) are best suited for <strong>data</strong>.
-An <code>int64</code> is the typical choice when memory isn&rsquo;t an&nbsp;issue.</p>
-
+An <code>int64</code> is the typical choice when memory isn&rsquo;t an issue.</p>
 <p>In particular, you can use a <strong><code>byte</code></strong>, which is an alias for <code>uint8</code>,
 to be extra clear about your intent.
 Similarly, you can use a <strong><code>rune</code></strong>, which is an alias for <code>int32</code>,
-to emphasize than an integer represents a <a href="/golang/rune/">code&nbsp;point</a>.</p>
-
+to emphasize than an integer represents a <a href="/golang/rune/">code point</a>.</p>
 <blockquote>
 <p>Sometimes it makes little or no difference if you use 32 or 64 bits for data,
 and then it&rsquo;s quite common to simply use an int.
 However, I prefer to be explicit.
 It forces you to spend a moment thinking about the choice and also makes the code a bit clearer.</p>
 </blockquote>
-
 <h2 id="examples">Examples</h2>
-
-<p>In this code, the slice elements and the <code>max</code> variable have type&nbsp;<code>int64</code>,
-while the index and the length of the slice have type&nbsp;<code>int</code>.</p>
-<pre><code>func Max(a []int64) int64 {
+<p>In this code, the slice elements and the <code>max</code> variable have type <code>int64</code>,
+while the index and the length of the slice have type <code>int</code>.</p>
+<pre tabindex="0"><code>func Max(a []int64) int64 {
 	max := a[0]
 	for i := 1; i &lt; len(a); i++ {
 		if max &lt; a[i] {
@@ -129,17 +117,15 @@ while the index and the length of the slice have type&nbsp;<code>int</code>.</p>
 		}
 	}
 	return max
-}</code></pre>
-<p>The implementation of <a href="https://golang.org/pkg/time/#Duration"><code>time.Duration</code></a>
-is a typical example from the standard library where an&nbsp;<code>int64</code> is
+}
+</code></pre><p>The implementation of <a href="https://golang.org/pkg/time/#Duration"><code>time.Duration</code></a>
+is a typical example from the standard library where an <code>int64</code> is
 used to store data:</p>
-<pre><code>type Duration int64</code></pre>
-<p>A <code>Duration</code> represents the time between two instants
+<pre tabindex="0"><code>type Duration int64
+</code></pre><p>A <code>Duration</code> represents the time between two instants
 as a nanosecond count. This limits the
-largest possible duration to about 290&nbsp;years.</p>
-
+largest possible duration to about 290 years.</p>
 <h3 id="further-reading">Further reading</h3>
-
 <p>The <a href="/golang/max-min-int-uint/">Maximum value of an int</a> article
 shows how to compute the size and limit values of an <code>int</code> as untyped constants.</p>
 
@@ -174,15 +160,7 @@ shows how to compute the size and limit values of an <code>int</code> as untyped
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

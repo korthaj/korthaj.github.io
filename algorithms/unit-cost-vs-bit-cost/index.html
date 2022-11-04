@@ -84,57 +84,42 @@
 <article>
 <h1>Unit cost vs. bit cost in time complexity</h1>
 <div class="tagline">yourbasic.org</div>
-
-
 <!-- CC BY 2.0: https://www.flickr.com/photos/illuminated_photography/3153988939 -->
-
 <div style="margin-top:1em;"><img src="/algorithms/unit-cost-multiplication.jpg" alt="Unit-cost multiplication devise."></div>
 <div><i>Unit-cost multiplication</i></div>
-
 <p>Unit cost and bit cost are two different cost functions used to compute
 space and time <a href="/algorithms/time-complexity-explained/">complexity</a>.</p>
-
 <ul>
 <li><strong>Unit cost</strong> is used in a simplified model where a number,
 of any size, fits within a memory cell, and where standard arithmetic operations
-take constant&nbsp;time.</li>
+take constant time.</li>
 <li>With <strong>bit cost</strong> we take into account that computations with bigger numbers
-can be more&nbsp;expensive.</li>
+can be more expensive.</li>
 </ul>
-
 <blockquote>
 <p>Unit cost often works well in practice as modern processors can perform
 arithmetics on 64-bit integer and floating point numbers
 in <a href="/algorithms/big-o-notation-explained/#constant-time">constant time</a>.</p>
 </blockquote>
-
 <h2 id="unit-cost-example">Unit cost example</h2>
-
 <pre><code>func Add(x, y int64) int64 {
-    return x + y
+	return x + y
 }
 </code></pre>
-
 <p>In this simple example it&rsquo;s sensible to use <strong>unit cost</strong> and say
-that the function runs in constant&nbsp;time.</p>
-
+that the function runs in constant time.</p>
 <h2 id="bit-cost-example">Bit cost example</h2>
-
 <pre><code>func Concatenate(x, y string) string {
-    return x + y
+	return x + y
 }
 </code></pre>
-
-<p>Here it would be a mistake to use unit cost for the <code>+</code>&nbsp;operation:
-to concatenate two strings, we must allocate new memory and copy the&nbsp;characters.</p>
-
-<p>In this case it&rsquo;s better to use <strong>bit cost</strong> for the <code>+</code>&nbsp;operation:</p>
-
+<p>Here it would be a mistake to use unit cost for the <code>+</code> operation:
+to concatenate two strings, we must allocate new memory and copy the characters.</p>
+<p>In this case it&rsquo;s better to use <strong>bit cost</strong> for the <code>+</code> operation:</p>
 <ul>
 <li>the length of the strings is used to measure the input size,</li>
-<li>and we say that the function runs in &Theta;(len(x)&nbsp;+&nbsp;len(y))&nbsp;time.</li>
+<li>and we say that the function runs in Θ(len(x) + len(y)) time.</li>
 </ul>
-
 <blockquote>
 Note that we still use unit cost for character operations.
 This makes perfect sense as characters can be represented by small fixed-sized integers.
@@ -165,15 +150,7 @@ This makes perfect sense as characters can be represented by small fixed-sized i
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
     <div style="margin-top:1em;"><a href="/algorithms/time-complexity-explained/" title="How to analyse time complexity: Count your steps"><img src="/algorithms/abacus-mini.jpg"></a></div>
   <ul class="none">
   

@@ -84,59 +84,46 @@
 <article>
 <h1>Read a file (stdin) line by line</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC0: https://pxhere.com/en/photo/1105803 -->
-
 <div style="margin-top:1em;"><img src="/golang/boy-reading-book.png"></div>
-
 <ul class="toc">
   <li><a href="#read-from-file">Read from file</a></li>
   <li><a href="#read-from-stdin">Read from stdin</a></li>
   <li><a href="#read-from-any-stream">Read from any stream</a></li>
 </ul>
-
 <h2 id="read-from-file">Read from file</h2>
-
-<p>Use a <a href="https://golang.org/pkg/bufio/#Scanner"><code>bufio.Scanner</code></a> to read a file line by&nbsp;line.</p>
-
+<p>Use a <a href="https://golang.org/pkg/bufio/#Scanner"><code>bufio.Scanner</code></a> to read a file line by line.</p>
 <pre><code>file, err := os.Open("file.txt")
 if err != nil {
-    log.Fatal(err)
+	log.Fatal(err)
 }
 defer file.Close()
 
 scanner := bufio.NewScanner(file)
 for scanner.Scan() {
-    fmt.Println(scanner.Text())
+	fmt.Println(scanner.Text())
 }
 
 if err := scanner.Err(); err != nil {
-    log.Fatal(err)
+	log.Fatal(err)
 }
 </code></pre>
-
 <h2 id="read-from-stdin">Read from stdin</h2>
-
-<p>Use <a href="https://golang.org/pkg/os/#pkg-variables"><code>os.Stdin</code></a> to read from the standard input&nbsp;stream.</p>
-<pre><code>scanner := bufio.NewScanner(os.Stdin)
+<p>Use <a href="https://golang.org/pkg/os/#pkg-variables"><code>os.Stdin</code></a> to read from the standard input stream.</p>
+<pre tabindex="0"><code>scanner := bufio.NewScanner(os.Stdin)
 for scanner.Scan() {
 	fmt.Println(scanner.Text())
 }
 
 if err := scanner.Err(); err != nil {
 	log.Println(err)
-}</code></pre>
-<h2 id="read-from-any-stream">Read from any stream</h2>
-
+}
+</code></pre><h2 id="read-from-any-stream">Read from any stream</h2>
 <div><a href="/golang/io-reader-interface-explained/"><img src="/golang/teddy-bear-reading-thumb.jpg" title="How to use the io.Reader interface"></a></div>
-
 <p>A bufio.Scanner can read from any stream of bytes, as long as it implements
 the <a href="https://golang.org/pkg/io/#Reader"><code>io.Reader</code></a> interface.
 See <a href="/golang/io-reader-interface-explained/">How to use the io.Reader interface</a>.</p>
-
 <h3 id="further-reading">Further reading</h3>
-
 <p>For more advanced scanning, see the examples in the <a href="https://golang.org/pkg/bufio/#Scanner"><code>bufio.Scanner</code></a> documentation.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -170,15 +157,7 @@ See <a href="/golang/io-reader-interface-explained/">How to use the io.Reader in
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

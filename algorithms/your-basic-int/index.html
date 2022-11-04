@@ -84,14 +84,9 @@
 <article>
 <h1>Your basic int: a most powerful data type</h1>
 <div class="tagline">yourbasic.org</div>
-
-
 <p class="lead">The int data type is generic, effective, simple and efficient.</p>
-
 <!-- CC0: https://pixabay.com/en/counting-fingers-first-hand-one-154152/ -->
-
 <div><img src="/algorithms/counting.png"></div>
-
 <ul class="toc">
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#generic-graph-data">Generic graph data</a></li>
@@ -99,34 +94,28 @@
 <li><a href="#simple-sets">Simple sets</a></li>
 <li><a href="#efficient-filtering">Efficient filtering</a></li>
 </ul>
-
 <h2 id="introduction">Introduction</h2>
-
 <p>Every kid can spot an integer number,
-and every programmer is familiar with the&nbsp;<code>int</code> data&nbsp;type.
-Still we frequently forget how powerful an integer can&nbsp;be.</p>
-
+and every programmer is familiar with the <code>int</code> data type.
+Still we frequently forget how powerful an integer can be.</p>
 <ul>
-<li><strong>Generic</strong><br />
+<li><strong>Generic</strong><br>
 An <code>int</code> or <code>[]int</code> is a bit pattern that can represent any digital data.
 Furthermore, an <code>int</code> can point into any type of <a href="/algorithms/time-complexity-arrays/">array</a>.
-That&rsquo;s as generic as it&nbsp;gets.</li>
-<li><strong>Effective</strong><br />
+That&rsquo;s as generic as it gets.</li>
+<li><strong>Effective</strong><br>
 With an <code>int</code> you have all of basic mathematics at your fingertips,
-and boolean algebra, implemented with bit-level parallelism, to&nbsp;boot.</li>
-<li><strong>Simple</strong><br />
+and boolean algebra, implemented with bit-level parallelism, to boot.</li>
+<li><strong>Simple</strong><br>
 Not really, but we&rsquo;ve used arithmetic since childhood so it feels that way.
 Familiarity breeds both simplicity and contempt.</li>
-<li><strong>Efficient</strong><br />
+<li><strong>Efficient</strong><br>
 An <code>int</code> fits inside a register sitting on the main datapath of the CPU,
 and an <code>[]int</code> is the main focus of hardware memory optimization.
-It doesn&rsquo;t get much faster or more efficient than&nbsp;that.</li>
+It doesn&rsquo;t get much faster or more efficient than that.</li>
 </ul>
-
 <h3 id="resources">Resources</h3>
-
 <p>This text comes with four Go example libraries:</p>
-
 <ul>
 <li><a href="https://github.com/yourbasic/bit">bit</a>
 contains a bit array and some bit-twiddling functions,</li>
@@ -135,175 +124,143 @@ is a Bloom filter, a probabilistic set data structure,</li>
 <li><a href="https://github.com/yourbasic/graph">graph</a>
 is a library of basic graph algorithms,</li>
 <li><a href="https://github.com/yourbasic/radix">radix</a>
-is a string sorting algorithm implemented with MSD radix&nbsp;sort.</li>
+is a string sorting algorithm implemented with MSD radix sort.</li>
 </ul>
-
 <h2 id="generic-graph-data">Generic graph data</h2>
-
-<p><img src="/algorithms/graph.png" alt="Graph" /></p>
-
+<p><img src="/algorithms/graph.png" alt="Graph"></p>
 <p><em>Cubical graph with vertex colors</em> <!-- *image from [Wikipedia][wikicube].* --></p>
-
 <p>Since graphs are used to model countless types of relations and processes
 in varied kinds of systems and settings, there is no telling what kind of data
 a generic graph library will encounter; both vertices and edges can have
 labels attached to them. Should we use parametric polymorphism or perhaps a pointer
 to the top of a type hierarchy?</p>
-
 <p>It&rsquo;s easy to forget that an integer may be the preferred choice.
 Here is a solution from the <a href="https://github.com/yourbasic/graph">graph</a> package.</p>
 <pre><code>All algorithms operate on directed graphs with
 a fixed number of vertices, labeled from 0 to n-1,
-and edges with integer cost.</code></pre>
+and edges with integer cost.
+</code></pre>
 <p>Since vertices are represented by integers, it&rsquo;s easy to add any kind of
 vertex data on the side.
 For example, this generic implementation of breadth-first search uses
 an array of booleans, <code>visited</code>,
 to keep track of which vertices have been visited.</p>
-
 <pre><code>// BFS traverses g in breadth-first order starting at v.
 // When the algorithm follows an edge (v, w) and finds
 // a previously unvisited vertex w, it calls do(v, w, c)
 // with c equal to the cost of the edge (v, w).
 func BFS(g Iterator, v int, do func(v, w int, c int64)) {
-    <b>visited := make([]bool, g.Order())</b>
-    <b>visited</b>[v] = true
-    for queue := []int{v}; len(queue) > 0; {
-        v := queue[0]
-        queue = queue[1:]
-        g.Visit(v, func(w int, c int64) (skip bool) {
-            if <b>visited</b>[w] {
-                return
-            }
-            do(v, w, c)
-            <b>visited</b>[w] = true
-            queue = append(queue, w)
-            return
-        })
-    }
+	<b>visited := make([]bool, g.Order())</b>
+	<b>visited</b>[v] = true
+	for queue := []int{v}; len(queue) > 0; {
+		v := queue[0]
+		queue = queue[1:]
+		g.Visit(v, func(w int, c int64) (skip bool) {
+			if <b>visited</b>[w] {
+				return
+			}
+			do(v, w, c)
+			<b>visited</b>[w] = true
+			queue = append(queue, w)
+			return
+		})
+	}
 }
 </code></pre>
-
 <p><em>Code from <a href="https://github.com/yourbasic/graph/blob/master/bfs.go">bfs.go</a></em></p>
-
 <h2 id="effective-searching-and-sorting">Effective searching and sorting</h2>
-
 <p>Some of the most effective search and sort algorithms are implemented
 by bit manipulation done with <a href="https://en.wikipedia.org/wiki/Bitwise_operation">bitwise integer operators</a>.
 These operators operate, often in parallel, on the single bits of an integer.
 Even though they don&rsquo;t form a Turing-complete set of operations,
 they can still be surprisingly effective.</p>
-
 <p>The standard set of bitwise operators, found in almost every CPU,
 includes the bitwise NOT, AND, OR and XOR instructions; plus
 a collection of shift and rotate instructions. A bit count instruction,
 often known as popcnt, is also quite common.</p>
-
 <h3 id="needles-in-huge-haystacks">Needles in huge haystacks</h3>
-
 <p>The <a href="https://en.wikipedia.org/wiki/Hamming_distance">Hamming distance</a> between two integers,
 the number of positions at which the corresponding bits are different,
 is an effective way to estimate similarity. It can be computed
 using just one <code>xor</code> and one <code>popcnt</code> instruction.</p>
-
-<p><img src="/algorithms/hamming.png" alt="Hamming distance" /></p>
-
+<p><img src="/algorithms/hamming.png" alt="Hamming distance"></p>
 <p><em>The Hamming distance between adjacent vertices
-in a cubical graph is&nbsp;one.</em> <!-- image from [Wikipedia][wikihammingpic]. --></p>
-
+in a cubical graph is one.</em> <!-- image from [Wikipedia][wikihammingpic]. --></p>
 <p>Rumor has it that organizations who are sifting through huge amounts of data
 prefer to buy CPUs that come with a bit count instruction.
 As a case in point, the Zen microarchitecture from AMD supports
 no less than four <code>popcnt</code> instructions per clock cycle.</p>
-
 <h3 id="bit-count">Bit count</h3>
-
 <p>If the CPU doesn&rsquo;t have a native bit count operation, popcnt can still
 be implemented quite efficiently using the more common bitwise operators.
-Here is a fun code sample from the <a href="https://github.com/yourbasic/bit">bit</a>&nbsp;package.</p>
-
+Here is a fun code sample from the <a href="https://github.com/yourbasic/bit">bit</a> package.</p>
 <pre><code>// Count returns the number of nonzero bits in w.
 func Count(w uint64) int {
-    <span class="comment">// “Software Optimization Guide for AMD64 Processors”, Section 8.6.</span>
-    const maxw = 1<<64 - 1
-    const bpw = 64
+	<span class="comment">// “Software Optimization Guide for AMD64 Processors”, Section 8.6.</span>
+	const maxw = 1<<64 - 1
+	const bpw = 64
 
-    <span class="comment">// Compute the count for each 2-bit group.</span>
-    <span class="comment">// Example using 16-bit word w = 00,01,10,11,00,01,10,11</span>
-    <span class="comment">// w - (w>>1) & 01,01,01,01,01,01,01,01 = 00,01,01,10,00,01,01,10</span>
-    w -= (w >> 1) & (maxw / 3)
+	<span class="comment">// Compute the count for each 2-bit group.</span>
+	<span class="comment">// Example using 16-bit word w = 00,01,10,11,00,01,10,11</span>
+	<span class="comment">// w - (w>>1) & 01,01,01,01,01,01,01,01 = 00,01,01,10,00,01,01,10</span>
+	w -= (w >> 1) & (maxw / 3)
 
-    <span class="comment">// Add the count of adjacent 2-bit groups and store in 4-bit groups:</span>
-    <span class="comment">// w & 0011,0011,0011,0011 + w>>2 & 0011,0011,0011,0011 = 0001,0011,0001,0011</span>
-    w = w&(maxw/15*3) + (w>>2)&(maxw/15*3)
+	<span class="comment">// Add the count of adjacent 2-bit groups and store in 4-bit groups:</span>
+	<span class="comment">// w & 0011,0011,0011,0011 + w>>2 & 0011,0011,0011,0011 = 0001,0011,0001,0011</span>
+	w = w&(maxw/15*3) + (w>>2)&(maxw/15*3)
 
-    <span class="comment">// Add the count of adjacent 4-bit groups and store in 8-bit groups:</span>
-    <span class="comment">// (w + w>>4) & 00001111,00001111 = 00000100,00000100</span>
-    w += w >> 4
-    w &= maxw / 255 * 15
+	<span class="comment">// Add the count of adjacent 4-bit groups and store in 8-bit groups:</span>
+	<span class="comment">// (w + w>>4) & 00001111,00001111 = 00000100,00000100</span>
+	w += w >> 4
+	w &= maxw / 255 * 15
 
-    <span class="comment">// Add all 8-bit counts with a multiplication and a shift:</span>
-    <span class="comment">// (w * 00000001,00000001) >> 8 = 00001000</span>
-    w *= maxw / 255
-    w >>= (bpw/8 - 1) * 8
-    return int(w)
+	<span class="comment">// Add all 8-bit counts with a multiplication and a shift:</span>
+	<span class="comment">// (w * 00000001,00000001) >> 8 = 00001000</span>
+	w *= maxw / 255
+	w >>= (bpw/8 - 1) * 8
+	return int(w)
 }
 </code></pre>
-
 <p><em>Code from <a href="https://github.com/yourbasic/bit/blob/master/funcs.go">funcs.go</a></em></p>
-
 <p>As of Go 1.9, a bit count function is available in package
 <a href="https://golang.org/pkg/math/bits/"><code>math/bits</code></a>.
 On most architectures functions in this package are recognized
 by the compiler and treated as intrinsics for additional performance.
 The <a href="/golang/bitwise-operator-cheat-sheet/">Bitwise operators cheat sheet</a>
-tells more about bit manipulation in&nbsp;Go.</p>
-
+tells more about bit manipulation in Go.</p>
 <h3 id="fast-sorting">Fast sorting</h3>
-
 <p><a href="https://github.com/yourbasic/radix">Radix sort</a> also uses bit manipulation to good effect.
 For string sorting, a carefully implemented radix sort can be
 considerably faster than Quicksort, sometimes more than twice as fast.
 A discussion of <strong>MSD radix sort</strong>, its implementation and a comparison
 with other well-known sorting algorithms can be found in
 <a href="https://www.nada.kth.se/~snilsson/publications/Radixsort-implementation/">Implementing radixsort</a>.</p>
-
 <p>Bitwise operators are also crucial in the implementation of the fastest
 known integer sorting algorithm. It sorts <em>n</em> integers
 in O(<em>n</em> log log <em>n</em>) worst-case time on a unit-cost RAM machine,
 the standard computational model in theoretical computer science.</p>
-
 <div><a href="/algorithms/fastest-sorting-algorithm/"><img src="/algorithms/sorted-thumb.jpg" title="The fastest sorting algorithm?"></a></div>
-
 <p>See <a href="https://www.nada.kth.se/~snilsson/fast-sorting/">The fastest sorting algorithm?</a> for a complete description of this algorithm.</p>
-
 <h2 id="simple-sets">Simple sets</h2>
-
 <p>A <a href="https://en.wikipedia.org/wiki/Bit_array">bit set</a>, or bit array, must be the simplest
 data structure in town. It&rsquo;s just an array of integers, where the bit
 at position <em>k</em> is one whenever <em>k</em> belongs to the set.</p>
-
 <p>Even though it&rsquo;s simple, a bit set can be quite powerful. Because it uses
 bit-level parallelism, limits memory access, and plays nicely with
 the data cache, it tends to be very efficient and often outperforms other
 set data structures.</p>
-
 <p>Memory consumption isn&rsquo;t too shabby either. If you have a gigabyte
 of RAM to spare, you can story a set of integer elements in the range
 0 to 8,589,934,591.</p>
-
 <h3 id="sieve-of-eratosthenes">Sieve of Eratosthenes</h3>
-
-<p><img src="/algorithms/eratosthenes.png" alt="Eratosthenes" /></p>
-
+<p><img src="/algorithms/eratosthenes.png" alt="Eratosthenes"></p>
 <p><em>Eratosthenes of Cyrene</em> <!-- *276-194 BC, image from [Wikipedia][eratosthenes] --></p>
-
 <p>This code snippet implements the sieve of Eratosthenes
 (with an optimization suggested by <a href="https://gmplib.org/~tege/">tege</a>).
 It uses a bit set implementation from the <a href="https://github.com/yourbasic/bit">bit</a> package
 to generate the set of all primes less than <em>n</em> in O(<em>n</em> log log <em>n</em>) time.
 Try it with <em>n</em> equal to a few hundred millions and be pleasantly surprised.</p>
-<pre><code>sieve := bit.New().AddRange(2, n)
+<pre tabindex="0"><code>sieve := bit.New().AddRange(2, n)
 for k := 4; k &lt; n; k += 2 {
     sieve.Delete(k)
 }
@@ -312,33 +269,25 @@ for p := 3; p &lt;= sqrtN; p = sieve.Next(p) {
 	for k := p * p; k &lt; n; k += 2 * p {
 		sieve.Delete(k)
 	}
-}</code></pre>
-<h3 id="a-fly-in-the-ointment">A fly in the ointment</h3>
-
+}
+</code></pre><h3 id="a-fly-in-the-ointment">A fly in the ointment</h3>
 <p>The code above doesn&rsquo;t guard against <a href="https://en.wikipedia.org/wiki/Integer_overflow">integer overflow</a>.
 If <em>n</em> is too close to the maximum representable value of an <code>int</code>,
 the index variable <em>k</em> will eventually wrap around and become negative.</p>
-
 <h2 id="efficient-filtering">Efficient filtering</h2>
-
 <p>Hash functions are yet another triumph for the integer data type.
 They are worth a tribute of their own, but in this section we will
 just take them for granted. If we combine a bit array with
 a set of hash functions we get a <a href="/algorithms/bloom-filter/">Bloom filter</a>, a probabilistic
 data structure used to test set membership.</p>
-
 <p>This data structure tells whether an element <strong>may be</strong> in a set, or <strong>definitely isn&rsquo;t</strong>.
 The only possible errors are <em>false positives</em>: a search for a nonexistent element
 can give an incorrect answer.
 With more elements in the filter, the error rate increases.</p>
-
 <p>Bloom filters are both <em>fast</em> and <em>space-efficient</em>. However, elements can only be added, not removed.</p>
-
 <p>Content distribution networks use them to avoid caching one-hit wonders, files that are seen only once. Web browsers use them to check for potentially harmful URLs.</p>
-
 <p>This piece of code, from package <a href="https://godoc.org/github.com/yourbasic/bloom">bloom</a>,
 shows a typical Bloom filter use case.</p>
-
 <pre><code><span class="comment">// A Bloom filter with room for at most 100000 elements.
 // The error rate for the filter is less than 1/200.</span>
 blacklist := bloom.New(10000, 200)
@@ -349,43 +298,33 @@ blacklist.Add(url)
 
 <span class="comment">// Test for membership.</span>
 if blacklist.Test(url) {
-    fmt.Println(url, "may be blacklisted.")
+	fmt.Println(url, "may be blacklisted.")
 } else {
-    fmt.Println(url, "has not been added to our blacklist.")
+	fmt.Println(url, "has not been added to our blacklist.")
 }</code></pre>
-
 <pre><code>https://rascal.com may be blacklisted.</code></pre>
-
 <h3 id="implementation">Implementation</h3>
-
-<p>An empty Bloom filter is a bit array of <i>m</i>&nbsp;bits, all set to&nbsp;0.
-There are also <i>k</i>&nbsp;different hash functions,
-each of which maps a set element to one of the&nbsp;<i>m</i> bit positions.</p>
-
+<p>An empty Bloom filter is a bit array of <i>m</i> bits, all set to 0.
+There are also <i>k</i> different hash functions,
+each of which maps a set element to one of the <i>m</i> bit positions.</p>
 <ul>
-<li>To add an element, feed it to the hash functions to&nbsp;get <i>k</i> bit positions,
-and&nbsp;set the&nbsp;bits at these positions to&nbsp;1.</li>
-<li>To test if an element is in the&nbsp;set, feed it to the&nbsp;hash functions to&nbsp;get <i>k</i> bit positions.
-
+<li>To add an element, feed it to the hash functions to get <i>k</i> bit positions,
+and set the bits at these positions to 1.</li>
+<li>To test if an element is in the set, feed it to the hash functions to get <i>k</i> bit positions.
 <ul>
-<li>If any of the&nbsp;bits at these positions is&nbsp;0, the&nbsp;element
-<strong>definitely isn&rsquo;t</strong> the&nbsp;set.</li>
-<li>If all are&nbsp;1, then the&nbsp;element <strong>may be</strong> in the&nbsp;set.</li>
-</ul></li>
+<li>If any of the bits at these positions is 0, the element
+<strong>definitely isn&rsquo;t</strong> the set.</li>
+<li>If all are 1, then the element <strong>may be</strong> in the set.</li>
 </ul>
-
+</li>
+</ul>
 <p>Here is a Bloom filter with three elements <i>x</i>, <i>y </i> and <i>z</i>.
-It consists of 18&nbsp;bits and uses 3&nbsp;hash functions.
-The colored arrows point to the bits that the elements of the set are mapped&nbsp;to.</p>
-
+It consists of 18 bits and uses 3 hash functions.
+The colored arrows point to the bits that the elements of the set are mapped to.</p>
 <!-- Public domain: https://en.wikipedia.org/wiki/File:Bloom_filter.svg -->
-
-<p><img src="/algorithms/bloom-filter.svg" style="width:500px;" alt="Bloom filter"></p>
-
-<p>The&nbsp;element <i>w</i> definitely isn&rsquo;t in the&nbsp;set, since it hashes to a bit position containing&nbsp;0.</p>
-
+<img src="/algorithms/bloom-filter.svg" style="width:500px;" alt="Bloom filter">
+<p>The element <i>w</i> definitely isn&rsquo;t in the set, since it hashes to a bit position containing 0.</p>
 <!-- Example from [Wikipedia][wikibloompic]. -->
-
 <p>The colored arrows point to the bits that the elements
 of the set {<em>x</em>, <em>y</em>, <em>z</em>} are mapped to. The element <em>w</em> is not in the set,
 because it hashes to a bit position containing 0.</p>
@@ -421,15 +360,7 @@ because it hashes to a bit position containing 0.</p>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
     <div style="margin-top:1em;"><a href="/algorithms/time-complexity-explained/" title="How to analyse time complexity: Count your steps"><img src="/algorithms/abacus-mini.jpg"></a></div>
   <ul class="none">
   

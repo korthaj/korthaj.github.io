@@ -85,28 +85,18 @@
 <h1>What happened to ABBA?</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC BY 3.0: https://en.wikipedia.org/wiki/File:ABBA_Edmonton_1979_001.jpg -->
-
 <div style="margin-top:1em;"><img src="/golang/abba.jpg"></div>
-
 <p>What&rsquo;s up with <a href="https://golang.org/pkg/strings/#TrimRight">strings.TrimRight</a>?</p>
-
 <pre><code>fmt.Println(strings.TrimRight("ABBA", "BA")) <span class="comment">// Output: ""</span>
 </code></pre>
-
 <h2 id="answer">Answer</h2>
-
 <p>The <code>Trim</code>, <code>TrimLeft</code> and <code>TrimRight</code> functions strip all Unicode code points contained in a <b>cutset</b>.
 In this case, all trailing A:s and B:s are stripped from the string, leaving the empty string.</p>
-
 <p>To strip a trailing <b>string</b>, use
 <a href="https://golang.org/pkg/strings/#TrimSuffix"><code>strings.TrimSuffix</code></a>.</p>
-
 <pre><code>fmt.Println(strings.<b>TrimSuffix</b>("ABBA", "BA")) <span class="comment">// Output: "AB"</span>
 </code></pre>
-
 <p>See <a href="/golang/string-functions-reference-cheat-sheet/">String functions cheat sheet</a> for more about strings in&nbsp;Go.</p>
 
 <ul class="pagina">
@@ -188,14 +178,6 @@ In this case, all trailing A:s and B:s are stripped from the string, leaving the
       <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a></li>
 
   </ul>
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
 
 
   

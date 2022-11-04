@@ -84,14 +84,9 @@
 <article>
 <h1>Why Go? – Key advantages you may have overlooked</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <p class="lead">Go makes it easier (than Java or Python) to write correct, clear and efficient code.</p>
-
 <!-- CC0: https://pixabay.com/vectors/happiness-speed-horse-mare-animal-2156794/ -->
-
 <div><img style="border:1px solid gray" src="/golang/unicorn.png" alt="Unicorn racing towards the Rainbow"></div>
-
 <ul class="toc">
   <li><a href="#minimalism">Minimalism</a>
     <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
@@ -102,46 +97,34 @@
   <li><a href="#compatibility">Compatibility</a></li>
   <li><a href="#performance">Performance</a></li>
 </ul>
-
 <p>Choosing a programming language isn&rsquo;t easy.
 The separate features of a language may look great at first,
-but it takes <em>time</em> and <em>experience</em> to&nbsp;spot the&nbsp;drawbacks.</p>
-
+but it takes <em>time</em> and <em>experience</em> to spot the drawbacks.</p>
 <p>As a CS professor and longtime Go and Java developer, I&rsquo;d like to
-share some of my&nbsp;thoughts and explain why I prefer <strong><a href="https://golang.org/">Go</a></strong>
+share some of my thoughts and explain why I prefer <strong><a href="https://golang.org/">Go</a></strong>
 to <strong><a href="https://www.java.com/">Java</a></strong> or <strong><a href="https://www.python.org/">Python</a></strong> –
-Go makes it much easier for me to write good&nbsp;code.</p>
-
-<p>Go has been my main programming tool since&nbsp;2012,
-replacing Java, which in&nbsp;turn replaced C in&nbsp;1998.
-I&nbsp;use Python mostly for teaching.
-My journey as a pro&shy;gram&shy;mer started back in 1978 on
-a&nbsp;<a href="https://en.wikipedia.org/wiki/TI-57">TI-57</a> with 50&nbsp;program steps and 8&nbsp;registers.</p>
-
+Go makes it much easier for me to write good code.</p>
+<p>Go has been my main programming tool since 2012,
+replacing Java, which in turn replaced C in 1998.
+I use Python mostly for teaching.
+My journey as a pro­gram­mer started back in 1978 on
+a <a href="https://en.wikipedia.org/wiki/TI-57">TI-57</a> with 50 program steps and 8 registers.</p>
 <h2 id="minimalism">Minimalism</h2>
-
 <!-- CC0: https://pixabay.com/vectors/happiness-speed-horse-mare-animal-2156794/ -->
-
 <div><img src="/golang/minimalist-field-bw.jpg" alt="Unicorn racing towards the Rainbow"></div>
-
-<p>Go is a <strong>minimalist language</strong>, and that&rsquo;s (mostly) a&nbsp;blessing.</p>
-
-<p>The formal <a href="https://golang.org/ref/spec">Go language specification</a> is only 50&nbsp;pages,
-has plenty of examples, and&nbsp;is fairly easy to&nbsp;read.
-A&nbsp;skilled programmer could probably learn Go from the specification alone.</p>
-
+<p>Go is a <strong>minimalist language</strong>, and that&rsquo;s (mostly) a blessing.</p>
+<p>The formal <a href="https://golang.org/ref/spec">Go language specification</a> is only 50 pages,
+has plenty of examples, and is fairly easy to read.
+A skilled programmer could probably learn Go from the specification alone.</p>
 <p>The core language consists of a few <strong>simple</strong>, <strong><a href="https://en.wikipedia.org/wiki/Orthogonality_(programming)">orthogonal</a></strong> features
 that can be combined in a relatively small number of ways.
 This makes it easier to learn the language, and to read and write programs.</p>
-
 <p>When you add new features to a language,
 the complexity doesn’t just add up, it often multiplies:
 language features can interact in many ways.
 This is a significant problem – language complexity affects <strong>all developers</strong>
-(not just the ones writing the&nbsp;spec and implementing the compiler).</p>
-
+(not just the ones writing the spec and implementing the compiler).</p>
 <p>Here are some core Go features:</p>
-
 <ul>
 <li>The <strong>built-in</strong> frameworks for <a href="https://golang.org/doc/code.html#Testing">testing</a> and
 <a href="https://blog.golang.org/profiling-go-programs">profiling</a>
@@ -149,16 +132,16 @@ are small and easy to learn, but still fully functional.
 There are plenty of third-party add-ons, but chances are you won&rsquo;t need them.</li>
 <li>It&rsquo;s possible to <strong><a href="https://blog.golang.org/debugging-what-you-deploy">debug</a></strong>
 and <strong><a href="https://blog.golang.org/profiling-go-programs">profile</a></strong>
-an optimized binary running in production through an&nbsp;HTTP server.</li>
+an optimized binary running in production through an HTTP server.</li>
 <li>Go has <a href="https://blog.golang.org/godoc-documenting-go-code">automatically generated documentation</a>
 with <a href="https://blog.golang.org/examples">testable examples</a>.
-Once again, the <strong>interface is minimal</strong>, and there is very little to&nbsp;learn.</li>
+Once again, the <strong>interface is minimal</strong>, and there is very little to learn.</li>
 <li>Go is <strong>strongly</strong> and <strong>statically</strong> typed with
 <strong><a href="/golang/conversions/">no implicit conversions</a></strong>,
 but the syntactic overhead is still surprisingly small.
-This is achieved by simple <a href="https://tour.golang.org/basics/14">type inference in assign&shy;ments</a>
+This is achieved by simple <a href="https://tour.golang.org/basics/14">type inference in assign­ments</a>
 together with <a href="https://yourbasic.org/golang/untyped-constants/">untyped numeric constants</a>.
-This gives Go stronger type&nbsp;safety than Java (which has implicit conversions),
+This gives Go stronger type safety than Java (which has implicit conversions),
 but the code reads more like Python (which has untyped variables).</li>
 <li>Programs are constructed from <a href="/golang/packages-explained/">packages</a> that offer clear
 <strong><a href="/golang/public-private/">code separation</a></strong>
@@ -172,23 +155,16 @@ by <a href="/golang/goroutines-explained/">goroutines</a>,
 <a href="/golang/channels-explained/">channels</a> and
 the <a href="/golang/select-explained/">select statement</a>.</li>
 </ul>
-
 <blockquote>
 <p>See <a href="/golang/go-vs-java/">Go vs. Java: 15 main differences</a> for a small code example,
 and a sample of basic data types, methods and control structures.</p>
 </blockquote>
-
 <h3 id="features-for-the-future">Features for the future</h3>
-
 <!-- CC BY-SA 2.0: https://www.flickr.com/photos/gleonhard/40057047714 -->
-
 <div><img src="/golang/futurist-mouse-trap.jpg" alt="Futurist mouse trap"></div>
-
 <p>Go <strong>omits several features</strong> found in other modern languages.</p>
-
-<p>Here&rsquo;s the <a href="https://golang.org/doc/faq#Design">language designers&rsquo; answer</a>
+<p>Here&rsquo;s the <a href="https://golang.org/doc/faq#Design">language designers' answer</a>
 to <em>Why does Go not have feature X?</em></p>
-
 <blockquote>
 <p>Every language contains novel features and omits someone&rsquo;s favorite feature.
 Go was designed with an eye on felicity of programming, speed of compilation, orthogonality of concepts,
@@ -197,39 +173,30 @@ Your favorite feature may be missing because it doesn&rsquo;t fit,
 because it affects compilation speed or clarity of design,
 or because it would make the fundamental system model too difficult.</p>
 </blockquote>
-
 <p>New features are considered only if there is a pressing need
-demon&shy;strated by <a href="https://github.com/golang/go/wiki/ExperienceReports">experience reports</a>
+demon­strated by <a href="https://github.com/golang/go/wiki/ExperienceReports">experience reports</a>
 from real-world projects.</p>
-
-<p>There are a few likely major additions in the&nbsp;pipeline:</p>
-
+<p>There are a few likely major additions in the pipeline:</p>
 <ul>
 <li>Package management through <a href="https://blog.golang.org/modules2019">modules</a> were
-<a href="https://golang.org/doc/go1.11#modules">preliminary introduced in Go&nbsp;1.11</a>.</li>
+<a href="https://golang.org/doc/go1.11#modules">preliminary introduced in Go 1.11</a>.</li>
 <li>There is a <a href="https://go.googlesource.com/proposal/+/master/design/go2draft-contracts.md">generics draft design</a>,
-which may be implemented in&nbsp;Go&nbsp;2.
+which may be implemented in Go 2.
 For now, have a look at <a href="/golang/generics/">Generics (alternatives and workarounds)</a>.</li>
 <li>Similarly, there is an <a href="https://github.com/golang/proposal/blob/master/design/go2draft-error-handling.md">error handling draft design</a>
 that extends the current minimalist <a href="/golang/errors-explained/">error handling</a>.</li>
 </ul>
-
 <p>Currently, some <a href="https://blog.golang.org/go2-here-we-come">minor additions</a> are considered
-to help create and test a <a href="https://blog.golang.org/toward-go2">community-driven process</a> for developing&nbsp;Go.</p>
-
+to help create and test a <a href="https://blog.golang.org/toward-go2">community-driven process</a> for developing Go.</p>
 <p>However, features such as <a href="/golang/overload-overwrite-optional-parameter/">optional parameters, default parameter values and method overloading</a>
-probably won&rsquo;t be part of a future <a href="https://blog.golang.org/go2-here-we-come">Go&nbsp;2</a>.</p>
-
+probably won&rsquo;t be part of a future <a href="https://blog.golang.org/go2-here-we-come">Go 2</a>.</p>
 <h3 id="java-comparison">Java comparison</h3>
-
 <p><a href="https://docs.oracle.com/javase/specs/jls/se12/jls12.pdf">The Java® Language Specification</a> is currently 750 pages.
-Much of the complexity is due to <a href="https://en.wikipedia.org/wiki/Feature_creep">feature&nbsp;creep</a>.
+Much of the complexity is due to <a href="https://en.wikipedia.org/wiki/Feature_creep">feature creep</a>.
 Here are but three examples.</p>
-
 <p>Java <a href="https://en.wikipedia.org/wiki/Inner_class">inner classes</a> suddenly appeared in 1997;
 it took more than a year to update the specification, and it became almost twice as big as a result.
 That&rsquo;s a high price to pay for a non-essential feature.</p>
-
 <p><a href="https://en.wikipedia.org/wiki/Generics_in_Java">Generics in Java</a>,
 implemented by <a href="https://en.wikipedia.org/wiki/Type_erasure">type erasure</a>,
 make some code cleaner and allow for additional runtime checks,
@@ -239,154 +206,116 @@ and <a href="https://docs.oracle.com/javase/tutorial/extra/generics/wildcards.ht
 with upper and lower bounds are quite complicated.
 The string &ldquo;generic&rdquo; appears 280 times in the specification.
 It&rsquo;s not clear to me if this feature is worth its cost.</p>
-
 <p>A Java <a href="https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html">enum</a>, introduced in 2004,
 is a special type of class that represents a group of constants.
 It&rsquo;s certainly nice to have, but offers little that couldn&rsquo;t be done with ordinary classes.
 The string &ldquo;enum&rdquo; appears 241 times in the specification.</p>
-
 <h2 id="code-transparency">Code transparency</h2>
-
 <!-- CC0: https://en.wikipedia.org/wiki/File:Eniac.jpg -->
-
 <div><img src="/golang/eniac.jpg" alt="Tangled cables"></div>
 <div style="font-size:smaller;">Glen Beck and Betty Snyder programming the ENIAC</div>
-
 <p>Your project is doomed if you can&rsquo;t understand your code.</p>
-
 <ul>
 <li>You <strong>always</strong> need to know <strong>exactly what</strong> your coding is doing,</li>
 <li>and <strong>sometimes</strong> need to <strong>estimate the resources</strong> (time and memory) it uses.</li>
 </ul>
-
 <p>Go tries to meet both of these goals.</p>
-
 <p>The syntax is designed to be transparent and there is
 <strong>one</strong> <a href="https://golang.org/doc/effective_go.html#formatting">standard code format</a>,
-automatically generated by the <a href="https://blog.golang.org/go-fmt-your-code">fmt&nbsp;tool</a>.</p>
-
+automatically generated by the <a href="https://blog.golang.org/go-fmt-your-code">fmt tool</a>.</p>
 <p>Another example is that Go programs with
 <a href="/golang/unused-imports/">unused package imports do not compile</a>.
 This improves code clarity and long-term performance.</p>
-
 <p>I suspect that the Go designers made some things <strong>difficult on purpose</strong>.
 You need to jump through hoops to <a href="/golang/recover-from-panic/">catch a panic</a> (exception) and
 you are forced to sprinkle your code with the word &ldquo;unsafe&rdquo; to step around type safety.</p>
-
 <h3 id="python-comparison">Python comparison</h3>
-
 <p>The Python code snippet <code>del a[i]</code>
-deletes the element at index&nbsp;<code>i</code> from a list&nbsp;<code>a</code>.
+deletes the element at index <code>i</code> from a list <code>a</code>.
 This code certainly is quite <strong>readable</strong>, but not so <strong>transparent</strong>:
 it&rsquo;s easy to miss that the <a href="/algorithms/time-complexity-explained/">time complexity</a>
-is <i>O</i>(<i>n</i>)</b>, where <i>n</i>&nbsp;is the number of elements in the&nbsp;list.</p>
-
+is <i>O</i>(<i>n</i>)</b>, where <i>n</i> is the number of elements in the list.</p>
 <p>Go doesn&rsquo;t have a similar utility function.
 This is definitely <strong>less convenient</strong>, but also <strong>more transparent</strong>.
 Your code needs to explicitly state if it copies a section of the list.
-See <a href="/golang/delete-element-slice/">2&nbsp;ways to delete an element from a&nbsp;slice</a>
-for a Go code&nbsp;example.</p>
-
+See <a href="/golang/delete-element-slice/">2 ways to delete an element from a slice</a>
+for a Go code example.</p>
 <h3 id="java-comparison-1">Java comparison</h3>
-
 <p>Code transparency is not just a syntactic issue.
 Here are two examples where the rules for
 <a href="/golang/package-init-function-main-execution-order/">Go package initialization and program execution order</a>
 make it easier to reason about and maintain a project.</p>
-
 <ul>
-<li><p><a href="https://en.wikipedia.org/wiki/Circular_dependency">Circular dependencies</a>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Circular_dependency">Circular dependencies</a>
 can cause many unwanted effects.
-As opposed to Java, a Go program with initialization cycles will not compile.</p></li>
-
-<li><p>When the main function of a Go program returns, the program exits.
-A&nbsp;Java programs exits when all user non-daemon threads finish.</p></li>
+As opposed to Java, a Go program with initialization cycles will not compile.</p>
+</li>
+<li>
+<p>When the main function of a Go program returns, the program exits.
+A Java programs exits when all user non-daemon threads finish.</p>
+</li>
 </ul>
-
 <p>This means that you may need to study large parts of a Java program
 to understand some of its behavior.
 This may even be impossible if you use third-party libraries.</p>
-
 <h2 id="compatibility">Compatibility</h2>
-
 <!-- CC0: https://pixabay.com/sv/photos/verktyget-metall-1031949/ -->
-
 <div><img src="/golang/wrench.jpg" alt="Wrench with perfect fit"></div>
-
 <p>A language that <strong>changes abruptly</strong>, or becomes <strong>unavailable</strong>,
 can end your project.</p>
-
-<p>Go&nbsp;1 has succinct and strict <strong><a href="https://golang.org/doc/go1compat">compatibility guarantees</a></strong>
+<p>Go 1 has succinct and strict <strong><a href="https://golang.org/doc/go1compat">compatibility guarantees</a></strong>
 for the core language and standard packages –
-Go programs that work today should continue to work with future releases of Go&nbsp;1.
-Backward compatibility has been excellent so&nbsp;far.</p>
-
+Go programs that work today should continue to work with future releases of Go 1.
+Backward compatibility has been excellent so far.</p>
 <p>Go is an <strong>open source</strong> project and comes with a <a href="https://golang.org/LICENSE">BSD-style license</a>
 that permits commercial use, modification, distribution, and private use.
 Copyright belongs to <a href="https://golang.org/AUTHORS">The Go Authors</a>,
 those of us who <a href="https://golang.org/doc/contribute.html">contributed</a> to the project.
-There is also a <a href="https://golang.org/PATENTS">patent grant</a> by&nbsp;Google.</p>
-
+There is also a <a href="https://golang.org/PATENTS">patent grant</a> by Google.</p>
 <h3 id="python-comparison-1">Python comparison</h3>
-
 <p>If you&rsquo;re a Python developer, you know the pain of having to deal with the
-<a href="https://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html">differ&shy;ences between Python&nbsp;2.7.x and Python&nbsp;3.x</a>.
-There are <a href="https://wiki.python.org/moin/Python2orPython3">strong reasons</a> for choosing Python&nbsp;3,
-but if you depend on libraries that are only available for an older version, you may not be&nbsp;able.</p>
-
+<a href="https://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html">differ­ences between Python 2.7.x and Python 3.x</a>.
+There are <a href="https://wiki.python.org/moin/Python2orPython3">strong reasons</a> for choosing Python 3,
+but if you depend on libraries that are only available for an older version, you may not be able.</p>
 <h3 id="java-comparison-2">Java comparison</h3>
-
 <!-- CC0: https://www.publicdomainpictures.net/en/view-image.php?image=150817&picture=lightning-and-dark-clouds -->
-
 <div><img src="/golang/dark-clouds-lightning.jpg" alt="Lightning And Dark Clouds"></div>
-
 <p>Java has a very good history of backward compatibility and the <a href="https://www.oracle.com/technetwork/java/javase/8-compatibility-guide-2156366.html">Compatibility Guide for JDK 8</a> is extensive.
 Also, Java has been freely available to developers for a long time.</p>
-
 <p>Unfortunately, there are some dark clouds on the horizon with the <a href="https://en.wikipedia.org/wiki/Oracle_America,_Inc._v._Google,_Inc.">Oracle America, Inc. v. Google, Inc.</a> legal case about the nature of computer code and copyright law,
 and Oracle&rsquo;s new <a href="https://www.infoworld.com/article/3284164/oracle-now-requires-a-subscription-to-use-java-se.html">Java licensing model</a>.</p>
-
 <h2 id="performance">Performance</h2>
-
 <!-- CC BY-SA 2.0: https://www.flickr.com/photos/72334647@N03/43995621500 -->
-
 <div><img src="/golang/motorbike-racer.jpg" alt="Lightning And Dark Clouds"></div>
-
 <p>The exterior of Go is far from flashy, but there is a <strong>fine-tuned engine</strong> underneath.</p>
-
 <p>It makes little sense to discuss performance issues out of context.
 Running time and memory use is heavily influenced by factors such as algorithms, data structures, input,
 coding skill, operating systems, and hardware.</p>
-
-<p>Still, <strong>language</strong>, <strong>runtime</strong> and <strong>standard libraries</strong> can have a large effect on perfor&shy;mance.
+<p>Still, <strong>language</strong>, <strong>runtime</strong> and <strong>standard libraries</strong> can have a large effect on perfor­mance.
 This discussion is limited to high-level issues and design decisions.
-See the&nbsp;<a href="https://golang.org/doc/faq">Go FAQ</a>
+See the <a href="https://golang.org/doc/faq">Go FAQ</a>
 for a more detailed look at the <a href="https://golang.org/doc/faq#Implementation">implementation</a> and its
 <a href="https://golang.org/doc/faq#Performance">performance</a>.</p>
-
 <p>First, Go is a <strong>compiled</strong> language.
 An executable Go program typically consists of a <strong>single standalone binary</strong>,
 with no separate dynamic libraries or virtual machines,
 which can be <strong>directly deployed</strong>.</p>
-
 <p><strong>Size and speed of generated code</strong> will vary depending on target architecture.
-Go&nbsp;code generation is <a href="https://about.sourcegraph.com/go/generating-better-machine-code-with-ssa/">fairly mature</a>
+Go code generation is <a href="https://about.sourcegraph.com/go/generating-better-machine-code-with-ssa/">fairly mature</a>
 and the major OSes (Linux, macOS, Windows)
 and architectures (Intel x86/x86-64, ARM64, WebAssembly, ARM), as well as many others, are supported.
 You can expect performance to be on a similar level to that of C++ or Java.
 Compared to interpreted Python code, the improvement can be huge.</p>
-
 <p>Go is <strong>garbage collected</strong>, protecting against memory leaks.
 The collection has <strong><a href="https://blog.golang.org/ismmkeynote">very low latency</a></strong>.
 In fact, you may never notice that the GC thread is there.</p>
-
 <p>The <strong>standard libraries</strong> are typically of high quality, with optimized code using efficient algorithms.
 As an example, <a href="/golang/regexp-cheat-sheet/">regular expressions</a> are very efficient in Go
 with running time linear in the size of the input.
 Unfortunately, this is <a href="https://swtch.com/~rsc/regexp/regexp1.html">not true for Java and Python</a>.</p>
-
 <p><strong>Build speeds</strong>, in absolute terms, are currently fairly good.
-More importantly, Go is&nbsp;<strong>designed</strong> to make compilation and dependency analysis easy,
+More importantly, Go is <strong>designed</strong> to make compilation and dependency analysis easy,
 making it possible to create programming tools that <strong>scales well</strong> with growing projects.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -438,15 +367,7 @@ making it possible to create programming tools that <strong>scales well</strong>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

@@ -85,31 +85,27 @@
 <h1>Hello world HTTP server example</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <h2 id="a-basic-web-server">A basic web server</h2>
-
 <p>If you access the URL <code>http://localhost:8080/world</code>
 on a machine where the program below is running,
-you will be greeted by&nbsp;this&nbsp;page.</p>
-
+you will be greeted by this page.</p>
 <p><img src="/golang/hello-server.png" alt="Web browser localhost:8080" style="border:1px solid grey;" /></p>
-<pre><code>package main
+<pre tabindex="0"><code>package main
 
 import (
-    &#34;fmt&#34;
-    &#34;net/http&#34;
+    &quot;fmt&quot;
+    &quot;net/http&quot;
 )
 
 func main() {
-    http.HandleFunc(&#34;/&#34;, HelloServer)
-    http.ListenAndServe(&#34;:8080&#34;, nil)
+    http.HandleFunc(&quot;/&quot;, HelloServer)
+    http.ListenAndServe(&quot;:8080&quot;, nil)
 }
 
 func HelloServer(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, &#34;Hello, %s!&#34;, r.URL.Path[1:])
-}</code></pre>
-<ul>
+    fmt.Fprintf(w, &quot;Hello, %s!&quot;, r.URL.Path[1:])
+}
+</code></pre><ul>
 <li>The call to <a href="https://golang.org/pkg/net/http/#HandleFunc"><code>http.HandleFunc</code></a>
 tells the <a href="https://golang.org/pkg/net/http/"><code>net.http</code></a> package
 to handle all requests to the web root with the <code>HelloServer</code> function.</li>
@@ -123,14 +119,10 @@ that represents a client HTTP request.</li>
 <li><code>r.URL.Path</code> is the path component of the requested URL. In this case, <code>&quot;/world&quot;</code> is
 the path component of <code>&quot;http://localhost:8080/world&quot;</code>.</li>
 </ul>
-
 <h2 id="further-reading-a-complete-wiki">Further reading: a complete wiki</h2>
-
 <p>The <a href="https://golang.org/doc/articles/wiki/">Writing Web Applications</a> tutorial
-shows how to extend this small example into a complete&nbsp;wiki.</p>
-
+shows how to extend this small example into a complete wiki.</p>
 <p>The tutorial covers how to</p>
-
 <ul>
 <li>create a data structure with load and save methods,</li>
 <li>use the <a href="https://golang.org/pkg/net/http/"><code>net/http</code></a> package to build web applications,</li>
@@ -157,15 +149,7 @@ shows how to extend this small example into a complete&nbsp;wiki.</p>
 
 </article>
 <aside>
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

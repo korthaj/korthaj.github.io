@@ -85,35 +85,25 @@
 <h1>Can’t change entries in range loop</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC0: https://commons.wikimedia.org/wiki/File:Nothing_stone.jpg -->
-
 <div style="margin-top:1em;"><img src="/golang/nothing-written-in-stone.jpg"></div>
-
 <p>Why isn&rsquo;t the slice updated in this example?</p>
-
 <pre><code>s := []int{1, 1, 1}
 for _, n := range s {
-    n += 1
+	n += 1
 }
 fmt.Println(s)
 <span class="comment">// Output: [1 1 1]</span></code></pre>
-
 <h2 id="answer">Answer</h2>
-
 <p>The  range loop copies the values from the slice to a <strong>local variable</strong> <code>n</code>;
 updating <code>n</code> will not affect the&nbsp;slice.</p>
-
 <p>Update the slice entries like this:</p>
-
 <pre><code class="language-go">s := []int{1, 1, 1}
 for i := range s {
-    s[i] += 1
+	s[i] += 1
 }
 fmt.Println(s)
 <span class="comment">// Output: [2 2 2]</span></code></pre>
-
 <p>See <a href="/golang/for-loop-range-array-slice-map-channel/">4 basic range loop (for-each) patterns</a> for all about range loops in&nbsp;Go.</p>
 
 <ul class="pagina">
@@ -195,14 +185,6 @@ fmt.Println(s)
       <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a></li>
 
   </ul>
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
 
 
   

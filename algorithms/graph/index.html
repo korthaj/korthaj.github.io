@@ -84,12 +84,8 @@
 <article>
 <h1>Introduction to graph algorithms: definitions and examples</h1>
 <div class="tagline">yourbasic.org</div>
-
-
 <!-- CC BY-SA 3.0: https://commons.wikimedia.org/wiki/File:Social_Network_Analysis_Visualization.png -->
-
 <div style="margin-top:1em;"><img src="/algorithms/social-graph.png"></div>
-
 <div style="margin-top:1em;">
 <div style="float: left; min-width: 35%; margin-right: 2em;">
 <ul class="toc" style="font-weight: bold; margin:0;">
@@ -120,45 +116,32 @@
 </div>
 </div>
 <div style="clear: both"></div>
-
 <p>This text introduces basic graph terminology,
 standard graph data structures, and three fundamental
-algorithms for traversing a graph in a systematic&nbsp;way.</p>
-
+algorithms for traversing a graph in a systematic way.</p>
 <p>You may also want to take a look at the Github
 <a href="https://github.com/yourbasic/graph">yourbasic/graph</a> repository.
 It&rsquo;s a Go library with generic implementations of basic graph algorithms.</p>
-
 <h2 id="definitions">Definitions</h2>
-
 <p>A <b>graph</b> <i>G</i> consists of two types of elements:
 <b>vertices</b> and <b>edges</b>.
 Each edge has two <b>endpoints</b>, which belong to the vertex set.
-We say that the edge <b>connects</b> (or&nbsp;joins) these two&nbsp;vertices.</p>
-
-<p>The <b>vertex set</b> of <i>G</i> is denoted&nbsp;<i>V(G)</i>,
+We say that the edge <b>connects</b> (or joins) these two vertices.</p>
+<p>The <b>vertex set</b> of <i>G</i> is denoted <i>V(G)</i>,
 or just <i>V</i> if there is no ambiguity.</p>
-
-<p>An edge between vertices <i>u</i> and&nbsp;<i>v</i> is written as {<i>u</i>,&nbsp;<i>v</i>}.
-The <b>edge set</b> of <i>G</i> is denoted&nbsp;<i>E(G)</i>,
-or just&nbsp;<i>E</i> if there is no ambiguity.</p>
-
-<p>The graph in this picture has the vertex set V = {1, 2, 3, 4, 5,&nbsp;6}.
-The edge set E = {{1,&nbsp;2}, {1,&nbsp;5}, {2,&nbsp;3}, {2,&nbsp;5}, {3,&nbsp;4}, {4,&nbsp;5}, {4,&nbsp;6}}.</p>
-
+<p>An edge between vertices <i>u</i> and <i>v</i> is written as {<i>u</i>, <i>v</i>}.
+The <b>edge set</b> of <i>G</i> is denoted <i>E(G)</i>,
+or just <i>E</i> if there is no ambiguity.</p>
+<p>The graph in this picture has the vertex set V = {1, 2, 3, 4, 5, 6}.
+The edge set E = {{1, 2}, {1, 5}, {2, 3}, {2, 5}, {3, 4}, {4, 5}, {4, 6}}.</p>
 <!-- Wikimedia Commons, http://en.wikipedia.org/wiki/File:6n-graf.svg -->
-
-<p><img alt="6n-graf" src="/algorithms/6n-graph.png"></p>
-
+<img alt="6n-graf" src="/algorithms/6n-graph.png">
 <p>A <b>self-loop</b> is an edge whose endpoints is a single vertex.
 <b>Multiple edges</b> are two or more edges that join the same two vertices.</p>
-
 <p>A graph is called <b>simple</b> if it has no self-loops and no multiple edges,
 and a <b>multigraph</b> if it does have multiple edges.</p>
-
-<p>The <b>degree</b> of a vertex&nbsp;<i>v</i> is the number of edges
-that connect to&nbsp;<i>v</i>.</p>
-
+<p>The <b>degree</b> of a vertex <i>v</i> is the number of edges
+that connect to <i>v</i>.</p>
 <p>A <b>path</b> in a graph <i>G = (V, E)</i> is a sequence of vertices
 <i>v<sub>1</sub></i>, <i>v<sub>2</sub></i>, &hellip;,
 <i>v<sub>k</sub></i>, with the property that there are edges between
@@ -167,93 +150,63 @@ We say that the path goes from <i>v<sub>1</sub></i>
 to <i>v<sub>k</sub></i>.
 The sequence 6, 4, 5, 1, 2 is a path from 6 to 2 in the graph above.
 A path is <b>simple</b> if its vertices are all different.</p>
-
 <p>A <b>cycle</b> is a path <i>v<sub>1</sub></i>, <i>v<sub>2</sub></i>, &hellip;,
-<i>v<sub>k</sub></i> for which <i>k</i>&nbsp;&gt;&nbsp;2,
-the first <i>k</i>&nbsp;-&nbsp;1 vertices are all different,
-and <i>v<sub>1</sub></i>&nbsp;=&nbsp;<i>v<sub>k</sub></i>.
+<i>v<sub>k</sub></i> for which <i>k</i> &gt; 2,
+the first <i>k</i> - 1 vertices are all different,
+and <i>v<sub>1</sub></i> = <i>v<sub>k</sub></i>.
 The sequence 4, 5, 2, 3, 4 is a cycle in the graph above.</p>
-
 <p>A graph is <b>connected</b> if for every pair of vertices
-<i>u</i> and <i>v</i>, there is a path from <i>u</i> to&nbsp;<i>v</i>.</p>
-
-<p>If there is a path connecting <i>u</i> and&nbsp;<i>v</i>,
+<i>u</i> and <i>v</i>, there is a path from <i>u</i> to <i>v</i>.</p>
+<p>If there is a path connecting <i>u</i> and <i>v</i>,
 the <b>distance</b> between these vertices is defined as the minimal number
-of edges on a path from <i>u</i> to&nbsp;<i>v</i>.</p>
-
+of edges on a path from <i>u</i> to <i>v</i>.</p>
 <p>A <b>connected component</b> is a subgraph of maximum size,
 in which every pair of vertices are connected by a path.
 Here is a graph with three connected components.</p>
-
 <!-- Wikimedia Commons, http://en.wikipedia.org/wiki/File:Pseudoforest.svg -->
-
-<p><img src="/algorithms/forest.png"></p>
-
+<img src="/algorithms/forest.png">
 <h3 id="trees">Trees</h3>
-
 <p>A <b>tree</b> is a connected simple acyclic graph.
-A vertex with degree&nbsp;1 in a tree is called a&nbsp;<b>leaf</b>.</p>
-
+A vertex with degree 1 in a tree is called a <b>leaf</b>.</p>
 <h3 id="directed-graphs">Directed graphs</h3>
-
 <p>A <b>directed graph</b> or <b>digraph</b> <i>G = (V, E)</i>
 consists of a vertex set <i>V</i> and an edge set of <b>ordered pairs</b>
-<i>E</i> of elements in the vertex&nbsp;set.</p>
-
+<i>E</i> of elements in the vertex set.</p>
 <p>Here is a simple acyclic digraph (often called a <b>DAG</b>,
 &ldquo;directed acyclic graph&rdquo;) with seven vertices and eight edges.</p>
-
 <!-- Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Directed_acyclic_graph.svg -->
-
-<p><img src="/algorithms/dag.png"></p>
-
+<img src="/algorithms/dag.png">
 <h2 id="data-structures">Data structures</h2>
-
 <h3 id="adjacency-matrix">Adjacency matrix</h3>
-
 <p>An adjacency matrix is a |<i>V</i>|x|<i>V</i>|-matrix of integers,
-representing a graph&nbsp;<i>G = (V,&nbsp;E)</i>.</p>
-
+representing a graph <i>G = (V, E)</i>.</p>
 <ul>
-<li>The vertices are number from 1 to&nbsp;|<i>V</i>|.</li>
-<li>The number at position&nbsp;(<i>i</i>,&nbsp;<i>j</i>)
-indicates the number of edges from&nbsp;<i>i</i> to&nbsp;<i>j</i>.</li>
+<li>The vertices are number from 1 to |<i>V</i>|.</li>
+<li>The number at position (<i>i</i>, <i>j</i>)
+indicates the number of edges from <i>i</i> to <i>j</i>.</li>
 </ul>
-
 <p>Here is an undirected graph and its symmetric adjacency matrix.</p>
-
 <!-- Wikimedia Commons, http://en.wikipedia.org/wiki/File:6n-graph2.svg -->
-
-<p><img  style="float:left; margin-right:20px;" src="/algorithms/graph2.png"></p>
-
+<img  style="float:left; margin-right:20px;" src="/algorithms/graph2.png">
 <p><img style="margin:30px 0 20px 10px;"
-  alt="graph2-matrix" src="/algorithms/graph2-matrix.png"></p>
-
+alt="graph2-matrix" src="/algorithms/graph2-matrix.png"></p>
 <p>The adjacency matrix representation is best suited for <b>dense graphs</b>,
 graphs in which the number of edges is close to the maximal.</p>
-
 <p>In a <b>sparse graph</b>, an adjacency matrix will have a large <b>memory overhead</b>,
 and <b>finding all neighbors</b> of a vertex will be <b>costly</b>.</p>
-
 <h3 id="adjacency-list">Adjacency list</h3>
-
 <p>The adjacency list graph data structure is well suited for sparse graphs.
-It consists of an array of size&nbsp;|<i>V</i>|, where
-position&nbsp;<i>k</i> in the array contains a list
-of all neighbors to&nbsp;<i>k</i>.</p>
-
+It consists of an array of size |<i>V</i>|, where
+position <i>k</i> in the array contains a list
+of all neighbors to <i>k</i>.</p>
 <p>Note that the &ldquo;neighbor list&rdquo; doesn&rsquo;t have to be an actual list. It could be
-any data structure representing a set of&nbsp;vertices.
+any data structure representing a set of vertices.
 Hash tables, arrays or linked lists are common choices.</p>
-
 <h2 id="search-algorithms">Search algorithms</h2>
-
 <h3 id="depth-first-search">Depth-first search</h3>
-
 <p>Depth-first search (DFS) is an algorithm
-that visits all edges in a graph&nbsp;<code>G</code> that belong to the
-same connected component as a vertex&nbsp;<emcode>v</code>.</p>
-
+that visits all edges in a graph <code>G</code> that belong to the
+same connected component as a vertex <emcode>v</code>.</p>
 <pre>
 <b>Algorithm</b> DFS(G, v)
     <b>if</b> v is already visited
@@ -263,29 +216,21 @@ same connected component as a vertex&nbsp;<emcode>v</code>.</p>
     <b>for</b> all neighbors x of v
         DFS(G, x)
 </pre>
-
 <p>Before running the algorithm, all |V| vertices must be marked as not visited.</p>
-
 <h4 id="time-complexity">Time complexity</h4>
-
 <p>To compute the <a href="/algorithms/time-complexity-explained/">time complexity</a>, we can use the number of calls to <code>DFS</code>
 as an elementary operation: the if statement and the mark operation both
 run in constant time, and the for loop makes a single call to DFS for each iteration.</p>
-
-<p>Let E&apos; be the set of all edges in the connected component visited by the algorithm.
-The algorithm makes two calls to <code>DFS</code> for each edge {<i>u</i>,&nbsp;<i>v</i>} in E&apos;:
-one time when the algorithm visits the neighbors of&nbsp;<i>u</i>,
-and one time when it visits the neighbors of&nbsp;<i>v</i>.</p>
-
-<p>Hence, the time complexity of the algorithm is &Theta;(|V|&nbsp;+&nbsp;|E&apos;|).</p>
-
+<p>Let E' be the set of all edges in the connected component visited by the algorithm.
+The algorithm makes two calls to <code>DFS</code> for each edge {<i>u</i>, <i>v</i>} in E':
+one time when the algorithm visits the neighbors of <i>u</i>,
+and one time when it visits the neighbors of <i>v</i>.</p>
+<p>Hence, the time complexity of the algorithm is Θ(|V| + |E'|).</p>
 <h3 id="breadth-first-search">Breadth-first search</h3>
-
 <p>Breadth-first search (BFS) also visits all vertices
-that belong to the same component as&nbsp;<i>v</i>.
-However, the vertices are visited in distance order: the algorithm first visits&nbsp;<i>v</i>,
-then all neighbors of&nbsp;<i>v</i>, then their neighbors, and so&nbsp;on.</p>
-
+that belong to the same component as <i>v</i>.
+However, the vertices are visited in distance order: the algorithm first visits <i>v</i>,
+then all neighbors of <i>v</i>, then their neighbors, and so on.</p>
 <pre>
 <b>Algorithm</b> BFS(G, v)
     Q ← new empty FIFO queue
@@ -298,30 +243,21 @@ then all neighbors of&nbsp;<i>v</i>, then their neighbors, and so&nbsp;on.</p>
             Mark x as visited.
             Q.enqueue(x)
 </pre>
-
 <p>Before running the algorithm, all |V| vertices must be marked as not visited.</p>
-
 <h4 id="time-complexity-1">Time complexity</h4>
-
 <p>The <a href="/algorithms/time-complexity-explained/">time complexity</a> of <code>BFS</code> can be computed as the total
 number of iterations performed by the for loop.</p>
-
-<p>Let E&apos; be the set of all edges in the connected component visited by the algorithm.
-For each edge {<i>u</i>,&nbsp;<i>v</i>} in E&apos;
+<p>Let E' be the set of all edges in the connected component visited by the algorithm.
+For each edge {<i>u</i>, <i>v</i>} in E'
 the algorithm makes two for loop iteration steps:
-one time when the algorithm visits the neighbors of&nbsp;<i>u</i>,
-and one time when it visits the neighbors of&nbsp;<i>v</i>.</p>
-
-<p>Hence, the time complexity is &Theta;(|V|&nbsp;+&nbsp;|E&apos;|).</p>
-
-<h3 id="dijkstra-s-algorithm">Dijkstra’s algorithm</h3>
-
+one time when the algorithm visits the neighbors of <i>u</i>,
+and one time when it visits the neighbors of <i>v</i>.</p>
+<p>Hence, the time complexity is Θ(|V| + |E'|).</p>
+<h3 id="dijkstras-algorithm">Dijkstra’s algorithm</h3>
 <p>Dijkstra’s algorithm computes
 the shortest path from a vertex <code>s</code>, the source,
 to all other vertices. The graph must have non-negative edge costs.</p>
-
 <p>The algorithm returns two arrays:</p>
-
 <ul>
 <li>
 <code>dist[k]</code> holds the length of a shortest path
@@ -332,7 +268,6 @@ to all other vertices. The graph must have non-negative edge costs.</p>
 from&nbsp;<code>s</code> to&nbsp;<code>k</code>.
 </li>
 </ul>
-
 <pre>
 <b>Algorithm</b> Dijkstra(G, s)
     <b>for</b> each vertex v in G
@@ -354,18 +289,14 @@ from&nbsp;<code>s</code> to&nbsp;<code>k</code>.
 
     <b>return</b> dist[], prev[]
 </pre>
-
 <h4 id="time-complexity-2">Time complexity</h4>
-
 <p>To compute the <a href="/algorithms/time-complexity-explained/">time complexity</a> we can use the same type of argument
-as for&nbsp;<code>BFS</code>.</p>
-
+as for <code>BFS</code>.</p>
 <p>The main difference is that we need to account
 for the cost of adding, updating and finding the minimum distances in the queue.
-If we  implement the queue with a&nbsp;<a href="https://sv.wikipedia.org/wiki/Heap_(datastruktur)">heap</a>,
-all of these operations can be performed in <i>O</i>(log&nbsp;|V|)&nbsp;time.</p>
-
-<p>This gives the time complexity <i>O</i>((|E|&nbsp;+&nbsp;|V|)log|V|).</p>
+If we  implement the queue with a <a href="https://sv.wikipedia.org/wiki/Heap_(datastruktur)">heap</a>,
+all of these operations can be performed in <i>O</i>(log |V|) time.</p>
+<p>This gives the time complexity <i>O</i>((|E| + |V|)log|V|).</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
 <a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fgraph%2f&amp;text=Introduction%20to%20graph%20algorithms:%20definitions%20and%20examples&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
@@ -398,15 +329,7 @@ all of these operations can be performed in <i>O</i>(log&nbsp;|V|)&nbsp;time.</p
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
     <div style="margin-top:1em;"><a href="/algorithms/time-complexity-explained/" title="How to analyse time complexity: Count your steps"><img src="/algorithms/abacus-mini.jpg"></a></div>
   <ul class="none">
   

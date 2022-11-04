@@ -84,53 +84,41 @@
 <article>
 <h1>Blank identifier (underscore)</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC BY 2.0: https://www.flickr.com/photos/f-r-a-n-k/3076017847 -->
-
 <div style="margin-top:1em;"><img src="/golang/ignore-this-text.jpg"></div>
-
 <p>The blank identifier <code>_</code> is an anonymous placeholder.
 It may be used like any other identifier in a declaration, but it does not introduce a binding.</p>
-
 <h2 id="ignore-values">Ignore values</h2>
-
 <p>The blank identifier provides a way to ignore left-hand side values in an assignment.</p>
-<pre><code>_, present := timeZone[&#34;CET&#34;]
+<pre tabindex="0"><code>_, present := timeZone[&quot;CET&quot;]
 
 sum := 0
 for _, n := range a {
 	sum += n
-}</code></pre>
-<h2 id="import-for-side-effects">Import for side effects</h2>
-
+}
+</code></pre><h2 id="import-for-side-effects">Import for side effects</h2>
 <p>It can also be used to import a package solely for its side effects.</p>
-
 <pre><code>import _ "image/png" <span class="comment">// init png decoder function</span></code></pre>
-
 <h2 id="silence-the-compiler">Silence the compiler</h2>
-
 <p>It can be used to during development to avoid compiler errors about
 unused imports and variables in a half-written program.</p>
-
 <pre><code>package main
 
 import (
-    "fmt"
-    "log"
-    "os"
+	"fmt"
+	"log"
+	"os"
 )
 
 var _ = fmt.Printf <span class="comment">// DEBUG: delete when done</span>
 
 func main() {
-    f, err := os.Open("test.go")
-    if err != nil {
-        log.Fatal(err)
-    }
-    _ = f <span class="comment">// TODO: read file</span>
+	f, err := os.Open("test.go")
+	if err != nil {
+		log.Fatal(err)
+	}
+	_ = f <span class="comment">// TODO: read file</span>
 }</code></pre>
-
 <p>For an automatic solution, use the
 <a href="https://godoc.org/golang.org/x/tools/cmd/goimports">goimports</a> tool,
 which rewrites a Go source file to have the correct imports.
@@ -167,15 +155,7 @@ Many Go editors and IDEs run this tool automatically.</p>
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

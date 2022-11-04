@@ -84,12 +84,8 @@
 <article>
 <h1>O(n log log n) time integer sorting</h1>
 <div class="tagline">yourbasic.org</div>
-
-
 <!-- CC BY-NC 2.0: http://www.flickr.com/photos/davidsingleton/2175975083/ -->
-
 <div style="margin-top:1em;"><img src="/algorithms/sorted.jpg" alt="Programmer in a sea of balls"></div>
-
 <ul class="toc">
   <li><a href="#the-fastest-sorting-algorithm">The fastest sorting algorithm?</a></li>
   <li><a href="#the-problem">The problem</a></li>
@@ -100,9 +96,7 @@
     </ul>
   </li>
 </ul>
-
 <h2 id="the-fastest-sorting-algorithm">The fastest sorting algorithm?</h2>
-
 <p>
 Which sorting algorithm is the fastest?
 Ask this question to any group of programmers and you’ll get an animated discussion.
@@ -116,24 +110,20 @@ the algorithm presented in the paper
 It sorts <i>n</i> integers in time proportional to <i>n</i>&nbsp;log&nbsp;log&nbsp;<i>n</i>.
 In this article, I’ll give you a complete description of this algorithm.
 </p>
-
 <p>
 Can it be done even faster? No one knows.
 We only know that it can’t possibly be done using less than <i>n</i> operations:
 An algorithm using fewer operations than that can’t look at each of
 the <i>n</i> numbers and, therefore, might leave some of the numbers out of order.
 </p>
-
-<p><P>
+<P>
 Even though the <i>n</i>&nbsp;log&nbsp;log&nbsp;<i>n</i>
 time-sorting algorithm came about as a theoretical game,
 its real-life performance is good. A C implementation like
 <a href="/algorithms/nloglogn.c">nloglogn.c</a>
 with no particular optimizations runs faster on a typical 32-bit machine
-than many standard textbook sorting algorithms. </p></p>
-
+than many standard textbook sorting algorithms. </p>
 <h2 id="the-problem">The problem</h2>
-
 <p>
 To achieve agreement when discussing the speed of a sorting algorithm,
 it’s necessary to establish some common ground. How do we measure speed?
@@ -144,7 +134,6 @@ This model doesn’t account for some important things,
 such as the performance gap between RAM and CPU,
 but typically gives good approximations of real-life performance.
 </p>
-
 <p>
 There is nothing strange about the unit-cost RAM model.
 It’s probably similar to your mental image of a computer.
@@ -156,7 +145,6 @@ such as reading and writing words in RAM, and performing basic
 arithmetical and logical operations.
 Each of these operations can be performed in a constant number of machine cycles.
 </p>
-
 <p>
 If you don’t use the full power of the RAM model, but only consider
 sorting algorithms that operate by comparing elements pairwise,
@@ -164,7 +152,6 @@ it’s well known that at least <i>n</i>&nbsp;log&nbsp;<i>n</i> comparisons
 are needed to sort <i>n</i> elements in the worst case.
 There are plenty of algorithms, such as mergesort and heapsort, that achieve this bound.
 </p>
-
 <p>
 Other sorting techniques may be faster.
 For example, using radix sorting, you can sort <i>n</i> word-sized integers
@@ -183,23 +170,19 @@ the address space won’t accommodate <i>n</i> numbers if
 Hence, in the unit-cost RAM model, radix sort also runs in time proportional to
 <i>n</i>&nbsp;log&nbsp;<i>n</i>.
 </p>
-
 <p>
 I’ll now describe an algorithm that does not depend on the word length.
 For any word length <i>w</i>, <i>w</i>&nbsp;&ge;&nbsp;log&nbsp;<i>n</i>,
 it sorts <i>n</i> word-sized integers in time proportional
 to&nbsp;<i>n</i>&nbsp;log&nbsp;log&nbsp;<i>n</i>.
 </p>
-
 <h2 id="the-algorithm">The algorithm</h2>
-
 <p>
 With this algorithm, the sorting is performed in two phases.
 In the first phase, you reduce the size of the numbers using radix sorting techniques.
 The elements become smaller and the number of elements doesn’t increase.
 In fact, in linear time, it’s possible to cut the number of bits of each number in half.
 </p>
-
 <p>
 In the second phase, you perform a mergesort on the shortened numbers.
 Because the numbers are now much shorter, several numbers will fit in a single machine word.
@@ -211,7 +194,6 @@ each of which fits in one word, in time proportional to log&nbsp;<i>k</i>.
 This is an improvement on the standard merging algorithm,
 which requires time proportional to&nbsp;<i>k</i>.
 </p>
-
 <p>
 Given these building blocks, we are almost done.
 In the first phase, you perform log&nbsp;log&nbsp;<i>n</i> reductions.
@@ -221,7 +203,6 @@ After halving the number of bits log&nbsp;log&nbsp;<i>n</i> times,
 the numbers will be so small that you can fit
 <i>k</i>&nbsp;=&nbsp;log&nbsp;<i>n</i> numbers within one word.
 </p>
-
 <p>
 In the second phase, you use the packed merging as a subroutine in a standard mergesort.
 You perform the merging bottom up.
@@ -232,7 +213,6 @@ using a standard comparison-based algorithm, such as mergesort.
 Plugging in <i>k</i>&nbsp;=&nbsp;log&nbsp;<i>n</i>,
 you see that this adds up to <i>n</i>&nbsp;log&nbsp;log&nbsp;<i>n</i>.
 </p>
-
 <p>
 You now combine these sorted sequences pairwise using packed merging,
 and thereby create longer sorted sequences.
@@ -241,7 +221,6 @@ In this first round, you need to merge <i>n</i>/2<i>k</i> pairs,
 each merging is done in log&nbsp;<i>k</i>&nbsp;time using packed merging.
 This sums up to <i>n</i>/2<i>k</i>&nbsp;&times;&nbsp;log&nbsp;<i>k</i>.
 </p>
-
 <p>
 In the next round, you need to merge <i>n</i>/4<i>k</i>&nbsp;pairs,
 each consisting of two words. This is done in
@@ -251,7 +230,6 @@ the same time bound as before.
 In fact, you’ll get the same result for each round.
 </p>
 <P>
-
 <p>
 Because the length of the sequences double in each round,
 the number of rounds is log&nbsp;<i>n</i>/<i>k</i>.
@@ -261,16 +239,13 @@ Plugging in <i>k</i>&nbsp;=&nbsp;log&nbsp;<i>n</i>,
 you see that this expression is also no more than
 <i>n</i>&nbsp;log&nbsp;log&nbsp;<i>n</i>.
 </p>
-
 <p>
 At this point, the data is sorted and no more than
 <i>n</i>&nbsp;log&nbsp;log&nbsp;<i>n</i> time has elapsed,
 since both the reduction phase and the mergesorting phase
 run in time proportional to <i>n</i>&nbsp;log&nbsp;log&nbsp;<i>n</i>.
 </p>
-
 <h3 id="reducing-number-size">Reducing number size</h3>
-
 <p>
 There are several alternative algorithms that can be used
 for reducing a sorting problem to one with shorter numbers.
@@ -279,7 +254,6 @@ the speed of the algorithm, or the amount of memory required.
 Here, I’ll show you a simple algorithm that reduces the number of bits
 by a factor of&nbsp;2. It runs in linear time, but uses plenty of memory.
 </p>
-
 <p>
 Assume that you want to sort <i>n</i> <i>b</i>-bit numbers.
 I’ll use a bucketing scheme with two bucket tables: High and Low.
@@ -287,7 +261,6 @@ Each table entry can hold a linked list of numbers.
 I’ll explain the algorithm using a small example.
 In this figure, you see seven 6-bit numbers to be sorted.
 </p>
-
 <pre>
 Data: 100101, 011001, 100111, 001100, 011111, 110111, 001000
 
@@ -304,28 +277,24 @@ High                        Low
 
 Batch: 100, 011, 001, 110
 </pre>
-
 <p>
 The figure also shows the two bucket tables and a batch list
 used to record which buckets are actually being used.
 This is necessary because you cannot afford to inspect every single bucket:
 The number of buckets may be much larger than the number of elements.
 </p>
-
-<p><P>
+<P>
 The first step is to perform bucketing on the high-order bits;
 in this example, the first 3 bits of each number.
 Every time a bucket is used for the first time,
 the number of this bucket is recorded in the batch list.
-</p></p>
-
+</p>
 <p>
 The next figure shows the second step of the algorithm,
 where you traverse each non-empty bucket in the High bucket table,
 moving elements into the Low bucket table.
 There are several important things to note.
 </p>
-
 <pre>
 High                        Low
 ------------------------    --------------------
@@ -341,7 +310,6 @@ High                        Low
 
 Batch: 100, 011, 001, 110, 111, 100
 </pre>
-
 <ul>
 <li>
   You use the batch to find the nonempty buckets.
@@ -360,19 +328,16 @@ Batch: 100, 011, 001, 110, 111, 100
   and hence the number of entries in the batch, is at most&nbsp;<i>n</i>.
 </li>
 </ul>
-
 <p>
 The next step is to sort the batch.
 This is the reduced sorting problem – the batch contains at most
 <i>n</i>&nbsp;numbers and each number has <i>b</i>/2&nbsp;bits.
 </p>
-
 <p>
 Using the sorted batch, it’s straightforward to assemble the numbers in ascending order.
 You start by moving numbers back from the Low bucket list to the High bucket list.
 This figure is the result.
 </p>
-
 <pre>
 High                       Low
 ------------------------   --------
@@ -387,18 +352,15 @@ High                       Low
 
 Batch:  001, 011, 100, 100, 110, 111
 </pre>
-
 <p>
 Once again, you use the batch to find the nonempty buckets.
 But because the batch is now sorted, the Low buckets will be visited in order.
 Hence, each High bucket will end up containing a sorted list.
 </p>
-
 <p>
 Finally, you traverse the nonempty High buckets,
 once again using the sorted batch, to produce the final sorted list.
 </p>
-
 <p>
 You might have noticed a problem with this algorithm. 
 How do you know if a bucket is empty?
@@ -408,9 +370,7 @@ larger than <i>n</i> and the algorithm is supposed to run in linear time.
 The solution is a bit tricky; see
 <a href="/algorithms/avoid-initializing-memory/">How to Avoid Initializing Memory</a>.
 </p>
-
 <h3 id="fast-merging-of-short-numbers">Fast merging of short numbers</h3>
-
 <p>
 All that remains is to merge short sequences of short numbers fast.
 The idea is to use a parallel algorithm that only requires very simple operations.
@@ -419,7 +379,6 @@ the parallelism using the inherent parallel nature of bitwise logical operations
 For example, the bitwise OR operation performs <i>w</i> OR operations
 in parallel in just one machine cycle.
 </p>
-
 <p>
 Batcher’s bitonic merging fulfills the requirements.
 The algorithm is based on a property of so called “bitonic sequences.”
@@ -433,52 +392,41 @@ The sequence 3, 4, 3, 2, 1, 2 is also bitonic,
 because it can be obtained by rotating the previous bitonic sequence.
 Bitonic sequences have a special property described in this lemma:
 </p>
-
 <blockquote class="math">
 <b>Lemma:</b>
 If the sequence <i>x</i><sub>1</sub>, <i>x</i><sub>2</sub>, ..., <i>x</i><sub>2k</sub>
 is bitonic, the two sequences
-
-  <i>L</i>&nbsp;=&nbsp;min(<i>x</i><sub>1</sub>,&nbsp;<i>x</i><sub>k+1</sub>),
-      min(<i>x</i><sub>2</sub>,&nbsp;<i>x</i><sub>k+2</sub>), ..., 
-      min(<i>x</i><sub>k</sub>,&nbsp;<i>x</i><sub>2k</sub>)
-
-and
-
-  <i>R</i>&nbsp;=&nbsp;max(<i>x</i><sub>1</sub>,&nbsp;<i>x</i><sub>k+1</sub>),
-      max(<i>x</i><sub>2</sub>,&nbsp;<i>x</i><sub>k+2</sub>), ..., 
-      max(<i>x</i><sub>k</sub>,&nbsp;<i>x</i><sub>2k</sub>)
-
-are also bitonic. Furthermore, each element of&nbsp;<i>L</i>
-is smaller than or equal to each element of&nbsp;<i>R</i>.
+<p><i>L</i> = min(<i>x</i><sub>1</sub>, <i>x</i><sub>k+1</sub>),
+min(<i>x</i><sub>2</sub>, <i>x</i><sub>k+2</sub>), &hellip;,
+min(<i>x</i><sub>k</sub>, <i>x</i><sub>2k</sub>)</p>
+<p>and</p>
+<p><i>R</i> = max(<i>x</i><sub>1</sub>, <i>x</i><sub>k+1</sub>),
+max(<i>x</i><sub>2</sub>, <i>x</i><sub>k+2</sub>), &hellip;,
+max(<i>x</i><sub>k</sub>, <i>x</i><sub>2k</sub>)</p>
+<p>are also bitonic. Furthermore, each element of <i>L</i>
+is smaller than or equal to each element of <i>R</i>.</p>
 </blockquote>
-
 <p>
 In other words:
 </p>
-
 <ol>
 <li>
 Start with any bitonic sequence with an even number of elements, cut it in half,
 and form two new sequences by comparing the two halves element by element.
 </li>
-
 <li>
 Form one sequence, <i>L</i>, containing the minimum elements of each pair and an other,
 <i>R</i>, which contains the maximum elements.
 </li>
-
 <li>
 Then the sequences <i>L</i> and <i>R</i> will both be bitonic and
 each element of <i>L</i> will be smaller than or equal to each element of <i>R</i>.
 </li>
 </ol>
-
 <p>
 Using this lemma, you can efficiently merge sorted sequences.
 For instance, by reversing one sequence in this figure
 </p>
-
 <pre>
 X = 0, 2, 3, 5
 Y = 2, 3, 6, 7
@@ -490,7 +438,6 @@ S = 5, 3, 2, 0, 2, 3, 6, 7
 L = min(5, 2), min(3, 3), min(2, 6), min(0, 7) = 2, 3, 2, 0
 R = max(5, 2), max(3, 3), max(2, 6), max(0, 7) = 5, 3, 6, 7
 </pre>
-
 <p>
 and appending the other, you get a bitonic sequence.
 In the first phase of the merging,
@@ -503,12 +450,10 @@ you can apply the bitonic lemma to each of them.
 The process is repeated recursively until
 the subsequences consist of just one element.
 </p>
-
 <p>
 Packing all of the numbers in one machine word,
 it’s possible to perform each phase of this merging algorithm in constant time.
 </p>
-
 <pre>
 A = 0101 0011 0010 0000 0000 0000 0000 0000  // 5 3 2 0 0 0 0 0
 B = 0010 0011 0110 0111 0000 0000 0000 0000  // 2 3 6 7 0 0 0 0
@@ -528,7 +473,6 @@ Z =    (B AND N)                             // 0 3 6 7 0 0 0 0
     OR ((A AND N)>>16)                       // 0 0 0 0 0 3 2 0
     OR ((B - (B AND N))>>16)                 // 0 0 0 0 2 0 0 0
 </pre>
-
 <p>
 In this example, the numbers consist of 3&nbsp;bits.
 You’ll also need a special test bit for each number,
@@ -539,23 +483,18 @@ The second phase of the merging can be performed in a similar fashion.
 In fact, both subproblems can be solved in parallel using the same technique.
 (The full details can be found in&nbsp;<a href="/algorithms/nloglogn.c">nloglogn.c</a>.)
 </p>
-
-<p><P>
+<P>
 Each phase of this merging algorithm is implemented using
 just a constant number of basic operations
 so the total time to merge <i>k</i>&nbsp;numbers,
 small enough to fit within one word,
 is proportional to&nbsp;log&nbsp;<i>k</i>.
-</p></p>
-
+</p>
 <p style="font-size:small;">
 In <a href="http://drdobbs.com/architecture-and-design/184404062"><em>Dr. Dobb’s Journal</em></a>, pp.&nbsp;38-45, Vol.&nbsp;311, April&nbsp;01,&nbsp;2000.
 </p>
-
 <h2 id="further-reading">Further reading</h2>
-
 <div><a href="/golang/quicksort-optimizations/"><img src="/golang/divide-conquer.jpg" width="200px" title="Optimized quicksort algorithm explained"></a></div>
-
 <p style="margin-top:0;">See <a href="/golang/quicksort-optimizations/">Quicksort optimizations explained</a>
 for a fast and simple Quicksort implementation.</p>
 
@@ -584,15 +523,7 @@ for a fast and simple Quicksort implementation.</p>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
     <div style="margin-top:1em;"><a href="/algorithms/time-complexity-explained/" title="How to analyse time complexity: Count your steps"><img src="/algorithms/abacus-mini.jpg"></a></div>
   <ul class="none">
   

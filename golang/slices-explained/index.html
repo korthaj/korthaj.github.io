@@ -85,12 +85,8 @@
 <h1>Slices/arrays explained: create, index, slice, iterate</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC0: https://pixabay.com/en/orange-food-juicy-fruit-188082/ -->
-
 <div style="margin-top:1em;"><img src="/golang/orange.jpg" alt="A sliced orange"></div>
-
 <div style="margin-top: 1em"></div>
 <div style="float: left; min-width: 20%; margin-right: 2em;">
   <ul class="toc" style="margin: 0;">
@@ -107,33 +103,26 @@
   </ul>
 </div>
 <div style="clear: both"></div>
-
 <h2 id="basics">Basics</h2>
-
 <p>A slice doesn&rsquo;t store any data, it just describes
-a section of an underlying&nbsp;<a href="/algorithms/time-complexity-arrays/">array</a>.</p>
-
+a section of an underlying <a href="/algorithms/time-complexity-arrays/">array</a>.</p>
 <ul>
 <li>When you change an element of a slice, you modify the corresponding element of its underlying array,
 and other slices that share the same underlying array will see the change.</li>
 <li>A slice can grow and shrink within the bounds of the underlying array.</li>
 <li>Slices are indexed in the usual way: <code>s[i]</code> accesses
-the <code>i</code>th element, starting from&nbsp;zero.
-<br /></li>
+the <code>i</code>th element, starting from zero.</li>
 </ul>
-
 <h2 id="construction">Construction</h2>
-
 <pre><code>var s []int                   <span class="comment">// a nil slice</span>
 s1 := []string{"foo", "bar"}
 s2 := make([]int, 2)          <span class="comment">// same as []int{0, 0}</span>
 s3 := make([]int, 2, 4)       <span class="comment">// same as new([4]int)[:2]</span>
 fmt.Println(len(s3), cap(s3)) <span class="comment">// 2 4</span></code></pre>
-
 <ul>
 <li>The default <strong>zero value</strong> of a slice is <code>nil</code>.
 The functions <code>len</code>, <code>cap</code> and <code>append</code>
-all regard <code>nil</code> as an empty slice with 0&nbsp;capacity.</li>
+all regard <code>nil</code> as an empty slice with 0 capacity.</li>
 <li>You create a slice either by a <strong>slice literal</strong> or
 a call to the <a href="https://golang.org/pkg/builtin/#make"><code>make</code></a> function,
 which takes the <strong>length</strong> and an optional <strong>capacity</strong> as arguments.</li>
@@ -141,51 +130,40 @@ which takes the <strong>length</strong> and an optional <strong>capacity</strong
 <a href="https://golang.org/pkg/builtin/#cap"><code>cap</code></a> functions
 retrieve the length and capacity.</li>
 </ul>
-
 <h2 id="slicing">Slicing</h2>
-
 <pre><code>a := [...]int{0, 1, 2, 3} <span class="comment">// an array</span>
 s := a[1:3]               <span class="comment">// s == []int{1, 2}        cap(s) == 3</span>
 s = a[:2]                 <span class="comment">// s == []int{0, 1}        cap(s) == 4</span>
 s = a[2:]                 <span class="comment">// s == []int{2, 3}        cap(s) == 2</span>
 s = a[:]                  <span class="comment">// s == []int{0, 1, 2, 3}  cap(s) == 4</span>
 </code></pre>
-
 <p>You can also create a slice by slicing an existing array or slice.</p>
-
 <ul>
-<li>A slice is formed by specifying a low&nbsp;bound and a high&nbsp;bound: <code>a[low:high]</code>.
+<li>A slice is formed by specifying a low bound and a high bound: <code>a[low:high]</code>.
 This selects a half-open range which includes the first element, but excludes the last.</li>
 <li>You may omit the high or low bounds to use their defaults instead.
 The default is zero for the low bound and the length of the slice for the high bound.</li>
 </ul>
-
 <pre><code>s := []int{0, 1, 2, 3, 4} <span class="comment">// a slice</span>
 s = s[1:4]                <span class="comment">// s == []int{1, 2, 3}</span>
 s = s[1:2]                <span class="comment">// s == []int{2} (index relative to slice)</span>
 s = s[:3]                 <span class="comment">// s == []int{2, 3, 4} (extend length)</span>
 </code></pre>
-
 <p>When you slice a slice, the indexes are relative to the slice itself,
 not to the backing array.</p>
-
 <ul>
 <li>The high bound is not bound by the slice&rsquo;s length, but by it&rsquo;s capacity,
 which means you can extend the length of the slice.</li>
 <li>Trying to extend beyond the capacity causes a panic.</li>
 </ul>
-
 <h2 id="iteration">Iteration</h2>
-
 <pre><code>s := []string{"Foo", "Bar"}
 <b>for i, v := range s</b> {
     fmt.Println(i, v)
 }</code></pre>
-
 <pre><code>0 Foo
 1 Bar
 </code></pre>
-
 <ul>
 <li>The range expression, <code>s</code>, is <strong>evaluated once</strong> before beginning the loop.</li>
 <li>The iteration values are assigned to the respective iteration variables, <code>i</code> and <code>v</code>,
@@ -193,24 +171,19 @@ which means you can extend the length of the slice.</li>
 <li>The second iteration variable is optional.</li>
 <li>If the slice is <code>nil</code>, the number of iterations is&nbsp;0.</li>
 </ul>
-
 <h2 id="append-and-copy">Append and copy</h2>
-
 <ul>
 <li>The <code>append</code> function appends elements to a slice.
 It will <strong>automatically allocate</strong> a larger backing array if the capacity is exceeded.
-See <a href="/golang/append-explained/">Append&nbsp;function</a>.</li>
+See <a href="/golang/append-explained/">Append function</a>.</li>
 <li>The <code>copy</code> function copies elements
 into a destination slice <code>dst</code> from a source slice <code>src</code>.
 The number of elements copied is the <strong>minimum</strong> of <code>len(dst)</code> and <code>len(src)</code>.
-See <a href="/golang/copy-explained/">Copy&nbsp;function</a>.</li>
+See <a href="/golang/copy-explained/">Copy function</a>.</li>
 </ul>
-
 <h2 id="stacks-and-queues">Stacks and queues</h2>
-
 <p>The idiomatic way to implement a stack or queue in Go is to use a slice directly.
 For code examples, see</p>
-
 <ul>
 <li><a href="/golang/implement-stack/">Implement a stack (LIFO)</a></li>
 <li><a href="/golang/implement-fifo-queue/">Implement a FIFO queue</a></li>
@@ -273,15 +246,7 @@ For code examples, see</p>
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

@@ -84,55 +84,40 @@
 <article>
 <h1>Format a time or date [complete guide]</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC BY 2.0: https://www.flickr.com/photos/rsdio/3642425935 -->
-
 <div style="position:relative;">
 <img class="extra-content" src="/golang/stopwatch.png" alt="stopwatch" style="float:right;" />
 </div>
-
 <ul class="toc">
   <li><a href="#basic-example">Basic example</a></li>
   <li><a href="#standard-time-and-date-formats">Standard time and date formats</a></li>
   <li><a href="#layout-options">Layout options</a></li>
   <li><a href="#corner-cases">Corner cases</a></li>
 </ul>
-
 <h2 id="basic-example">Basic example</h2>
-
 <p>Go doesn&rsquo;t use yyyy-mm-dd layout to format a time.
 Instead, you format a special <strong>layout parameter</strong></p>
-
 <p><code style="margin-left:2em;"><span style="color: green">Mon Jan 2 15:04:05 MST 2006</span></code></p>
-
 <p>the same way as the time or date should be formatted.
-(This date is easier to remember when written as <code><span style="color: green">01/02&nbsp;03:04:05PM&nbsp;&lsquo;06&nbsp;-0700</span></code>.)</p>
-
+(This date is easier to remember when written as <code><span style="color: green">01/02 03:04:05PM ‘06 -0700</span></code>.)</p>
 <pre><code>const (
-    <span style="color: green"><b>layoutISO = "2006-01-02"</b></span>
-    <span style="color: green"><b>layoutUS  = "January 2, 2006"</b></span>
+	<span style="color: green"><b>layoutISO = "2006-01-02"</b></span>
+	<span style="color: green"><b>layoutUS  = "January 2, 2006"</b></span>
 )
 date := "1999-12-31"
 t, _ := <b>time.Parse</b>(<span style="color: green"><b>layoutISO</b></span>, date)
 fmt.Println(t)                  // <span class="comment">1999-12-31 00:00:00 +0000 UTC</span>
 fmt.Println(t.<b>Format</b>(<span style="color: green"><b>layoutUS</b></span>)) // <span class="comment">December 31, 1999</span></code></pre>
-
 <p>The function</p>
-
 <ul>
-<li><a href="https://golang.org/pkg/time/#Parse"><code>time.Parse</code></a> parses a date&nbsp;string, and</li>
-<li><a href="https://golang.org/pkg/time/#Time.Format"><code>Format</code></a> formats a&nbsp;<a href="https://golang.org/pkg/time/#Time"><code>time.Time</code></a>.</li>
+<li><a href="https://golang.org/pkg/time/#Parse"><code>time.Parse</code></a> parses a date string, and</li>
+<li><a href="https://golang.org/pkg/time/#Time.Format"><code>Format</code></a> formats a <a href="https://golang.org/pkg/time/#Time"><code>time.Time</code></a>.</li>
 </ul>
-
 <p>They have the following signatures:</p>
-
 <pre><code>func Parse(<span style="color: green"><b>layout</b></span>, value string) (Time, error)
 func (t Time) Format(<span style="color: green"><b>layout</b></span> string) string
 </code></pre>
-
 <h2 id="standard-time-and-date-formats">Standard time and date formats</h2>
-
 <table class="white">
   <thead>
     <tr>
@@ -199,11 +184,9 @@ func (t Time) Format(<span style="color: green"><b>layout</b></span> string) str
     </tr>
   </tbody>
 </table>
-
 <p>The following predefined date and timestamp
 <a href="https://golang.org/pkg/time/#pkg-constants">format constants</a>
 are also available.</p>
-
 <pre>
 ANSIC       = "Mon Jan _2 15:04:05 2006"
 UnixDate    = "Mon Jan _2 15:04:05 MST 2006"
@@ -222,9 +205,7 @@ StampMilli = "Jan _2 15:04:05.000"
 StampMicro = "Jan _2 15:04:05.000000"
 StampNano  = "Jan _2 15:04:05.000000000"
 </pre>
-
 <h2 id="layout-options">Layout options</h2>
-
 <table class="white">
   <thead>
     <tr>
@@ -283,16 +264,12 @@ StampNano  = "Jan _2 15:04:05.000000000"
     </tr>
   </tbody>
 </table>
-
 <h2 id="corner-cases">Corner cases</h2>
-
-<p>It&rsquo;s not possible to specify that an hour should be rendered without a leading zero in a 24-hour time&nbsp;format.</p>
-
+<p>It&rsquo;s not possible to specify that an hour should be rendered without a leading zero in a 24-hour time format.</p>
 <p>It&rsquo;s not possible to specify midnight as <code>24:00</code> instead of <code>00:00</code>.
-A typical usage for this would be giving opening hours ending at midnight, such&nbsp;as <code>07:00-24:00</code>.</p>
-
+A typical usage for this would be giving opening hours ending at midnight, such as <code>07:00-24:00</code>.</p>
 <p>It&rsquo;s not possible to specify a time containing a leap second: <code>23:59:60</code>.
-In fact, the time package assumes a Gregorian calendar without leap&nbsp;seconds.</p>
+In fact, the time package assumes a Gregorian calendar without leap seconds.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
 <a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fformat-parse-string-time-date-example%2f&amp;text=Format%20a%20time%20or%20date%20[complete%20guide]&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
@@ -331,15 +308,7 @@ In fact, the time package assumes a Gregorian calendar without leap&nbsp;seconds
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

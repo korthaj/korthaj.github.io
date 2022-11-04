@@ -84,44 +84,30 @@
 <article>
 <h1>Last item in a slice/array</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC0: https://www.airforcemedicine.af.mil/News/Photos/igphoto/2001962857/ -->
-
 <div style="margin-top:1em;"><img src="/golang/surgical-removal.jpg"></div>
-
 <h2 id="read-last-element">Read last element</h2>
-
 <p>Use the index <code>len(a)-1</code> to access the last element of
-a slice or array&nbsp;<code>a</code>.</p>
-
+a slice or array <code>a</code>.</p>
 <pre><code>a := []string{"A", "B", "C"}
 s := a[len(a)-1] <span class="comment">// C</span></code></pre>
-
 <blockquote>
 Go doesn't have negative indexing like Python does.
 This is a deliberate design decision —
 keeping the language simple can help save you from
 <a href="https://github.com/golang/go/issues/11245">subtle bugs</a>.
 </blockquote>
-
 <h2 id="remove-last-element">Remove last element</h2>
-
 <pre><code>a = a[:len(a)-1] <span class="comment">// [A B]</span></code></pre>
-
 <h3 id="watch-out-for-memory-leaks">Watch out for memory leaks</h3>
-
 <blockquote class="warning">
 <b>Warning:</b> If the slice is permanent and the element temporary,
 you may want to remove the reference to the element before slicing it off.
 <pre><code>a[len(a)-1] = "" <span class="comment">// Erase element (write zero value)</span>
 a = a[:len(a)-1] <span class="comment">// [A B]</span></code></pre>
 </blockquote>
-
 <h3 id="further-reading">Further reading</h3>
-
 <div><a href="/golang/slices-explained/"><img src="/golang/orange-thumb.jpg" title="Slices and arrays in 6 easy steps"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/slices-explained/">Slices and arrays in 6 easy steps</a></p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -149,15 +135,7 @@ a = a[:len(a)-1] <span class="comment">// [A B]</span></code></pre>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

@@ -84,44 +84,32 @@
 <article>
 <h1>Unused local variables</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC0: https://pxhere.com/en/photo/1068739 -->
-
 <div style="margin-top:1em;"><img src="/golang/red-pencil-on-red-background.jpg"></div>
-
-<p>As you may have noticed, programs with unused local variables do not compile.
+<p>As you may have noticed, programs with unused local variables do not compile.</p>
 <pre><code>func main() {
-    var n int <span class="comment">// &ldquo;n declared and not used&rdquo;</span>
-    n = 5     <span class="comment">// this doesn&rsquo;t help</span>
-}</code></pre></p>
-<pre><code>../main.go:2:6: n declared and not used</code></pre>
-<p>This is a deliberate feature of the Go language.</p>
-
+	var n int <span class="comment">// "n declared and not used"</span>
+	n = 5     <span class="comment">// this doesn't help</span>
+}</code></pre>
+<pre tabindex="0"><code>../main.go:2:6: n declared and not used
+</code></pre><p>This is a deliberate feature of the Go language.</p>
 <blockquote>
 <p>The presence of an unused variable may indicate a bug [&hellip;]
 Go refuses to compile programs with unused variables or imports,
 trading short-term convenience for long-term build speed and program clarity.
 <a class="quote-source" href="https://golang.org/doc/faq#unused_variables_and_imports">Go FAQ: Can I stop these complaints about my unused variable/import?</a></p>
 </blockquote>
-
 <p>Unused global variables and function arguments are however allowed.</p>
-
 <h2 id="workaround">Workaround</h2>
-
 <p>If you don&rsquo;t want to remove or comment out the declaration,
 you can add a dummy assignment.</p>
-
 <pre><code>func main() {
-        var n int
-        n = 5
+    	var n int
+    	n = 5
         <b>_ = n</b> <span class="comment">// n is now "used"</span>
 }</code></pre>
-
 <h2 id="further-reading">Further reading</h2>
-
 <div><a href="/golang/compiler-error-messages/"><img src="/golang/tree-of-love-thumb.jpg" title="Learn to love your compiler"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/compiler-error-messages/">Learn to love your compiler</a>
  is a list of common Go compiler error messages: what they mean and how to fix the problem.</p>
 
@@ -144,15 +132,7 @@ you can add a dummy assignment.</p>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

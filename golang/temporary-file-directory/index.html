@@ -84,73 +84,56 @@
 <article>
 <h1>Create a temporary file or directory</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC BY-SA 2.0: https://www.flickr.com/photos/cjscott69/858673111 -->
-
 <div style="margin-top:1em;"><img src="/golang/temporary-mailbox.jpg"></div>
-
 <h2 id="file">File</h2>
-
 <p>Use <a href="https://golang.org/pkg/io/ioutil/#TempFile"><code>ioutil.TempFile</code></a> in package
 <a href="https://golang.org/pkg/io/ioutil/"><code>io/ioutil</code></a> to create a
 <strong>globally unique temporary file</strong>.
 It’s your own job to remove the file when it’s no longer needed.</p>
-
 <pre><code>file, err := ioutil.TempFile("dir", "prefix")
 if err != nil {
-    log.Fatal(err)
+	log.Fatal(err)
 }
 defer os.Remove(file.Name())
 
 fmt.Println(file.Name()) <span class="comment">// For example "dir/prefix054003078"</span></code></pre>
-
 <p>The call to <a href="https://golang.org/pkg/io/ioutil/#TempFile"><code>ioutil.TempFile</code></a></p>
-
 <ul>
 <li>creates a new file with a name starting with <code>&quot;prefix&quot;</code> in the directory <code>&quot;dir&quot;</code>,</li>
 <li>opens the file for reading and writing,</li>
 <li>and returns the new <a href="https://golang.org/pkg/os/#File"><code>*os.File</code></a>.</li>
 </ul>
-
 <p>To put the new file in <a href="https://golang.org/pkg/os/#TempDir"><code>os.TempDir()</code></a>,
 the default directory for temporary files,
 call <a href="https://golang.org/pkg/io/ioutil/#TempFile"><code>ioutil.TempFile</code></a>
 with an empty directory string.</p>
-
-<p><h3 id="add-suffix">Add a suffix to the temporary file name<span class="quicklink"><a href="https://tip.golang.org/doc/go1.11" title="Go 1.11 Release Notes">Go&nbsp;1.11</a></span></h2></p>
-
-<p>Starting with Go 1.11, if the second string given to <code>TempFile</code> includes a&nbsp;<code>&quot;*&quot;</code>,
-the random string replaces this&nbsp;<code>&quot;*&quot;</code>.</p>
-
+<h3 id="add-suffix">Add a suffix to the temporary file name<span class="quicklink"><a href="https://tip.golang.org/doc/go1.11" title="Go 1.11 Release Notes">Go&nbsp;1.11</a></span></h2>
+<p>Starting with Go 1.11, if the second string given to <code>TempFile</code> includes a <code>&quot;*&quot;</code>,
+the random string replaces this <code>&quot;*&quot;</code>.</p>
 <pre><code>file, err := ioutil.TempFile("dir", "myname.*.bat")
 if err != nil {
-    log.Fatal(err)
+	log.Fatal(err)
 }
 defer os.Remove(file.Name())
 
 fmt.Println(file.Name()) <span class="comment">// For example "dir/myname.054003078.bat"</span></code></pre>
-
 <p>If no <code>&quot;*&quot;</code> is included the old behavior is retained,
-and the random digits are appended to the&nbsp;end.</p>
-
+and the random digits are appended to the end.</p>
 <h2 id="directory">Directory</h2>
-
 <p>Use <a href="https://golang.org/pkg/io/ioutil/#TempDir"><code>ioutil.TempDir</code></a> in package
 <a href="https://golang.org/pkg/io/ioutil/"><code>io/ioutil</code></a> to create a
 <strong>globally unique temporary directory</strong>.</p>
-<pre><code>dir, err := ioutil.TempDir(&#34;dir&#34;, &#34;prefix&#34;)
+<pre tabindex="0"><code>dir, err := ioutil.TempDir(&quot;dir&quot;, &quot;prefix&quot;)
 if err != nil {
 	log.Fatal(err)
 }
-defer os.RemoveAll(dir)</code></pre>
-<p>The call to <a href="https://golang.org/pkg/io/ioutil/#TempDir"><code>ioutil.TempDir</code></a></p>
-
+defer os.RemoveAll(dir)
+</code></pre><p>The call to <a href="https://golang.org/pkg/io/ioutil/#TempDir"><code>ioutil.TempDir</code></a></p>
 <ul>
 <li>creates a new directory with a name starting with <code>&quot;prefix&quot;</code> in the directory <code>&quot;dir&quot;</code></li>
 <li>and returns the path of the new directory.</li>
 </ul>
-
 <p>To put the new directory in <a href="https://golang.org/pkg/os/#TempDir"><code>os.TempDir()</code></a>,
 the default directory for temporary files,
 call <a href="https://golang.org/pkg/io/ioutil/#TempDir"><code>ioutil.TempDir</code></a>
@@ -181,15 +164,7 @@ with an empty directory string.</p>
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

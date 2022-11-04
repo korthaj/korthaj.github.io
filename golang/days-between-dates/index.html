@@ -85,19 +85,17 @@
 <h1>Days between two dates</h1>
 <div class="tagline">yourbasic.org/golang</div>
 <!-- CC0: https://svgsilh.com/image/1927555.html -->
-
 <div style="margin-top:1em;"><img src="/golang/time-between-dates.png" width="320px"></div>
-
 <pre><code>func main() {
-    <span class="comment">// The leap year 2016 had 366 days.</span>
-    t1 := Date(2016, 1, 1)
-    t2 := Date(2017, 1, 1)
-    days := t2.Sub(t1).Hours() / 24
-    fmt.Println(days) <span class="comment">// 366</span>
+	<span class="comment">// The leap year 2016 had 366 days.</span>
+	t1 := Date(2016, 1, 1)
+	t2 := Date(2017, 1, 1)
+	days := t2.Sub(t1).Hours() / 24
+	fmt.Println(days) <span class="comment">// 366</span>
 }
 
 func Date(year, month, day int) time.Time {
-    return time.Date(year, time.Month(month), day, 0, 0, 0, 0, time.UTC)
+	return time.Date(year, time.Month(month), day, 0, 0, 0, 0, time.UTC)
 }</code></pre>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -143,15 +141,7 @@ func Date(year, month, day int) time.Time {
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

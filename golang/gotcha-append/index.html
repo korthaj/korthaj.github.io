@@ -85,14 +85,9 @@
 <h1>Why doesn’t append work every time? [scary bug]</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC BY-SA 2.0: https://www.flickr.com/photos/petebackwards/452491222 -->
-
 <div style="margin-top:1em;"><img src="/golang/scary-bug.jpg"></div>
-
 <p>What&rsquo;s up with the append function?</p>
-
 <pre><code>a := []byte("ba")
 
 a1 := append(a, 'd')
@@ -100,20 +95,14 @@ a2 := append(a, 'g')
 
 fmt.Println(string(a1)) <span class="comment">// bag</span>
 fmt.Println(string(a2)) <span class="comment">// bag</span></code></pre>
-
 <h2 id="answer">Answer</h2>
-
 <p>If there is room for more elements, <code>append</code> reuses the underlying array.
 Let's take a&nbsp;look:</p>
-
 <pre><code>a := []byte("ba")
 <b>fmt.Println(len(a), cap(a))</b> <span class="comment">// 2 32</span></code></pre>
-
 <p>This means that the slices <code>a</code>, <code>a1</code> and <code>a2</code>
 will refer to the same underlying array in our example.</p>
-
 <p>To avoid this, we need to use two separate byte&nbsp;arrays.</p>
-
 <pre><code>const prefix = "ba"
 
 a1 := append([]byte(prefix), 'd')
@@ -121,9 +110,7 @@ a2 := append([]byte(prefix), 'g')
 
 fmt.Println(string(a1)) <span class="comment">// bad</span>
 fmt.Println(string(a2)) <span class="comment">// bag</span></code></pre>
-
 <h3 id="the-scary-case-it-worked-for-me">The scary case: It &ldquo;worked&rdquo; for me</h3>
-
 <blockquote class="warning">
 <p>
 In some Go implementations <code>[]byte(&quot;ba&quot;)</code>
@@ -135,7 +122,6 @@ Unfortunately the code is <b>still wrong</b>, even though it seems to work.
 The program may behave differently when you run it in another environment.
 </p>
 </blockquote>
-
 <p>See <a href="/golang/append-explained/">How to append anything</a> for more about
 the built-in <code>append</code> function in&nbsp;Go.</p>
 
@@ -218,14 +204,6 @@ the built-in <code>append</code> function in&nbsp;Go.</p>
       <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a></li>
 
   </ul>
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
 
 
   

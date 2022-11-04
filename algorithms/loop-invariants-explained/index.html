@@ -84,127 +84,101 @@
 <article>
 <h1>Loop invariants can give you coding superpowers</h1>
 <div class="tagline">yourbasic.org</div>
-
-
 <p class="lead">An invariant is a state&shy;ment about program vari&shy;ables that
 is true every time the execu&shy;tion of the program reaches the&nbsp;invariant.</p>
-
 <!-- CC BY 2.0: https://www.flickr.com/photos/hulagway/5315234736 -->
-
 <div><img src="/algorithms/vanishing-point.jpg" alt="Repeating circular patterns"></div>
-
 <ul class="toc">
 <li><a href="#loop-invariant-definition">Loop invariant definition (basic example)</a></li>
 <li><a href="#designing-with-invariants">Designing with invariants</a></li>
 <li><a href="#sorting">Sorting (trickier example)</a></li>
 <li><a href="#3-way-partition">3-way partition (advanced example)</a></li>
 </ul>
-
 <p>When struggling with a tricky 3-way partition algorithm as a student,
 a friend suggested a well-fitting invariant.
 It was like getting a secret superpower: suddenly I could write code
 that used to be impossible.</p>
-
 <p>In this text we&rsquo;ll look at <strong>loop invariants</strong>, invariants placed at the beginning of a loop.
 They are a simple yet powerful tool to help understand iterative code.</p>
-
 <p>A well-chosen loop invariant is useful both when <strong>designing</strong>, <strong>testing</strong>,
 and <strong>modifying</strong> code. It also serves as <strong>documentation</strong> and can be
 the foundation of a <strong>correctness proof</strong>.</p>
-
 <h2 id="loop-invariant-definition">Loop invariant definition</h2>
-
 <blockquote>
-<p>A loop invariant is a statement about program variables that is true before and after each iteration of a&nbsp;loop.</p>
+<p>A loop invariant is a statement about program variables that is true before and after each iteration of a loop.</p>
 </blockquote>
-
 <p>A good loop invariant should satisfy three properties:</p>
-
 <ol>
-<li><strong>Initialization:</strong> The loop invariant must be true before the first execution of the&nbsp;loop.</li>
+<li><strong>Initialization:</strong> The loop invariant must be true before the first execution of the loop.</li>
 <li><strong>Maintenance:</strong> If the invariant is true before an iteration of the loop, it should be true
 also after the iteration.</li>
 <li><strong>Termination</strong>: When the loop is terminated the invariant should tell us something useful,
 something that helps us understand the algorithm.</li>
 </ol>
-
 <p>Let&rsquo;s start with a simple piece of code.</p>
-
 <pre>
 <b>Algorithm</b> sum(n)
-    <b>Input:</b> a non-negative integer n
-    <b>Output:</b> the sum 1 + 2 + … + n
-    sum ← 0
-    i ← 1
-    <b>while</b> i ≤ n
-        <span style="color:green;">// Invariant: sum = 1 + 2 + … + (i - 1)</span>
-        sum ← sum + i
-        i ← i + 1
-    <b>return</b> sum
+	<b>Input:</b> a non-negative integer n
+	<b>Output:</b> the sum 1 + 2 + … + n
+	sum ← 0
+	i ← 1
+	<b>while</b> i ≤ n
+		<span style="color:green;">// Invariant: sum = 1 + 2 + … + (i - 1)</span>
+		sum ← sum + i
+		i ← i + 1
+	<b>return</b> sum
 </pre>
-
 <p>In this example:</p>
-
 <ol>
-<li>The loop invariant holds initially since <code>sum&nbsp;=&nbsp;0</code> and <code>i&nbsp;=&nbsp;1</code> at this point.
-(The empty sum is&nbsp;zero.)</li>
+<li>The loop invariant holds initially since <code>sum = 0</code> and <code>i = 1</code> at this point.
+(The empty sum is zero.)</li>
 <li>Assuming the invariant holds before the <code>i</code>th iteration,
 it will be true also after this iteration since the loop adds <code>i</code> to the sum,
-and increments <code>i</code> by&nbsp;one.</li>
+and increments <code>i</code> by one.</li>
 <li>When the loop is just about to terminate,
-the invariant states that <code>sum&nbsp;= 1&nbsp;+ 2 +&nbsp;… +&nbsp;n</code>,
+the invariant states that <code>sum = 1 + 2 + … + n</code>,
 just what&rsquo;s needed for the algorithm to be correct.</li>
 </ol>
-
 <p>In fact, the three steps above constitute an <a href="https://en.wikipedia.org/wiki/Mathematical_induction">induction proof</a>,
-which shows that <code>sum&nbsp;= 1&nbsp;+ 2 +&nbsp;… +&nbsp;n</code>
-when the program leaves the&nbsp;loop.</p>
-
+which shows that <code>sum = 1 + 2 + … + n</code>
+when the program leaves the loop.</p>
 <h2 id="designing-with-invariants">Designing with invariants</h2>
-
 <p>We can use a loop invariant during the design of an algorithm.
 Let&rsquo;s start with this code skeleton.</p>
-
 <pre>
 <b>Algorithm</b> max(A)
-    <b>Input:</b> an array A storing n integers
-    <b>Output:</b> the largest element in A
-    max ← …
-    <b>for</b> i = 0 <b>to</b> n-1
-        <span style="color:green;">//  Invariant: max = max(A[0], A[1], …, A[i-1])</span>
-        …
-    <b>return</b> max
+	<b>Input:</b> an array A storing n integers
+	<b>Output:</b> the largest element in A
+	max ← …
+	<b>for</b> i = 0 <b>to</b> n-1
+		<span style="color:green;">//  Invariant: max = max(A[0], A[1], …, A[i-1])</span>
+		…
+	<b>return</b> max
 </pre>
-
 <p>The invariant seems to be well chosen: it satisfies the <strong>termination</strong> property
 since the variable <code>max = max(A[0], A[1], …, A[n-1])</code> when the loop terminates.</p>
-
 <p>We can try to satisfy the <strong>initialization</strong> property by assigning a suitable start value to <code>max</code>.
 However, it&rsquo;s not clear how to define the maximum value of an empty slice.
 We&rsquo;ve found a potential bug even before writing any code!
-One solution is to change the contract of the&nbsp;function.</p>
-
+One solution is to change the contract of the function.</p>
 <pre>
 <b>Algorithm</b> max(A)
-    <b>Input:</b> an array A storing n integers, where n ≥ 1
-    <b>Output:</b> the largest element in A
-    max ← …
-    <b>for</b> i = 0 <b>to</b> n-1
-        <span style="color:green;">// Invariant: max = max(A[0], A[1], …, A[i-1])</span>
-        …
-    <b>return</b> max
+	<b>Input:</b> an array A storing n integers, where n ≥ 1
+	<b>Output:</b> the largest element in A
+	max ← …
+	<b>for</b> i = 0 <b>to</b> n-1
+		<span style="color:green;">// Invariant: max = max(A[0], A[1], …, A[i-1])</span>
+		…
+	<b>return</b> max
 </pre>
-
 <p>Now it&rsquo;s easy to solve the problem.
-If we let <code>max&nbsp;=&nbsp;A[0]</code> and start the loop with <code>i&nbsp;=&nbsp;1</code>,
-the invariant holds when we first enter the&nbsp;loop.</p>
-
+If we let <code>max = A[0]</code> and start the loop with <code>i = 1</code>,
+the invariant holds when we first enter the loop.</p>
 <p>Let&rsquo;s fill in the code. When doing so we can assume that
 the invariant holds at the beginning of the loop.
 The <strong>maintenance</strong> property states: <em>if the invariant is true</em> before an iteration of the loop,
 it should be true also after the iteration.
-Here is the finished&nbsp;code.</p>
-
+Here is the finished code.</p>
 <pre>
 <b>Algorithm</b> max(A)
     <b>Input:</b> an array A storing n integers, where n ≥ 1
@@ -216,87 +190,76 @@ Here is the finished&nbsp;code.</p>
              max ← A[i]
     <b>return</b> max
 </pre>
-
 <h2 id="sorting">Sorting</h2>
-
 <pre>
 <b>Algorithm</b> sort(A)
-    <b>Input:</b> an array A storing n integers
-    <b>Output:</b> the same array with the elements sorted in ascending order
-    <b>for</b> j = 1 <b>to</b> n-1
-        <span style="color:green;">// Invariant: A[0..j-1] contains the same elements as
-        // the original subarray A[0..j-1], but in sorted order.</span>
-        key ← A[j]
-        i ← j - 1
-        <b>while</b> i ≥ 0 <b>and</b> A[i] &gt; key
-            A[i+1] ← A[i]
-            i ← i - 1
-        A[i+1] ← key
+	<b>Input:</b> an array A storing n integers
+	<b>Output:</b> the same array with the elements sorted in ascending order
+	<b>for</b> j = 1 <b>to</b> n-1
+		<span style="color:green;">// Invariant: A[0..j-1] contains the same elements as
+		// the original subarray A[0..j-1], but in sorted order.</span>
+		key ← A[j]
+		i ← j - 1
+		<b>while</b> i ≥ 0 <b>and</b> A[i] &gt; key
+			A[i+1] ← A[i]
+			i ← i - 1
+		A[i+1] ← key
 </pre>
-
 <p>To achieve the <strong>termination</strong> property, the invariant should state that
 the array is sorted when the for loop terminates. Check.</p>
-
 <p>Let&rsquo;s look at the <strong>initialization</strong> property. We can assume that the slice contains at
 least two elements since the loop wouldn&rsquo;t execute otherwise.
 (Nor is this needed since a slice with at most one element is sorted already.)
 Before executing the loop, the invariant states
 &ldquo;<code>A[0..0]</code> contains the same elements as the original subarray <code>A[0..0]</code>,
-but in sorted order&rdquo;. This is clearly&nbsp;true.</p>
-
+but in sorted order&rdquo;. This is clearly true.</p>
 <p>To verify the <strong>maintenance</strong> property, we need to take a closer look at the code.
 We can assume that the invariant holds before the loop, i.e. <code>A[0..j-1]</code> is sorted,
 and only need to check that the code inserts the element <code>A[j]</code> in the correct position.
 This is achieved by moving all elements <code>A[j-1], A[j-2],…</code> larger than <code>A[j]</code>
 one step to the right and then inserting <code>A[j]</code> in its proper position.</p>
-
 <h2 id="3-way-partition">3-way partition</h2>
-
 <p style="margin-top:0;">The 3-way partition
 used in <a href="/golang/quicksort-optimizations/">Quicksort</a> is an intricate algorithm
 that would be quite hard to implement without a well-chosen loop&nbsp;invariant.</p>
-
 <pre><code>// Partition reorders the elements of v so that:
 // - all elements in v[:low] are less than p,
 // - all elements in v[low:high] are equal to p,
 // - all elements in v[high:] are greater than p.
 func Partition(v []int, p int) (low, high int) {
-    low, high = 0, len(v)
-    for mid := 0; mid < high; {
-        <span style="color:green;">// Invariant:</span>
-        <span style="color:green;">//  - v[:low] < p</span>
-        <span style="color:green;">//  - v[low:mid] = p</span>
-        <span style="color:green;">//  - v[mid:high] are unknown</span>
-        <span style="color:green;">//  - v[high:] > p</span>
-        <span style="color:green;">//</span>
-        <span style="color:green;">//         < p       = p        unknown       > p</span>
-        <span style="color:green;">//     -----------------------------------------------</span>
-        <span style="color:green;">// v: |          |          |a            |           |</span>
-        <span style="color:green;">//     -----------------------------------------------</span>
-        <span style="color:green;">//                ^          ^             ^</span>
-        <span style="color:green;">//               low        mid           high</span>
-        switch a := v[mid]; {
-        case a < p:
-            v[mid] = v[low]
-            v[low] = a
-            low++
-            mid++
-        case a == p:
-            mid++
-        default: // a > p
-            v[mid] = v[high-1]
-            v[high-1] = a
-            high--
-        }
-    }
-    return
+	low, high = 0, len(v)
+	for mid := 0; mid < high; {
+		<span style="color:green;">// Invariant:</span>
+		<span style="color:green;">//  - v[:low] < p</span>
+		<span style="color:green;">//  - v[low:mid] = p</span>
+		<span style="color:green;">//  - v[mid:high] are unknown</span>
+		<span style="color:green;">//  - v[high:] > p</span>
+		<span style="color:green;">//</span>
+		<span style="color:green;">//         < p       = p        unknown       > p</span>
+		<span style="color:green;">//     -----------------------------------------------</span>
+		<span style="color:green;">// v: |          |          |a            |           |</span>
+		<span style="color:green;">//     -----------------------------------------------</span>
+		<span style="color:green;">//                ^          ^             ^</span>
+		<span style="color:green;">//               low        mid           high</span>
+		switch a := v[mid]; {
+		case a < p:
+			v[mid] = v[low]
+			v[low] = a
+			low++
+			mid++
+		case a == p:
+			mid++
+		default: // a > p
+			v[mid] = v[high-1]
+			v[high-1] = a
+			high--
+		}
+	}
+	return
 }
 </code></pre>
-
 <h3 id="further-reading">Further reading</h3>
-
 <div><a href="/golang/quicksort-optimizations/"><img src="/golang/divide-conquer.jpg" width="200px" title="Top 3 Quicksort optimizations"></a></div>
-
 <p style="margin-top:0;">See <a href="/golang/quicksort-optimizations/">Top 3 Quicksort optimizations</a>
 for a complete implementation of Quicksort.</p>
 
@@ -343,15 +306,7 @@ for a complete implementation of Quicksort.</p>
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
     <div style="margin-top:1em;"><a href="/algorithms/time-complexity-explained/" title="How to analyse time complexity: Count your steps"><img src="/algorithms/abacus-mini.jpg"></a></div>
   <ul class="none">
   

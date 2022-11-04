@@ -85,32 +85,22 @@
 <h1>Immutable strings</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC0: https://www.publicdomainpictures.net/en/view-image.php?image=91579&picture=locked-gate-padlock-chain -->
-
 <div style="margin-top:1em;"><img src="/golang/locked-gate.jpg"></div>
-
 <p>Why doesn&rsquo;t this code compile?</p>
-
 <pre><code>s := "hello"
 s[0] = 'H'
 fmt.Println(s)</code></pre>
-<pre><code>../main.go:3:7: cannot assign to s[0]</code></pre>
-<h2 id="answer">Answer</h2>
-
+<pre tabindex="0"><code>../main.go:3:7: cannot assign to s[0]
+</code></pre><h2 id="answer">Answer</h2>
 <p>Go strings are immutable and behave like read-only byte slices (with a few extra properties).</p>
-
 <p>To update the data, use a rune slice instead.</p>
-
 <pre><code class="language-go">buf := []rune("hello")
 buf[0] = 'H'
 s := string(buf)
 fmt.Println(s)  <span class="comment">// "Hello"</span>
 </code></pre>
-
 <p>If the string only contains ASCII characters, you could also use a byte&nbsp;slice.</p>
-
 <p>See <a href="/golang/string-functions-reference-cheat-sheet/">String functions cheat sheet</a> for an overview of strings in&nbsp;Go.</p>
 
 <ul class="pagina">
@@ -192,14 +182,6 @@ fmt.Println(s)  <span class="comment">// "Hello"</span>
       <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a></li>
 
   </ul>
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
 
 
   

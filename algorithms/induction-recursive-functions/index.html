@@ -84,99 +84,73 @@
 <article>
 <h1>On induction and recursive functions, with an application to binary search</h1>
 <div class="tagline">yourbasic.org</div>
-
-
 <p class="lead">To make sense of recursive functions, you can use a way of thinking closely related to mathematical induction.</p>
-
 <!-- CC BY-NC-SA 2.0: https://www.flickr.com/photos/gadl/254387060/ -->
-
 <div><img src="/algorithms/recursive-flower.jpg" alt="Repeating circular patterns"></div>
-
 <ul class="toc">
   <li><a href="#mathematical-induction">Mathematical induction</a></li>
   <li><a href="#sum-of-an-arithmetic-series">Sum of an arithmetic series (basic example)</a></li>
   <li><a href="#the-same-sum-in-code">The same sum in code</a></li>
   <li><a href="#binary-search-correctness-proof">Binary search correctness proof</a></li>
 </ul>
-
 <h2 id="mathematical-induction">Mathematical induction</h2>
-
 <p>Mathematical induction is a proof method often used to prove statements about integers.</p>
-
-<p>We&rsquo;ll use the notation P(<i>n</i>), where <i>n</i>&nbsp;&ge;&nbsp;0,
-to denote such a&nbsp;statement.
+<p>We&rsquo;ll use the notation P(<i>n</i>), where <i>n</i> ≥ 0,
+to denote such a statement.
 To prove P(<i>n</i>) with induction is a two-step procedure.</p>
-
 <ul>
 <li><b>Base case:</b> Show that P(0) is true.</li>
 <li><b>Inductive step:</b> Show that P(<i>k</i>) is true
-<b>if</b> P(<i>i</i>) is true for all <i>i</i>&nbsp;&lt;&nbsp;<i>k</i>.</li>
+<b>if</b> P(<i>i</i>) is true for all <i>i</i> &lt; <i>k</i>.</li>
 </ul>
-
-<p>The statement &rdquo;P(<i>i</i>) is true for all <i>i</i>&nbsp;&lt;&nbsp;<i>k</i>&rdquo;
-is often called the <b>induction hypo&shy;thesis</b>.</p>
-
+<p>The statement ”P(<i>i</i>) is true for all <i>i</i> &lt; <i>k</i>”
+is often called the <b>induction hypo­thesis</b>.</p>
 <p>If we manage to prove both of these statements,
-we can in fact be sure that P(<i>n</i>) is true for all <i>n</i>&nbsp;&ge;&nbsp;0.</p>
-
+we can in fact be sure that P(<i>n</i>) is true for all <i>n</i> ≥ 0.</p>
 <ul>
 <li>The base case shows that P(0) is true.</li>
 <li>To see that P(1) holds, we use both steps in the proof.
 The base case shows that P(0) holds. The inductive step says,
-among other things, that P(1) is true <b>if</b> P(0)&nbsp;is true.
-These two facts taken together imply that P(1) must be&nbsp;true.</li>
+among other things, that P(1) is true <b>if</b> P(0) is true.
+These two facts taken together imply that P(1) must be true.</li>
 <li>Now we can repeat this argument to show P(2).
 Since we already know that P(0) and P(1) are true,
 we can use the inductive step to prove P(2).
-In fact, when <i>k</i>&nbsp;=&nbsp;2 the inductive step says that
-&rdquo;P(2) is true if P(<i>i</i>)
-is true for all <i>i</i>&nbsp;&lt;&nbsp;2&rdquo;.</li>
-<li>Using the same argument we can show P(3), P(4), P(5), and so&nbsp;on.</li>
+In fact, when <i>k</i> = 2 the inductive step says that
+”P(2) is true if P(<i>i</i>)
+is true for all <i>i</i> &lt; 2”.</li>
+<li>Using the same argument we can show P(3), P(4), P(5), and so on.</li>
 </ul>
-
 <h2 id="sum-of-an-arithmetic-series">Sum of an arithmetic series</h2>
-
 <p>Let&rsquo;s start with a statement P(<i>n</i>) from mathematics.</p>
-
 <blockquote>
 1 + 2 + 3 + ... + <i>n</i> = <i>n</i>(<i>n</i> + 1)/2
 </blockquote>
-
 <p>We&rsquo;ll use induction to prove P(<i>n</i>)
-for all <i>n</i>&nbsp;&ge;&nbsp;1.
-(If we define the empty sum to be zero, P(0) is true as&nbsp;well.)
-</p></p>
-
+for all <i>n</i> ≥ 1.
+(If we define the empty sum to be zero, P(0) is true as well.)</p>
+</p>
 <h3 id="proof">Proof</h3>
-
 <h4 id="base-case">Base case</h4>
-
-<p>Since we want to prove the statement for all integers&nbsp;<i>n</i>&nbsp;&ge;&nbsp;1,
-we&rsquo;ll start the induction at&nbsp;1 instead of&nbsp;0.
-When <i>n</i>&nbsp;=&nbsp;1, the left-hand side is&nbsp;1 and
-the right-hand side is 1(1&nbsp;+&nbsp;1)/2&nbsp;=&nbsp;1.
-Hence, P(1) is&nbsp;true.
-</p></p>
-
+<p>Since we want to prove the statement for all integers <i>n</i> ≥ 1,
+we&rsquo;ll start the induction at 1 instead of 0.
+When <i>n</i> = 1, the left-hand side is 1 and
+the right-hand side is 1(1 + 1)/2 = 1.
+Hence, P(1) is true.</p>
+</p>
 <h4 id="inductive-step">Inductive step</h4>
-
 <p>We need to show that P(<i>k</i>) is true
-<b>if</b> P(<i>i</i>) is true for all <i>i</i>&nbsp;&lt;&nbsp;<i>k</i>.
-Our induction hypothesis&nbsp;is</p>
-
+<b>if</b> P(<i>i</i>) is true for all <i>i</i> &lt; <i>k</i>.
+Our induction hypothesis is</p>
 <blockquote>
 1 + 2 + ... + <i>i</i> = <i>i</i>(<i>i</i> + 1)/2
 for all <i>i</i>&nbsp;&lt;&nbsp;<i>k</i>,
 </blockquote>
-
 <p>and we must prove that</p>
-
 <blockquote>
 1 + 2 + ... + <i>k</i> = <i>k</i>(<i>k</i> + 1)/2.
 </blockquote>
-
 <p>The computation looks like this.</p>
-
 <blockquote>
 1&nbsp;+&nbsp;2&nbsp;+&nbsp;...&nbsp;+&nbsp;<i>k</i>&nbsp;=
 (1&nbsp;+&nbsp;2&nbsp;+&nbsp;...&nbsp;+&nbsp;(<i>k</i>&nbsp;-&nbsp;1))&nbsp;+&nbsp;<i>k</i>&nbsp;=&nbsp;
@@ -186,165 +160,128 @@ for all <i>i</i>&nbsp;&lt;&nbsp;<i>k</i>,
 (<i>k</i><sup>2</sup>&nbsp;+&nbsp;k)/2&nbsp;=
 <i>k</i>(<i>k</i>&nbsp;+&nbsp;1)/2
 </blockquote>
-
-<p>&#42; This is where we use the induction hypothesis.</p>
-
+<p>* This is where we use the induction hypothesis.</p>
 <p>Now that we&rsquo;ve shown both the base case and the induction step,
-we can deduce that P(<i>n</i>) must be true for all positive integers&nbsp;<i>n</i>.
+we can deduce that P(<i>n</i>) must be true for all positive integers <i>n</i>.
 <b>Q.E.D.</b></p>
-
 <h2 id="the-same-sum-in-code">The same sum in code</h2>
-
 <p>Induction works beautifully for proving statements about recursive functions,
-and for thinking about recursion in&nbsp;general.</p>
-
+and for thinking about recursion in general.</p>
 <pre><code>// Sum returns the sum 1 + 2 + ... + n, where n &gt;= 1.
 func Sum(n int) int {
-    if n == 1 {
-        return 1
-    }
-    return n + Sum(n-1)
+	if n == 1 {
+		return 1
+	}
+	return n + Sum(n-1)
 }
 </code></pre>
-
-<p>The statement&nbsp;P(<i>n</i>) to prove can be stated:</p>
-
+<p>The statement P(<i>n</i>) to prove can be stated:</p>
 <blockquote>
 The function call <code>Sum(n)</code> returns the value
 1&nbsp;+&nbsp;2&nbsp;+&nbsp;...&nbsp;+&nbsp;<i>n</i>.
 </blockquote>
-
 <h3 id="proof-1">Proof</h3>
-
 <h4 id="base-case-1">Base case</h4>
-
-<p>P(1) is true since the function returns&nbsp;1 when <i>n</i>&nbsp;=&nbsp;1.
-</p></p>
-
+<p>P(1) is true since the function returns 1 when <i>n</i> = 1.</p>
+</p>
 <h4 id="induction-step">Induction step</h4>
-
-<p>We make the hypothesis &ldquo;P(<i>i</i>) is true for all <i>i</i>&nbsp;&lt;&nbsp;<i>k</i>&rdquo;,
+<p>We make the hypothesis &ldquo;P(<i>i</i>) is true for all <i>i</i> &lt; <i>k</i>&rdquo;,
 i.e. the call <code>sum(i)</code> returns
-1&nbsp;+&nbsp;2&nbsp;+&nbsp;&hellip;&nbsp;+&nbsp;<i>i</i>
-when <i>i</i>&nbsp;&lt;&nbsp;<i>k</i>.
-Using this hypothesis, we need to prove&nbsp;P(<i>k</i>).</p>
-
-<p>If <i>k</i>&nbsp;&ge;&nbsp;2, the call <code>sum(k)</code>
-returns <code>k&nbsp;+&nbsp;sum(k-1)</code>.
+1 + 2 + &hellip; + <i>i</i>
+when <i>i</i> &lt; <i>k</i>.
+Using this hypothesis, we need to prove P(<i>k</i>).</p>
+<p>If <i>k</i> ≥ 2, the call <code>sum(k)</code>
+returns <code>k + sum(k-1)</code>.
 But we know, according to the induction hypothesis,
-that the call&nbsp;<code>sum(k-1)</code> returns
-1&nbsp;+&nbsp;2&nbsp;+&nbsp;&hellip;&nbsp;+&nbsp;(<i>k</i>-1).
+that the call <code>sum(k-1)</code> returns
+1 + 2 + &hellip; + (<i>k</i>-1).
 Ergo, <code>sum(k)</code> will return</p>
-
 <blockquote>
 <i>k</i>&nbsp;+&nbsp;(1&nbsp;+&nbsp;2&nbsp;+&nbsp;...&nbsp;+&nbsp;(<i>k</i>-1))&nbsp;=
 1&nbsp;+&nbsp;2&nbsp;+&nbsp;...&nbsp;+&nbsp;<i>k</i>.
 </blockquote>
-
 <p>Using induction, we can conclude that the call <code>sum(n)</code>
 returns the value
-1&nbsp;+&nbsp;2&nbsp;+&nbsp;&hellip;&nbsp;+&nbsp;<i>n</i>
-whenever&nbsp;<i>n</i>&nbsp;&ge;&nbsp;1.
+1 + 2 + &hellip; + <i>n</i>
+whenever <i>n</i> ≥ 1.
 <b>Q.E.D.</b></p>
-
 <h2 id="binary-search-correctness-proof">Binary search correctness proof</h2>
-
-<p>Binary search is known as &rdquo;the simplest algorithm
-than no one can implement&rdquo;. This seems to be true:
+<p>Binary search is known as ”the simplest algorithm
+than no one can implement”. This seems to be true:
 the top ten search results when I looked for binary search implementations
 exposed some dubious pieces of code.
 We&rsquo;d better use both test code and a correctness proof.</p>
-
 <pre><code>// Find returns the smallest index i at which x <= a[i].
 // If there is no such index, it returns len(a).
 // The slice must be sorted in ascending order.
 func Find(a []int, x int) int {
-    switch len(a) {
-    case 0:
-        return 0
-    case 1:
-        if x <= a[0] {
-            return 0
-        }
-        return 1
-    }
-    mid := len(a) / 2
-    if x <= a[mid-1] {
-        return Find(a[:mid], x)
-    }
-    return mid + Find(a[mid:], x)
+	switch len(a) {
+	case 0:
+		return 0
+	case 1:
+		if x <= a[0] {
+			return 0
+		}
+		return 1
+	}
+	mid := len(a) / 2
+	if x <= a[mid-1] {
+		return Find(a[:mid], x)
+	}
+	return mid + Find(a[mid:], x)
 }
 </code></pre>
-
 <p>
 The statement P(<i>n</i>) to prove:
 </p>
-
 <blockquote>
 For a sorted slice <code>a</code> of length <i>n</i>,
 the function call <code>Find(a,&nbsp;x)</code> will return
 the smallest index&nbsp;<code>i</code> at which <code>x</code>&nbsp;&leq;&nbsp;<code>a[i]</code>.
 If there is no such index, it returns&nbsp;<i>n</i>.
 </blockquote>
-
 <h3 id="proof-2">Proof</h3>
-
 <h4 id="base-case-2">Base case</h4>
-
-<p>If the slice has length at most&nbsp;<code>1</code>,
+<p>If the slice has length at most <code>1</code>,
 the correct answer is returned by the switch statement.</p>
-
 <h4 id="induction-step-1">Induction step</h4>
-
 <p>The induction hypothesis states that P(<i>i</i>) is true for all
-<i>i</i>&nbsp;&lt;&nbsp;<i>k</i>, i.e. the method returns the correct
-answer if the slice has fewer than <i>k</i>&nbsp;element.</p>
-
+<i>i</i> &lt; <i>k</i>, i.e. the method returns the correct
+answer if the slice has fewer than <i>k</i> element.</p>
 <p>Our job is to prove P(<i>k</i>).
-We have already checked P(0) and&nbsp;P(1), so we can assume that <i>k</i>
-is at least&nbsp;2.
+We have already checked P(0) and P(1), so we can assume that <i>k</i>
+is at least 2.
 In that case the program will execute the statement</p>
-
 <pre><code>mid := len(a) / 2</code>
 </code></pre>
-
 <p>A careful study of this statement leads us to the conclusion that
-1&nbsp;&le;&nbsp;mid&nbsp;&lt;&nbsp;<i>k</i>.</p>
-
-<p>There are two cases. If <code>x&nbsp;&leq;&nbsp;a[mid-1]</code>,
-the index we&rsquo;re looking for must be in the slice&nbsp;<code>a[:mid]</code>.
+1 ≤ mid &lt; <i>k</i>.</p>
+<p>There are two cases. If <code>x ≤ a[mid-1]</code>,
+the index we&rsquo;re looking for must be in the slice <code>a[:mid]</code>.
 Since the number of elements in this slice is less than <code>k</code>
-and at least&nbsp;one, the induction hypothesis states that
-<code>Find(a[:mid],&nbsp;x)</code> will return the correct answer.</p>
-
-<p>In the other case, <code>x&nbsp;&gt;&nbsp;a[mid-1]</code> and
-the index we&rsquo;re looking for must be in the slice&nbsp;<code>a[mid:]</code>.
+and at least one, the induction hypothesis states that
+<code>Find(a[:mid], x)</code> will return the correct answer.</p>
+<p>In the other case, <code>x &gt; a[mid-1]</code> and
+the index we&rsquo;re looking for must be in the slice <code>a[mid:]</code>.
 Since the number of elements in this slice is less than <code>k</code>
-and at least&nbsp;one, the induction hypothesis states that
-<code>mid&nbsp;+&nbsp;Find(a[mid:],&nbsp;x)</code> will return the correct answer.</p>
-
+and at least one, the induction hypothesis states that
+<code>mid + Find(a[mid:], x)</code> will return the correct answer.</p>
 <p>Using induction, we can conclude that the function <code>Find</code>
 is correct with respect to its specification when
-0&nbsp;&leq;&nbsp;<i>n</i>&nbsp;&leq;&nbsp;<i>M</i>, where
-<i>M</i> is the maximum value of an&nbsp;<code>int</code>.
+0 ≤ <i>n</i> ≤ <i>M</i>, where
+<i>M</i> is the maximum value of an <code>int</code>.
 Since the length of an array can always be represented
-by an&nbsp;<code>int</code> in&nbsp;Go,
-we have proved this code to be&nbsp;correct. <b>Q.E.D.</b></p>
-
+by an <code>int</code> in Go,
+we have proved this code to be correct. <b>Q.E.D.</b></p>
 <h3 id="test-code">Test code</h3>
-
-<p><blockquote>
+<blockquote>
 Beware of bugs in the above code; I have only proved it correct, not tried&nbsp;it.
 </blockquote>
-<em>Donald Knuth</em></p>
-
+*Donald Knuth*
 <p>The <a href="/golang/table-driven-unit-test/">Table driven unit tests</a> article
 has test code for this function.</p>
-
 <h2 id="further-reading">Further reading</h2>
-
 <div><a href="/algorithms/loop-invariants-explained/"><img src="/algorithms/vanishing-point-thumb.jpg" title="Loop invariants can give you coding superpowers"></a></div>
-
 <p style="margin-top:0;">See <a href="/algorithms/loop-invariants-explained/">Loop invariants can give you coding superpowers</a> for a simple yet powerful tool to help understand iterative code.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -384,15 +321,7 @@ has test code for this function.</p>
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
     <div style="margin-top:1em;"><a href="/algorithms/time-complexity-explained/" title="How to analyse time complexity: Count your steps"><img src="/algorithms/abacus-mini.jpg"></a></div>
   <ul class="none">
   

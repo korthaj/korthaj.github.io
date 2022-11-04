@@ -85,45 +85,33 @@
 <h1>Iteration variable doesn’t see change in range loop</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC0: https://www.maxpixel.net/Astonished-Family-Young-Surprise-Child-Baby-Joy-216876 -->
-
 <div style="margin-top:1em;"><img src="/golang/astonished-boy.jpg"></div>
-
 <p>Why doesn&rsquo;t the iteration variable <code>x</code> notice that <code>a[1]</code> has been updated?</p>
-
 <pre><code>var a [2]int
 for _, x := range a {
-    fmt.Println("x =", x)
-    a[1] = 8
+	fmt.Println("x =", x)
+	a[1] = 8
 }
 fmt.Println("a =", a)</code></pre>
-
 <pre><code>x = 0
 x = 0        <span class="comment">&lt;- Why isn't this 8?</span>
 a = [0 8]</code></pre>
-
 <h2 id="answer">Answer</h2>
-
 <p>The range expression <code>a</code> is evaluated once before beginning the loop
 and a copy of the array is used to generate the iteration values.</p>
-
 <p>To avoid copying the array, iterate over a slice instead.</p>
-
 <pre><code class="language-go">var a [2]int
 for _, x := range <b>a[:]</b> {
-    fmt.Println("x =", x)
-    a[1] = 8
+	fmt.Println("x =", x)
+	a[1] = 8
 }
 fmt.Println("a =", a)
 </code></pre>
-
 <pre><code>x = 0
 x = <b>8</b>
 a = [0 8]
 </code></pre>
-
 <p>See <a href="/golang/for-loop-range-array-slice-map-channel/">4 basic range loop (for-each) patterns</a> for all about range loops in&nbsp;Go.</p>
 
 <ul class="pagina">
@@ -205,14 +193,6 @@ a = [0 8]
       <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a></li>
 
   </ul>
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
 
 
   

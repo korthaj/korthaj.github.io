@@ -85,61 +85,47 @@
 <h1>3 simple ways to create an error</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC0: https://pixabay.com/en/bug-animal-nature-windows-162019/ -->
-
 <div style="float:right;margin:-10px 0 0 20px;"><img src="/golang/bug-small.png"></div>
-
 <h2 id="string-based-errors">String-based errors</h2>
-
 <p>The standard library offers two out-of-the-box options.</p>
-
 <pre><code class="visibleLinks"><span class="comment">// simple string-based error</span>
 err1 := <a href="https://golang.org/pkg/errors/#New">errors.New</a>("math: square root of negative number")
 
 <span class="comment">// with formatting</span>
 err2 := <a href="https://golang.org/pkg/fmt/#Errorf">fmt.Errorf</a>("math: square root of negative number %g", x)</code></pre>
-
 <h2 id="custom-errors-with-data">Custom errors with data</h2>
-
 <p>To define a custom error type, you must satisfy the predeclared <code>error</code>
 <a href="/golang/interfaces-explained/">interface</a>.</p>
-
 <pre><code>type error interface {
-    Error() string
+	Error() string
 }</code></pre>
-
 <p>Here are two examples.</p>
-
 <pre><code>type SyntaxError struct {
-    Line int
-    Col  int
+	Line int
+	Col  int
 }
 
 func (e *SyntaxError) Error() string {
-    return fmt.Sprintf("%d:%d: syntax error", e.Line, e.Col)
+	return fmt.Sprintf("%d:%d: syntax error", e.Line, e.Col)
 }</code></pre>
-
 <pre><code>type InternalError struct {
-    Path string
+	Path string
 }
 
 func (e *InternalError) Error() string {
-    return fmt.Sprintf("parse %v: internal error", e.Path)
+	return fmt.Sprintf("parse %v: internal error", e.Path)
 }</code></pre>
-
 <p>If <code>Foo</code> is a function that can return a <code>SyntaxError</code> or an <code>InternalError</code>, you may handle the two cases like this.</p>
-
 <pre><code>if err := Foo(); err != nil {
-    switch e := err.(type) {
-    case *SyntaxError:
-        <span class="comment">// Do something interesting with e.Line and e.Col.</span>
-    case *InternalError:
-        <span class="comment">// Abort and file an issue.</span>
-    default:
-        log.Println(e)
-    }
+	switch e := err.(type) {
+	case *SyntaxError:
+		<span class="comment">// Do something interesting with e.Line and e.Col.</span>
+	case *InternalError:
+		<span class="comment">// Abort and file an issue.</span>
+	default:
+		log.Println(e)
+	}
 }</code></pre>
 
 
@@ -183,15 +169,7 @@ func (e *InternalError) Error() string {
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

@@ -85,20 +85,14 @@
 <h1>Hash checksums: MD5, SHA-1, SHA-256</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC0: https://pxhere.com/en/photo/893775 -->
-
 <div style="margin-top:1em;"><img src="/golang/computer-monitoring.jpg"></div>
-
 <h2 id="string-checksum">String checksum</h2>
-
 <p>To compute the hash value of a <strong>string</strong> or <strong>byte slice</strong>,
 use the <code>Sum</code> function from a crypto package such as
 <a href="https://golang.org/pkg/crypto/md5/"><code>crypto/md5</code></a>,
 <a href="https://golang.org/pkg/crypto/sha1/"><code>crypto/sha1</code></a>, or
 <a href="https://golang.org/pkg/crypto/sha256/"><code>crypto/sha256</code></a>.</p>
-
 <pre><code>s := "Foo"
 
 md5 := md5.Sum([]byte(s))
@@ -108,13 +102,11 @@ sha256 := sha256.Sum256([]byte(s))
 fmt.Printf("%x\n", md5)
 fmt.Printf("%x\n", sha1)
 fmt.Printf("%x\n", sha256)</code></pre>
-<pre><code>1356c67d7ad1638d816bfb822dd2c25d
+<pre tabindex="0"><code>1356c67d7ad1638d816bfb822dd2c25d
 201a6b3053cc1422d2c3670b62616221d2290929
-1cbec737f863e4922cee63cc2ebbfaafcd1cff8b790d8cfd2e6a5d550b648afa</code></pre>
-<h2 id="file-checksum">File checksum</h2>
-
+1cbec737f863e4922cee63cc2ebbfaafcd1cff8b790d8cfd2e6a5d550b648afa
+</code></pre><h2 id="file-checksum">File checksum</h2>
 <p>To compute the hash value of a <strong>file</strong> or other <strong>input stream</strong>:</p>
-
 <ul>
 <li>create a new <a href="https://golang.org/pkg/hash/#Hash"><code>hash.Hash</code></a>
 from a crypto package such as
@@ -124,17 +116,17 @@ from a crypto package such as
 <li>add data by writing to its <code>io.Writer</code> function,</li>
 <li>extract the checksum by calling its <code>Sum</code> function.</li>
 </ul>
-
 <pre><code>input := strings.NewReader("Foo")
 
 hash := sha256.New()
 if _, err := io.Copy(hash, input); err != nil {
-    log.Fatal(err)
+	log.Fatal(err)
 }
 sum := hash.Sum(nil)
 
 fmt.Printf("%x\n", sum)</code></pre>
-<pre><code>1cbec737f863e4922cee63cc2ebbfaafcd1cff8b790d8cfd2e6a5d550b648afa</code></pre>
+<pre tabindex="0"><code>1cbec737f863e4922cee63cc2ebbfaafcd1cff8b790d8cfd2e6a5d550b648afa
+</code></pre>
 
 <h3>More code examples</h3>
 
@@ -176,15 +168,7 @@ fmt.Printf("%x\n", sum)</code></pre>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

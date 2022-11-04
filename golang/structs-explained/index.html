@@ -85,75 +85,57 @@
 <h1>Create, initialize and compare structs</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC BY 2.0: https://commons.wikimedia.org/wiki/File:The_first_card_written_west_of_Cambridge_(4350624388).jpg -->
-
 <div style="margin-top:1em;"><img src="/golang/catalog-card.jpg"></div>
-
 <ul class="toc">
   <li><a href="#struct-types">Struct types</a></li>
   <li><a href="#2-ways-to-create-and-initialize-a-new-struct">2 ways to create and initialize a new struct</a></li>
   <li><a href="#compare-structs">Compare structs</a></li>
 </ul>
-
 <h2 id="struct-types">Struct types</h2>
-
 <p>A struct is a typed collection of fields, useful for grouping data into records.</p>
-
 <pre><code>type Student struct {
-    Name string
-    Age  int
+	Name string
+	Age  int
 }
 
 var a Student    <span class="comment">// a == Student{"", 0}</span>
 a.Name = "Alice" <span class="comment">// a == Student{"Alice", 0}</span>
 </code></pre>
-
 <ul>
 <li>To define a new <strong>struct type</strong>, you list the names and types of each field.</li>
 <li>The default <strong>zero value</strong> of a struct has all its fields zeroed.</li>
 <li>You can access individual fields with <strong>dot notation</strong>.</li>
 </ul>
-
 <h2 id="2-ways-to-create-and-initialize-a-new-struct">2 ways to create and initialize a new struct</h2>
-
 <p>The <b><code>new</code></b> keyword can be used to create a new struct.
 It returns a <a href="/golang/pointers-explained/">pointer</a> to the newly created struct.</p>
-
 <pre><code>var pa *Student   <span class="comment">// pa == nil</span>
 pa = new(Student) <span class="comment">// pa == &Student{"", 0}</span>
 pa.Name = "Alice" <span class="comment">// pa == &Student{"Alice", 0}</span>
 </code></pre>
-
 <p>You can also create and initialize a struct with a <strong>struct literal</strong>.</p>
-
 <pre><code>b := Student{ <span class="comment">// b == Student{"Bob", 0}</span>
-    Name: "Bob",
+	Name: "Bob",
 }
     
 pb := &Student{ <span class="comment">// pb == &Student{"Bob", 8}</span>
-    Name: "Bob",
-    Age:  8,
+	Name: "Bob",
+	Age:  8,
 }
 
 c := Student{"Cecilia", 5} <span class="comment">// c == Student{"Cecilia", 5}</span>
 d := Student{} <span class="comment">            // d == Student{"", 0}</span>
 </code></pre>
-
 <ul>
 <li>An element list that contains keys does not need to have an element for each struct field. Omitted fields get the zero value for that field.</li>
 <li>An element list that does not contain any keys must list an element for each struct field in the order in which the fields are declared.</li>
-<li>A literal may omit the element list; such a literal evaluates to the zero value for its&nbsp;type.</li>
+<li>A literal may omit the element list; such a literal evaluates to the zero value for its type.</li>
 </ul>
-
 <p>For further details, see <a href="https://golang.org/ref/spec#Composite_literals">The Go Language Specification: Composite literals</a>.</p>
-
 <h2 id="compare-structs">Compare structs</h2>
-
-<p>You can compare struct values with the comparison operators <code>==</code> and&nbsp;<code>!=</code>.
+<p>You can compare struct values with the comparison operators <code>==</code> and <code>!=</code>.
 Two values are equal if their corresponding fields are equal.</p>
-
 <pre><code>d1 := Student{"David", 1}
 d2 := Student{"David", 2}
 fmt.Println(d1 == d2) <span class="comment">// false</span>
@@ -204,15 +186,7 @@ fmt.Println(d1 == d2) <span class="comment">// false</span>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

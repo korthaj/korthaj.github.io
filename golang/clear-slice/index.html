@@ -84,61 +84,41 @@
 <article>
 <h1>How to best clear a slice: empty vs. nil</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC BY 2.0: https://www.flickr.com/photos/aquamech-utah/24441624384 -->
-
 <div style="margin-top:1em;"><img src="/golang/window-cleaner.jpg"></div>
-
 <ul class="toc">
   <li><a href="#remove-all-elements">Remove all elements</a></li>
   <li><a href="#keep-allocated-memory">Keep allocated memory</a></li>
   <li><a href="#empty-slice-vs-nil-slice">Empty slice vs. nil slice</a></li>
 </ul>
-
 <h2 id="remove-all-elements">Remove all elements</h2>
-
 <p>To remove all elements, simply set the slice to <code>nil</code>.</p>
-
 <pre><code>a := []string{"A", "B", "C", "D", "E"}
 a = nil
 fmt.Println(a, len(a), cap(a)) <span class="comment">// [] 0 0</span></code></pre>
-
 <p>This will release the underlying array to the garbage collector (assuming there are no other references).</p>
-
 <h2 id="keep-allocated-memory">Keep allocated memory</h2>
-
 <p>To keep the underlying array, slice the slice to zero length.</p>
-
 <pre><code>a := []string{"A", "B", "C", "D", "E"}
 a = a[:0]
 fmt.Println(a, len(a), cap(a)) <span class="comment">// [] 0 5</span></code></pre>
-
 <p>If the slice is extended again, the original data reappears.</p>
-
 <pre><code>fmt.Println(a[:2]) <span class="comment">// [A B]</span></code></pre>
-
 <h2 id="empty-slice-vs-nil-slice">Empty slice vs. nil slice</h2>
-
 <div><img src="/golang/empty-jar.jpg"></div>
-
 <p>In practice, <strong>nil slices</strong> and <strong>empty slices</strong> can
 often be treated in the same way:</p>
-
 <ul>
 <li>they have zero length and capacity,</li>
 <li>they can be used with the same effect in <a href="/golang/for-loop/">for loops</a>
 and <a href="/golang/append-explained/">append functions</a>,</li>
 <li>and they even look the same when printed.</li>
 </ul>
-
 <pre><code>var a []int = nil
 fmt.Println(len(a)) <span class="comment">// 0</span>
 fmt.Println(cap(a)) <span class="comment">// 0</span>
 fmt.Println(a)      <span class="comment">// []</span></code></pre>
-
 <p>However, if needed, you can tell the difference.</p>
-
 <pre><code>var a []int = nil
 var a0 []int = make([]int, 0)
 
@@ -147,25 +127,18 @@ fmt.Println(a0 == nil) <span class="comment">// false</span>
 
 fmt.Printf("%#v\n", a)  <span class="comment">// []int(nil)</span>
 fmt.Printf("%#v\n", a0) <span class="comment">// []int{}</span></code></pre>
-
-<p>The official Go wiki recommends using nil slices over empty&nbsp;slices.</p>
-
+<p>The official Go wiki recommends using nil slices over empty slices.</p>
 <blockquote>
 <p>[…] the nil slice is the preferred style.</p>
-
 <p>Note that there are limited circumstances where a non-nil but zero-length
 slice is preferred, such as when encoding JSON objects
 (a nil slice encodes to null, while []string{} encodes to the JSON array []).</p>
-
 <p>When designing interfaces, avoid making a distinction between a nil slice
 and a non-nil, zero-length slice, as this can lead to subtle programming errors.
 <a class="quote-source" href="https://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices">The Go wiki: Declaring empty slices</a></p>
 </blockquote>
-
 <h3 id="further-reading">Further reading</h3>
-
 <div><a href="/golang/slices-explained/"><img src="/golang/orange-thumb.jpg" title="Slices and arrays in 6 easy steps"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/slices-explained/">Slices and arrays in 6 easy steps</a></p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -187,15 +160,7 @@ and a non-nil, zero-length slice, as this can lead to subtle programming errors.
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

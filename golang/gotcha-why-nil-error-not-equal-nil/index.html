@@ -85,59 +85,44 @@
 <h1>Nil is not nil</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!--CC BY 2.0: https://www.flickr.com/photos/davidpacey1975/9049992204 -->
-
 <div style="margin-top:1em;"><img src="/golang/odd-one-out.jpg"></div>
-
 <p>Why is nil not equal to nil in this example?</p>
-
 <pre><code>func Foo() error {
-    var err *os.PathError = nil
-    <span class="comment">// …</span>
-    return err
+	var err *os.PathError = nil
+	<span class="comment">// …</span>
+	return err
 }
 
 func main() {
-    err := Foo()
-    fmt.Println(err)        <span class="comment">// &lt;nil&gt;</span>
-    fmt.Println(<b>err == nil</b>) <span class="comment">// <b>false</b></span>
+	err := Foo()
+	fmt.Println(err)        <span class="comment">// &lt;nil&gt;</span>
+	fmt.Println(<b>err == nil</b>) <span class="comment">// <b>false</b></span>
 }</code></pre>
-
 <h2 id="answer">Answer</h2>
-
 <p>An interface value is equal to <code>nil</code> only if both its value and dynamic type are <code>nil</code>.
 In the example above, <code>Foo()</code> returns <code>[nil, *os.PathError]</code> and we compare it with <code>[nil,&nbsp;nil]</code>.</p>
-
 <p>You can think of the interface value <code>nil</code> as typed, and <code>nil</code> <em>without type</em> doesn’t equal <code>nil</code> <em>with type</em>.
-
-If we convert <code>nil</code> to the correct type, the values are indeed equal.</p>
-
+<p>If we convert <code>nil</code> to the correct type, the values are indeed equal.</p></p>
 <pre><code class="skiphl">…
 fmt.Println(err == <b>(*os.PathError)(nil)</b>) <span class="comment">// <b>true</b></span>
 …</code></pre>
-
-<p><h3 id="a-better-approach">A better approach</h3>
-<p>To avoid this problem use a variable of type <code>error</code> instead, for example a <a href="/golang/named-return-values-parameters/">named return value</a>.</p></p>
-
+<h3 id="a-better-approach">A better approach</h3>
+<p>To avoid this problem use a variable of type <code>error</code> instead, for example a [named return value](/golang/named-return-values-parameters/).</p>
 <pre><code class="skiphl">func Foo() (err error) {
-    <span class="comment">// …</span>
-    return <span class="comment">// err is unassigned and has zero value [nil, nil]</span>
+	<span class="comment">// …</span>
+	return <span class="comment">// err is unassigned and has zero value [nil, nil]</span>
 }
 
 func main() {
-    err := Foo()
-    fmt.Println(err)        <span class="comment">// &lt;nil&gt;</span>
-    fmt.Println(<b>err == nil</b>) <span class="comment"><b>// true</b></span>
+	err := Foo()
+	fmt.Println(err)        <span class="comment">// &lt;nil&gt;</span>
+	fmt.Println(<b>err == nil</b>) <span class="comment"><b>// true</b></span>
 }</code></pre>
-
 <blockquote class="math">
 <p><strong>Best practice:</strong> Use the built-in <code>error</code> interface type, rather than a concrete type, to store and return error values.</p>
 </blockquote>
-
 <div><a href="/golang/interfaces-explained/"><img src="/golang/connection-thumb.jpg" title="Interfaces in 5 easy steps"></a></div>
-
 <p style="margin-top:0;">See <a href="/golang/interfaces-explained/">Interfaces in 5 easy steps</a> for an extensive guide to interfaces in&nbsp;Go.</p>
 
 <ul class="pagina">
@@ -217,14 +202,6 @@ func main() {
       <li><b>»&nbsp;</b>Nil is not nil</li>
 
   </ul>
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
 
 
   

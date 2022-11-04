@@ -84,64 +84,47 @@
 <article>
 <h1>Error handling best practice</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC BY 3.0: https://golang.org/doc/gopher/ -->
-
 <div><img src="/golang/errors.png" style="float: right; margin: 0 0 20px 20px;" /></div>
-
 <p>Go has two different error-handling mechanisms:</p>
-
 <ul>
 <li>most functions return <a href="/golang/create-error/"><strong>errors</strong></a>;</li>
 <li>only a truly unrecoverable condition, such as an out-of-range index, produces a run-time exception,
 known as a <a href="/golang/recover-from-panic/"><strong>panic</strong></a>.</li>
 </ul>
-
 <p>Go’s multivalued return makes it easy to return a detailed error message
 alongside the normal return value. By convention, such messages
 have type <code>error</code>, a simple built-in <a href="/golang/interfaces-explained/">interface</a>:</p>
-<pre><code>type error interface {
+<pre tabindex="0"><code>type error interface {
     Error() string
-}</code></pre>
-<h3 id="error-handling-example">Error handling example</h3>
-
+}
+</code></pre><h3 id="error-handling-example">Error handling example</h3>
 <p>The <code>os.Open</code> function returns a non-nil
 <code>error</code> value when it fails to open a file.</p>
-<pre><code>func Open(name string) (file *File, err error)</code></pre>
-<p>The following code uses <code>os.Open</code> to open a file.
+<pre tabindex="0"><code>func Open(name string) (file *File, err error)
+</code></pre><p>The following code uses <code>os.Open</code> to open a file.
 If an <code>error</code> occurs it calls <code>log.Fatal</code>
 to print the error message and stop.</p>
-
 <pre><code>f, err := os.Open("filename.ext")
 if err != nil {
     log.Fatal(err)
 }
 <span class="comment">// do something with the open *File f</span></code></pre>
-
 <h2 id="custom-errors">Custom errors</h2>
-
 <p>To create a simple string-only <code>error</code> you can use <a href="https://golang.org/pkg/errors/#New"><code>errors.New</code></a>:</p>
-<pre><code>err := errors.New(&#34;Houston, we have a problem&#34;)</code></pre>
+<pre><code>err := errors.New(&quot;Houston, we have a problem&quot;)
+</code></pre>
 <p>The <code>error</code> interface requires only an <code>Error</code> method,
 but specific <code>error</code> implementations often have additional methods,
 allowing callers to inspect the details of the error.</p>
-
 <h3 id="learn-more">Learn more</h3>
-
 <div><a href="/golang/create-error/" title="3 simple ways to create an error"><img src="/golang/bug-small.png"></a></div>
-
 <div>See <a href="/golang/create-error/">3 simple ways to create an error</a> for more examples.</div>
-
 <h2 id="panic">Panic</h2>
-
 <p>Panics are similar to C++ and Java exceptions, but are only intended for run-time errors,
 such as following a nil pointer or attempting to index an array out of bounds.</p>
-
 <h3 id="learn-more-1">Learn more</h3>
-
 <div><a href="/golang/recover-from-panic/" title="Recover from a panic"><img src="/golang/panic-thumb.jpg"></a></div>
-
 <div>See <a href="/golang/recover-from-panic/">Recover from a panic</a> for a tutorial on how to recover from and test panics.</div>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -169,15 +152,7 @@ such as following a nil pointer or attempting to index an array out of bounds.</
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

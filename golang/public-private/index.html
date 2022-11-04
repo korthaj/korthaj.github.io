@@ -84,31 +84,21 @@
 <article>
 <h1>Public vs. private</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC0: http://www.publicdomainpictures.net/view-image.php?image=23003 -->
-
 <div><img src="/golang/private.jpg" class="extra-content" alt="PRIVATE KEEP OUT" style="float: right; margin: 20px 0 0 20px;"></div>
-
 <p class="lead">A package is the smallest unit of private encap&shy;sulation in&nbsp;Go.</p>
-
 <ul>
 <li>All identifiers defined within a <a href="/golang/packages-explained/">package</a> are visible throughout that package.</li>
 <li>When importing a package you can access only its <strong>exported</strong> identifiers.</li>
 <li>An identifier is exported if it begins with a <strong>capital letter</strong>.</li>
 </ul>
-
 <p>Exported and unexported identifiers are used to describe the public interface of a package
 and to guard against certain programming errors.</p>
-
 <blockquote class="warning">
 <b>Warning:</b> Unexported identifiers is not a security measure and it does not hide or protect any information.
 </blockquote>
-
 <h2 id="example">Example</h2>
-
 <p>In this package, the only exported identifiers are <code>StopWatch</code> and <code>Start</code>.</p>
-
 <pre><code>package timer
 
 import "time"
@@ -116,33 +106,32 @@ import "time"
 // A StopWatch is a simple clock utility.
 // Its zero value is an idle clock with 0 total time.
 type <b>StopWatch</b> struct {
-    start   time.Time
-    total   time.Duration
-    running bool
+	start   time.Time
+	total   time.Duration
+	running bool
 }
 
 // Start turns the clock on.
 func (s *StopWatch) <b>Start</b>() {
-    if !s.running {
-        s.start = time.Now()
-        s.running = true
-    }
+	if !s.running {
+		s.start = time.Now()
+		s.running = true
+	}
 }</code></pre>
-
 <p>The <code>StopWatch</code> and its exported methods can be imported and used in a different package.</p>
-
 <pre><code>package main
 
 import "timer"
 
 func main() {
-    clock := new(<b>timer.StopWatch</b>)
-    clock.<b>Start()</b>
-    if clock.<b>running</b> { <span class="comment">// <b>ILLEGAL</b></span>
-        <span class="comment">// …</span>
-    }
+	clock := new(<b>timer.StopWatch</b>)
+	clock.<b>Start()</b>
+	if clock.<b>running</b> { <span class="comment">// <b>ILLEGAL</b></span>
+		<span class="comment">// …</span>
+	}
 }</code></pre>
-<pre><code>../main.go:8:15: clock.running undefined (cannot refer to unexported field or method clock.running)</code></pre>
+<pre tabindex="0"><code>../main.go:8:15: clock.running undefined (cannot refer to unexported field or method clock.running)
+</code></pre>
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
 <a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fpublic-private%2f&amp;text=Public%20vs.%20private&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fpublic-private%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
@@ -186,15 +175,7 @@ func main() {
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

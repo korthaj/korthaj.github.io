@@ -85,14 +85,11 @@
 <h1>How to get current timestamp</h1>
 <div class="tagline">yourbasic.org/golang</div>
 <!-- CC0: https://pixnio.com/es/animales/perros/reloj-de-pulsera-perro-mascota-animal-hombre-camisa-mano -->
-
 <div style="margin-top:1em;"><img src="/golang/wrist-watch-and-dog.jpg"></div>
-
 <p>Use <a href="https://golang.org/pkg/time/#Now"><code>time.Now</code></a> and one of
 <a href="https://golang.org/pkg/time/#Time.Unix"><code>time.Unix</code></a> or
 <a href="https://golang.org/pkg/time/#Time.UnixNano"><code>time.UnixNano</code></a>
 to get a timestamp.</p>
-
 <pre><code>now := time.Now()      <span class="comment">// current local time</span>
 sec := now.Unix()      <span class="comment">// number of seconds since January 1, 1970 UTC</span>
 nsec := now.UnixNano() <span class="comment">// number of nanoseconds since January 1, 1970 UTC</span>
@@ -101,9 +98,10 @@ fmt.Println(now)  <span class="comment">// time.Time</span>
 fmt.Println(sec)  <span class="comment">// int64</span>
 fmt.Println(nsec) <span class="comment">// int64</span>
 </code></pre>
-<pre><code>2009-11-10 23:00:00 +0000 UTC m=+0.000000000
+<pre tabindex="0"><code>2009-11-10 23:00:00 +0000 UTC m=+0.000000000
 1257894000
-1257894000000000000</code></pre>
+1257894000000000000
+</code></pre>
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
 <a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fcurrent-time%2f&amp;text=How%20to%20get%20current%20timestamp&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
 <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fcurrent-time%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
@@ -153,15 +151,7 @@ fmt.Println(nsec) <span class="comment">// int64</span>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

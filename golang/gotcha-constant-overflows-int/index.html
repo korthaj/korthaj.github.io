@@ -85,40 +85,27 @@
 <h1>Constant overflows int</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC BY-SA 2.0: https://www.geograph.org.uk/more.php?id=3291499 -->
-
 <div style="margin-top:1em;"><img src="/golang/reservoir-overflow.jpg"></div>
-
 <p>Why doesn&rsquo;t this code compile?</p>
-
 <pre><code>const n = 9876543210 * 9876543210
 fmt.Println(n)</code></pre>
-<pre><code>../main.go:2:13: constant 97546105778997104100 overflows int</code></pre>
-<h2 id="answer">Answer</h2>
-
+<pre tabindex="0"><code>../main.go:2:13: constant 97546105778997104100 overflows int
+</code></pre><h2 id="answer">Answer</h2>
 <p>The untyped constant <code>n</code> must be converted to a type before it can be
 assigned to the <code>interface{}</code> parameter in the call to <code>fmt.Println</code>.</p>
-
 <pre><code>fmt.Println(a ...interface{})</code></pre>
-
 <p>When the type can’t be inferred from the context, an untyped constant
 is converted to a <code>bool</code>, <code>int</code>, <code>float64</code>, <code>complex128</code>, <code>string</code> or <code>rune</code>
 depending of the format of the&nbsp;constant.</p>
-
 <p>In this case the constant is an integer, but <code>n</code> is larger
 than the maximum value of an&nbsp;<code>int</code>.</p>
-
 <p>However, <code>n</code> can be represented as a&nbsp;<code>float64</code>.</p>
-
 <pre><code class="language-go">const n = 9876543210 * 9876543210
 fmt.Println(float64(n))
 </code></pre>
-
 <pre><code>9.75461057789971e+19
 </code></pre>
-
 <p>For exact representation of big numbers, the <a href="https://golang.org/pkg/math/big/">math/big</a>
 package implements arbitrary-precision arithmetic.
 It supports signed integers, rational numbers and floating-point numbers.</p>
@@ -202,14 +189,6 @@ It supports signed integers, rational numbers and floating-point numbers.</p>
       <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a></li>
 
   </ul>
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
 
 
   

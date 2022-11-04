@@ -86,14 +86,11 @@
 <div class="tagline">yourbasic.org/golang</div>
 
 <!-- CC0: https://www.pexels.com/photo/background-image-beautiful-blur-bright-414586/ -->
-
 <div style="margin-top:1em;"><img src="/golang/environment.jpg"></div>
-
 <p>Use the <a href="https://golang.org/pkg/os/#Setenv"><code>os.Setenv</code></a>,
 <a href="https://golang.org/pkg/os/#Getenv"><code>os.Getenv</code></a> and
 <a href="https://golang.org/pkg/os/#Unsetenv"><code>os.Unsetenv</code></a> functions
 to access environment variables.</p>
-
 <pre><code>fmt.Printf("%q\n", <b>os.Getenv</b>("SHELL")) <span class="comment">// "/bin/bash"</span>
 
 <b>os.Unsetenv</b>("SHELL")
@@ -101,20 +98,19 @@ fmt.Printf("%q\n", <b>os.Getenv</b>("SHELL")) <span class="comment">// ""</span>
 
 <b>os.Setenv</b>("SHELL", "/bin/dash")
 fmt.Printf("%q\n", <b>os.Getenv</b>("SHELL")) <span class="comment">// "/bin/dash"</span></code></pre>
-
 <p>The <a href="https://golang.org/pkg/os/#Environ"><code>os.Environ</code></a> function
 returns a slice of <code>&quot;key=value&quot;</code> strings listing all environment variables.</p>
-
 <pre><code class="skiphl">for _, s := range <b>os.Environ</b>() {
-    kv := strings.SplitN(s, "=", 2) <span class="comment">// unpacks "key=value"</span>
-    fmt.Printf("key:%q value:%q\n", kv[0], kv[1])
+	kv := strings.SplitN(s, "=", 2) <span class="comment">// unpacks "key=value"</span>
+	fmt.Printf("key:%q value:%q\n", kv[0], kv[1])
 }</code></pre>
-<pre><code>key:&#34;SHELL&#34; value:&#34;/bin/bash&#34;
-key:&#34;SESSION&#34; value:&#34;ubuntu&#34;
-key:&#34;TERM&#34; value:&#34;xterm-256color&#34;
-key:&#34;LANG&#34; value:&#34;en_US.UTF-8&#34;
-key:&#34;XMODIFIERS&#34; value:&#34;@im=ibus&#34;
-…</code></pre>
+<pre tabindex="0"><code>key:&quot;SHELL&quot; value:&quot;/bin/bash&quot;
+key:&quot;SESSION&quot; value:&quot;ubuntu&quot;
+key:&quot;TERM&quot; value:&quot;xterm-256color&quot;
+key:&quot;LANG&quot; value:&quot;en_US.UTF-8&quot;
+key:&quot;XMODIFIERS&quot; value:&quot;@im=ibus&quot;
+…
+</code></pre>
 
 <h3>More code examples</h3>
 
@@ -144,15 +140,7 @@ key:&#34;XMODIFIERS&#34; value:&#34;@im=ibus&#34;
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

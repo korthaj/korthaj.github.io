@@ -86,42 +86,39 @@
 <div class="tagline">yourbasic.org/golang</div>
 
 <!-- CC BY-SA 3.0: https://commons.wikimedia.org/wiki/File:HP-HP2624B-Terminal_11.jpg -->
-
 <div style="margin-top:1em;"><img src="/golang/hp-terminal.jpg"></div>
-
 <p>This example is a simplified version of the Unix <code>grep</code> command.
 The program searches the input file for lines containing the given pattern and prints these lines.</p>
-
 <pre><code>func main() {
-    log.SetPrefix("grep: ")
-    log.SetFlags(0) <span class="comment">// no extra info in log messages</span>
+	log.SetPrefix("grep: ")
+	log.SetFlags(0) <span class="comment">// no extra info in log messages</span>
 
-    if len(os.Args) != 3 {
-        fmt.Printf("Usage: %v PATTERN FILE\n", os.Args[0])
-        return
-    }
+	if len(os.Args) != 3 {
+		fmt.Printf("Usage: %v PATTERN FILE\n", os.Args[0])
+		return
+	}
 
-    pattern, err := regexp.Compile(os.Args[1])
-    if err != nil {
-        log.Fatalln(err)
-    }
+	pattern, err := regexp.Compile(os.Args[1])
+	if err != nil {
+		log.Fatalln(err)
+	}
 
-    file, err := os.Open(os.Args[2])
-    if err != nil {
-        log.Fatalln(err)
-    }
-    defer file.Close()
+	file, err := os.Open(os.Args[2])
+	if err != nil {
+		log.Fatalln(err)
+	}
+	defer file.Close()
 
-    scanner := bufio.NewScanner(file)
-    for scanner.Scan() {
-        line := scanner.Text()
-        if pattern.MatchString(line) {
-            fmt.Println(line)
-        }
-    }
-    if err := scanner.Err(); err != nil {
-        log.Println(err)
-    }
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		line := scanner.Text()
+		if pattern.MatchString(line) {
+			fmt.Println(line)
+		}
+	}
+	if err := scanner.Err(); err != nil {
+		log.Println(err)
+	}
 }</code></pre>
 
 
@@ -177,15 +174,7 @@ The program searches the input file for lines containing the given pattern and p
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

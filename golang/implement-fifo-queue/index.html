@@ -85,62 +85,47 @@
 <h1>2 basic FIFO queue implementations</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC BY 2.0: https://www.flickr.com/photos/hktang/4243300265 -->
-
 <div style="margin-top:1em;"><img src="/golang/queue.jpg"></div>
-
 <p>A simple way to implement a temporary queue data structure in Go is to use a <a href="/golang/slices-explained/">slice</a>:</p>
-
 <ul>
 <li>to enqueue you use the built-in <code>append</code> function, and</li>
 <li>to dequeue you slice off the first element.</li>
 </ul>
-
 <pre><code>var queue []string
 
 queue = append(queue, "Hello ") <span class="comment">// Enqueue</span>
 queue = append(queue, "world!")
 
 for len(queue) > 0 {
-    fmt.Print(queue[0]) <span class="comment">// First element</span>
-    queue = queue[1:]   <span class="comment">// Dequeue</span>
+	fmt.Print(queue[0]) <span class="comment">// First element</span>
+	queue = queue[1:]   <span class="comment">// Dequeue</span>
 }</code></pre>
-
 <pre>Hello world!</pre>
-
 <h2 id="watch-out-for-memory-leaks">Watch out for memory leaks</h2>
-
 <p>You may want to remove the first element before dequeuing.</p>
-
 <pre><code><span class="comment">// Dequeue</span>
 queue[0] = "" <span class="comment">// Erase element (write zero value)</span>
 queue = queue[1:]</code></pre>
-
 <blockquote class="warning">
 <b>Warning:</b> The memory allocated for the array is never returned.
 For a long-living queue you should probably use a dynamic data structure,
 such as a linked list.
 </blockquote>
-
 <h2 id="linked-list">Linked list</h2>
-
 <p>The <a href="https://golang.org/pkg/container/list/"><code>container/list</code></a> package
-implements a doubly linked list which can be used as a&nbsp;queue.</p>
-
+implements a doubly linked list which can be used as a queue.</p>
 <pre><code>queue := list.New()
 
 queue.PushBack("Hello ") <span class="comment">// Enqueue</span>
 queue.PushBack("world!")
 
 for queue.Len() > 0 {
-    e := queue.Front() <span class="comment">// First element</span>
-    fmt.Print(e.Value)
+	e := queue.Front() <span class="comment">// First element</span>
+	fmt.Print(e.Value)
 
-    queue.Remove(e) <span class="comment">// Dequeue</span>
+	queue.Remove(e) <span class="comment">// Dequeue</span>
 }</code></pre>
-
 <pre>Hello world!</pre>
 
 
@@ -178,15 +163,7 @@ for queue.Len() > 0 {
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

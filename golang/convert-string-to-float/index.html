@@ -84,10 +84,7 @@
 <article>
 <h1>Convert between float and string</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC BY 2.0: https://www.flickr.com/photos/jorel314/3352784321 -->
-
 <pre style="font-size:50%;line-height:1em;border:0;">
      3.141592653589793238462643383279
    5028841971693993751058209749445923
@@ -112,33 +109,24 @@
     3724587             00660631558
     817488               152092096
 </pre>
-
 <h2 id="string-to-float">String to float</h2>
-
 <p>Use the <a href="https://golang.org/pkg/strconv/#ParseFloat"><code>strconv.ParseFloat</code></a> function to parse a string
 as a floating-point number with the precision specified by <code>bitSize</code>:
 32 for <code>float32</code>, or 64 for <code>float64</code>.</p>
-
 <pre><code>func ParseFloat(s string, bitSize int) (float64, error)</code></pre>
-
 <p>When <code>bitSize</code> is 32, the result still has type <code>float64</code>,
-but it will be convertible to <code>float32</code> without changing its&nbsp;value.</p>
-
+but it will be convertible to <code>float32</code> without changing its value.</p>
 <pre><code>f := "3.14159265"
 if s, err := strconv.ParseFloat(f, 32); err == nil {
-    fmt.Println(s) <span class="comment">// 3.1415927410125732</span>
+	fmt.Println(s) <span class="comment">// 3.1415927410125732</span>
 }
 if s, err := strconv.ParseFloat(f, 64); err == nil {
-    fmt.Println(s) <span class="comment">// 3.14159265</span>
+	fmt.Println(s) <span class="comment">// 3.14159265</span>
 }
 </code></pre>
-
 <h2 id="float-to-string">Float to string</h2>
-
-<p>Use the <a href="https://golang.org/pkg/fmt/#Sprintf"><code>fmt.Sprintf</code></a> method to format a floating-point number as a&nbsp;string.</p>
-
+<p>Use the <a href="https://golang.org/pkg/fmt/#Sprintf"><code>fmt.Sprintf</code></a> method to format a floating-point number as a string.</p>
 <pre><code>s := fmt.Sprintf("%f", 123.456) <span class="comment">// s == "123.456000"</span></code></pre>
-
 <table class="white">
   <thead>
     <tr>
@@ -175,11 +163,8 @@ if s, err := strconv.ParseFloat(f, 64); err == nil {
     </tr>
   </tbody>
 </table>
-
 <h3 id="fmt-cheat-sheet">Fmt cheat sheet</h3>
-
 <div><a href="/golang/fmt-printf-reference-cheat-sheet/"><img src="/golang/format-thumb.jpg" title="How to format with fmt"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/fmt-printf-reference-cheat-sheet/">How to format with fmt</a></p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -207,15 +192,7 @@ if s, err := strconv.ParseFloat(f, 64); err == nil {
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

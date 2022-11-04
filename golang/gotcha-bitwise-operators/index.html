@@ -85,41 +85,26 @@
 <h1>Go and Pythagoras</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- Public domain: https://en.wikipedia.org/wiki/File:Cropped_image_of_Pythagoras_from_Raphael%27s_School_of_Athens.jpg -->
-
 <div style="margin-top:1em;"><img src="/golang/pythagoras.jpg"></div>
-
 <p>Pythagorean triples are integer solutions to the Pythagorean Theorem,
 a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>.</p>
-
-<p>A well-known example is (3,&nbsp;4,&nbsp;5):</p>
-
+<p>A well-known example is (3, 4, 5):</p>
 <pre><code>fmt.Println(3^2+4^2 == 5^2) <span class="comment">// true</span></code></pre>
-
 <p>The triple (6,&nbsp;8,&nbsp;10) is another example, but Go doesn't seem to agree.</p>
-
 <pre><code>fmt.Println(6^2+8^2 == 10^2) <span class="comment">// <b>false</b></span></code></pre>
-
 <h2 id="answer">Answer</h2>
-
 <p>The circumflex&nbsp;<code>^</code> denotes bitwise&nbsp;XOR in&nbsp;Go.
 The computation written in base&nbsp;2 looks like&nbsp;this:</p>
-
 <pre>
 0011 ^ 0010 == 0001   (3^2 == 1)
 0100 ^ 0010 == 0110   (4^2 == 6)
 0101 ^ 0010 == 0111   (5^2 == 7)
 </pre>
-
 <p>Of course, <code>1 + 6 == 7</code>; Go and Pythagoras agree on that.
 See <a href="/golang/bitwise-operator-cheat-sheet/">Bitwise operators cheat sheet</a> for more about bitwise calculations in&nbsp;Go.</p>
-
 <p>To raise an integer to the power&nbsp;2, use multiplication.</p>
-
 <pre><code>fmt.Println(6*6 + 8*8 == 10*10) <span class="comment">// <b>true</b></span></code></pre>
-
 <p>Go has no built-in support for integer power computations,
 but there is a <a href="https://golang.org/pkg/math/#Pow"><code>math.Pow</code></a> function for floating-point numbers.</p>
 
@@ -202,14 +187,6 @@ but there is a <a href="https://golang.org/pkg/math/#Pow"><code>math.Pow</code><
       <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a></li>
 
   </ul>
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
 
 
   

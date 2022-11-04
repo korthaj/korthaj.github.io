@@ -41,34 +41,25 @@
 <h1>Maximum value of an int</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <p>Go has two predeclared integer types with implementation-specific sizes:</p>
-
 <ul>
-<li>a <code>uint</code> (unsigned integer) has either 32 or 64&nbsp;bits,</li>
-<li>an <code>int</code> (signed integer) has the same size as a&nbsp;<code>uint</code>.</li>
+<li>a <code>uint</code> (unsigned integer) has either 32 or 64 bits,</li>
+<li>an <code>int</code> (signed integer) has the same size as a <code>uint</code>.</li>
 </ul>
-
 <p>This code computes the limit values as <strong>untyped constants</strong>.</p>
-
 <pre><code>const UintSize = 32 << (^uint(0) >> 32 & 1) <span class="comment">// 32 or 64</span>
 
 const (
-    MaxInt  = 1&lt;&lt;(UintSize-1) - 1 <span class="comment">// 1<<31 - 1 or 1<<63 - 1</span>
-    MinInt  = -MaxInt - 1         <span class="comment">// -1 << 31 or -1 << 63</span>
-    MaxUint = 1&lt;&lt;UintSize - 1     <span class="comment">// 1<<32 - 1 or 1<<64 - 1</span>
+	MaxInt  = 1&lt;&lt;(UintSize-1) - 1 <span class="comment">// 1<<31 - 1 or 1<<63 - 1</span>
+	MinInt  = -MaxInt - 1         <span class="comment">// -1 << 31 or -1 << 63</span>
+	MaxUint = 1&lt;&lt;UintSize - 1     <span class="comment">// 1<<32 - 1 or 1<<64 - 1</span>
 )</code></pre>
-
 <blockquote>
 <p>The <a href="https://golang.org/pkg/math/bits/#pkg-constants"><code>UintSize</code></a> constant
 is also available in package <a href="https://golang.org/pkg/math/bits/"><code>math/bits</code></a>.</p>
 </blockquote>
-
 <h3 id="further-reading">Further reading</h3>
-
 <div><a href="/golang/bitwise-operator-cheat-sheet/"><img src="/golang/Leibniz-binary-system-1697-thumb.jpg" title="Bitwise operators cheat sheet"></a></div>
-
 <div style="margin-top:0;"><a href="/golang/bitwise-operator-cheat-sheet/">Bitwise operators cheat sheet</a></div>
 
 
@@ -106,15 +97,7 @@ is also available in package <a href="https://golang.org/pkg/math/bits/"><code>m
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

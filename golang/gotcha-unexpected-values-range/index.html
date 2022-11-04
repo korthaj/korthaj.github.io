@@ -85,45 +85,32 @@
 <h1>Unexpected values in range loop</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC0: https://www.maxpixel.net/Man-People-Human-Age-Senior-New-Media-Surprise-1332348 -->
-
 <div style="margin-top:1em;"><img src="/golang/surprised-man.jpg"></div>
-
 <p>Why does this code</p>
-
 <pre><code>primes := []int{2, 3, 5, 7}
 for p := range primes {
-    fmt.Println(p)
+	fmt.Println(p)
 }</code></pre>
-
 <p>print</p>
-<pre><code>0
+<pre tabindex="0"><code>0
 1
 2
-3</code></pre>
-<h2 id="answer">Answer</h2>
-
+3
+</code></pre><h2 id="answer">Answer</h2>
 <p>For arrays and slices, the range loop generates <strong>two&nbsp;values</strong>:</p>
-
 <ul>
 <li> first the index,</li>
 <li> then the data at this position.</li>
 </ul>
-
 <p>If you omit the second value, you get only the indices.</p>
-
 <p>To print the data, use the second value instead:</p>
-
 <pre><code class="language-go">primes := []int{2, 3, 5, 7}
 for <span class="highlight">_, </span>p := range primes {
-    fmt.Println(p)
+	fmt.Println(p)
 }
 </code></pre>
-
 <p>In this case, the blank identifier (underscore) is used for the return value you're not interested&nbsp;in.</p>
-
 <p>See <a href="/golang/for-loop-range-array-slice-map-channel/">4 basic range loop (for-each) patterns</a> for all about range loops in&nbsp;Go.</p>
 
 <ul class="pagina">
@@ -205,14 +192,6 @@ for <span class="highlight">_, </span>p := range primes {
       <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a></li>
 
   </ul>
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
 
 
   

@@ -84,12 +84,8 @@
 <article>
 <h1>4 basic range loop (for-each) patterns</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC BY 3.0: https://github.com/shalakhin/gophericons -->
-
 <div style="float:right; margin:0 20px 0 10px;"><img src="/golang/gopher-hula-hoop.jpg"></div>
-
 <ul class="toc">
   <li><a href="#basic-for-each-loop-slice-or-array">Basic for-each loop (slice or array)</a></li>
   <li><a href="#string-iteration-runes-or-bytes">String iteration: runes or bytes</a></li>
@@ -97,108 +93,88 @@
   <li><a href="#channel-iteration">Channel iteration</a></li>
   <li><a href="#gotchas">Gotchas</a></li>
 </ul>
-
 <h2 id="basic-for-each-loop-slice-or-array">Basic for-each loop (slice or array)</h2>
-
 <pre><code>a := []string{"Foo", "Bar"}
 <b>for i, s := range a</b> {
-    fmt.Println(i, s)
+	fmt.Println(i, s)
 }</code></pre>
-<pre><code>0 Foo
-1 Bar</code></pre>
-<ul>
+<pre tabindex="0"><code>0 Foo
+1 Bar
+</code></pre><ul>
 <li>The range expression, <code>a</code>, is <strong>evaluated once</strong> before beginning the loop.</li>
 <li>The iteration values are assigned to the respective iteration variables, <code>i</code> and <code>s</code>,
 <strong>as in an assignment statement</strong>.</li>
 <li>The second iteration variable is optional.</li>
-<li>For a nil slice, the number of iterations is&nbsp;0.</li>
+<li>For a nil slice, the number of iterations is 0.</li>
 </ul>
-
 <h2 id="string-iteration-runes-or-bytes">String iteration: runes or bytes</h2>
-
 <p>For strings, the range loop iterates over <a href="/golang/rune/">Unicode code points</a>.</p>
-
 <pre><code><b>for i, ch := range "日本語"</b> {
-    fmt.Printf("%#U starts at byte position %d\n", ch, i)
+	fmt.Printf("%#U starts at byte position %d\n", ch, i)
 }</code></pre>
-
 <pre><code>U+65E5 '日' starts at byte position 0
 U+672C '本' starts at byte position 3
 U+8A9E '語' starts at byte position 6
 </code></pre>
-
 <ul>
 <li>The index is the first byte of a UTF-8-encoded code point;
 the second value, of type <code>rune</code>, is the value of the code point.</li>
 <li>For an invalid UTF-8 sequence, the second value will be 0xFFFD,
 and the iteration will advance a single byte.</li>
 </ul>
-
 <blockquote>
 To loop over individual bytes, simply use a
 <a href="/golang/for-loop/">normal for loop</a> and string indexing:
-
 <pre><code>const s = "日本語"
 for i := 0; i < len(s); i++ {
-    fmt.Printf("%x ", s[i])
+	fmt.Printf("%x ", s[i])
 }
 </code></pre>
-
 <pre>e6 97 a5 e6 9c ac e8 aa 9e</pre>
 </blockquote>
-
 <h2 id="map-iteration-keys-and-values">Map iteration: keys and values</h2>
-
 <p>The iteration order over <a href="/golang/maps-explained/">maps</a> is not specified and is not guaranteed
 to be the same from one iteration to the next.</p>
-
 <pre><code>m := map[string]int{
-    "one":   1,
-    "two":   2,
-    "three": 3,
+	"one":   1,
+	"two":   2,
+	"three": 3,
 }
 <b>for k, v := range m</b> {
-    fmt.Println(k, v)
+	fmt.Println(k, v)
 }</code></pre>
-<pre><code>two 2
+<pre tabindex="0"><code>two 2
 three 3
-one 1</code></pre>
-<ul>
+one 1
+</code></pre><ul>
 <li>If a map entry that has not yet been reached is removed during iteration,
 this value will not be produced.</li>
 <li>If a map entry is created during iteration,
 that entry may or may not be produced.</li>
-<li>For a nil map, the number of iterations is&nbsp;0.</li>
+<li>For a nil map, the number of iterations is 0.</li>
 </ul>
-
 <h2 id="channel-iteration">Channel iteration</h2>
-
 <p>For <a href="/golang/channels-explained/">channels</a>, the iteration values are the successive values
 sent on the channel until closed.</p>
-
 <pre><code>ch := make(chan int)
 go func() {
-    ch <- 1
-    ch <- 2
-    ch <- 3
-    close(ch)
+	ch <- 1
+	ch <- 2
+	ch <- 3
+	close(ch)
 }()
 <b>for n := range ch</b> {
-    fmt.Println(n)
+	fmt.Println(n)
 }</code></pre>
-<pre><code>1
+<pre tabindex="0"><code>1
 2
-3</code></pre>
-<ul>
+3
+</code></pre><ul>
 <li>For a nil channel, the range loop blocks forever.</li>
 </ul>
-
 <h2 id="gotchas">Gotchas</h2>
-
 <div><a href="/golang/gotcha/"><img src="/golang/angry-man-with-computer-thumb.png" title="Do you make these Go coding mistakes?"></a></div>
-
-<p>Here are two traps that you want to avoid when using range&nbsp;loops:</p>
-
+<p>Here are two traps that you want to avoid when using range loops:</p>
 <ul>
 <li><a href="/golang/gotcha-unexpected-values-range/">Unexpected values in range loop</a></li>
 <li><a href="/golang/gotcha-change-value-range/">Can’t change entries in range loop</a></li>
@@ -235,15 +211,7 @@ go func() {
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

@@ -85,23 +85,16 @@
 <h1>Maps explained: create, add, get, delete</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <p class="lead">Go maps are implemented by hash tables and have efficient add, get and delete operations.</p>
-
 <!-- CC0: https://en.wikipedia.org/wiki/File:Great_presidential_puzzle2.jpg -->
-
 <div style="margin-top:1em;"><img src="/golang/15-men-16-slots.jpg"></div>
-
 <ul class="toc">
   <li><a href="#create-a-new-map">Create a new map</a></li>
   <li><a href="#add-update-get-and-delete-keys-values">Add, update, get and delete keys/values</a></li>
   <li><a href="#for-each-range-loop">For-each range loop</a></li>
   <li><a href="#performance-and-implementation">Performance and implementation</a></li>
 </ul>
-
 <h2 id="create-a-new-map">Create a new map</h2>
-
 <pre><code>var m map[string]int                <span class="comment">// nil map of string-int pairs</span>
 
 m1 := make(map[string]float64)      <span class="comment">// Empty map of string-float64 pairs</span>
@@ -113,24 +106,20 @@ m3 := map[string]float64{           <span class="comment">// Map literal</span>
 }
 fmt.Println(len(m3))                <span class="comment">// Size of map: 2</span>
 </code></pre>
-
 <ul>
-<li>A map (or dictionary) is an <b>unordered</b> collection of <b>key-value</b> pairs, where each key is&nbsp;<b>unique</b>.</li>
+<li>A map (or dictionary) is an <b>unordered</b> collection of <b>key-value</b> pairs, where each key is <b>unique</b>.</li>
 <li>You create a new map  with a <strong><a href="https://golang.org/pkg/builtin/#make">make</a></strong> statement or a <strong>map literal</strong>.</li>
 <li>The default <strong>zero value</strong> of a map is <code>nil</code>.
 A nil map is equivalent to an empty map except
-that <strong>elements can&rsquo;t be&nbsp;added</strong>.</li>
+that <strong>elements can&rsquo;t be added</strong>.</li>
 <li>The <b><a href="https://golang.org/pkg/builtin/#len"><code>len</code></a></b> function
-returns the <strong>size</strong> of a map, which is the number of key-value&nbsp;pairs.</li>
+returns the <strong>size</strong> of a map, which is the number of key-value pairs.</li>
 </ul>
-
 <blockquote class="warning">
 <b>Warning:</b> If you try to add an element to an uninitialized map you get the mysterious run-time error
 <a href="/golang/gotcha-assignment-entry-nil-map/"><em>Assignment to entry in nil map</em></a>.
 </blockquote>
-
-<h2 id="add-update-get-and-delete-keys-values">Add, update, get and delete keys/values</h2>
-
+<h2 id="add-update-get-and-delete-keysvalues">Add, update, get and delete keys/values</h2>
 <pre><code>m := make(map[string]float64)
 
 m["pi"] = 3.14             <span class="comment">// <b>Add a new key-value pair</b></span>
@@ -144,47 +133,40 @@ _, found := m["pi"]        <span class="comment">// found == true</span>
 _, found = m["pie"]        <span class="comment">// found == false</span>
 
 if x, found := m["pi"]; found {
-    fmt.Println(x)
+	fmt.Println(x)
 }                           <span class="comment">// Prints "3.1416"</span>
 
 delete(m, "pi")             <span class="comment">// <b>Delete a key-value pair</b></span>
 fmt.Println(m)              <span class="comment">// <b>Print map:</b> "map[]"</span></code></pre>
-
 <ul>
 <li>When you index a map you get two return values;
-the&nbsp;second one (which is optional) is a boolean that indicates if the key&nbsp;exists.</li>
+the second one (which is optional) is a boolean that indicates if the key exists.</li>
 <li>If the key doesn&rsquo;t exist, the first value will be the default
-<a href="/golang/default-zero-value/">zero&nbsp;value</a>.</li>
+<a href="/golang/default-zero-value/">zero value</a>.</li>
 </ul>
-
 <h2 id="for-each-range-loop">For-each range loop</h2>
-
 <pre><code>m := map[string]float64{
-    "pi": 3.1416,
-    "e":  2.71828,
+	"pi": 3.1416,
+	"e":  2.71828,
 }
 fmt.Println(m) <span class="comment">// "map[e:2.71828 pi:3.1416]"</span>
 
 for key, value := range m { <span class="comment">// Order not specified</span> 
-    fmt.Println(key, value)
+	fmt.Println(key, value)
 }</code></pre>
-
 <ul>
-<li>Iteration order is not specified and may vary from iteration to&nbsp;iteration.</li>
+<li>Iteration order is not specified and may vary from iteration to iteration.</li>
 <li>If an entry that has not yet been reached is removed during iteration,
-the corresponding iteration value will not be&nbsp;produced.</li>
+the corresponding iteration value will not be produced.</li>
 <li>If an entry is created during iteration,
-that entry may or may not be produced during the&nbsp;iteration.</li>
+that entry may or may not be produced during the iteration.</li>
 </ul>
-
 <blockquote>
-<p>Starting with <a href="https://tip.golang.org/doc/go1.12">Go&nbsp;1.12</a>,
-the <a href="/golang/fmt-printf-reference-cheat-sheet/">fmt&nbsp;package</a>
+<p>Starting with <a href="https://tip.golang.org/doc/go1.12">Go 1.12</a>,
+the <a href="/golang/fmt-printf-reference-cheat-sheet/">fmt package</a>
 prints maps in key-sorted order to ease testing.</p>
 </blockquote>
-
 <h2 id="performance-and-implementation">Performance and implementation</h2>
-
 <ul>
 <li>Maps are backed by <a href="/algorithms/hash-tables-explained/">hash tables</a>.</li>
 <li>Add, get and delete operations run in <strong>constant</strong> expected time.
@@ -249,15 +231,7 @@ The time complexity for the add operation is <a href="/algorithms/amortized-time
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

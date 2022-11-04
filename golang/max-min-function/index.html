@@ -85,51 +85,44 @@
 <h1>Compute max of two ints/floats</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC BY-SA 2.0: https://commons.wikimedia.org/wiki/File:Big_horse_and_little_horse.jpg -->
-
 <div style="margin-top:1em;"><img src="/golang/big-horse-and-little-horse.jpg"></div>
-
 <h2 id="integers">Integers</h2>
-
 <p>There is no built-in max or min function for integers,
-but it&rsquo;s simple to write your&nbsp;own.</p>
-
+but it&rsquo;s simple to write your own.</p>
 <pre><code>// Max returns the larger of x or y.
 func Max(x, y int64) int64 {
-    if x < y {
-        return y
-    }
-    return x
+	if x < y {
+		return y
+	}
+	return x
 }
 
 // Min returns the smaller of x or y.
 func Min(x, y int64) int64 {
-    if x > y {
-        return y
-    }
-    return x
+	if x > y {
+		return y
+	}
+	return x
 }
 </code></pre>
-
 <h2 id="floats">Floats</h2>
-
 <p>For floats, use <a href="https://golang.org/pkg/math/#Max"><code>math.Max</code></a> and <a href="https://golang.org/pkg/math/#Min"><code>math.Min</code></a>.</p>
-<pre><code>// Max returns the larger of x or y. 
+<pre tabindex="0"><code>// Max returns the larger of x or y. 
 func Max(x, y float64) float64
 
 // Min returns the smaller of x or y.
-func Min(x, y float64) float64</code></pre>
-<p>Special cases:</p>
-<pre><code>Max(x, +Inf) = Max(+Inf, x) = +Inf
+func Min(x, y float64) float64
+</code></pre><p>Special cases:</p>
+<pre tabindex="0"><code>Max(x, +Inf) = Max(+Inf, x) = +Inf
 Max(x, NaN) = Max(NaN, x) = NaN
 Max(+0, ±0) = Max(±0, +0) = +0
 Max(-0, -0) = -0
 
 Min(x, -Inf) = Min(-Inf, x) = -Inf
 Min(x, NaN) = Min(NaN, x) = NaN
-Min(-0, ±0) = Min(±0, -0) = -0</code></pre>
+Min(-0, ±0) = Min(±0, -0) = -0
+</code></pre>
 
 <h3>More code examples</h3>
 
@@ -159,15 +152,7 @@ Min(-0, ±0) = Min(±0, -0) = -0</code></pre>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

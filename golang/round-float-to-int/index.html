@@ -41,71 +41,55 @@
 <h1>Round float to integer value</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <ul class="toc">
 <li><a href="#round-away-from-zero">Round away from zero</a></li>
 <li><a href="#round-to-even-number">Round to even number</a></li>
 <li><a href="#convert-to-an-int-type">Convert to an int type</a></li>
 <li><a href="#before-go-1-10">Before Go 1.10</a></li>
 </ul>
-
 <h2 id="round-away-from-zero">Round away from zero<span class="quicklink"><a href="https://golang.org/doc/go1.10" title="Go 1.10 Release Notes">Go&nbsp;1.10</a></span></h2>
-
 <p>Use <a href="https://golang.org/pkg/math/#Round"><code>math.Round</code></a>
-to return the nearest integer, as a <code>float64</code>, rounding ties away from&nbsp;zero.</p>
-
+to return the nearest integer, as a <code>float64</code>, rounding ties away from zero.</p>
 <pre><code>fmt.Println(math.Round(-0.6)) <span class="comment">// -1</span>
 fmt.Println(math.Round(-0.4)) <span class="comment">// -0</span>
 fmt.Println(math.Round(0.4))  <span class="comment">// 0</span>
 fmt.Println(math.Round(0.6))  <span class="comment">// 1</span>
 </code></pre>
-
 <p>Note the special cases.</p>
-<pre><code>Round(±0) = ±0
+<pre tabindex="0"><code>Round(±0) = ±0
 Round(±Inf) = ±Inf
-Round(NaN) = NaN</code></pre>
-<h2 id="round-to-even-number">Round to even number<span class="quicklink"><a href="https://golang.org/doc/go1.10" title="Go 1.10 Release Notes">Go&nbsp;1.10</a></span></h2>
-
+Round(NaN) = NaN
+</code></pre><h2 id="round-to-even-number">Round to even number<span class="quicklink"><a href="https://golang.org/doc/go1.10" title="Go 1.10 Release Notes">Go&nbsp;1.10</a></span></h2>
 <p>Use <a href="https://golang.org/pkg/math/#RoundToEven"><code>math.RoundToEven</code></a>
-to return the nearest integer, as a <code>float64</code>, rounding ties to an even&nbsp;number.</p>
-
+to return the nearest integer, as a <code>float64</code>, rounding ties to an even number.</p>
 <pre><code>fmt.Println(math.RoundToEven(0.5)) <span class="comment">// 0</span>
 fmt.Println(math.RoundToEven(1.5)) <span class="comment">// 2</span></code></pre>
-
 <h2 id="convert-to-an-int-type">Convert to an int type</h2>
-
 <p>Note that when converting a floating-point number to an <code>int</code> type,
-the fraction is discarded (truncation towards&nbsp;zero).</p>
-
+the fraction is discarded (truncation towards zero).</p>
 <pre><code>fmt.Println(int64(1.9))  <span class="comment">//  1</span>
 fmt.Println(int64(-1.9)) <span class="comment">// -1</span></code></pre>
-
 <blockquote class="warning">
 <b>Warning:</b> If the result type cannot represent the value the conversion succeeds but the result is implementation-dependent.
 </blockquote>
-
-<h2 id="before-go-1-10">Before Go 1.10</h2>
-
+<h2 id="before-go-110">Before Go 1.10</h2>
 <p>The following implementations are equivalent to <a href="https://golang.org/pkg/math/#Round"><code>math.Round</code></a> and <a href="https://golang.org/pkg/math/#RoundToEven"><code>math.RoundToEven</code></a>, but less efficient.</p>
-
 <pre><code><span class="comment">// Round returns the nearest integer, rounding ties away from zero.</span>
 func Round(x float64) float64 {
-    t := math.Trunc(x)
-    if math.Abs(x-t) >= 0.5 {
-        return t + math.Copysign(1, x)
-    }
-    return t
+	t := math.Trunc(x)
+	if math.Abs(x-t) >= 0.5 {
+		return t + math.Copysign(1, x)
+	}
+	return t
 }</code></pre>
-
 <pre><code><span class="comment">// RoundToEven returns the nearest integer, rounding ties to an even number.</span>
 func RoundToEven(x float64) float64 {
-    t := math.Trunc(x)
-    odd := math.Remainder(t, 2) != 0
-    if d := math.Abs(x - t); d > 0.5 || (d == 0.5 && odd) {
-        return t + math.Copysign(1, x)
-    }
-    return t
+	t := math.Trunc(x)
+	odd := math.Remainder(t, 2) != 0
+	if d := math.Abs(x - t); d > 0.5 || (d == 0.5 && odd) {
+		return t + math.Copysign(1, x)
+	}
+	return t
 }</code></pre>
 
 
@@ -149,15 +133,7 @@ func RoundToEven(x float64) float64 {
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

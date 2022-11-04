@@ -84,10 +84,7 @@
 <article>
 <h1>Conversions [complete list]</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- Public domain: https://www.flickr.com/photos/usfwsnortheast/28273604424 -->
-
 <div><img src="/golang/butterfly.jpg" width="400px" alt="butterfly" style="float: right;"></div>
 <ul class="toc" style="float: left;">
   <li><a href="#basics">Basics</a></li>
@@ -102,168 +99,126 @@
   <li><a href="#pointers">Pointers</a></li>
 </ul>
 <div style="clear: both"></div>
-
 <h2 id="basics">Basics</h2>
-
-<p>The expression <code>T(x)</code> converts the value <code>x</code> to the type&nbsp;<code>T</code>.</p>
-
+<p>The expression <code>T(x)</code> converts the value <code>x</code> to the type <code>T</code>.</p>
 <pre><code>x := 5.1
 n := int(x) <span class="comment">// convert float to int</span></code></pre>
-
 <p>The conversion rules are extensive but predictable:</p>
-
 <ul>
 <li>all conversions between typed expressions must be explicitly stated,</li>
 <li>illegal conversions are caught by the compiler.</li>
 </ul>
-
 <p>Conversions to and from numbers and strings may <strong>change the representation</strong>
 and have a <strong>run-time cost</strong>.
-All other conversions only change the type but not the representation of&nbsp;<code>x</code>.</p>
-
+All other conversions only change the type but not the representation of <code>x</code>.</p>
 <h2 id="interfaces">Interfaces</h2>
-
 <blockquote>
 To “convert” an <a href="/golang/interfaces-explained/">interface</a> to a string, struct or map you should use a <b>type assertion</b> or a <b>type switch</b>.
 A type assertion doesn’t really convert an interface to another data type,
 but it provides access to an interface’s concrete value, which is typically what you want.
 <a class="quote-source" href="/golang/type-assertion-switch/">Type assertions and type switches</a>
 </blockquote>
-
 <h2 id="integers">Integers</h2>
-
 <ul>
 <li>When converting to a shorter integer type,
 the value is <strong>truncated</strong> to fit in the result type&rsquo;s size.</li>
 <li>When converting to a longer integer type,
-
 <ul>
 <li>if the value is a signed integer,
 it is <a href="https://en.wikipedia.org/wiki/Sign_extension"><strong>sign extended</strong></a>;</li>
 <li>otherwise it is <strong>zero extended</strong>.</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <pre><code>a := uint16(0x10fe) <span class="comment">// 0001 0000 1111 1110</span>
 b := int8(a) <span class="comment">       //           1111 1110 (truncated to -2)</span>
 c := uint16(b) <span class="comment">     // 1111 1111 1111 1110 (sign extended to 0xfffe)</span></code></pre>
-
 <h2 id="floats">Floats</h2>
-
 <ul>
 <li>When converting a floating-point number to an integer,
 the <strong>fraction is discarded</strong> (truncation towards zero).</li>
 <li>When converting an integer or floating-point number to a floating-point type,
 the result value is <strong>rounded to the precision</strong> specified by the destination type.</li>
 </ul>
-
 <pre><code>var x float64 = 1.9
 n := int64(x) <span class="comment">// 1</span>
 n = int64(-x) <span class="comment">// -1</span>
 
 n = 1234567890
 y := float32(n) <span class="comment">// 1.234568e+09</span></code></pre>
-
 <blockquote class="warning">
 <b>Warning:</b> In all non-constant conversions involving floating-point or complex values, if the result type cannot represent the value the conversion succeeds but the result value is implementation-dependent.
 <a href="https://golang.org/ref/spec#Conversions" class="quote-source">The Go Programming Language Specification: Conversions</a>
 </blockquote>
-
 <h2 id="integer-to-string">Integer to string</h2>
-
 <ul>
 <li>When converting an integer to a string, the value is interpreted as a Unicode code point,
 and the resulting string will contain the character represented by that code point, encoded in UTF-8.</li>
 <li>If the value does not represent a valid code point (for instance if it&rsquo;s negative),
 the result will be <code>&quot;\ufffd&quot;</code>, the Unicode replacement character �.</li>
 </ul>
-
 <pre><code>string(97) <span class="comment">// "a"</span>
 string(-1) <span class="comment">// "\ufffd" == "\xef\xbf\xbd"</span></code></pre>
-
 <blockquote>
 Use <a href="https://golang.org/pkg/strconv/#Itoa"><code>strconv.Itoa</code></a>
 to get the decimal string representation of an integer.
- 
 <pre><code>strconv.Itoa(97) <span class="comment">// "97"</span></code></pre>
 </blockquote>
-
 <h2 id="strings-and-byte-slices">Strings and byte slices</h2>
-
 <ul>
 <li>Converting a slice of bytes to a string type yields a string whose successive bytes
 are the elements of the slice.</li>
 <li>Converting a value of a string type to a slice of bytes type
 yields a slice whose successive elements are the bytes of the string.</li>
 </ul>
-
 <pre><code>string([]byte{97, 230, 151, 165}) <span class="comment">// "a日"</span>
 []byte("a日")                     <span class="comment">// []byte{97, 230, 151, 165}</span></code></pre>
-
 <h2 id="strings-and-rune-slices">Strings and rune slices</h2>
-
 <ul>
 <li>Converting a slice of runes to a string type yields a string that is
 the concatenation of the individual rune values converted to strings.</li>
 <li>Converting a value of a string type to a slice of runes type
 yields a slice containing the individual Unicode code points of the string.</li>
 </ul>
-
 <pre><code>string([]rune{97, 26085}) <span class="comment">// "a日"</span>
 []rune("a日")             <span class="comment">// []rune{97, 26085}</span></code></pre>
-
 <h2 id="underlying-type">Underlying type</h2>
-
 <p>A non-constant value can be converted to type <code>T</code> if it has the same underlying type as <code>T</code>.</p>
-
 <p>In this example, the underlying type of <code>int64</code>, <code>T1</code>, and <code>T2</code> is <code>int64</code>.</p>
-<pre><code>type (
+<pre tabindex="0"><code>type (
 	T1 int64
 	T2 T1
-)</code></pre>
-<p>It&rsquo;s idiomatic in Go to convert the type of an expression to access a specific method.</p>
-
+)
+</code></pre><p>It&rsquo;s idiomatic in Go to convert the type of an expression to access a specific method.</p>
 <pre><code>var n int64 = 12345
 fmt.Println(n)                <span class="comment">// 12345</span>
 fmt.Println(time.Duration(n)) <span class="comment">// 12.345µs</span></code></pre>
-
 <p>(The underlying type of <a href="https://golang.org/pkg/time/#Duration"><code>time.Duration</code></a> is <code>int64</code>,
 and the <code>time.Duration</code> type has a <a href="https://golang.org/pkg/time/#Duration.String"><code>String</code></a> method
 that returns the duration formatted as a time.)</p>
-
 <h2 id="implicit-conversions">Implicit conversions</h2>
-
 <p>The only implicit conversion in Go is when an untyped constant is used in a situation where a type is required.</p>
-
 <p>In this example the untyped literals <code>1</code> and <code>2</code> are implicitly converted.</p>
-
 <pre><code>var x float64
 x = 1 <span class="comment">// Same as x = float64(1)</span>
 
 t := 2 * time.Second <span class="comment">// Same as t := time.Duration(2) * time.Second</span></code></pre>
-
 <p>(The implicit conversions are necessary since there is no mixing of numeric types in Go.
 You can only multiply a <code>time.Duration</code> with another <code>time.Duration</code>.)</p>
-
 <p>When the type can&rsquo;t be inferred from the context, an untyped constant
 is converted to a <code>bool</code>, <code>int</code>, <code>float64</code>, <code>complex128</code>, <code>string</code> or <code>rune</code>
 depending on the syntactical format of the constant.</p>
-
 <pre><code>n := 1   <span class="comment">// Same as n := int(1)</span>
 x := 1.0 <span class="comment">// Same as x := float64(1.0)</span>
 s := "A" <span class="comment">// Same as s := string("A")</span>
 c := 'A' <span class="comment">// Same as c := rune('A')</span></code></pre>
-
 <p>Illegal implicit conversions are caught by the compiler.</p>
-
 <pre><code>var b byte = 256 <span class="comment">// Same as var b byte = byte(256)</span></code></pre>
-<pre><code>../main.go:2:6: constant 256 overflows byte</code></pre>
-<h2 id="pointers">Pointers</h2>
-
+<pre tabindex="0"><code>../main.go:2:6: constant 256 overflows byte
+</code></pre><h2 id="pointers">Pointers</h2>
 <p>The Go compiler does not allow conversions between pointers and integers.
 Package <a href="https://golang.org/pkg/unsafe/"><code>unsafe</code></a>
 implements this functionality under restricted circumstances.</p>
-
 <blockquote class="warning">
 <b>Warning:</b> The built-in package unsafe, known to the compiler, provides facilities for low-level programming
 including operations that violate the type system.
@@ -302,15 +257,7 @@ A package using unsafe must be vetted manually for type safety and may not be po
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

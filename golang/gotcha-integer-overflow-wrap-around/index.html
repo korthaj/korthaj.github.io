@@ -85,23 +85,15 @@
 <h1>No end in sight</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC BY 2.0: https://www.flickr.com/photos/nanpalmero/4348149625 -->
-
 <div style="margin-top:1em;"><img src="/golang/1-infinite-loop.jpg"></div>
-
 <p>Why does this loop run forever?</p>
-
 <pre><code>var b byte
 for b = 250; b <= 255; b++ {
-    fmt.Printf("%d %c\n", b, b)
+	fmt.Printf("%d %c\n", b, b)
 }</code></pre>
-
 <h2 id="answer">Answer</h2>
-
 <p>After the <code>b == 255</code> iteration, <code>b++</code> is executed. This overflows (since the maximum value for a byte is 255) and results in <code>b == 0</code>. Therefore <code>b &lt;= 255</code> still holds and the loop restarts from&nbsp;0.</p>
-
 <blockquote>
 <p>
 For unsigned integer values, the operations +, -, *, and &lt;&lt; are computed modulo 2<sup>n</sup>,
@@ -115,26 +107,20 @@ No exception is raised as a result of overflow.
 <a class="quote-source" href="https://golang.org/ref/spec#Arithmetic_operators">The Go Programming Language Specification: Arithmetic operators</a>
 </p>
 </blockquote>
-
 <p>If we use the standard loop idiom with a strict inequality,
 the compiler will catch the&nbsp;bug.</p>
-
 <pre><code class="language-go">var b byte
 for b = 250; b &lt; 256; b++ {
-    fmt.Printf("%d %c\n", b, b)
+	fmt.Printf("%d %c\n", b, b)
 }
 </code></pre>
-
 <pre><code>../main.go:2:17: constant 256 overflows byte
 </code></pre>
-
 <p>One solution is to use a wider data type, such as an&nbsp;<code>int</code>.</p>
-
 <pre><code class="language-go">for i := 250; i &lt; 256; i++ {
-    fmt.Printf("%d %c\n", i, i)
+	fmt.Printf("%d %c\n", i, i)
 }
 </code></pre>
-
 <pre><code>250 ú
 251 û
 252 ü
@@ -142,17 +128,14 @@ for b = 250; b &lt; 256; b++ {
 254 þ
 255 ÿ
 </code></pre>
-
 <p>Another option is to put the termination test at the end of the&nbsp;loop.</p>
-
 <pre><code class="language-go">for b := byte(250); ; b++ {
-    fmt.Printf("%d %c\n", b, b)
-    if b == 255 {
-        break
-    }
+	fmt.Printf("%d %c\n", b, b)
+	if b == 255 {
+		break
+	}
 }
 </code></pre>
-
 <pre><code>250 ú
 251 û
 252 ü
@@ -240,14 +223,6 @@ for b = 250; b &lt; 256; b++ {
       <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a></li>
 
   </ul>
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
 
 
   

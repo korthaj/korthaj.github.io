@@ -84,69 +84,53 @@
 <article>
 <h1>How to use the io.Writer interface</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC0: http://www.yokota.af.mil/News/Article-Display/Article/773744/yokota-hosts-military-spouse-appreciation-day/ -->
-
 <div style="margin-top:1em;"><img src="/golang/caligraphy-training.jpg"></div>
-
 <ul class="toc">
   <li><a href="#basics">Basics</a></li>
   <li><a href="#how-to-use-a-built-in-writer-3-nbsp-examples">How to use a built-in writer (3&nbsp;examples)</a></li>
   <li><a href="#optimize-string-writes">Optimize string writes</a></li>
 </ul>
-
 <h2 id="basics">Basics</h2>
-
 <p>The <a href="https://golang.org/pkg/io/#Writer"><code>io.Writer</code></a> <a href="/golang/interfaces-explained/">interface</a> represents an entity
-to which you can write a stream of&nbsp;bytes.</p>
-<pre><code>type Writer interface {
+to which you can write a stream of bytes.</p>
+<pre tabindex="0"><code>type Writer interface {
         Write(p []byte) (n int, err error)
-}</code></pre>
-<p><code>Write</code> writes up to <code>len(p)</code> bytes from <code>p</code> to the underlying data stream &ndash;
+}
+</code></pre><p><code>Write</code> writes up to <code>len(p)</code> bytes from <code>p</code> to the underlying data stream –
 it returns the number of bytes written and any error encountered that caused
-the write to stop&nbsp;early.</p>
-
+the write to stop early.</p>
 <p>The standard library provides numerous Writer <a href="https://golang.org/search?q=Write#Global">implementations</a>,
 and Writers are accepted as input by many utilities.</p>
-
-<h2 id="how-to-use-a-built-in-writer-3-nbsp-examples">How to use a built-in writer (3&nbsp;examples)</h2>
-
+<h2 id="how-to-use-a-built-in-writer-3nbspexamples">How to use a built-in writer (3 examples)</h2>
 <p>As a first example, you can write directly into a <a href="https://golang.org/pkg/bytes/#Buffer"><code>bytes.Buffer</code></a>
 using the <a href="https://golang.org/pkg/fmt/#Fprintf"><code>fmt.Fprintf</code></a> function.
-This works&nbsp;since</p>
-
+This works since</p>
 <ul>
 <li><code>bytes.Buffer</code> has a <code>Write</code> method, and</li>
 <li><code>fmt.Fprintf</code> takes a <code>Writer</code> as its first argument.</li>
 </ul>
-
 <pre><code>var buf bytes.Buffer
 fmt.Fprintf(&buf, "Size: %d MB.", 85)
 s := buf.String()) <span class="comment">// s == "Size: 85 MB."</span></code></pre>
-
 <p>Similarly, you can write directly into files or other streams, such as http connections.
 See the <a href="/golang/http-server-example/">HTTP server example</a> article for
-a complete code&nbsp;example.</p>
-
+a complete code example.</p>
 <p>This is a very common pattern in Go.
 As yet another example, you can compute the hash value of a file
 by copying the file into the <code>io.Writer</code> function
 of a suitable <a href="https://golang.org/pkg/hash/#Hash"><code>hash.Hash</code></a> object.
 See <a href="/golang/hash-md5-sha256-string-file/#file">Hash checksums</a>
-for&nbsp;code.</p>
-
+for code.</p>
 <h2 id="optimize-string-writes">Optimize string writes</h2>
-
 <p>Some Writers in the standard library have an additional <code>WriteString</code> method.
 This method can be more efficient than the standard <code>Write</code> method
-since it writes a string directly without allocating a byte&nbsp;slice.</p>
-
+since it writes a string directly without allocating a byte slice.</p>
 <p>You can take direct advantage of this optimization by using the
 <a href="https://golang.org/pkg/io/#WriteString"><code>io.WriteString()</code></a> function.</p>
-<pre><code>func WriteString(w Writer, s string) (n int, err error)</code></pre>
-<p>If <code>w</code> implements a <code>WriteString</code> method, it is invoked directly.
-Otherwise, <code>w.Write</code> is called exactly&nbsp;once.</p>
+<pre tabindex="0"><code>func WriteString(w Writer, s string) (n int, err error)
+</code></pre><p>If <code>w</code> implements a <code>WriteString</code> method, it is invoked directly.
+Otherwise, <code>w.Write</code> is called exactly once.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
 <a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fio-writer-interface-explained%2f&amp;text=How%20to%20use%20the%20io.Writer%20interface&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
@@ -173,15 +157,7 @@ Otherwise, <code>w.Write</code> is called exactly&nbsp;once.</p>
     <div class="author">Ben Johnson</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

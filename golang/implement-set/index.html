@@ -85,51 +85,38 @@
 <h1>2 basic set implementations</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC0: https://pxhere.com/en/photo/996450 -->
-
 <div style="margin-top:1em;"><img src="/golang/eggs-in-basket.jpg"></div>
-
 <h2 id="map-implementation">Map implementation</h2>
-
 <p>The idiomatic way to implement a set in Go is to use
-a&nbsp;<a href="/golang/maps-explained/">map</a>.</p>
-
+a <a href="/golang/maps-explained/">map</a>.</p>
 <pre><code>set := make(map[string]bool) <span class="comment">// New empty set</span>
 set["Foo"] = true            <span class="comment">// Add</span>
 for k := range set {         <span class="comment">// Loop</span>
-    fmt.Println(k)
+	fmt.Println(k)
 }
 delete(set, "Foo")    <span class="comment">// Delete</span>
 size := len(set)      <span class="comment">// Size</span>
 exists := set["Foo"]  <span class="comment">// Membership</span></code></pre>
-
 <h3 id="alternative">Alternative</h3>
-
 <p>If the memory used by the booleans is an issue, which seems unlikely,
-you could replace them with empty&nbsp;structs. In Go, an empty struct
-typically doesn&rsquo;t use any&nbsp;memory.</p>
-
+you could replace them with empty structs. In Go, an empty struct
+typically doesn&rsquo;t use any memory.</p>
 <pre><code>type void struct{}
 var member void
 
 set := make(map[string]void) <span class="comment">// New empty set</span>
 set["Foo"] = member          <span class="comment">// Add</span>
 for k := range set {         <span class="comment">// Loop</span>
-    fmt.Println(k)
+	fmt.Println(k)
 }
 delete(set, "Foo")      <span class="comment">// Delete</span>
 size := len(set)        <span class="comment">// Size</span>
 _, exists := set["Foo"] <span class="comment">// Membership</span></code></pre>
-
 <h2 id="bitset-implementation">Bitset implementation</h2>
-
 <div><a href="/golang/bitmask-flag-set-clear/"><img src="/golang/bits-thumb.jpg" title="Bitmasks and flags"></a></div>
-
 <p>For small sets of integers, you may want to consider a <strong>bitset</strong>,
 a small set of booleans, often called flags, represented by the bits in a single number.</p>
-
 <p>See <a href="/golang/bitmask-flag-set-clear/">Bitmasks and flags</a> for a complete example.</p>
 
 
@@ -173,15 +160,7 @@ a small set of booleans, often called flags, represented by the bits in a single
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

@@ -84,109 +84,79 @@
 <article>
 <h1>Print null in Java</h1>
 <div class="tagline">yourbasic.org</div>
-
-
 <p class="lead">What happens if you try to print null in&nbsp;Java?
 It&nbsp;depends.
 </p>
-
 <div><img src="/res/programmer.jpg"></div>
-
 <h2 id="what-the-compiler-said">What the compiler said</h2>
-
 <p>The following line will <strong>not compile</strong>.</p>
-
 <pre>
 System.out.println(null);
 </pre>
-
 <p>
 This is the message from my compiler.
 </p>
-
 <pre>
 reference to println is ambiguous, both
 method println(char[]) in java.io.PrintStream and
 method println(java.lang.String) in java.io.PrintStream match
 </pre>
-
 <p>In fact, <code>println(java.lang.Object)</code> in <code>java.io.PrintStream</code>
 is yet another match,
 but Java has a way of choosing between that one and each of the two methods above.
 It’s just the string and the character array parameters
 that cause ambiguity; character arrays and objects can happily coexist.</p>
-
 <p>I’m not making this up.</p>
-
 <h2 id="what-the-runtime-did">What the runtime did</h2>
-
 <p>The following lines will compile.</p>
-
 <pre>
 Object o = null;
 String s = null;
 System.out.println(o);
 System.out.println(s);
 </pre>
-
 <p>Here is the output.</p>
-
 <pre>
 null
 null
 </pre>
-
 <p>The following will also compile.</p>
-
 <pre>
 char[] a = null;
 System.out.println(a);
 </pre>
-
 <p>But this method <strong>throws an exception</strong>.</p>
-
 <pre>
 Exception in thread "main" java.lang.NullPointerException
-    at java.io.Writer.write(Writer.java:127)
-    at java.io.PrintStream.write(PrintStream.java:470)
-    at java.io.PrintStream.print(PrintStream.java:620)
-    at java.io.PrintStream.println(PrintStream.java:759)
-    ...
+	at java.io.Writer.write(Writer.java:127)
+	at java.io.PrintStream.write(PrintStream.java:470)
+	at java.io.PrintStream.print(PrintStream.java:620)
+	at java.io.PrintStream.println(PrintStream.java:759)
+	...
 </pre>
-
-<p>With some more research funding I might be able to figure this&nbsp;out!</p>
-
+<p>With some more research funding I might be able to figure this out!</p>
 <h2 id="key-takeaways">Key takeaways</h2>
-
 <p>Method overloading and inheritance are two fairly complicated constructs.
 If you combine them, things can get out of control.
-And this can happen when you least expect&nbsp;it.</p>
-
+And this can happen when you least expect it.</p>
 <p>Here are two rules of thumb from
 <a href="https://www.oreilly.com/library/view/effective-java-3rd/9780134686097/">Effective Java</a>
 that can help.</p>
-
 <blockquote>
 A safe, conservative policy is never to export two overloadings with
 the same number of parameters. (Item&nbsp;41)
 </blockquote>
-
 <blockquote>
 Use composition and forwarding instead of inheritance,
 especially if an appropriate interface to implement a wrapper class exists. (Item&nbsp;16)
 </blockquote>
-
 <h3 id="further-reading">Further reading</h3>
-
 <div style="margin-top:1em;"><a href="/golang/go-vs-java/"><img src="/golang/java-go-tiny.png" title="Go vs. Java: 15 main differences"></a></div>
-
 <p><a href="/golang/go-vs-java/">Go vs. Java: 15 main differences</a>
 is a brief code comparison.</p>
-
 <div style="margin-top:2em;"><a href="/golang/go-java-tutorial/"><img src="/golang/gopher-latte-thumb.jpg" title="Java to Go in-depth tutorial"></a></div>
-
 <p>This <a href="/golang/go-java-tutorial/">Java to Go in-depth tutorial</a>
-is in­tended to help Java deve­lopers come up to speed quickly with&nbsp;Go.</p>
+is in­tended to help Java deve­lopers come up to speed quickly with Go.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
 <a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fprint-null-java%2f&amp;text=Print%20null%20in%20Java&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;

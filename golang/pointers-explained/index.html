@@ -84,81 +84,64 @@
 <article>
 <h1>Pointers explained</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC0: https://pixabay.com/en/pointing-finger-hand-pointing-1922074/ -->
-
 <div><img src="/golang/pointing-finger.png" style="float: right; margin: 10px 0 10px 10px;"></div>
-
 <p class="lead">A pointer is a vari&shy;able that con&shy;tains the address of an&nbsp;object.</p>
-
 <ul class="toc">
   <li><a href="#basics">Basics</a></li>
   <li><a href="#address-operator">Address operator</a></li>
   <li><a href="#pointer-indirection">Pointer indirection</a></li>
   <li><a href="#pointers-as-parameters">Pointers as parameters</a></li>
 </ul>
-
 <h2 id="basics">Basics</h2>
-
-<p>Structs and arrays are <strong>copied</strong> when used in assignments and passed as arguments to functions. With pointers this can be&nbsp;avoided.</p>
-
+<p>Structs and arrays are <strong>copied</strong> when used in assignments and passed as arguments to functions. With pointers this can be avoided.</p>
 <p>Pointers store <strong>addresses</strong> of objects.
-The addresses can be passed around more efficiently than the actual&nbsp;objects.</p>
-
+The addresses can be passed around more efficiently than the actual objects.</p>
 <p>A pointer has type <code>*T</code>.
-The keyword <code>new</code> allocates a new object and returns its&nbsp;address.</p>
-
+The keyword <code>new</code> allocates a new object and returns its address.</p>
 <pre><code>type Student struct {
-    Name string
+	Name string
 }
 
 var ps *Student = new(Student) <span class="comment">// ps holds the address of the new struct</span></code></pre>
-
 <p>The variable declaration can be written more compactly.</p>
-<pre><code>ps := new(Student)</code></pre>
+<pre><code>ps := new(Student)
+</code></pre>
 <h2 id="address-operator">Address operator</h2>
-
-<p>The <code>&amp;</code> operator returns the address of an&nbsp;object.</p>
-
+<p>The <code>&amp;</code> operator returns the address of an object.</p>
 <pre><code>s := Student{"Alice"} <span class="comment">// s holds the actual struct </span>
 ps := &s              <span class="comment">// ps holds the address of the struct </span></code></pre>
-
 <p>The <code>&amp;</code> operator can also be used with <strong>composite literals</strong>.
-The two lines above can be&nbsp;written as</p>
-<pre><code>ps := &amp;Student{&#34;Alice&#34;}</code></pre>
+The two lines above can be written as</p>
+<pre><code>ps := &amp;Student{&quot;Alice&quot;}
+</code></pre>
 <h2 id="pointer-indirection">Pointer indirection</h2>
-
 <p>For a pointer <code>x</code>, the <strong>pointer indirection</strong> <code>*x</code> denotes the value which <code>x</code> points to.
 Pointer indirection is rarely used,
-since Go can automatically take the address of a&nbsp;variable.</p>
-
+since Go can automatically take the address of a variable.</p>
 <pre><code>ps := new(Student)
 ps.Name = "Alice" <span class="comment">// same as (*ps).Name = "Alice"</span></code></pre>
-
 <h2 id="pointers-as-parameters">Pointers as parameters</h2>
-
 <p>When using a pointer to modify an object,
-you&rsquo;re affecting all code that uses the&nbsp;object.</p>
-
+you&rsquo;re affecting all code that uses the object.</p>
 <pre><code>// Bob is a function that has no effect.
 func Bob(s Student) {
-    s.Name = "Bob" <span class="comment">// changes only the local copy</span>
+	s.Name = "Bob" <span class="comment">// changes only the local copy</span>
 }
 
 // Charlie sets pp.Name to "Charlie".
 func Charlie(ps *Student) {
-    ps.Name = "Charlie"
+	ps.Name = "Charlie"
 }
 
 func main() {
-    s := Student{"Alice"}
+	s := Student{"Alice"}
 
-    Bob(s)
-    fmt.Println(s) <span class="comment">// prints {Alice}</span>
+	Bob(s)
+	fmt.Println(s) <span class="comment">// prints {Alice}</span>
 
-    Charlie(&s)
-    fmt.Println(s) <span class="comment">// prints {Charlie}</span>
+	Charlie(&s)
+	fmt.Println(s) <span class="comment">// prints {Charlie}</span>
 }</code></pre>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -180,15 +163,7 @@ func main() {
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

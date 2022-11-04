@@ -84,14 +84,9 @@
 <article>
 <h1>Measure execution time</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC BY-SA 4.0: https://commons.wikimedia.org/wiki/File:Leichtathletik_Gala_Linz_2017_100m_M%C3%A4nner-6726.jpg -->
-
 <div style="margin-top:1em;"><img src="/golang/100m-sprint.jpg"></div>
-
 <h2 id="measure-a-piece-of-code">Measure a piece of code</h2>
-
 <pre><code><b>start := time.Now()</b>
 <span style="color: green">// Code to measure</span>
 <b>duration := time.Since(start)</b>
@@ -101,29 +96,23 @@ fmt.Println(duration)
 
 <span class="comment">// Nanoseconds as int64</span>
 fmt.Println(duration.Nanoseconds())</code></pre>
-
 <h2 id="measure-a-function-call">Measure a function call</h2>
-
 <p>You can track the execution time of a complete function call with this one-liner,
 which logs the result to the standard error stream.</p>
-
 <pre><code>func foo() {
-    <b>defer duration(track("foo"))</b>
-    <span style="color: green">// Code to measure</span>
+	<b>defer duration(track("foo"))</b>
+	<span style="color: green">// Code to measure</span>
 }</code></pre>
-
 <pre><code>func track(msg string) (string, time.Time) {
-    return msg, time.Now()
+	return msg, time.Now()
 }
 
 func duration(msg string, start time.Time) {
-    log.Printf("%v: %v\n", msg, time.Since(start))
+	log.Printf("%v: %v\n", msg, time.Since(start))
 }</code></pre>
-
 <h2 id="benchmarks">Benchmarks</h2>
-
 <p>The <a href="https://golang.org/pkg/testing/"><code>testing</code></a> package has support for
-benchmarking that can be used to examine the performance of your&nbsp;code.</p>
+benchmarking that can be used to examine the performance of your code.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
 <a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2fmeasure-execution-time%2f&amp;text=Measure%20execution%20time&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
@@ -174,15 +163,7 @@ benchmarking that can be used to examine the performance of your&nbsp;code.</p>
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

@@ -85,48 +85,38 @@
 <h1>Compute absolute value of an int/float</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC0: https://www.maxpixel.net/Numbers-17-Metal-Numbers-On-Post-1110492 -->
-
 <div style="margin-top:1em;"><img src="/golang/metal-numbers.jpg"></div>
-
 <h2 id="integers">Integers</h2>
-
 <p>There is no built-in abs function for integers,
-but it&rsquo;s simple to write your&nbsp;own.</p>
-<pre><code>// Abs returns the absolute value of x.
+but it&rsquo;s simple to write your own.</p>
+<pre tabindex="0"><code>// Abs returns the absolute value of x.
 func Abs(x int64) int64 {
 	if x &lt; 0 {
 		return -x
 	}
 	return x
-}</code></pre>
-<blockquote class="warning">
+}
+</code></pre><blockquote class="warning">
 <b>Warning:</b> The smallest value of a signed integer doesn’t have a matching positive value.
-
 <ul>
 <li><a href="https://golang.org/pkg/math/#pkg-constants"><code>math.MinInt64</code></a> is -922337203685477580<b>8</b>, but</li>
 <li><a href="https://golang.org/pkg/math/#pkg-constants"><code>math.MaxInt64</code></a> is 922337203685477580<b>7</b>.</li>
 </ul>
-
-Unfortunately, our <code>Abs</code> function returns a <b>negative</b> value in this case.
-
+<p>Unfortunately, our <code>Abs</code> function returns a <b>negative</b> value in this case.</p>
 <pre><code>fmt.Println(Abs(math.MinInt64))
 <span class="comment">// Output: -9223372036854775808</span>
 </code></pre>
-
-(The Java and C libraries behave like this as well.)
+<p>(The Java and C libraries behave like this as well.)</p>
 </blockquote>
-
 <h2 id="floats">Floats</h2>
-
 <p>The <a href="https://golang.org/pkg/math/#Abs"><code>math.Abs</code></a> function
-returns the absolute value of&nbsp;<code>x</code>.</p>
-<pre><code>func Abs(x float64) float64</code></pre>
-<p>Special cases:</p>
-<pre><code>Abs(±Inf) = +Inf
-Abs(NaN) = NaN</code></pre>
+returns the absolute value of <code>x</code>.</p>
+<pre tabindex="0"><code>func Abs(x float64) float64
+</code></pre><p>Special cases:</p>
+<pre tabindex="0"><code>Abs(±Inf) = +Inf
+Abs(NaN) = NaN
+</code></pre>
 
 <h3>More code examples</h3>
 
@@ -156,15 +146,7 @@ Abs(NaN) = NaN</code></pre>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

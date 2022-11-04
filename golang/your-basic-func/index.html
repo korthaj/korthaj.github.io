@@ -84,206 +84,164 @@
 <article>
 <h1>Functional programming in Go [case study]</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <p class="lead">A graph implementation based entirely on functions</p>
-
 <div><img src="/golang/petersen-complement.png"></div>
-
-<p><em>The Petersen graph and its complement</em>
-<!-- *picture from [Wikipedia][wikipetersen2].* --></p>
-
+<p><em>The Petersen graph and its complement</em></p>
+<!-- *picture from [Wikipedia][wikipetersen2].* -->
 <h2 id="introduction">Introduction</h2>
-
 <p>This text is about the implementation of a Go tool based entirely on functions –
 the API contains only immutable data types, and the code
 is built on top of a <code>struct</code> with five <code>func</code> fields.</p>
-
 <p>It&rsquo;s a tool for building <strong>virtual graphs</strong>.
 In a virtual graph no vertices or edges are stored in memory,
 they are instead computed as needed.
 The tool is part of a larger library of generic graph algorithms:</p>
-
 <ul>
 <li>the package <a href="https://github.com/yourbasic/graph">graph</a> contains the basic graph library and</li>
 <li>the subpackage <a href="https://github.com/yourbasic/graph/tree/master/build">graph/build</a> is the tool for building virtual graphs.</li>
 </ul>
-
 <p>There is an online reference for the build tool at <a href="https://godoc.org/github.com/yourbasic/graph/build">godoc.org</a>.</p>
-
 <h3 id="the-petersen-graph">The Petersen graph</h3>
-
 <p>Let&rsquo;s start with an example, the Petersen graph.
 To describe this graph in a conventional graph library,
 you would typically need to enumerate the edges…</p>
-
 <pre>{0, 1}, {0, 4}, {0, 5}, {1, 2}, {1, 6}, {2, 3}, {2, 7}, {3, 4},
 {3, 8}, {4, 9}, {5, 7}, {5, 8}, {6, 8}, {6, 9}, and {7, 9}</pre>
-
 <p>…in one way or another.</p>
-
 <p>However, if you ask a mathematician to describe the Petersen graph,
 her answer would clearly be very different. Perhaps she would say:</p>
-
 <blockquote>
 <p>You get a Petersen graph if you draw a pentagon
 with a pentagram inside, with five spokes.</p>
 </blockquote>
-
-<p><img src="/golang/petersen.png" alt="Petersen graph" /></p>
-
+<p><img src="/golang/petersen.png" alt="Petersen graph"></p>
 <!-- *Picture from [Wikipedia][wikipetersen].* -->
-
 <p>This <a href="https://godoc.org/github.com/yourbasic/graph/build#example-Virtual-Match-Petersen">example</a> from the <code>graph/build</code> documentation
 corresponds to the mathematical description.</p>
-
 <pre><code><span class="comment">// Build a Petersen graph.</span>
 pentagon := build.Cycle(5)
 pentagram := pentagon.Complement()
 petersen := pentagon.Match(pentagram, build.AllEdges())
 </code></pre>
-
 <p>As you can see, the <code>Cycle</code>, <code>Complement</code> and <code>Match</code> functions
 implement basic concepts in graph theory:
 we start with a <strong>cycle graph</strong> of order 5,
 compute its <strong>complement</strong>, and then combine these two graphs
 by <strong>matching</strong> their vertices.</p>
-
 <h3 id="a-generic-graph">A generic graph</h3>
-
 <p>It&rsquo;s also possible to define a new graph by writing
 a <strong>function</strong> that describes the <strong>edge set</strong> of the graph.
 This <a href="https://godoc.org/github.com/yourbasic/graph/build#example-Generic">code example</a>
 shows how to build a directed graph containing all edges (<em>v</em>, <em>w</em>)
 for which <em>v</em> is odd and <em>w</em> even.</p>
-
 <pre><code><span class="comment">// Define a graph by a function.</span>
 g := build.Generic(10, func(v, w int) bool {
     <span class="comment">// Include all edges with v odd and w even.</span>
     return v%2 == 1 && w%2 == 0
 })
 </code></pre>
-
 <p>The <code>build.Generic</code> function returns a virtual graph with 10 vertices;
 its edge set consists of all edges (v, w), v ≠ w, for
 which the anonymous function returns true.</p>
-
 <h2 id="implementation">Implementation</h2>
-
 <p>Let&rsquo;s start by looking at the main data type, a struct with five functions.</p>
-
 <pre><code>type Virtual struct {
-    <span class="comment">// The `order` field is, in fact, a constant function.</span>
-    <span class="comment">// It returns the number of vertices in the graph.</span>
-    order int
+	<span class="comment">// The `order` field is, in fact, a constant function.</span>
+	<span class="comment">// It returns the number of vertices in the graph.</span>
+	order int
 
-    <span class="comment">// The `edge` and `cost` functions define a weighted graph</span>
-    <span class="comment">// without self-loops.</span>
-    <span class="comment">//</span>
-    <span class="comment">//  • edge(v, w) returns true whenever (v, w) belongs to</span>
-    <span class="comment">//    the graph; the value is disregarded when v == w.</span>
-    <span class="comment">//</span>
-    <span class="comment">//  • cost(v, w) returns the cost of (v, w);</span>
-    <span class="comment">//    the value is disregarded when edge(v, w) is false.</span>
-    <span class="comment">//</span>
-    edge func(v, w int) bool
-    cost func(v, w int) int64
+	<span class="comment">// The `edge` and `cost` functions define a weighted graph</span>
+	<span class="comment">// without self-loops.</span>
+	<span class="comment">//</span>
+	<span class="comment">//  • edge(v, w) returns true whenever (v, w) belongs to</span>
+	<span class="comment">//    the graph; the value is disregarded when v == w.</span>
+	<span class="comment">//</span>
+	<span class="comment">//  • cost(v, w) returns the cost of (v, w);</span>
+	<span class="comment">//    the value is disregarded when edge(v, w) is false.</span>
+	<span class="comment">//</span>
+	edge func(v, w int) bool
+	cost func(v, w int) int64
 
-    <span class="comment">// The `degree` and `visit` functions can be used to improve</span>
-    <span class="comment">// performance. They MUST BE CONSISTENT with edge and cost.</span>
-    <span class="comment">// If not implemented, the `generic` or `generic0` implementation</span>
-    <span class="comment">// is used instead. The `Consistent` test function should be used</span>
-    <span class="comment">// to check compliance.</span>
-    <span class="comment">//</span>
-    <span class="comment">//  • degree(v) returns the outdegree of vertex v.</span>
-    <span class="comment">//</span>
-    <span class="comment">//  • visit(v) visits all neighbors w of v for which w ≥ a in</span>
-    <span class="comment">//    NUMERICAL ORDER calling do(w, c) for edge (v, w) of cost c.</span>
-    <span class="comment">//    If a call to do returns true, visit MUST ABORT the iteration</span>
-    <span class="comment">//    and return true; if successful it should return false.</span>
-    <span class="comment">//    Precondition: a ≥ 0.</span>
-    <span class="comment">//</span>
-    degree func(v int) int
-    visit  func(v int, a int,
-        do func(w int, c int64) (skip bool)) (aborted bool)
+	<span class="comment">// The `degree` and `visit` functions can be used to improve</span>
+	<span class="comment">// performance. They MUST BE CONSISTENT with edge and cost.</span>
+	<span class="comment">// If not implemented, the `generic` or `generic0` implementation</span>
+	<span class="comment">// is used instead. The `Consistent` test function should be used</span>
+	<span class="comment">// to check compliance.</span>
+	<span class="comment">//</span>
+	<span class="comment">//  • degree(v) returns the outdegree of vertex v.</span>
+	<span class="comment">//</span>
+	<span class="comment">//  • visit(v) visits all neighbors w of v for which w ≥ a in</span>
+	<span class="comment">//    NUMERICAL ORDER calling do(w, c) for edge (v, w) of cost c.</span>
+	<span class="comment">//    If a call to do returns true, visit MUST ABORT the iteration</span>
+	<span class="comment">//    and return true; if successful it should return false.</span>
+	<span class="comment">//    Precondition: a ≥ 0.</span>
+	<span class="comment">//</span>
+	degree func(v int) int
+	visit  func(v int, a int,
+		do func(w int, c int64) (skip bool)) (aborted bool)
 }
 </code></pre>
-
 <h3 id="cycle-graphs">Cycle graphs</h3>
-
 <p>As a simple example, here&rsquo;s how to implement <strong>cycle graphs</strong>.
 A cycle graph of order <em>n</em> contains the edges
-{0,&nbsp;1}, {1,&nbsp;2}, {2,&nbsp;3},… ,{<em>n</em>-1,&nbsp;0}.</p>
-
-<p><img src="/golang/cycle.png" alt="Cycle graph" /></p>
-
+{0, 1}, {1, 2}, {2, 3},… ,{<em>n</em>-1, 0}.</p>
+<p><img src="/golang/cycle.png" alt="Cycle graph"></p>
 <p><em>Cycle graph of order 6</em> <!-- *picture from [Wikipedia][wikicycle].* --></p>
-
 <p>For a basic implementation of this class of graphs,
 we can write an <code>edge</code> function and use the generic implementation
 <code>generic0</code> to fill in standard implementations of the other functions
 in the <code>Virtual</code> struct.</p>
-
 <p>In the following code, <code>g</code> is a virtual circle graph of order <em>n</em>
 with edge costs equal to zero.</p>
-<pre><code>g := generic0(n, func(v, w int) (edge bool) {
+<pre tabindex="0"><code>g := generic0(n, func(v, w int) (edge bool) {
 	switch v - w {
 	case 1 - n, -1, 1, n - 1:
 		edge = true
 	}
 	return
-})</code></pre>
-<p>The generic implementation of the <code>degree</code> function iterates
+})
+</code></pre><p>The generic implementation of the <code>degree</code> function iterates
 over the <em>n</em> potential neighbors and calls the <code>edge</code> function
 for each one to check if it really is a neighbor.
 In this case, it&rsquo;s trivial to compute the degree more efficiently:</p>
-
 <pre><code><span class="comment">// Precondition : n ≥ 3.</span>
 g.degree = func(v int) int { return 2 }</code></pre>
-
 <p>The generic implementation of the <code>visit</code> function also visits
 all potential neighbors.
 This can of course be done much more efficiently:</p>
-
 <pre><code><span class="comment">// Precondition : n ≥ 3.</span>
 g.visit = func(v int, a int,
-    do func(w int, c int64) bool) (aborted bool) {
-    var w [2]int
-    switch v {
-    case 0:
-        w = [2]int{1, n - 1}
-    case n - 1:
-        w = [2]int{0, n - 2}
-    default:
-        w = [2]int{v - 1, v + 1}
-    }
-    for _, w := range w {
-        if w >= a && do(w, 0) {
-            return true
-        }
-    }
-    return
+	do func(w int, c int64) bool) (aborted bool) {
+	var w [2]int
+	switch v {
+	case 0:
+		w = [2]int{1, n - 1}
+	case n - 1:
+		w = [2]int{0, n - 2}
+	default:
+		w = [2]int{v - 1, v + 1}
+	}
+	for _, w := range w {
+		if w >= a && do(w, 0) {
+			return true
+		}
+	}
+	return
 }</code></pre>
-
 <h3 id="tensor-product">Tensor product</h3>
-
 <p>Operators on virtual graphs are typically more complicated to implement,
 but they can be defined using the very same pattern.
 Here is an example showing how to implement the <strong>tensor product</strong> of two graphs.</p>
-
 <div><img src="/golang/tensor.png" alt="Tensor product"></div>
-
 <p><em>Tensor product</em> <!-- *picture from [Wikipedia][wikitensor].* --></p>
-
 <p>The tensor product of g1 and g2 is a graph whose vertices
 correspond to ordered pairs (v1, v2), where v1 and v2 are vertices
 in g1 and g2, respectively. The vertices (v1, v2) and (w1, w2)
 are connected by an edge whenever both of the edges {v1, w1} and {v2, w2}
 exist in the original graphs.</p>
-
 <p>In the new graph, vertex (v1, v2) gets index n⋅v1 + v2,
 where n = g2.Order(), and index i corresponds to the vertex (i/n, i%n).</p>
-<pre><code>func (g1 *Virtual) Tensor(g2 *Virtual) *Virtual {
+<pre tabindex="0"><code>func (g1 *Virtual) Tensor(g2 *Virtual) *Virtual {
 	m, n := g1.Order(), g2.Order()
 
 	g := generic0(m*n, func(v, w int) (edge bool) {
@@ -316,74 +274,56 @@ where n = g2.Order(), and index i corresponds to the vertex (i/n, i%n).</p>
 		})
 	}
 	return g
-}</code></pre>
-<p><em>Code from</em> <a href="https://github.com/yourbasic/graph/blob/master/build/tensor.go">tensor.go</a></p>
-
+}
+</code></pre><p><em>Code from</em> <a href="https://github.com/yourbasic/graph/blob/master/build/tensor.go">tensor.go</a></p>
 <h2 id="testing">Testing</h2>
-
 <p>Testing pure functions is typically straightforward –
 in this case it&rsquo;s also a pure pleasure.</p>
-
 <p>As always we need to check that the function calls
 produce the expected result, but the rest of the testing procedure
 can be fully automated. Given the <code>edge</code> and <code>cost</code> functions,
 the behavior of <code>degree</code> and <code>visit</code> are fully determined and
 can be automatically checked; it also works in reverse.</p>
-
 <p>This is a blessing since the implementations tend to be quite different
 and often either <code>edge</code> or <code>visit</code> is considerably easier to implement
 than the other.</p>
-
 <p>To test the <code>Cycle</code> function we simply need to check its output
 and call the automated consistency test:</p>
-<pre><code>for n := 0; n &lt; 5; n++ {
-	Consistent(&#34;Cycle&#34;, t, Cycle(n))
-}</code></pre>
-<h2 id="performance">Performance</h2>
-
+<pre tabindex="0"><code>for n := 0; n &lt; 5; n++ {
+	Consistent(&quot;Cycle&quot;, t, Cycle(n))
+}
+</code></pre><h2 id="performance">Performance</h2>
 <h3 id="iteration">Iteration</h3>
-
 <p>The implementation of neighbor iteration is crucial for the performance
 of any graph library.
 Therefore all predefined building blocks and operations
 try to implement the <code>visit</code> function in time proportional to
 the actual number of neighbors.</p>
-
 <p>However, with filter functions this is not possible.
 In particular, graphs built by the <code>Generic</code> function
 must visit all potential neighbors during iteration.</p>
-
 <h3 id="caching">Caching</h3>
-
 <p>Caching can give large performance improvements but may be hard to automate.
 When and what to cache depends on many factors, including the actual data,
 hardware, and implementation.</p>
-
 <p>Additionally, any graph, or part of a graph, which is described
 by a filter function function cannot be cached since we don&rsquo;t
 know if the user-defined functions are pure –
 they may return different results given the same argument.</p>
-
 <p>The solution is a function which activates caching
 for a specified component:</p>
-
 <pre><code><span class="comment">// Specific returns a cached copy of g with constant time</span>
 <span class="comment">// performance for all basic operations. It uses space</span>
 <span class="comment">// proportional to the size of the graph.</span>
 func Specific(g graph.Iterator) *Virtual
 </code></pre>
-
 <p>The implementation uses fixed precomputed lists to associate
 each vertex in the graph with its neighbors.</p>
-
 <p>Not only can <code>Specific</code> be used to cache selected components,
 it can also be employed to import graphs
 that are represented by more traditional data structures.</p>
-
 <h2 id="further-reading">Further reading</h2>
-
 <div><a href="/algorithms/graph/"><img src="/algorithms/social-graph-thumb.png" title="Your basic graph"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;"><a href="/algorithms/graph/">Your basic graph: terminology, data structures, search algorithms</a></p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -411,15 +351,7 @@ that are represented by more traditional data structures.</p>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

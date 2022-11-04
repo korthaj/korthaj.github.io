@@ -84,65 +84,50 @@
 <article>
 <h1>Anonymous functions and closures</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <p class="lead">A function literal (or lambda) is a&nbsp;function without a&nbsp;name.</p>
-
 <!-- CC0: https://pxhere.com/en/photo/998132 -->
-
 <div><img src="/golang/anonymous-hoodie.jpg"></div>
-
 <p>In this example a <strong>function literal</strong> is passed as the <code>less</code> argument to the <a href="https://golang.org/pkg/sort/#Slice"><code>sort.Slice</code></a> function.</p>
-
 <pre><code>func Slice(slice interface{}, less func(i, j int) bool)
 </code></pre>
-
 <pre><code>people := []string{"Alice", "Bob", "Dave"}
 sort.Slice(people, <b>func(i, j int) bool {
-    return len(people[i]) < len(people[j])
+	return len(people[i]) < len(people[j])
 }</b>)
 fmt.Println(people)
 <span class="comment">// Output: [Bob Dave Alice]</span></code></pre>
-
 <p>You can also use an intermediate variable.</p>
-
 <pre><code>people := []string{"Alice", "Bob", "Dave"}
 <b>less := func(i, j int) bool {
-    return len(people[i]) < len(people[j])
+	return len(people[i]) < len(people[j])
 }</b>
 sort.Slice(people, <b>less</b>)</code></pre>
-
 <p>Note that the <code>less</code> function is a <strong>closure</strong>: it references the <code>people</code> variable, which is declared outside the function.</p>
-
 <h2 id="closures">Closures</h2>
-
 <p>Function literals in Go are <strong>closures</strong>: they may refer to variables defined in an enclosing function.
-Such&nbsp;variables</p>
-
+Such variables</p>
 <ul>
 <li>are shared between the surrounding function and the function literal,</li>
 <li>survive as long as they are accessible.</li>
 </ul>
-
-<p>In this example, the function literal uses the local variable&nbsp;<code>n</code>
+<p>In this example, the function literal uses the local variable <code>n</code>
 from the enclosing scope to count the number of times it has been invoked.</p>
-
 <pre><code>// New returns a function Count.
 // Count prints the number of times it has been invoked.
 func New() (Count func()) {
-    n := 0
-    return func() {
-        n++
-        fmt.Println(n)
-    }
+	n := 0
+	return func() {
+		n++
+		fmt.Println(n)
+	}
 }
 
 func main() {
-    f1, f2 := New(), New()
-    f1() <span class="comment">// 1</span>
-    f2() <span class="comment">// 1 (different n)</span>
-    f1() <span class="comment">// 2</span>
-    f2() <span class="comment">// 2</span>
+	f1, f2 := New(), New()
+	f1() <span class="comment">// 1</span>
+	f2() <span class="comment">// 1 (different n)</span>
+	f1() <span class="comment">// 2</span>
+	f2() <span class="comment">// 2</span>
 }</code></pre>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -164,15 +149,7 @@ func main() {
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

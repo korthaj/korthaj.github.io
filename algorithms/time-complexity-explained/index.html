@@ -84,194 +84,147 @@
 <article>
 <h1>How to analyze time complexity: Count your steps</h1>
 <div class="tagline">yourbasic.org</div>
-
-
 <p class="lead">Time complexity esti&shy;mates the time to run an algo&shy;rithm.
 It's calcu&shy;lated by counting elemen&shy;tary opera&shy;tions.
 </p>
-
 <!-- CC0: https://pixabay.com/en/slide-rule-count-math-mathematics-317759/ -->
-
 <div><img src="/algorithms/abacus.jpg"></div>
-
 <ul class="toc">
   <li><a href="#example-iterative-algorithm">Example (iterative algorithm)</a></li>
   <li><a href="#worst-case-time-complexity">Worst-case time complexity</a></li>
   <li><a href="#average-case-time-complexity">Average-case time complexity</a></li>
   <li><a href="#quadratic-time-complexity">Quadratic time complexity</a></li>
 </ul>
-
 <h2 id="example-iterative-algorithm">Example (iterative algorithm)</h2>
-
 <p>What&rsquo;s the running time of the following algorithm?</p>
-
 <pre>
 // Compute the maximum element in the array a.
 <b>Algorithm</b> max(a):
-    max ← a[0]
-    <b>for</b> i = 1 <b>to</b> len(a)-1
-        <b>if</b> a[i] &gt; max
-            max ← a[i]
-    <b>return</b> max
+	max ← a[0]
+	<b>for</b> i = 1 <b>to</b> len(a)-1
+		<b>if</b> a[i] &gt; max
+			max ← a[i]
+	<b>return</b> max
 </pre>
-
 <p>The answer depends on factors such as input, programming language and runtime,
 coding skill, compiler, operating system, and hardware.</p>
-
 <p>We often want to reason about <strong>execution time</strong> in a way that depends
 only on the <strong>algorithm</strong> and its <strong>input</strong>.
 This can be achieved by choosing an <strong>elementary operation</strong>,
 which the algorithm performs repeatedly, and define
 the <strong>time complexity</strong> T(<i>n</i>) as the number of such operations
-the algorithm performs given an array of length&nbsp;<em>n</em>.</p>
-
+the algorithm performs given an array of length <em>n</em>.</p>
 <p>For the algorithm above we can choose the comparison
 <code>a[i] &gt; max</code> as an elementary operation.</p>
-
 <ol>
 <li>This captures the running time of the algorithm well,
 since comparisons dominate all other operations
 in this particular algorithm.</li>
 <li>Also, the time to perform a comparison is constant:
-it doesn&rsquo;t depend on the size of&nbsp;<code>a</code>.</li>
+it doesn&rsquo;t depend on the size of <code>a</code>.</li>
 </ol>
-
 <p>The time complexity, measured in the number of comparisons,
-then becomes T(<i>n</i>)&nbsp;=&nbsp;<i>n</i>&nbsp;-&nbsp;1.</p>
-
+then becomes T(<i>n</i>) = <i>n</i> - 1.</p>
 <p>In general, an <strong>elementary operation</strong> must have two properties:</p>
-
 <ol>
 <li>There can&rsquo;t be any other operations that are performed more frequently
 as the size of the input grows.</li>
 <li>The time to execute an elementary operation must be constant:
 it mustn&rsquo;t increase as the size of the input grows.
-This is known as <a href="/algorithms/unit-cost-vs-bit-cost/">unit&nbsp;cost</a>.</li>
+This is known as <a href="/algorithms/unit-cost-vs-bit-cost/">unit cost</a>.</li>
 </ol>
-
 <h2 id="worst-case-time-complexity">Worst-case time complexity</h2>
-
 <p>Consider this algorithm.</p>
-
 <pre>
 // Tell whether the array a contains x.
 <b>Algorithm</b> contains(a, x):
-    <b>for</b> i = 0 <b>to</b> len(a)-1
-        <b>if</b> x == a[i]
-            <b>return</b> true
-    <b>return</b> false
+	<b>for</b> i = 0 <b>to</b> len(a)-1
+		<b>if</b> x == a[i]
+			<b>return</b> true
+	<b>return</b> false
 </pre>
-
 <p>The comparison <code>x == a[i]</code> can be used as an elementary operation in this case.
 However, for this algorithm the number of comparisons depends not only on the number of elements, <em>n</em>,
-in the array but also on the value of <code>x</code> and the values in&nbsp;<code>a</code>:</p>
-
+in the array but also on the value of <code>x</code> and the values in <code>a</code>:</p>
 <ul>
 <li>If <code>x</code> isn&rsquo;t found in <code>a</code> the algorithm makes <em>n</em> comparisons,</li>
 <li>but if <code>x</code> equals <code>a[0]</code> there is only one comparison.</li>
 </ul>
-
 <p>Because of this, we often choose to study <strong>worst-case</strong> time complexity:</p>
-
 <ul>
-<li>Let T<sub>1</sub>(<i>n</i>), T<sub>2</sub>(<i>n</i>),&nbsp;… be the execution times
-for all possible inputs of size&nbsp;<i>n</i>.</li>
+<li>Let T<sub>1</sub>(<i>n</i>), T<sub>2</sub>(<i>n</i>), … be the execution times
+for all possible inputs of size <i>n</i>.</li>
 <li>The worst-case time complexity W(<i>n</i>) is then defined as
-W(<i>n</i>)&nbsp;=&nbsp;max(T<sub>1</sub>(<i>n</i>), T<sub>2</sub>(<i>n</i>),&nbsp;…).</li>
+W(<i>n</i>) = max(T<sub>1</sub>(<i>n</i>), T<sub>2</sub>(<i>n</i>), …).</li>
 </ul>
-
 <p>The worst-case time complexity for the <code>contains</code> algorithm thus becomes
-W(<i>n</i>)&nbsp;=&nbsp;<i>n</i>.</p>
-
+W(<i>n</i>) = <i>n</i>.</p>
 <p>Worst-case time complexity gives an upper bound on time requirements
 and is often easy to compute.
 The drawback is that it&rsquo;s often overly pessimistic.</p>
-
 <blockquote>
 <p>See <a href="/algorithms/time-complexity-arrays/">Time complexity of array/list operations</a>
 for a detailed look at the performance of basic array operations.</p>
 </blockquote>
-
 <h2 id="average-case-time-complexity">Average-case time complexity</h2>
-
 <p><strong>Average-case</strong> time complexity is a less common measure:</p>
-
 <ul>
-<li>Let T<sub>1</sub>(<i>n</i>), T<sub>2</sub>(<i>n</i>),&nbsp;… be the execution times
-for all possible inputs of size&nbsp;<i>n</i>,<br />
-and let P<sub>1</sub>(<i>n</i>), P<sub>2</sub>(<i>n</i>),&nbsp;… be the probabilities
+<li>Let T<sub>1</sub>(<i>n</i>), T<sub>2</sub>(<i>n</i>), … be the execution times
+for all possible inputs of size <i>n</i>,<br>
+and let P<sub>1</sub>(<i>n</i>), P<sub>2</sub>(<i>n</i>), … be the probabilities
 of these inputs.</li>
 <li>The average-case time complexity is then defined as
-P<sub>1</sub>(<i>n</i>)T<sub>1</sub>(<i>n</i>) + P<sub>2</sub>(<i>n</i>)T<sub>2</sub>(<i>n</i>)&nbsp;+&nbsp;…</li>
+P<sub>1</sub>(<i>n</i>)T<sub>1</sub>(<i>n</i>) + P<sub>2</sub>(<i>n</i>)T<sub>2</sub>(<i>n</i>) + …</li>
 </ul>
-
 <p>Average-case time is often harder to compute,
 and it also requires knowledge of how the input is distributed.</p>
-
 <h2 id="quadratic-time-complexity">Quadratic time complexity</h2>
-
 <p>Finally, we&rsquo;ll look at an algorithm with poor time complexity.</p>
-
 <pre>
 // Reverse the order of the elements in the array a.
 <b>Algorithm</b> reverse(a):
-    <b>for</b> i = 1 <b>to</b> len(a)-1
-        x ← a[i]
-        <b>for</b> j = i <b>downto</b> 1
-            a[j] ← a[j-1]
-        a[0] ← x
+	<b>for</b> i = 1 <b>to</b> len(a)-1
+		x ← a[i]
+		<b>for</b> j = i <b>downto</b> 1
+			a[j] ← a[j-1]
+		a[0] ← x
 </pre>
-
 <p>We choose the assignment <code>a[j] ← a[j-1]</code> as elementary operation.
 Updating an element in an array is a constant-time operation,
 and the assignment dominates the cost of the algorithm.</p>
-
-<p>The number of elementary operations is fully determined by the input size&nbsp;<em>n</em>.
-In fact, the outer for loop is executed <i>n</i>&nbsp;-&nbsp;1 times.
+<p>The number of elementary operations is fully determined by the input size <em>n</em>.
+In fact, the outer for loop is executed <i>n</i> - 1 times.
 The time complexity therefore becomes</p>
-
-<p>W(<i>n</i>)&nbsp;=
-1&nbsp;+&nbsp;2&nbsp;+&nbsp;&hellip;&nbsp;+&nbsp;(<i>n</i>&nbsp;-&nbsp;1)&nbsp;=
-<i>n</i>(<i>n</i>&nbsp;-&nbsp;1)/2&nbsp;=
-<i>n<sup>2</sup></i>/2&nbsp;-&nbsp;<i>n</i>/2.</p>
-
+<p>W(<i>n</i>) =
+1 + 2 + &hellip; + (<i>n</i> - 1) =
+<i>n</i>(<i>n</i> - 1)/2 =
+<i>n<sup>2</sup></i>/2 - <i>n</i>/2.</p>
 <p>The quadratic term dominates for large <i>n</i>,
 and we therefore say that this algorithm has <strong>quadratic</strong> time complexity.
 This means that the algorithm <strong>scales poorly</strong> and can be used <strong>only for small input</strong>:
 to reverse the elements of an array with 10,000 elements,
 the algorithm will perform about 50,000,000 assignments.</p>
-
 <p>In this case it&rsquo;s easy to find an algorithm with <strong>linear</strong> time complexity.</p>
-
 <pre>
 <b>Algorithm</b> reverse(a):
-    <b>for</b> i = 0 <b>to</b> n/2
-        swap a[i] and a[n-i-1]
+	<b>for</b> i = 0 <b>to</b> n/2
+		swap a[i] and a[n-i-1]
 </pre>
-
 <p>This is a <strong>huge improvement</strong> over the previous algorithm:
-an array with 10,000&nbsp;elements can now be reversed
-with only 5,000&nbsp;swaps, i.e. 10,000&nbsp;assignments.
+an array with 10,000 elements can now be reversed
+with only 5,000 swaps, i.e. 10,000 assignments.
 That&rsquo;s roughly a 5,000-fold speed improvement,
 and the improvement keeps growing as the the input gets larger.</p>
-
 <p>It&rsquo;s common to use <a href="/algorithms/big-o-notation-explained/">Big O notation</a>
 when talking about time complexity. We could then say that
-the time complexity of the first algorithm is &Theta;(<i>n</i><sup>2</sup>),
-and that the improved algorithm has &Theta;(<i>n</i>) time complexity.</p>
-
+the time complexity of the first algorithm is Θ(<i>n</i><sup>2</sup>),
+and that the improved algorithm has Θ(<i>n</i>) time complexity.</p>
 <h3 id="further-reading">Further reading</h3>
-
 <div><a href="/algorithms/big-o-notation-explained/"><img src="/algorithms/big-o-thumb.jpg" title="Big O notation"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;"><a href="/algorithms/big-o-notation-explained/">Big O notation</a></p>
-
 <div><a href="/algorithms/time-complexity-arrays/"><img src="/algorithms/scooter-vs-taxi-thumb.jpeg" title="Time complexity of array/list operations [Java, Python]"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;"><a href="/algorithms/time-complexity-arrays/">Time complexity of array/list operations [Java, Python]</a></p>
-
 <div><a href="/algorithms/time-complexity-recursive-functions/"><img src="/algorithms/recursive-soup-thumb.jpg" title="Time complexity of recursive functions [Master theorem]"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;"><a href="/algorithms/time-complexity-recursive-functions/">Time complexity of recursive functions [Master theorem]</a></p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -305,15 +258,7 @@ and that the improved algorithm has &Theta;(<i>n</i>) time complexity.</p>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
     <div style="margin-top:1em;"><a href="/algorithms/time-complexity-explained/" title="How to analyse time complexity: Count your steps"><img src="/algorithms/abacus-mini.jpg"></a></div>
   <ul class="none">
   

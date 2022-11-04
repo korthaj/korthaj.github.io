@@ -84,41 +84,30 @@
 <article>
 <h1>Constructors deconstructed [best practice]</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <p class="lead">Go doesn't have explicit constructors.
 The idiomatic way to set up new data structures
 is to use proper <b>zero values</b> coupled with <b>factory</b> functions.</p>
-
 <!-- CC BY-SA 3.0: https://commons.wikimedia.org/wiki/File:Ba-zolotoe-kolco-rusi-2001-line.jpg -->
-
 <div><img src="/golang/factory-conveyor-belt.jpg"></div>
-
 <h2 id="zero-value">Zero value</h2>
-
 <p>Try to make the default <a href="/golang/default-zero-value/">zero value</a> useful
 and document its behavior. Sometimes this is all that&rsquo;s needed.</p>
-
 <pre><code>// A StopWatch is a simple clock utility.
 // Its zero value is an idle clock with 0 total time.
 type StopWatch struct {
-    start   time.Time
-    total   time.Duration
-    running bool
+	start   time.Time
+	total   time.Duration
+	running bool
 }
 
 var clock StopWatch <span class="comment">// Ready to use, no initialization needed.</span></code></pre>
-
 <ul>
 <li><code>StopWatch</code> takes advantage of the useful zero values of <code>time.Time</code>, <code>time.Duration</code> and <code>bool</code>.</li>
-<li>In turn, users of <code>StopWatch</code> can benefit from <em>its</em> useful zero&nbsp;value.</li>
+<li>In turn, users of <code>StopWatch</code> can benefit from <em>its</em> useful zero value.</li>
 </ul>
-
 <h2 id="factory">Factory</h2>
-
 <p>If the zero value doesn&rsquo;t suffice,
-use factory functions named <code>NewFoo</code> or just&nbsp;<code>New</code>.</p>
-
+use factory functions named <code>NewFoo</code> or just <code>New</code>.</p>
 <pre><code>scanner := bufio.NewScanner(os.Stdin)
 err := errors.New("Houston, we have a problem")</code></pre>
 
@@ -159,15 +148,7 @@ err := errors.New("Houston, we have a problem")</code></pre>
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

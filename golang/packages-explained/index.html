@@ -85,12 +85,8 @@
 <h1>Packages explained: declare, import, download, document</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC BY-SA 3.0: https://commons.wikimedia.org/wiki/File:Paket_med_hagel_fr%C3%A5n_Sala_silvergruva_-_Livrustkammaren_-_31089.jpg -->
-
 <div><img src="/golang/paket.jpg" class="extra-content" style="float: right; margin: 0 0 25px 0;"></div>
-
 <ul class="toc">
   <li><a href="#basics">Basics</a></li>
   <li><a href="#declare-a-package">Declare a package</a></li>
@@ -99,140 +95,111 @@
   <li><a href="#package-download">Package download</a></li>
   <li><a href="#package-documentation">Package documentation</a></li>
 </ul>
-
 <h2 id="basics">Basics</h2>
-
-<p>Every Go program is made up of packages and each package has an&nbsp;<strong>import&nbsp;path</strong>:</p>
-
+<p>Every Go program is made up of packages and each package has an <strong>import path</strong>:</p>
 <ul>
 <li><code>&quot;fmt&quot;</code></li>
 <li><code>&quot;math/rand&quot;</code></li>
 <li><code>&quot;github.com/yourbasic/graph&quot;</code></li>
 </ul>
-
 <p>Packages in the standard library have short import paths,
-such&nbsp;as <code>&quot;fmt&quot;</code> and <code>&quot;math/rand&quot;</code>.
+such as <code>&quot;fmt&quot;</code> and <code>&quot;math/rand&quot;</code>.
 Third-party packages, such as <code>&quot;github.com/yourbasic/graph&quot;</code>, typically have an import path
 that includes a hosting service (<code>github.com</code>) and an organization name (<code>yourbasic</code>).</p>
-
 <p>By convention, the <strong>package name</strong> is the same as the last element of the import path:</p>
-
 <ul>
 <li><code>fmt</code></li>
 <li><code>rand</code></li>
 <li><code>graph</code></li>
 </ul>
-
-<p>References to other packages&rsquo; definitions must always be prefixed
+<p>References to other packages' definitions must always be prefixed
 with their package names,
 and only the capitalized names from other packages are accessible.</p>
-
 <pre><code>package main
 
 <b>import</b> (
-    "<b>fmt</b>"
-    "math/<b>rand</b>"
+	"<b>fmt</b>"
+	"math/<b>rand</b>"
 
-    "github.com/yourbasic/<b>graph</b>"
+	"github.com/yourbasic/<b>graph</b>"
 )
 
 func main() {
-    n := <b>rand.Intn</b>(100)
-    g := <b>graph.New</b>(n)
-    <b>fmt.Println</b>(g)
+	n := <b>rand.Intn</b>(100)
+	g := <b>graph.New</b>(n)
+	<b>fmt.Println</b>(g)
 }</code></pre>
-
 <h2 id="declare-a-package">Declare a package</h2>
-
 <p>Every Go source file starts with a package declaration, which contains only the package name.</p>
-
 <p>For example, the file <a href="https://golang.org/src/math/rand/exp.go"><code>src/math/rand/exp.go</code></a>,
 which is part of the implementation of the <a href="https://golang.org/pkg/math/rand/"><code>math/rand</code></a> package,
-contains the following&nbsp;code.</p>
-
+contains the following code.</p>
 <pre><code><b>package rand</b>
   
 import "math"
   
 const re = 7.69711747013104972
 …</code></pre>
-
 <p>You don&rsquo;t need to worry about package name collisions,
 only the import path of a package must be unique.
 <a href="https://golang.org/doc/code.html">How to Write Go Code</a> shows how to organize
-your code and its packages in a file&nbsp;structure.</p>
-
+your code and its packages in a file structure.</p>
 <h2 id="package-name-conflicts">Package name conflicts</h2>
-
 <p>You can customize the name under which you refer to an imported package.</p>
-
 <pre><code>package main
 
 import (
-    <b>csprng "crypto/rand"</b>
-    <b>prng "math/rand"</b>
+	<b>csprng "crypto/rand"</b>
+	<b>prng "math/rand"</b>
 
-    "fmt"
+	"fmt"
 )
 
 func main() {
-    n := <b>prng.Int</b>() <span class="comment">// pseudorandom number</span>
-    b := make([]byte, 8)
-    <b>csprng.Read</b>(b) <span class="comment">// cryptographically secure pseudorandom number</span>
-    fmt.Println(n, b)
+	n := <b>prng.Int</b>() <span class="comment">// pseudorandom number</span>
+	b := make([]byte, 8)
+	<b>csprng.Read</b>(b) <span class="comment">// cryptographically secure pseudorandom number</span>
+	fmt.Println(n, b)
 }</code></pre>
-
 <h2 id="dot-imports">Dot imports</h2>
-
 <p>If a period <code>.</code> appears instead of a name in an import statement,
 all the package&rsquo;s exported identifiers can be accessed without a qualifier.</p>
-
 <pre><code>package main
 
 import (
-    "fmt"
-    <b>. "math"</b>
+	"fmt"
+	<b>. "math"</b>
 )
 
 func main() {
-    fmt.Println(<b>Sin</b>(<b>Pi</b>/2)*<b>Sin</b>(<b>Pi</b>/2) + <b>Cos</b>(<b>Pi</b>)/2)<span class="comment"> // 0.5</span>
+	fmt.Println(<b>Sin</b>(<b>Pi</b>/2)*<b>Sin</b>(<b>Pi</b>/2) + <b>Cos</b>(<b>Pi</b>)/2)<span class="comment"> // 0.5</span>
 }</code></pre>
-
 <p>Dot imports can make programs hard to read and <strong>generally should be avoided</strong>.</p>
-
 <h2 id="package-download">Package download</h2>
-
 <p>The <a href="https://golang.org/cmd/go/#hdr-Download_and_install_packages_and_dependencies"><code>go get</code></a>
 command downloads packages named by import paths, along with their dependencies,
 and then installs the packages.</p>
-<pre><code>$ go get github.com/yourbasic/graph</code></pre>
-<p>The import path corresponds to the repository hosting the code.
+<pre tabindex="0"><code>$ go get github.com/yourbasic/graph
+</code></pre><p>The import path corresponds to the repository hosting the code.
 This reduces the likelihood of future name collisions.</p>
-
 <p>The <a href="https://github.com/golang/go/wiki/Projects">Go Wiki</a> and
 <a href="https://github.com/avelino/awesome-go">Awesome Go</a>
 provide lists of high-quality Go packages and resources.</p>
-
 <p>For more information on using remote repositories with the go tool,
 see <a href="https://golang.org/cmd/go/#hdr-Remote_import_paths">Command go: Remote import paths</a>.</p>
-
 <h2 id="package-documentation">Package documentation</h2>
-
 <p>The <a href="https://godoc.org/">GoDoc</a> web site hosts documentation for all public Go packages
 on Bitbucket, GitHub, Google Project Hosting and Launchpad:</p>
-
 <ul>
 <li><a href="https://godoc.org/fmt"><code>https://godoc.org/fmt</code></a></li>
 <li><a href="https://godoc.org/math/rand"><code>https://godoc.org/math/rand</code></a></li>
 <li><a href="https://godoc.org/github.com/yourbasic/graph"><code>https://godoc.org/github.com/yourbasic/graph</code></a></li>
 </ul>
-
 <p>The <a href="https://godoc.org/golang.org/x/tools/cmd/godoc">godoc</a> command
 extracts and generates documentation for all locally installed Go programs.
 The following command starts a web server that presents the documentation at <code>http://localhost:6060/</code>.</p>
-<pre><code>$ godoc -http=:6060 &amp;</code></pre>
-<div><a href="/golang/package-documentation/"><img src="/golang/ref.png" title="Package documentation"></a></div>
-
+<pre tabindex="0"><code>$ godoc -http=:6060 &amp;
+</code></pre><div><a href="/golang/package-documentation/"><img src="/golang/ref.png" title="Package documentation"></a></div>
 <p style="margin-top:0; margin-bottom:2em;">For more on how to access and create documentation,
 see the <a href="/golang/package-documentation/">Package documentation</a> article.</p>
 
@@ -287,15 +254,7 @@ see the <a href="/golang/package-documentation/">Package documentation</a> artic
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

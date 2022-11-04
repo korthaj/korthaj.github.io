@@ -85,33 +85,24 @@
 <h1>Goroutines are lightweight threads</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC BY 3.0: https://golang.org/doc/gopher/ -->
-
 <div><img src="/golang/plane.png" width="120px" style="float: right; margin: -20px 0 10px 20px;" /></div>
-
 <p class="lead">The <b>go</b> statement runs a func&shy;tion in a sepa&shy;rate thread
 of&nbsp;execu&shy;tion.</p>
-
-<p>You can start a new thread of execution, a&nbsp;goroutine, with the <code>go</code> statement.
-It&nbsp;runs a function in a different, newly created, goroutine.
+<p>You can start a new thread of execution, a goroutine, with the <code>go</code> statement.
+It runs a function in a different, newly created, goroutine.
 All goroutines in a single program share the same address space.</p>
-
 <pre><code><b>go</b> list.Sort() <span class="comment">// Run list.Sort in parallel; don’t wait for it.</span></code></pre>
-
 <p>The following program will print &ldquo;Hello from main goroutine&rdquo;.
 It <em>might</em> also print &ldquo;Hello from another goroutine&rdquo;,
 depending on which of the two goroutines finish first.</p>
-
 <pre><code>func main() {
-    go fmt.Println("Hello from another goroutine")
-    fmt.Println("Hello from main goroutine")
+	go fmt.Println("Hello from another goroutine")
+	fmt.Println("Hello from main goroutine")
 
-    <span class="comment">// At this point the program execution stops and all</span>
-    <span class="comment">// active goroutines are killed.</span>
+	<span class="comment">// At this point the program execution stops and all</span>
+	<span class="comment">// active goroutines are killed.</span>
 }</code></pre>
-
 <p>The next program will, most likely,
 print both &ldquo;Hello from main goroutine&rdquo;
 and &ldquo;Hello from another goroutine&rdquo;.
@@ -119,55 +110,46 @@ They may be printed in any order.
 Yet another possibility is that the
 second goroutine is extremely slow and doesn’t print
 its message before the program ends.</p>
-
 <pre><code>func main() {
-    go fmt.Println("Hello from another goroutine")
-    fmt.Println("Hello from main goroutine")
+	go fmt.Println("Hello from another goroutine")
+	fmt.Println("Hello from main goroutine")
 
-    time.Sleep(time.Second) <span class="comment">// give the other goroutine time to finish</span>
+	time.Sleep(time.Second) <span class="comment">// give the other goroutine time to finish</span>
 }</code></pre>
-
 <p>Here is a somewhat more realistic example, where we define a function that
 uses concurrency to postpone an event.</p>
-
 <pre><code>// Publish prints text to stdout after the given time has expired.
 // It doesn’t block but returns right away.
 func Publish(text string, delay time.Duration) {
-    go func() {
-        time.Sleep(delay)
-        fmt.Println("BREAKING NEWS:", text)
-    }() <span class="comment">// Note the parentheses. We must call the anonymous function.</span>
+	go func() {
+		time.Sleep(delay)
+		fmt.Println("BREAKING NEWS:", text)
+	}() <span class="comment">// Note the parentheses. We must call the anonymous function.</span>
 }</code></pre>
-
 <p>This is how you might use the <code>Publish</code> function.</p>
-
 <pre><code>func main() {
-    Publish("A goroutine starts a new thread.", 5*time.Second)
-    fmt.Println("Let’s hope the news will published before I leave.")
+	Publish("A goroutine starts a new thread.", 5*time.Second)
+	fmt.Println("Let’s hope the news will published before I leave.")
 
-    <span class="comment">// Wait for the news to be published.</span>
-    time.Sleep(10 * time.Second)
+	<span class="comment">// Wait for the news to be published.</span>
+	time.Sleep(10 * time.Second)
 
-    fmt.Println("Ten seconds later: I’m leaving now.")
+	fmt.Println("Ten seconds later: I’m leaving now.")
 }</code></pre>
-
 <p>The program will, most likely, print the following three lines,
 in the given order and with a five second break in between each line.</p>
-<pre><code>$ go run publish1.go
+<pre tabindex="0"><code>$ go run publish1.go
 Let’s hope the news will published before I leave.
 BREAKING NEWS: A goroutine starts a new thread.
-Ten seconds later: I’m leaving now.</code></pre>
-<p>In general it’s not possible to arrange for threads to wait for each
+Ten seconds later: I’m leaving now.
+</code></pre><p>In general it’s not possible to arrange for threads to wait for each
 other by sleeping. Go’s main method for synchronization is to use
 <a href="/golang/channels-explained/">channels</a>.</p>
-
 <h2 id="implementation">Implementation</h2>
-
 <p>Goroutines are lightweight,
 costing little more than the allocation of stack space.
 The stacks start small and grow by allocating and freeing
 heap storage as required.</p>
-
 <p>Internally goroutines act like coroutines that are multiplexed
 among multiple operating system threads.
 If one goroutine blocks an OS thread, for example waiting for input,
@@ -230,14 +212,6 @@ other goroutines in this thread will migrate so that they may continue running.<
     <div class="source">yourbasic.org</div>
   </div>
 
-
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
 
 </aside>
 </main>

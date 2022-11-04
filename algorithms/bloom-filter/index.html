@@ -84,37 +84,25 @@
 <article>
 <h1>Bloom filters explained</h1>
 <div class="tagline">yourbasic.org</div>
-
-
 <p class="lead">A Bloom filter is a prob&shy;abi&shy;listic data struc&shy;ture used to test set&nbsp;member&shy;ship.</p>
-
 <!-- CC BY-SA 2.0:  https://commons.wikimedia.org/wiki/File:Neutral_density_filter_demonstration.jpg -->
-
 <div><img src="/algorithms/neutral-density-filter-demonstration.jpg" alt="Neutral density filter demonstration"></div>
-
 <ul class="toc">
   <li><a href="#bloom-filter-basics">Bloom filter basics</a></li>
   <li><a href="#example-blocking-shady-websites">Example: Blocking shady websites</a></li>
   <li><a href="#implementation">Implementation</a></li>
   <li><a href="#performance">Performance</a></li>
 </ul>
-
 <h2 id="bloom-filter-basics">Bloom filter basics</h2>
-
 <p>The Bloom filter data structure tells whether an element <strong>may be</strong> in a set, or <strong>definitely isn&rsquo;t</strong>.
 The only possible errors are <strong>false positives</strong>: a search for a nonexistent element
 can give an incorrect answer.
 With more elements in the filter, the error rate increases.</p>
-
 <p>Bloom filters are both <strong>fast</strong> and <strong>space-efficient</strong>. However, elements can only be added, not removed.</p>
-
 <p>Content distribution networks use them to avoid caching one-hit wonders, files that are seen only once. Web browsers use them to check for potentially harmful URLs.</p>
-
 <h2 id="example-blocking-shady-websites">Example: Blocking shady websites</h2>
-
 <p>This piece of code, which uses the Go  Bloom filter implementation in package <a href="https://github.com/yourbasic/bloom">github.com/yourbasic/bloom</a>,
 shows a typical Bloom filter use case.</p>
-
 <pre><code><span class="comment">// A Bloom filter with room for at most 100000 elements.
 // The error rate for the filter is less than 1/200.</span>
 blocklist := bloom.New(10000, 200)
@@ -125,58 +113,43 @@ blocklist.Add(url)
 
 <span class="comment">// Test for membership.</span>
 if blocklist.Test(url) {
-    fmt.Println(url, "may be blocked.")
+	fmt.Println(url, "may be blocked.")
 } else {
-    fmt.Println(url, "has not been blocked.")
+	fmt.Println(url, "has not been blocked.")
 }</code></pre>
-
 <pre><code>https://rascal.com may be blocked.</code></pre>
-
 <h2 id="implementation">Implementation</h2>
-
-<p>An empty Bloom filter is a <a href="/algorithms/your-basic-int/#simple-sets">bit array</a> of <i>m</i>&nbsp;bits, all set to&nbsp;0.
-There are also <i>k</i>&nbsp;different hash functions,
-each of which maps a set element to one of the&nbsp;<i>m</i> bit positions.</p>
-
+<p>An empty Bloom filter is a <a href="/algorithms/your-basic-int/#simple-sets">bit array</a> of <i>m</i> bits, all set to 0.
+There are also <i>k</i> different hash functions,
+each of which maps a set element to one of the <i>m</i> bit positions.</p>
 <ul>
-<li>To add an element, feed it to the hash functions to&nbsp;get <i>k</i> bit positions,
-and&nbsp;set the&nbsp;bits at these positions to&nbsp;1.</li>
-<li>To test if an element is in the&nbsp;set, feed it to the&nbsp;hash functions to&nbsp;get <i>k</i> bit positions.
-
+<li>To add an element, feed it to the hash functions to get <i>k</i> bit positions,
+and set the bits at these positions to 1.</li>
+<li>To test if an element is in the set, feed it to the hash functions to get <i>k</i> bit positions.
 <ul>
-<li>If any of the&nbsp;bits at these positions is&nbsp;0, the&nbsp;element
-<strong>definitely isn&rsquo;t</strong> the&nbsp;set.</li>
-<li>If all are&nbsp;1, then the&nbsp;element <strong>may be</strong> in the&nbsp;set.</li>
-</ul></li>
+<li>If any of the bits at these positions is 0, the element
+<strong>definitely isn&rsquo;t</strong> the set.</li>
+<li>If all are 1, then the element <strong>may be</strong> in the set.</li>
 </ul>
-
+</li>
+</ul>
 <h3 id="example">Example</h3>
-
 <p>Here is a Bloom filter with three elements <i>x</i>, <i>y </i> and <i>z</i>.
-It consists of 18&nbsp;bits and uses 3&nbsp;hash functions.
-The colored arrows point to the bits that the elements of the set are mapped&nbsp;to.</p>
-
+It consists of 18 bits and uses 3 hash functions.
+The colored arrows point to the bits that the elements of the set are mapped to.</p>
 <!-- Public domain: https://en.wikipedia.org/wiki/File:Bloom_filter.svg -->
-
-<p><img src="/algorithms/bloom-filter.svg" style="width:500px;" alt="Bloom filter"></p>
-
-<p>The&nbsp;element <i>w</i> definitely isn&rsquo;t in the&nbsp;set, since it hashes to a bit position containing&nbsp;0.</p>
-
+<img src="/algorithms/bloom-filter.svg" style="width:500px;" alt="Bloom filter">
+<p>The element <i>w</i> definitely isn&rsquo;t in the set, since it hashes to a bit position containing 0.</p>
 <blockquote>
-<p>Try this cool <a href="https://www.jasondavies.com/bloomfilter/">interactive Bloom filter demonstration</a> by Jason&nbsp;Davies!</p>
+<p>Try this cool <a href="https://www.jasondavies.com/bloomfilter/">interactive Bloom filter demonstration</a> by Jason Davies!</p>
 </blockquote>
-
 <h2 id="performance">Performance</h2>
-
 <p>For a fixed error rate, adding a new element and testing for membership are both constant time operations,
-and a filter with room for <i>n</i>&nbsp;elements requires <i>O</i>(<i>n</i>)&nbsp;space.</p>
-
-<p>In fact, a filter with error rate&nbsp;1/p can be implemented
-with 0.26⋅ln(p) bytes per element using ⌈1.4⋅ln(p)⌉ bit array lookups per&nbsp;test.</p>
-
+and a filter with room for <i>n</i> elements requires <i>O</i>(<i>n</i>) space.</p>
+<p>In fact, a filter with error rate 1/p can be implemented
+with 0.26⋅ln(p) bytes per element using ⌈1.4⋅ln(p)⌉ bit array lookups per test.</p>
 <p>This means that the example code above, with 100,000&nbsp;entries and error rate&nbsp;1/200,
 can be implemented using 135&nbsp;KiB and 8&nbsp;hash&nbsp;functions.</p>
-
 <p>The Wikipedia <a href="https://en.wikipedia.org/wiki/Bloom_filter">Bloom filter</a> article has a detailed mathematical analysis.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -204,15 +177,7 @@ can be implemented using 135&nbsp;KiB and 8&nbsp;hash&nbsp;functions.</p>
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
     <div style="margin-top:1em;"><a href="/algorithms/time-complexity-explained/" title="How to analyse time complexity: Count your steps"><img src="/algorithms/abacus-mini.jpg"></a></div>
   <ul class="none">
   

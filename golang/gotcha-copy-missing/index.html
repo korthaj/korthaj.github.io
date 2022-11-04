@@ -85,52 +85,38 @@
 <h1>Where is my copy?</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC0: https://www.maxpixel.net/Drilled-Down-Paper-Text-Box-Rip-Torn-Copy-Space-3792307 -->
-
 <div style="margin-top:1em;"><img src="/golang/hole-in-paper.png"></div>
-
 <p>Why does the copy disappear?</p>
-
 <pre><code>var src, dst []int
 src = []int{1, 2, 3}
 copy(dst, src) <span class="comment">// Copy elements to dst from src.</span>
 fmt.Println("dst:", dst)</code></pre>
-<pre><code>dst: []</code></pre>
-<h2 id="answer">Answer</h2>
-
+<pre tabindex="0"><code>dst: []
+</code></pre><h2 id="answer">Answer</h2>
 <p>The number of elements copied by the <code>copy</code> function
 is the minimum of <code>len(dst)</code> and <code>len(src)</code>.
 To make a full copy, you must allocate a big enough destination slice.
 </p>
-
 <pre><code>var src, dst []int
 src = []int{1, 2, 3}
 <b>dst = make([]int, len(src))</b>
 n := copy(dst, src)
 fmt.Println("dst:", dst, "(copied", n, "numbers)")
 </code></pre>
-
 <pre>dst: [1 2 3] (copied 3 numbers)</pre>
-
 <p>The return value of the <code>copy</code> function is the number of elements copied.
 See <a href="/golang/copy-explained/">Copy function</a> for more about
 the built-in <code>copy</code> function in&nbsp;Go.</p>
-
 <h3>Using append</h3>
-
 <p>You could also use the <code>append</code> function to make a copy
 by appending to a nil&nbsp;slice.</p>
-
 <pre><code>var src, dst []int
 src = []int{1, 2, 3}
 <b>dst = append(dst, src...)</b>
 fmt.Println("dst:", dst)
 </code></pre>
-
 <pre>dst: [1 2 3]</pre>
-
 <p>Note that the capacity of the slice allocated by <code>append</code>
 may be a bit larger than <code>len(src)</code>.
 </p>
@@ -214,14 +200,6 @@ may be a bit larger than <code>len(src)</code>.
       <li><a href="/golang/gotcha-why-nil-error-not-equal-nil/">Nil is not nil</a></li>
 
   </ul>
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
 
 
   

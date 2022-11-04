@@ -85,14 +85,9 @@
 <h1>Java to Go in-depth tutorial</h1>
 <div class="tagline">yourbasic.org/golang</div>
 
-
-
 <!-- CC BY-SA 2.0: https://www.flickr.com/photos/yukop/6779040884 -->
-
 <div class="extra-content"><img src="/golang/gopher-latte.jpg" width="200px" style="float: right; margin: 20px 0 0 20px;"></div>
-
 <p class="lead">This tutorial is in&shy;tended to help Java deve&shy;lopers come up to speed quickly with&nbsp;Go.</p>
-
 <div style="margin-top: 1em"></div>
 <div style="float: left; min-width: 30%; margin-right: 2em;">
     <ul class="toc" style="margin: 0;">
@@ -116,11 +111,8 @@
     </ul>
 </div>
 <div style="clear: both"></div>
-
 <h2 id="hello-stack-example">Hello stack (example)</h2>
-
 <p>Let&rsquo;s start with a small but complete example. It shows how to implement and use a simple abstract data type in Go.</p>
-
 <pre><code><span class="comment">// Package collection implements a stack of strings.</span>
 package collection
 
@@ -148,7 +140,6 @@ func (s *Stack) Pop() string {
 func (s *Stack) Size() int {
     return len(s.data)
 }</code></pre>
-
 <ul>
 <li>Comments that appear directly before top-level declarations are
     documentation comments. They are written in plain text.
@@ -166,10 +157,8 @@ func (s *Stack) Size() int {
     Its type is deduced from the initialization expression.
 </li>
 </ul>
-
 <p>Here is a Hello world program, which shows how to use
 the <code>collection.Stack</code> abstract data type.</p>
-
 <pre><code>package collection_test
 
 import (
@@ -187,58 +176,53 @@ func ExampleStack() {
     fmt.Println()
     <span class="comment">// Output: Hello, world!</span>
 }</code></pre>
-
 <ul>
-<li><p>The test package <code>collection_test</code> resides in the same directory
-as the <code>collection</code> package.</p></li>
-
-<li><p>The first import declaration contains the path <code>&ldquo;fmt&rdquo;</code> to  a standard package;
+<li>
+<p>The test package <code>collection_test</code> resides in the same directory
+as the <code>collection</code> package.</p>
+</li>
+<li>
+<p>The first import declaration contains the path <code>&ldquo;fmt&rdquo;</code> to  a standard package;
 the second one indicates that we will use the package from
-the directory <code>&ldquo;go-for-java-programmers/collection&rdquo;</code>.</p></li>
-
-<li><p>The packages are accessed within the source file by the short names
-<code>fmt</code> and <code>collection</code>, respectively.</p></li>
+the directory <code>&ldquo;go-for-java-programmers/collection&rdquo;</code>.</p>
+</li>
+<li>
+<p>The packages are accessed within the source file by the short names
+<code>fmt</code> and <code>collection</code>, respectively.</p>
+</li>
 </ul>
-
 <blockquote>
 <p><strong>Note:</strong> The idiomatic way to implement a stack in Go is to use a slice directly.
 See, <a href="/golang/implement-stack/">Implement a stack (LIFO)</a>.</p>
 </blockquote>
-
 <h2 id="main-differences">Main differences</h2>
-
 <h3 id="object-oriented-programming">Object-oriented programming</h3>
-
 <ul>
 <li>Go does not have classes with constructors.
 Instead of instance methods, a class inheritance hierarchy,
 and dynamic method lookup, Go provides
 <a href="/golang/structs-explained/">structs</a> and <a href="/golang/interfaces-explained/">interfaces</a>.</li>
 <li>Go allows <a href="/golang/methods-explained/">methods</a> on any type; no boxing is required.
-The method <em>receiver</em>, which corresponds to&nbsp;<code>this</code> in&nbsp;Java,
+The method <em>receiver</em>, which corresponds to <code>this</code> in Java,
 can be a direct value or a pointer.</li>
-<li>Go provides <a href="/golang/public-private/">two&nbsp;access&nbsp;levels</a>,
+<li>Go provides <a href="/golang/public-private/">two access levels</a>,
 analogous to Java’s public and package-private. Top-level declarations
 are public if their names start with an upper-case letter,
 otherwise they are package-private.</li>
 </ul>
-
 <h3 id="functional-programming">Functional programming</h3>
-
 <ul>
 <li>Functions in Go are first class citizens.
 <a href="/golang/function-pointer-type-declaration/">Function values</a> can be used and passed around
 just like other values and <a href="/golang/anonymous-function-literal-lambda-closure/">function literals</a>
 may refer to variables defined in a enclosing function.</li>
 </ul>
-
 <h3 id="pointers-and-references">Pointers and references</h3>
-
 <ul>
 <li>Go offers <a href="/golang/pointers-explained/">pointers</a> to values of all types,
 not just objects and arrays.
-For any type&nbsp;<code>T</code>, there is a corresponding pointer type&nbsp;<code>*T</code>,
-denoting pointers to values of type&nbsp;<code>T</code>.</li>
+For any type <code>T</code>, there is a corresponding pointer type <code>*T</code>,
+denoting pointers to values of type <code>T</code>.</li>
 <li>Go uses <code>nil</code> for invalid pointers, where Java uses <code>null</code>.</li>
 <li>Arrays in Go are values. When an array is used as a
 function parameter, the function receives a copy of the array,
@@ -250,9 +234,7 @@ not by value. That is, passing a map to a function does not copy the map;
 if the function changes the map, the change will be seen by the caller.
 In Java terms, one can think of this as being a reference to the map.</li>
 </ul>
-
 <h3 id="built-in-types">Built-in types</h3>
-
 <ul>
 <li>Strings are provided by the language;
 a <a href="/golang/string-functions-reference-cheat-sheet/">string</a> behaves like a
@@ -260,26 +242,20 @@ slice of bytes, but is immutable.</li>
 <li>Hash tables are provided by the language.
 They are called <a href="/golang/maps-explained/">maps</a>.</li>
 </ul>
-
 <h3 id="error-handling">Error handling</h3>
-
 <ul>
 <li>Instead of exceptions, Go uses <a href="/golang/errors-explained/">errors</a>
 to signify events such as end-of-file,
 and run-time <a href="/golang/recover-from-panic/">panics</a> for run-time errors
 such as attempting to index an array out of bounds.</li>
 </ul>
-
 <h3 id="concurrency">Concurrency</h3>
-
 <ul>
 <li>Separate threads of execution, <a href="/golang/goroutines-explained/">goroutines</a>,
 and communication channels between them, <a href="/golang/channels-explained/">channels</a>,
 are provided by the language.</li>
 </ul>
-
 <h3 id="absent-features">Absent features</h3>
-
 <ul>
 <li>Go does not support implicit type conversion. Operations that mix
 different types require an explicit conversion.
@@ -291,19 +267,13 @@ and generic functions, such as append and copy.
 However, there is no mechanism for writing your own generic functions.
 For alternatives, see <a href="/golang/generics/">Generics (alternatives and workarounds)</a>.</li>
 </ul>
-
 <h2 id="syntax">Syntax</h2>
-
 <!-- CC BY-NC-ND 2.0: http://www.flickr.com/photos/ruminatrix/3052493260/" -->
-
-<p><img src="/golang/syntax-terror.jpg" alt="Syntax Terror"></p>
-
+<img src="/golang/syntax-terror.jpg" alt="Syntax Terror">
 <h3 id="declarations">Declarations</h3>
-
 <p>The declaration syntax is reversed compared to Java.
 You write the name followed by the type.
 Type declarations may be read easily from left to right.</p>
-
 <table class="white">
 <tr>
 <th>Go</th>
@@ -342,45 +312,40 @@ Type declarations may be read easily from left to right.</p>
 <td><code>interface F {<br>&nbsp;&nbsp;int f(int&nbsp;a);<br>}</code><br><code>F v8 = null;</code></td>
 </tr>
 </table>
-
 <p>Declarations generally take the form of a keyword followed by the name
 of the object being declared. The keyword is one of <code>const</code>,
 <code>type</code>, <code>var</code>, or <code>func</code>.
 You can also use a keyword followed by a series of declarations in
 parentheses.</p>
-<pre><code>var (
+<pre tabindex="0"><code>var (
     n int
     x float64
-)</code></pre>
-<p>When declaring a function, you must either provide a name for each parameter
+)
+</code></pre><p>When declaring a function, you must either provide a name for each parameter
 or not provide a name for any parameter; you can’t omit some names
 and provide others.  You may group several names with the same type.</p>
-<pre><code>func f(i, j, k int, s, t string)</code></pre>
-<p>A variable may be initialized when it is declared.  When this is done,
+<pre tabindex="0"><code>func f(i, j, k int, s, t string)
+</code></pre><p>A variable may be initialized when it is declared.  When this is done,
 specifying the type of the variable is permitted but not required.
 When the type is not specified, it defaults to the type of
 the initialization expression.</p>
-<pre><code>var v9 = *v2</code></pre>
-<p>If a variable is not initialized explicitly, the type must be specified.
+<pre tabindex="0"><code>var v9 = *v2
+</code></pre><p>If a variable is not initialized explicitly, the type must be specified.
 In that case it will be implicitly initialized to the type’s
 <a href="/golang/default-zero-value/">zero value</a>
-(<code>0</code>, <code>nil</code>, <code>&rdquo;&rdquo;</code>, etc.).
-There are no uninitialized variables in&nbsp;Go.</p>
-
+(<code>0</code>, <code>nil</code>, <code>&quot;&quot;</code>, etc.).
+There are no uninitialized variables in Go.</p>
 <h3 id="short-declarations">Short declarations</h3>
-
 <p>Within a function, a short declaration syntax is available
-with&nbsp;<code>:=</code>&nbsp;.
+with <code>:=</code> .
 The statement</p>
-<pre><code>v10 := v1</code></pre>
-<p>is the same as</p>
-<pre><code>var v10 = v1</code></pre>
-<h3 id="function-types">Function types</h3>
-
+<pre tabindex="0"><code>v10 := v1
+</code></pre><p>is the same as</p>
+<pre tabindex="0"><code>var v10 = v1
+</code></pre><h3 id="function-types">Function types</h3>
 <p>In Go, functions are first-class citizens.
-Go’s <a href="/golang/function-pointer-type-declaration/">function&nbsp;type</a> denotes the set of all functions
+Go’s <a href="/golang/function-pointer-type-declaration/">function type</a> denotes the set of all functions
 with the same parameter and result types.</p>
-
 <pre><code>type binOp func(int, int) int
 
 var op binOp
@@ -388,96 +353,76 @@ add := func(i, j int) int { return i + j }
 
 op = add
 n = op(100, 200)  <span class="comment">// n = 100 + 200</span></code></pre>
-
 <h3 id="multiple-assignment">Multiple assignment</h3>
-
 <p>Go permits multiple assignments.
 The expressions on the right are evaluated
 before assigning to any of the operands on the left.</p>
-
 <pre><code>i, j = j, i  <span class="comment">// Swap i and j.</span></code></pre>
-
 <p>Functions may have multiple return values, indicated by a list in
 parentheses.  The returned values can be stored by assignment
 to a list of variables.</p>
-<pre><code>func f() (i int, pj *int) { ... }
-v1, v2 = f()</code></pre>
-<h3 id="the-blank-identifier">The blank identifier</h3>
-
-<p>The <a href="/golang/underscore/">blank&nbsp;identifier</a>, represented by the underscore character,
+<pre tabindex="0"><code>func f() (i int, pj *int) { ... }
+v1, v2 = f()
+</code></pre><h3 id="the-blank-identifier">The blank identifier</h3>
+<p>The <a href="/golang/underscore/">blank identifier</a>, represented by the underscore character,
 provides a way to ignore values returned by a multi-valued expression:</p>
-
 <pre><code>v1, _ = f()  <span class="comment">// Ignore second value returned by f().</span></code></pre>
-
 <h3 id="semicolons-and-formatting">Semicolons and formatting</h3>
-
 <p>Instead of worrying about semicolons and formatting, you may use
 the <code>gofmt</code> program to produce a single standard Go style.
 While this style may initially seem odd, it is as good as any other style,
 and familiarity will lead to comfort.</p>
-
 <p>Go code uses very few semicolons in practice. Technically, all Go
 statements are terminated by a semicolon. However, Go
 implicitly inserts a semicolon at the end of a non-blank line
 unless the line is clearly incomplete.
 A consequence of this is that in some cases Go does not permit a line break.
 For example, you may not write</p>
-
 <pre><code>func g()
 {            <span class="comment">// <b>INVALID:</b> "{" should be on previous line.</span>
 }</code></pre>
-
 <p>A semicolon will be inserted after <code>g()</code>
 causing it to be a function declaration rather than a function definition.
 Similarly, you may not write</p>
-
 <pre><code>if n == 0 {
 }
 else {       <span class="comment">// <b>INVALID:</b> "else {" should be on previous line.</span>
 }</code></pre>
-
 <p>A semicolon will be inserted after the <code>}</code> preceding
 the <code>else</code>, causing a syntax error.</p>
-
 <h3 id="conditional-statements">Conditional statements</h3>
-
 <p>Go does not use parentheses around the condition of
 an <code>if</code> statement,
 or the expressions of a <code>for</code> statement,
 or the value of a <code>switch</code> statement.
 On the other hand, it does require curly braces around
 the body of an <code>if</code> or <code>for</code> statement.</p>
-
 <pre><code>if a < b { f() }
 if (a < b) { f() }          <span class="comment">// Parentheses are unnecessary.</span>
 if (a < b) f()              <span class="comment">// <b>INVALID</b></span>
 for i = 0; i < 10; i++ {}
 for (i = 0; i < 10; i++) {} <span class="comment">// <b>INVALID</b></span></code></pre>
-
 <p>Furthermore, <code>if</code> and <code>switch</code> accept
 an optional initialization statement, which is commonly used
 to set up a local variable.</p>
-<pre><code>if err := file.Chmod(0664); err != nil {
+<pre tabindex="0"><code>if err := file.Chmod(0664); err != nil {
     log.Print(err)
     return err
-}</code></pre>
-<h3 id="for-statements">For statements</h3>
-
+}
+</code></pre><h3 id="for-statements">For statements</h3>
 <p>Go does not have a <code>while</code> statement
 nor does it have a <code>do-while</code> statement.
-The <a href="/golang/for-loop/">for&nbsp;statement</a> may be used with a single condition,
+The <a href="/golang/for-loop/">for statement</a> may be used with a single condition,
 which makes it equivalent to a <code>while</code> statement.
 Omitting the condition entirely produces an endless loop.</p>
-
 <p>A <code>for</code> statement may contain a <code>range</code> clause
 for iterating over strings, arrays, slices, maps, or channels.
 Instead of writing</p>
-<pre><code>for i := 0; i &lt; len(a); i++ { ... }</code></pre>
-<p>to loop over the elements of <code>a</code>, we could also write</p>
-<pre><code>for i, v := range a { ... }</code></pre>
-<p>This assigns <code>i</code> to the index and <code>v</code>
+<pre tabindex="0"><code>for i := 0; i &lt; len(a); i++ { ... }
+</code></pre><p>to loop over the elements of <code>a</code>, we could also write</p>
+<pre tabindex="0"><code>for i, v := range a { ... }
+</code></pre><p>This assigns <code>i</code> to the index and <code>v</code>
 to the value of the successive elements of an array, slice, or string.</p>
-
 <ul>
 <li>For strings, <code>i</code> is an index to a byte and
 <code>v</code> is a Unicode code point of type <code>rune</code>
@@ -485,123 +430,98 @@ to the value of the successive elements of an array, slice, or string.</p>
 <li>Iterations over maps produce key-value pairs,
 while channels produce only one iteration value.</li>
 </ul>
-
 <h3 id="break-and-continue">Break and continue</h3>
-
 <p>Like Java, Go permits <code>break</code> and <code>continue</code>
 to specify a label, but the label must refer to a <code>for</code>,
 <code>switch</code>, or <code>select</code> statement.</p>
-
 <h3 id="switch-statements">Switch statements</h3>
-
-<p>In a <a href="/golang/switch-statement/">switch&nbsp;statement</a>, <code>case</code> labels
+<p>In a <a href="/golang/switch-statement/">switch statement</a>, <code>case</code> labels
 do not fall through by default,
 but you can make them fall through by ending a case
 with a <code>fallthrough</code> statement.</p>
-
 <pre><code>switch n {
 case 0: <span class="comment">// empty case body</span>
 case 1:
     f() <span class="comment">// f is not called when n == 0.</span>
 }</code></pre>
-
 <p>But a <code>case</code> can have multiple values.</p>
-
 <pre><code>switch n {
 case 0, 1:
     f() <span class="comment">// f is called if n == 0 || n == 1.</span>
 }</code></pre>
-
 <p>The values in a <code>case</code> can be any type that supports
 the equality comparison operator, such as strings or pointers.
 A missing switch expression is equivalent to
 the expression <code>true</code>.</p>
-<pre><code>switch {
+<pre tabindex="0"><code>switch {
 case n &lt; 0:
     f1()
 case n == 0:
     f2()
 default:
     f3()
-}</code></pre>
-<h3 id="increment-and-decrement">Increment and decrement</h3>
-
-<p>The <code>++</code> and <code>-&#8202;-</code> may only be used
+}
+</code></pre><h3 id="increment-and-decrement">Increment and decrement</h3>
+<p>The <code>++</code> and <code>- -</code> may only be used
 as postfix operators and only in statements, not in expressions.
 For example, you cannot write <code>n = i++</code>.</p>
-
 <h3 id="defer-statement">Defer statement</h3>
-
-<p>A <a href="/golang/defer/">defer&nbsp;statement</a> invokes a function whose execution is
+<p>A <a href="/golang/defer/">defer statement</a> invokes a function whose execution is
 deferred to the moment the surrounding function returns.</p>
-
 <ul>
 <li>The deferred function will be executed regardless of which path
 the surronding function takes to return.</li>
 <li>The parameters of the deferred function, however, are computed and saved
 for future use already when the defer statement executes.</li>
 </ul>
-
 <pre><code>f, err := os.Open("filename")
 defer f.Close() <span class="comment">// f will be closed when this function returns.</span></code></pre>
-
 <h2 id="constants">Constants</h2>
-
 <p>In Go constants may be <a href="/golang/untyped-constants/">untyped</a>. This applies to</p>
-
 <ul>
 <li>numeric literals,</li>
 <li>expressions using only untyped constants,</li>
 <li>and <code>const</code> declarations where no type is given and
 the initializer expression is untyped.</li>
 </ul>
-
 <p>A value derived from an untyped constant becomes typed when it
 is used within a context that requires a typed value.
 This permits constants to be used relatively freely even though
 Go has no implicit type conversion.</p>
-
 <pre><code>var a uint
 f(a + 1)   <span class="comment">// The untyped numeric constant 1 becomes typed as uint.</span>
 f(a + 1e3) <span class="comment">// 1e3 is also typed as uint.</span></code></pre>
-
 <p>The language does not impose any limits on the size of an untyped
 numeric constant. A limit is only applied when a constant is used
 where a type is required.</p>
-<pre><code>const huge = 1 &lt;&lt; 100
-var n int = huge &gt;&gt; 98</code></pre>
-<p>If the type is absent in a variable declaration and the corresponding
+<pre tabindex="0"><code>const huge = 1 &lt;&lt; 100
+var n int = huge &gt;&gt; 98
+</code></pre><p>If the type is absent in a variable declaration and the corresponding
 expression evaluates to an untyped numeric constant,
 the constant is converted to type <code>rune</code>, <code>int</code>,
 <code>float64</code>, or <code>complex128</code> respectively,
 depending on whether the value is a character, integer, floating-point, or
 complex constant.</p>
-
 <pre><code>c := 'å'    <span class="comment">// rune (alias for int32)</span>
 n := 1 + 2  <span class="comment">// int</span>
 x := 2.7    <span class="comment">// float64</span>
 z := 1 + 2i <span class="comment">// complex128</span></code></pre>
-
 <p>Go does not have enumerated types.
 Instead, you can use the special name <a href="/golang/iota/"><code>iota</code></a> in a single
 <code>const</code> declaration to get a series of increasing value.
 When an initialization expression is omitted for a <code>const</code>,
 it reuses the preceding expression.</p>
-
 <pre><code>const (
     red = iota <span class="comment">// red == 0</span>
     blue       <span class="comment">// blue == 1</span>
     green      <span class="comment">// green == 2</span>
 )</code></pre>
-
 <h2 id="structs">Structs</h2>
-
 <p>A <a href="/golang/structs-explained/">struct</a> corresponds to a class in Java, but the members of a struct
 cannot be methods, only variables.
 A pointer to a struct is similar to a reference variable in Java.
 As opposed to Java classes, structs may also be defined as direct values.
 In both cases you use <code>.</code> to access the members of a struct.</p>
-
 <pre><code>type MyStruct struct {
     s string
     n int64
@@ -613,176 +533,139 @@ px = new(MyStruct) <span class="comment">// px points to the new struct MyStruct
 
 x.s = "Foo"
 px.s = "Bar"</code></pre>
-
 <p>In Go, methods may be associated with any user-defined type, not just with structs;
 see the section <a href="#methods-and-interfaces">Methods and interfaces</a>.</p>
-
 <h2 id="pointers">Pointers</h2>
-
 <!-- http://www.flickr.com/photos/lwr/374707207/" -->
-
 <div><img src="/golang/pointers.jpg" style="float: right; width: 160px; margin: 0 0 20px 20px;"></div>
-
-<p>If&nbsp;you have an int, a struct or an array,
-assign&shy;ment copies the contents of the object.
+<p>If you have an int, a struct or an array,
+assign­ment copies the contents of the object.
 To achieve the effect of Java reference variables, Go uses <a href="/golang/pointers-explained/">pointers</a>.</p>
-
-<p>For any type&nbsp;<code>T</code>, there is a corresponding
-pointer type&nbsp;<code>*T</code>,
-denoting pointers to values of type&nbsp;<code>T</code>.</p>
-
+<p>For any type <code>T</code>, there is a corresponding
+pointer type <code>*T</code>,
+denoting pointers to values of type <code>T</code>.</p>
 <p>To allocate storage for a pointer variable,
 use the built-in function <code>new</code>,
 which takes a type and returns a pointer to the allocated storage.
 The allocated space will be zero-initialized for the type.
 For example, <code>new(int)</code> allocates storage
-for a new&nbsp;<code>int</code>,
-initializes it with the value&nbsp;<code>0</code>,
-and returns its address, which has type&nbsp;<code>*int</code>.</p>
-
-<p>The Java code <code>T&nbsp;p&nbsp;=&nbsp;new&nbsp;T()</code>,
+for a new <code>int</code>,
+initializes it with the value <code>0</code>,
+and returns its address, which has type <code>*int</code>.</p>
+<p>The Java code <code>T p = new T()</code>,
 where <code>T</code> is a class with two instance variables
 <code>a</code> and <code>b</code> of type <code>int</code>,
 corresponds to</p>
-<pre><code>type T struct { a, b int }
-var p *T = new(T)</code></pre>
-<p>or the more idiomatic</p>
-<pre><code>p := new(T)</code></pre>
-<p>The declaration <code>var&nbsp;v&nbsp;T</code>,
-which declares a variable that holds a value of type&nbsp;<code>T</code>,
+<pre tabindex="0"><code>type T struct { a, b int }
+var p *T = new(T)
+</code></pre><p>or the more idiomatic</p>
+<pre tabindex="0"><code>p := new(T)
+</code></pre><p>The declaration <code>var v T</code>,
+which declares a variable that holds a value of type <code>T</code>,
 has no equivalent in Java.
 Values can also be created and initialized using a <em>composite literal</em>.
 For example:</p>
-<pre><code>v := T{1, 2}</code></pre>
-<p>is equivalent to</p>
-<pre><code>var v T
+<pre tabindex="0"><code>v := T{1, 2}
+</code></pre><p>is equivalent to</p>
+<pre tabindex="0"><code>var v T
 v.a = 1
-v.b = 2</code></pre>
-<p>For an operand <code>x</code> of type&nbsp;<code>T</code>,
+v.b = 2
+</code></pre><p>For an operand <code>x</code> of type <code>T</code>,
 the <em>address operator</em> <code>&amp;x</code>
-gives the address of <code>x</code>, a value of type&nbsp;<code>*T</code>.
+gives the address of <code>x</code>, a value of type <code>*T</code>.
 For example:</p>
-
 <pre><code>p := &T{1, 2} <span class="comment">// p has type *T</span></code></pre>
-
 <p>For an operand <code>x</code> of pointer type,
 the <em>pointer indirection</em> <code>*x</code>
-denotes the value pointed to by&nbsp;<code>x</code>.
+denotes the value pointed to by <code>x</code>.
 Pointer indirections are rarely used;
 Go, just like Java, can automatically take the address of a variable.</p>
-
 <pre><code>p := new(T)
 p.a = 1 <span class="comment">// equivalent to (*p).a = 1</span></code></pre>
-
 <h2 id="slices">Slices</h2>
-
 <p>A <a href="/golang/slices-explained/">slice</a> is conceptually a struct with three fields:</p>
-
 <ul>
 <li>a pointer into an array,</li>
 <li>a length,</li>
 <li>and a capacity.</li>
 </ul>
-
 <p>Slices support the <code>[]</code> operator
 to access elements of the underlying array.</p>
-
 <ul>
 <li>The built-in <code>len</code> function returns the length of the slice.</li>
 <li>The built-in <code>cap</code> function returns the capacity.</li>
 </ul>
-
 <p>Given an array, or another slice, a new slice is created via
 <code>a[i:j]</code>.</p>
-
 <ul>
-<li>This creates a new slice which refers to&nbsp;<code>a</code>,
-starts at index&nbsp;<code>i</code>, and ends before index&nbsp;<code>j</code>.</li>
-<li>It has length <code>j&nbsp;-&nbsp;i</code>.</li>
-<li>If <code>i</code> is omitted, the slice starts at&nbsp;<code>0</code>.</li>
-<li>If <code>j</code> is omitted, the slice ends at&nbsp;<code>len(a)</code>.</li>
+<li>This creates a new slice which refers to <code>a</code>,
+starts at index <code>i</code>, and ends before index <code>j</code>.</li>
+<li>It has length <code>j - i</code>.</li>
+<li>If <code>i</code> is omitted, the slice starts at <code>0</code>.</li>
+<li>If <code>j</code> is omitted, the slice ends at <code>len(a)</code>.</li>
 </ul>
-
 <p>The new slice refers to the same array to which <code>a</code> refers.
 That is, changes made to the elements using the new slice
 may be seen using <code>a</code>.</p>
-
 <p>The capacity of the new slice is simply the capacity of <code>a</code>
 minus <code>i</code>.
 The capacity of an array is the length of the array.</p>
-
 <pre><code>var s []int
 var a [10]int
 
 s = a[:] <span class="comment">// short for s = a[0:len(a)]</span></code></pre>
-
 <p>If you create a value of type <code>[100]byte</code>
-(an array of 100&nbsp;bytes, perhaps a buffer)
+(an array of 100 bytes, perhaps a buffer)
 and you want to pass it to a function without copying it,
 declare the function parameter to have type <code>[]byte</code>,
 and pass a slice of the array.
 Slices may also be created using the <code>make</code> function
 as <a href="#making-values">described below</a>.</p>
-
 <p>Slices combined with the built-in function <code>append</code> offer
 much the same functionality as Java’s <code>ArrayList</code>.</p>
-
 <pre><code>s0 := []int{1, 2}
 s1 := append(s0, 3)     <span class="comment">// append a single element</span>
 s2 := append(s1, 4, 5)  <span class="comment">// append multiple elements</span>
 s3 := append(s2, s0...) <span class="comment">// append a slice</span></code></pre>
-
 <p>The slice syntax may also be used with a string. It returns a new string
 whose value is a substring of the original string.</p>
-
 <h2 id="making-values">Making values</h2>
-
 <p>Map and channel values must be allocated using the built-in
 <a href="/golang/make-slice-map-channel/"><code>make</code></a> function. For example, calling</p>
-<pre><code>make(map[string]int)</code></pre>
-<p>returns a newly allocated value of type <code>map[string]int</code>.</p>
-
+<pre tabindex="0"><code>make(map[string]int)
+</code></pre><p>returns a newly allocated value of type <code>map[string]int</code>.</p>
 <p>As opposed to <code>new</code>, <code>make</code> returns
 the actual object, not an address. This is consistent with the fact
 that maps and channels are reference types.</p>
-
 <p>For maps, make takes a capacity hint as an optional second argument.</p>
-
 <p>For channels, there is an optional second argument that sets the
-buffering capacity of the channel; the default is&nbsp;0 (unbuffered).</p>
-
+buffering capacity of the channel; the default is 0 (unbuffered).</p>
 <p>The <code>make</code> function may also be used to allocate a slice.
 In this case it allocates memory for the underlying array and returns
 a slice referring to it.
 There is one required argument, which is the number of elements in the slice.
 A second optional argument is the capacity of the slice.</p>
-
 <pre><code>m := make([]int, 10, 20) <span class="comment">// Same as new([20]int)[:10]</span></code></pre>
-
 <h2 id="methods-and-interfaces">Methods and interfaces</h2>
-
 <p>A <a href="/golang/methods-explained/">method</a> looks like an ordinary function definition,
 except that it has a <em>receiver</em>.
 The receiver is similar to the <code>this</code> reference
 in a Java instance method.</p>
-<pre><code>type MyType struct { i int }
+<pre tabindex="0"><code>type MyType struct { i int }
 
 func (p *MyType) Get() int {
     return p.i
 }
 
 var pm = new(MyType)
-var n = pm.Get()</code></pre>
-<p>This declares a method <code>Get</code> associated with <code>MyType</code>.
+var n = pm.Get()
+</code></pre><p>This declares a method <code>Get</code> associated with <code>MyType</code>.
 The receiver is named <code>p</code> in the body of the function.</p>
-
 <p>Methods are declared on <em>defined types</em>. If you convert the value
 to a different type, the new value will have the methods of the new type,
 not those of the old type.</p>
-
 <p>You may define methods on a built-in type by declaring a new defined type
 derived from it. The new type is distinct from the built-in type.</p>
-
 <pre><code>type MyInt int
 
 func (p MyInt) Get() int {
@@ -795,46 +678,40 @@ var v MyInt
 v = v * v <span class="comment">// The operators of the underlying type still apply.</span>
 f(int(v)) <span class="comment">// int(v) has no declared methods.</span>
 f(v)      <span class="comment">// <b>INVALID</b></span></code></pre>
-
 <h3 id="interfaces">Interfaces</h3>
-
 <p>A Go <a href="/golang/interfaces-explained/">interface</a> is similar to a Java interface,
 but any type that provides the methods named in a Go interface
 may be treated as an implementation of that interface.
 No explicit declaration is required.</p>
-
 <p>Let&rsquo;s assume that this interface is defined:</p>
-<pre><code>type MyInterface interface {
+<pre tabindex="0"><code>type MyInterface interface {
     Get() int
     Set(i int)
-}</code></pre>
-<p>Since <code>MyType</code> already has a <code>Get</code>&nbsp;method,
+}
+</code></pre><p>Since <code>MyType</code> already has a <code>Get</code> method,
 we can make <code>MyType</code> satisfy the interface by adding</p>
-<pre><code>func (p *MyType) Set(i int) {
+<pre tabindex="0"><code>func (p *MyType) Set(i int) {
     p.i = i
-}</code></pre>
-<p>Now any function which takes <code>MyInterface</code> as a parameter
+}
+</code></pre><p>Now any function which takes <code>MyInterface</code> as a parameter
 will accept a variable of type <code>*MyType</code>.</p>
-<pre><code>func GetAndSet(x MyInterface) {}
+<pre tabindex="0"><code>func GetAndSet(x MyInterface) {}
 
 func f1() {
     var p MyType
     GetAndSet(&amp;p)
-}</code></pre>
-<p>In Java terms, defining <code>Set</code> and <code>Get</code> for
+}
+</code></pre><p>In Java terms, defining <code>Set</code> and <code>Get</code> for
 <code>*MyType</code> made <code>*MyType</code> automatically implement
 <code>MyInterface</code>. A type may satisfy multiple interfaces.
 This is a form of duck typing.</p>
-
-<p><em>
+<em>
 When I see a bird that walks like a&nbsp;duck and swims
 like a&nbsp;duck and quacks like a&nbsp;duck, I&nbsp;call that&nbsp;bird a&nbsp;duck.</em><br>
-&ndash;&nbsp;James Whitcomb Riley</p>
-
+&ndash;&nbsp;James Whitcomb Riley
 <h3 id="embedding-delegation">Embedding (delegation)</h3>
-
 <p>Embedding a type as an anonymous field may be used to implement a form of subtyping.</p>
-<pre><code>type MySubType struct {
+<pre tabindex="0"><code>type MySubType struct {
     MyType
     j int
 }
@@ -842,29 +719,26 @@ like a&nbsp;duck and quacks like a&nbsp;duck, I&nbsp;call that&nbsp;bird a&nbsp;
 func (p *MySubType) Get() int {
     p.j++
     return p.MyType.Get()
-}</code></pre>
-<p>This effectively implements <code>MySubType</code> as a subtype of
+}
+</code></pre><p>This effectively implements <code>MySubType</code> as a subtype of
 <code>MyType</code>.</p>
-<pre><code>func f2() {
+<pre tabindex="0"><code>func f2() {
     var p MySubType
     GetAndSet(&amp;p)
-}</code></pre>
-<p>The <code>Set</code> method is inherited from <code>MyType</code>,
+}
+</code></pre><p>The <code>Set</code> method is inherited from <code>MyType</code>,
 because methods associated with the anonymous field are promoted
 to become methods of the enclosing type.</p>
-
 <p>In this case, because <code>MySubType</code> has an anonymous field
 of type <code>MyType</code>, the methods of <code>MyType</code> also
 become methods of <code>MySubType</code>.
 The <code>Get</code> method was overridden,
 and the <code>Set</code> method was inherited.</p>
-
 <p>This is not the same as a subclass in Java, but a form of <em>delegation</em>.
 When a method of an anonymous field is called, its receiver is the field,
 not the surrounding struct. In other words, methods on anonymous fields
 are not dynamically dispatched. When you want the equivalent of Java’s
 dynamic method lookup, use an interface.</p>
-
 <pre><code>func f3() {
     var v MyInterface
 
@@ -874,14 +748,11 @@ dynamic method lookup, use an interface.</p>
     v = new(MySubType)
     v.Get() <span class="comment">// Call the Get method for *MySubType.</span>
 }</code></pre>
-
 <h3 id="type-assertions">Type assertions</h3>
-
 <p>A variable that has an interface type may be converted to have a
-different interface type using a <a href="/golang/type-assertion-switch/">type&nbsp;assertion</a>.
+different interface type using a <a href="/golang/type-assertion-switch/">type assertion</a>.
 This is implemented dynamically at run time. Unlike Java, there does not
 need to be any declared relationship between the two interfaces.</p>
-
 <pre><code>type Printer interface {
     Print()
 }
@@ -889,96 +760,74 @@ need to be any declared relationship between the two interfaces.</p>
 func f4(x MyInterface) {
     x.(Printer).Print() <span class="comment">// type assertion to Printer</span>
 }</code></pre>
-
 <p>The conversion to <code>Printer</code> is entirely dynamic.
 It will work as long as the <em>dynamic type</em> of x
 (the actual type of the value stored in <code>x</code>)
 defines a <code>Print</code> method.</p>
-
 <h2 id="errors">Errors</h2>
-
 <p>Where Java typically uses exceptions, Go has two different mechanisms:</p>
-
 <ul>
 <li>most functions return <a href="/golang/errors-explained/">errors</a>;</li>
 <li>only truly unrecoverable conditions, such as an out-of-range index, produce run-time exceptions.</li>
 </ul>
-
 <p>Go’s multivalued return makes it easy to return a detailed error message
 alongside the normal return value. By convention, such messages
 have type <code>error</code>, a simple built-in interface.</p>
-<pre><code>type error interface {
+<pre tabindex="0"><code>type error interface {
     Error() string
-}</code></pre>
-<p>For example, the <code>os.Open</code> function returns a non-nil
+}
+</code></pre><p>For example, the <code>os.Open</code> function returns a non-nil
 <code>error</code> value when it fails to open a file.</p>
-<pre><code>func Open(name string) (file *File, err error)</code></pre>
-<p>The following code uses <code>os.Open</code> to open a file.
+<pre tabindex="0"><code>func Open(name string) (file *File, err error)
+</code></pre><p>The following code uses <code>os.Open</code> to open a file.
 If an <code>error</code> occurs it calls <code>log.Fatal</code>
 to print the error message and stop.</p>
-
 <pre><code>f, err := os.Open("filename.ext")
 if err != nil {
     log.Fatal(err)
 }
 <span class="comment">// do something with the open *File f</span></code></pre>
-
 <p>The <code>error</code> interface requires only an <code>Error</code> method,
 but specific <code>error</code> implementations often have additional methods,
 allowing callers to inspect the details of the error.</p>
-
 <h2 id="panic-and-recover">Panic and recover</h2>
-
 <p>A <a href="/golang/recover-from-panic/">panic</a> is a run-time error
 that unwinds the stack of the goroutine,
 running any deferred functions along the way,
 and then stops the program.</p>
-
 <p>Panics are similar to Java exceptions,
 but are only intended for run-time errors,
 such as following a <code>nil</code> pointer or
 attempting to index an array out of bounds.
 To signify events such as end-of-file, Go programs use the built-in
 <code>error</code> type as <a href="#errors">described above</a>.</p>
-
 <p>The built-in function <a href="/golang/recover-from-panic/"><code>recover</code></a> can be used to regain
 control of a panicking goroutine and resume normal execution:</p>
-
 <ul>
 <li>a call to <code>recover</code> stops the unwinding and returns
 the argument passed to <code>panic</code>.</li>
 </ul>
-
 <p>Because the only code that runs while unwinding is inside deferred functions,
 <code>recover</code> is only useful inside deferred functions.
 If the goroutine is not panicking,
-<code>recover</code> returns&nbsp;<code>nil</code>.</p>
-
+<code>recover</code> returns <code>nil</code>.</p>
 <h2 id="goroutines-and-channels">Goroutines and channels</h2>
-
 <!-- CC BY-NC-ND 2.0: http://www.flickr.com/photos/un_photo/5853737946/ -->
-
 <div><img itemprop="image" src="/golang/bouncing-balls.jpg" alt="Bouncing balls" ></div>
-
 <h3 id="goroutines">Goroutines</h3>
-
 <p>Go permits starting a new thread of execution, a goroutine,
 using the <code>go</code> statement.
 It runs a function in a different, newly created, <a href="/golang/goroutines-explained/">goroutine</a>.
 All goroutines in a single program share the same address space.</p>
-
 <p>Goroutines are lightweight,
 costing little more than the allocation of stack space.
 The stacks start small and grow by allocating and freeing
 heap storage as required.
 Internally goroutines act like coroutines that are multiplexed
 among multiple operating system threads.</p>
-
 <pre><code>go list.Sort() <span class="comment">// Run list.Sort in parallel; don’t wait for it.</span></code></pre>
-
 <p>Go has function literals, which can act as <a href="/golang/anonymous-function-literal-lambda-closure/">closures</a>
 and are powerful when coupled with the <code>go</code> statement.</p>
-
 <pre><code><span class="comment">// Publish prints text to stdout after the given time has expired.</span>
 func Publish(text string, delay time.Duration) {
     go func() {
@@ -986,35 +835,26 @@ func Publish(text string, delay time.Duration) {
         fmt.Println(text)
     }() <span class="comment">// Note the parentheses. We must call the function.</span>
 }</code></pre>
-
 <p>The variables <code>text</code> and <code>delay</code>
 are shared between the surrounding function and the function literal;
 they survive as long as they are accessible.</p>
-
 <h3 id="channels">Channels</h3>
-
 <p>A <a href="/golang/channels-explained/">channel</a> provides a mechanism for two goroutines to synchronize
 execution and communicate by passing a value of a specified
 element type.
 The <code>&lt;-</code> operator specifies the channel direction,
 send or receive. If no direction is given, the channel is bi-directional.</p>
-
 <pre><code>chan Sushi     <span class="comment">// can be used to send and receive values of type Sushi</span>
 chan<- float64 <span class="comment">// can only be used to send float64s</span>
 <-chan int     <span class="comment">// can only be used to receive ints</span></code></pre>
-
 <p>Channels are a reference type and are allocated with make.</p>
-
 <pre><code>ic := make(chan int)       <span class="comment">// unbuffered channel of ints</span>
 wc := make(chan *Work, 10) <span class="comment">// buffered channel of pointers to Work</span></code></pre>
-
 <p>To send a value on a channel,
 use <code>&lt;-</code> as a binary operator.
 To receive a value on a channel, use it as a unary operator.</p>
-
 <pre><code>ic <- 3      <span class="comment">// Send 3 on the channel.</span>
 work := <-wc <span class="comment">// Receive a pointer to Work from the channel.</span></code></pre>
-
 <ul>
 <li>If the channel is unbuffered,
 the sender blocks until the receiver has received the value.</li>
@@ -1024,10 +864,8 @@ if the buffer is full,
 this means waiting until some receiver has retrieved a value.</li>
 <li>Receivers block until there is data to receive.</li>
 </ul>
-
 <p>The <code>close</code> function records that no more values
 will be sent on a channel:</p>
-
 <ul>
 <li>After calling <code>close</code>,
 and after any previously sent values have been received,
@@ -1035,7 +873,6 @@ receive operations will return a zero value without blocking.</li>
 <li>A multi-valued receive operation additionally returns
 an indication of whether the channel is closed.</li>
 </ul>
-
 <pre><code>ch := make(chan string)
 go func() {
     ch <- "Hello!"
@@ -1045,11 +882,9 @@ fmt.Println(<-ch) <span class="comment">// Print "Hello!".</span>
 fmt.Println(<-ch) <span class="comment">// Print the zero value "" without blocking.</span>
 fmt.Println(<-ch) <span class="comment">// Once again print "".</span>
 v, ok := <-ch     <span class="comment">// v is "", ok is false.</span></code></pre>
-
 <p>In the next example we let the <code>Publish</code> function
 return a channel, which is used to broadcast a message when
 the text has been published.</p>
-
 <pre><code><span class="comment">// Publish prints text to stdout after the given time has expired.</span>
 <span class="comment">// It closes the wait channel when the text has been published.</span>
 func Publish(text string, delay time.Duration) (wait <-chan struct{}) {
@@ -1061,27 +896,20 @@ func Publish(text string, delay time.Duration) (wait <-chan struct{}) {
     }()
     return ch
 }</code></pre>
-
 <p>This is how you might use this <code>Publish</code> function.</p>
-
 <pre><code>wait := Publish("important news", 2 * time.Minute)
 <span class="comment">// Do some more work.</span>
 <-wait <span class="comment">// blocks until the text has been published</span></code></pre>
-
 <h3 id="select-statement">Select statement</h3>
-
-<p>The <a href="/golang/select-explained/">select&nbsp;statement</a> is the final tool in Go’s concurrency toolkit. It chooses which of a set of possible communications will proceed:</p>
-
+<p>The <a href="/golang/select-explained/">select statement</a> is the final tool in Go’s concurrency toolkit. It chooses which of a set of possible communications will proceed:</p>
 <ul>
 <li>if any of the communications can proceed, one of them is randomly
 chosen and the corresponding statements are executed;</li>
 <li>otherwise, if there is no default case,
 the statement blocks until one of the communications can complete.</li>
 </ul>
-
 <p>Here is a toy example showing how the select statement can
 be used to implement a random number generator.</p>
-
 <pre><code>rand := make(chan int)
 for { <span class="comment">// Send random sequence of bits to rand.</span>
     select {
@@ -1089,30 +917,25 @@ for { <span class="comment">// Send random sequence of bits to rand.</span>
     case rand <- 1:
     }
 }</code></pre>
-
 <p>Somewhat more realistically, here is how a select statement
 could be used to set a time limit on a receive operation.</p>
-<pre><code>select {
+<pre tabindex="0"><code>select {
 case news := &lt;-AFP:
     fmt.Println(news)
 case &lt;-time.After(time.Minute):
-    fmt.Println(&#34;Time out: no news in one minute.&#34;)
-}</code></pre>
-<p>The function <code>time.After</code> is part of the standard library;
+    fmt.Println(&quot;Time out: no news in one minute.&quot;)
+}
+</code></pre><p>The function <code>time.After</code> is part of the standard library;
 it waits for a specified time to elapse and then sends the current time
 on the returned channel.</p>
-
 <h2 id="hello-server-example">Hello server (example)</h2>
-
 <p>We end with a small example to show how the pieces fit together.
 The <code>server</code> package implements a server, which accepts <code>Work</code> requests
 through a channel:</p>
-
 <ul>
 <li>each request is served in a separate goroutine,</li>
 <li>the <code>Work</code> struct itself contains a channel used to return a result.</li>
 </ul>
-
 <pre><code>package server
 
 import "log"
@@ -1151,9 +974,7 @@ func safelyDo(w *Work) {
 func do(w *Work) {
     w.Reply <- w.Op(w.A, w.B)
 }</code></pre>
-
 <p>This is how you might use it.</p>
-
 <pre><code>package server_test
 
 import (
@@ -1261,15 +1082,7 @@ func main() {
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a>
   <ul class="none">
   

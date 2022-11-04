@@ -86,33 +86,27 @@
 <div class="tagline">yourbasic.org/golang</div>
 
 <!-- CC BY 2.0: https://www.flickr.com/photos/56218409@N03/44497152140-->
-
 <div style="margin-top:1em;"><img src="/golang/waiting-dog.jpg"/></div>
-
 <p>A <a href="https://golang.org/pkg/sync/"><code>sync.WaitGroup</code></a> waits for a group of goroutines to finish.</p>
-
 <pre><code>var wg sync.WaitGroup
 wg.Add(2)
 go func() {
-    <span class="comment">// Do work.</span>
-    wg.Done()
+	<span class="comment">// Do work.</span>
+	wg.Done()
 }()
 go func() {
-    <span class="comment">// Do work.</span>
-    wg.Done()
+	<span class="comment">// Do work.</span>
+	wg.Done()
 }()
 wg.Wait()</code></pre>
-
 <ul>
 <li>First the main goroutine calls <a href="https://golang.org/pkg/sync/#WaitGroup.Add"><code>Add</code></a>
 to set the number of goroutines to wait for.</li>
 <li>Then two new goroutines run and call
 <a href="https://golang.org/pkg/sync/#WaitGroup.Done"><code>Done</code></a> when finished.</li>
 </ul>
-
 <p><em>At the same time</em>, <a href="https://golang.org/pkg/sync/#WaitGroup.Wait"><code>Wait</code></a>
 is used to block until these two goroutines have finished.</p>
-
 <blockquote class="warning"> <b>Note:</b> A WaitGroup must not be copied after first use.</blockquote>
 
 <ul class="pagina">
@@ -164,14 +158,6 @@ is used to block until these two goroutines have finished.</p>
 
   </ul>
 
-
-
-    <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
 
 </aside>
 </main>

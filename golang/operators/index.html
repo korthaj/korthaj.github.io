@@ -84,12 +84,8 @@
 <article>
 <h1>Operators: complete list</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC BY 2.0: https://www.flickr.com/photos/hills_alive/5326235115 -->
-
 <div style="margin-top:1em;"><img src="/golang/arithmetics-on-blackboard.jpg"></div>
-
 <ul class="toc">
   <li><a href="#arithmetic">Arithmetic</a></li>
   <li><a href="#comparison">Comparison</a></li>
@@ -97,9 +93,7 @@
   <li><a href="#pointers-and-channels">Pointers and channels</a></li>
   <li><a href="#operator-precedence">Operator precedence</a></li>
 </ul>
-
 <h2 id="arithmetic">Arithmetic</h2>
-
 <table class="white">
   <thead>
     <tr>
@@ -166,18 +160,13 @@
     </tr>
   </tbody>
 </table>
-
 <p>See <a href="https://golang.org/ref/spec#Arithmetic_operators">Arithmetic operators</a>
 in the Go language specification for complete definitions of the shift, quotient and remainder operators,
 integer overflow, and floating point behavior.</p>
-
 <p>See <a href="/golang/bitwise-operator-cheat-sheet/">Bitwise operators cheat sheet</a>
 for more about how to manipulate bits with operators and functions in package math/bits (bitcount, rotate, reverse, leading and trailing zeros).</p>
-
 <h2 id="comparison">Comparison</h2>
-
 <p>Comparison operators compare two operands and yield an untyped boolean value.</p>
-
 <table class="white">
   <thead>
     <tr>
@@ -219,24 +208,20 @@ for more about how to manipulate bits with operators and functions in package ma
     </tr>
   </tbody>
 </table>
-
 <ul>
 <li>Boolean, integer, floats, complex values and strings are comparable.</li>
 <li>Strings are ordered lexically byte-wise.</li>
-<li>Two pointers are equal if they point to the same variable or if both are&nbsp;nil.</li>
-<li>Two channel values are equal if they were created by the same call to make or if both are&nbsp;nil.</li>
-<li>Two interface values are equal if they have identical dynamic types and equal concrete values or if both are&nbsp;nil.</li>
-<li>A value <code>x</code> of non-interface type <code>X</code> and a value t of interface type <code>T</code> are&nbsp;equal
-if <code>t</code>&rsquo;s dynamic type is identical to <code>X</code> and <code>t</code>&rsquo;s concrete value is equal to&nbsp;<code>x</code>.</li>
-<li>Two struct values are equal if their corresponding non-blank fields are&nbsp;equal.</li>
-<li>Two array values are equal if their corresponding elements are&nbsp;equal.</li>
+<li>Two pointers are equal if they point to the same variable or if both are nil.</li>
+<li>Two channel values are equal if they were created by the same call to make or if both are nil.</li>
+<li>Two interface values are equal if they have identical dynamic types and equal concrete values or if both are nil.</li>
+<li>A value <code>x</code> of non-interface type <code>X</code> and a value t of interface type <code>T</code> are equal
+if <code>t</code>&rsquo;s dynamic type is identical to <code>X</code> and <code>t</code>&rsquo;s concrete value is equal to <code>x</code>.</li>
+<li>Two struct values are equal if their corresponding non-blank fields are equal.</li>
+<li>Two array values are equal if their corresponding elements are equal.</li>
 </ul>
-
 <h2 id="logical">Logical</h2>
-
 <p>Logical operators apply to boolean values.
 The right operand is evaluated conditionally.</p>
-
 <table class="white">
   <thead>
     <tr>
@@ -263,9 +248,7 @@ The right operand is evaluated conditionally.</p>
     </tr>
   </tbody>
 </table>
-
 <h2 id="pointers-and-channels">Pointers and channels</h2>
-
 <table class="white">
   <thead>
     <tr>
@@ -292,20 +275,13 @@ The right operand is evaluated conditionally.</p>
     </tr>
   </tbody>
 </table>
-
 <h2 id="operator-precedence">Operator precedence</h2>
-
 <!-- CC BY 2.0: https://en.wikipedia.org/wiki/File:Macau_-_Skyline.jpg -->
-
 <div style="margin-top:1em;"><img src="/golang/macao-skyline.jpg"></div>
 <div style="font-size:smaller;">Go operator precedence spells MACAO</div>
-
 <h3 id="unary-operators">Unary operators</h3>
-
 <p>Unary operators have the highest priority and bind the strongest.</p>
-
 <h3 id="binary-operators-macao">Binary operators (MACAO)</h3>
-
 <table class="white">
   <thead>
     <tr>
@@ -342,15 +318,10 @@ The right operand is evaluated conditionally.</p>
     </tr>
   </tbody>
 </table>
-
 <p>Binary operators of the same priority associate from <strong>left to right</strong>.</p>
-
 <h3 id="statement-operators">Statement operators</h3>
-
-<p>The <code>++</code> and <code>-&#8202;-</code> operators <strong>form statements</strong> and fall outside the operator hierarchy.</p>
-
+<p>The <code>++</code> and <code>- -</code> operators <strong>form statements</strong> and fall outside the operator hierarchy.</p>
 <h3 id="examples">Examples</h3>
-
 <table class="white">
   <thead>
     <tr>
@@ -406,15 +377,7 @@ The right operand is evaluated conditionally.</p>
     <div class="author"></div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

@@ -85,25 +85,20 @@
 <h1>Type alias explained</h1>
 <div class="tagline">yourbasic.org/golang</div>
 <!-- CC BY-SA 3.0: https://it.wikipedia.org/wiki/File:Disegno_personaggio_in_incognito.png -->
-
 <div class="extra-content" style="float:right; margin: -60px 0 0 20px;"><img src="/golang/persona-incognito.png"></div>
-
 <p>An <strong>alias declaration</strong> has the form</p>
-
 <pre><code>type T1 = T2</code></pre>
-
 <p>as opposed to a standard <strong>type definition</strong></p>
-<pre><code>type T1 T2</code></pre>
-<p>An alias declaration doesn&rsquo;t create a new distinct type different
+<pre tabindex="0"><code>type T1 T2
+</code></pre><p>An alias declaration doesn&rsquo;t create a new distinct type different
 from the type it&rsquo;s created from.
 It just introduces an alias name <code>T1</code>, an alternate spelling,
-for the type denoted by&nbsp;<code>T2</code>.</p>
-
+for the type denoted by <code>T2</code>.</p>
 <p>Type aliases are not meant for everyday use.
 They were introduced to support gradual code repair while moving
 a type between packages during large-scale refactoring.
 <a href="https://talks.golang.org/2016/refactor.article">Codebase Refactoring (with help from Go)</a>
-covers this in&nbsp;detail.</p>
+covers this in detail.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
 <a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2fgolang%2ftype-alias%2f&amp;text=Type%20alias%20explained&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
@@ -130,15 +125,7 @@ covers this in&nbsp;detail.</p>
     <div class="author">Russ Cox</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

@@ -84,69 +84,50 @@
 <article>
 <h1>Amortized time complexity</h1>
 <div class="tagline">yourbasic.org</div>
-
-
 <p class="lead">Amortized analysis is used for algo&shy;rithms that have <b>expensive opera&shy;tions</b> that happen only&nbsp;<b>rarely</b>.</p>
-
 <!-- CC0: https://www.pexels.com/photo/money-pink-coins-pig-9660/ -->
-
 <div><img src="/algorithms/pink-coins.jpg"></div>
-
 <p>Amortized complexity analysis is most commonly used with data structures
 that have state that persists between operations.
 The basic idea is that an expensive operation can alter the state so that
 the worst case cannot occur again for a long time, thus amortizing its cost.</p>
-
 <blockquote class="math">
 Let T<sub>1</sub>, T<sub>2</sub>,&nbsp;…, T<sub>k</sub> be the complexities
 of a sequence of operations on a data structure. The <b>amortized complexity</b>
 of a single operation in this sequence is
 (T<sub>1</sub>&nbsp;+&nbsp;T<sub>2</sub>&nbsp;+&nbsp;…+&nbsp;T<sub>k</sub>)&nbsp;/&nbsp;k.
 </blockquote>
-
 <h2 id="example-a-dynamic-array">Example: a dynamic array</h2>
-
 <p>In a <a href="/algorithms/time-complexity-arrays/">dynamic array</a>,
 elements are stored at the start of an underlying fixed array,
 and the remaining positions are unused.</p>
-
 <pre><code><span class="comment">// Append x to the end of a dynamic array a.</span>
 <b>algorithm</b> append(x, a):
-    <b>if</b> a.size == a.capacity
-        b ← new array with twice the capacity of a
-        copy a into b
-        a ← b
-    a[a.size] ← x
-    a.size++
+	<b>if</b> a.size == a.capacity
+		b ← new array with twice the capacity of a
+		copy a into b
+		a ← b
+	a[a.size] ← x
+	a.size++
 </code></pre>
-
 <p>Here&rsquo;s a view of the memory when appending the elements 2, 7, 1, 3, 8, 4
-to an inititally empty array with capacity&nbsp;2.</p>
-
+to an inititally empty array with capacity 2.</p>
 <!-- CC0: https://en.wikipedia.org/wiki/File:Dynamic_array.svg -->
-
 <div><img src="/algorithms/dynamic-array.png" alt="Dynamic array example"></div>
-
 <h3 id="worst-case-time">Worst-case time</h3>
-
 <p>The worst-case time complexity for appending an element
-to an array of length&nbsp;<i>n</i>, using this algorithm, is&nbsp;&Theta;(<i>n</i>).
-If the array is full, the algorithm allocates a new array of length&nbsp;2<i>n</i>,
+to an array of length <i>n</i>, using this algorithm, is Θ(<i>n</i>).
+If the array is full, the algorithm allocates a new array of length 2<i>n</i>,
 and then copies the elements from the old array into the new one.</p>
-
 <p>Cleary this result is overly pessimistic.
-The following <i>n</i>&nbsp;append operations will be much cheaper &ndash;
+The following <i>n</i> append operations will be much cheaper –
 each of them will run in constant time since the newly allocated array
 has room for all the new elements.</p>
-
 <h3 id="amortized-time">Amortized time</h3>
-
 <p>An amortized time analysis gives a much better understanding of the algorithm.</p>
-
-<p>Consider a sequence of <i>n</i>&nbsp;append operations,
-where we start with an array of length&nbsp;1. A careful analysis shows
-that the total time of these operations is only&nbsp;&Theta;(<i>n</i>).</p>
-
+<p>Consider a sequence of <i>n</i> append operations,
+where we start with an array of length 1. A careful analysis shows
+that the total time of these operations is only Θ(<i>n</i>).</p>
 <ul>
 <li> There will be a total of <i>n</i> constant-time assignment and increment operations.
 </li>
@@ -156,17 +137,11 @@ that the total time of these operations is only&nbsp;&Theta;(<i>n</i>).</p>
   Since&nbsp;2<sup>k</sup>&nbsp;&le;&nbsp;<i>n</i>, this is at most&nbsp;2<i>n</i>&nbsp;-&nbsp;1.
 </li>
 </ul>
-
-<p>Hence, the amortized time complexity for a single append operation is&nbsp;&Theta;(1).</p>
-
+<p>Hence, the amortized time complexity for a single append operation is Θ(1).</p>
 <h2 id="more-on-algorithm-analysis">More on algorithm analysis</h2>
-
 <div><a href="/algorithms/time-complexity-explained/"><img src="/algorithms/abacus-thumb.jpg" title="Time complexity: Count your steps"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;"><a href="/algorithms/time-complexity-explained/">Time complexity: Count your steps</a></p>
-
 <div><a href="/algorithms/big-o-notation-explained/"><img src="/algorithms/big-o-thumb.jpg" title="Big O notation"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;"><a href="/algorithms/big-o-notation-explained/">Big O notation</a></p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -194,15 +169,7 @@ that the total time of these operations is only&nbsp;&Theta;(<i>n</i>).</p>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
     <div style="margin-top:1em;"><a href="/algorithms/time-complexity-explained/" title="How to analyse time complexity: Count your steps"><img src="/algorithms/abacus-mini.jpg"></a></div>
   <ul class="none">
   

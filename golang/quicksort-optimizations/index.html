@@ -84,83 +84,66 @@
 <article>
 <h1>Quicksort optimizations explained [complete code]</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC BY 2.0:https://www.flickr.com/photos/nicola_s/20141007433 -->
-
 <div><img src="/golang/divide-conquer.jpg" class="extra-content" style="float: right; margin: 20px 0 0 20px;" alt="Quicksort is a divide-and-conquer algorithm"></div>
-
 <p class="lead">Most Quicksort optimi&shy;zations give only small improve&shy;ments.
 Here&nbsp;are three that can make a&nbsp;real differ&shy;ence.</p>
-
 <ul class="toc">
   <li><a href="#algorithm-overview">Algorithm overview</a></li>
   <li><a href="#pivot-element">Pivot element</a></li>
   <li><a href="#3-way-partition">3-way partition</a></li>
   <li><a href="#combining-algorithms">Combining algorithms</a></li>
 </ul>
-
 <h2 id="algorithm-overview">Algorithm overview</h2>
-
 <ul>
 <li>Pick an element <code>p</code>, called a pivot, from the list.</li>
 <li>Partition the list so that
-
 <ul>
 <li>all elements less than <code>p</code> come first,</li>
 <li>all elements greater than <code>p</code> come last,</li>
 <li>elements equal to <code>p</code> go into the middle.</li>
-</ul></li>
+</ul>
+</li>
 <li>Recursively apply the above steps to the sublists of small and large elements.</li>
 <li>For short sublists, use a simpler sorting algorithm.</li>
 </ul>
-
 <pre><code>//  Quicksort sorts the elements of v in ascending order.
 func Quicksort(v []int) {
-    if len(v) < 20 {
-        InsertionSort(v)
-        return
-    }
-    p := Pivot(v)
-    low, high := Partition(v, p)
-    Quicksort(v[:low])
-    Quicksort(v[high:])
+	if len(v) < 20 {
+		InsertionSort(v)
+		return
+	}
+	p := Pivot(v)
+	low, high := Partition(v, p)
+	Quicksort(v[:low])
+	Quicksort(v[high:])
 }</code></pre>
-
 <p>With some ingenuity this algorithm can be implemented to run very fast.</p>
-
 <p>If we assume that the partition is done in linear time (which is possible to achieve)
 and that the list is divided exactly in the middle (which is unlikely),
-the expected time to sort a list of <i>n</i>&nbsp;elements
-is&nbsp;<i>O</i>(<i>n</i>&nbsp;log&nbsp;<i>n</i>).</p>
-
+the expected time to sort a list of <i>n</i> elements
+is <i>O</i>(<i>n</i> log <i>n</i>).</p>
 <p>Unfortunately the worst case is θ(<i>n</i><sup>2</sup>),
 but this case is rare if the pivot is chosen carefully.</p>
-
 <h2 id="pivot-element">Pivot element</h2>
-
 <p>Choosing a suitable pivot <code>p</code> is a balancing act:</p>
-
 <ul>
 <li>if we are sloppy, the partition can be lopsided;</li>
 <li>if we compute <code>p</code> as the median of all elements,
 this step may dominate the running time.</li>
 </ul>
-
 <p>A simple solution is to choose <code>p</code> as a random list element.
 The expected number of comparisons for sorting a list of elements, all different,
-then becomes 1.4&#8202;<i>n</i>&nbsp;log&nbsp;<i>n</i>. Also, with a good random source, this choice virtually
+then becomes 1.4 <i>n</i> log <i>n</i>. Also, with a good random source, this choice virtually
 eliminates the risk of quadratic performance.</p>
-
 <p>Another common choice is <code>p := Median(v[0], v[len(v)/2], v[len(v)-1])</code>,
 but this can be risky. In fact, combining this pivot with the partion algorithm
 in the next section gives very poor performance when sorting an already sorted list.</p>
-
 <p>A more robust solution is to combine the two ideas and use
 the median of three random elements.
 With this strategy, the expected number of comparisons becomes
-1.2&#8202;<i>n</i>&nbsp;log&nbsp;<i>n</i>.</p>
-<pre><code>func Pivot(v []int) int {
+1.2 <i>n</i> log <i>n</i>.</p>
+<pre tabindex="0"><code>func Pivot(v []int) int {
 	n := len(v)
 	return Median(v[rand.Intn(n)],
 		v[rand.Intn(n)],
@@ -186,14 +169,13 @@ func Median(a, b, c int) int {
 	default:
 		return b
 	}
-}</code></pre>
-<h2 id="3-way-partition">3-way partition</h2>
-
+}
+</code></pre><h2 id="3-way-partition">3-way partition</h2>
 <p>This 3-way partition algorithm handles input with many replicated elements gracefully,
 a case where the standard 2-way partition can run into troubles.
 A well-chosen <a href="/algorithms/loop-invariants-explained/">loop invariant</a>
 is vital if we want to untangle this intricate piece of code.</p>
-<pre><code>// Partition reorders the elements of v so that:
+<pre tabindex="0"><code>// Partition reorders the elements of v so that:
 // - all elements in v[:low] are less than p,
 // - all elements in v[low:high] are equal to p,
 // - all elements in v[high:] are greater than p.
@@ -227,30 +209,25 @@ func Partition(v []int, p int) (low, high int) {
 		}
 	}
 	return
-}</code></pre>
-<p>It&rsquo;s easy to see that the algorithm runs in linear time:
+}
+</code></pre><p>It&rsquo;s easy to see that the algorithm runs in linear time:
 the distance between <code>mid</code> and <code>high</code> decreases in every loop,
 either because <code>mid</code> increases or because <code>high</code> decreases.</p>
-
 <h2 id="combining-algorithms">Combining algorithms</h2>
-
 <p>Experience shows that Quicksort is the fastest comparison-based sorting algorithm
 for many types of data. However, in some cases there are better options.
 <a href="/algorithms/insertion-sort/">Insertion sort</a>, which has quadratic worst-case time, tends to be
 faster for small lists.</p>
-
 <p>By combining the two algorithms we get the best of two worlds:</p>
-
 <ul>
 <li>use Quicksort to sort long sublists,</li>
 <li>and Insertion sort otherwise.</li>
 </ul>
-
 <p>The optimal break point depends on many factors (how the code is written,
 the nature of the data, hardware characteristics)
 and has to be found experimentally. Luckily the choice is seldom critical:
 break points between 10 and 100 tend to work well.</p>
-<pre><code>func InsertionSort(v []int) {
+<pre tabindex="0"><code>func InsertionSort(v []int) {
 	for j := 1; j &lt; len(v); j++ {
 		// Invariant: v[:j] contains the same elements as
 		// the original slice v[:j], but in sorted order.
@@ -262,11 +239,9 @@ break points between 10 and 100 tend to work well.</p>
 		}
 		v[i+1] = key
 	}
-}</code></pre>
-<h3 id="further-reading">Further reading</h3>
-
+}
+</code></pre><h3 id="further-reading">Further reading</h3>
 <div><a href="/algorithms/fastest-sorting-algorithm/"><img src="/algorithms/sorted-thumb.jpg" title="O(n log log n) time integer sorting"></a></div>
-
 <p style="margin-top:0;">See <a href="/algorithms/fastest-sorting-algorithm/">O(n log log n) time integer sorting</a> for a theoretically fast sorting algorithm.</p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -300,15 +275,7 @@ break points between 10 and 100 tend to work well.</p>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   

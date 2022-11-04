@@ -84,62 +84,44 @@
 <article>
 <h1>Variadic functions (...T)</h1>
 <div class="tagline">yourbasic.org/golang</div>
-
-
 <!-- CC0: https://commons.wikimedia.org/wiki/File:Adjustable_spanner_20101109.jpg -->
-
 <div><img src="/golang/adjustable-spanner.jpg"></div>
-
 <ul class="toc">
   <li><a href="#basics">Basics</a></li>
   <li><a href="#pass-slice-elements-to-a-variadic-function">Pass slice elements to a variadic function</a></li>
   <li><a href="#append-is-variadic">Append is variadic</a></li>
 </ul>
-
 <h2 id="basics">Basics</h2>
-
 <p>If the <strong>last parameter</strong> of a function has type <code>...T</code>
-it can be called with <strong>any number</strong> of trailing arguments of type&nbsp;<code>T</code>.</p>
-
+it can be called with <strong>any number</strong> of trailing arguments of type <code>T</code>.</p>
 <pre><code>func Sum(<b>nums ...int</b>) int {
-    res := 0
-    for _, n := range nums {
-        res += n
-    }
-    return res
+	res := 0
+	for _, n := range nums {
+		res += n
+	}
+	return res
 }
 
 func main()
-    fmt.Println(<b>Sum()</b>)        <span class="comment">// 0</span>
-    fmt.Println(<b>Sum(1, 2, 3)</b>) <span class="comment">// 6</span>
+	fmt.Println(<b>Sum()</b>)        <span class="comment">// 0</span>
+	fmt.Println(<b>Sum(1, 2, 3)</b>) <span class="comment">// 6</span>
 }</code></pre>
-
 <p>The actual type of <code>...T</code> inside the function is <code>[]T</code>.</p>
-
 <h2 id="pass-slice-elements-to-a-variadic-function">Pass slice elements to a variadic function</h2>
-
 <p>You can pass the elements of a slice <code>s</code> directly to a variadic function using the <code>s...</code> notation.
-In this case no new slice is&nbsp;created.</p>
-
+In this case no new slice is created.</p>
 <pre><code class="skiphl">primes := []int{2, 3, 5, 7}
 fmt.Println(<b>Sum(primes...)</b>) <span class="comment">// 17</span></code></pre>
-
 <h2 id="append-is-variadic">Append is variadic</h2>
-
 <p>The built-in <a href="/golang/append-explained/">append function</a> is variadic
 and can be used to append any number of elements to a slice.</p>
-
 <p>As a special case, you can append a string to a byte slice:</p>
-
 <pre><code class="skiphl">var buf []byte
 buf = append(buf, 'a', 'b')
 buf = append(buf, <b>"cd"...</b>)
 fmt.Println(buf) <span class="comment">// [97 98 99 100]</span></code></pre>
-
 <h3 id="further-reading">Further reading</h3>
-
 <div><a href="/golang/append-explained/"><img src="/golang/toddler-fiat-with-trailer-thumb.jpg" title="How to append anything (element, slice or string) to a slice"></a></div>
-
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/append-explained/">How to append anything (element, slice or string) to a&nbsp;slice</a></p>
 
 <p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
@@ -167,15 +149,7 @@ fmt.Println(buf) <span class="comment">// [97 98 99 100]</span></code></pre>
     <div class="source">yourbasic.org</div>
   </div>
 
-  <h2>Follow on Twitter</h2>
-  <ul class="none">
-    <li><span><a href="https://twitter.com/yourbasic_org">
-    <img width="22px" src="/res/twitter-logo.svg" title="Follow yourbasic.org on Twitter"></a></span>
-    <a href="https://twitter.com/yourbasic_org">Algorithms to Go</a></li>
-  </ul>
-
-
-  <h2>Most Read</h2>
+<h2>Most Read</h2>
   <div style="margin-top:1em;"><a href="/golang/gotcha/" title="Do you make these Go coding mistakes?"><img src="/golang/angry-man-with-computer-mini.png"></a></div>
   <ul class="none">
   
