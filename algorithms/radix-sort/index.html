@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radix sorting algorithms · YourBasic </title>
+  <meta name="description" content="Radix sorting is a simple and efficient sorting method for sorting numbers or strings.">
+  
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-113104149-1');
+  </script>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/algorithms/radix-sort/"
+  },
+  "headline": "Radix sorting algorithms",
+  "image": [
+    "https://yourbasic.org/algorithms/sorting-mail.jpg"
+   ],
+  "datePublished": "2022-11-11T00:00:00&#43;0000",
+  "dateModified": "2022-11-11T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "Radix sorting is a simple and efficient sorting method for sorting numbers or strings."
+}
+</script>
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Radix sorting algorithms">
+<meta property="og:description" content="Radix sorting is a simple and efficient sorting method for sorting numbers or strings.">
+<meta property="og:url" content="https://yourbasic.org/algorithms/radix-sort/">
+<meta property="og:image" content="https://yourbasic.org/algorithms/sorting-mail.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Radix sorting algorithms">
+<meta name="twitter:description" content="Radix sorting is a simple and efficient sorting method for sorting numbers or strings.">
+<meta name="twitter:site" content="@yourbasic_org">
+<meta name="twitter:image" content="https://yourbasic.org/algorithms/sorting-mail.jpg">
+
+
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li class="here"><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<h1>Radix sorting algorithms</h1>
+<div class="tagline">yourbasic.org</div>
+<p class="lead">Radix sorting is a simple and efficient sorting method that sometimes outperforms comparison-based algorithms.</p>
+<!-- Public Domain Mark 1.0: https://picryl.com/media/sorting-mail -->
+<div style="margin-top:1em;"><img src="/algorithms/sorting-mail.jpg"></div>
+<ul class="toc">
+  <li><a href="#bucket-sort">Bucket sort</a></li>
+  <li><a href="#lsd-radix-sort">LSD radix sort</a></li>
+  <li><a href="#msd-radix-sort">MSD radix sort</a></li>
+</ul>
+<p>Radix sort is a non-comparative sorting algorithm for sorting numbers or strings. It distributes elements into buckets according to the digits of the numbers or the characters of the strings.</p>
+<h2 id="bucket-sort">Bucket sort</h2>
+<p>Bucket sort is the basic building block of most radix sorting schemes.
+It solves the special case of sorting
+<i>n</i> integers drawn from a small set {0, 1, …, <i>m</i>-1}.</p>
+<p>Bucket sort maintains one bucket for each possible key value,
+puts the elements in their respective buckets, and
+collects the elements during a traversal of the buckets.</p>
+<h3 id="implementation">Implementation</h3>
+<p>Perhaps the most obvious implementation is to use
+an array of linked lists to represent the <i>m</i> buckets.
+By maintaining pointers to both the head and tail of
+each list we can insert the elements at the end of the
+list in constant time and in this way we also assure
+that the sorting algorithm will be stable.</p>
+<h4 id="counting-sort">Counting sort</h4>
+<p>Another possibility,
+often referred to as <a href="https://en.wikipedia.org/wiki/Counting_sort">counting sort</a>,
+is to use an array of counters,
+where each counter indicates the number of elements
+in each bucket.
+Using this information we can compute
+the position of the first element in each bucket
+with a <a href="https://en.wikipedia.org/wiki/Prefix_sum">prefix sum computation</a>.
+With this information available it is possible to permute
+the <i>n</i> elements into sorted order in O(<i>n</i>) time.
+One drawback of this scheme is that each character
+has to be read twice, one time during the counting
+and one time during the permutation.</p>
+<h4 id="in-place-permutation">In-place permutation</h4>
+<p>The simplest way to permute
+the elements is to move them into a new array.
+It is also possible to perform the permutation in place as illustrated in this picture.</p>
+<div><img src="/algorithms/inplace.png" width="320px" title="Permuting an array in place"></a></div>
+<p>If the first element does not equal 0 we move it into
+its correct position and remove the element that resides
+in this new position;
+if this element equals 0 we are done,
+otherwise we continue to displace elements until we
+eventually find a 0 element,
+which can be placed in the first slot.
+This procedure is repeated for the next element that has not yet
+found its correct place.</p>
+<p>To perform  this sequence of displacements we need to
+keep track of the current point
+of insertion for each bucket.
+This can be arranged using
+a pointer array of size <i>m</i>.
+The initial values of this array are computed as the
+prefix sums of the counter array.
+Observe that this in-place permutation scheme
+produces a sorting algorithm that is not stable.</p>
+<h3 id="optimization">Optimization</h3>
+<p>Clustering is present in many kinds of data.
+We can take advantage of this by treating consecutive elements
+with a common value as a single unit when moving them into a bucket.
+Using a linked-list representation it is possible to
+move this sublist of identical elements in constant time.</p>
+<h3 id="analysis">Analysis</h3>
+<p>Bucket sort inspects each element a constant number of
+times and visits each bucket once,
+hence it runs in Θ(<i>n</i> + <i>m</i>) time.
+The linked list implementation uses Θ(<i>n</i> + <i>m</i>) extra space:
+Θ(<i>n</i>) space is used to implement the linked list and
+Θ(<i>m</i>) is needed for the buckets.
+Using an array of counters it is possible to implement Bucket sort
+with only Θ(<i>m</i>) extra space.</p>
+<h2 id="lsd-radix-sort">LSD radix sort</h2>
+<p>Bucket sort is a feasible alternative only if the elements
+to be sorted take their values from a restricted domain.
+For bigger numbers it is natural to sort
+in several stages, using bucket sort at each stage.
+The most commonly used approach is to
+start with the least significant digit (LSD).
+This method is old and was used to sort punched cards.
+The algorithm is often referred to as LSD radix sort,
+straight radix sort, or bottom-up radix sort.</p>
+<p>The algorithm, in its basic form, requires all strings
+to be of equal length. It works as follows.</p>
+<ul>
+<li>Split the strings into groups according to their last character
+      and arrange the groups in ascending order.</li>
+<li>Apply the algorithm recursively on <b>all</b> strings,
+      disregarding the last character of each string.</li>
+</ul>
+<p>After the <i>i</i>th step of the algorithm,
+the input strings will be  properly sorted according to
+their last <i>i</i> characters.</p>
+<h3 id="implementation-1">Implementation</h3>
+<p>The sorting subroutine is typically implemented using bucket sort.
+Other sorting subroutines may of course also be used,
+as long as they are stable.</p>
+<p>To implement a string sorting algorithm efficiently we should
+not move the strings themselves but only pointers to them.
+In this way, each string movement is guaranteed to
+take constant time.</p>
+<h3 id="optimization-1">Optimization</h3>
+<p>In many cases we are able to choose the size of the alphabet (the radix):</p>
+<ul>
+<li>For numbers we are free too choose any base: from binary to decimal, or much larger.</li>
+<li>For strings we may look at one character at a time, or combine several characters into one.</li>
+</ul>
+<p>When choosing the radix we are faced with a fundamental choice:
+a large alphabet reduces the total number
+of passes but increases the total number of buckets
+that must be inspected.</p>
+<h3 id="analysis-1">Analysis</h3>
+<p>The running time of LSD radix sort is a function of
+the number of strings <i>n</i>, the number of buckets <i>m</i>,
+and the length <i>l</i> of the strings. During the
+bucketing phase each of the <i>n</i> characters is inspected once
+and during the rebuilding each of the <i>m</i> buckets is visited once.
+This procedure is repeated <i>l</i> times and hence the running
+time is Θ(<i>l</i>(<i>n</i> + <i>m</i>)).</p>
+<h2 id="msd-radix-sort">MSD radix sort</h2>
+<p>The major weakness of LSD radix sort is that it needs to inspect
+all characters of the input.
+Another, perhaps more natural, alternative is to scan
+the strings starting with the most significant digit (MSD)
+and only inspects the distinguishing prefixes.
+This algorithm is known as
+MSD radix sort or top-down radix sort.
+The special case where the alphabet is binary is sometimes
+referred to as radix-exchange sort.
+The algorithm works as follows.</p>
+<ul>
+<li> Split the strings into groups according to their first character
+      and arrange the groups in ascending order.</li>
+<li> Apply the algorithm recursively on <b>each group separately</b>,
+      disregarding the first character of each string.
+      Groups containing only one string need no further processing.</li>
+</ul>
+<p>After the <i>i</i>th step of the algorithm, the input strings will be
+properly sorted according to their first <i>i</i> characters.</p>
+<h3 id="implementation-2">Implementation</h3>
+<p>Once again, bucket sort is typically used to implement
+the sorting at each step.
+In this case we can use the in-place version of bucket sort,
+but then the resulting algorithm will of course be unstable.</p>
+<p>We want to avoid using a new bucket table for each splitting.
+This can be arranged if we use an explicit stack to keep track
+of the flow of computation.
+The last bucket is treated first
+and the other sublists to be sorted are pushed on the stack.</p>
+<div><img src="/algorithms/triestack.png" width="400px" title="A snapshot of MSD radix sort"></a></div>
+<p>The output list is constructed starting with the tail
+and the sublists to be sorted are pushed on a stack.
+The sublists on the stack
+that are waiting to be sorted
+are suggested by the dotted line.</p>
+<h3 id="optimizations">Optimizations</h3>
+<p>One problem to overcome when implementing MSD radix sort
+is that the groups may become small while
+the cost of bucket sort remains proportional to the size of
+the alphabet.
+This fragmentation problem can be countered by swapping to
+another sorting algorithm when only a small number of
+elements remain in a group.</p>
+<p>Another possible drawback is that the stack can be sizable.
+It is not difficult to construct an example where the stack
+will contain one entry for each key.</p>
+<p>We suggest a simple way to overcome this problem.
+If both the list on the top of the stack and the list
+in turn to be pushed onto the stack
+are sorted there is no need to allocate
+another stack record. We can simply append one list
+to the end of the other.</p>
+<p>This technique is applicable if the algorithm
+switches to a simple comparison-based algorithm
+to sort short subsequences.
+If we switch when at most <i>k</i> elements remain
+in a group, each stack entry will contain at least
+<i>k</i> elements and hence the total size of the stack
+will be at most <i>n/k</i>.</p>
+<p>In practice, the stack will typically be much smaller.
+Not only does this simple optimization
+give a considerable reduction of the stack size,
+it is also likely to improve the running time.</p>
+<h3 id="analysis-2">Analysis</h3>
+<p>The algorithm inspects each distinguishing
+character once and each string at least once.
+Hence the algorithm has time complexity
+at least O(<i>n</i> + <i>S</i>),
+where <i>S</i> is the total number of characters of the
+distinguishing prefixes, i.e. the characters that must be inspected to sort the strings:</p>
+<div><img src="/algorithms/distpref.png" width="200px" title="Distinguishing prefixes"></a></div>
+<p>To compute the number of buckets that are visited we
+observe that bucketing takes place at
+each internal node of the corresponding trie.
+The number of nodes in the trie could be as large as
+Θ(<i>S</i>) and hence
+the worst-case time complexity is Θ(<i>n</i> + <i>mS</i>).</p>
+<p>In practice, when using the optimization techniques discussed
+above, the performance is often much better than could be
+expected from this worst-case time bound.
+In particular, the technique to revert to a simpler
+sorting algorithm when only a small
+constant number of elements remain is often
+very effective, even though it does not
+improve the asymptotic bound.</p>
+<h2 id="further-reading">Further reading</h2>
+<div><a href="/algorithms/fastest-sorting-algorithm/"><img src="/algorithms/sorted-mini.jpg" width="200px" title="O(n log log n) time integer sorting"></a></div>
+<p style="margin-top:0;">See <a href="/algorithms/fastest-sorting-algorithm/">O(n log log n) time integer sorting</a> for a radix sorting algorithm that
+sorts n&nbsp;integers in near linear time.</p>
+
+<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
+<a href="https://twitter.com/share?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fradix-sort%2f&amp;text=Radix%20sorting%20algorithms&amp;via=yourbasic%5forg" title="Share on Twitter"><img width="40px" src="/res/twitter-logo.svg"></a>&nbsp;&nbsp;
+<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2falgorithms%2fradix-sort%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fradix-sort%2f&amp;title=Radix%20sorting%20algorithms" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
+<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Radix%20sorting%20algorithms&body=https%3a%2f%2fyourbasic.org%2falgorithms%2fradix-sort%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
+
+
+</article>
+<aside>
+
+    
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/algorithms/fastest-sorting-algorithm/">O(n log log n) time integer sorting</a>
+    <div class="desc">Which sorting algorithm is the fastest? If you count the number of operations needed to sort integer numbers, there is a clear winner. You can sort n integers in O(n log log n) time.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="/golang/quicksort-optimizations/">Quicksort optimizations explained [complete code]</a>
+    <div class="desc">For a fast implementation of Quicksort, choose a good pivot, use 3-way partitioning, and switch to insertion sort for short sublists.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+<h2>Most Read</h2>
+    <div style="margin-top:1em;"><a href="/algorithms/time-complexity-explained/" title="How to analyse time complexity: Count your steps"><img src="/algorithms/abacus-mini.jpg"></a></div>
+  <ul class="none">
+  
+    <li><a href="/algorithms/time-complexity-explained/">How to analyze time complexity: Count your steps</a></li>
+
+    <li><a href="/algorithms/big-o-notation-explained/">Big O notation: definition and examples</a></li>
+
+    <li><a href="/algorithms/dynamic-programming-explained/">Dynamic programming [step-by-step example]</a></li>
+
+    <li><a href="/algorithms/loop-invariants-explained/">Loop invariants can give you coding superpowers</a></li>
+
+    <li><a href="/algorithms/your-basic-api/">API design: principles and best practices</a></li>
+
+    <li><a href="/algorithms/fastest-sorting-algorithm/">O(n log log n) time integer sorting</a></li>
+
+  </ul>
+  <p><a href="/algorithms/"><b>See all 24 algorithm articles</b></a></p>
+</aside>
+</main>
+
+<footer>
+  This work is licensed under&nbsp;a&nbsp;<a rel="license" alt="CC BY 3.0"
+  href="http://creativecommons.org/licenses/by/3.0/"><span
+  style="font-size:smaller;">CC&nbsp;BY&nbsp;3.0</span>&nbsp;license</a>.
+</footer>
+</body>
+</html>
