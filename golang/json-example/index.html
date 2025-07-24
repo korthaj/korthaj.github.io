@@ -13,14 +13,6 @@
   <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
   <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-113104149-1');
-  </script>
 
   <script type="application/ld+json">
 {
@@ -111,8 +103,7 @@ achieved by implementations that expect no more precision or range than these pr
 <p>Note that when such software is used, numbers that are integers and
 are in the range [-2<sup>53</sup> + 1, 2<sup>53</sup> - 1] are interoperable in the
 sense that implementations will agree exactly on their numeric values.
-<a class="quote-source" href="https://tools.ietf.org/html/rfc7159#section-6">RFC 7159: The JSON Data Interchange Format</a></p>
-</blockquote>
+<a class="quote-source" href="https://tools.ietf.org/html/rfc7159#section-6">RFC 7159: The JSON Data Interchange Format</a></p></blockquote>
 <h2 id="encode-marshal-struct-to-json">Encode (marshal) struct to JSON</h2>
 <p>The <a href="https://golang.org/pkg/encoding/json/#Marshal"><code>json.Marshal</code></a> function
 in package <a href="https://golang.org/pkg/encoding/json/"><code>encoding/json</code></a> generates JSON data.</p>
@@ -139,7 +130,7 @@ if err != nil {
 }
 fmt.Println(string(jsonData))</code></pre>
 <p>Output:</p>
-<pre tabindex="0"><code>{&quot;Name&quot;:&quot;Standard&quot;,&quot;Fruit&quot;:[&quot;Apple&quot;,&quot;Banana&quot;,&quot;Orange&quot;],&quot;ref&quot;:999,&quot;Created&quot;:&quot;2018-04-09T23:00:00Z&quot;}
+<pre tabindex="0"><code>{&#34;Name&#34;:&#34;Standard&#34;,&#34;Fruit&#34;:[&#34;Apple&#34;,&#34;Banana&#34;,&#34;Orange&#34;],&#34;ref&#34;:999,&#34;Created&#34;:&#34;2018-04-09T23:00:00Z&#34;}
 </code></pre><p>Only data that can be represented as JSON will be encoded;
 see <a href="https://golang.org/pkg/encoding/json/#Marshal"><code>json.Marshal</code></a> for the complete rules.</p>
 <ul>
@@ -155,14 +146,14 @@ in the example above to indent the JSON output.</p>
 <pre><code>jsonData, err := <b>json.MarshalIndent</b>(basket, "", "    ")</code></pre>
 <p>Output:</p>
 <pre tabindex="0"><code>{
-    &quot;Name&quot;: &quot;Standard&quot;,
-    &quot;Fruit&quot;: [
-        &quot;Apple&quot;,
-        &quot;Banana&quot;,
-        &quot;Orange&quot;
+    &#34;Name&#34;: &#34;Standard&#34;,
+    &#34;Fruit&#34;: [
+        &#34;Apple&#34;,
+        &#34;Banana&#34;,
+        &#34;Orange&#34;
     ],
-    &quot;ref&quot;: 999,
-    &quot;Created&quot;: &quot;2018-04-09T23:00:00Z&quot;
+    &#34;ref&#34;: 999,
+    &#34;Created&#34;: &#34;2018-04-09T23:00:00Z&#34;
 }
 </code></pre><h2 id="decode-unmarshal-json-to-struct">Decode (unmarshal) JSON to struct</h2>
 <p>The <a href="https://golang.org/pkg/encoding/json/#Unmarshal"><code>json.Unmarshal</code></a> function
@@ -218,11 +209,11 @@ This is how unmarshaling works for slices, maps and pointers.</p>
 <p>It will unmarshal any valid JSON data into a plain <code>interface{}</code> value.</p>
 <p>Consider this JSON data:</p>
 <pre tabindex="0"><code>{
-    &quot;Name&quot;: &quot;Eve&quot;,
-    &quot;Age&quot;: 6,
-    &quot;Parents&quot;: [
-        &quot;Alice&quot;,
-        &quot;Bob&quot;
+    &#34;Name&#34;: &#34;Eve&#34;,
+    &#34;Age&#34;: 6,
+    &#34;Parents&#34;: [
+        &#34;Alice&#34;,
+        &#34;Bob&#34;
     ]
 }
 </code></pre><p>The <a href="https://golang.org/pkg/encoding/json/#Unmarshal"><code>json.Unmarshal</code></a> function will parse it into a map whose keys are strings, and whose values are
@@ -309,8 +300,8 @@ for {
 	}
 }</code></pre>
 <p>Output:</p>
-<pre tabindex="0"><code>{&quot;Name&quot;:&quot;Alice&quot;}
-{&quot;Name&quot;:&quot;Bob&quot;}
+<pre tabindex="0"><code>{&#34;Name&#34;:&#34;Alice&#34;}
+{&#34;Name&#34;:&#34;Bob&#34;}
 </code></pre>
 
 <h3>Further reading</h3>
@@ -318,11 +309,6 @@ for {
 <div><a href="/golang/tutorials/"><img src="/golang/learn-to-write-thumb.jpg" title="Go tutorials"></a></div>
 
 <p style="margin-top:0;"><a href="/golang/tutorials/">Tutorials</a> for beginners and experienced developers alike: best practices and production-quality code examples.</p>
-<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fjson-example%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fjson-example%2f&amp;title=How%20to%20use%20JSON%20with%20Go%20[best%20practices]" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=How%20to%20use%20JSON%20with%20Go%20[best%20practices]&body=https%3a%2f%2fyourbasic.org%2fgolang%2fjson-example%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
-
 
 </article>
 <aside>

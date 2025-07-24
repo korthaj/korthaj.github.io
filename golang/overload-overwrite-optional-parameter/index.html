@@ -13,14 +13,6 @@
   <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
   <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-113104149-1');
-  </script>
 
   <script type="application/ld+json">
 {
@@ -94,8 +86,7 @@ with the same name but different signatures was occasionally useful
 but that it could also be confusing and fragile in practice.
 Matching only by name and requiring consistency in the types
 was a major simplifying decision in Go&rsquo;s type system.
-<a class="quote-source" href="https://golang.org/doc/faq#overloading">Go FAQ: Why does Go not support overloading of methods and operators?</a></p>
-</blockquote>
+<a class="quote-source" href="https://golang.org/doc/faq#overloading">Go FAQ: Why does Go not support overloading of methods and operators?</a></p></blockquote>
 <p>However, there are</p>
 <ul>
 <li><a href="/golang/variadic-function/"><strong>variadic functions</strong></a> (functions that accept a variable number of arguments),</li>
@@ -113,11 +104,6 @@ has five different functions for sorting a slice:</p>
 <a href="https://golang.org/pkg/sort/#Ints"><code>sort.Ints</code></a>, and
 <a href="https://golang.org/pkg/sort/#Strings"><code>sort.Strings</code></a>.</li>
 </ul>
-
-<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2foverload-overwrite-optional-parameter%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2foverload-overwrite-optional-parameter%2f&amp;title=Optional%20parameters,%20default%20parameter%20values%20and%20method%20overloading" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Optional%20parameters,%20default%20parameter%20values%20and%20method%20overloading&body=https%3a%2f%2fyourbasic.org%2fgolang%2foverload-overwrite-optional-parameter%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>

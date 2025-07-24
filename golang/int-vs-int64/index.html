@@ -13,14 +13,6 @@
   <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
   <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-113104149-1');
-  </script>
 
   <script type="application/ld+json">
 {
@@ -99,8 +91,7 @@ to emphasize than an integer represents a <a href="/golang/rune/">code point</a
 <p>Sometimes it makes little or no difference if you use 32 or 64 bits for data,
 and then it&rsquo;s quite common to simply use an int.
 However, I prefer to be explicit.
-It forces you to spend a moment thinking about the choice and also makes the code a bit clearer.</p>
-</blockquote>
+It forces you to spend a moment thinking about the choice and also makes the code a bit clearer.</p></blockquote>
 <h2 id="examples">Examples</h2>
 <p>In this code, the slice elements and the <code>max</code> variable have type <code>int64</code>,
 while the index and the length of the slice have type <code>int</code>.</p>
@@ -123,11 +114,6 @@ largest possible duration to about 290 years.</p>
 <h3 id="further-reading">Further reading</h3>
 <p>The <a href="/golang/max-min-int-uint/">Maximum value of an int</a> article
 shows how to compute the size and limit values of an <code>int</code> as untyped constants.</p>
-
-<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fint-vs-int64%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fint-vs-int64%2f&amp;title=Pick%20the%20right%20one:%20int%20vs.%20int64" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Pick%20the%20right%20one:%20int%20vs.%20int64&body=https%3a%2f%2fyourbasic.org%2fgolang%2fint-vs-int64%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>

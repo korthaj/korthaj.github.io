@@ -13,14 +13,6 @@
   <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
   <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-113104149-1');
-  </script>
 
   <script type="application/ld+json">
 {
@@ -99,11 +91,11 @@ returns a slice of <code>&quot;key=value&quot;</code> strings listing all enviro
 	kv := strings.SplitN(s, "=", 2) <span class="comment">// unpacks "key=value"</span>
 	fmt.Printf("key:%q value:%q\n", kv[0], kv[1])
 }</code></pre>
-<pre tabindex="0"><code>key:&quot;SHELL&quot; value:&quot;/bin/bash&quot;
-key:&quot;SESSION&quot; value:&quot;ubuntu&quot;
-key:&quot;TERM&quot; value:&quot;xterm-256color&quot;
-key:&quot;LANG&quot; value:&quot;en_US.UTF-8&quot;
-key:&quot;XMODIFIERS&quot; value:&quot;@im=ibus&quot;
+<pre tabindex="0"><code>key:&#34;SHELL&#34; value:&#34;/bin/bash&#34;
+key:&#34;SESSION&#34; value:&#34;ubuntu&#34;
+key:&#34;TERM&#34; value:&#34;xterm-256color&#34;
+key:&#34;LANG&#34; value:&#34;en_US.UTF-8&#34;
+key:&#34;XMODIFIERS&#34; value:&#34;@im=ibus&#34;
 …
 </code></pre>
 
@@ -114,11 +106,6 @@ key:&quot;XMODIFIERS&quot; value:&quot;@im=ibus&quot;
 <a href="/golang/blueprint/">Go blueprints: code for com&shy;mon tasks</a> is a collection of handy code&nbsp;examples.</p>
 
 <div style="clear:both;"></div>
-
-<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fenvironment-variables%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fenvironment-variables%2f&amp;title=Access%20environment%20variables" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Access%20environment%20variables&body=https%3a%2f%2fyourbasic.org%2fgolang%2fenvironment-variables%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 

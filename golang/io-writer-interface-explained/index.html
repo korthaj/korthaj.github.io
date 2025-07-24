@@ -13,14 +13,6 @@
   <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
   <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-113104149-1');
-  </script>
 
   <script type="application/ld+json">
 {
@@ -97,7 +89,7 @@ it returns the number of bytes written and any error encountered that caused
 the write to stop early.</p>
 <p>The standard library provides numerous Writer <a href="https://golang.org/search?q=Write#Global">implementations</a>,
 and Writers are accepted as input by many utilities.</p>
-<h2 id="how-to-use-a-built-in-writer-3nbspexamples">How to use a built-in writer (3 examples)</h2>
+<h2 id="how-to-use-a-built-in-writer-3examples">How to use a built-in writer (3 examples)</h2>
 <p>As a first example, you can write directly into a <a href="https://golang.org/pkg/bytes/#Buffer"><code>bytes.Buffer</code></a>
 using the <a href="https://golang.org/pkg/fmt/#Fprintf"><code>fmt.Fprintf</code></a> function.
 This works since</p>
@@ -126,11 +118,6 @@ since it writes a string directly without allocating a byte slice.</p>
 <pre tabindex="0"><code>func WriteString(w Writer, s string) (n int, err error)
 </code></pre><p>If <code>w</code> implements a <code>WriteString</code> method, it is invoked directly.
 Otherwise, <code>w.Write</code> is called exactly once.</p>
-
-<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fio-writer-interface-explained%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fio-writer-interface-explained%2f&amp;title=How%20to%20use%20the%20io.Writer%20interface" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=How%20to%20use%20the%20io.Writer%20interface&body=https%3a%2f%2fyourbasic.org%2fgolang%2fio-writer-interface-explained%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>

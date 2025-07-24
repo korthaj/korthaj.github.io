@@ -13,14 +13,6 @@
   <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
   <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-113104149-1');
-  </script>
 
 </head>
 
@@ -46,7 +38,7 @@
 you must maintain a separate data structure.</li>
 </ul>
 <p>This example uses a sorted slice of keys to print a <code>map[string]int</code> in key order.</p>
-<pre tabindex="0"><code>m := map[string]int{&quot;Alice&quot;: 23, &quot;Eve&quot;: 2, &quot;Bob&quot;: 25}
+<pre tabindex="0"><code>m := map[string]int{&#34;Alice&#34;: 23, &#34;Eve&#34;: 2, &#34;Bob&#34;: 25}
 
 keys := make([]string, 0, len(m))
 for k := range m {
@@ -64,8 +56,7 @@ Eve 2
 </code></pre><blockquote>
 <p>Also, starting with <a href="https://tip.golang.org/doc/go1.12">Go 1.12</a>,
 the <a href="https://golang.org/pkg/fmt/"><code>fmt</code></a>
-package prints maps in key-sorted order to ease testing.</p>
-</blockquote>
+package prints maps in key-sorted order to ease testing.</p></blockquote>
 <h3 id="further-reading">Further reading</h3>
 <div><a href="/golang/maps-explained/"><img src="/golang/15-men-in-16-slots-thumb.jpg" title="Maps explained"></a></div>
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/maps-explained/">Maps explained [code example]</a></p>

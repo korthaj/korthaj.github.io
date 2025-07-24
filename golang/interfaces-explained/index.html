@@ -13,14 +13,6 @@
   <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
   <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-113104149-1');
-  </script>
 
   <script type="application/ld+json">
 {
@@ -92,8 +84,7 @@
 <h2 id="interface-type">Interface type</h2>
 <blockquote>
 <p>An interface type consists of a set of method signatures.
-A variable of interface type can hold any value that implements these methods.</p>
-</blockquote>
+A variable of interface type can hold any value that implements these methods.</p></blockquote>
 <p>In this example both <code>Temp</code> and <code>*Point</code> implement the <code>MyStringer</code> interface.</p>
 <pre tabindex="0"><code>type MyStringer interface {
 	String() string
@@ -101,7 +92,7 @@ A variable of interface type can hold any value that implements these methods.</
 </code></pre><pre tabindex="0"><code>type Temp int
 
 func (t Temp) String() string {
-	return strconv.Itoa(int(t)) + &quot; °C&quot;
+	return strconv.Itoa(int(t)) + &#34; °C&#34;
 }
 
 type Point struct {
@@ -109,7 +100,7 @@ type Point struct {
 }
 
 func (p *Point) String() string {
-	return fmt.Sprintf(&quot;(%d,%d)&quot;, p.x, p.y)
+	return fmt.Sprintf(&#34;(%d,%d)&#34;, p.x, p.y)
 }
 </code></pre><p>Actually, <code>*Temp</code> also implements <code>MyStringer</code>, since the method set of
 a pointer type <code>*T</code> is the set of all methods with receiver <code>*T</code> or <code>T</code>.</p>
@@ -124,8 +115,7 @@ fmt.Println(x.String()) <span class="comment">// (1,2)</span></code></pre>
 <h2 id="structural-typing">Structural typing</h2>
 <blockquote>
 <p>A type implements an interface by implementing its methods.
-No explicit declaration is required.</p>
-</blockquote>
+No explicit declaration is required.</p></blockquote>
 <p>In fact, the <code>Temp</code>, <code>*Temp</code> and <code>*Point</code> types also implement
 the standard library <a href="https://golang.org/pkg/fmt/#Stringer"><code>fmt.Stringer</code></a> interface.
 The <code>String</code> method in this interface is used to print values passed as an operand
@@ -156,8 +146,7 @@ It takes any number of arguments of any type.</p>
 </code></pre><h2 id="interface-values">Interface values</h2>
 <blockquote>
 <p>An <strong>interface value</strong> consists of a <strong>concrete value</strong>
-and a <strong>dynamic type</strong>: <code>[Value, Type]</code></p>
-</blockquote>
+and a <strong>dynamic type</strong>: <code>[Value, Type]</code></p></blockquote>
 <p>In a call to <a href="https://golang.org/pkg/fmt/#Printf"><code>fmt.Printf</code></a>, you can use <code>%v</code> to print the concrete value and <code>%T</code> to print the dynamic type.</p>
 <pre><code>var x MyStringer
 fmt.Printf("%v %T\n", x, x) <span class="comment">// &lt;nil&gt; &lt;nil&gt;</span>
@@ -218,11 +207,6 @@ for a real-world example where this definition of equality leads to puzzling res
 <a href="/golang/for-loop/">for&nbsp;loops</a>,
 <a href="/golang/switch-statement/">switch statements</a>,
 <a href="/golang/packages-explained/">packages</a>.</p>
-<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2finterfaces-explained%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2finterfaces-explained%2f&amp;title=Type,%20value%20and%20equality%20of%20interfaces" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Type,%20value%20and%20equality%20of%20interfaces&body=https%3a%2f%2fyourbasic.org%2fgolang%2finterfaces-explained%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
-
 
 </article>
 <aside>

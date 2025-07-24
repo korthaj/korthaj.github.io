@@ -13,14 +13,6 @@
   <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
   <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-113104149-1');
-  </script>
 
   <script type="application/ld+json">
 {
@@ -84,13 +76,13 @@
 <p>As you may have noticed, programs with an opening brace on separate line do not compile.</p>
 <pre tabindex="0"><code>func main()
 {
-	fmt.Println(&quot;Hello&quot;)
+	fmt.Println(&#34;Hello&#34;)
 }
-</code></pre><pre tabindex="0"><code>../main.go:1:6: missing function body for &quot;main&quot;
+</code></pre><pre tabindex="0"><code>../main.go:1:6: missing function body for &#34;main&#34;
 ../main.go:2:1: syntax error: unexpected semicolon or newline before {
 </code></pre><p>You must write:</p>
 <pre tabindex="0"><code>func main() {
-	fmt.Println(&quot;Hello&quot;)
+	fmt.Println(&#34;Hello&#34;)
 }
 </code></pre><p>This is a trade-off in the design of the Go language.</p>
 <blockquote>
@@ -98,17 +90,11 @@
 We disagree. Since Go code is meant to be formatted automatically by <strong>gofmt</strong>,
 some style must be chosen. [&hellip;] The advantages of a single, programmatically mandated format
 for all Go programs greatly outweigh any perceived disadvantages of the particular style.
-<a class="quote-source" href="https://golang.org/doc/faq#semicolons">Go FAQ: Why are there braces but no semicolons? And why can&rsquo;t I put the opening brace on the next line?</a></p>
-</blockquote>
+<a class="quote-source" href="https://golang.org/doc/faq#semicolons">Go FAQ: Why are there braces but no semicolons? And why can&rsquo;t I put the opening brace on the next line?</a></p></blockquote>
 <h2 id="further-reading">Further reading</h2>
 <div><a href="/golang/compiler-error-messages/"><img src="/golang/tree-of-love-thumb.jpg" title="Learn to love your compiler"></a></div>
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/compiler-error-messages/">Learn to love your compiler</a>
  is a list of common Go compiler error messages: what they mean and how to fix the problem.</p>
-
-<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fopening-brace-separate-line%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fopening-brace-separate-line%2f&amp;title=Missing%20function%20body" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Missing%20function%20body&body=https%3a%2f%2fyourbasic.org%2fgolang%2fopening-brace-separate-line%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>

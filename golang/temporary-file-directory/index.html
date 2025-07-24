@@ -13,14 +13,6 @@
   <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
   <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-113104149-1');
-  </script>
 
   <script type="application/ld+json">
 {
@@ -119,7 +111,7 @@ and the random digits are appended to the end.</p>
 <p>Use <a href="https://golang.org/pkg/io/ioutil/#TempDir"><code>ioutil.TempDir</code></a> in package
 <a href="https://golang.org/pkg/io/ioutil/"><code>io/ioutil</code></a> to create a
 <strong>globally unique temporary directory</strong>.</p>
-<pre tabindex="0"><code>dir, err := ioutil.TempDir(&quot;dir&quot;, &quot;prefix&quot;)
+<pre tabindex="0"><code>dir, err := ioutil.TempDir(&#34;dir&#34;, &#34;prefix&#34;)
 if err != nil {
 	log.Fatal(err)
 }
@@ -133,11 +125,6 @@ defer os.RemoveAll(dir)
 the default directory for temporary files,
 call <a href="https://golang.org/pkg/io/ioutil/#TempDir"><code>ioutil.TempDir</code></a>
 with an empty directory string.</p>
-
-<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2ftemporary-file-directory%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2ftemporary-file-directory%2f&amp;title=Create%20a%20temporary%20file%20or%20directory" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Create%20a%20temporary%20file%20or%20directory&body=https%3a%2f%2fyourbasic.org%2fgolang%2ftemporary-file-directory%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>

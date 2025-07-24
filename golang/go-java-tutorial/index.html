@@ -13,14 +13,6 @@
   <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
   <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-113104149-1');
-  </script>
 
   <script type="application/ld+json">
 {
@@ -188,8 +180,7 @@ the directory <code>&ldquo;go-for-java-programmers/collection&rdquo;</code>.</p>
 </ul>
 <blockquote>
 <p><strong>Note:</strong> The idiomatic way to implement a stack in Go is to use a slice directly.
-See, <a href="/golang/implement-stack/">Implement a stack (LIFO)</a>.</p>
-</blockquote>
+See, <a href="/golang/implement-stack/">Implement a stack (LIFO)</a>.</p></blockquote>
 <h2 id="main-differences">Main differences</h2>
 <h3 id="object-oriented-programming">Object-oriented programming</h3>
 <ul>
@@ -918,7 +909,7 @@ could be used to set a time limit on a receive operation.</p>
 case news := &lt;-AFP:
     fmt.Println(news)
 case &lt;-time.After(time.Minute):
-    fmt.Println(&quot;Time out: no news in one minute.&quot;)
+    fmt.Println(&#34;Time out: no news in one minute.&#34;)
 }
 </code></pre><p>The function <code>time.After</code> is part of the standard library;
 it waits for a specified time to elapse and then sends the current time
@@ -1004,11 +995,6 @@ func main() {
 <div><a href="/golang/tutorials/"><img src="/golang/learn-to-write-thumb.jpg" title="Go tutorials"></a></div>
 
 <p style="margin-top:0;"><a href="/golang/tutorials/">Tutorials</a> for beginners and experienced developers alike: best practices and production-quality code examples.</p>
-<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fgo-java-tutorial%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fgo-java-tutorial%2f&amp;title=Java%20to%20Go%20in-depth%20tutorial" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Java%20to%20Go%20in-depth%20tutorial&body=https%3a%2f%2fyourbasic.org%2fgolang%2fgo-java-tutorial%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
-
 
 </article>
 <aside>

@@ -13,14 +13,6 @@
   <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
   <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-113104149-1');
-  </script>
 
   <script type="application/ld+json">
 {
@@ -97,16 +89,16 @@ func TimeIn(t time.Time, name string) (time.Time, error) {
 }</code></pre>
 <p>In use:</p>
 <pre tabindex="0"><code>for _, name := range []string{
-	&quot;&quot;,
-	&quot;Local&quot;,
-	&quot;Asia/Shanghai&quot;,
-	&quot;America/Metropolis&quot;,
+	&#34;&#34;,
+	&#34;Local&#34;,
+	&#34;Asia/Shanghai&#34;,
+	&#34;America/Metropolis&#34;,
 } {
 	t, err := TimeIn(time.Now(), name)
 	if err == nil {
-		fmt.Println(t.Location(), t.Format(&quot;15:04&quot;))
+		fmt.Println(t.Location(), t.Format(&#34;15:04&#34;))
 	} else {
-		fmt.Println(name, &quot;&lt;time unknown&gt;&quot;)
+		fmt.Println(name, &#34;&lt;time unknown&gt;&#34;)
 	}
 }
 </code></pre><pre tabindex="0"><code>UTC 19:32
@@ -122,11 +114,6 @@ Date returns a time that is correct in one of the two zones involved in the tran
 but it does not guarantee which.
 <a class="quote-source" href="https://golang.org/pkg/time/#Date">Package time: Date</a>
 </blockquote>
-
-<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2ftime-change-convert-location-timezone%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2ftime-change-convert-location-timezone%2f&amp;title=Time%20zones" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Time%20zones&body=https%3a%2f%2fyourbasic.org%2fgolang%2ftime-change-convert-location-timezone%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>

@@ -13,14 +13,6 @@
   <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
   <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-113104149-1');
-  </script>
 
   <script type="application/ld+json">
 {
@@ -94,8 +86,7 @@ can be more expensive.</li>
 <blockquote>
 <p>Unit cost often works well in practice as modern processors can perform
 arithmetics on 64-bit integer and floating point numbers
-in <a href="/algorithms/big-o-notation-explained/#constant-time">constant time</a>.</p>
-</blockquote>
+in <a href="/algorithms/big-o-notation-explained/#constant-time">constant time</a>.</p></blockquote>
 <h2 id="unit-cost-example">Unit cost example</h2>
 <pre><code>func Add(x, y int64) int64 {
 	return x + y
@@ -119,11 +110,6 @@ to concatenate two strings, we must allocate new memory and copy the characters
 Note that we still use unit cost for character operations.
 This makes perfect sense as characters can be represented by small fixed-sized integers.
 </blockquote>
-
-<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2falgorithms%2funit-cost-vs-bit-cost%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2falgorithms%2funit-cost-vs-bit-cost%2f&amp;title=Unit%20cost%20vs.%20bit%20cost%20in%20time%20complexity" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Unit%20cost%20vs.%20bit%20cost%20in%20time%20complexity&body=https%3a%2f%2fyourbasic.org%2falgorithms%2funit-cost-vs-bit-cost%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>

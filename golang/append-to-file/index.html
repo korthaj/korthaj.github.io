@@ -13,14 +13,6 @@
   <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
   <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
   <meta name="keywords" content="go, golang, append, file, open, create">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-113104149-1');
-  </script>
 
 </head>
 
@@ -42,13 +34,13 @@
 <div class="tagline">yourbasic.org/golang</div>
 <p>This code appends a line of text to the file <code>text.log</code>.
 It creates the file if it doesn&rsquo;t already exist.</p>
-<pre tabindex="0"><code>f, err := os.OpenFile(&quot;text.log&quot;,
+<pre tabindex="0"><code>f, err := os.OpenFile(&#34;text.log&#34;,
 	os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 if err != nil {
 	log.Println(err)
 }
 defer f.Close()
-if _, err := f.WriteString(&quot;text to append\n&quot;); err != nil {
+if _, err := f.WriteString(&#34;text to append\n&#34;); err != nil {
 	log.Println(err)
 }
 </code></pre><p>If you&rsquo;re appending text to a file for logging purposes, see <a href="/golang/log-to-file/">Write log to file</a>.</p>

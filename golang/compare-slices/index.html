@@ -13,14 +13,6 @@
   <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
   <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-113104149-1');
-  </script>
 
   <script type="application/ld+json">
 {
@@ -104,8 +96,7 @@ fmt.Println(a == b) <span class="comment">// false</span>
 <blockquote>
 <p>Array values are comparable if values of the array element type are comparable.
 Two array values are equal if their corresponding elements are equal.
-<a href="https://golang.org/ref/spec#Comparison_operators" class="quote-source">The Go Programming Language Specification: Comparison operators</a></p>
-</blockquote>
+<a href="https://golang.org/ref/spec#Comparison_operators" class="quote-source">The Go Programming Language Specification: Comparison operators</a></p></blockquote>
 <h2 id="optimized-code-for-byte-slices">Optimized code for byte slices</h2>
 <p>To compare byte slices, use the optimized <a href="https://golang.org/pkg/bytes/#Equal"><code>bytes.Equal</code></a>. This function also treats nil arguments as equivalent to empty slices.</p>
 <h2 id="general-purpose-code-for-recursive-comparison">General-purpose code for recursive comparison</h2>
@@ -117,11 +108,6 @@ fmt.Println(reflect.DeepEqual(a, b)) <span class="comment">// false</span></code
 <h3 id="further-reading">Further reading</h3>
 <div><a href="/golang/slices-explained/"><img src="/golang/orange-thumb.jpg" title="Slices and arrays in 6 easy steps"></a></div>
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/slices-explained/">Slices and arrays in 6 easy steps</a></p>
-
-<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fcompare-slices%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fcompare-slices%2f&amp;title=3%20ways%20to%20compare%20slices%20%28arrays%29" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=3%20ways%20to%20compare%20slices%20%28arrays%29&body=https%3a%2f%2fyourbasic.org%2fgolang%2fcompare-slices%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>

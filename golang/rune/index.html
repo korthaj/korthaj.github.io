@@ -13,14 +13,6 @@
   <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
   <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-113104149-1');
-  </script>
 
   <script type="application/ld+json">
 {
@@ -85,8 +77,7 @@
 <h2 id="characters-ascii-and-unicode">Characters, ASCII and Unicode</h2>
 <blockquote>
 <p>The <code>rune</code> type is an alias for <code>int32</code>, and is used to emphasize
-than an integer represents a code point.</p>
-</blockquote>
+than an integer represents a code point.</p></blockquote>
 <p><strong>ASCII</strong> defines 128 characters, identified by the <strong>code points</strong> 0–127.
 It covers English letters, Latin numbers, and a few other characters.</p>
 <p><strong>Unicode</strong>, which is a superset of ASCII, defines a codespace of 1,114,112 code points.
@@ -94,8 +85,7 @@ Unicode version 10.0 covers 139 modern and historic scripts (including the runic
 as well as multiple symbol sets.</p>
 <h2 id="strings-and-utf-8-encoding">Strings and UTF-8 encoding</h2>
 <blockquote>
-<p>A <code>string</code> is a sequence of bytes, not runes.</p>
-</blockquote>
+<p>A <code>string</code> is a sequence of bytes, not runes.</p></blockquote>
 <p>However, strings often contain Unicode text encoded in <a href="https://research.swtch.com/utf8">UTF-8</a>,
 which encodes all Unicode code points using one to four bytes.
 (ASCII characters are encoded with one byte, while other code points use more.)</p>
@@ -112,11 +102,6 @@ fmt.Println(<b>[]rune</b>("café")) <span class="comment">// [99 97 102 233]</sp
 <h3 id="further-reading">Further reading</h3>
 <div><a href="/golang/multiline-string/" title="Escapes and multiline strings"><img src="/golang/ascii-art.png"></a></div>
 <p style="margin-top:0em;"><a href="/golang/multiline-string/">Escapes and multiline strings</a></p>
-
-<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2frune%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2frune%2f&amp;title=Runes%20and%20character%20encoding" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Runes%20and%20character%20encoding&body=https%3a%2f%2fyourbasic.org%2fgolang%2frune%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>

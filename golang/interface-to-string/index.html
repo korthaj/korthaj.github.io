@@ -13,14 +13,6 @@
   <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
   <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-113104149-1');
-  </script>
 
 </head>
 
@@ -42,8 +34,8 @@
 <div class="tagline">yourbasic.org/golang</div>
 <p>Use <a href="https://golang.org/pkg/fmt/#Sprintf"><code>fmt.Sprintf</code></a> to convert
 an <a href="/golang/interfaces-explained/">interface value</a> to a string.</p>
-<pre tabindex="0"><code>var x interface{} = &quot;abc&quot;
-str := fmt.Sprintf(&quot;%v&quot;, x)
+<pre tabindex="0"><code>var x interface{} = &#34;abc&#34;
+str := fmt.Sprintf(&#34;%v&#34;, x)
 </code></pre><p>In fact, the same technique can be used to get a string representation of any data structure.</p>
 <pre><code>var x interface{} = []int{1, 2, 3}
 str := fmt.Sprintf("%v", x)
@@ -51,11 +43,6 @@ fmt.Println(str) <span class="comment">// "[1 2 3]"</span></code></pre>
 <h3 id="fmt-cheat-sheet">Fmt cheat sheet</h3>
 <div><a href="/golang/fmt-printf-reference-cheat-sheet/"><img src="/golang/format-thumb.jpg" title="Top fmt formatting tips"></a></div>
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/fmt-printf-reference-cheat-sheet/">Top fmt formatting tips</a></p>
-
-<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2finterface-to-string%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2finterface-to-string%2f&amp;title=Convert%20interface%20to%20string" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Convert%20interface%20to%20string&body=https%3a%2f%2fyourbasic.org%2fgolang%2finterface-to-string%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>

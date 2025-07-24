@@ -13,14 +13,6 @@
   <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
   <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-113104149-1');
-  </script>
 
   <script type="application/ld+json">
 {
@@ -92,7 +84,7 @@ that use repeated random sampling to obtain numerical results.</p>
 are randomized algorithms whose output may be incorrect
 with a certain, typically small, probability.</li>
 </ul>
-<h2 id="random-point-in-circle-lasnbspvegas">Random point in circle (Las Vegas)</h2>
+<h2 id="random-point-in-circle-lasvegas">Random point in circle (Las Vegas)</h2>
 <div><img style="float:right; margin-left:1em;" src="/algorithms/circle.png"></div>
 <p>It&rsquo;s easy and convenient to compute a random point in a circle with a Las Vegas algorithm.</p>
 <p>The idea is to first generate a point (x, y), with
@@ -141,11 +133,6 @@ fmt.Println(4 * float64(count) / float64(n)) <span class="comment">// 3.1484</sp
 </code></pre>
 <div><img src="/algorithms/monte-carlo.png" alt="randomly placed points in a square, where the black ones fall within an inner circle"></div>
 <div><a href="/algorithms/monte-carlo.go">monte-carlo.go</a></div>
-
-<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2falgorithms%2flas-vegas%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2falgorithms%2flas-vegas%2f&amp;title=Las%20Vegas%20vs.%20Monte%20Carlo%20algorithms" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Las%20Vegas%20vs.%20Monte%20Carlo%20algorithms&body=https%3a%2f%2fyourbasic.org%2falgorithms%2flas-vegas%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>

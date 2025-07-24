@@ -13,14 +13,6 @@
   <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
   <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-113104149-1');
-  </script>
 
   <script type="application/ld+json">
 {
@@ -103,13 +95,13 @@ and Readers are accepted as input by many utilities
 <h2 id="use-a-built-in-reader">Use a built-in reader</h2>
 <p>As an example, you can create a Reader from a string using the <a href="https://golang.org/pkg/strings/#Reader"><code>strings.Reader</code></a> function and then pass the Reader directly to the <a href="https://golang.org/pkg/net/http/#Post"><code>http.Post</code></a> function in package <a href="https://golang.org/pkg/net/http/"><code>net/http</code></a>.
 The Reader is then used as the source for the data to be posted.</p>
-<pre tabindex="0"><code>r := strings.NewReader(&quot;my request&quot;)
-resp, err := http.Post(&quot;http://foo.bar&quot;,
-	&quot;application/x-www-form-urlencoded&quot;, r)
+<pre tabindex="0"><code>r := strings.NewReader(&#34;my request&#34;)
+resp, err := http.Post(&#34;http://foo.bar&#34;,
+	&#34;application/x-www-form-urlencoded&#34;, r)
 </code></pre><p>Since <code>http.Post</code> uses a Reader instead of a <code>[]byte</code> it&rsquo;s trivial to, for instance, use the contents of a file instead.</p>
 <h2 id="read-directly-from-a-byte-stream">Read directly from a byte stream</h2>
 <p>You can use the <code>Read</code> function directly (this is the least common use case).</p>
-<pre tabindex="0"><code>r := strings.NewReader(&quot;abcde&quot;)
+<pre tabindex="0"><code>r := strings.NewReader(&#34;abcde&#34;)
 
 buf := make([]byte, 4)
 for {
@@ -124,7 +116,7 @@ for {
 0 EOF []
 </code></pre><p>Use <a href="https://golang.org/pkg/io/#ReadFull"><code>io.ReadFull</code></a> to read exactly
 <code>len(buf)</code> bytes into <code>buf</code>:</p>
-<pre tabindex="0"><code>r := strings.NewReader(&quot;abcde&quot;)
+<pre tabindex="0"><code>r := strings.NewReader(&#34;abcde&#34;)
 
 buf := make([]byte, 4)
 if _, err := io.ReadFull(r, buf); err != nil {
@@ -138,7 +130,7 @@ if _, err := io.ReadFull(r, buf); err != nil {
 </code></pre><pre tabindex="0"><code>[97 98 99 100]
 unexpected EOF
 </code></pre><p>Use <a href="https://golang.org/pkg/io/ioutil/#ReadAll"><code>ioutil.ReadAll</code></a> to read everything:</p>
-<pre tabindex="0"><code>r := strings.NewReader(&quot;abcde&quot;)
+<pre tabindex="0"><code>r := strings.NewReader(&#34;abcde&#34;)
 
 buf, err := ioutil.ReadAll(r)
 if err != nil {
@@ -166,11 +158,6 @@ if err := scanner.Err(); err != nil {
 fmt.Println(count)</code></pre>
 <pre tabindex="0"><code>16
 </code></pre>
-<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fio-reader-interface-explained%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fio-reader-interface-explained%2f&amp;title=How%20to%20use%20the%20io.Reader%20interface" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=How%20to%20use%20the%20io.Reader%20interface&body=https%3a%2f%2fyourbasic.org%2fgolang%2fio-reader-interface-explained%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
-
 
 </article>
 <aside>

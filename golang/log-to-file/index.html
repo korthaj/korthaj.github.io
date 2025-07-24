@@ -13,14 +13,6 @@
   <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
   <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-113104149-1');
-  </script>
 
   <script type="application/ld+json">
 {
@@ -83,16 +75,16 @@
 <div style="margin-top:1em;"><img src="/golang/transcription-using-cylinder-phonograph.png"></div>
 <p>This code appends a log message to the file <code>text.log</code>.
 It creates the file if it doesn&rsquo;t already exist.</p>
-<pre tabindex="0"><code>f, err := os.OpenFile(&quot;text.log&quot;,
+<pre tabindex="0"><code>f, err := os.OpenFile(&#34;text.log&#34;,
 	os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 if err != nil {
 	log.Println(err)
 }
 defer f.Close()
 
-logger := log.New(f, &quot;prefix&quot;, log.LstdFlags)
-logger.Println(&quot;text to append&quot;)
-logger.Println(&quot;more text to append&quot;)
+logger := log.New(f, &#34;prefix&#34;, log.LstdFlags)
+logger.Println(&#34;text to append&#34;)
+logger.Println(&#34;more text to append&#34;)
 </code></pre><p>Contents of <code>text.log</code>:</p>
 <pre tabindex="0"><code>prefix: 2017/10/20 07:52:58 text to append
 prefix: 2017/10/20 07:52:58 more text to append
@@ -111,11 +103,6 @@ set the output destination to <a href="https://golang.org/pkg/io/ioutil/#pkg-var
 a writer on which all calls succeed without doing anything.</p>
 <pre tabindex="0"><code>log.SetOutput(ioutil.Discard)
 </code></pre>
-<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2flog-to-file%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2flog-to-file%2f&amp;title=Write%20log%20to%20file%20%28or%20/dev/null%29" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Write%20log%20to%20file%20%28or%20/dev/null%29&body=https%3a%2f%2fyourbasic.org%2fgolang%2flog-to-file%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
-
 
 </article>
 <aside>

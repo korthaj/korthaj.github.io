@@ -13,14 +13,6 @@
   <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
   <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-113104149-1');
-  </script>
 
   <script type="application/ld+json">
 {
@@ -179,7 +171,7 @@ the argument passed to <code>panic</code>.</li>
 <h3 id="panic-handler-example">Panic handler example</h3>
 <pre tabindex="0"><code>func main() {
 	n := foo()
-	fmt.Println(&quot;main received&quot;, n)
+	fmt.Println(&#34;main received&#34;, n)
 }
 
 func foo() int {
@@ -189,7 +181,7 @@ func foo() int {
 		}
 	}()
 	m := 1
-	panic(&quot;foo: fail&quot;)
+	panic(&#34;foo: fail&#34;)
 	m = 2
 	return m
 }
@@ -201,7 +193,7 @@ main received 0
 <p>To return a value during a panic, you must use a <a href="/golang/named-return-values-parameters/">named return value</a>.</p>
 <pre tabindex="0"><code>func main() {
 	n := foo()
-	fmt.Println(&quot;main received&quot;, n)
+	fmt.Println(&#34;main received&#34;, n)
 }
 
 func foo() (m int) {
@@ -212,7 +204,7 @@ func foo() (m int) {
 		}
 	}()
 	m = 1
-	panic(&quot;foo: fail&quot;)
+	panic(&#34;foo: fail&#34;)
 	m = 3
 	return m
 }
@@ -229,12 +221,12 @@ func Panics(f interface{}, p ...interface{}) bool {
 	fv := reflect.ValueOf(f)
 	ft := reflect.TypeOf(f)
 	if ft.NumIn() != len(p) {
-		panic(&quot;wrong argument count&quot;)
+		panic(&#34;wrong argument count&#34;)
 	}
 	pv := make([]reflect.Value, len(p))
 	for i, v := range p {
 		if reflect.TypeOf(v) != ft.In(i) {
-			panic(&quot;wrong argument type&quot;)
+			panic(&#34;wrong argument type&#34;)
 		}
 		pv[i] = reflect.ValueOf(v)
 	}
@@ -251,11 +243,6 @@ func call(fv reflect.Value, pv []reflect.Value) (b bool) {
 	return
 }
 </code></pre>
-<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2frecover-from-panic%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2frecover-from-panic%2f&amp;title=Panics,%20stack%20traces%20and%20how%20to%20recover%20[best%20practice]" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Panics,%20stack%20traces%20and%20how%20to%20recover%20[best%20practice]&body=https%3a%2f%2fyourbasic.org%2fgolang%2frecover-from-panic%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
-
 
 </article>
 <aside>

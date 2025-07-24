@@ -13,14 +13,6 @@
   <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
   <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-113104149-1');
-  </script>
 
   <script type="application/ld+json">
 {
@@ -110,23 +102,18 @@ func ReverseRune(s string) string {
 }</code></pre>
 <h3 id="example-usage">Example usage</h3>
 <pre tabindex="0"><code>for _, s := range []string{
-	&quot;Ångström&quot;,
-	&quot;Hello, 世界&quot;,
-	&quot;\xff\xfe\xfd&quot;, // invalid UTF-8
+	&#34;Ångström&#34;,
+	&#34;Hello, 世界&#34;,
+	&#34;\xff\xfe\xfd&#34;, // invalid UTF-8
 } {
-	fmt.Printf(&quot;%q\n&quot;, ReverseRune(s))
+	fmt.Printf(&#34;%q\n&#34;, ReverseRune(s))
 }
-</code></pre><pre tabindex="0"><code>&quot;mörtsgnÅ&quot;
-&quot;界世 ,olleH&quot;
-&quot;\xfd\xfe\xff&quot;
+</code></pre><pre tabindex="0"><code>&#34;mörtsgnÅ&#34;
+&#34;界世 ,olleH&#34;
+&#34;\xfd\xfe\xff&#34;
 </code></pre><h2 id="further-reading">Further reading</h2>
 <p><a href="/golang/string-functions-reference-cheat-sheet/"><img src="/golang/typewriter-thumb.png" title="40+ practical string tips [cheat sheet]"></a></p>
 <p style="margin-top:0; margin-bottom:2em;"><a href="/golang/string-functions-reference-cheat-sheet/">40+ practical string tips [cheat sheet]</a></p>
-
-<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2freverse-utf8-string%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2freverse-utf8-string%2f&amp;title=How%20to%20reverse%20a%20string%20by%20byte%20or%20rune" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=How%20to%20reverse%20a%20string%20by%20byte%20or%20rune&body=https%3a%2f%2fyourbasic.org%2fgolang%2freverse-utf8-string%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>

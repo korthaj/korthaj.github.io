@@ -13,14 +13,6 @@
   <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
   <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-113104149-1');
-  </script>
 
   <script type="application/ld+json">
 {
@@ -102,8 +94,7 @@ fmt.Println(s) // <span class="comment">[1 2 3 4]</span></code></pre>
 <blockquote>
 <p>Package <a href="https://godoc.org/github.com/yourbasic/radix">radix</a> contains
 a drop-in replacement for sort.Strings, which can be
-more than twice as fast in some settings.</p>
-</blockquote>
+more than twice as fast in some settings.</p></blockquote>
 <h2 id="sort-with-custom-comparator">Sort with custom comparator</h2>
 <ul>
 <li>Use the function <a href="https://golang.org/pkg/sort/#Slice"><code>sort.Slice</code></a>.
@@ -189,8 +180,7 @@ for _, k := range keys {
 <blockquote>
 <p>Also, starting with <a href="https://tip.golang.org/doc/go1.12">Go 1.12</a>,
 the <a href="https://golang.org/pkg/fmt/"><code>fmt</code></a>
-package prints maps in key-sorted order to ease testing.</p>
-</blockquote>
+package prints maps in key-sorted order to ease testing.</p></blockquote>
 <h2 id="performance-and-implementation">Performance and implementation</h2>
 <p>All algorithms in the Go sort package make <em>O</em>(<em>n</em> log <em>n</em>) comparisons in the worst case, where <em>n</em> is the number of elements to be sorted.</p>
 <p>Most of the functions are implemented using an <a href="/golang/quicksort-optimizations/">optimized version of quicksort</a>.</p>
@@ -203,11 +193,6 @@ package prints maps in key-sorted order to ease testing.</p>
 <a href="/golang/blueprint/">Go blueprints: code for com&shy;mon tasks</a> is a collection of handy code&nbsp;examples.</p>
 
 <div style="clear:both;"></div>
-
-<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2fgolang%2fhow-to-sort-in-go%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2fgolang%2fhow-to-sort-in-go%2f&amp;title=The%203%20ways%20to%20sort%20in%20Go" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=The%203%20ways%20to%20sort%20in%20Go&body=https%3a%2f%2fyourbasic.org%2fgolang%2fhow-to-sort-in-go%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 

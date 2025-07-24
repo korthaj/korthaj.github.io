@@ -13,14 +13,6 @@
   <link rel="icon" type="image/png" href="/res/favicon-32x32.png">
   <link rel="icon" type="image/png" href="/res/favicon-96x96.png">
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113104149-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-113104149-1');
-  </script>
 
   <script type="application/ld+json">
 {
@@ -154,7 +146,7 @@ that the algorithm has <strong>quadratic time complexity</strong>.</p>
 f(<i>n</i>) grows <strong>much faster</strong> than T(<i>n</i>). For example, we may write
 T(<i>n</i>) = <i>n</i> - 1 ∊ <i>O</i>(<i>n</i><sup>2</sup>).
 This is indeed true, but not very useful.</p>
-<h2 id="omega-and-theta-notation">Ω and Θ notation</h2>
+<h2 id="ω-and-θ-notation">Ω and Θ notation</h2>
 <p><strong>Big Omega</strong> is used to give a <strong>lower bound</strong> for the growth of a function.
 It&rsquo;s defined in the same way as Big O, but with the inequality sign turned around:</p>
 <blockquote class="math">
@@ -222,7 +214,7 @@ Therefore  T(<i>n</i>) ∊ Ω(<i>n</i><sup>3</sup>).</li>
     </tr>
   </tbody>
 </table>
-<h3 id="ioiininbsplognbspini-is-really-good"><i>O</i>(<i>n</i> log <i>n</i>) is really good</h3>
+<h3 id="onlogn-is-really-good"><i>O</i>(<i>n</i> log <i>n</i>) is really good</h3>
 <p>The first four complexities indicate an excellent algorithm.
 An algorithm with worst-case time complexity
 W(<i>n</i>) ∊ <i>O</i>(<i>n</i> log <i>n</i>) scales very well,
@@ -237,24 +229,18 @@ since logarithms grow very slowly.</p>
 it takes roughly twice the time to solve a problem twice as big.</p>
 <div><img src="/algorithms/n-vs-nlogn.png" alt="Graph showing n log n growth rate" title="n log n growth rate"></div>
 <div style="font-size:smaller;"><i>n</i>&nbsp;log&nbsp;<i>n</i> growth rate is close to linear</div>
-<h3 id="omegainisup2sup-is-pretty-bad">Ω(<i>n</i><sup>2</sup>) is pretty bad</h3>
+<h3 id="ωn2-is-pretty-bad">Ω(<i>n</i><sup>2</sup>) is pretty bad</h3>
 <p>The last three complexities typically spell trouble.
 Algorithms with time complexity Ω(<i>n</i><sup>2</sup>)
 are useful only for small input: <i>n</i> shouldn&rsquo;t be more than a few thousand.</p>
 <blockquote>
-<p>10,000<sup>2</sup> = 100,000,000</p>
-</blockquote>
+<p>10,000<sup>2</sup> = 100,000,000</p></blockquote>
 <p>An algorithm with quadratic time complexity scales poorly –
 if you increase the input size by a factor 10,
 the time increases by a factor 100.</p>
 <h3 id="further-reading">Further reading</h3>
 <div><a href="/algorithms/time-complexity-arrays/"><img src="/algorithms/scooter-vs-taxi-thumb.jpeg" title="Time complexity of array/list operations [Java, Python]"></a></div>
 <p style="margin-top:0; margin-bottom:2em;"><a href="/algorithms/time-complexity-arrays/">Time complexity of array/list operations [Java, Python]</a></p>
-
-<p style="margin-top:2em;"><span style="position:relative;bottom:12px;"><b>Share<span class="extra-content"> this page</span>:</b></span>&nbsp;&nbsp;
-<a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyourbasic.org%2falgorithms%2fbig-o-notation-explained%2f" title="Share on Facebook"><img width="36px" src="/res/facebook-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<a href="https://www.reddit.com/submit?url=https%3a%2f%2fyourbasic.org%2falgorithms%2fbig-o-notation-explained%2f&amp;title=Big%20O%20notation:%20definition%20and%20examples" title="Share on Reddit"><img width="36px" src="/res/reddit-logo.svg"></a>&nbsp;&nbsp;&nbsp;
-<span style="position:relative;bottom:2px;" class="small-content"><a href="mailto:?subject=Big%20O%20notation:%20definition%20and%20examples&body=https%3a%2f%2fyourbasic.org%2falgorithms%2fbig-o-notation-explained%2f" title="Share by mail"><img width="30px" src="/res/mail-logo.svg"></a></span></p>
 
 
 </article>
