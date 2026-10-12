@@ -84,7 +84,8 @@
 <h2 id="interface-type">Interface type</h2>
 <blockquote>
 <p>An interface type consists of a set of method signatures.
-A variable of interface type can hold any value that implements these methods.</p></blockquote>
+A variable of interface type can hold any value that implements these methods.</p>
+</blockquote>
 <p>In this example both <code>Temp</code> and <code>*Point</code> implement the <code>MyStringer</code> interface.</p>
 <pre tabindex="0"><code>type MyStringer interface {
 	String() string
@@ -115,7 +116,8 @@ fmt.Println(x.String()) <span class="comment">// (1,2)</span></code></pre>
 <h2 id="structural-typing">Structural typing</h2>
 <blockquote>
 <p>A type implements an interface by implementing its methods.
-No explicit declaration is required.</p></blockquote>
+No explicit declaration is required.</p>
+</blockquote>
 <p>In fact, the <code>Temp</code>, <code>*Temp</code> and <code>*Point</code> types also implement
 the standard library <a href="https://golang.org/pkg/fmt/#Stringer"><code>fmt.Stringer</code></a> interface.
 The <code>String</code> method in this interface is used to print values passed as an operand
@@ -146,7 +148,8 @@ It takes any number of arguments of any type.</p>
 </code></pre><h2 id="interface-values">Interface values</h2>
 <blockquote>
 <p>An <strong>interface value</strong> consists of a <strong>concrete value</strong>
-and a <strong>dynamic type</strong>: <code>[Value, Type]</code></p></blockquote>
+and a <strong>dynamic type</strong>: <code>[Value, Type]</code></p>
+</blockquote>
 <p>In a call to <a href="https://golang.org/pkg/fmt/#Printf"><code>fmt.Printf</code></a>, you can use <code>%v</code> to print the concrete value and <code>%T</code> to print the dynamic type.</p>
 <pre><code>var x MyStringer
 fmt.Printf("%v %T\n", x, x) <span class="comment">// &lt;nil&gt; &lt;nil&gt;</span>

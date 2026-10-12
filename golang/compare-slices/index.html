@@ -96,7 +96,8 @@ fmt.Println(a == b) <span class="comment">// false</span>
 <blockquote>
 <p>Array values are comparable if values of the array element type are comparable.
 Two array values are equal if their corresponding elements are equal.
-<a href="https://golang.org/ref/spec#Comparison_operators" class="quote-source">The Go Programming Language Specification: Comparison operators</a></p></blockquote>
+<a href="https://golang.org/ref/spec#Comparison_operators" class="quote-source">The Go Programming Language Specification: Comparison operators</a></p>
+</blockquote>
 <h2 id="optimized-code-for-byte-slices">Optimized code for byte slices</h2>
 <p>To compare byte slices, use the optimized <a href="https://golang.org/pkg/bytes/#Equal"><code>bytes.Equal</code></a>. This function also treats nil arguments as equivalent to empty slices.</p>
 <h2 id="general-purpose-code-for-recursive-comparison">General-purpose code for recursive comparison</h2>

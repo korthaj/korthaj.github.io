@@ -90,7 +90,8 @@ func main() {
 <p>The presence of an unused variable may indicate a bug [&hellip;]
 Go refuses to compile programs with unused variables or imports,
 trading short-term convenience for long-term build speed and program clarity.
-<a class="quote-source" href="https://golang.org/doc/faq#unused_variables_and_imports">Go FAQ: Can I stop these complaints about my unused variable/import?</a></p></blockquote>
+<a class="quote-source" href="https://golang.org/doc/faq#unused_variables_and_imports">Go FAQ: Can I stop these complaints about my unused variable/import?</a></p>
+</blockquote>
 <h2 id="workaround">Workaround</h2>
 <p>There&rsquo;s no compiler option to allow unused package imports. If you don&rsquo;t want to remove/comment out the import, you can for instance use it in a dummy assignment:</p>
 <pre><code class="skiphl">package main

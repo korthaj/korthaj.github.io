@@ -77,7 +77,8 @@
 <h2 id="characters-ascii-and-unicode">Characters, ASCII and Unicode</h2>
 <blockquote>
 <p>The <code>rune</code> type is an alias for <code>int32</code>, and is used to emphasize
-than an integer represents a code point.</p></blockquote>
+than an integer represents a code point.</p>
+</blockquote>
 <p><strong>ASCII</strong> defines 128 characters, identified by the <strong>code points</strong> 0–127.
 It covers English letters, Latin numbers, and a few other characters.</p>
 <p><strong>Unicode</strong>, which is a superset of ASCII, defines a codespace of 1,114,112 code points.
@@ -85,7 +86,8 @@ Unicode version 10.0 covers 139 modern and historic scripts (including the runic
 as well as multiple symbol sets.</p>
 <h2 id="strings-and-utf-8-encoding">Strings and UTF-8 encoding</h2>
 <blockquote>
-<p>A <code>string</code> is a sequence of bytes, not runes.</p></blockquote>
+<p>A <code>string</code> is a sequence of bytes, not runes.</p>
+</blockquote>
 <p>However, strings often contain Unicode text encoded in <a href="https://research.swtch.com/utf8">UTF-8</a>,
 which encodes all Unicode code points using one to four bytes.
 (ASCII characters are encoded with one byte, while other code points use more.)</p>
