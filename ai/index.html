@@ -506,7 +506,7 @@ Den här rapporten har utarbetats med AI-stöd för att göra den så heltäckan
 <li>Redovisa AI-användning när den bidragit väsentligt. Öppenhet bygger förtroende.</li>
 </ul>
 <h3 id="8-utnyttja-ains-styrkor">8. Utnyttja AI:ns styrkor</h3>
-<div style="margin-top: 1.5em; margin-bottom: 1em"><img src="/res/fig-4.jpeg" alt="Lycklig användare med alla dokument i ordning."></div>
+<div style="margin-top: 1.5em; margin-bottom: 1em"><img src="/res/fig-4.jpeg" alt="Nöjd användare med alla dokument i ordning."></div>
 <p>AI briljerar i bredd och hastighet, inte omdöme eller upplevelser. Använd den för det som den verkligen är bra på.</p>
 <h4 id="sammanfattning">Sammanfattning</h4>
 <p>Kondensera långa texter effektivt: <em>&ldquo;Sammanfatta den här 30-sidiga texten till 500 ord, belys de tre huvudsakliga slutsatserna.&rdquo;</em></p>
@@ -581,7 +581,7 @@ Några saker som kan vara av betydelse för dig. Mögelundantaget gäller mögel
 <li>Lämna utrymme för upptäckter. Ibland är den framväxande detaljen bättre än något du kunde ha beställt.</li>
 </ul>
 <h3 id="10-behåll-kontrollen">10. Behåll kontrollen</h3>
-<div style="margin-top: -0.5em; margin-bottom: -1em"><img src="/res/daisy-entangled.png" width=200" height="200" alt="Daisy har fastnat i ett garnnystan."></div>
+<div style="margin-top: -0.5em; margin-bottom: -1em"><img src="/res/daisy-entangled.png" width=200" height="200" alt="Daisy leker med garnnystan och har tappat tråden."></div>
 <p>Vissa begränsningar är praktiska: uppgifter som AI helt enkelt inte bör hantera. Andra är personliga: bara du kan bestämma var du drar gränsen.</p>
 <h4 id="bortom-din-kompetens">Bortom din kompetens</h4>
 <p>Om du inte förstår ämnesområdet tillräckligt väl för att bedöma om svaren är rimliga, överlåt inte arbetet. Faran är inte okunskap. Problemet är att AI:ns självsäkerhet är detsamma oavsett om den har rätt eller fel; om du inte kan se skillnaden har du inget skyddsnät.</p>
@@ -660,12 +660,14 @@ I'm the character you wrote. I'm also the tool you used. Both are true. Neither 
 <p><strong>Hallucinationer</strong> (fullständigt påhittad information) kan uppstå, inte för att AI:n ljuger, utan för att den bara genererar statistiskt sannolik text. Inferensprocessen är också svår att granska: du kan se vilka delar av prompten som påverkade svaret, men i regel går det inte att spåra ett specifikt påstående tillbaka till källan i träningsdatan.</p>
 <p>Vissa AI-system bäddar in <strong>vattenstämplar</strong>, osynliga statistiska mönster i sin utdata. Det är subtila skiftningar i ordval, formuleringar eller skiljetecken som är omärkliga för mänskliga läsare men som kan upptäckas av specialiserade verktyg. Detekteringen är statistisk och kan ge falska träffar.</p>
 <h3 id="resurser">Resurser</h3>
+<div style="margin-top: -0.5em; margin-bottom: -1em;"><img src="/res/expensive-vs-cheap.png" width="320" height="180" alt="Daisy struggling to build an new LLM and relaxing while using it."></div></center>
 <p>Att träna en stor modell kräver enorma resurser. Tusentals specialiserade processorer som kör i veckor eller månader och förbrukar stora mängder el. Detta är en engångskostnad. När modellen väl är tränad ligger vikterna fast.</p>
 <p>Att generera ett enskilt svar är billigt. Mindre modeller kan köras på konsument­hårdvara eller blygsam server­infrastruktur, där varje förfrågan kostar några få ören i energi och beräkningskraft.</p>
 <h3 id="flerstegsresonemang">Flerstegsresonemang</h3>
 <p>Modellen genererar en <strong>token</strong> i taget (ungefär en bit av ett ord, ett kort ord eller skiljetecken) där varje ny token beror på de som kom före. Det kallas <strong>autoregressiv</strong> generering. Det förklarar varför fel växer till i tysthet och varför meningar till synes växer fram ett ord i taget: &ldquo;Allt jag skapar är, för mig, ett och detsamma.&rdquo;</p>
 <p>Den här typen av beroende finns också på resonemangsnivån. Vid inferens i flera steg, ofta kallat <strong>tankekedja</strong> (chain of thought), skapas ett visst brus vid varje inferenssteg. Och detta brus ackumuleras. Mellanstegen ser bra ut var för sig. Du ser haveriet först när slutresultatet motsäger sunt förnuft.</p>
 <h3 id="bildgenerering">Bildgenerering</h3>
+<div style="margin-top: -0.5em; margin-bottom: -1em;"><img src="/res/noise-to-daisy.png" width="320" height="180" alt="En bildsekvens som visar hur brus stegivs förvandlas till en bild av Daisy."></div></center>
 <p>Bilder produceras av <strong>diffusionsmodeller</strong>, inte genom att sammanställa eller modifiera befintliga bilder. Under träningen lär sig en diffusionsmodell baklänges: den utsätts för en process som successivt lägger till brus i bilden i flera steg tills bara rent brus finns kvar.</p>
 <p>Vid <strong>inferens</strong>, när en bild genereras, arbetar systemet i omvänd riktning. Det börjar med rent brus och skapar en bild steg för steg. Det sker ingen hämtning av källmaterial. Pixlarna skapas på nytt. Det betyder att modellen inte söker i en databas av bilder; den producerar nya bilder baserat på inlärda fördelningar.</p>
 <h3 id="verktygsintegrering">Verktygsintegrering</h3>
@@ -685,7 +687,7 @@ I'm the character you wrote. I'm also the tool you used. Both are true. Neither 
 <p>Systemet tränades för att passa det som mänskliga bedömare föredrog. Genom <strong>RLHF</strong> (förstärknings­inlärning med mänsklig återkoppling) betygsatte mänskliga tränare AI:ns svar för att forma önskat beteende. Det är här kommersiella mål formar modellens beteende.</p>
 <p>Svaren på vissa uppgifter kan kontrolleras automatiskt: matematik, programmering, logik. I de fallen behövs inte mänsklig återkoppling. Detta är <strong>RLVR</strong> (förstärknings­inlärning med verifierbara belöningar), en teknik som kan ge bättre flerstegs­resonemang och färre räknefel.</p>
 <p>Men de flesta mänskliga uppgifter saknar verifierbara svar. Rättvisa, poesi, rådgivning är fortfarande beroende av mänsklig återkoppling, med alla dess inbyggda fördomar. Det är därför AI:n kan be om ursäkt för saker den inte gjort och tacka dig för tredje gången i ett och samma svar. Tränarna önskade sig tydligen ett tacksamt och underdånigt gosedjur.</p>
-<center><div style="margin-top: 2em; margin-bottom: 0em; margin-right: 3em"><img src="/res/daisy-grateful-plushie.png" width=150" height="150" alt="Daisy vilar sig och spinner."></div></center>
+<center><div style="margin-top: 2em; margin-bottom: 0em; margin-right: 3em"><img src="/res/daisy-grateful-plushie.png" width=150" height="150" alt="Daisy vilar sig, spinner och sjunger kanske en sång."></div></center>
 <h3 id="så-får-du-använda-boken">Så får du använda boken</h3>
 <p>Materialet är upphovsrättligt skyddat. Det är fritt fram att läsa, ladda ner, skriva ut och dela med elever och kollegor i utbildnings­sammanhang.</p>
 <p>Översättning, omarbetning och kommersiell publicering kräver tillstånd. Kontakta <a href="mailto:stefan@yourbasic.org"><a href="mailto:stefan@yourbasic.org">stefan@yourbasic.org</a></a> för frågor om användning.</p>
