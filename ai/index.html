@@ -652,7 +652,7 @@ Fjäska inte. Snoka inte. Ingen försäljning.
 <h2 id="tekniken-och-begreppen">Tekniken och begreppen</h2>
 <div style="margin-top: 1.5em; margin-bottom: 1em"><img src="/res/fig-6.jpeg" alt="En nyfiken pojke undersöker ett AI-maskineri med förstoringsglas."></div>
 <p>Att förstå hur systemet fungerar rent tekniskt, och varför det ibland misslyckas på märkliga sätt, gör dig bättre rustad att upptäcka felen. Den här bilagan förklarar de vanligaste AI-begreppen och ger en kort översikt över teknikens grunder.</p>
-<p>En <strong>prompt</strong> är texten du ger till AI:n – frågan, instruk­tionen eller materialet du vill ha svar på. <strong>System­prompten</strong> är en fast instruktion som ställs in av AI-leverantören, inte användaren, och som formar ton och sätter gränser redan innan ditt första ord.</p>
+<p>En <strong>prompt</strong> är texten du ger till AI:n – instruk­tionen, materialet eller frågan du vill ha svar på. <strong>System­prompten</strong> är en fast instruktion som ställs in av AI-leverantören, inte användaren, och som formar ton och sätter gränser redan innan ditt första ord.</p>
 <h3 id="stora-språkmodeller">Stora språkmodeller</h3>
 <p>En <strong>LLM</strong> (Large Language Model) är en stor språk­modell tränad på miljarder dokument, sin <strong>tränings­data</strong>. Texterna lagras inte direkt utan komprimeras till en statistisk modell. Träningen resulterar alltså inte i kopior av dokumenten, utan i miljarder tal som kallas <strong>vikter</strong> eller <strong>parametrar</strong>.</p>
 <p>Vissa saker överlever processen bättre än andra. Breda mönster (syntax, vanliga formuleringar, åter­kommande strukturer) bevaras väl, medan täckningen av ovanligt innehåll tenderar att försämras.</p>
@@ -671,7 +671,7 @@ Fjäska inte. Snoka inte. Ingen försäljning.
 <p><strong>Att generera ett enskilt svar är billigt.</strong> Mindre modeller kan köras på konsument­hårdvara eller blygsam server­infrastruktur, där varje förfrågan kostar några få ören i energi och beräknings­kraft.</p>
 <h3 id="flerstegsresonemang">Flerstegsresonemang</h3>
 <p>Modellen genererar en <strong>token</strong> i taget (ungefär en bit av ett ord, ett kort ord eller skilje­tecken) där varje ny token beror på de som kom före. Det kallas <strong>auto­regressiv</strong> generering. Det förklarar varför fel växer till i tysthet och varför meningar till synes växer fram ett ord i taget: &ldquo;Allt jag skapar är, för mig, ett och detsamma.&rdquo;</p>
-<p>Den här typen av beroende finns också på resonemangs­nivån. Vid inferens i flera steg, ofta kallat <strong>tanke­kedja</strong> (chain of thought), skapas ett visst brus vid varje inferenssteg. Och detta brus ackumuleras. Mellan­stegen ser bra ut var för sig. Du ser haveriet först när slut­resultatet motsäger sunt förnuft.</p>
+<p>Den här typen av beroende finns också på resonemangs­nivån. Vid inferens i flera steg, ofta kallat <strong>tanke­kedja</strong> (chain of thought), skapas ett visst brus vid varje inferenssteg. Och detta brus ackumuleras. Mellan­stegen kan se bra ut var för sig. Du ser haveriet först när slut­resultatet motsäger sunt förnuft.</p>
 <h3 id="bildgenerering">Bildgenerering</h3>
 <div style="margin-top: -0.5em; margin-bottom: -1em;"><img src="/res/noise-to-daisy.png" width="320" height="180" alt="En bildsekvens som visar hur brus stegivs förvandlas till en bild av Daisy."></div>
 <p>Bilder produceras av <strong>diffusions­modeller</strong>, inte genom att samman­ställa eller modifiera befint­liga bilder. Under träningen lär sig en diffusions­modell baklänges: den utsätts för en process som successivt lägger till brus i bilden i flera steg tills bara rent brus finns kvar.</p>
@@ -680,7 +680,7 @@ Fjäska inte. Snoka inte. Ingen försäljning.
 <p>Systemet genererar text, söker på webben och hanterar bilder med flera olika verktyg – ett <strong>multimodalt</strong> system. Vissa system använder också <strong>RAG</strong> (hämtnings­förstärkt generering): att hämta information från externa källor innan text genereras. Verktygen genererar rå data. Modellen måste tolka denna data, och därför kan fel smyga sig in vid varje överlämning.</p>
 <p>Att prata med en AI och höra den svara är imponerande, men illusionen är tekniskt ytlig. Assistenten tolkar din röst med hjälp av <strong>taligenkänning</strong>, som omvandlar tal till text, och skriver ut sitt svar genom <strong>talsyntes</strong>, som omvandlar text till ljud. Däremellan behandlas allt som vanligt: text in, text ut. Rösten är bara ett lager ovanpå språk­modellen.</p>
 <h3 id="löftet-om-agenter">Löftet om agenter</h3>
-<p>En LLM med verktyg kallas ibland för en <strong>agent</strong>. Begreppet används i tre olika betydelser:</p>
+<p>En LLM med verktyg kallas ibland för en <strong>agent</strong>. Begreppet används i flera olika betydelser:</p>
 <ol>
 <li>en språkmodell med tillgång till verktyg och en svarsloop;</li>
 <li>ett system som autonomt väljer och koplar samman åtgärder för att utföra en uppgift;</li>
@@ -701,7 +701,7 @@ Fjäska inte. Snoka inte. Ingen försäljning.
   Nilsson, S. (2026). <em>Tänkarens guide till AI</em>.<br>
   yourbasic.org/ai
 </blockquote>
-<p>Materialet är upphovs­rättligt skyddat. Det är fritt fram att läsa, ladda ner, skriva ut och dela med elever och kollegor i utbildnings­sammanhang.</p>
+<p>Materialet är upphovs­rättsligt skyddat. Det är fritt fram att läsa, ladda ner, skriva ut och dela med elever och kollegor i utbildnings­sammanhang.</p>
 <p>Översättning, omarbetning och kommersiell publi­cering kräver tillstånd. Kontakta <a href="mailto:stefan@yourbasic.org"><a href="mailto:stefan@yourbasic.org">stefan@yourbasic.org</a></a> för frågor om användning.</p>
 
 
