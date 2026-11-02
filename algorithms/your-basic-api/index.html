@@ -89,15 +89,15 @@
     <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
       <li><a href="#1-tell-me-what-this-thing-is">1. Tell me what this thing is</a></li>
       <li><a href="#2-tell-me-what-it-does">2. Tell me what it does</a></li>
-      <li><a href="#3-don-t-tell-me-how-it-works">3. Don't tell me how it works</a></li>
+      <li><a href="#3-dont-tell-me-how-it-works">3. Don't tell me how it works</a></li>
       <li><a href="#4-grant-me-the-right-to-use-it">4. Grant me the right to use it</a></li>
-      <li><a href="#5-don-t-change-it">5.  Don't change it</a></li>
+      <li><a href="#5-dont-change-it">5.  Don't change it</a></li>
     </ul>
   </li>
   <li><a href="#keep-it-simple">Keep it simple</a>
     <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
-      <li><a href="#don-t-use-complicated-constructs-where-simple-ones-will-do">Don't use complicated constructs where simple ones will do</a></li>
-      <li><a href="#don-t-use-a-lot-where-a-little-will-do">Don't use a lot where a little will do</a></li>
+      <li><a href="#dont-use-complicated-constructs-where-simple-ones-will-do">Don't use complicated constructs where simple ones will do</a></li>
+      <li><a href="#dont-use-a-lot-where-a-little-will-do">Don't use a lot where a little will do</a></li>
       <li><a href="#one-package-one-idea">One package, one idea</a></li>
       <li><a href="#just-say-no">Just say no</a></li>
       <li><a href="#math-is-simple">Math is simple</a></li>
@@ -108,7 +108,7 @@
       <li><a href="#eat-your-own-dog-food">Eat your own dog food</a></li>
     </ul>
   </li>
-  <li><a href="#show-don-t-tell">Show, don't tell</a>
+  <li><a href="#show-dont-tell">Show, don't tell</a>
     <ul style="list-style: none; font-weight: normal; margin-top: 0.2em;">
       <li><a href="#create-tutorials">Create tutorials</a></li>
       <li><a href="#use-examples">Use examples</a></li>
@@ -127,7 +127,7 @@
 <h2 id="introduction">Introduction</h2>
 <p>The aim of this text is to explore API design and try to find
 strategies and rules that can help us create code libraries
-that are safe, effective and easy to use.</p>
+that are safe, effective and easy to use.</p>
 <p>The text comes with three example libraries:</p>
 <ul>
 <li><a href="https://github.com/yourbasic/fenwick">fenwick</a> is a tiny example intended to illustrate
@@ -148,7 +148,7 @@ superfluous and dysfunctional elements.</p>
 be simpler and the semantics are defined in
 <a href="https://golang.org/ref/spec#Go_statements">eight lines of text</a>
 in the language specification. Still, you rarely hear complaints
-about thread support being limited in Go.</p>
+about thread support being limited in Go.</p>
 <p>Garbage collection in Go is another impeccable example.
 The implementation is hideously complicated, while the API
 is minimal: there is no syntax and the language specification
@@ -158,11 +158,11 @@ for those who need it, but mostly it just works.</p>
 <p>Even though API design is as much an art as a science, there still
 are some fundamental rules that you should be aware of. Rules that
 will cost you dearly if you break them. That&rsquo;s why the first chapter
-is called <strong>The 5 Commandments</strong>.</p>
+is called <strong>The 5 Command­ments</strong>.</p>
 <h2 id="the-5-commandments">The 5 Commandments</h2>
 <p>Let&rsquo;s start with the basics. The rules never to be broken.
 The rules that we don&rsquo;t need to argue about,
-but that we still need to be reminded of.</p>
+but that we still need to be reminded of.</p>
 <p><img src="/algorithms/law.jpg" alt="law"></p>
 <!-- CC0: https://pixabay.com/en/law-justice-court-judge-legal-1063249/ -->
 <h3 id="1-tell-me-what-this-thing-is">1. Tell me what this thing is</h3>
