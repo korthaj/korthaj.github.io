@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLMs: Algorithms that break the rules · YourBasic</title>
+  <meta name="description" content="Large language models are useful in ways no classical algorithm is, but they fail every standard this site holds code to.">
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5E5J2YRRBE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-5E5J2YRRBE');
+  </script>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="16x16" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="180x180" href="/res/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/res/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/res/android-chrome-512x512.png">
+  
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/algorithms/llm/"
+  },
+  "headline": "LLMs: Algorithms that break the rules",
+  "image": [
+    "https://yourbasic.org/res/yourbasic-org.png"
+   ],
+  "datePublished": "2026-11-06T00:00:00&#43;0000",
+  "dateModified": "2026-11-06T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "Large language models are useful in ways no classical algorithm is, but they fail every standard this site holds code to."
+}
+</script>
+
+<meta property="og:locale" content="en-us">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LLMs: Algorithms that break the rules">
+<meta property="og:description" content="Large language models are useful in ways no classical algorithm is, but they fail every standard this site holds code to.">
+<meta property="og:url" content="https://yourbasic.org/algorithms/llm/">
+<meta property="og:image" content="https://yourbasic.org/res/yourbasic-org.png">
+<meta name="twitter:card" content="summary_large_image">
+
+
+
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li class="here"><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<div style="margin-top: 30px;"></div>
+<h1>LLMs: Algorithms that break the rules</h1>
+
+<div style="display: flex; align-items: center; gap: 6px; margin-top: 2px;">
+  <img src="/res/android-chrome-192x192.png" style="height: 32px; width: 32px;">
+  <div class="tagline">yourbasic.org/algorithms</div>
+</div>
+<p class="lead">Code should be correct, clear and efficient.<br>
+LLMs are none of these, and yet very useful.</p>
+<div><img src="/res/yourbasic-org.png"></div>
+<p>A large language model (LLM) is the algorithm behind ChatGPT, Claude, Lumo and
+similar AI assistants. It can be defined in the same way we
+<a href="/algorithms/algorithms/">define any other algorithm</a>.</p>
+<blockquote>
+A <b>large language model</b> is a stepwise procedure of well-defined
+executable instructions (including billions of learned numeric
+parameters) that given a sequence of symbols as input,
+outputs a probability distribution over possible continuations.
+</blockquote>
+<p>When an LLM is used, the displayed answer is generated one symbol at a time, typically by sampling from this distribution.</p>
+<p>That&rsquo;s it. The algorithm is statistical prediction: given text so far,
+guess likely text to come. Presented with typical user input, it answers questions,
+writes programs and apparently reasons.</p>
+<p>This is behavior that emerged from training on enormous amounts of text.
+Very little of this ultimate behavior follows transparently from the training procedure.</p>
+<p>Algorithms of this kind come with an unusual set of properties:</p>
+<ul>
+<li><b>Strengths.</b>
+No classical algorithm can draft text, summarize a messy document
+or translate between arbitrary languages. LLMs handle them
+surprisingly well. They also adapt to new problems from
+examples in the prompt alone.</li>
+<li><b>Limitations.</b>
+They state falsehoods with the same confident tone as facts
+(<b>hallucination</b>), answers are not reliably reproducible and
+performance cannot be guaranteed. The model may fail
+spectacularly on inputs that appear easier than ones it aced.</li>
+</ul>
+<p>Now, let&rsquo;s hold the model against the motto of this site:</p>
+<blockquote>Code should be correct, clear and efficient.</blockquote>
+<h2>Correct?</h2>
+<p>An algorithm is <b>correct</b> if it stops for each problem instance
+and returns the <b>required output</b>. Classical algorithms come
+with proofs: an algorithm such as Quicksort guarantees the result
+for <i>every</i> input of <i>every</i> length.</p>
+<p>An LLM comes with no such guarantee. Worse, the failure mode is
+invisible: a hallucinated fact and a remembered fact can arrive in
+identically fluent prose. Correctness, if it exists at all,
+is statistical: often true, never provable.</p>
+<h2>Clear?</h2>
+<p>Good code can be read and audited by a human.
+A trained LLM is <b>billions of numbers</b> with no human-readable
+explanation of why any particular answer took the shape it did.
+We cannot inspect the code, because there is effectively no code
+– only a compressed statistical residue of the training text,
+of which we may not even have a trustworthy record.</p>
+<h2>Efficient?</h2>
+<p>Compare the cost of the two algorithms for the same task.
+Sorting a million numbers with Quicksort runs in seconds on a laptop.
+Training an LLM consumed megawatts over months.
+As a sorting algorithm, this would be a joke.</p>
+<p>The efficiency question is genuine, just different: the only fair
+comparison is with <b>no executable algorithm at all</b> – with leaving
+the task undone, or doing it by hand. Against that baseline,
+the expense may well be worth paying.</p>
+<h2>What to do</h2>
+<p>&ldquo;Correct&rdquo; is quietly doing two jobs in the motto: provable
+correctness, and the looser notion of <b>reliability</b>.
+Classical algorithms can be proven correct. For an LLM, the best
+available deal is calibrated use:</p>
+<ul>
+<li><b>Verify.</b> Treat every factual claim as a hypothesis.</li>
+<li><b>Supply context.</b> The model can only predict from
+what is in the prompt; it cannot guess your situation.</li>
+<li><b>Keep control.</b> Use it for drafts and suggestions,
+not for decisions.</li>
+</ul>
+<h3 id="further-reading">Further reading</h3>
+<div><a href="/ai/"><img width="250" src="/res/ai-thumb.png" title="Tänkarens guide till AI"></a></div>
+<p style="margin-top:0.5em;">The free Swedish book <a href="/ai/">Tänkarens guide till AI</a> features one such algorithm describing itself.</p>
+
+
+</article>
+<aside>
+
+    
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/algorithms/algorithms/">Algorithms: What’s the problem?</a>
+    <div class="desc">A good programmer describes algorithms in a form that can be efficiently executed by machines and easily understood by humans.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="/algorithms/your-basic-api/">API design: principles and best practices</a>
+    <div class="desc">This tutorial on API design covers documentation, software licenses, compatability policies, semantic versioning, simplicity, dogfooding, tutorials, naming, and proper interfaces.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="/ai/">Tänkarens guide till AI</a>
+    <div class="desc">Alla talar om vad AI kommer att bli. Här får du veta vad det faktiskt är.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+<h2>Algorithm Highlights</h2>
+    <div style="margin-top:1em;"><a href="/ai/" title="Tänkarens guide till AI"><img height="96" width="160" src="/res/ai-thumb.png"></a></div>
+  <ul class="none">
+  
+    <li><a href="/ai/">Tänkarens guide till AI</a></li>
+
+    <li><a href="/algorithms/your-basic-api/">API design: principles and best practices</a></li>
+
+    <li><a href="/algorithms/time-complexity-explained/">How to analyze time complexity: Count your steps</a></li>
+
+    <li><a href="/algorithms/fastest-sorting-algorithm/">O(n log log n) time integer sorting</a></li>
+
+  </ul>
+  <p><a href="/algorithms/"><b>See all 25 algorithm articles</b></a></p>
+</aside>
+</main>
+
+<footer>
+© 2026 Stefan Nilsson
+</footer>
+</body>
+</html>
