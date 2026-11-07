@@ -98,7 +98,7 @@ the math inside the model obeys the same laws of
 <a href="/algorithms/time-complexity-explained/">time complexity</a> as any other algorithm.</p>
 <p>The self-attention algorithm used by an LLM has <strong>quadratic time complexity</strong>.
 This shapes the AI assistant you actually use:
-it is the main reason long context windows are scarce and priced as premium features.</p>
+it is one of the main reasons long context windows are scarce and priced as premium features.</p>
 <h2>Counting the cost of attention</h2>
 <p>LLMs are built from a mechanism called self-attention. In plain language:</p>
 <blockquote>
@@ -123,8 +123,8 @@ length of the text. Since each of the <i>n</i> queries is compared
 with each of the <i>n</i> keys,
 attention has <strong>quadratic time complexity</strong>, Θ(<i>n<sup>2</sup></i>).</p>
 <p>There is also a quadratic amount of <strong>memory</strong>:
-the table <code>s</code> of pairwise scores has <i>n</i><sup>2</sup> entries,
-and it must exist somewhere during the computation.
+the table <code>s</code> of pairwise scores has <i>n</i><sup>2</sup> entries.
+In naive implementations the full table exists during the computation.
 As we will see, memory is often the wall you hit first.</p>
 <h3 id="example">Example</h3>
 <p>Plug in some context-window sizes:</p>
@@ -136,18 +136,17 @@ As we will see, memory is often the wall you hit first.</p>
 </ul>
 <p>An eightfold increase in context buys a <strong>sixty-fourfold</strong>
 increase in attention work.
-Nothing about a modern LLM&rsquo;s hardware budget escapes this rule.
 The model emits text one token at a time,
 and producing token <i>k</i> scores one new query against all
 <i>k</i> keys seen so far.</p>
 <p>An implementation trick called the
-<strong>KV cache</strong> stores earlier results instead of recomputing them,
+<strong>KV cache</strong> stores the key and value vectors of earlier tokens instead of recomputing them,
 but the total still sums to roughly <i>n</i><sup>2</sup>/2:
 each additional token costs work proportional to the whole text so far.</p>
 <h2>The middle ground</h2>
 <p>Quadratic algorithms sit in a peculiar spot:</p>
 <ul>
-<li>A <strong>linear</strong> or <i>n</i> log <i>n</i> algorithm doubles smoothly with input.</li>
+<li>A <strong>linear</strong> or <i>n</i> log <i>n</i> algorithm grows smoothly with input.</li>
 <li>An <strong>exponential</strong> algorithm is unfeasible everywhere; it never finishes.</li>
 <li>A <strong>quadratic</strong> algorithm is feasible – <strong>until it suddenly isn&rsquo;t</strong>.</li>
 </ul>
@@ -155,9 +154,7 @@ each additional token costs work proportional to the whole text so far.</p>
 At <i>n</i> = 100,000 it performs ten billion operations.</p>
 <p>Unlike the exponential case, the wall is real but
 movable – and its location is visible in public:
-vendors ship ever-growing context windows, priced per token,
-because every extra token quadratically inflates the compute
-(and memory) bill.</p>
+doubling the context window quadruples the compute cost, while pricing stays linear per token.</p>
 <h2>Constants still count</h2>
 <p>The same lesson as always applies: <strong>constants matter</strong>.
 The <strong>FlashAttention</strong> algorithm keeps the exact same
