@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The quadratic wall: Why LLM context windows are expensive · YourBasic</title>
+  <meta name="description" content="Self-attention compares every token with every other token. That makes time complexity grow quadratically – a middle ground between efficient and unfeasible algorithms.">
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5E5J2YRRBE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-5E5J2YRRBE');
+  </script>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="16x16" href="/res/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/res/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="180x180" href="/res/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/res/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/res/android-chrome-512x512.png">
+  
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourbasic.org/algorithms/time-complexity-llms/"
+  },
+  "headline": "The quadratic wall: Why LLM context windows are expensive",
+  "image": [
+    "https://yourbasic.org/res/endless-scroll.png"
+   ],
+  "datePublished": "2026-11-07T00:00:00&#43;0000",
+  "dateModified": "2026-11-07T00:00:00&#43;0000",
+  "author": {
+    "@type": "Person",
+    "name": "Stefan Nilsson"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "yourbasic.org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourbasic.org/res/favicon-96x96.png"
+    }
+  },
+  "description": "Self-attention compares every token with every other token. That makes time complexity grow quadratically – a middle ground between efficient and unfeasible algorithms."
+}
+</script>
+
+<meta property="og:locale" content="en-us">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The quadratic wall: Why LLM context windows are expensive">
+<meta property="og:description" content="Self-attention compares every token with every other token. That makes time complexity grow quadratically – a middle ground between efficient and unfeasible algorithms.">
+<meta property="og:url" content="https://yourbasic.org/algorithms/time-complexity-llms/">
+<meta property="og:image" content="https://yourbasic.org/res/endless-scroll.png">
+<meta name="twitter:card" content="summary_large_image">
+
+
+
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/">Home</a></li>
+      <li class="here"><a href="/algorithms/">Algorithms</a></li>
+      <li><a href="/golang/">Go</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<article>
+<div style="margin-top: 30px;"></div>
+<h1>The quadratic wall: Why LLM context windows are expensive</h1>
+
+<div style="display: flex; align-items: center; gap: 6px; margin-top: 2px;">
+  <img src="/res/android-chrome-192x192.png" style="height: 32px; width: 32px;">
+  <div class="tagline">yourbasic.org/algorithms</div>
+</div>
+<p class="lead">Self-attention compares every token in a text with every other token.
+The cost grows with the&nbsp;square of the input size.</p>
+<div><img src="/res/endless-scroll.png" alt="Two friendly robots in armchairs: one calmly holds a short scroll, the other is flustered by an endless scroll of parchment spilling across the floor."></div>
+<div style="font-size: small; font-weight: bold; color: #999;"><a href="/about/">STEFAN NILSSON</a> – NOV 7, 2026</div>
+<p>A large language model <a href="/algorithms/llm/">breaks the rules</a>
+of correct, clear and efficient code, yet is very useful.
+But one part of an LLM is completely ordinary:
+the math inside the model obeys the same laws of
+<a href="/algorithms/time-complexity-explained/">time complexity</a> as any other algorithm.</p>
+<p>The self-attention algorithm used by an LLM has <strong>quadratic time complexity</strong>.
+This shapes the AI assistant you actually use:
+it is the main reason long context windows are scarce and priced as premium features.</p>
+<h2>Counting the cost of attention</h2>
+<p>LLMs are built from a mechanism called self-attention. In plain language:</p>
+<blockquote>
+<b>Self-attention</b> gives each token in a text a&nbsp;<b>query</b> and a&nbsp;<b>key</b>,
+and computes a similarity score for every pair of tokens.
+Each score measures how much one token should attend to the other.
+</blockquote>
+<p>This is simply an algorithm that scores all pairs of elements.
+In pseudocode:</p>
+<pre>
+// Score every token against every other token.
+<b>Algorithm</b> attention(q, k, s)
+    <b>for</b> i ← 0 <b>to</b> n-1
+        <b>for</b> j ← 0 <b>to</b> n-1
+            s[i,j] ← dot(q[i], k[j])  // one pairwise score
+</pre>
+<p>The time complexity analysis is straightforward. There are <i>n</i> queries and <i>n</i> keys,
+and computing one score, <code>dot(q[i], k[j])</code>, is a constant-time operation.
+This makes the dot computation an obvious <strong>elementary operation</strong>:
+it dominates the computation and its cost doesn&rsquo;t depend on the
+length of the text. Since each of the <i>n</i> queries is compared
+with each of the <i>n</i> keys,
+attention has <strong>quadratic time complexity</strong>, Θ(<i>n<sup>2</sup></i>).</p>
+<p>There is also a quadratic amount of <strong>memory</strong>:
+the table <code>s</code> of pairwise scores has <i>n</i><sup>2</sup> entries,
+and it must exist somewhere during the computation.
+As we will see, memory is often the wall you hit first.</p>
+<h3 id="example">Example</h3>
+<p>Plug in some context-window sizes:</p>
+<ul>
+<li>1,000 tokens: 1,000,000 pairwise scores,</li>
+<li>8,000 tokens: 64,000,000,</li>
+<li>64,000 tokens: ~4,100,000,000,</li>
+<li>512,000 tokens: ~260,000,000,000.</li>
+</ul>
+<p>An eightfold increase in context buys a <strong>sixty-fourfold</strong>
+increase in attention work.
+Nothing about a modern LLM&rsquo;s hardware budget escapes this rule.
+The model emits text one token at a time,
+and producing token <i>k</i> scores one new query against all
+<i>k</i> keys seen so far.</p>
+<p>An implementation trick called the
+<strong>KV cache</strong> stores earlier results instead of recomputing them,
+but the total still sums to roughly <i>n</i><sup>2</sup>/2:
+each additional token costs work proportional to the whole text so far.</p>
+<h2>The middle ground</h2>
+<p>Quadratic algorithms sit in a peculiar spot:</p>
+<ul>
+<li>A <strong>linear</strong> or <i>n</i> log <i>n</i> algorithm doubles smoothly with input.</li>
+<li>An <strong>exponential</strong> algorithm is unfeasible everywhere; it never finishes.</li>
+<li>A <strong>quadratic</strong> algorithm is feasible – <strong>until it suddenly isn&rsquo;t</strong>.</li>
+</ul>
+<p>A quadratic algorithm runs happily at <i>n</i> = 1,000.
+At <i>n</i> = 100,000 it performs ten billion operations.</p>
+<p>Unlike the exponential case, the wall is real but
+movable – and its location is visible in public:
+vendors ship ever-growing context windows, priced per token,
+because every extra token quadratically inflates the compute
+(and memory) bill.</p>
+<h2>Constants still count</h2>
+<p>The same lesson as always applies: <strong>constants matter</strong>.
+The <strong>FlashAttention</strong> algorithm keeps the exact same
+Θ(<i>n</i><sup>2</sup>) score count, but computes the
+scores block by block in the GPU&rsquo;s fast on-chip memory,
+so that the full quadratic table never has to be written
+to slow main memory. Same asymptotics, radically moved wall.</p>
+<h2>Beyond the wall</h2>
+<p>Compute is not the only limit on long context.
+Empirical studies report that models use long inputs unevenly,
+retrieving information from the beginning and end of a text
+better than from its middle. And a quadratic cost is not a
+law of nature: it is a property of one algorithm.</p>
+<p>Sparse and sliding-window variants restrict which pairs are scored,
+and state-space models aim for linear complexity –
+so far with a quality trade-off. The search for an attention
+mechanism with provably good subquadratic behavior
+is an open problem, and one of the more consequential ones
+in computing today.</p>
+<h3 id="further-reading">Further reading</h3>
+<div><a href="/algorithms/llm/"><img width="250" src="/res/yourbasic-org.png" title="LLMs: Algorithms that break the rules"></a></div>
+<p style="margin-top:0.5em;">See <a href="/algorithms/llm/">LLMs: Algorithms that break the rules</a>
+for how LLMs hold up against the motto of this site.</p>
+
+
+</article>
+<aside>
+
+    
+  <h2>Related</h2>
+
+  <div class="reference">
+    <a href="/algorithms/time-complexity-explained/">How to analyze time complexity: Count your steps</a>
+    <div class="desc">Time complexity analysis esti­mates the time to run an algo­rithm. It&#39;s calcu­lated by counting elemen­tary opera­tions.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+  <div class="reference">
+    <a href="/algorithms/big-o-notation-explained/">Big O notation: definition and examples</a>
+    <div class="desc">Big O notation is a convenient way to describe how fast a function is growing. It is often used in computer science when estimating time complexity.</div>
+    <div class="source">yourbasic.org</div>
+  </div>
+
+<h2>Algorithm Highlights</h2>
+    <div style="margin-top:1em;"><a href="/ai/" title="Tänkarens guide till AI"><img height="96" width="160" src="/res/ai-thumb.png"></a></div>
+  <ul class="none">
+  
+    <li><a href="/ai/">Tänkarens guide till AI</a></li>
+
+    <li><a href="/algorithms/your-basic-api/">API design: principles and best practices</a></li>
+
+    <li><a href="/algorithms/time-complexity-explained/">How to analyze time complexity: Count your steps</a></li>
+
+    <li><a href="/algorithms/fastest-sorting-algorithm/">O(n log log n) time integer sorting</a></li>
+
+  </ul>
+  <p><a href="/algorithms/"><b>See all 26 algorithm articles</b></a></p>
+</aside>
+</main>
+
+<footer>
+© 2026 Stefan Nilsson
+</footer>
+</body>
+</html>

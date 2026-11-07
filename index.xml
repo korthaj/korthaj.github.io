@@ -894,7 +894,7 @@
       <link>https://yourbasic.org/algorithms/llm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://yourbasic.org/algorithms/llm/</guid>
-      <description>&lt;p class=&#34;lead&#34;&gt;Code should be correct, clear and efficient.&lt;br&gt;&#xA;LLMs are none of these, yet very useful.&lt;/p&gt;&#xA;&lt;div&gt;&lt;img src=&#34;https://yourbasic.org/res/yourbasic-org.png&#34; alt=&#34;A conversation between a human and a robot, both seated in arm chairs.&#34;&gt;&lt;/div&gt;&#xA;&lt;p&gt;A large language model (LLM) is the algorithm behind ChatGPT, Claude, Lumo and&#xA;similar AI assistants. It can be defined in the same way we&#xA;&lt;a href=&#34;https://yourbasic.org/algorithms/algorithms/&#34;&gt;define any other algorithm&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;A &lt;b&gt;large language model&lt;/b&gt; is a stepwise procedure of well-defined&#xA;executable instructions (including billions of learned numeric&#xA;parameters) that given a sequence of symbols as input,&#xA;outputs a probability distribution over possible continuations.&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;When an LLM is used, the displayed answer is generated one symbol at a time, typically by sampling from this distribution.&lt;/p&gt;</description>
+      <description>&lt;p class=&#34;lead&#34;&gt;Code should be correct, clear and efficient.&lt;br&gt;&#xA;LLMs are none of these, yet very useful.&lt;/p&gt;&#xA;&lt;div&gt;&lt;img src=&#34;https://yourbasic.org/res/yourbasic-org.png&#34; alt=&#34;A conversation between a human and a robot, both seated in arm chairs.&#34;&gt;&lt;/div&gt;&#xA;&lt;div style=&#34;font-size: small; font-weight: bold; color: #999;&#34;&gt;&lt;a href=&#34;https://yourbasic.org/about/&#34;&gt;STEFAN NILSSON&lt;/a&gt; – NOV 6, 2026&lt;/div&gt;&#xA;&lt;div style=&#34;font-size: small; font-weight: bold; color: #999; margin-top: -0.5em&#34;&gt; – UPDATED NOV 7, 2026&lt;/div&gt;&#xA;&lt;p&gt;A large language model (LLM) is the algorithm behind ChatGPT, Claude, Lumo and&#xA;similar AI assistants. It can be defined in the same way we&#xA;&lt;a href=&#34;https://yourbasic.org/algorithms/algorithms/&#34;&gt;define any other algorithm&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Loop invariants can give you coding superpowers</title>
@@ -1252,6 +1252,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://yourbasic.org/golang/empty-interface/</guid>
       <description>&lt;p&gt;See &lt;a href=&#34;https://yourbasic.org/golang/convert-int-to-string/&#34;&gt;Interfaces in a nutshell&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The quadratic wall: Why LLM context windows are expensive</title>
+      <link>https://yourbasic.org/algorithms/time-complexity-llms/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://yourbasic.org/algorithms/time-complexity-llms/</guid>
+      <description>&lt;p class=&#34;lead&#34;&gt;Self-attention compares every token in a text with every other token.&#xA;The cost grows with the&amp;nbsp;square of the input size.&lt;/p&gt;&#xA;&lt;div&gt;&lt;img src=&#34;https://yourbasic.org/res/endless-scroll.png&#34; alt=&#34;Two friendly robots in armchairs: one calmly holds a short scroll, the other is flustered by an endless scroll of parchment spilling across the floor.&#34;&gt;&lt;/div&gt;&#xA;&lt;div style=&#34;font-size: small; font-weight: bold; color: #999;&#34;&gt;&lt;a href=&#34;https://yourbasic.org/about/&#34;&gt;STEFAN NILSSON&lt;/a&gt; – NOV 7, 2026&lt;/div&gt;&#xA;&lt;p&gt;A large language model &lt;a href=&#34;https://yourbasic.org/algorithms/llm/&#34;&gt;breaks the rules&lt;/a&gt;&#xA;of correct, clear and efficient code, yet is very useful.&#xA;But one part of an LLM is completely ordinary:&#xA;the math inside the model obeys the same laws of&#xA;&lt;a href=&#34;https://yourbasic.org/algorithms/time-complexity-explained/&#34;&gt;time complexity&lt;/a&gt; as any other algorithm.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Time complexity of array/list operations [Java, Python]</title>
