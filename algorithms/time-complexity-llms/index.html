@@ -141,7 +141,7 @@ The model emits text one token at a time,
 and producing token <i>k</i> scores one new query against all
 <i>k</i> keys seen so far.</p>
 <p>An implementation trick called the <a href="https://arxiv.org/abs/1911.02150">KV cache</a> stores the key and value vectors of earlier tokens instead of recomputing them,
-but the total still sums to roughly <i>n</i><sup>2</sup>/2:
+but the total still sums to roughly <i>n</i><sup>2</sup>:
 each additional token costs work proportional to the whole text so far.</p>
 <h2>The middle ground</h2>
 <p>Quadratic algorithms sit in a peculiar spot:</p>
