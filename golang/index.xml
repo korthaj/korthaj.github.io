@@ -5,7 +5,7 @@
     <link>https://yourbasic.org/golang/</link>
     <description>Recent content in Go Programming on Algorithms to Go</description>
     <generator>Hugo</generator>
-    <language>en-us</language>
+    <language>en</language>
     <atom:link href="https://yourbasic.org/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2 basic FIFO queue implementations</title>
