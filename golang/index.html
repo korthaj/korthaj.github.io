@@ -95,9 +95,12 @@ h3{font-size:135%;font-style:normal;font-weight:normal;}
 h4{font-size:110%;font-style:italic;font-weight:normal;}
 ul{margin:0;}
 p{margin:0.8em 0 0 0;}
+@media (max-width: 720px) {
+  .book-aside { display: none; }
+}
 </style>
 <div style="margin-top:1em;">
-<div style="float: left; min-width: 40%; margin-right: 2em; margin-top:0;">
+<div style="float: left; min-width: 40%; margin-right: 1em; margin-top:0;">
     <ul class="toc" style="margin: 0;">
         <li><a href="#why-go"><b>Why Go?</b></a></li>
         <li style="margin-top: 0.2em;"></li>
@@ -114,7 +117,7 @@ p{margin:0.8em 0 0 0;}
         <li style="margin-top: 0.2em;"></li>
     </ul>
 </div>
-<div style="float: left;">
+<div style="float: left;  margin-right: 6em; margin-top:0;">
     <ul class="toc" style="margin-top: 0;">
         <li><a href="#strings"><b>Strings</b></a></li>
         <li><a href="#maps">Maps</a></li>
@@ -125,10 +128,15 @@ p{margin:0.8em 0 0 0;}
         <li style="margin-top: 0.2em;"></li>
         <li><a href="#language-basics"><b>Language basics</b></a></li>
         <li><a href="#standard-library">Standard library</a></li>
+        <li style="margin-top: 0.2em;"></li>
     </ul>
 </div>
-<!-- CC BY 3.0: https://golang.org/doc/gopher/ -->
-<div><img src="/golang/find.png" style="float: right; margin: 0 30px 0 10px;" width="60px;"></div>
+<div class="book-aside" style="float: left">
+  <div style="margin-bottom:0.3em;"><b>My new book</b></div>
+  <div><a href="/ai-guide/?utm_source=gopage&utm_medium=internal&utm_campaign=ai_book" title="The Thinker’s Guide to AI"><img width="150" alt="Book cover showing a man and a friendly robot in wingback chairs." src="/res/cover-english-thumb.jpeg"></a></div>
+  <div style="margin-top:-0.2em; font-size:90%;"><a href="/ai-guide/?utm_source=gopage&utm_medium=internal&utm_campaign=ai_book" title="The Thinker’s Guide to AI"><b>Read the free book</b></a></div>
+  <div style="margin-top: 0.1em; color:#777; font-size:90%;"><em>For those who keep</em></div>
+  <div style="margin-top:-0.2em; color:#777; font-size:90%;"><em>asking you about AI.</em></div>
 </div>
 <div style="clear: both"></div>
 <div style="float:left; max-width:320px; margin-right:40px;">
